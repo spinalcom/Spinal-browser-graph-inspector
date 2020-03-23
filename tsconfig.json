@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "outDir": "dist",
+    "sourceMap": true,
+    "declaration": true,
+    "allowSyntheticDefaultImports": true,
+    "plugins": [
+      {
+        "name": "ts-vue-plugin"
+      }
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "src/index.js"
+  ],
+  "exclude": [
+    "node_modules",
+    "!node_modules/@types"
+  ],
+  "types": [
+    "jest"
+  ]
+}

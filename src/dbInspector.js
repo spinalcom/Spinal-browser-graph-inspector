@@ -29,7 +29,7 @@ import EventBus from "./components/event-bus";
 
 export function dbInspector(domElement) {
 
-  EventBus.$on(".droite", realNode => {
+  EventBus.$on("realNode", (realNode) => {
     const serverId = realNode._server_id;
     set_model(serverId);
 
@@ -53,29 +53,6 @@ export function dbInspector(domElement) {
       lstEmptyOrOpen: "#7fffd4"
     }
   };
-  //context menu
-  // let menu = d => {
-  //   let apps = window.spinalDrive_Env.get_applications("Inspector", d);
-  //   let res = [];
-  //   let create_action_callback = app => {
-  //     return function () {
-  //       let share_obj = {
-  //         model_server_id: d.data._server_id,
-  //         scope: $scope
-  //       };
-  //       app.action(share_obj);
-  //     };
-  //   };
-
-  //   for (var i = 0; i < apps.length; i++) {
-  //     let app = apps[i];
-  //     res.push({
-  //       title: app.label,
-  //       action: create_action_callback(app)
-  //     });
-  //   }
-  //   return res;
-  // };
 
   let diagonal = (s, d) => {
     let path = `M ${s.y} ${s.x}
@@ -100,20 +77,22 @@ export function dbInspector(domElement) {
     res *= mult;
     return res;
   };
+
   start(domElement);
   function start(domElement) {
-    viewerWidth = 700;
 
-
-
-
-    viewerHeight = 700;
     let element = d3.select(domElement);
-    let tree = d3.tree().size([viewerHeight, viewerWidth]);
+    viewerWidth = element._groups[0][0].clientWidth;
+    viewerHeight = element._groups[0][0].clientHeight;
+
+    let tree = d3.tree().size([392, 732]);
+
     let zoomListener = d3
       .zoom()
       .scaleExtent([0.1, 3])
       .on("zoom", zoom);
+    viewerWidth = 732;
+    viewerHeight = 392;
     centerNode = function (d) {
       let x, y;
       let depth = d.depth + 1;
@@ -122,6 +101,7 @@ export function dbInspector(domElement) {
       depth -= d.depth;
       y = -d.x0;
       let x_limit = 120;
+
       while (x < x_limit) {
         x = -rootnode.y0;
         x = (x * scale) + (viewerWidth / 2);
@@ -147,11 +127,6 @@ export function dbInspector(domElement) {
       .call(zoomListener);
     baseSvg.on("dblclick.zoom", null);
 
-    // let centerrootbtn = d3.select("#spinalinspect_btn_centerroot_" + uid);
-    // centerrootbtn.on("click", () => {
-    //   if (!rootnode) return;
-    //   centerNode(rootnode);
-    // });
     textGrp = baseSvg
       .append("text")
       .attr("class", "nodeText")
@@ -160,8 +135,8 @@ export function dbInspector(domElement) {
       .attr("text-anchor", "middle")
       .attr("alignment-baseline", "central")
       .attr("fill", "#999");
-    svgGroup = baseSvg.append("g");
 
+    svgGroup = baseSvg.append("g");
     let onNodeClick = d => {
       if (d.children) {
         d._children = d.children;
@@ -210,11 +185,13 @@ export function dbInspector(domElement) {
       rootnode.y0 = 0;
       update(rootnode);
     };
+
+
+
     let click_focus = d => {
       centerNode(d);
     };
     update = source => {
-      // let _tree = tree.size([viewerHeight, viewerWidth]);
       let _tree = tree.nodeSize([18, 300]);
       let treemap = _tree(rootnode);
       let nodes = treemap.descendants();
@@ -242,19 +219,16 @@ export function dbInspector(domElement) {
         .attr("class", "node")
         .attr("transform", () => {
           return "translate(" + source.y0 + "," + source.x0 + ")";
-        })
-      // .on("mouseover", node_mouseover)
-      // .on("mousemove", function (d) {
-      //   node_mousemove(d);
-      // })
-      // .on("mouseout", node_mouseout);
+        });
+
 
       nodeEnter
         .append("circle")
         .attr("class", "nodeCircle")
         .attr("r", 1e-6)
-        // .on("contextmenu", d3ContextMenu(menu))
-        .on("click", onNodeClick);
+        .on("click", onNodeClick)
+        .attr('stroke-width', 1.2)
+        .style('stroke', '#4682b4');
 
       nodeEnter
         .append("text")
@@ -271,7 +245,6 @@ export function dbInspector(domElement) {
         })
         .attr("fill", "#EEE")
         .on("click", click_focus)
-      // .on("contextmenu", d3ContextMenu(menu));
 
       var nodeUpdate = nodeEnter.merge(node);
       nodeUpdate
@@ -322,7 +295,8 @@ export function dbInspector(domElement) {
         })
         .text(d => {
           return d.data.name;
-        });
+        })
+        .style('font-family', "sans-serif");
 
       let nodeExit = node
         .exit()
@@ -334,10 +308,13 @@ export function dbInspector(domElement) {
         .remove();
       nodeExit.select("circle").attr("r", 0);
       nodeExit.select("text").style("fill-opacity", 0);
+
+
       let link = svgGroup.selectAll("path.link").data(links, d => {
         return d.id;
-        // return d.target.id;
       });
+
+      // Enter any new links at the parent's previous position.
       let linkEnter = link
         .enter()
         .insert("path", "g")
@@ -348,7 +325,10 @@ export function dbInspector(domElement) {
             y: source.y0
           };
           return diagonal(o, o);
-        });
+        })
+        .attr("fill", "none")
+        .style("stroke", "#8d8d8d")
+        .attr('stroke-width', 2)
 
       // UPDATE
       let linkUpdate = linkEnter.merge(link);
@@ -403,67 +383,7 @@ export function dbInspector(domElement) {
   function strncmp(a, b, n) {
     return a.substring(0, n) == b.substring(0, n);
   }
-  // mouseover
-  // function node_mouseover(d) {
-  //   spinalInspectUID.tooltip
-  //     .transition()
-  //     .duration(300)
-  //     .style("opacity", 1);
-  //   spinalInspectUID.tooltip.selectAll("table").remove();
-  //   let table = spinalInspectUID.tooltip.append("table");
 
-  //   add_table_row(table, "Contructor", d.data._constructor);
-  //   add_table_row(table, "Server_id", d.data._server_id);
-
-  //   let m = window.FileSystem._objects[d.data._server_id];
-  //   if (m) {
-  //     let apps = window.spinalDrive_Env.get_applications("Inspector", d);
-  //     for (var i = 0; i < apps.length; i++) {
-  //       let app = apps[i];
-  //       if (app.action_mouseover && app.action_mouseover instanceof Function) { app.action_mouseover(d, m, add_table_row, table); }
-  //     }
-  //     if (m instanceof window.Lst) {
-  //       add_table_row(table, "Length", m.length);
-  //     } else if (m instanceof window.Str) {
-  //       let data = m.get();
-  //       add_table_row(table, "Data", data);
-  //       add_table_row(table, "Length", m.length);
-  //       let imgtype = "data:image/";
-  //       if (strncmp(data, imgtype, imgtype.length)) {
-  //         let tr = table.append("tr");
-  //         tr.append("td").text("Preview");
-  //         let img = tr.append("td").append("img");
-  //         img.attr("src", data);
-  //         img.attr("alt", "preview");
-  //         img.style("max-height", 100);
-  //         img.style("max-width", 100);
-  //       }
-  //     } else if (m instanceof window.Val) {
-  //       add_table_row(table, "Value", m.get());
-  //     } else if (m instanceof window.Ptr) {
-  //       add_table_row(table, "Target Ptr", m.data.value);
-  //       // m.load(ptr => {
-  //       //   if (ptr)
-  //       //     add_table_row(table, "Target Contructor", ptr.constructor.name);
-  //       // });
-  //     } else if (m instanceof window.TypedArray) {
-  //       add_table_row(table, "Data", m.get());
-  //     }
-  //   }
-  // }
-
-  // function node_mousemove() {
-  //   spinalInspectUID.tooltip
-  //     .style("left", d3.event.pageX + "px")
-  //     .style("top", d3.event.pageY + "px");
-  // }
-
-  // function node_mouseout() {
-  //   spinalInspectUID.tooltip
-  //     .transition()
-  //     .duration(300)
-  //     .style("opacity", 1e-6);
-  // }
   let timeout_check_node = null;
   let timeout_update_graph = null;
   let onTreeChange = () => {
@@ -479,12 +399,11 @@ export function dbInspector(domElement) {
       }, 500);
     }, 500);
   };
-  //a changer
+  //********************************************************** */
   let check_nodes_rec = (n, name) => {
     if (!(n && n.data && n.data._server_id)) return;
     let m = window.FileSystem._objects[n.data._server_id];
     if (m) {
-      // if (!m.has_been_modified()) return;
       if (!name) name = n.data.name;
       n.data._constructor = m.constructor.name;
       n.data._server_id = m._server_id;
@@ -521,7 +440,6 @@ export function dbInspector(domElement) {
         } else { n.data.haveChild = true; }
         let children = n.children || n._children;
         if (!children) {
-          // children not loaded yet
           return;
         }
 
@@ -538,7 +456,6 @@ export function dbInspector(domElement) {
             let j = i;
             let found = -1;
             for (; j < children.length; j++) {
-              // children[j];
               if (
                 children[j] &&
                 children[j].data &&
@@ -621,7 +538,6 @@ export function dbInspector(domElement) {
       ptr_folow[i].unbind(onTreeChange);
     }
     ptr_folow = [];
-    // $scope.model = spinalFileSystem.lastfileSelected;
     let m = window.FileSystem._objects[model_id];
     if (m) {
       ptr_folow.push(m);
@@ -778,33 +694,6 @@ export function dbInspector(domElement) {
     }
   };
 
-  // $scope.folderDropCfg = {
-  //   drop: event => {
-  //     event.stopPropagation(); // Stops some browsers from redirecting.
-  //     event.preventDefault();
-  //     let selected = spinalFileSystem.FE_selected_drag;
-  //     if (selected && selected[0]) {
-  //       // change to multiple selection later
-  //       $scope.fs_path = Array.from(spinalFileSystem.FE_fspath_drag);
-  //       $scope.fs_path.push({
-  //         name: selected[0].name,
-  //         _server_id: selected[0]._server_id
-  //       });
-  //       $scope.set_model(selected[0]._server_id);
-  //     }
-  //     return false;
-  //   },
-  //   dragover: event => {
-  //     event.preventDefault();
 
-  //     return false;
-  //   },
-  //   dragenter: event => {
-  //     event.preventDefault();
-  //     return false;
-  //   }
-  // };
-  // spinalFileSystem.setlastInspector($scope);
-  // $scope.set_model(spinalFileSystem.lastfileSelected);
 }
 

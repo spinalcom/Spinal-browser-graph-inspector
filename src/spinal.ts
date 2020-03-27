@@ -37,7 +37,6 @@ const config = {
   }
 };
 var spinalCore = require('spinal-core-connectorjs');
-
 var spinalgraph = require('spinal-model-graph');
 
 export class Spinal {

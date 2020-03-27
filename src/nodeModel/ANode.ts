@@ -113,8 +113,8 @@ abstract class ANode {
       c.push(n)
     }
 
-    // check child a rm 
   }
+
   // static async updateParent(node: D3Node, nodeFactory) {
   //   const children: SpinalAnyNode[] = await node.data.getChildren()
 

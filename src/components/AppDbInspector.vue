@@ -40,7 +40,6 @@ export default {
     };
   },
   mounted() {
-    //
     dbInspector(this.$refs.appDbInspector);
   },
   methods: {

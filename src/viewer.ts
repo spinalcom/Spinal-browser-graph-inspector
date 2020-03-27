@@ -34,6 +34,7 @@ import nodeFactory from "./nodeModel/NodeFactory";
 import { FileSystem } from 'spinal-core-connectorjs_type';
 import { SpinalNode } from 'spinal-model-graph';
 import EventBus from "./components/event-bus.js";
+import EventBusElement from "./components/event-bus-element-inspector.js";
 class Viewer {
 
   graph: Spinal;
@@ -56,6 +57,7 @@ class Viewer {
       this.draw();
     }
   }
+
   draw() {
 
     if (typeof this.svg !== "undefined") {
@@ -70,7 +72,6 @@ class Viewer {
   async init(element: any) {
     this.element = element;
 
-
     const data = <SpinalNode<any>>(await this.graph.load()); //load graph
 
     this.width = element.clientWidth - this.margin.left - this.margin.right;
@@ -80,7 +81,6 @@ class Viewer {
 
 
     //build hierarchy d3 graph from entry point
-    // const root = d3.hierarchy(nodeG);
     const root = nodeFactory.createNode(data);
 
 
@@ -143,20 +143,10 @@ class Viewer {
     var edgepaths = svg.selectAll(".edgepath");
 
 
-
-
-
     function update() {
 
       const nodes = flatten(root) // recover ids nodes
       const links = createLinks(nodes)  //recover links
-      // const links = []
-
-      // const nodes = flatten(root) // recover ids nodes
-
-      // const links = root.links()  //recover links
-
-
 
       //build the d3 links************************************/
       link = mylink
@@ -210,9 +200,8 @@ class Viewer {
         .attr('stroke-width', 1.2)
         .style('fill', color)
         .style('opacity', 1)
-        .on('click', allclicked)
-        .on("contextmenu", rclicked)
-        // .on('dblclick', clicked)
+        .on('click', clicked)
+        // .on("contextmenu", eventlink)
         .call(d3.drag()
           .on('start', dragstarted)
           .on('drag', dragged)
@@ -243,10 +232,17 @@ class Viewer {
       //add node labels
       nodeEnter.append("text")
         .text(function (d) {
+          const realNode = (FileSystem._objects[d.data._serverId]);
           if (d.data.name === "undefined") {
             d.data.name = "Graph";
           }
-          return d.data.name;
+          if (d.data.category === "node") {
+            return d.data.name;
+          }
+          else {
+            return d.data.name + "{" + realNode.getNbChildren() + "}";
+          }
+
         })
         .attr('transform', `translate(-17,-15)`)
         .style('fill', "#fff")
@@ -265,14 +261,16 @@ class Viewer {
 
     //node color function
     function color(d) {
-
+      if (d.data.hasChildren === false) {
+        return "#fff";
+      }
       if (d.data._serverId === root.data._serverId) {
         return "rgb(240, 169, 169)";
-      } else if (d.data.category === "node") {
+      }
+      if (d.data.category === "node") {
         return "#320ff2";
-      } else {
+      } else if (d.data.category === "relation") {
         return "#7efed4";
-
       }
     }
 
@@ -296,28 +294,26 @@ class Viewer {
 
     //node clicked function
     async function clicked(d: D3Node) {
+      const realNode = (FileSystem._objects[d.data._serverId]);
 
       if (ANode.collapseOrOpen(d)) {
         await ANode.updateChildren(d, nodeFactory);
       }
+      EventBus.$emit("realNode", realNode);
+      EventBusElement.$emit("realNodeElement", realNode);
+      console.log("graph", realNode);
+
+
       update()
     }
 
-    async function rclicked(d: D3Node) {
-
-      d3.event.preventDefault();
-      // react on right-clicking
-      const realNode = (FileSystem._objects[d.data._serverId]);
-      EventBus.$emit(".droite", realNode);
-
-
-    }
-
-
-    function allclicked(d) {
-      clicked(d);
-      rclicked(d)
-    }
+    // async function eventlink(d: D3Node) {
+    //   if (d.data.category === "node") {
+    //     d3.event.preventDefault();
+    // const realNode = (FileSystem._objects[d.data._serverId]);
+    // EventBus.$emit("realNode", realNode);
+    //   }
+    // }
 
     // dragstarted function
     function dragstarted(d: D3Node) {
@@ -353,7 +349,6 @@ class Viewer {
 
         nodes.add(node)
         if (node.children) node.children.forEach(recurse)
-        // if (node.parent) node.parent.forEach(recurse)
       }
       recurse(root)
       return Array.from(nodes)

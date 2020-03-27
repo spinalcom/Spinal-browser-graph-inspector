@@ -33846,14 +33846,14 @@ var _default = {
   name: "AppHeader"
 };
 exports.default = _default;
-        var $00f509 = exports.default || module.exports;
+        var $b9f5b8 = exports.default || module.exports;
       
-      if (typeof $00f509 === 'function') {
-        $00f509 = $00f509.options;
+      if (typeof $b9f5b8 === 'function') {
+        $b9f5b8 = $b9f5b8.options;
       }
     
         /* template */
-        Object.assign($00f509, (function () {
+        Object.assign($b9f5b8, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -33887,7 +33887,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-00f509",
+            _scopeId: "data-v-b9f5b8",
             functional: undefined
           };
         })());
@@ -33900,9 +33900,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$00f509', $00f509);
+            api.createRecord('$b9f5b8', $b9f5b8);
           } else {
-            api.reload('$00f509', $00f509);
+            api.reload('$b9f5b8', $b9f5b8);
           }
         }
 
@@ -33913,7 +33913,7 @@ render._withStripped = true
       
       }
     })();
-},{"/home/spinalcom/Documents/work/spinalcom/spinalcom_operation_center/module/spinal-browser-graph/src/assets/spinal.png":[["spinal.5801a626.png","assets/spinal.png"],"assets/spinal.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../../../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"../node_modules/d3/dist/package.js":[function(require,module,exports) {
+},{"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/spinal.png":[["spinal.5801a626.png","assets/spinal.png"],"assets/spinal.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../../../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"../node_modules/d3/dist/package.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -63261,6 +63261,44 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var EventBus = new _vue.default();
 var _default = EventBus;
 exports.default = _default;
+},{"vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"components/event-bus-element-inspector.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _vue = _interopRequireDefault(require("vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * Copyright 2020 SpinalCom - www.spinalcom.com
+ *
+ * This file is part of SpinalCore.
+ *
+ * Please read all of the following terms and conditions
+ * of the Free Software license Agreement ("Agreement")
+ * carefully.
+ *
+ * This Agreement is a legally binding contract between
+ * the Licensee (as defined below) and SpinalCom that
+ * sets forth the terms and conditions that govern your
+ * use of the Program. By installing and/or using the
+ * Program, you agree to abide by all the terms and
+ * conditions stated or referenced herein.
+ *
+ * If you do not agree to abide by these terms and
+ * conditions, do not demonstrate your acceptance and do
+ * not install or use the Program.
+ * You should have received a copy of the license along
+ * with this file. If not, see
+ * <http://resources.spinalcom.com/licenses.pdf>.
+ */
+var EventBusElement = new _vue.default();
+var _default = EventBusElement;
+exports.default = _default;
 },{"vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"viewer.ts":[function(require,module,exports) {
 "use strict";
 
@@ -63350,6 +63388,8 @@ var spinal_core_connectorjs_type_1 = require("spinal-core-connectorjs_type");
 
 var event_bus_js_1 = __importDefault(require("./components/event-bus.js"));
 
+var event_bus_element_inspector_js_1 = __importDefault(require("./components/event-bus-element-inspector.js"));
+
 var Viewer =
 /*#__PURE__*/
 function () {
@@ -63391,17 +63431,17 @@ function () {
     value: function init(element) {
       return __awaiter(this, void 0, void 0,
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee3() {
-        var data, i, node, link, root, svg, mylink, simulation, edgepaths, update, color, ticked, clicked, rclicked, allclicked, dragstarted, dragged, dragended, flatten, createLinks, zoomed;
-        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+      regeneratorRuntime.mark(function _callee2() {
+        var data, i, node, link, root, svg, mylink, simulation, edgepaths, update, color, ticked, clicked, dragstarted, dragged, dragended, flatten, createLinks, zoomed;
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
-                zoomed = function _ref12() {
+                zoomed = function _ref10() {
                   svg.attr('transform', d3.event.transform);
                 };
 
-                createLinks = function _ref11(nodes) {
+                createLinks = function _ref9(nodes) {
                   var links = [];
                   var id = 0;
                   var _iteratorNormalCompletion = true;
@@ -63460,85 +63500,63 @@ function () {
                   return links;
                 };
 
-                flatten = function _ref10(root) {
+                flatten = function _ref8(root) {
                   var nodes = new Set();
 
                   function recurse(node) {
                     if (nodes.has(node)) return;
                     if (!node.id) node.id = ++i;else ++i;
                     nodes.add(node);
-                    if (node.children) node.children.forEach(recurse); // if (node.parent) node.parent.forEach(recurse)
+                    if (node.children) node.children.forEach(recurse);
                   }
 
                   recurse(root);
                   return Array.from(nodes);
                 };
 
-                dragended = function _ref9(d) {
+                dragended = function _ref7(d) {
                   if (!d3.event.active) simulation.alphaTarget(0);
                   d.fx = null;
                   d.fy = null;
                 };
 
-                dragged = function _ref8(d) {
+                dragged = function _ref6(d) {
                   d.fx = d3.event.x;
                   d.fy = d3.event.y;
                 };
 
-                dragstarted = function _ref7(d) {
+                dragstarted = function _ref5(d) {
                   if (!d3.event.active) simulation.alphaTarget(0.1).restart();
                   d.fx = d.x;
                   d.fy = d.y;
-                };
-
-                allclicked = function _ref6(d) {
-                  clicked(d);
-                  rclicked(d);
-                };
-
-                rclicked = function _ref5(d) {
-                  return __awaiter(this, void 0, void 0,
-                  /*#__PURE__*/
-                  regeneratorRuntime.mark(function _callee2() {
-                    var realNode;
-                    return regeneratorRuntime.wrap(function _callee2$(_context2) {
-                      while (1) {
-                        switch (_context2.prev = _context2.next) {
-                          case 0:
-                            d3.event.preventDefault(); // react on right-clicking
-
-                            realNode = spinal_core_connectorjs_type_1.FileSystem._objects[d.data._serverId];
-                            event_bus_js_1.default.$emit(".droite", realNode);
-
-                          case 3:
-                          case "end":
-                            return _context2.stop();
-                        }
-                      }
-                    }, _callee2);
-                  }));
                 };
 
                 clicked = function _ref4(d) {
                   return __awaiter(this, void 0, void 0,
                   /*#__PURE__*/
                   regeneratorRuntime.mark(function _callee() {
+                    var realNode;
                     return regeneratorRuntime.wrap(function _callee$(_context) {
                       while (1) {
                         switch (_context.prev = _context.next) {
                           case 0:
+                            realNode = spinal_core_connectorjs_type_1.FileSystem._objects[d.data._serverId];
+
                             if (!ANode_1.default.collapseOrOpen(d)) {
-                              _context.next = 3;
+                              _context.next = 4;
                               break;
                             }
 
-                            _context.next = 3;
+                            _context.next = 4;
                             return ANode_1.default.updateChildren(d, NodeFactory_1.default);
 
-                          case 3:
+                          case 4:
+                            event_bus_js_1.default.$emit("realNode", realNode);
+                            event_bus_element_inspector_js_1.default.$emit("realNodeElement", realNode);
+                            console.log("graph", realNode);
                             update();
 
-                          case 4:
+                          case 8:
                           case "end":
                             return _context.stop();
                         }
@@ -63566,11 +63584,17 @@ function () {
                 };
 
                 color = function _ref2(d) {
+                  if (d.data.hasChildren === false) {
+                    return "#fff";
+                  }
+
                   if (d.data._serverId === root.data._serverId) {
                     return "rgb(240, 169, 169)";
-                  } else if (d.data.category === "node") {
+                  }
+
+                  if (d.data.category === "node") {
                     return "#320ff2";
-                  } else {
+                  } else if (d.data.category === "relation") {
                     return "#7efed4";
                   }
                 };
@@ -63579,9 +63603,6 @@ function () {
                   var nodes = flatten(root); // recover ids nodes
 
                   var links = createLinks(nodes); //recover links
-                  // const links = []
-                  // const nodes = flatten(root) // recover ids nodes
-                  // const links = root.links()  //recover links
                   //build the d3 links************************************/
 
                   link = mylink.selectAll('.link').data(links, function (d) {
@@ -63598,7 +63619,7 @@ function () {
                     return d.id.toString();
                   });
                   node.exit().remove();
-                  var nodeEnter = node.enter().append('g').attr('class', 'node').attr('stroke-width', 1.2).style('fill', color).style('opacity', 1).on('click', allclicked).on("contextmenu", rclicked) // .on('dblclick', clicked)
+                  var nodeEnter = node.enter().append('g').attr('class', 'node').attr('stroke-width', 1.2).style('fill', color).style('opacity', 1).on('click', clicked) // .on("contextmenu", eventlink)
                   .call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended));
                   nodeEnter.append(function (d) {
                     //create nodes Node
@@ -63621,11 +63642,17 @@ function () {
                   }); //add node labels
 
                   nodeEnter.append("text").text(function (d) {
+                    var realNode = spinal_core_connectorjs_type_1.FileSystem._objects[d.data._serverId];
+
                     if (d.data.name === "undefined") {
                       d.data.name = "Graph";
                     }
 
-                    return d.data.name;
+                    if (d.data.category === "node") {
+                      return d.data.name;
+                    } else {
+                      return d.data.name + "{" + realNode.getNbChildren() + "}";
+                    }
                   }).attr('transform', "translate(-17,-15)").style('fill', "#fff").style('font-family', "sans-serif");
                   node = nodeEnter.merge(node); //append the data to the simulation
 
@@ -63634,17 +63661,16 @@ function () {
                 };
 
                 this.element = element;
-                _context3.next = 15;
+                _context2.next = 13;
                 return this.graph.load();
 
-              case 15:
-                data = _context3.sent;
+              case 13:
+                data = _context2.sent;
                 //load graph
                 this.width = element.clientWidth - this.margin.left - this.margin.right;
                 this.height = element.clientHeight - this.margin.top - this.margin.bottom;
                 i = 0;
                 //build hierarchy d3 graph from entry point
-                // const root = d3.hierarchy(nodeG);
                 root = NodeFactory_1.default.createNode(data); //create the svg
 
                 this.svg = d3.select(element).append('svg').call(d3.zoom().scaleExtent([1 / 2, 8]).on('zoom', zoomed)).on("dblclick.zoom", null).attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom);
@@ -63672,12 +63698,12 @@ function () {
                 edgepaths = svg.selectAll(".edgepath");
                 update();
 
-              case 28:
+              case 26:
               case "end":
-                return _context3.stop();
+                return _context2.stop();
             }
           }
-        }, _callee3, this);
+        }, _callee2, this);
       }));
     }
   }]);
@@ -63686,7 +63712,7 @@ function () {
 }();
 
 exports.default = Viewer;
-},{"spinal-model-graph":"../node_modules/spinal-model-graph/dist/src/index.js","d3":"../node_modules/d3/index.js","./nodeModel/ANode":"nodeModel/ANode.ts","./nodeModel/NodeFactory":"nodeModel/NodeFactory.ts","spinal-core-connectorjs_type":"../node_modules/spinal-core-connectorjs_type/dist/SpinalModel.js","./components/event-bus.js":"components/event-bus.js"}],"components/AppGraph.vue":[function(require,module,exports) {
+},{"spinal-model-graph":"../node_modules/spinal-model-graph/dist/src/index.js","d3":"../node_modules/d3/index.js","./nodeModel/ANode":"nodeModel/ANode.ts","./nodeModel/NodeFactory":"nodeModel/NodeFactory.ts","spinal-core-connectorjs_type":"../node_modules/spinal-core-connectorjs_type/dist/SpinalModel.js","./components/event-bus.js":"components/event-bus.js","./components/event-bus-element-inspector.js":"components/event-bus-element-inspector.js"}],"components/AppGraph.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -63742,14 +63768,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $d2bdf9 = exports.default || module.exports;
+        var $8dc959 = exports.default || module.exports;
       
-      if (typeof $d2bdf9 === 'function') {
-        $d2bdf9 = $d2bdf9.options;
+      if (typeof $8dc959 === 'function') {
+        $8dc959 = $8dc959.options;
       }
     
         /* template */
-        Object.assign($d2bdf9, (function () {
+        Object.assign($8dc959, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -63776,9 +63802,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$d2bdf9', $d2bdf9);
+            api.createRecord('$8dc959', $8dc959);
           } else {
-            api.reload('$d2bdf9', $d2bdf9);
+            api.reload('$8dc959', $8dc959);
           }
         }
 
@@ -63846,7 +63872,6 @@ var elementVueRec = _vue.default.extend({
   components: {
     elementVueRec: elementVueRec
   },
-  // props: ["sever_Id", "attrName"],
   props: {
     attrName: {
       default: function _default() {
@@ -63880,7 +63905,7 @@ var elementVueRec = _vue.default.extend({
         if (this.attrName === "") {
           this.name = node.constructor.name;
         } else {
-          this.name = "".concat(this.attrName, ": ").concat(node.constructor.name);
+          this.name = "<strong>".concat(this.attrName, ": ").concat(node.constructor.name, "</strong>");
         }
       } else if (node instanceof _spinalCoreConnectorjs_type.Str || node instanceof _spinalCoreConnectorjs_type.Val || node instanceof _spinalCoreConnectorjs_type.Bool) {
         if (this.attrName === "") {
@@ -63937,33 +63962,33 @@ var elementVueRec = _vue.default.extend({
 
 var _default = elementVueRec;
 exports.default = _default;
-        var $1e7069 = exports.default || module.exports;
+        var $518fde = exports.default || module.exports;
       
-      if (typeof $1e7069 === 'function') {
-        $1e7069 = $1e7069.options;
+      if (typeof $518fde === 'function') {
+        $518fde = $518fde.options;
       }
     
         /* template */
-        Object.assign($1e7069, (function () {
+        Object.assign($518fde, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", [
-    _vm._v("\n  " + _vm._s(_vm.name) + "\n  "),
-    _vm.items.length > 0
-      ? _c(
-          "ul",
+  return _vm.items.length > 0
+    ? _c(
+        "ul",
+        [
+          _vm._v("\n  " + _vm._s(_vm.name) + "\n  "),
           _vm._l(_vm.items, function(item) {
             return _c("elementVueRec", {
               key: item.sever_Id,
               attrs: { attrName: item.attrName, sever_Id: item.sever_Id }
             })
-          }),
-          1
-        )
-      : _vm._e()
-  ])
+          })
+        ],
+        2
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -63985,9 +64010,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$1e7069', $1e7069);
+            api.createRecord('$518fde', $518fde);
           } else {
-            api.reload('$1e7069', $1e7069);
+            api.reload('$518fde', $518fde);
           }
         }
 
@@ -64014,10 +64039,16 @@ var _vue = _interopRequireDefault(require("vue"));
 
 var _eventBus = _interopRequireDefault(require("./event-bus"));
 
+var _eventBusElementInspector = _interopRequireDefault(require("./event-bus-element-inspector"));
+
 var _elementVueRec = _interopRequireDefault(require("./elementVueRec.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -64062,20 +64093,20 @@ var _default = {
   mounted: function mounted() {
     var _this = this;
 
-    _eventBus.default.$on(".droite", function (realNode) {
-      _this.server_id = realNode.info._server_id;
+    _eventBusElementInspector.default.$on("realNodeElement", function (realNode) {
+      _this.server_id = realNode._server_id;
     });
   }
 };
 exports.default = _default;
-        var $b2923d = exports.default || module.exports;
+        var $74c0fd = exports.default || module.exports;
       
-      if (typeof $b2923d === 'function') {
-        $b2923d = $b2923d.options;
+      if (typeof $74c0fd === 'function') {
+        $74c0fd = $74c0fd.options;
       }
     
         /* template */
-        Object.assign($b2923d, (function () {
+        Object.assign($74c0fd, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -64085,6 +64116,7 @@ exports.default = _default;
       "ul",
       [
         _c("elementVueRec", {
+          staticClass: "element",
           attrs: { attrName: "", sever_Id: _vm.server_id }
         })
       ],
@@ -64112,9 +64144,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$b2923d', $b2923d);
+            api.createRecord('$74c0fd', $74c0fd);
           } else {
-            api.reload('$b2923d', $b2923d);
+            api.reload('$74c0fd', $74c0fd);
           }
         }
 
@@ -64125,7 +64157,7 @@ render._withStripped = true
       
       }
     })();
-},{"../viewer":"viewer.ts","../spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./event-bus":"components/event-bus.js","./elementVueRec.vue":"components/elementVueRec.vue","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../../../node_modules/vue-hot-reload-api/dist/index.js"}],"../node_modules/d3-context-menu/js/d3-context-menu.js":[function(require,module,exports) {
+},{"../viewer":"viewer.ts","../spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./event-bus":"components/event-bus.js","./event-bus-element-inspector":"components/event-bus-element-inspector.js","./elementVueRec.vue":"components/elementVueRec.vue","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../../../node_modules/vue-hot-reload-api/dist/index.js"}],"../node_modules/d3-context-menu/js/d3-context-menu.js":[function(require,module,exports) {
 var define;
 (function(root, factory) {
 	if (typeof module === 'object' && module.exports) {
@@ -64389,7 +64421,7 @@ var d3 = require("d3");
 var d3ContextMenu = require("d3-context-menu");
 
 function dbInspector(domElement) {
-  _eventBus.default.$on(".droite", function (realNode) {
+  _eventBus.default.$on("realNode", function (realNode) {
     var serverId = realNode._server_id;
     set_model(serverId);
   });
@@ -64412,28 +64444,7 @@ function dbInspector(domElement) {
       objEmptyOrOpen: "#87ceeb",
       lstEmptyOrOpen: "#7fffd4"
     }
-  }; //context menu
-  // let menu = d => {
-  //   let apps = window.spinalDrive_Env.get_applications("Inspector", d);
-  //   let res = [];
-  //   let create_action_callback = app => {
-  //     return function () {
-  //       let share_obj = {
-  //         model_server_id: d.data._server_id,
-  //         scope: $scope
-  //       };
-  //       app.action(share_obj);
-  //     };
-  //   };
-  //   for (var i = 0; i < apps.length; i++) {
-  //     let app = apps[i];
-  //     res.push({
-  //       title: app.label,
-  //       action: create_action_callback(app)
-  //     });
-  //   }
-  //   return res;
-  // };
+  };
 
   var diagonal = function diagonal(s, d) {
     var path = "M ".concat(s.y, " ").concat(s.x, "\n                C ").concat((s.y + d.y) / 2, " ").concat(s.x, ",\n                  ").concat((s.y + d.y) / 2, " ").concat(d.x, ",\n                  ").concat(d.y, " ").concat(d.x);
@@ -64463,11 +64474,13 @@ function dbInspector(domElement) {
   start(domElement);
 
   function start(domElement) {
-    viewerWidth = 700;
-    viewerHeight = 700;
     var element = d3.select(domElement);
-    var tree = d3.tree().size([viewerHeight, viewerWidth]);
+    viewerWidth = element._groups[0][0].clientWidth;
+    viewerHeight = element._groups[0][0].clientHeight;
+    var tree = d3.tree().size([392, 732]);
     var zoomListener = d3.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
+    viewerWidth = 732;
+    viewerHeight = 392;
 
     centerNode = function centerNode(d) {
       var x, y;
@@ -64492,12 +64505,7 @@ function dbInspector(domElement) {
 
     element.select("svg").remove();
     var baseSvg = element.append("svg").attr("width", viewerWidth).attr("height", viewerHeight).classed("svg-content", true).call(zoomListener);
-    baseSvg.on("dblclick.zoom", null); // let centerrootbtn = d3.select("#spinalinspect_btn_centerroot_" + uid);
-    // centerrootbtn.on("click", () => {
-    //   if (!rootnode) return;
-    //   centerNode(rootnode);
-    // });
-
+    baseSvg.on("dblclick.zoom", null);
     textGrp = baseSvg.append("text").attr("class", "nodeText").attr("x", viewerWidth / 2).attr("y", viewerHeight / 2).attr("text-anchor", "middle").attr("alignment-baseline", "central").attr("fill", "#999");
     svgGroup = baseSvg.append("g");
 
@@ -64556,7 +64564,6 @@ function dbInspector(domElement) {
     };
 
     update = function update(source) {
-      // let _tree = tree.size([viewerHeight, viewerWidth]);
       var _tree = tree.nodeSize([18, 300]);
 
       var treemap = _tree(rootnode);
@@ -64578,22 +64585,15 @@ function dbInspector(domElement) {
       });
       var nodeEnter = node.enter().append("g").attr("class", "node").attr("transform", function () {
         return "translate(" + source.y0 + "," + source.x0 + ")";
-      }); // .on("mouseover", node_mouseover)
-      // .on("mousemove", function (d) {
-      //   node_mousemove(d);
-      // })
-      // .on("mouseout", node_mouseout);
-
-      nodeEnter.append("circle").attr("class", "nodeCircle").attr("r", 1e-6) // .on("contextmenu", d3ContextMenu(menu))
-      .on("click", onNodeClick);
+      });
+      nodeEnter.append("circle").attr("class", "nodeCircle").attr("r", 1e-6).on("click", onNodeClick).attr('stroke-width', 1.2).style('stroke', '#4682b4');
       nodeEnter.append("text").attr("x", function (d) {
         return d.children || d._children ? -10 : 10;
       }).attr("dy", ".35em").attr("class", "nodeText").attr("text-anchor", function (d) {
         return d.children || d._children ? "end" : "start";
       }).text(function (d) {
         return d.data.name;
-      }).attr("fill", "#EEE").on("click", click_focus); // .on("contextmenu", d3ContextMenu(menu));
-
+      }).attr("fill", "#EEE").on("click", click_focus);
       var nodeUpdate = nodeEnter.merge(node);
       nodeUpdate.transition().duration(animation_duration).attr("transform", function (d) {
         return "translate(" + d.y + "," + d.x + ")";
@@ -64652,22 +64652,23 @@ function dbInspector(domElement) {
         return d.children ? "end" : "start";
       }).text(function (d) {
         return d.data.name;
-      });
+      }).style('font-family', "sans-serif");
       var nodeExit = node.exit().transition().duration(animation_duration).attr("transform", function () {
         return "translate(" + source.y + "," + source.x + ")";
       }).remove();
       nodeExit.select("circle").attr("r", 0);
       nodeExit.select("text").style("fill-opacity", 0);
       var link = svgGroup.selectAll("path.link").data(links, function (d) {
-        return d.id; // return d.target.id;
-      });
+        return d.id;
+      }); // Enter any new links at the parent's previous position.
+
       var linkEnter = link.enter().insert("path", "g").attr("class", "link").attr("d", function () {
         var o = {
           x: source.x0,
           y: source.y0
         };
         return diagonal(o, o);
-      }); // UPDATE
+      }).attr("fill", "none").style("stroke", "#8d8d8d").attr('stroke-width', 2); // UPDATE
 
       var linkUpdate = linkEnter.merge(link); // Transition back to the parent element position
 
@@ -64706,64 +64707,7 @@ function dbInspector(domElement) {
 
   function strncmp(a, b, n) {
     return a.substring(0, n) == b.substring(0, n);
-  } // mouseover
-  // function node_mouseover(d) {
-  //   spinalInspectUID.tooltip
-  //     .transition()
-  //     .duration(300)
-  //     .style("opacity", 1);
-  //   spinalInspectUID.tooltip.selectAll("table").remove();
-  //   let table = spinalInspectUID.tooltip.append("table");
-  //   add_table_row(table, "Contructor", d.data._constructor);
-  //   add_table_row(table, "Server_id", d.data._server_id);
-  //   let m = window.FileSystem._objects[d.data._server_id];
-  //   if (m) {
-  //     let apps = window.spinalDrive_Env.get_applications("Inspector", d);
-  //     for (var i = 0; i < apps.length; i++) {
-  //       let app = apps[i];
-  //       if (app.action_mouseover && app.action_mouseover instanceof Function) { app.action_mouseover(d, m, add_table_row, table); }
-  //     }
-  //     if (m instanceof window.Lst) {
-  //       add_table_row(table, "Length", m.length);
-  //     } else if (m instanceof window.Str) {
-  //       let data = m.get();
-  //       add_table_row(table, "Data", data);
-  //       add_table_row(table, "Length", m.length);
-  //       let imgtype = "data:image/";
-  //       if (strncmp(data, imgtype, imgtype.length)) {
-  //         let tr = table.append("tr");
-  //         tr.append("td").text("Preview");
-  //         let img = tr.append("td").append("img");
-  //         img.attr("src", data);
-  //         img.attr("alt", "preview");
-  //         img.style("max-height", 100);
-  //         img.style("max-width", 100);
-  //       }
-  //     } else if (m instanceof window.Val) {
-  //       add_table_row(table, "Value", m.get());
-  //     } else if (m instanceof window.Ptr) {
-  //       add_table_row(table, "Target Ptr", m.data.value);
-  //       // m.load(ptr => {
-  //       //   if (ptr)
-  //       //     add_table_row(table, "Target Contructor", ptr.constructor.name);
-  //       // });
-  //     } else if (m instanceof window.TypedArray) {
-  //       add_table_row(table, "Data", m.get());
-  //     }
-  //   }
-  // }
-  // function node_mousemove() {
-  //   spinalInspectUID.tooltip
-  //     .style("left", d3.event.pageX + "px")
-  //     .style("top", d3.event.pageY + "px");
-  // }
-  // function node_mouseout() {
-  //   spinalInspectUID.tooltip
-  //     .transition()
-  //     .duration(300)
-  //     .style("opacity", 1e-6);
-  // }
-
+  }
 
   var timeout_check_node = null;
   var timeout_update_graph = null;
@@ -64780,7 +64724,7 @@ function dbInspector(domElement) {
         update(rootnode);
       }, 500);
     }, 500);
-  }; //a changer
+  }; //********************************************************** */
 
 
   var check_nodes_rec = function check_nodes_rec(n, name) {
@@ -64788,7 +64732,6 @@ function dbInspector(domElement) {
     var m = window.FileSystem._objects[n.data._server_id];
 
     if (m) {
-      // if (!m.has_been_modified()) return;
       if (!name) name = n.data.name;
       n.data._constructor = m.constructor.name;
       n.data._server_id = m._server_id;
@@ -64832,7 +64775,6 @@ function dbInspector(domElement) {
         var _children = n.children || n._children;
 
         if (!_children) {
-          // children not loaded yet
           return;
         }
 
@@ -64845,7 +64787,6 @@ function dbInspector(domElement) {
             var found = -1;
 
             for (; j < _children.length; j++) {
-              // children[j];
               if (_children[j] && _children[j].data && _children[j].data._server_id && _children[j].data._server_id === m[i]._server_id) {
                 found = j;
                 break;
@@ -64939,8 +64880,7 @@ function dbInspector(domElement) {
       ptr_folow[i].unbind(onTreeChange);
     }
 
-    ptr_folow = []; // $scope.model = spinalFileSystem.lastfileSelected;
-
+    ptr_folow = [];
     var m = window.FileSystem._objects[model_id];
 
     if (m) {
@@ -65104,33 +65044,7 @@ function dbInspector(domElement) {
     }
   }
 
-  ; // $scope.folderDropCfg = {
-  //   drop: event => {
-  //     event.stopPropagation(); // Stops some browsers from redirecting.
-  //     event.preventDefault();
-  //     let selected = spinalFileSystem.FE_selected_drag;
-  //     if (selected && selected[0]) {
-  //       // change to multiple selection later
-  //       $scope.fs_path = Array.from(spinalFileSystem.FE_fspath_drag);
-  //       $scope.fs_path.push({
-  //         name: selected[0].name,
-  //         _server_id: selected[0]._server_id
-  //       });
-  //       $scope.set_model(selected[0]._server_id);
-  //     }
-  //     return false;
-  //   },
-  //   dragover: event => {
-  //     event.preventDefault();
-  //     return false;
-  //   },
-  //   dragenter: event => {
-  //     event.preventDefault();
-  //     return false;
-  //   }
-  // };
-  // spinalFileSystem.setlastInspector($scope);
-  // $scope.set_model(spinalFileSystem.lastfileSelected);
+  ;
 }
 },{"d3":"../node_modules/d3/index.js","d3-context-menu":"../node_modules/d3-context-menu/js/d3-context-menu.js","./components/event-bus":"components/event-bus.js"}],"components/AppDbInspector.vue":[function(require,module,exports) {
 "use strict";
@@ -65187,7 +65101,6 @@ var _default = {
     };
   },
   mounted: function mounted() {
-    //
     (0, _dbInspector.dbInspector)(this.$refs.appDbInspector);
   },
   methods: {
@@ -65195,14 +65108,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $a17dba = exports.default || module.exports;
+        var $7922ee = exports.default || module.exports;
       
-      if (typeof $a17dba === 'function') {
-        $a17dba = $a17dba.options;
+      if (typeof $7922ee === 'function') {
+        $7922ee = $7922ee.options;
       }
     
         /* template */
-        Object.assign($a17dba, (function () {
+        Object.assign($7922ee, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -65229,9 +65142,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$a17dba', $a17dba);
+            api.createRecord('$7922ee', $7922ee);
           } else {
-            api.reload('$a17dba', $a17dba);
+            api.reload('$7922ee', $7922ee);
           }
         }
 
@@ -65277,14 +65190,14 @@ exports.default = {
     }
   }
 };
-        var $35c5ad = exports.default || module.exports;
+        var $b7ced2 = exports.default || module.exports;
       
-      if (typeof $35c5ad === 'function') {
-        $35c5ad = $35c5ad.options;
+      if (typeof $b7ced2 === 'function') {
+        $b7ced2 = $b7ced2.options;
       }
     
         /* template */
-        Object.assign($35c5ad, (function () {
+        Object.assign($b7ced2, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -65314,7 +65227,7 @@ exports.default = {
                       attrs: {
                         title: "Graph Node Inspector",
                         closable: false,
-                        width: 70
+                        width: 60
                       },
                       on: {
                         resize: function($event) {
@@ -65333,14 +65246,9 @@ exports.default = {
                         "gl-component",
                         {
                           staticClass: "comp",
-                          attrs: { title: "DB Inspector", closable: false },
-                          on: {
-                            resize: function($event) {
-                              return _vm.onResize("app-Graph")
-                            }
-                          }
+                          attrs: { title: "DB Inspector", closable: false }
                         },
-                        [_c("app-Db-Inspector")],
+                        [_c("app-Db-Inspector", { ref: "app-Db-Inspector" })],
                         1
                       ),
                       _vm._v(" "),
@@ -65351,7 +65259,7 @@ exports.default = {
                           attrs: {
                             title: "Element Node Inspector",
                             closable: false,
-                            width: 30
+                            width: 40
                           }
                         },
                         [_c("app-Element")],
@@ -65393,9 +65301,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$35c5ad', $35c5ad);
+            api.createRecord('$b7ced2', $b7ced2);
           } else {
-            api.reload('$35c5ad', $35c5ad);
+            api.reload('$b7ced2', $b7ced2);
           }
         }
 
@@ -87801,9 +87709,7 @@ new _vue.default({
   render: function render(h) {
     return h(_App.default);
   }
-}).$mount("#app");
-
-var spinal = _spinal.default.getInstance();
+}).$mount("#app"); // const spinal = Spinal.getInstance();
 },{"babel-polyfill":"../../../node_modules/babel-polyfill/lib/index.js","spinal-model-graph":"../node_modules/spinal-model-graph/dist/src/index.js","./spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./App.vue":"App.vue","vue-golden-layout":"../node_modules/vue-golden-layout/dist/vue-golden-layout.js","vue-property-decorator":"../node_modules/vue-property-decorator/lib/vue-property-decorator.js","golden-layout/src/css/goldenlayout-base.css":"../node_modules/golden-layout/src/css/goldenlayout-base.css","golden-layout/src/css/goldenlayout-dark-theme.css":"../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -87832,7 +87738,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43993" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42837" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

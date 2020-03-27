@@ -24,7 +24,11 @@ with this file. If not, see
 <template>
   <div id="app-Element">
     <ul>
-      <elementVueRec :attrName="''" :sever_Id="server_id"></elementVueRec>
+      <elementVueRec
+        :attrName="''"
+        :sever_Id="server_id"
+        class="element"
+      ></elementVueRec>
     </ul>
   </div>
 </template>
@@ -34,6 +38,7 @@ import Viewer from "../viewer";
 import Spinal from "../spinal";
 import Vue from "vue";
 import EventBus from "./event-bus";
+import EventBusElement from "./event-bus-element-inspector";
 import elementVueRec from "./elementVueRec.vue";
 
 export default {
@@ -47,14 +52,17 @@ export default {
     elementVueRec
   },
   mounted() {
-    EventBus.$on(".droite", realNode => {
-      this.server_id = realNode.info._server_id;
+    EventBusElement.$on("realNodeElement", realNode => {
+      this.server_id = realNode._server_id;
     });
   }
 };
 </script>
 
 <style>
+.element {
+  font-family: sans-serif;
+}
 ul {
   list-style: none;
   margin-left: 0;

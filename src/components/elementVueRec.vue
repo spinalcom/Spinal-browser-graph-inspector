@@ -22,18 +22,18 @@ with this file. If not, see
 <http://resources.spinalcom.com/licenses.pdf>.
 -->
 <template>
-  <li>
-    {{ name }}
-    <ul v-if="items.length > 0">
-      <elementVueRec
-        v-for="item in items"
-        :key="item.sever_Id"
-        :attrName="item.attrName"
-        :sever_Id="item.sever_Id"
-      >
-      </elementVueRec>
-    </ul>
-  </li>
+  <ul v-if="items.length > 0">
+    {{
+      name
+    }}
+    <elementVueRec
+      v-for="item in items"
+      :key="item.sever_Id"
+      :attrName="item.attrName"
+      :sever_Id="item.sever_Id"
+    >
+    </elementVueRec>
+  </ul>
 </template>
 
 <script>
@@ -52,7 +52,6 @@ const elementVueRec = Vue.extend({
   components: {
     elementVueRec
   },
-  // props: ["sever_Id", "attrName"],
   props: {
     attrName: {
       default: () => {
@@ -84,7 +83,7 @@ const elementVueRec = Vue.extend({
         if (this.attrName === "") {
           this.name = node.constructor.name;
         } else {
-          this.name = `${this.attrName}: ${node.constructor.name}`;
+          this.name = `<strong>${this.attrName}: ${node.constructor.name}</strong>`;
         }
       } else if (
         node instanceof Str ||
@@ -143,4 +142,18 @@ const elementVueRec = Vue.extend({
 export default elementVueRec;
 </script>
 
-<style></style>
+<style>
+td {
+  text-align: left;
+  padding: 8px;
+  border: 3px solid #44475c;
+
+  border-right: 2px solid #7d82a8;
+}
+table td:last-child {
+  border-right: none;
+}
+table tbody tr:nth-child(2n) td {
+  background: #d4d8f9;
+}
+</style>

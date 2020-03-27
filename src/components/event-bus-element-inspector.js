@@ -22,3 +22,6 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 
+import Vue from 'vue';
+const EventBusElement = new Vue();
+export default EventBusElement;

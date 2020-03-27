@@ -33,24 +33,20 @@ with this file. If not, see
             @resize="onResize('app-Graph')"
             title="Graph Node Inspector"
             :closable="false"
-            :width="70"
+            :width="60"
           >
             <app-Graph ref="app-Graph"></app-Graph>
           </gl-component>
 
           <gl-col>
-            <gl-component
-              class="comp"
-              @resize="onResize('app-Graph')"
-              title="DB Inspector"
-              :closable="false"
-              ><app-Db-Inspector></app-Db-Inspector>
+            <gl-component class="comp" title="DB Inspector" :closable="false"
+              ><app-Db-Inspector ref="app-Db-Inspector"></app-Db-Inspector>
             </gl-component>
             <gl-component
               class="comp"
               title="Element Node Inspector"
               :closable="false"
-              :width="30"
+              :width="40"
             >
               <app-Element></app-Element>
             </gl-component>

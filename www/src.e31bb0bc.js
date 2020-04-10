@@ -33462,355 +33462,60 @@ if (inBrowser) {
 
 var _default = Vue;
 exports.default = _default;
-},{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
-var bundleURL = null;
-
-function getBundleURLCached() {
-  if (!bundleURL) {
-    bundleURL = getBundleURL();
-  }
-
-  return bundleURL;
-}
-
-function getBundleURL() {
-  // Attempt to find the URL of the current script and use that as the base URL
-  try {
-    throw new Error();
-  } catch (err) {
-    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
-
-    if (matches) {
-      return getBaseURL(matches[0]);
-    }
-  }
-
-  return '/';
-}
-
-function getBaseURL(url) {
-  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
-}
-
-exports.getBundleURL = getBundleURLCached;
-exports.getBaseURL = getBaseURL;
-},{}],"../node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
-var bundle = require('./bundle-url');
-
-function updateLink(link) {
-  var newLink = link.cloneNode();
-
-  newLink.onload = function () {
-    link.remove();
-  };
-
-  newLink.href = link.href.split('?')[0] + '?' + Date.now();
-  link.parentNode.insertBefore(newLink, link.nextSibling);
-}
-
-var cssTimeout = null;
-
-function reloadCSS() {
-  if (cssTimeout) {
-    return;
-  }
-
-  cssTimeout = setTimeout(function () {
-    var links = document.querySelectorAll('link[rel="stylesheet"]');
-
-    for (var i = 0; i < links.length; i++) {
-      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
-        updateLink(links[i]);
-      }
-    }
-
-    cssTimeout = null;
-  }, 50);
-}
-
-module.exports = reloadCSS;
-},{"./bundle-url":"../node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../../../node_modules/vue-hot-reload-api/dist/index.js":[function(require,module,exports) {
-var Vue // late bind
-var version
-var map = Object.create(null)
-if (typeof window !== 'undefined') {
-  window.__VUE_HOT_MAP__ = map
-}
-var installed = false
-var isBrowserify = false
-var initHookName = 'beforeCreate'
-
-exports.install = function (vue, browserify) {
-  if (installed) { return }
-  installed = true
-
-  Vue = vue.__esModule ? vue.default : vue
-  version = Vue.version.split('.').map(Number)
-  isBrowserify = browserify
-
-  // compat with < 2.0.0-alpha.7
-  if (Vue.config._lifecycleHooks.indexOf('init') > -1) {
-    initHookName = 'init'
-  }
-
-  exports.compatible = version[0] >= 2
-  if (!exports.compatible) {
-    console.warn(
-      '[HMR] You are using a version of vue-hot-reload-api that is ' +
-        'only compatible with Vue.js core ^2.0.0.'
-    )
-    return
-  }
-}
-
-/**
- * Create a record for a hot module, which keeps track of its constructor
- * and instances
- *
- * @param {String} id
- * @param {Object} options
- */
-
-exports.createRecord = function (id, options) {
-  if(map[id]) { return }
-
-  var Ctor = null
-  if (typeof options === 'function') {
-    Ctor = options
-    options = Ctor.options
-  }
-  makeOptionsHot(id, options)
-  map[id] = {
-    Ctor: Ctor,
-    options: options,
-    instances: []
-  }
-}
-
-/**
- * Check if module is recorded
- *
- * @param {String} id
- */
-
-exports.isRecorded = function (id) {
-  return typeof map[id] !== 'undefined'
-}
-
-/**
- * Make a Component options object hot.
- *
- * @param {String} id
- * @param {Object} options
- */
-
-function makeOptionsHot(id, options) {
-  if (options.functional) {
-    var render = options.render
-    options.render = function (h, ctx) {
-      var instances = map[id].instances
-      if (ctx && instances.indexOf(ctx.parent) < 0) {
-        instances.push(ctx.parent)
-      }
-      return render(h, ctx)
-    }
-  } else {
-    injectHook(options, initHookName, function() {
-      var record = map[id]
-      if (!record.Ctor) {
-        record.Ctor = this.constructor
-      }
-      record.instances.push(this)
-    })
-    injectHook(options, 'beforeDestroy', function() {
-      var instances = map[id].instances
-      instances.splice(instances.indexOf(this), 1)
-    })
-  }
-}
-
-/**
- * Inject a hook to a hot reloadable component so that
- * we can keep track of it.
- *
- * @param {Object} options
- * @param {String} name
- * @param {Function} hook
- */
-
-function injectHook(options, name, hook) {
-  var existing = options[name]
-  options[name] = existing
-    ? Array.isArray(existing) ? existing.concat(hook) : [existing, hook]
-    : [hook]
-}
-
-function tryWrap(fn) {
-  return function (id, arg) {
-    try {
-      fn(id, arg)
-    } catch (e) {
-      console.error(e)
-      console.warn(
-        'Something went wrong during Vue component hot-reload. Full reload required.'
-      )
-    }
-  }
-}
-
-function updateOptions (oldOptions, newOptions) {
-  for (var key in oldOptions) {
-    if (!(key in newOptions)) {
-      delete oldOptions[key]
-    }
-  }
-  for (var key$1 in newOptions) {
-    oldOptions[key$1] = newOptions[key$1]
-  }
-}
-
-exports.rerender = tryWrap(function (id, options) {
-  var record = map[id]
-  if (!options) {
-    record.instances.slice().forEach(function (instance) {
-      instance.$forceUpdate()
-    })
-    return
-  }
-  if (typeof options === 'function') {
-    options = options.options
-  }
-  if (record.Ctor) {
-    record.Ctor.options.render = options.render
-    record.Ctor.options.staticRenderFns = options.staticRenderFns
-    record.instances.slice().forEach(function (instance) {
-      instance.$options.render = options.render
-      instance.$options.staticRenderFns = options.staticRenderFns
-      // reset static trees
-      // pre 2.5, all static trees are cached together on the instance
-      if (instance._staticTrees) {
-        instance._staticTrees = []
-      }
-      // 2.5.0
-      if (Array.isArray(record.Ctor.options.cached)) {
-        record.Ctor.options.cached = []
-      }
-      // 2.5.3
-      if (Array.isArray(instance.$options.cached)) {
-        instance.$options.cached = []
-      }
-
-      // post 2.5.4: v-once trees are cached on instance._staticTrees.
-      // Pure static trees are cached on the staticRenderFns array
-      // (both already reset above)
-
-      // 2.6: temporarily mark rendered scoped slots as unstable so that
-      // child components can be forced to update
-      var restore = patchScopedSlots(instance)
-      instance.$forceUpdate()
-      instance.$nextTick(restore)
-    })
-  } else {
-    // functional or no instance created yet
-    record.options.render = options.render
-    record.options.staticRenderFns = options.staticRenderFns
-
-    // handle functional component re-render
-    if (record.options.functional) {
-      // rerender with full options
-      if (Object.keys(options).length > 2) {
-        updateOptions(record.options, options)
-      } else {
-        // template-only rerender.
-        // need to inject the style injection code for CSS modules
-        // to work properly.
-        var injectStyles = record.options._injectStyles
-        if (injectStyles) {
-          var render = options.render
-          record.options.render = function (h, ctx) {
-            injectStyles.call(ctx)
-            return render(h, ctx)
-          }
-        }
-      }
-      record.options._Ctor = null
-      // 2.5.3
-      if (Array.isArray(record.options.cached)) {
-        record.options.cached = []
-      }
-      record.instances.slice().forEach(function (instance) {
-        instance.$forceUpdate()
-      })
-    }
-  }
-})
-
-exports.reload = tryWrap(function (id, options) {
-  var record = map[id]
-  if (options) {
-    if (typeof options === 'function') {
-      options = options.options
-    }
-    makeOptionsHot(id, options)
-    if (record.Ctor) {
-      if (version[1] < 2) {
-        // preserve pre 2.2 behavior for global mixin handling
-        record.Ctor.extendOptions = options
-      }
-      var newCtor = record.Ctor.super.extend(options)
-      // prevent record.options._Ctor from being overwritten accidentally
-      newCtor.options._Ctor = record.options._Ctor
-      record.Ctor.options = newCtor.options
-      record.Ctor.cid = newCtor.cid
-      record.Ctor.prototype = newCtor.prototype
-      if (newCtor.release) {
-        // temporary global mixin strategy used in < 2.0.0-alpha.6
-        newCtor.release()
-      }
-    } else {
-      updateOptions(record.options, options)
-    }
-  }
-  record.instances.slice().forEach(function (instance) {
-    if (instance.$vnode && instance.$vnode.context) {
-      instance.$vnode.context.$forceUpdate()
-    } else {
-      console.warn(
-        'Root or manually mounted instance modified. Full reload required.'
-      )
-    }
-  })
-})
-
-// 2.6 optimizes template-compiled scoped slots and skips updates if child
-// only uses scoped slots. We need to patch the scoped slots resolving helper
-// to temporarily mark all scoped slots as unstable in order to force child
-// updates.
-function patchScopedSlots (instance) {
-  if (!instance._u) { return }
-  // https://github.com/vuejs/vue/blob/dev/src/core/instance/render-helpers/resolve-scoped-slots.js
-  var original = instance._u
-  instance._u = function (slots) {
-    try {
-      // 2.6.4 ~ 2.6.6
-      return original(slots, true)
-    } catch (e) {
-      // 2.5 / >= 2.6.7
-      return original(slots, null, true)
-    }
-  }
-  return function () {
-    instance._u = original
-  }
-}
-
-},{}],"components/AppHeader.vue":[function(require,module,exports) {
+},{}],"components/event-bus-help.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _vue = _interopRequireDefault(require("vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * Copyright 2020 SpinalCom - www.spinalcom.com
+ *
+ * This file is part of SpinalCore.
+ *
+ * Please read all of the following terms and conditions
+ * of the Free Software license Agreement ("Agreement")
+ * carefully.
+ *
+ * This Agreement is a legally binding contract between
+ * the Licensee (as defined below) and SpinalCom that
+ * sets forth the terms and conditions that govern your
+ * use of the Program. By installing and/or using the
+ * Program, you agree to abide by all the terms and
+ * conditions stated or referenced herein.
+ *
+ * If you do not agree to abide by these terms and
+ * conditions, do not demonstrate your acceptance and do
+ * not install or use the Program.
+ * You should have received a copy of the license along
+ * with this file. If not, see
+ * <http://resources.spinalcom.com/licenses.pdf>.
+ */
+var EventBusHelp = new _vue.default();
+var _default = EventBusHelp;
+exports.default = _default;
+},{"vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"components/AppHeader.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _eventBusHelp = _interopRequireDefault(require("./event-bus-help.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
 //
 //
 //
@@ -33843,7 +33548,14 @@ exports.default = void 0;
 //
 //
 var _default = {
-  name: "AppHeader"
+  name: "AppHeader",
+  methods: {
+    openpopup: function openpopup() {
+      var display = "flex";
+
+      _eventBusHelp.default.$emit("help", display);
+    }
+  }
 };
 exports.default = _default;
         var $b9f5b8 = exports.default || module.exports;
@@ -33858,26 +33570,43 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "app-header" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "title" }, [_vm._v("Graph Node Inspector")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "any" }, [
+      _c(
+        "button",
+        {
+          staticClass: "button",
+          attrs: { id: "button" },
+          on: { click: _vm.openpopup }
+        },
+        [
+          _c("img", {
+            attrs: {
+              src: "/html/graph/logo.e9a9c890.png",
+              alt: ""
+            }
+          })
+        ]
+      )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "app-header" }, [
-      _c("div", { staticClass: "logo" }, [
-        _c("img", {
-          attrs: {
-            src: "/html/graph/spinal.5801a626.png",
-            alt: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "title" }, [_vm._v("Graph Node Inspector")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "any" })
+    return _c("div", { staticClass: "logo" }, [
+      _c("img", {
+        attrs: {
+          src: "/html/graph/spinal.5801a626.png",
+          alt: ""
+        }
+      })
     ])
   }
 ]
@@ -33892,28 +33621,7 @@ render._withStripped = true
           };
         })());
       
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$b9f5b8', $b9f5b8);
-          } else {
-            api.reload('$b9f5b8', $b9f5b8);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/spinal.png":[["spinal.5801a626.png","assets/spinal.png"],"assets/spinal.png"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../../../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"../node_modules/d3/dist/package.js":[function(require,module,exports) {
+},{"./event-bus-help.js":"components/event-bus-help.js","/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/spinal.png":[["spinal.5801a626.png","assets/spinal.png"],"assets/spinal.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/logo.png":[["logo.e9a9c890.png","assets/logo.png"],"assets/logo.png"]}],"../node_modules/d3/dist/package.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35125,17 +34833,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.slice = void 0;
 var slice = Array.prototype.slice;
 exports.slice = slice;
-},{}],"../node_modules/d3-axis/src/identity.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return x;
-}
 },{}],"../node_modules/d3-axis/src/axis.js":[function(require,module,exports) {
 "use strict";
 
@@ -35298,7 +34995,7 @@ function axisBottom(scale) {
 function axisLeft(scale) {
   return axis(left, scale);
 }
-},{"./array":"../node_modules/d3-axis/src/array.js","./identity":"../node_modules/d3-axis/src/identity.js"}],"../node_modules/d3-axis/src/index.js":[function(require,module,exports) {
+},{"./array":"../node_modules/d3-axis/src/array.js","./identity":"../node_modules/d3-array/src/identity.js"}],"../node_modules/d3-axis/src/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35705,20 +35402,7 @@ EnterNode.prototype = {
     return this._parent.querySelectorAll(selector);
   }
 };
-},{"./sparse":"../node_modules/d3-selection/src/selection/sparse.js","./index":"../node_modules/d3-selection/src/selection/index.js"}],"../node_modules/d3-selection/src/constant.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return function () {
-    return x;
-  };
-}
-},{}],"../node_modules/d3-selection/src/selection/data.js":[function(require,module,exports) {
+},{"./sparse":"../node_modules/d3-selection/src/selection/sparse.js","./index":"../node_modules/d3-selection/src/selection/index.js"}],"../node_modules/d3-selection/src/selection/data.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35849,7 +35533,7 @@ function _default(value, key) {
   update._exit = exit;
   return update;
 }
-},{"./index":"../node_modules/d3-selection/src/selection/index.js","./enter":"../node_modules/d3-selection/src/selection/enter.js","../constant":"../node_modules/d3-selection/src/constant.js"}],"../node_modules/d3-selection/src/selection/exit.js":[function(require,module,exports) {
+},{"./index":"../node_modules/d3-selection/src/selection/index.js","./enter":"../node_modules/d3-selection/src/selection/enter.js","../constant":"../node_modules/d3-array/src/constant.js"}],"../node_modules/d3-selection/src/selection/exit.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37179,20 +36863,7 @@ function yesdrag(view, noclick) {
     delete root.__noselect;
   }
 }
-},{"d3-selection":"../node_modules/d3-selection/src/index.js","./noevent.js":"../node_modules/d3-drag/src/noevent.js"}],"../node_modules/d3-drag/src/constant.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return function () {
-    return x;
-  };
-}
-},{}],"../node_modules/d3-drag/src/event.js":[function(require,module,exports) {
+},{"d3-selection":"../node_modules/d3-selection/src/index.js","./noevent.js":"../node_modules/d3-drag/src/noevent.js"}],"../node_modules/d3-drag/src/event.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37423,7 +37094,7 @@ function _default() {
 
   return drag;
 }
-},{"d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","./nodrag.js":"../node_modules/d3-drag/src/nodrag.js","./noevent.js":"../node_modules/d3-drag/src/noevent.js","./constant.js":"../node_modules/d3-drag/src/constant.js","./event.js":"../node_modules/d3-drag/src/event.js"}],"../node_modules/d3-drag/src/index.js":[function(require,module,exports) {
+},{"d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","./nodrag.js":"../node_modules/d3-drag/src/nodrag.js","./noevent.js":"../node_modules/d3-drag/src/noevent.js","./constant.js":"../node_modules/d3-array/src/constant.js","./event.js":"../node_modules/d3-drag/src/event.js"}],"../node_modules/d3-drag/src/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38187,20 +37858,7 @@ function _default(values) {
     return (0, _basis.basis)((t - i / n) * n, v0, v1, v2, v3);
   };
 }
-},{"./basis.js":"../node_modules/d3-interpolate/src/basis.js"}],"../node_modules/d3-interpolate/src/constant.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return function () {
-    return x;
-  };
-}
-},{}],"../node_modules/d3-interpolate/src/color.js":[function(require,module,exports) {
+},{"./basis.js":"../node_modules/d3-interpolate/src/basis.js"}],"../node_modules/d3-interpolate/src/color.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38241,7 +37899,7 @@ function nogamma(a, b) {
   var d = b - a;
   return d ? linear(a, d) : (0, _constant.default)(isNaN(a) ? b : a);
 }
-},{"./constant.js":"../node_modules/d3-interpolate/src/constant.js"}],"../node_modules/d3-interpolate/src/rgb.js":[function(require,module,exports) {
+},{"./constant.js":"../node_modules/d3-array/src/constant.js"}],"../node_modules/d3-interpolate/src/rgb.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38564,7 +38222,7 @@ function _default(a, b) {
       c;
   return b == null || t === "boolean" ? (0, _constant.default)(b) : (t === "number" ? _number.default : t === "string" ? (c = (0, _d3Color.color)(b)) ? (b = c, _rgb.default) : _string.default : b instanceof _d3Color.color ? _rgb.default : b instanceof Date ? _date.default : (0, _numberArray.isNumberArray)(b) ? _numberArray.default : Array.isArray(b) ? _array.genericArray : typeof b.valueOf !== "function" && typeof b.toString !== "function" || isNaN(b) ? _object.default : _number.default)(a, b);
 }
-},{"d3-color":"../node_modules/d3-color/src/index.js","./rgb.js":"../node_modules/d3-interpolate/src/rgb.js","./array.js":"../node_modules/d3-interpolate/src/array.js","./date.js":"../node_modules/d3-interpolate/src/date.js","./number.js":"../node_modules/d3-interpolate/src/number.js","./object.js":"../node_modules/d3-interpolate/src/object.js","./string.js":"../node_modules/d3-interpolate/src/string.js","./constant.js":"../node_modules/d3-interpolate/src/constant.js","./numberArray.js":"../node_modules/d3-interpolate/src/numberArray.js"}],"../node_modules/d3-interpolate/src/discrete.js":[function(require,module,exports) {
+},{"d3-color":"../node_modules/d3-color/src/index.js","./rgb.js":"../node_modules/d3-interpolate/src/rgb.js","./array.js":"../node_modules/d3-interpolate/src/array.js","./date.js":"../node_modules/d3-interpolate/src/date.js","./number.js":"../node_modules/d3-interpolate/src/number.js","./object.js":"../node_modules/d3-interpolate/src/object.js","./string.js":"../node_modules/d3-interpolate/src/string.js","./constant.js":"../node_modules/d3-array/src/constant.js","./numberArray.js":"../node_modules/d3-interpolate/src/numberArray.js"}],"../node_modules/d3-interpolate/src/discrete.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41253,20 +40911,7 @@ var _active = _interopRequireDefault(require("./active.js"));
 var _interrupt = _interopRequireDefault(require("./interrupt.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./selection/index.js":"../node_modules/d3-transition/src/selection/index.js","./transition/index.js":"../node_modules/d3-transition/src/transition/index.js","./active.js":"../node_modules/d3-transition/src/active.js","./interrupt.js":"../node_modules/d3-transition/src/interrupt.js"}],"../node_modules/d3-brush/src/constant.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return function () {
-    return x;
-  };
-}
-},{}],"../node_modules/d3-brush/src/event.js":[function(require,module,exports) {
+},{"./selection/index.js":"../node_modules/d3-transition/src/selection/index.js","./transition/index.js":"../node_modules/d3-transition/src/transition/index.js","./active.js":"../node_modules/d3-transition/src/active.js","./interrupt.js":"../node_modules/d3-transition/src/interrupt.js"}],"../node_modules/d3-brush/src/event.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41279,27 +40924,7 @@ function _default(target, type, selection) {
   this.type = type;
   this.selection = selection;
 }
-},{}],"../node_modules/d3-brush/src/noevent.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.nopropagation = nopropagation;
-exports.default = _default;
-
-var _d3Selection = require("d3-selection");
-
-function nopropagation() {
-  _d3Selection.event.stopImmediatePropagation();
-}
-
-function _default() {
-  _d3Selection.event.preventDefault();
-
-  _d3Selection.event.stopImmediatePropagation();
-}
-},{"d3-selection":"../node_modules/d3-selection/src/index.js"}],"../node_modules/d3-brush/src/brush.js":[function(require,module,exports) {
+},{}],"../node_modules/d3-brush/src/brush.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41915,7 +41540,7 @@ function brush(dim) {
 
   return brush;
 }
-},{"d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","./constant.js":"../node_modules/d3-brush/src/constant.js","./event.js":"../node_modules/d3-brush/src/event.js","./noevent.js":"../node_modules/d3-brush/src/noevent.js"}],"../node_modules/d3-brush/src/index.js":[function(require,module,exports) {
+},{"d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","./constant.js":"../node_modules/d3-array/src/constant.js","./event.js":"../node_modules/d3-brush/src/event.js","./noevent.js":"../node_modules/d3-drag/src/noevent.js"}],"../node_modules/d3-brush/src/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42112,29 +41737,7 @@ function _default() {
 
   return chord;
 }
-},{"d3-array":"../node_modules/d3-array/src/index.js","./math":"../node_modules/d3-chord/src/math.js"}],"../node_modules/d3-chord/src/array.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.slice = void 0;
-var slice = Array.prototype.slice;
-exports.slice = slice;
-},{}],"../node_modules/d3-chord/src/constant.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return function () {
-    return x;
-  };
-}
-},{}],"../node_modules/d3-path/src/path.js":[function(require,module,exports) {
+},{"d3-array":"../node_modules/d3-array/src/index.js","./math":"../node_modules/d3-chord/src/math.js"}],"../node_modules/d3-path/src/path.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42372,7 +41975,7 @@ function _default() {
 
   return ribbon;
 }
-},{"./array":"../node_modules/d3-chord/src/array.js","./constant":"../node_modules/d3-chord/src/constant.js","./math":"../node_modules/d3-chord/src/math.js","d3-path":"../node_modules/d3-path/src/index.js"}],"../node_modules/d3-chord/src/index.js":[function(require,module,exports) {
+},{"./array":"../node_modules/d3-axis/src/array.js","./constant":"../node_modules/d3-array/src/constant.js","./math":"../node_modules/d3-chord/src/math.js","d3-path":"../node_modules/d3-path/src/index.js"}],"../node_modules/d3-chord/src/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -42784,19 +42387,6 @@ function _default(ring) {
 
   return area;
 }
-},{}],"../node_modules/d3-contour/src/constant.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return function () {
-    return x;
-  };
-}
 },{}],"../node_modules/d3-contour/src/contains.js":[function(require,module,exports) {
 "use strict";
 
@@ -43084,7 +42674,7 @@ function _default() {
 
   return contours;
 }
-},{"d3-array":"../node_modules/d3-array/src/index.js","./array":"../node_modules/d3-contour/src/array.js","./ascending":"../node_modules/d3-contour/src/ascending.js","./area":"../node_modules/d3-contour/src/area.js","./constant":"../node_modules/d3-contour/src/constant.js","./contains":"../node_modules/d3-contour/src/contains.js","./noop":"../node_modules/d3-contour/src/noop.js"}],"../node_modules/d3-contour/src/blur.js":[function(require,module,exports) {
+},{"d3-array":"../node_modules/d3-array/src/index.js","./array":"../node_modules/d3-contour/src/array.js","./ascending":"../node_modules/d3-contour/src/ascending.js","./area":"../node_modules/d3-contour/src/area.js","./constant":"../node_modules/d3-array/src/constant.js","./contains":"../node_modules/d3-contour/src/contains.js","./noop":"../node_modules/d3-contour/src/noop.js"}],"../node_modules/d3-contour/src/blur.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43339,7 +42929,7 @@ function _default() {
 
   return density;
 }
-},{"d3-array":"../node_modules/d3-array/src/index.js","./array":"../node_modules/d3-contour/src/array.js","./blur":"../node_modules/d3-contour/src/blur.js","./constant":"../node_modules/d3-contour/src/constant.js","./contours":"../node_modules/d3-contour/src/contours.js"}],"../node_modules/d3-contour/src/index.js":[function(require,module,exports) {
+},{"d3-array":"../node_modules/d3-array/src/index.js","./array":"../node_modules/d3-contour/src/array.js","./blur":"../node_modules/d3-contour/src/blur.js","./constant":"../node_modules/d3-array/src/constant.js","./contours":"../node_modules/d3-contour/src/contours.js"}],"../node_modules/d3-contour/src/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44012,19 +43602,6 @@ function _default(x, y) {
   };
 
   return force;
-}
-},{}],"../node_modules/d3-force/src/constant.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return function () {
-    return x;
-  };
 }
 },{}],"../node_modules/d3-force/src/jiggle.js":[function(require,module,exports) {
 "use strict";
@@ -44740,7 +44317,7 @@ function _default(radius) {
 
   return force;
 }
-},{"./constant":"../node_modules/d3-force/src/constant.js","./jiggle":"../node_modules/d3-force/src/jiggle.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js"}],"../node_modules/d3-force/src/link.js":[function(require,module,exports) {
+},{"./constant":"../node_modules/d3-array/src/constant.js","./jiggle":"../node_modules/d3-force/src/jiggle.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js"}],"../node_modules/d3-force/src/link.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44866,7 +44443,7 @@ function _default(links) {
 
   return force;
 }
-},{"./constant":"../node_modules/d3-force/src/constant.js","./jiggle":"../node_modules/d3-force/src/jiggle.js","d3-collection":"../node_modules/d3-collection/src/index.js"}],"../node_modules/d3-force/src/simulation.js":[function(require,module,exports) {
+},{"./constant":"../node_modules/d3-array/src/constant.js","./jiggle":"../node_modules/d3-force/src/jiggle.js","d3-collection":"../node_modules/d3-collection/src/index.js"}],"../node_modules/d3-force/src/simulation.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45150,7 +44727,7 @@ function _default() {
 
   return force;
 }
-},{"./constant":"../node_modules/d3-force/src/constant.js","./jiggle":"../node_modules/d3-force/src/jiggle.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","./simulation":"../node_modules/d3-force/src/simulation.js"}],"../node_modules/d3-force/src/radial.js":[function(require,module,exports) {
+},{"./constant":"../node_modules/d3-array/src/constant.js","./jiggle":"../node_modules/d3-force/src/jiggle.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","./simulation":"../node_modules/d3-force/src/simulation.js"}],"../node_modules/d3-force/src/radial.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45218,7 +44795,7 @@ function _default(radius, x, y) {
 
   return force;
 }
-},{"./constant":"../node_modules/d3-force/src/constant.js"}],"../node_modules/d3-force/src/x.js":[function(require,module,exports) {
+},{"./constant":"../node_modules/d3-array/src/constant.js"}],"../node_modules/d3-force/src/x.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45270,7 +44847,7 @@ function _default(x) {
 
   return force;
 }
-},{"./constant":"../node_modules/d3-force/src/constant.js"}],"../node_modules/d3-force/src/y.js":[function(require,module,exports) {
+},{"./constant":"../node_modules/d3-array/src/constant.js"}],"../node_modules/d3-force/src/y.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45322,7 +44899,7 @@ function _default(y) {
 
   return force;
 }
-},{"./constant":"../node_modules/d3-force/src/constant.js"}],"../node_modules/d3-force/src/index.js":[function(require,module,exports) {
+},{"./constant":"../node_modules/d3-array/src/constant.js"}],"../node_modules/d3-force/src/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45642,18 +45219,7 @@ var _default = {
   }
 };
 exports.default = _default;
-},{"./formatPrefixAuto.js":"../node_modules/d3-format/src/formatPrefixAuto.js","./formatRounded.js":"../node_modules/d3-format/src/formatRounded.js"}],"../node_modules/d3-format/src/identity.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return x;
-}
-},{}],"../node_modules/d3-format/src/locale.js":[function(require,module,exports) {
+},{"./formatPrefixAuto.js":"../node_modules/d3-format/src/formatPrefixAuto.js","./formatRounded.js":"../node_modules/d3-format/src/formatRounded.js"}],"../node_modules/d3-format/src/locale.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45812,7 +45378,7 @@ function _default(locale) {
     formatPrefix: formatPrefix
   };
 }
-},{"./exponent.js":"../node_modules/d3-format/src/exponent.js","./formatGroup.js":"../node_modules/d3-format/src/formatGroup.js","./formatNumerals.js":"../node_modules/d3-format/src/formatNumerals.js","./formatSpecifier.js":"../node_modules/d3-format/src/formatSpecifier.js","./formatTrim.js":"../node_modules/d3-format/src/formatTrim.js","./formatTypes.js":"../node_modules/d3-format/src/formatTypes.js","./formatPrefixAuto.js":"../node_modules/d3-format/src/formatPrefixAuto.js","./identity.js":"../node_modules/d3-format/src/identity.js"}],"../node_modules/d3-format/src/defaultLocale.js":[function(require,module,exports) {
+},{"./exponent.js":"../node_modules/d3-format/src/exponent.js","./formatGroup.js":"../node_modules/d3-format/src/formatGroup.js","./formatNumerals.js":"../node_modules/d3-format/src/formatNumerals.js","./formatSpecifier.js":"../node_modules/d3-format/src/formatSpecifier.js","./formatTrim.js":"../node_modules/d3-format/src/formatTrim.js","./formatTypes.js":"../node_modules/d3-format/src/formatTypes.js","./formatPrefixAuto.js":"../node_modules/d3-format/src/formatPrefixAuto.js","./identity.js":"../node_modules/d3-array/src/identity.js"}],"../node_modules/d3-format/src/defaultLocale.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46671,20 +46237,7 @@ function _default(object) {
 
   return [(0, _math.atan2)(y, x) * _math.degrees, (0, _math.asin)(z / (0, _math.sqrt)(m)) * _math.degrees];
 }
-},{"./math.js":"../node_modules/d3-geo/src/math.js","./noop.js":"../node_modules/d3-geo/src/noop.js","./stream.js":"../node_modules/d3-geo/src/stream.js"}],"../node_modules/d3-geo/src/constant.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return function () {
-    return x;
-  };
-}
-},{}],"../node_modules/d3-geo/src/compose.js":[function(require,module,exports) {
+},{"./math.js":"../node_modules/d3-geo/src/math.js","./noop.js":"../node_modules/d3-geo/src/noop.js","./stream.js":"../node_modules/d3-geo/src/stream.js"}],"../node_modules/d3-geo/src/compose.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46875,7 +46428,7 @@ function _default() {
 
   return circle;
 }
-},{"./cartesian.js":"../node_modules/d3-geo/src/cartesian.js","./constant.js":"../node_modules/d3-geo/src/constant.js","./math.js":"../node_modules/d3-geo/src/math.js","./rotation.js":"../node_modules/d3-geo/src/rotation.js"}],"../node_modules/d3-geo/src/clip/buffer.js":[function(require,module,exports) {
+},{"./cartesian.js":"../node_modules/d3-geo/src/cartesian.js","./constant.js":"../node_modules/d3-array/src/constant.js","./math.js":"../node_modules/d3-geo/src/math.js","./rotation.js":"../node_modules/d3-geo/src/rotation.js"}],"../node_modules/d3-geo/src/clip/buffer.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48249,18 +47802,7 @@ function _default(a, b) {
   interpolate.distance = d;
   return interpolate;
 }
-},{"./math.js":"../node_modules/d3-geo/src/math.js"}],"../node_modules/d3-geo/src/identity.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return x;
-}
-},{}],"../node_modules/d3-geo/src/path/area.js":[function(require,module,exports) {
+},{"./math.js":"../node_modules/d3-geo/src/math.js"}],"../node_modules/d3-geo/src/path/area.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -48737,7 +48279,7 @@ function _default(projection, context) {
 
   return path.projection(projection).context(context);
 }
-},{"../identity.js":"../node_modules/d3-geo/src/identity.js","../stream.js":"../node_modules/d3-geo/src/stream.js","./area.js":"../node_modules/d3-geo/src/path/area.js","./bounds.js":"../node_modules/d3-geo/src/path/bounds.js","./centroid.js":"../node_modules/d3-geo/src/path/centroid.js","./context.js":"../node_modules/d3-geo/src/path/context.js","./measure.js":"../node_modules/d3-geo/src/path/measure.js","./string.js":"../node_modules/d3-geo/src/path/string.js"}],"../node_modules/d3-geo/src/transform.js":[function(require,module,exports) {
+},{"../identity.js":"../node_modules/d3-array/src/identity.js","../stream.js":"../node_modules/d3-geo/src/stream.js","./area.js":"../node_modules/d3-geo/src/path/area.js","./bounds.js":"../node_modules/d3-geo/src/path/bounds.js","./centroid.js":"../node_modules/d3-geo/src/path/centroid.js","./context.js":"../node_modules/d3-geo/src/path/context.js","./measure.js":"../node_modules/d3-geo/src/path/measure.js","./string.js":"../node_modules/d3-geo/src/path/string.js"}],"../node_modules/d3-geo/src/transform.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -49179,7 +48721,7 @@ function projectionMutator(projectAt) {
     return recenter();
   };
 }
-},{"../clip/antimeridian.js":"../node_modules/d3-geo/src/clip/antimeridian.js","../clip/circle.js":"../node_modules/d3-geo/src/clip/circle.js","../clip/rectangle.js":"../node_modules/d3-geo/src/clip/rectangle.js","../compose.js":"../node_modules/d3-geo/src/compose.js","../identity.js":"../node_modules/d3-geo/src/identity.js","../math.js":"../node_modules/d3-geo/src/math.js","../rotation.js":"../node_modules/d3-geo/src/rotation.js","../transform.js":"../node_modules/d3-geo/src/transform.js","./fit.js":"../node_modules/d3-geo/src/projection/fit.js","./resample.js":"../node_modules/d3-geo/src/projection/resample.js"}],"../node_modules/d3-geo/src/projection/conic.js":[function(require,module,exports) {
+},{"../clip/antimeridian.js":"../node_modules/d3-geo/src/clip/antimeridian.js","../clip/circle.js":"../node_modules/d3-geo/src/clip/circle.js","../clip/rectangle.js":"../node_modules/d3-geo/src/clip/rectangle.js","../compose.js":"../node_modules/d3-geo/src/compose.js","../identity.js":"../node_modules/d3-array/src/identity.js","../math.js":"../node_modules/d3-geo/src/math.js","../rotation.js":"../node_modules/d3-geo/src/rotation.js","../transform.js":"../node_modules/d3-geo/src/transform.js","./fit.js":"../node_modules/d3-geo/src/projection/fit.js","./resample.js":"../node_modules/d3-geo/src/projection/resample.js"}],"../node_modules/d3-geo/src/projection/conic.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -49841,7 +49383,7 @@ function _default() {
     }
   };
 }
-},{"../clip/rectangle.js":"../node_modules/d3-geo/src/clip/rectangle.js","../identity.js":"../node_modules/d3-geo/src/identity.js","../transform.js":"../node_modules/d3-geo/src/transform.js","./fit.js":"../node_modules/d3-geo/src/projection/fit.js"}],"../node_modules/d3-geo/src/projection/naturalEarth1.js":[function(require,module,exports) {
+},{"../clip/rectangle.js":"../node_modules/d3-geo/src/clip/rectangle.js","../identity.js":"../node_modules/d3-array/src/identity.js","../transform.js":"../node_modules/d3-geo/src/transform.js","./fit.js":"../node_modules/d3-geo/src/projection/fit.js"}],"../node_modules/d3-geo/src/projection/naturalEarth1.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -52829,20 +52371,7 @@ function pointish(scale) {
 function point() {
   return pointish(band.apply(null, arguments).paddingInner(1));
 }
-},{"d3-array":"../node_modules/d3-array/src/index.js","./init":"../node_modules/d3-scale/src/init.js","./ordinal":"../node_modules/d3-scale/src/ordinal.js"}],"../node_modules/d3-scale/src/constant.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return function () {
-    return x;
-  };
-}
-},{}],"../node_modules/d3-scale/src/number.js":[function(require,module,exports) {
+},{"d3-array":"../node_modules/d3-array/src/index.js","./init":"../node_modules/d3-scale/src/init.js","./ordinal":"../node_modules/d3-scale/src/ordinal.js"}],"../node_modules/d3-scale/src/number.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -52996,7 +52525,7 @@ function transformer() {
 function continuous(transform, untransform) {
   return transformer()(transform, untransform);
 }
-},{"d3-array":"../node_modules/d3-array/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","./array":"../node_modules/d3-scale/src/array.js","./constant":"../node_modules/d3-scale/src/constant.js","./number":"../node_modules/d3-scale/src/number.js"}],"../node_modules/d3-scale/src/tickFormat.js":[function(require,module,exports) {
+},{"d3-array":"../node_modules/d3-array/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","./array":"../node_modules/d3-scale/src/array.js","./constant":"../node_modules/d3-array/src/constant.js","./number":"../node_modules/d3-scale/src/number.js"}],"../node_modules/d3-scale/src/tickFormat.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57991,18 +57520,7 @@ function _default() {
 
   return area;
 }
-},{"d3-path":"../node_modules/d3-path/src/index.js","./constant.js":"../node_modules/d3-shape/src/constant.js","./curve/linear.js":"../node_modules/d3-shape/src/curve/linear.js","./line.js":"../node_modules/d3-shape/src/line.js","./point.js":"../node_modules/d3-shape/src/point.js"}],"../node_modules/d3-shape/src/descending.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(a, b) {
-  return b < a ? -1 : b > a ? 1 : b >= a ? 0 : NaN;
-}
-},{}],"../node_modules/d3-shape/src/identity.js":[function(require,module,exports) {
+},{"d3-path":"../node_modules/d3-path/src/index.js","./constant.js":"../node_modules/d3-shape/src/constant.js","./curve/linear.js":"../node_modules/d3-shape/src/curve/linear.js","./line.js":"../node_modules/d3-shape/src/line.js","./point.js":"../node_modules/d3-shape/src/point.js"}],"../node_modules/d3-shape/src/identity.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58107,7 +57625,7 @@ function _default() {
 
   return pie;
 }
-},{"./constant.js":"../node_modules/d3-shape/src/constant.js","./descending.js":"../node_modules/d3-shape/src/descending.js","./identity.js":"../node_modules/d3-shape/src/identity.js","./math.js":"../node_modules/d3-shape/src/math.js"}],"../node_modules/d3-shape/src/curve/radial.js":[function(require,module,exports) {
+},{"./constant.js":"../node_modules/d3-shape/src/constant.js","./descending.js":"../node_modules/d3-array/src/descending.js","./identity.js":"../node_modules/d3-shape/src/identity.js","./math.js":"../node_modules/d3-shape/src/math.js"}],"../node_modules/d3-shape/src/curve/radial.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58250,15 +57768,6 @@ exports.default = _default;
 function _default(x, y) {
   return [(y = +y) * Math.cos(x -= Math.PI / 2), y * Math.sin(x)];
 }
-},{}],"../node_modules/d3-shape/src/array.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.slice = void 0;
-var slice = Array.prototype.slice;
-exports.slice = slice;
 },{}],"../node_modules/d3-shape/src/link/index.js":[function(require,module,exports) {
 "use strict";
 
@@ -58363,7 +57872,7 @@ function linkRadial() {
   l.radius = l.y, delete l.y;
   return l;
 }
-},{"d3-path":"../node_modules/d3-path/src/index.js","../array.js":"../node_modules/d3-shape/src/array.js","../constant.js":"../node_modules/d3-shape/src/constant.js","../point.js":"../node_modules/d3-shape/src/point.js","../pointRadial.js":"../node_modules/d3-shape/src/pointRadial.js"}],"../node_modules/d3-shape/src/symbol/circle.js":[function(require,module,exports) {
+},{"d3-path":"../node_modules/d3-path/src/index.js","../array.js":"../node_modules/d3-axis/src/array.js","../constant.js":"../node_modules/d3-shape/src/constant.js","../point.js":"../node_modules/d3-shape/src/point.js","../pointRadial.js":"../node_modules/d3-shape/src/pointRadial.js"}],"../node_modules/d3-shape/src/symbol/circle.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58586,16 +58095,7 @@ function _default() {
 
   return symbol;
 }
-},{"d3-path":"../node_modules/d3-path/src/index.js","./symbol/circle.js":"../node_modules/d3-shape/src/symbol/circle.js","./symbol/cross.js":"../node_modules/d3-shape/src/symbol/cross.js","./symbol/diamond.js":"../node_modules/d3-shape/src/symbol/diamond.js","./symbol/star.js":"../node_modules/d3-shape/src/symbol/star.js","./symbol/square.js":"../node_modules/d3-shape/src/symbol/square.js","./symbol/triangle.js":"../node_modules/d3-shape/src/symbol/triangle.js","./symbol/wye.js":"../node_modules/d3-shape/src/symbol/wye.js","./constant.js":"../node_modules/d3-shape/src/constant.js"}],"../node_modules/d3-shape/src/noop.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default() {}
-},{}],"../node_modules/d3-shape/src/curve/basis.js":[function(require,module,exports) {
+},{"d3-path":"../node_modules/d3-path/src/index.js","./symbol/circle.js":"../node_modules/d3-shape/src/symbol/circle.js","./symbol/cross.js":"../node_modules/d3-shape/src/symbol/cross.js","./symbol/diamond.js":"../node_modules/d3-shape/src/symbol/diamond.js","./symbol/star.js":"../node_modules/d3-shape/src/symbol/star.js","./symbol/square.js":"../node_modules/d3-shape/src/symbol/square.js","./symbol/triangle.js":"../node_modules/d3-shape/src/symbol/triangle.js","./symbol/wye.js":"../node_modules/d3-shape/src/symbol/wye.js","./constant.js":"../node_modules/d3-shape/src/constant.js"}],"../node_modules/d3-shape/src/curve/basis.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58763,7 +58263,7 @@ BasisClosed.prototype = {
 function _default(context) {
   return new BasisClosed(context);
 }
-},{"../noop.js":"../node_modules/d3-shape/src/noop.js","./basis.js":"../node_modules/d3-shape/src/curve/basis.js"}],"../node_modules/d3-shape/src/curve/basisOpen.js":[function(require,module,exports) {
+},{"../noop.js":"../node_modules/d3-contour/src/noop.js","./basis.js":"../node_modules/d3-shape/src/curve/basis.js"}],"../node_modules/d3-shape/src/curve/basisOpen.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -59080,7 +58580,7 @@ var _default = function custom(tension) {
 }(0);
 
 exports.default = _default;
-},{"../noop.js":"../node_modules/d3-shape/src/noop.js","./cardinal.js":"../node_modules/d3-shape/src/curve/cardinal.js"}],"../node_modules/d3-shape/src/curve/cardinalOpen.js":[function(require,module,exports) {
+},{"../noop.js":"../node_modules/d3-contour/src/noop.js","./cardinal.js":"../node_modules/d3-shape/src/curve/cardinal.js"}],"../node_modules/d3-shape/src/curve/cardinalOpen.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -59379,7 +58879,7 @@ var _default = function custom(alpha) {
 }(0.5);
 
 exports.default = _default;
-},{"./cardinalClosed.js":"../node_modules/d3-shape/src/curve/cardinalClosed.js","../noop.js":"../node_modules/d3-shape/src/noop.js","./catmullRom.js":"../node_modules/d3-shape/src/curve/catmullRom.js"}],"../node_modules/d3-shape/src/curve/catmullRomOpen.js":[function(require,module,exports) {
+},{"./cardinalClosed.js":"../node_modules/d3-shape/src/curve/cardinalClosed.js","../noop.js":"../node_modules/d3-contour/src/noop.js","./catmullRom.js":"../node_modules/d3-shape/src/curve/catmullRom.js"}],"../node_modules/d3-shape/src/curve/catmullRomOpen.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -59497,7 +58997,7 @@ LinearClosed.prototype = {
 function _default(context) {
   return new LinearClosed(context);
 }
-},{"../noop.js":"../node_modules/d3-shape/src/noop.js"}],"../node_modules/d3-shape/src/curve/monotone.js":[function(require,module,exports) {
+},{"../noop.js":"../node_modules/d3-contour/src/noop.js"}],"../node_modules/d3-shape/src/curve/monotone.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -59903,7 +59403,7 @@ function _default() {
 
   return stack;
 }
-},{"./array.js":"../node_modules/d3-shape/src/array.js","./constant.js":"../node_modules/d3-shape/src/constant.js","./offset/none.js":"../node_modules/d3-shape/src/offset/none.js","./order/none.js":"../node_modules/d3-shape/src/order/none.js"}],"../node_modules/d3-shape/src/offset/expand.js":[function(require,module,exports) {
+},{"./array.js":"../node_modules/d3-axis/src/array.js","./constant.js":"../node_modules/d3-shape/src/constant.js","./offset/none.js":"../node_modules/d3-shape/src/offset/none.js","./order/none.js":"../node_modules/d3-shape/src/order/none.js"}],"../node_modules/d3-shape/src/offset/expand.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -60544,20 +60044,7 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./arc.js":"../node_modules/d3-shape/src/arc.js","./area.js":"../node_modules/d3-shape/src/area.js","./line.js":"../node_modules/d3-shape/src/line.js","./pie.js":"../node_modules/d3-shape/src/pie.js","./areaRadial.js":"../node_modules/d3-shape/src/areaRadial.js","./lineRadial.js":"../node_modules/d3-shape/src/lineRadial.js","./pointRadial.js":"../node_modules/d3-shape/src/pointRadial.js","./link/index.js":"../node_modules/d3-shape/src/link/index.js","./symbol.js":"../node_modules/d3-shape/src/symbol.js","./symbol/circle.js":"../node_modules/d3-shape/src/symbol/circle.js","./symbol/cross.js":"../node_modules/d3-shape/src/symbol/cross.js","./symbol/diamond.js":"../node_modules/d3-shape/src/symbol/diamond.js","./symbol/square.js":"../node_modules/d3-shape/src/symbol/square.js","./symbol/star.js":"../node_modules/d3-shape/src/symbol/star.js","./symbol/triangle.js":"../node_modules/d3-shape/src/symbol/triangle.js","./symbol/wye.js":"../node_modules/d3-shape/src/symbol/wye.js","./curve/basisClosed.js":"../node_modules/d3-shape/src/curve/basisClosed.js","./curve/basisOpen.js":"../node_modules/d3-shape/src/curve/basisOpen.js","./curve/basis.js":"../node_modules/d3-shape/src/curve/basis.js","./curve/bundle.js":"../node_modules/d3-shape/src/curve/bundle.js","./curve/cardinalClosed.js":"../node_modules/d3-shape/src/curve/cardinalClosed.js","./curve/cardinalOpen.js":"../node_modules/d3-shape/src/curve/cardinalOpen.js","./curve/cardinal.js":"../node_modules/d3-shape/src/curve/cardinal.js","./curve/catmullRomClosed.js":"../node_modules/d3-shape/src/curve/catmullRomClosed.js","./curve/catmullRomOpen.js":"../node_modules/d3-shape/src/curve/catmullRomOpen.js","./curve/catmullRom.js":"../node_modules/d3-shape/src/curve/catmullRom.js","./curve/linearClosed.js":"../node_modules/d3-shape/src/curve/linearClosed.js","./curve/linear.js":"../node_modules/d3-shape/src/curve/linear.js","./curve/monotone.js":"../node_modules/d3-shape/src/curve/monotone.js","./curve/natural.js":"../node_modules/d3-shape/src/curve/natural.js","./curve/step.js":"../node_modules/d3-shape/src/curve/step.js","./stack.js":"../node_modules/d3-shape/src/stack.js","./offset/expand.js":"../node_modules/d3-shape/src/offset/expand.js","./offset/diverging.js":"../node_modules/d3-shape/src/offset/diverging.js","./offset/none.js":"../node_modules/d3-shape/src/offset/none.js","./offset/silhouette.js":"../node_modules/d3-shape/src/offset/silhouette.js","./offset/wiggle.js":"../node_modules/d3-shape/src/offset/wiggle.js","./order/appearance.js":"../node_modules/d3-shape/src/order/appearance.js","./order/ascending.js":"../node_modules/d3-shape/src/order/ascending.js","./order/descending.js":"../node_modules/d3-shape/src/order/descending.js","./order/insideOut.js":"../node_modules/d3-shape/src/order/insideOut.js","./order/none.js":"../node_modules/d3-shape/src/order/none.js","./order/reverse.js":"../node_modules/d3-shape/src/order/reverse.js"}],"../node_modules/d3-voronoi/src/constant.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return function () {
-    return x;
-  };
-}
-},{}],"../node_modules/d3-voronoi/src/point.js":[function(require,module,exports) {
+},{"./arc.js":"../node_modules/d3-shape/src/arc.js","./area.js":"../node_modules/d3-shape/src/area.js","./line.js":"../node_modules/d3-shape/src/line.js","./pie.js":"../node_modules/d3-shape/src/pie.js","./areaRadial.js":"../node_modules/d3-shape/src/areaRadial.js","./lineRadial.js":"../node_modules/d3-shape/src/lineRadial.js","./pointRadial.js":"../node_modules/d3-shape/src/pointRadial.js","./link/index.js":"../node_modules/d3-shape/src/link/index.js","./symbol.js":"../node_modules/d3-shape/src/symbol.js","./symbol/circle.js":"../node_modules/d3-shape/src/symbol/circle.js","./symbol/cross.js":"../node_modules/d3-shape/src/symbol/cross.js","./symbol/diamond.js":"../node_modules/d3-shape/src/symbol/diamond.js","./symbol/square.js":"../node_modules/d3-shape/src/symbol/square.js","./symbol/star.js":"../node_modules/d3-shape/src/symbol/star.js","./symbol/triangle.js":"../node_modules/d3-shape/src/symbol/triangle.js","./symbol/wye.js":"../node_modules/d3-shape/src/symbol/wye.js","./curve/basisClosed.js":"../node_modules/d3-shape/src/curve/basisClosed.js","./curve/basisOpen.js":"../node_modules/d3-shape/src/curve/basisOpen.js","./curve/basis.js":"../node_modules/d3-shape/src/curve/basis.js","./curve/bundle.js":"../node_modules/d3-shape/src/curve/bundle.js","./curve/cardinalClosed.js":"../node_modules/d3-shape/src/curve/cardinalClosed.js","./curve/cardinalOpen.js":"../node_modules/d3-shape/src/curve/cardinalOpen.js","./curve/cardinal.js":"../node_modules/d3-shape/src/curve/cardinal.js","./curve/catmullRomClosed.js":"../node_modules/d3-shape/src/curve/catmullRomClosed.js","./curve/catmullRomOpen.js":"../node_modules/d3-shape/src/curve/catmullRomOpen.js","./curve/catmullRom.js":"../node_modules/d3-shape/src/curve/catmullRom.js","./curve/linearClosed.js":"../node_modules/d3-shape/src/curve/linearClosed.js","./curve/linear.js":"../node_modules/d3-shape/src/curve/linear.js","./curve/monotone.js":"../node_modules/d3-shape/src/curve/monotone.js","./curve/natural.js":"../node_modules/d3-shape/src/curve/natural.js","./curve/step.js":"../node_modules/d3-shape/src/curve/step.js","./stack.js":"../node_modules/d3-shape/src/stack.js","./offset/expand.js":"../node_modules/d3-shape/src/offset/expand.js","./offset/diverging.js":"../node_modules/d3-shape/src/offset/diverging.js","./offset/none.js":"../node_modules/d3-shape/src/offset/none.js","./offset/silhouette.js":"../node_modules/d3-shape/src/offset/silhouette.js","./offset/wiggle.js":"../node_modules/d3-shape/src/offset/wiggle.js","./order/appearance.js":"../node_modules/d3-shape/src/order/appearance.js","./order/ascending.js":"../node_modules/d3-shape/src/order/ascending.js","./order/descending.js":"../node_modules/d3-shape/src/order/descending.js","./order/insideOut.js":"../node_modules/d3-shape/src/order/insideOut.js","./order/none.js":"../node_modules/d3-shape/src/order/none.js","./order/reverse.js":"../node_modules/d3-shape/src/order/reverse.js"}],"../node_modules/d3-voronoi/src/point.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -61662,7 +61149,7 @@ function _default() {
 
   return voronoi;
 }
-},{"./constant":"../node_modules/d3-voronoi/src/constant.js","./point":"../node_modules/d3-voronoi/src/point.js","./Diagram":"../node_modules/d3-voronoi/src/Diagram.js"}],"../node_modules/d3-voronoi/src/index.js":[function(require,module,exports) {
+},{"./constant":"../node_modules/d3-array/src/constant.js","./point":"../node_modules/d3-voronoi/src/point.js","./Diagram":"../node_modules/d3-voronoi/src/Diagram.js"}],"../node_modules/d3-voronoi/src/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -61678,20 +61165,7 @@ Object.defineProperty(exports, "voronoi", {
 var _voronoi = _interopRequireDefault(require("./voronoi"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./voronoi":"../node_modules/d3-voronoi/src/voronoi.js"}],"../node_modules/d3-zoom/src/constant.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = _default;
-
-function _default(x) {
-  return function () {
-    return x;
-  };
-}
-},{}],"../node_modules/d3-zoom/src/event.js":[function(require,module,exports) {
+},{"./voronoi":"../node_modules/d3-voronoi/src/voronoi.js"}],"../node_modules/d3-zoom/src/event.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -61765,27 +61239,7 @@ function transform(node) {
 
   return node.__zoom;
 }
-},{}],"../node_modules/d3-zoom/src/noevent.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.nopropagation = nopropagation;
-exports.default = _default;
-
-var _d3Selection = require("d3-selection");
-
-function nopropagation() {
-  _d3Selection.event.stopImmediatePropagation();
-}
-
-function _default() {
-  _d3Selection.event.preventDefault();
-
-  _d3Selection.event.stopImmediatePropagation();
-}
-},{"d3-selection":"../node_modules/d3-selection/src/index.js"}],"../node_modules/d3-zoom/src/zoom.js":[function(require,module,exports) {
+},{}],"../node_modules/d3-zoom/src/zoom.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -62226,7 +61680,7 @@ function _default() {
 
   return zoom;
 }
-},{"d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","./constant.js":"../node_modules/d3-zoom/src/constant.js","./event.js":"../node_modules/d3-zoom/src/event.js","./transform.js":"../node_modules/d3-zoom/src/transform.js","./noevent.js":"../node_modules/d3-zoom/src/noevent.js"}],"../node_modules/d3-zoom/src/index.js":[function(require,module,exports) {
+},{"d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","./constant.js":"../node_modules/d3-array/src/constant.js","./event.js":"../node_modules/d3-zoom/src/event.js","./transform.js":"../node_modules/d3-zoom/src/transform.js","./noevent.js":"../node_modules/d3-drag/src/noevent.js"}],"../node_modules/d3-zoom/src/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -62683,6 +62137,14 @@ Object.keys(_d3Zoom).forEach(function (key) {
 },{"./dist/package.js":"../node_modules/d3/dist/package.js","d3-array":"../node_modules/d3-array/src/index.js","d3-axis":"../node_modules/d3-axis/src/index.js","d3-brush":"../node_modules/d3-brush/src/index.js","d3-chord":"../node_modules/d3-chord/src/index.js","d3-collection":"../node_modules/d3-collection/src/index.js","d3-color":"../node_modules/d3-color/src/index.js","d3-contour":"../node_modules/d3-contour/src/index.js","d3-dispatch":"../node_modules/d3-dispatch/src/index.js","d3-drag":"../node_modules/d3-drag/src/index.js","d3-dsv":"../node_modules/d3-dsv/src/index.js","d3-ease":"../node_modules/d3-ease/src/index.js","d3-fetch":"../node_modules/d3-fetch/src/index.js","d3-force":"../node_modules/d3-force/src/index.js","d3-format":"../node_modules/d3-format/src/index.js","d3-geo":"../node_modules/d3-geo/src/index.js","d3-hierarchy":"../node_modules/d3-hierarchy/src/index.js","d3-interpolate":"../node_modules/d3-interpolate/src/index.js","d3-path":"../node_modules/d3-path/src/index.js","d3-polygon":"../node_modules/d3-polygon/src/index.js","d3-quadtree":"../node_modules/d3-quadtree/src/index.js","d3-random":"../node_modules/d3-random/src/index.js","d3-scale":"../node_modules/d3-scale/src/index.js","d3-scale-chromatic":"../node_modules/d3-scale-chromatic/src/index.js","d3-selection":"../node_modules/d3-selection/src/index.js","d3-shape":"../node_modules/d3-shape/src/index.js","d3-time":"../node_modules/d3-time/src/index.js","d3-time-format":"../node_modules/d3-time-format/src/index.js","d3-timer":"../node_modules/d3-timer/src/index.js","d3-transition":"../node_modules/d3-transition/src/index.js","d3-voronoi":"../node_modules/d3-voronoi/src/index.js","d3-zoom":"../node_modules/d3-zoom/src/index.js"}],"nodeModel/ANode.ts":[function(require,module,exports) {
 "use strict";
 
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -62724,6 +62186,10 @@ var __awaiter = this && this.__awaiter || function (thisArg, _arguments, P, gene
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var spinal_core_connectorjs_type_1 = require("spinal-core-connectorjs_type");
+
+var spinal_model_graph_1 = require("spinal-model-graph");
 
 var ANode =
 /*#__PURE__*/
@@ -62809,6 +62275,19 @@ function () {
       } else {
         node._children = node.children;
         node.children = null;
+        return true;
+      }
+    }
+  }, {
+    key: "collapseOrOpenParent",
+    value: function collapseOrOpenParent(node) {
+      if (Array.isArray(node._parent)) {
+        node.parent = node._parent;
+        node._parent = null;
+        return false;
+      } else {
+        node._parent = node.parent;
+        node.parent = null;
         return true;
       }
     }
@@ -62902,13 +62381,151 @@ function () {
         }, _callee, null, [[7, 20, 24, 32], [25,, 27, 31]]);
       }));
     }
+  }, {
+    key: "updateParent",
+    value: function updateParent(node, nodeFactory) {
+      return __awaiter(this, void 0, void 0,
+      /*#__PURE__*/
+      regeneratorRuntime.mark(function _callee2() {
+        var promise, realNode, _iteratorNormalCompletion3, _didIteratorError3, _iteratorError3, _iterator3, _step3, _step3$value, listnode, index, parents, _iteratorNormalCompletion4, _didIteratorError4, _iteratorError4, _iterator4, _step4, parent, n, _parent, s;
+
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                promise = [];
+                realNode = spinal_core_connectorjs_type_1.FileSystem._objects[node.data._serverId];
+
+                if (!(realNode instanceof spinal_model_graph_1.SpinalNode)) {
+                  _context2.next = 47;
+                  break;
+                }
+
+                _iteratorNormalCompletion3 = true;
+                _didIteratorError3 = false;
+                _iteratorError3 = undefined;
+                _context2.prev = 6;
+
+                for (_iterator3 = realNode.parents[Symbol.iterator](); !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                  _step3$value = _slicedToArray(_step3.value, 2), listnode = _step3$value[1];
+
+                  for (index = 0; index < listnode.length; index++) {
+                    promise.push(listnode[index].load());
+                  }
+                }
+
+                _context2.next = 14;
+                break;
+
+              case 10:
+                _context2.prev = 10;
+                _context2.t0 = _context2["catch"](6);
+                _didIteratorError3 = true;
+                _iteratorError3 = _context2.t0;
+
+              case 14:
+                _context2.prev = 14;
+                _context2.prev = 15;
+
+                if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
+                  _iterator3.return();
+                }
+
+              case 17:
+                _context2.prev = 17;
+
+                if (!_didIteratorError3) {
+                  _context2.next = 20;
+                  break;
+                }
+
+                throw _iteratorError3;
+
+              case 20:
+                return _context2.finish(17);
+
+              case 21:
+                return _context2.finish(14);
+
+              case 22:
+                _context2.next = 24;
+                return Promise.all(promise);
+
+              case 24:
+                parents = _context2.sent;
+                node.parent = [];
+                _iteratorNormalCompletion4 = true;
+                _didIteratorError4 = false;
+                _iteratorError4 = undefined;
+                _context2.prev = 29;
+
+                for (_iterator4 = parents[Symbol.iterator](); !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+                  parent = _step4.value;
+                  n = nodeFactory.createNode(parent);
+                  node.parent.push(n);
+                }
+
+                _context2.next = 37;
+                break;
+
+              case 33:
+                _context2.prev = 33;
+                _context2.t1 = _context2["catch"](29);
+                _didIteratorError4 = true;
+                _iteratorError4 = _context2.t1;
+
+              case 37:
+                _context2.prev = 37;
+                _context2.prev = 38;
+
+                if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
+                  _iterator4.return();
+                }
+
+              case 40:
+                _context2.prev = 40;
+
+                if (!_didIteratorError4) {
+                  _context2.next = 43;
+                  break;
+                }
+
+                throw _iteratorError4;
+
+              case 43:
+                return _context2.finish(40);
+
+              case 44:
+                return _context2.finish(37);
+
+              case 45:
+                _context2.next = 52;
+                break;
+
+              case 47:
+                _context2.next = 49;
+                return realNode.parent.load();
+
+              case 49:
+                _parent = _context2.sent;
+                s = nodeFactory.createNode(_parent);
+                node.parent = [s];
+
+              case 52:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, null, [[6, 10, 14, 22], [15,, 17, 21], [29, 33, 37, 45], [38,, 40, 44]]);
+      }));
+    }
   }]);
 
   return ANode;
 }();
 
 exports.default = ANode;
-},{}],"nodeModel/NodeG.ts":[function(require,module,exports) {
+},{"spinal-core-connectorjs_type":"../node_modules/spinal-core-connectorjs_type/dist/SpinalModel.js","spinal-model-graph":"../node_modules/spinal-model-graph/dist/src/index.js"}],"nodeModel/NodeG.ts":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -63194,7 +62811,7 @@ function () {
       if (this.nodeMap.has(node._server_id)) {
         var d3Node = this.nodeMap.get(node._server_id);
 
-        if (!this.checkParentExist(parent, d3Node)) {
+        if (parent && !this.checkParentExist(parent, d3Node)) {
           d3Node.parent.push(parent);
         }
 
@@ -63402,6 +63019,7 @@ function () {
       bottom: 30,
       left: 90
     };
+    this.visualisation = false;
     this.graph = spinal;
   }
 
@@ -63431,17 +63049,17 @@ function () {
     value: function init(element) {
       return __awaiter(this, void 0, void 0,
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee2() {
-        var data, i, node, link, root, svg, mylink, simulation, edgepaths, update, color, ticked, clicked, dragstarted, dragged, dragended, flatten, createLinks, zoomed;
-        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      regeneratorRuntime.mark(function _callee5() {
+        var data, i, node, link, root, svg, legend, mylink, simulation, edgepaths, update, style, color, ticked, leftclick, rightclick, timeoutclick, newpage, click, dragstarted, dragged, dragended, flatten, chekLink, createLinks, zoomed;
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
-                zoomed = function _ref10() {
+                zoomed = function _ref14() {
                   svg.attr('transform', d3.event.transform);
                 };
 
-                createLinks = function _ref9(nodes) {
+                createLinks = function _ref13(nodes) {
                   var links = [];
                   var id = 0;
                   var _iteratorNormalCompletion = true;
@@ -63452,19 +63070,22 @@ function () {
                     for (var _iterator = nodes[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
                       var _node = _step.value;
 
-                      if (Array.isArray(_node.children)) {
+                      if (Array.isArray(_node.parent)) {
                         var _iteratorNormalCompletion2 = true;
                         var _didIteratorError2 = false;
                         var _iteratorError2 = undefined;
 
                         try {
-                          for (var _iterator2 = _node.children[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-                            var child = _step2.value;
-                            links.push({
-                              source: _node,
-                              target: child,
-                              index: id++
-                            });
+                          for (var _iterator2 = _node.parent[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                            var parent = _step2.value;
+
+                            if (!chekLink(parent, _node, links)) {
+                              links.push({
+                                source: parent,
+                                target: _node,
+                                index: id++
+                              });
+                            }
                           }
                         } catch (err) {
                           _didIteratorError2 = true;
@@ -63477,6 +63098,39 @@ function () {
                           } finally {
                             if (_didIteratorError2) {
                               throw _iteratorError2;
+                            }
+                          }
+                        }
+                      }
+
+                      if (Array.isArray(_node.children)) {
+                        var _iteratorNormalCompletion3 = true;
+                        var _didIteratorError3 = false;
+                        var _iteratorError3 = undefined;
+
+                        try {
+                          for (var _iterator3 = _node.children[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+                            var child = _step3.value;
+
+                            if (!chekLink(_node, child, links)) {
+                              links.push({
+                                source: _node,
+                                target: child,
+                                index: id++
+                              });
+                            }
+                          }
+                        } catch (err) {
+                          _didIteratorError3 = true;
+                          _iteratorError3 = err;
+                        } finally {
+                          try {
+                            if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
+                              _iterator3.return();
+                            }
+                          } finally {
+                            if (_didIteratorError3) {
+                              throw _iteratorError3;
                             }
                           }
                         }
@@ -63500,7 +63154,17 @@ function () {
                   return links;
                 };
 
-                flatten = function _ref8(root) {
+                chekLink = function _ref12(source, target, links) {
+                  for (var index = 0; index < links.length; index++) {
+                    if (source.data === links[index].source.data && target.data === links[index].target.data) {
+                      return true;
+                    }
+                  }
+
+                  return false;
+                };
+
+                flatten = function _ref11(root) {
                   var nodes = new Set();
 
                   function recurse(node) {
@@ -63508,30 +63172,114 @@ function () {
                     if (!node.id) node.id = ++i;else ++i;
                     nodes.add(node);
                     if (node.children) node.children.forEach(recurse);
+                    if (node.parent) node.parent.forEach(recurse);
                   }
 
                   recurse(root);
                   return Array.from(nodes);
                 };
 
-                dragended = function _ref7(d) {
+                dragended = function _ref10(d) {
                   if (!d3.event.active) simulation.alphaTarget(0);
                   d.fx = null;
                   d.fy = null;
                 };
 
-                dragged = function _ref6(d) {
+                dragged = function _ref9(d) {
                   d.fx = d3.event.x;
                   d.fy = d3.event.y;
                 };
 
-                dragstarted = function _ref5(d) {
+                dragstarted = function _ref8(d) {
                   if (!d3.event.active) simulation.alphaTarget(0.1).restart();
                   d.fx = d.x;
                   d.fy = d.y;
                 };
 
-                clicked = function _ref4(d) {
+                click = function _ref7(d) {
+                  return __awaiter(this, void 0, void 0,
+                  /*#__PURE__*/
+                  regeneratorRuntime.mark(function _callee4() {
+                    return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                      while (1) {
+                        switch (_context4.prev = _context4.next) {
+                          case 0:
+                            if (timeoutclick === null) {
+                              timeoutclick = setTimeout(function () {
+                                timeoutclick = null;
+                                leftclick(d);
+                              }, 500);
+                            } else if (d.data.category === "node") {
+                              clearTimeout(timeoutclick);
+                              timeoutclick = null;
+                              newpage(d);
+                            }
+
+                          case 1:
+                          case "end":
+                            return _context4.stop();
+                        }
+                      }
+                    }, _callee4);
+                  }));
+                };
+
+                newpage = function _ref6(d) {
+                  return __awaiter(this, void 0, void 0,
+                  /*#__PURE__*/
+                  regeneratorRuntime.mark(function _callee3() {
+                    var myWindow, location;
+                    return regeneratorRuntime.wrap(function _callee3$(_context3) {
+                      while (1) {
+                        switch (_context3.prev = _context3.next) {
+                          case 0:
+                            myWindow = window.open("", "");
+                            location = "/html/graph/?id=" + d.data._serverId;
+                            myWindow.document.location = location;
+                            myWindow.focus();
+
+                          case 4:
+                          case "end":
+                            return _context3.stop();
+                        }
+                      }
+                    }, _callee3);
+                  }));
+                };
+
+                rightclick = function _ref5(d) {
+                  return __awaiter(this, void 0, void 0,
+                  /*#__PURE__*/
+                  regeneratorRuntime.mark(function _callee2() {
+                    var realNode;
+                    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+                      while (1) {
+                        switch (_context2.prev = _context2.next) {
+                          case 0:
+                            d3.event.preventDefault();
+                            realNode = spinal_core_connectorjs_type_1.FileSystem._objects[d.data._serverId];
+
+                            if (!ANode_1.default.collapseOrOpenParent(d)) {
+                              _context2.next = 5;
+                              break;
+                            }
+
+                            _context2.next = 5;
+                            return ANode_1.default.updateParent(d, NodeFactory_1.default);
+
+                          case 5:
+                            update();
+
+                          case 6:
+                          case "end":
+                            return _context2.stop();
+                        }
+                      }
+                    }, _callee2);
+                  }));
+                };
+
+                leftclick = function _ref4(d) {
                   return __awaiter(this, void 0, void 0,
                   /*#__PURE__*/
                   regeneratorRuntime.mark(function _callee() {
@@ -63553,10 +63301,9 @@ function () {
                           case 4:
                             event_bus_js_1.default.$emit("realNode", realNode);
                             event_bus_element_inspector_js_1.default.$emit("realNodeElement", realNode);
-                            console.log("graph", realNode);
                             update();
 
-                          case 8:
+                          case 7:
                           case "end":
                             return _context.stop();
                         }
@@ -63585,17 +63332,26 @@ function () {
 
                 color = function _ref2(d) {
                   if (d.data.hasChildren === false) {
-                    return "#fff";
+                    return style.nodefill.empty;
                   }
 
                   if (d.data._serverId === root.data._serverId) {
-                    return "rgb(240, 169, 169)";
+                    return style.nodefill.enterpoint;
                   }
 
                   if (d.data.category === "node") {
-                    return "#320ff2";
-                  } else if (d.data.category === "relation") {
-                    return "#7efed4";
+                    console.log(d);
+                    return style.nodefill.objClosed;
+                  }
+
+                  if (d.data.category === "relation") {
+                    if (d.data.type === "PtrLst") {
+                      return style.nodefill.ptrlst;
+                    } else if (d.data.type === "LstPtr") {
+                      return style.nodefill.lstptr;
+                    } else if (d.data.type === "Ref") {
+                      return style.nodefill.ref;
+                    }
                   }
                 };
 
@@ -63603,7 +63359,8 @@ function () {
                   var nodes = flatten(root); // recover ids nodes
 
                   var links = createLinks(nodes); //recover links
-                  //build the d3 links************************************/
+
+                  console.log(nodes); //build the d3 links************************************/
 
                   link = mylink.selectAll('.link').data(links, function (d) {
                     return d.target.id;
@@ -63619,8 +63376,7 @@ function () {
                     return d.id.toString();
                   });
                   node.exit().remove();
-                  var nodeEnter = node.enter().append('g').attr('class', 'node').attr('stroke-width', 1.2).style('fill', color).style('opacity', 1).on('click', clicked) // .on("contextmenu", eventlink)
-                  .call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended));
+                  var nodeEnter = node.enter().append('g').attr('class', 'node').attr('stroke-width', 1.2).style('fill', color).style('opacity', 1).on('click', click).on("contextmenu", rightclick).call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended));
                   nodeEnter.append(function (d) {
                     //create nodes Node
                     if (d.data.category === "node") {
@@ -63661,11 +63417,11 @@ function () {
                 };
 
                 this.element = element;
-                _context2.next = 13;
+                _context5.next = 17;
                 return this.graph.load();
 
-              case 13:
-                data = _context2.sent;
+              case 17:
+                data = _context5.sent;
                 //load graph
                 this.width = element.clientWidth - this.margin.left - this.margin.right;
                 this.height = element.clientHeight - this.margin.top - this.margin.bottom;
@@ -63674,7 +63430,9 @@ function () {
                 root = NodeFactory_1.default.createNode(data); //create the svg
 
                 this.svg = d3.select(element).append('svg').call(d3.zoom().scaleExtent([1 / 2, 8]).on('zoom', zoomed)).on("dblclick.zoom", null).attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom);
-                svg = this.svg.append('g').attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")"); //create links group
+                svg = this.svg.append('g').attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")"); //create legend groupe
+
+                legend = svg.append('g'); //create links group
 
                 mylink = svg.append('g'); //create arrow head svg
 
@@ -63686,24 +63444,36 @@ function () {
                   return res.toString();
                 }).distance(function (d) {
                   if (d.target.data.category === "node") {
-                    return 300;
+                    return 200;
                   }
 
-                  return 100;
+                  return 70;
                 }).strength(5)).force('center', d3.forceCenter(this.width / 2, this.height / 2)) //center — pulls all nodes to the center
                 .force("collide ", d3.forceCollide().radius(7)) //collide-specify a ‘repel radius’ of 10 x node radius — to prevent overlap and leave space for label
                 .on('tick', ticked);
                 this.simulation = simulation; //declare arrowhead path
 
                 edgepaths = svg.selectAll(".edgepath");
+                style = {
+                  nodefill: {
+                    empty: "#fff",
+                    enterpoint: "#eaa7a7",
+                    ptrlst: "#7efed4",
+                    lstptr: "f10808",
+                    ref: "09bf3b",
+                    objClosed: "#320ff2"
+                  }
+                }; //node color function
+
+                timeoutclick = null;
                 update();
 
-              case 26:
+              case 33:
               case "end":
-                return _context2.stop();
+                return _context5.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee5, this);
       }));
     }
   }]);
@@ -63753,6 +63523,53 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   name: "AppGraph",
   mounted: function mounted() {
@@ -63764,6 +63581,9 @@ var _default = {
   methods: {
     resize: function resize() {
       this.viewer.resize.call(this.viewer);
+    },
+    showLegend: function showLegend() {
+      document.getElementById("myDropdown").classList.toggle("show");
     }
   }
 };
@@ -63780,42 +63600,154 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { ref: "appGraph", staticClass: "app-Graph" })
+  return _c("div", { ref: "appGraph", staticClass: "app-Graph" }, [
+    _c("div", { staticClass: "dropdown" }, [
+      _c(
+        "button",
+        {
+          staticClass: "button",
+          attrs: { id: "button" },
+          on: { click: _vm.showLegend }
+        },
+        [
+          _c("img", {
+            attrs: {
+              src: "/html/graph/logo.e9a9c890.png",
+              alt: ""
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "dropdown-content", attrs: { id: "myDropdown" } },
+      [
+        _c("ul", { staticClass: "demo" }, [
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/start.975fde4d.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Strating Node")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/simplenode.9edf869f.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Simple Node")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/lastnode.729b0447.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Last Node")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/lstptr.f19be4be.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Relation LstPtr")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/ref.24f81928.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Relation Ref")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/ptrlst.5899b7ee.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Relation PtrLst")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/mouse2.ded68c6b.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("LClick: graph depth")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/mouse2.ded68c6b.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("RClick: parents course")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/mouse2.ded68c6b.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("DblClick: starting Node")])
+          ])
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
           return {
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: null,
+            _scopeId: "data-v-8dc959",
             functional: undefined
           };
         })());
       
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$8dc959', $8dc959);
-          } else {
-            api.reload('$8dc959', $8dc959);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"../viewer":"viewer.ts","../spinal":"spinal.ts","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../../../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"components/elementVueRec.vue":[function(require,module,exports) {
+},{"../viewer":"viewer.ts","../spinal":"spinal.ts","/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/logo.png":[["logo.e9a9c890.png","assets/logo.png"],"assets/logo.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/start.png":[["start.975fde4d.png","assets/start.png"],"assets/start.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/simplenode.png":[["simplenode.9edf869f.png","assets/simplenode.png"],"assets/simplenode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/lastnode.png":[["lastnode.729b0447.png","assets/lastnode.png"],"assets/lastnode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/lstptr.png":[["lstptr.f19be4be.png","assets/lstptr.png"],"assets/lstptr.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ref.png":[["ref.24f81928.png","assets/ref.png"],"assets/ref.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ptrlst.png":[["ptrlst.5899b7ee.png","assets/ptrlst.png"],"assets/ptrlst.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/mouse2.png":[["mouse2.ded68c6b.png","assets/mouse2.png"],"assets/mouse2.png"]}],"components/elementVueRec.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -64002,28 +63934,7 @@ render._withStripped = true
           };
         })());
       
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$518fde', $518fde);
-          } else {
-            api.reload('$518fde', $518fde);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"vue":"../node_modules/vue/dist/vue.runtime.esm.js","spinal-core-connectorjs_type":"../node_modules/spinal-core-connectorjs_type/dist/SpinalModel.js","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../../../node_modules/vue-hot-reload-api/dist/index.js"}],"components/AppElement.vue":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.runtime.esm.js","spinal-core-connectorjs_type":"../node_modules/spinal-core-connectorjs_type/dist/SpinalModel.js"}],"components/AppElement.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -64136,28 +64047,7 @@ render._withStripped = true
           };
         })());
       
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$74c0fd', $74c0fd);
-          } else {
-            api.reload('$74c0fd', $74c0fd);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"../viewer":"viewer.ts","../spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./event-bus":"components/event-bus.js","./event-bus-element-inspector":"components/event-bus-element-inspector.js","./elementVueRec.vue":"components/elementVueRec.vue","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../../../node_modules/vue-hot-reload-api/dist/index.js"}],"../node_modules/d3-context-menu/js/d3-context-menu.js":[function(require,module,exports) {
+},{"../viewer":"viewer.ts","../spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./event-bus":"components/event-bus.js","./event-bus-element-inspector":"components/event-bus-element-inspector.js","./elementVueRec.vue":"components/elementVueRec.vue"}],"../node_modules/d3-context-menu/js/d3-context-menu.js":[function(require,module,exports) {
 var define;
 (function(root, factory) {
 	if (typeof module === 'object' && module.exports) {
@@ -65093,6 +64983,49 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   name: "AppDbInspector",
   data: function data() {
@@ -65104,7 +65037,10 @@ var _default = {
     (0, _dbInspector.dbInspector)(this.$refs.appDbInspector);
   },
   methods: {
-    resize: function resize() {}
+    resize: function resize() {},
+    showLegend: function showLegend() {
+      document.getElementById("myDropdown1").classList.toggle("show");
+    }
   }
 };
 exports.default = _default;
@@ -65120,42 +65056,143 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { ref: "appDbInspector", staticClass: "app-Db-Inspector" })
+  return _c("div", { ref: "appDbInspector", staticClass: "app-Db-Inspector" }, [
+    _c("div", { staticClass: "dropdown1" }, [
+      _c(
+        "button",
+        {
+          staticClass: "button",
+          attrs: { id: "button" },
+          on: { click: _vm.showLegend }
+        },
+        [
+          _c("img", {
+            attrs: {
+              src: "/html/graph/logo.e9a9c890.png",
+              alt: ""
+            }
+          })
+        ]
+      ),
+      _vm._v(" "),
+      _vm._m(0)
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "dropdown1-content", attrs: { id: "myDropdown1" } },
+      [
+        _c("ul", { staticClass: "demo1" }, [
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/simplenode.9edf869f.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Close Node")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/open.c57e971c.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Open Node")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/last.048c611e.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Last Node")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/ptr.dfb52c0e.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Close Ptr Node")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/start.975fde4d.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Open Ptr Node")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/ids.c8bd3cf9.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Close Ref Node")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/idsopen.fba40b9c.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("Open Ref Node")])
+          ]),
+          _vm._v(" "),
+          _c("li", [
+            _c("img", {
+              attrs: {
+                src: "/html/graph/mouse2.ded68c6b.png",
+                alt: ""
+              }
+            }),
+            _vm._v(" "),
+            _c("p", [_vm._v("graph depth")])
+          ])
+        ])
+      ]
+    )
+  }
+]
 render._withStripped = true
 
           return {
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: null,
+            _scopeId: "data-v-7922ee",
             functional: undefined
           };
         })());
       
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$7922ee', $7922ee);
-          } else {
-            api.reload('$7922ee', $7922ee);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"../viewer":"viewer.ts","../spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./event-bus":"components/event-bus.js","../dbInspector":"dbInspector.js","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../../../node_modules/vue-hot-reload-api/dist/index.js"}],"App.vue":[function(require,module,exports) {
+},{"../viewer":"viewer.ts","../spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./event-bus":"components/event-bus.js","../dbInspector":"dbInspector.js","/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/logo.png":[["logo.e9a9c890.png","assets/logo.png"],"assets/logo.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/simplenode.png":[["simplenode.9edf869f.png","assets/simplenode.png"],"assets/simplenode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/open.png":[["open.c57e971c.png","assets/open.png"],"assets/open.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/last.png":[["last.048c611e.png","assets/last.png"],"assets/last.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ptr.png":[["ptr.dfb52c0e.png","assets/ptr.png"],"assets/ptr.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/start.png":[["start.975fde4d.png","assets/start.png"],"assets/start.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ids.png":[["ids.c8bd3cf9.png","assets/ids.png"],"assets/ids.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/idsopen.png":[["idsopen.fba40b9c.png","assets/idsopen.png"],"assets/idsopen.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/mouse2.png":[["mouse2.ded68c6b.png","assets/mouse2.png"],"assets/mouse2.png"]}],"App.vue":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -65241,12 +65278,17 @@ exports.default = {
                   _vm._v(" "),
                   _c(
                     "gl-col",
+                    { staticClass: "col", attrs: { width: 40 } },
                     [
                       _c(
                         "gl-component",
                         {
                           staticClass: "comp",
-                          attrs: { title: "DB Inspector", closable: false }
+                          attrs: {
+                            title: "DB Inspector",
+                            closable: false,
+                            height: 70
+                          }
                         },
                         [_c("app-Db-Inspector", { ref: "app-Db-Inspector" })],
                         1
@@ -65258,8 +65300,7 @@ exports.default = {
                           staticClass: "comp",
                           attrs: {
                             title: "Element Node Inspector",
-                            closable: false,
-                            width: 40
+                            closable: true
                           }
                         },
                         [_c("app-Element")],
@@ -65293,28 +65334,7 @@ render._withStripped = true
           };
         })());
       
-    /* hot reload */
-    (function () {
-      if (module.hot) {
-        var api = require('vue-hot-reload-api');
-        api.install(require('vue'));
-        if (api.compatible) {
-          module.hot.accept();
-          if (!module.hot.data) {
-            api.createRecord('$b7ced2', $b7ced2);
-          } else {
-            api.reload('$b7ced2', $b7ced2);
-          }
-        }
-
-        
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-      }
-    })();
-},{"./components/AppHeader.vue":"components/AppHeader.vue","./components/AppGraph.vue":"components/AppGraph.vue","./components/AppElement.vue":"components/AppElement.vue","./components/AppDbInspector.vue":"components/AppDbInspector.vue","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../../../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"../node_modules/golden-layout/dist/goldenlayout.js":[function(require,module,exports) {
+},{"./components/AppHeader.vue":"components/AppHeader.vue","./components/AppGraph.vue":"components/AppGraph.vue","./components/AppElement.vue":"components/AppElement.vue","./components/AppDbInspector.vue":"components/AppDbInspector.vue"}],"../node_modules/golden-layout/dist/goldenlayout.js":[function(require,module,exports) {
 var define;
 (function($){var lm={"config":{},"container":{},"controls":{},"errors":{},"items":{},"utils":{}};
 lm.utils.F = function() {
@@ -70657,11 +70677,7 @@ lm.utils.copy( lm.utils.ReactComponentHandler.prototype, {
 } );})(window.$);
 },{}],"../node_modules/golden-layout/src/css/goldenlayout-base.css":[function(require,module,exports) {
 
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/jquery/dist/jquery.js":[function(require,module,exports) {
+},{}],"../node_modules/jquery/dist/jquery.js":[function(require,module,exports) {
 var global = arguments[3];
 var process = require("process");
 var define;
@@ -87650,6 +87666,471 @@ module.exports = require("vue-resize-directive");
 /******/ });
 });
 //# sourceMappingURL=vue-golden-layout.js.map
+},{"golden-layout":"../node_modules/golden-layout/dist/goldenlayout.js","golden-layout/src/css/goldenlayout-base.css":"../node_modules/golden-layout/src/css/goldenlayout-base.css","jquery":"../node_modules/jquery/dist/jquery.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js","vue-property-decorator":"../node_modules/vue-property-decorator/lib/vue-property-decorator.js","vue-resize-directive":"../node_modules/vue-resize-directive/dist/Vueresize.js"}],"index.js":[function(require,module,exports) {
+"use strict";
+
+require("babel-polyfill");
+
+require("spinal-model-graph");
+
+var _spinal = _interopRequireDefault(require("./spinal"));
+
+var _vue = _interopRequireDefault(require("vue"));
+
+var _App = _interopRequireDefault(require("./App.vue"));
+
+var _vueGoldenLayout = _interopRequireDefault(require("vue-golden-layout"));
+
+var _vuePropertyDecorator = require("vue-property-decorator");
+
+require("golden-layout/src/css/goldenlayout-base.css");
+
+require("golden-layout/src/css/goldenlayout-dark-theme.css");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/*
+ * Copyright 2020 SpinalCom - www.spinalcom.com
+ * 
+ * This file is part of SpinalCore.
+ * 
+ * Please read all of the following terms and conditions
+ * of the Free Software license Agreement ("Agreement")
+ * carefully.
+ * 
+ * This Agreement is a legally binding contract between
+ * the Licensee (as defined below) and SpinalCom that
+ * sets forth the terms and conditions that govern your
+ * use of the Program. By installing and/or using the
+ * Program, you agree to abide by all the terms and
+ * conditions stated or referenced herein.
+ * 
+ * If you do not agree to abide by these terms and
+ * conditions, do not demonstrate your acceptance and do
+ * not install or use the Program.
+ * You should have received a copy of the license along
+ * with this file. If not, see
+ * <http://resources.spinalcom.com/licenses.pdf>.
+ */
+_vue.default.use(_vueGoldenLayout.default);
+
+_vue.default.config.productionTip = false;
+new _vue.default({
+  render: function render(h) {
+    return h(_App.default);
+  }
+}).$mount("#app");
+},{"babel-polyfill":"../../../node_modules/babel-polyfill/lib/index.js","spinal-model-graph":"../node_modules/spinal-model-graph/dist/src/index.js","./spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./App.vue":"App.vue","vue-golden-layout":"../node_modules/vue-golden-layout/dist/vue-golden-layout.js","vue-property-decorator":"../node_modules/vue-property-decorator/lib/vue-property-decorator.js","golden-layout/src/css/goldenlayout-base.css":"../node_modules/golden-layout/src/css/goldenlayout-base.css","golden-layout/src/css/goldenlayout-dark-theme.css":"../node_modules/golden-layout/src/css/goldenlayout-base.css"}]},{},["index.js"], null)_gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./gl-router.vue?vue&type=template&id=5eafe7f9& */ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./router/gl-router.vue?vue&type=template&id=5eafe7f9&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./router/utils.ts":
+/*!*************************!*\
+  !*** ./router/utils.ts ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var golden_vue_1 = __webpack_require__(/*! ../golden.vue */ "./golden.vue");
+var utils_1 = __webpack_require__(/*! ../utils */ "./utils.ts");
+var roles_1 = __webpack_require__(/*! ../roles */ "./roles/index.ts");
+var vue_1 = __webpack_require__(/*! vue */ "vue");
+function defaultTitler(route) {
+    //The last case is to warn the programmer who would have forgotten that detail
+    return route ? ((route.meta && route.meta.title) || 'set $route.meta.title') : '';
+}
+exports.defaultTitler = defaultTitler;
+exports.RouteComponentName = '$router-route';
+function freezeValue(object, path, value) {
+    var props = path.split('.'), forced = props.pop();
+    for (var _i = 0, props_1 = props; _i < props_1.length; _i++) {
+        var property = props_1[_i];
+        Object.defineProperty(object, property, {
+            value: object = Object.create(object[property]),
+            writable: false
+        });
+    }
+    Object.defineProperty(object, forced, {
+        value: value,
+        writable: false
+    });
+}
+function freezeRoute(component, route) {
+    //Simulate a _routerRoot object so that all children have a $route object set to this route object
+    var routerRoot = component._routerRoot = Object.create(component._routerRoot);
+    freezeValue(routerRoot, '_route', route);
+    freezeValue(routerRoot, '_router.history.current', route);
+}
+exports.freezeRoute = freezeRoute;
+function routeParent(parent, route) {
+    var template;
+    if (parent._glRouter)
+        template = parent.$scopedSlots.route ?
+            parent.$scopedSlots.route(route) :
+            parent.$slots.route;
+    return { template: template, parent: parent };
+}
+function vueComponent(comp, namedComponents) {
+    return __awaiter(this, void 0, void 0, function () {
+        function componentIsVueConstructor() { return component.prototype instanceof vue_1.default; }
+        var component;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    component = 'string' === typeof comp ? namedComponents[comp] : comp;
+                    console.assert("Component registered : \"" + comp + "\".");
+                    if ('function' === typeof component && !componentIsVueConstructor)
+                        //AsyncComponentFactory<any, any, any, any> | FunctionalComponentOptions<any, PropsDefinition<any>>
+                        component = component();
+                    if (!(component instanceof Promise)) return [3 /*break*/, 2];
+                    return [4 /*yield*/, component];
+                case 1:
+                    component = _a.sent();
+                    _a.label = 2;
+                case 2: return [2 /*return*/, componentIsVueConstructor() ?
+                        component :
+                        vue_1.default.extend(component)];
+            }
+        });
+    });
+}
+function createRouteComponent(comp, routerSpec, route) {
+    var parent = routerSpec.parent, template = routerSpec.template;
+    var itr;
+    for (itr = comp; itr && itr != roles_1.goldenItem; itr = itr.super)
+        ;
+    if (itr) {
+        return new comp({
+            parent: parent,
+            propsData: route
+        });
+    }
+    var component = template ? new vue_1.default({
+        render: function (ce) {
+            // `instanceof Array` fails in popouts: `template` is a `window.opener.Array` then
+            return utils_1.xInstanceOf(template, 'Array') ?
+                ce('div', { class: 'glComponent' }, template) :
+                template;
+        },
+        mounted: function () {
+            new comp({
+                el: component.$el.querySelector('main') || undefined,
+                parent: component
+            });
+        },
+        parent: parent
+    }) : new comp({ parent: parent });
+    return component;
+}
+function renderInContainer(container, component) {
+    //TODO: document why we don't use simply component.$mount(container.getElement());
+    var el = document.createElement('div');
+    container.getElement().append(el);
+    component.$mount(el);
+}
+function getRouteComponent(gl, router, path) {
+    return __awaiter(this, void 0, void 0, function () {
+        var route, compSpec, component, _a;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0:
+                    route = gl.$router.resolve({ path: path }).route, compSpec = gl.$router.getMatchedComponents({ path: path })[0];
+                    console.assert(compSpec, "Path resolves to a component: " + path);
+                    _a = createRouteComponent;
+                    return [4 /*yield*/, vueComponent(compSpec, gl.$options.components || {})];
+                case 1:
+                    component = _a.apply(void 0, [_b.sent(),
+                        routeParent(router, route), route]);
+                    //freezeRoute(component, route);
+                    return [2 /*return*/, component];
+            }
+        });
+    });
+}
+exports.getRouteComponent = getRouteComponent;
+function renderRoute(gl, container, state) {
+    return __awaiter(this, void 0, void 0, function () {
+        var parent, _glRouter, _a, _b;
+        return __generator(this, function (_c) {
+            switch (_c.label) {
+                case 0:
+                    parent = container.parent, _glRouter = parent.vueObject._glRouter;
+                    if (_glRouter)
+                        parent = _glRouter;
+                    else {
+                        while (!parent.vueObject || !parent.vueObject._isVue)
+                            parent = parent.parent;
+                        parent = parent.vueObject;
+                    }
+                    _a = renderInContainer;
+                    _b = [container];
+                    return [4 /*yield*/, getRouteComponent(gl, parent, state.path)];
+                case 1:
+                    _a.apply(void 0, _b.concat([_c.sent()]));
+                    return [2 /*return*/];
+            }
+        });
+    });
+}
+function UsingRoutes(target) {
+    golden_vue_1.registerGlobalComponent(exports.RouteComponentName, renderRoute);
+}
+exports.UsingRoutes = UsingRoutes;
+
+
+/***/ }),
+
+/***/ "./utils.ts":
+/*!******************!*\
+  !*** ./utils.ts ***!
+  \******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isSubWindow = /[?&]gl-window=/.test(window.location.search);
+var GoldenLayout = __webpack_require__(/*! golden-layout */ "golden-layout");
+var $ = __webpack_require__(/*! jquery */ "jquery");
+function newSemaphore() {
+    var access, rv = new Promise(function (resolve, reject) {
+        access = { resolve: resolve, reject: reject };
+    });
+    Object.assign(rv, access);
+    return rv;
+}
+exports.newSemaphore = newSemaphore;
+var lm = GoldenLayout.__lm;
+/**
+ * Equivalent of `obj instanceof name` but accepting cross-windows classes.
+ * @example
+ *  A popup and the main window both have an `Array` class defined - and they are different
+ *  Therefore `x instanceof Array` will return false if the Array class is from the other window
+ */
+function xInstanceOf(obj, name) {
+    var browser = obj.constructor;
+    while (browser.name !== name && browser.super)
+        browser = browser.super;
+    return browser.name === name;
+}
+exports.xInstanceOf = xInstanceOf;
+function localWindow(obj) {
+    if (!obj || 'object' != typeof obj)
+        return obj;
+    var rv = xInstanceOf(obj, 'Array') ? [] : {};
+    for (var i in obj)
+        rv[i] = localWindow(obj[i]);
+    return rv;
+}
+exports.localWindow = localWindow;
+exports.statusChange = {
+    poppingOut: false,
+    poppingIn: false,
+    unloading: false
+};
+// hook `createPopout` to give objects instead of destroying then on-destroy
+var oldCreatePopout = lm.LayoutManager.prototype.createPopout;
+lm.LayoutManager.prototype.createPopout = function (item) {
+    var rv;
+    exports.statusChange.poppingOut = true;
+    try {
+        item.emit && item.emit('beforePopOut', item);
+        if (!(item.contentItems || item[0].content).length)
+            return null;
+        rv = oldCreatePopout.apply(this, arguments);
+    }
+    finally {
+        exports.statusChange.poppingOut = false;
+    }
+    item.emit && item.emit('poppedOut', rv);
+    if (item[0])
+        item = item[0];
+    var rootPaths = {}, gl = this.vueObject;
+    function ref(path) { rootPaths[path] = gl.getChild(path); }
+    if (item.content) { //config
+        if (item.vue)
+            ref(item.vue);
+        for (var i = 0; item.content[i]; ++i)
+            ref(item.content[i].vue);
+    }
+    else { //item
+        var obj = item.vueObject;
+        if (obj && obj.nodePath)
+            rootPaths[obj.nodePath] = obj;
+        for (var _i = 0, _a = item.contentItems; _i < _a.length; _i++) {
+            var sub = _a[_i];
+            obj = sub.vueObject;
+            rootPaths[obj.nodePath] = obj;
+        }
+    }
+    var ppWindow = rv.getWindow();
+    ppWindow.poppedoutVue = {
+        layout: gl,
+        path: rootPaths
+    };
+    ppWindow.addEventListener('beforeunload', function () {
+        if (!rv.poppedIn)
+            for (var p in rootPaths)
+                rootPaths[p].delete();
+    });
+    rv.on('initialised', function () {
+        var ppGl = rv.getGlInstance(), emptyCheck = null;
+        //Automatically closes the window when there is no more tabs
+        ppGl.on('itemDestroyed', function () {
+            if (!emptyCheck)
+                emptyCheck = setTimeout(function () {
+                    emptyCheck = null;
+                    if (!ppGl.root.contentItems.length)
+                        ppWindow.close();
+                });
+        });
+    });
+    return rv;
+};
+var bp = lm.controls.BrowserPopout.prototype;
+// hook `createPopout` to give objects instead of destroying then on-destroy
+var oldPopIn = bp.popIn;
+bp.popIn = function () {
+    var rv;
+    exports.statusChange.poppingIn = true;
+    // GL bug-fix: poping-in empty window
+    try {
+        this.emit('beforePopIn');
+        this.poppedIn = true;
+        rv = this.getGlInstance().root.contentItems.length ?
+            oldPopIn.apply(this, arguments) :
+            this.close();
+    }
+    finally {
+        exports.statusChange.poppingIn = false;
+    }
+    return rv;
+};
+window.addEventListener('beforeunload', function () { exports.statusChange.unloading = true; });
+/**
+ * Determine if the user is dradding a tab
+ */
+function isDragging() {
+    return $('body').hasClass('lm_dragging');
+}
+exports.isDragging = isDragging;
+
+
+/***/ }),
+
+/***/ "golden-layout":
+/*!********************************!*\
+  !*** external "golden-layout" ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("golden-layout");
+
+/***/ }),
+
+/***/ "golden-layout/src/css/goldenlayout-base.css":
+/*!**************************************************************!*\
+  !*** external "golden-layout/src/css/goldenlayout-base.css" ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("golden-layout/src/css/goldenlayout-base.css");
+
+/***/ }),
+
+/***/ "jquery":
+/*!*************************!*\
+  !*** external "jquery" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("jquery");
+
+/***/ }),
+
+/***/ "vue":
+/*!**********************!*\
+  !*** external "vue" ***!
+  \**********************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("vue");
+
+/***/ }),
+
+/***/ "vue-property-decorator":
+/*!*****************************************!*\
+  !*** external "vue-property-decorator" ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("vue-property-decorator");
+
+/***/ }),
+
+/***/ "vue-resize-directive":
+/*!***************************************!*\
+  !*** external "vue-resize-directive" ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("vue-resize-directive");
+
+/***/ })
+
+/******/ });
+});
+//# sourceMappingURL=vue-golden-layout.js.map
 },{"golden-layout":"../node_modules/golden-layout/dist/goldenlayout.js","golden-layout/src/css/goldenlayout-base.css":"../node_modules/golden-layout/src/css/goldenlayout-base.css","jquery":"../node_modules/jquery/dist/jquery.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js","vue-property-decorator":"../node_modules/vue-property-decorator/lib/vue-property-decorator.js","vue-resize-directive":"../node_modules/vue-resize-directive/dist/Vueresize.js"}],"../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css":[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
@@ -87709,7 +88190,7 @@ new _vue.default({
   render: function render(h) {
     return h(_App.default);
   }
-}).$mount("#app"); // const spinal = Spinal.getInstance();
+}).$mount("#app");
 },{"babel-polyfill":"../../../node_modules/babel-polyfill/lib/index.js","spinal-model-graph":"../node_modules/spinal-model-graph/dist/src/index.js","./spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./App.vue":"App.vue","vue-golden-layout":"../node_modules/vue-golden-layout/dist/vue-golden-layout.js","vue-property-decorator":"../node_modules/vue-property-decorator/lib/vue-property-decorator.js","golden-layout/src/css/goldenlayout-base.css":"../node_modules/golden-layout/src/css/goldenlayout-base.css","golden-layout/src/css/goldenlayout-dark-theme.css":"../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -87738,7 +88219,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "42837" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43179" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

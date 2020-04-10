@@ -62,7 +62,7 @@ if (process.env.NODE_ENV === 'development') {
   options.watch = true;
   options.cache = true;
   options.cacheDir = Path.join(OuputDir, '.cache'); // The directory cache gets put in, defaults to .cache
-  options.hmr = true;
+  // options.hmr = true;
 }
 
 

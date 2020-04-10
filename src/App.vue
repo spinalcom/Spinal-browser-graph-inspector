@@ -38,15 +38,18 @@ with this file. If not, see
             <app-Graph ref="app-Graph"></app-Graph>
           </gl-component>
 
-          <gl-col>
-            <gl-component class="comp" title="DB Inspector" :closable="false"
+          <gl-col class="col" :width="40">
+            <gl-component
+              class="comp"
+              title="DB Inspector"
+              :closable="false"
+              :height="70"
               ><app-Db-Inspector ref="app-Db-Inspector"></app-Db-Inspector>
             </gl-component>
             <gl-component
               class="comp"
               title="Element Node Inspector"
-              :closable="false"
-              :width="40"
+              :closable="true"
             >
               <app-Element></app-Element>
             </gl-component>
@@ -64,6 +67,7 @@ import AppHeader from "./components/AppHeader.vue";
 import AppGraph from "./components/AppGraph.vue";
 import AppElement from "./components/AppElement.vue";
 import AppDbInspector from "./components/AppDbInspector.vue";
+import EventBusHelp from "./components/event-bus-help.js";
 
 export default {
   name: "App",
@@ -110,6 +114,7 @@ body,
 }
 
 .golden {
+  position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;

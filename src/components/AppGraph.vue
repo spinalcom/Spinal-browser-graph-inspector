@@ -22,7 +22,54 @@ with this file. If not, see
 <http://resources.spinalcom.com/licenses.pdf>.
 -->
 <template>
-  <div ref="appGraph" class="app-Graph"></div>
+  <div ref="appGraph" class="app-Graph">
+    <div class="dropdown">
+      <button id="button" class="button" v-on:click="showLegend">
+        <img src="/assets/logo.png" alt="" />
+      </button>
+
+      <div id="myDropdown" class="dropdown-content">
+        <ul class="demo">
+          <li>
+            <img src="/assets/start.png" alt="" />
+            <p>Strating Node</p>
+          </li>
+          <li>
+            <img src="/assets/simplenode.png" alt="" />
+            <p>Simple Node</p>
+          </li>
+          <li>
+            <img src="/assets/lastnode.png" alt="" />
+            <p>Last Node</p>
+          </li>
+          <li>
+            <img src="/assets/lstptr.png" alt="" />
+            <p>Relation LstPtr</p>
+          </li>
+          <li>
+            <img src="/assets/ref.png" alt="" />
+            <p>Relation Ref</p>
+          </li>
+          <li>
+            <img src="/assets/ptrlst.png" alt="" />
+            <p>Relation PtrLst</p>
+          </li>
+          <li>
+            <img src="/assets/mouse2.png" alt="" />
+            <p>LClick: graph depth</p>
+          </li>
+          <li>
+            <img src="/assets/mouse2.png" alt="" />
+            <p>RClick: parents course</p>
+          </li>
+          <li>
+            <img src="/assets/mouse2.png" alt="" />
+            <p>DblClick: starting Node</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -39,15 +86,85 @@ export default {
   methods: {
     resize() {
       this.viewer.resize.call(this.viewer);
+    },
+    showLegend() {
+      document.getElementById("myDropdown").classList.toggle("show");
     }
   }
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+* {
+  padding: 0;
+  margin: 0;
+}
 .app-Graph {
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+$blue: #1686d9;
+
+.dropdown {
+  position: relative;
+  float: left;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #222;
+  min-width: 200px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(76, 69, 69, 0.2);
+  z-index: 1;
+  font-family: "Gill Sans", sans-serif;
+}
+
+.show {
+  display: block;
+}
+
+.button {
+  cursor: help;
+  margin-right: 3px;
+  width: 25px;
+  height: 25px;
+  background-color: $blue;
+  border: 2px solid white;
+  border-radius: 35px;
+  text-decoration: none;
+  padding: 5px 5px;
+  color: white;
+  display: inline-block;
+  &:hover {
+    background-color: white;
+    color: $blue;
+    border: 2px solid $blue;
+  }
+}
+.button img {
+  font-size: 24px;
+  cursor: help;
+  margin-left: -5px;
+  margin-top: -5px;
+  width: 20px;
+  height: 20px;
+}
+ul {
+  list-style-type: none;
+}
+ul li {
+  margin: 5px;
+}
+ul li img {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+ul li p {
+  display: inline-block;
+  vertical-align: middle;
 }
 </style>

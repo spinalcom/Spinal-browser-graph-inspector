@@ -23,6 +23,8 @@
  */
 import { D3Node } from "./D3Node";
 import { SpinalAnyNode } from "./types";
+import { FileSystem } from "spinal-core-connectorjs_type";
+import { SpinalNode } from "spinal-model-graph";
 
 abstract class ANode {
   id: string;
@@ -84,7 +86,6 @@ abstract class ANode {
   }
 
   static collapseOrOpen(node: D3Node): boolean {
-
     if (Array.isArray(node._children)) {
       node.children = node._children;
       node._children = null;
@@ -94,7 +95,22 @@ abstract class ANode {
       node.children = null;
       return true;
     }
+
   }
+
+  static collapseOrOpenParent(node: D3Node): boolean {
+    if (Array.isArray(node._parent)) {
+      node.parent = node._parent;
+      node._parent = null;
+      return false;
+    } else {
+      node._parent = node.parent;
+      node.parent = null;
+      return true;
+    }
+
+  }
+
 
   static async updateChildren(node: D3Node, nodeFactory) {
     const children: SpinalAnyNode[] = await node.data.getChildren()
@@ -115,25 +131,30 @@ abstract class ANode {
 
   }
 
-  // static async updateParent(node: D3Node, nodeFactory) {
-  //   const children: SpinalAnyNode[] = await node.data.getChildren()
+  static async updateParent(node: D3Node, nodeFactory) {
+    const promise = [];
+    const realNode = (FileSystem._objects[node.data._serverId]);
+    if (realNode instanceof SpinalNode) {
+      for (const [, listnode] of realNode.parents) {
+        for (let index = 0; index < listnode.length; index++) {
+          promise.push(listnode[index].load());
+        }
+      }
+      const parents = await Promise.all(promise);
+      node.parent = [];
+      for (const parent of parents) {
 
-  //   const c = ANode.getActifChild(node)
-  //   for (const child of children) {
+        const n = nodeFactory.createNode(parent)
+        node.parent.push(n)
+      }
+    } else {
+      const parent = await realNode.parent.load();
+      const s = nodeFactory.createNode(parent);
+      node.parent = [s];
 
-  //     if (ANode.checkChildExist(child.getId().get(), node)) {
-  //       // update node
-  //       continue;
-  //     }
+    }
 
-
-
-  //     const n = nodeFactory.createNode(child, node)
-  //     c.push(n)
-  //   }
-
-  //   // check child a rm 
-  // }
+  }
 
 }
 export default ANode

@@ -44,6 +44,7 @@ class Viewer {
   element: any;
   svg: any;
   simulation: any;
+  visualisation: boolean = false;
   constructor(spinal: Spinal) {
     this.graph = spinal
   }
@@ -97,6 +98,8 @@ class Viewer {
       .attr("transform", "translate("
         + this.margin.left + "," + this.margin.top + ")");
 
+    //create legend groupe
+    const legend = svg.append('g')
 
     //create links group
     const mylink = svg.append('g')
@@ -128,10 +131,10 @@ class Viewer {
       })
         .distance(function (d: any) {
           if (d.target.data.category === "node") {
-            return 300;
+            return 200;
           }
 
-          return 100;
+          return 70;
         }).strength(5))
 
       .force('center', d3.forceCenter(this.width / 2, this.height / 2)) //center — pulls all nodes to the center
@@ -147,6 +150,7 @@ class Viewer {
 
       const nodes = flatten(root) // recover ids nodes
       const links = createLinks(nodes)  //recover links
+      console.log(nodes);
 
       //build the d3 links************************************/
       link = mylink
@@ -200,8 +204,8 @@ class Viewer {
         .attr('stroke-width', 1.2)
         .style('fill', color)
         .style('opacity', 1)
-        .on('click', clicked)
-        // .on("contextmenu", eventlink)
+        .on('click', click)
+        .on("contextmenu", rightclick)
         .call(d3.drag()
           .on('start', dragstarted)
           .on('drag', dragged)
@@ -256,22 +260,44 @@ class Viewer {
       simulation.nodes(nodes)
     }
 
-
+    let style = {
+      nodefill: {
+        empty: "#fff", // or atomic or unknown
+        enterpoint: "#eaa7a7",
+        ptrlst: "#7efed4",
+        lstptr: "f10808",
+        ref: "09bf3b",
+        objClosed: "#320ff2"
+      }
+    };
 
 
     //node color function
     function color(d) {
       if (d.data.hasChildren === false) {
-        return "#fff";
+        return style.nodefill.empty;
       }
       if (d.data._serverId === root.data._serverId) {
-        return "rgb(240, 169, 169)";
+        return style.nodefill.enterpoint;
       }
+
       if (d.data.category === "node") {
-        return "#320ff2";
-      } else if (d.data.category === "relation") {
-        return "#7efed4";
+        console.log(d);
+
+        return style.nodefill.objClosed;
+
       }
+
+      if (d.data.category === "relation") {
+        if (d.data.type === "PtrLst") {
+          return style.nodefill.ptrlst;
+        } else if (d.data.type === "LstPtr") {
+          return style.nodefill.lstptr;
+        } else if (d.data.type === "Ref") {
+          return style.nodefill.ref;
+        }
+      }
+
     }
 
 
@@ -293,7 +319,8 @@ class Viewer {
 
 
     //node clicked function
-    async function clicked(d: D3Node) {
+    async function leftclick(d: D3Node) {
+
       const realNode = (FileSystem._objects[d.data._serverId]);
 
       if (ANode.collapseOrOpen(d)) {
@@ -301,19 +328,48 @@ class Viewer {
       }
       EventBus.$emit("realNode", realNode);
       EventBusElement.$emit("realNodeElement", realNode);
-      console.log("graph", realNode);
-
-
       update()
     }
 
-    // async function eventlink(d: D3Node) {
-    //   if (d.data.category === "node") {
-    //     d3.event.preventDefault();
-    // const realNode = (FileSystem._objects[d.data._serverId]);
-    // EventBus.$emit("realNode", realNode);
-    //   }
-    // }
+    async function rightclick(d: D3Node) {
+      d3.event.preventDefault();
+      const realNode = (FileSystem._objects[d.data._serverId]);
+      if (ANode.collapseOrOpenParent(d)) {
+        await ANode.updateParent(d, nodeFactory);
+      }
+
+      update();
+
+    }
+    let timeoutclick = null;
+
+    async function newpage(d: D3Node) {
+
+      let myWindow = window.open("", "");
+      let location = "/html/graph/?id=" + d.data._serverId;
+      myWindow.document.location = <any>(location);
+      myWindow.focus();
+
+    }
+
+    async function click(d: D3Node) {
+
+      if (timeoutclick === null) {
+        timeoutclick = setTimeout(() => {
+          timeoutclick = null;
+          leftclick(d);
+        }, 500);
+
+      } else if (d.data.category === "node") {
+        clearTimeout(timeoutclick);
+        timeoutclick = null;
+        newpage(d);
+
+      }
+
+
+
+    }
 
     // dragstarted function
     function dragstarted(d: D3Node) {
@@ -348,26 +404,55 @@ class Viewer {
         else ++i;
 
         nodes.add(node)
-        if (node.children) node.children.forEach(recurse)
+        if (node.children) node.children.forEach(recurse);
+        if (node.parent) node.parent.forEach(recurse);
       }
       recurse(root)
       return Array.from(nodes)
     }
+
+    function chekLink(source: D3Node, target: D3Node, links: any[]): boolean {
+      for (let index = 0; index < links.length; index++) {
+        if (source.data === links[index].source.data && target.data === links[index].target.data) {
+          return true;
+        }
+      }
+      return false
+
+    }
+
+
     function createLinks(nodes: D3Node[]) {
       const links = []
       let id = 0
       for (const node of nodes) {
+        if (Array.isArray(node.parent)) {
+          for (const parent of node.parent) {
+            if (!chekLink(parent, node, links)) {
+              links.push({
+                source: parent,
+                target: node,
+                index: id++
+              })
+            }
+          }
+        }
         if (Array.isArray(node.children))
           for (const child of node.children) {
-            links.push({
-              source: node,
-              target: child,
-              index: id++
-            })
+            if (!chekLink(node, child, links)) {
+              links.push({
+                source: node,
+                target: child,
+                index: id++
+              })
+            }
           }
       }
 
+
       return links
+
+
     }
 
     // Zoom function

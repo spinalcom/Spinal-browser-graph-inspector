@@ -25,13 +25,25 @@ with this file. If not, see
   <div class="app-header">
     <div class="logo"><img src="/assets/spinal.png" alt="" /></div>
     <div class="title">Graph Node Inspector</div>
-    <div class="any"></div>
+    <div class="any">
+      <button id="button" class="button" v-on:click="openpopup">
+        <img src="/assets/logo.png" alt="" />
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
+import EventBusHelp from "./event-bus-help.js";
+
 export default {
-  name: "AppHeader"
+  name: "AppHeader",
+  methods: {
+    openpopup() {
+      let display = "flex";
+      EventBusHelp.$emit("help", display);
+    }
+  }
 };
 </script>
 
@@ -50,6 +62,13 @@ export default {
   float: left;
   width: auto;
   height: 60px;
+}
+.any img {
+  font-size: 24px;
+  margin-left: -5px;
+  margin-top: -5px;
+  width: 30px;
+  height: 30px;
 }
 ul {
   float: left;
@@ -72,5 +91,33 @@ ul {
   align-self: center;
   height: 20px;
   text-align: center;
+}
+a {
+  text-decoration: none;
+  color: black;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+$blue: #1686d9;
+
+.button {
+  cursor: help;
+  margin-left: 130px;
+  margin-top: 15px;
+  width: 35px;
+  height: 35px;
+  background-color: $blue;
+  border: 2px solid white;
+  border-radius: 35px;
+  text-decoration: none;
+  padding: 5px 5px;
+  color: white;
+  display: inline-block;
+  &:hover {
+    background-color: white;
+    color: $blue;
+    border: 2px solid $blue;
+  }
 }
 </style>

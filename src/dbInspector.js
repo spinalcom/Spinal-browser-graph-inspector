@@ -260,6 +260,7 @@ export function dbInspector(domElement) {
         .attr("r", 8)
         .style("fill", function (d) {
           if (d.data.obj) {
+
             if (d.data.haveChild && !(d.children || d._children)) {
               return style.nodefill.objClosed;
             }

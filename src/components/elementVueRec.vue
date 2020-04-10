@@ -143,6 +143,14 @@ export default elementVueRec;
 </script>
 
 <style>
+ul {
+  margin: 10px;
+  padding: 10px;
+}
+li {
+  margin: 10px;
+  padding: 10px;
+}
 td {
   text-align: left;
   padding: 8px;

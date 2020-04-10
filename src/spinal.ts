@@ -55,9 +55,9 @@ export class Spinal {
 
     this.conn = spinalCore.connect(connect_opt);
     FileSystem.CONNECTOR_TYPE = "Browser";
-
-
   }
+
+
   getServeIdByName(name) {
     const url = window.location.href;
     name = name.replace(/[[\]]/g, "\\$&");

@@ -63,12 +63,4 @@ export default {
 .element {
   font-family: sans-serif;
 }
-ul {
-  list-style: none;
-  margin-left: 0;
-  padding-left: 0;
-}
-li {
-  margin-bottom: 15px; /* à adapter */
-}
 </style>

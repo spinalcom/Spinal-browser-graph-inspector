@@ -45,10 +45,12 @@ class NodeFactory {
     return false
   }
 
+
   createNode(node: SpinalAnyNode, parent: D3Node = null): D3Node {
     if (this.nodeMap.has(node._server_id)) {
       let d3Node = this.nodeMap.get(node._server_id);
-      if (!this.checkParentExist(parent, d3Node)) {
+
+      if (parent && !this.checkParentExist(parent, d3Node)) {
         d3Node.parent.push(parent);
       }
       return d3Node;

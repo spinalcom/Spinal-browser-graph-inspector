@@ -70,8 +70,6 @@ with this file. If not, see
               v-for="(id, index) in ids"
               :key="index"
               @resize="onResize('app-graph')"
-              @show="onShow(index)"
-              @hide="onHide(index)"
             >
               <app-Graph ref="app-graph" :id="'app-graph' + index" :server_id="id"></app-Graph>
             </gl-component>
@@ -125,14 +123,9 @@ export default {
   data() {
     return {
       ids: [],
-      currentIdx : 0
     };
   },
   methods: {
-    onShow(index) {console.log("onShow", index);
-    },
-onHide(index) {console.log("onHide", index);
-},
     initids() {
       EventBus.$on("server_id", server_id => {
         console.log(this.$refs);
@@ -143,8 +136,6 @@ onHide(index) {console.log("onHide", index);
       });
     },
     onResize(ref) {
-      console.log(ref);
-      
       this.$refs[ref].forEach(el => {
         el.resize();
       });
@@ -170,7 +161,6 @@ onHide(index) {console.log("onHide", index);
   },
   mounted() {
     this.initids();
-    console.log(this.$refs);
   },
   created() {
     var server_id = parseInt(this.getServeIdByName("id"));

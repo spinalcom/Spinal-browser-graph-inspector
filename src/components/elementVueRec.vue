@@ -144,12 +144,12 @@ export default elementVueRec;
 
 <style>
 ul {
-  margin: 10px;
-  padding: 10px;
+  margin: 2rem;
+  /* padding: 5px; */
 }
 li {
-  margin: 10px;
-  padding: 10px;
+  margin-left: 5px;
+  padding-left: 5px;
 }
 td {
   text-align: left;

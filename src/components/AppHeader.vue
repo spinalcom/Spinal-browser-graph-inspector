@@ -24,24 +24,35 @@ with this file. If not, see
 <template>
   <div class="app-header">
     <div class="logo"><img src="/assets/spinal.png" alt="" /></div>
-    <div class="title">Graph Node Inspector</div>
+    <div class="title">Graph_node_inspector</div>
     <div class="any">
-      <button id="button" class="button" v-on:click="openpopup">
-        <img src="/assets/logo.png" alt="" />
-      </button>
+      <span class="user">admin</span>
+      <div class="navbar">
+        <span class="open-slide">
+          <a href="#" v-on:click="openSlideMenu">
+            <svg width="30" height="30" class="svg">
+              <path d="M0,5 20,5" stroke="#4d4c4c" stroke-width="2" />
+              <path d="M0,10 20,10" stroke="#4d4c4c" stroke-width="2" />
+              <path d="M0,15 20,15" stroke="#4d4c4c" stroke-width="2" />
+            </svg>
+          </a>
+        </span>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import EventBusHelp from "./event-bus-help.js";
+import EventBusSideNav from "./event-bus-side-nav.js";
 
 export default {
   name: "AppHeader",
   methods: {
-    openpopup() {
-      let display = "flex";
-      EventBusHelp.$emit("help", display);
+    openSlideMenu() {
+      console.log("envoie");
+
+      let size = "400px";
+      EventBusSideNav.$emit("size", size);
     }
   }
 };
@@ -53,15 +64,24 @@ export default {
   align-content: center;
   justify-content: space-between;
   height: 64px;
-  background-color: #eee;
+  background-color: #fff;
   overflow: hidden;
   color: #fff;
+}
+p {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
 }
 .logo img {
   font-size: 24px;
   float: left;
   width: auto;
-  height: 60px;
+  height: 73px;
 }
 .any img {
   font-size: 24px;
@@ -82,11 +102,30 @@ ul {
     }
   }
 }
+.svg {
+  width: 20px;
+  height: 20px;
+}
 .any {
-  content: " ";
-  width: 200px;
+  content: "";
+  width: 90px;
+  display: flex;
+  justify-content: space-between;
+  vertical-align: middle;
+}
+.any .user {
+  color: black;
+  vertical-align: middle;
+  margin-top: 20px;
 }
 .title {
+  font-family: sans-serif;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
   color: black;
   align-self: center;
   height: 20px;
@@ -99,25 +138,36 @@ a {
     text-decoration: underline;
   }
 }
-$blue: #1686d9;
 
-.button {
-  cursor: help;
-  margin-left: 130px;
-  margin-top: 15px;
-  width: 35px;
-  height: 35px;
-  background-color: $blue;
-  border: 2px solid white;
-  border-radius: 35px;
+.navbar a {
+  float: right;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 8px 8px;
+  margin: 10px;
   text-decoration: none;
-  padding: 5px 5px;
-  color: white;
-  display: inline-block;
-  &:hover {
-    background-color: white;
-    color: $blue;
-    border: 2px solid $blue;
-  }
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  border-radius: 45%;
+  background-color: #e0dbdb;
+  color: #000;
+  transition: 0.1s;
+}
+
+.side-nav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  opacity: 0.9;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
 }
 </style>

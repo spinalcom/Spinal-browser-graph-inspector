@@ -24987,22 +24987,10 @@ function () {
   }
 
   _createClass(Spinal, [{
-    key: "getServeIdByName",
-    value: function getServeIdByName(name) {
-      var url = window.location.href;
-      name = name.replace(/[[\]]/g, "\\$&");
-      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-          results = regex.exec(url);
-      if (!results) return null;
-      if (!results[2]) return "";
-      return results[2].replace(/\+/g, " ");
-    }
-  }, {
     key: "load",
-    value: function load() {
+    value: function load(serve_id) {
       var _this = this;
 
-      var serve_id = parseInt(this.getServeIdByName("id"));
       return new Promise(function (resolve, reject) {
         _this.conn.load_ptr(serve_id, function (model) {
           if (!model) {
@@ -33462,7 +33450,7 @@ if (inBrowser) {
 
 var _default = Vue;
 exports.default = _default;
-},{}],"components/event-bus-help.js":[function(require,module,exports) {
+},{}],"components/event-bus-side-nav.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33497,8 +33485,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * with this file. If not, see
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
-var EventBusHelp = new _vue.default();
-var _default = EventBusHelp;
+var EventBusSideNav = new _vue.default();
+var _default = EventBusSideNav;
 exports.default = _default;
 },{"vue":"../node_modules/vue/dist/vue.runtime.esm.js"}],"components/AppHeader.vue":[function(require,module,exports) {
 "use strict";
@@ -33508,10 +33496,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _eventBusHelp = _interopRequireDefault(require("./event-bus-help.js"));
+var _eventBusSideNav = _interopRequireDefault(require("./event-bus-side-nav.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -33550,10 +33547,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = {
   name: "AppHeader",
   methods: {
-    openpopup: function openpopup() {
-      var display = "flex";
+    openSlideMenu: function openSlideMenu() {
+      console.log("envoie");
+      var size = "400px";
 
-      _eventBusHelp.default.$emit("help", display);
+      _eventBusSideNav.default.$emit("size", size);
     }
   }
 };
@@ -33573,25 +33571,46 @@ exports.default = _default;
   return _c("div", { staticClass: "app-header" }, [
     _vm._m(0),
     _vm._v(" "),
-    _c("div", { staticClass: "title" }, [_vm._v("Graph Node Inspector")]),
+    _c("div", { staticClass: "title" }, [_vm._v("Graph_node_inspector")]),
     _vm._v(" "),
     _c("div", { staticClass: "any" }, [
-      _c(
-        "button",
-        {
-          staticClass: "button",
-          attrs: { id: "button" },
-          on: { click: _vm.openpopup }
-        },
-        [
-          _c("img", {
-            attrs: {
-              src: "/html/graph/logo.e9a9c890.png",
-              alt: ""
-            }
-          })
-        ]
-      )
+      _c("span", { staticClass: "user" }, [_vm._v("admin")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "navbar" }, [
+        _c("span", { staticClass: "open-slide" }, [
+          _c("a", { attrs: { href: "#" }, on: { click: _vm.openSlideMenu } }, [
+            _c(
+              "svg",
+              { staticClass: "svg", attrs: { width: "30", height: "30" } },
+              [
+                _c("path", {
+                  attrs: {
+                    d: "M0,5 20,5",
+                    stroke: "#4d4c4c",
+                    "stroke-width": "2"
+                  }
+                }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    d: "M0,10 20,10",
+                    stroke: "#4d4c4c",
+                    "stroke-width": "2"
+                  }
+                }),
+                _vm._v(" "),
+                _c("path", {
+                  attrs: {
+                    d: "M0,15 20,15",
+                    stroke: "#4d4c4c",
+                    "stroke-width": "2"
+                  }
+                })
+              ]
+            )
+          ])
+        ])
+      ])
     ])
   ])
 }
@@ -33621,7 +33640,7 @@ render._withStripped = true
           };
         })());
       
-},{"./event-bus-help.js":"components/event-bus-help.js","/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/spinal.png":[["spinal.5801a626.png","assets/spinal.png"],"assets/spinal.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/logo.png":[["logo.e9a9c890.png","assets/logo.png"],"assets/logo.png"]}],"../node_modules/d3/dist/package.js":[function(require,module,exports) {
+},{"./event-bus-side-nav.js":"components/event-bus-side-nav.js","/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/spinal.png":[["spinal.5801a626.png","assets/spinal.png"],"assets/spinal.png"]}],"../node_modules/d3/dist/package.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -63046,20 +63065,20 @@ function () {
     }
   }, {
     key: "init",
-    value: function init(element) {
+    value: function init(element, server_id) {
       return __awaiter(this, void 0, void 0,
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee5() {
-        var data, i, node, link, root, svg, legend, mylink, simulation, edgepaths, update, style, color, ticked, leftclick, rightclick, timeoutclick, newpage, click, dragstarted, dragged, dragended, flatten, chekLink, createLinks, zoomed;
-        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+      regeneratorRuntime.mark(function _callee4() {
+        var data, i, node, link, root, svg, legend, mylink, simulation, edgepaths, update, style, color, ticked, leftclick, rightclick, timeoutclick, newpage, dragstarted, dragged, dragended, flatten, chekLink, createLinks, zoomed;
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                zoomed = function _ref14() {
+                zoomed = function _ref13() {
                   svg.attr('transform', d3.event.transform);
                 };
 
-                createLinks = function _ref13(nodes) {
+                createLinks = function _ref12(nodes) {
                   var links = [];
                   var id = 0;
                   var _iteratorNormalCompletion = true;
@@ -63154,7 +63173,7 @@ function () {
                   return links;
                 };
 
-                chekLink = function _ref12(source, target, links) {
+                chekLink = function _ref11(source, target, links) {
                   for (var index = 0; index < links.length; index++) {
                     if (source.data === links[index].source.data && target.data === links[index].target.data) {
                       return true;
@@ -63164,7 +63183,7 @@ function () {
                   return false;
                 };
 
-                flatten = function _ref11(root) {
+                flatten = function _ref10(root) {
                   var nodes = new Set();
 
                   function recurse(node) {
@@ -63179,66 +63198,39 @@ function () {
                   return Array.from(nodes);
                 };
 
-                dragended = function _ref10(d) {
+                dragended = function _ref9(d) {
                   if (!d3.event.active) simulation.alphaTarget(0);
                   d.fx = null;
                   d.fy = null;
                 };
 
-                dragged = function _ref9(d) {
+                dragged = function _ref8(d) {
                   d.fx = d3.event.x;
                   d.fy = d3.event.y;
                 };
 
-                dragstarted = function _ref8(d) {
+                dragstarted = function _ref7(d) {
                   if (!d3.event.active) simulation.alphaTarget(0.1).restart();
                   d.fx = d.x;
                   d.fy = d.y;
-                };
-
-                click = function _ref7(d) {
-                  return __awaiter(this, void 0, void 0,
-                  /*#__PURE__*/
-                  regeneratorRuntime.mark(function _callee4() {
-                    return regeneratorRuntime.wrap(function _callee4$(_context4) {
-                      while (1) {
-                        switch (_context4.prev = _context4.next) {
-                          case 0:
-                            if (timeoutclick === null) {
-                              timeoutclick = setTimeout(function () {
-                                timeoutclick = null;
-                                leftclick(d);
-                              }, 500);
-                            } else if (d.data.category === "node") {
-                              clearTimeout(timeoutclick);
-                              timeoutclick = null;
-                              newpage(d);
-                            }
-
-                          case 1:
-                          case "end":
-                            return _context4.stop();
-                        }
-                      }
-                    }, _callee4);
-                  }));
                 };
 
                 newpage = function _ref6(d) {
                   return __awaiter(this, void 0, void 0,
                   /*#__PURE__*/
                   regeneratorRuntime.mark(function _callee3() {
-                    var myWindow, location;
+                    var _server_id;
+
                     return regeneratorRuntime.wrap(function _callee3$(_context3) {
                       while (1) {
                         switch (_context3.prev = _context3.next) {
                           case 0:
-                            myWindow = window.open("", "");
-                            location = "/html/graph/?id=" + d.data._serverId;
-                            myWindow.document.location = location;
-                            myWindow.focus();
+                            if (d.data.category === "node") {
+                              _server_id = d.data._serverId;
+                              event_bus_js_1.default.$emit("server_id", _server_id);
+                            }
 
-                          case 4:
+                          case 1:
                           case "end":
                             return _context3.stop();
                         }
@@ -63340,7 +63332,6 @@ function () {
                   }
 
                   if (d.data.category === "node") {
-                    console.log(d);
                     return style.nodefill.objClosed;
                   }
 
@@ -63359,8 +63350,7 @@ function () {
                   var nodes = flatten(root); // recover ids nodes
 
                   var links = createLinks(nodes); //recover links
-
-                  console.log(nodes); //build the d3 links************************************/
+                  //build the d3 links************************************/
 
                   link = mylink.selectAll('.link').data(links, function (d) {
                     return d.target.id;
@@ -63376,7 +63366,13 @@ function () {
                     return d.id.toString();
                   });
                   node.exit().remove();
-                  var nodeEnter = node.enter().append('g').attr('class', 'node').attr('stroke-width', 1.2).style('fill', color).style('opacity', 1).on('click', click).on("contextmenu", rightclick).call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended));
+                  var nodeEnter = node.enter().append('g').attr('class', 'node').attr('id', 'test').attr('stroke-width', 1.2).style('fill', color).style('opacity', 1).on('click', leftclick).on("contextmenu", rightclick).on("auxclick", function (d) {
+                    var evnt = window.event;
+
+                    if (evnt.which === 2) {
+                      newpage(d);
+                    }
+                  }).call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended));
                   nodeEnter.append(function (d) {
                     //create nodes Node
                     if (d.data.category === "node") {
@@ -63417,11 +63413,12 @@ function () {
                 };
 
                 this.element = element;
-                _context5.next = 17;
-                return this.graph.load();
+                console.log(this.element);
+                _context4.next = 17;
+                return this.graph.load(server_id);
 
               case 17:
-                data = _context5.sent;
+                data = _context4.sent;
                 //load graph
                 this.width = element.clientWidth - this.margin.left - this.margin.right;
                 this.height = element.clientHeight - this.margin.top - this.margin.bottom;
@@ -63465,15 +63462,16 @@ function () {
                   }
                 }; //node color function
 
-                timeoutclick = null;
+                timeoutclick = null; //starting node
+
                 update();
 
               case 33:
               case "end":
-                return _context5.stop();
+                return _context4.stop();
             }
           }
-        }, _callee5, this);
+        }, _callee4, this);
       }));
     }
   }]);
@@ -63570,13 +63568,19 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 var _default = {
   name: "AppGraph",
+  data: function data() {
+    return {
+      show: 0
+    };
+  },
   mounted: function mounted() {
     var spinal = _spinal.default.getInstance();
 
     this.viewer = new _viewer.default(spinal);
-    this.viewer.init(this.$refs.appGraph);
+    this.viewer.init(this.$refs.appGraph, this.server_id);
   },
   methods: {
     resize: function resize() {
@@ -63584,6 +63588,12 @@ var _default = {
     },
     showLegend: function showLegend() {
       document.getElementById("myDropdown").classList.toggle("show");
+    }
+  },
+  props: {
+    server_id: {
+      require: true,
+      type: Number
     }
   }
 };
@@ -63612,7 +63622,7 @@ exports.default = _default;
         [
           _c("img", {
             attrs: {
-              src: "/html/graph/logo.e9a9c890.png",
+              src: "/html/graph/info.b69a0da0.png",
               alt: ""
             }
           })
@@ -63663,7 +63673,7 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v("Last Node")])
+            _c("p", [_vm._v("Leaf Node")])
           ]),
           _vm._v(" "),
           _c("li", [
@@ -63699,6 +63709,8 @@ var staticRenderFns = [
             _c("p", [_vm._v("Relation PtrLst")])
           ]),
           _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
           _c("li", [
             _c("img", {
               attrs: {
@@ -63707,7 +63719,7 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v("LClick: graph depth")])
+            _c("p", [_vm._v("Left Click: chldren course")])
           ]),
           _vm._v(" "),
           _c("li", [
@@ -63718,7 +63730,7 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v("RClick: parents course")])
+            _c("p", [_vm._v("Right Click: parent course")])
           ]),
           _vm._v(" "),
           _c("li", [
@@ -63729,7 +63741,7 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v("DblClick: starting Node")])
+            _c("p", [_vm._v("Middle Click: open the node in a new panel")])
           ])
         ])
       ]
@@ -63747,7 +63759,7 @@ render._withStripped = true
           };
         })());
       
-},{"../viewer":"viewer.ts","../spinal":"spinal.ts","/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/logo.png":[["logo.e9a9c890.png","assets/logo.png"],"assets/logo.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/start.png":[["start.975fde4d.png","assets/start.png"],"assets/start.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/simplenode.png":[["simplenode.9edf869f.png","assets/simplenode.png"],"assets/simplenode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/lastnode.png":[["lastnode.729b0447.png","assets/lastnode.png"],"assets/lastnode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/lstptr.png":[["lstptr.f19be4be.png","assets/lstptr.png"],"assets/lstptr.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ref.png":[["ref.24f81928.png","assets/ref.png"],"assets/ref.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ptrlst.png":[["ptrlst.5899b7ee.png","assets/ptrlst.png"],"assets/ptrlst.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/mouse2.png":[["mouse2.ded68c6b.png","assets/mouse2.png"],"assets/mouse2.png"]}],"components/elementVueRec.vue":[function(require,module,exports) {
+},{"../viewer":"viewer.ts","../spinal":"spinal.ts","/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/info.png":[["info.b69a0da0.png","assets/info.png"],"assets/info.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/start.png":[["start.975fde4d.png","assets/start.png"],"assets/start.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/simplenode.png":[["simplenode.9edf869f.png","assets/simplenode.png"],"assets/simplenode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/lastnode.png":[["lastnode.729b0447.png","assets/lastnode.png"],"assets/lastnode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/lstptr.png":[["lstptr.f19be4be.png","assets/lstptr.png"],"assets/lstptr.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ref.png":[["ref.24f81928.png","assets/ref.png"],"assets/ref.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ptrlst.png":[["ptrlst.5899b7ee.png","assets/ptrlst.png"],"assets/ptrlst.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/mouse2.png":[["mouse2.ded68c6b.png","assets/mouse2.png"],"assets/mouse2.png"]}],"components/elementVueRec.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -65026,6 +65038,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
 var _default = {
   name: "AppDbInspector",
   data: function data() {
@@ -65068,7 +65081,7 @@ exports.default = _default;
         [
           _c("img", {
             attrs: {
-              src: "/html/graph/logo.e9a9c890.png",
+              src: "/html/graph/info.b69a0da0.png",
               alt: ""
             }
           })
@@ -65097,7 +65110,7 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v("Close Node")])
+            _c("p", [_vm._v("Closed Model")])
           ]),
           _vm._v(" "),
           _c("li", [
@@ -65108,7 +65121,7 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v("Open Node")])
+            _c("p", [_vm._v("Open Or Void Model")])
           ]),
           _vm._v(" "),
           _c("li", [
@@ -65119,7 +65132,7 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v("Last Node")])
+            _c("p", [_vm._v("Atomic Model")])
           ]),
           _vm._v(" "),
           _c("li", [
@@ -65130,7 +65143,7 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v("Close Ptr Node")])
+            _c("p", [_vm._v("Closed Ptr Or Pbr")])
           ]),
           _vm._v(" "),
           _c("li", [
@@ -65141,7 +65154,7 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v("Open Ptr Node")])
+            _c("p", [_vm._v("Open Ptr Or Pbr")])
           ]),
           _vm._v(" "),
           _c("li", [
@@ -65152,7 +65165,7 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v("Close Ref Node")])
+            _c("p", [_vm._v("Closed Lst")])
           ]),
           _vm._v(" "),
           _c("li", [
@@ -65163,8 +65176,10 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v("Open Ref Node")])
+            _c("p", [_vm._v("Open Lst")])
           ]),
+          _vm._v(" "),
+          _c("hr"),
           _vm._v(" "),
           _c("li", [
             _c("img", {
@@ -65174,7 +65189,7 @@ var staticRenderFns = [
               }
             }),
             _vm._v(" "),
-            _c("p", [_vm._v("graph depth")])
+            _c("p", [_vm._v("Left Click: Open Object Attribut")])
           ])
         ])
       ]
@@ -65192,7 +65207,7 @@ render._withStripped = true
           };
         })());
       
-},{"../viewer":"viewer.ts","../spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./event-bus":"components/event-bus.js","../dbInspector":"dbInspector.js","/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/logo.png":[["logo.e9a9c890.png","assets/logo.png"],"assets/logo.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/simplenode.png":[["simplenode.9edf869f.png","assets/simplenode.png"],"assets/simplenode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/open.png":[["open.c57e971c.png","assets/open.png"],"assets/open.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/last.png":[["last.048c611e.png","assets/last.png"],"assets/last.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ptr.png":[["ptr.dfb52c0e.png","assets/ptr.png"],"assets/ptr.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/start.png":[["start.975fde4d.png","assets/start.png"],"assets/start.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ids.png":[["ids.c8bd3cf9.png","assets/ids.png"],"assets/ids.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/idsopen.png":[["idsopen.fba40b9c.png","assets/idsopen.png"],"assets/idsopen.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/mouse2.png":[["mouse2.ded68c6b.png","assets/mouse2.png"],"assets/mouse2.png"]}],"App.vue":[function(require,module,exports) {
+},{"../viewer":"viewer.ts","../spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./event-bus":"components/event-bus.js","../dbInspector":"dbInspector.js","/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/info.png":[["info.b69a0da0.png","assets/info.png"],"assets/info.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/simplenode.png":[["simplenode.9edf869f.png","assets/simplenode.png"],"assets/simplenode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/open.png":[["open.c57e971c.png","assets/open.png"],"assets/open.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/last.png":[["last.048c611e.png","assets/last.png"],"assets/last.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ptr.png":[["ptr.dfb52c0e.png","assets/ptr.png"],"assets/ptr.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/start.png":[["start.975fde4d.png","assets/start.png"],"assets/start.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ids.png":[["ids.c8bd3cf9.png","assets/ids.png"],"assets/ids.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/idsopen.png":[["idsopen.fba40b9c.png","assets/idsopen.png"],"assets/idsopen.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/mouse2.png":[["mouse2.ded68c6b.png","assets/mouse2.png"],"assets/mouse2.png"]}],"App.vue":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -65213,6 +65228,14 @@ var AppElement_vue_1 = __importDefault(require("./components/AppElement.vue"));
 
 var AppDbInspector_vue_1 = __importDefault(require("./components/AppDbInspector.vue"));
 
+var event_bus_side_nav_js_1 = __importDefault(require("./components/event-bus-side-nav.js"));
+
+var event_bus_js_1 = __importDefault(require("./components/event-bus.js"));
+
+event_bus_side_nav_js_1.default.$on("size", function (size) {
+  console.log(size);
+  document.getElementById("side-menu").style.width = size;
+});
 exports.default = {
   name: "App",
   components: {
@@ -65221,10 +65244,52 @@ exports.default = {
     AppElement: AppElement_vue_1.default,
     AppDbInspector: AppDbInspector_vue_1.default
   },
+  data: function data() {
+    return {
+      ids: []
+    };
+  },
   methods: {
+    initids: function initids() {
+      var _this = this;
+
+      event_bus_js_1.default.$on("server_id", function (server_id) {
+        console.log(_this.$refs);
+
+        _this.ids.push(server_id);
+
+        console.log(_this.ids);
+        console.log(server_id);
+      });
+    },
     onResize: function onResize(ref) {
       this.$refs[ref].resize();
+    },
+    closeSlideMenu: function closeSlideMenu() {
+      document.getElementById("side-menu").style.width = "0";
+    },
+    rederictionDrive: function rederictionDrive() {
+      var myWindow = window.open("", "");
+      var location = "/html/drive/";
+      myWindow.document.location = location;
+      myWindow.focus();
+    },
+    getServeIdByName: function getServeIdByName(name) {
+      var url = window.location.href;
+      name = name.replace(/[[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return "";
+      return results[2].replace(/\+/g, " ");
     }
+  },
+  mounted: function mounted() {
+    this.initids();
+  },
+  created: function created() {
+    var server_id = parseInt(this.getServeIdByName("id"));
+    this.ids.push(server_id);
   }
 };
         var $b7ced2 = exports.default || module.exports;
@@ -65243,37 +65308,125 @@ exports.default = {
     "div",
     { staticClass: "graph" },
     [
-      _c("app-header"),
+      _c("link", {
+        attrs: {
+          rel: "stylesheet",
+          href: "https://use.fontawesome.com/releases/v5.8.1/css/all.css",
+          integrity:
+            "sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf",
+          crossorigin: "anonymous"
+        }
+      }),
       _vm._v(" "),
+      _c("app-header"),
+      _vm._v("\n  ​\n  "),
       _c(
         "div",
         { staticClass: "container" },
         [
+          _c("div", { staticClass: "side-nav", attrs: { id: "side-menu" } }, [
+            _c("div", { staticClass: "header-nav" }, [
+              _c(
+                "a",
+                {
+                  staticClass: "btn-close",
+                  attrs: { href: "#" },
+                  on: { click: _vm.closeSlideMenu }
+                },
+                [
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "svg",
+                      attrs: { width: "30", height: "30" }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          d: "M0,5 20,5",
+                          stroke: "#4d4c4c",
+                          "stroke-width": "2"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d: "M0,10 20,10",
+                          stroke: "#4d4c4c",
+                          "stroke-width": "2"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d: "M0,15 20,15",
+                          stroke: "#4d4c4c",
+                          "stroke-width": "2"
+                        }
+                      })
+                    ]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(0)
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "login" }, [
+              _c(
+                "a",
+                { attrs: { href: "" }, on: { click: _vm.rederictionDrive } },
+                [
+                  _c("img", {
+                    attrs: {
+                      src: "/html/graph/return.0aded5cd.png",
+                      alt: ""
+                    }
+                  }),
+                  _vm._v(" Return to SpinalBIM\n          Drive")
+                ]
+              ),
+              _vm._v(" "),
+              _vm._m(1)
+            ])
+          ]),
+          _vm._v(" "),
           _c(
             "golden-layout",
             { staticClass: "golden" },
             [
               _c(
                 "gl-row",
-                { attrs: { hasHeaders: true } },
+                { attrs: { "has-headers": true } },
                 [
                   _c(
-                    "gl-component",
-                    {
-                      staticClass: "comp",
-                      attrs: {
-                        title: "Graph Node Inspector",
-                        closable: false,
-                        width: 60
-                      },
-                      on: {
-                        resize: function($event) {
-                          return _vm.onResize("app-Graph")
-                        }
-                      }
-                    },
-                    [_c("app-Graph", { ref: "app-Graph" })],
-                    1
+                    "gl-stack",
+                    { attrs: { width: 60 } },
+                    [
+                      _vm._v("\n          ​\n          "),
+                      _vm._l(_vm.ids, function(id, index) {
+                        return _c(
+                          "gl-component",
+                          {
+                            key: index,
+                            staticClass: "comp",
+                            attrs: {
+                              title: "Graph Node Inspector",
+                              closable: true
+                            }
+                          },
+                          [
+                            _c("app-Graph", {
+                              ref: "app-graph" + index,
+                              refInFor: true,
+                              attrs: { server_id: id }
+                            })
+                          ],
+                          1
+                        )
+                      })
+                    ],
+                    2
                   ),
                   _vm._v(" "),
                   _c(
@@ -65322,7 +65475,35 @@ exports.default = {
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "logo" }, [
+      _c("img", {
+        attrs: {
+          src: "/html/graph/spinal.5801a626.png",
+          alt: ""
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "#" } }, [
+      _c("img", {
+        attrs: {
+          src: "/html/graph/logout.8f74ff45.png",
+          alt: ""
+        }
+      }),
+      _vm._v(" Sign out")
+    ])
+  }
+]
 render._withStripped = true
 
           return {
@@ -65334,7 +65515,7 @@ render._withStripped = true
           };
         })());
       
-},{"./components/AppHeader.vue":"components/AppHeader.vue","./components/AppGraph.vue":"components/AppGraph.vue","./components/AppElement.vue":"components/AppElement.vue","./components/AppDbInspector.vue":"components/AppDbInspector.vue"}],"../node_modules/golden-layout/dist/goldenlayout.js":[function(require,module,exports) {
+},{"./components/AppHeader.vue":"components/AppHeader.vue","./components/AppGraph.vue":"components/AppGraph.vue","./components/AppElement.vue":"components/AppElement.vue","./components/AppDbInspector.vue":"components/AppDbInspector.vue","./components/event-bus-side-nav.js":"components/event-bus-side-nav.js","./components/event-bus.js":"components/event-bus.js","/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/spinal.png":[["spinal.5801a626.png","assets/spinal.png"],"assets/spinal.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/return.png":[["return.0aded5cd.png","assets/return.png"],"assets/return.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/logout.png":[["logout.8f74ff45.png","assets/logout.png"],"assets/logout.png"]}],"../node_modules/golden-layout/dist/goldenlayout.js":[function(require,module,exports) {
 var define;
 (function($){var lm={"config":{},"container":{},"controls":{},"errors":{},"items":{},"utils":{}};
 lm.utils.F = function() {
@@ -87720,679 +87901,4 @@ new _vue.default({
     return h(_App.default);
   }
 }).$mount("#app");
-},{"babel-polyfill":"../../../node_modules/babel-polyfill/lib/index.js","spinal-model-graph":"../node_modules/spinal-model-graph/dist/src/index.js","./spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./App.vue":"App.vue","vue-golden-layout":"../node_modules/vue-golden-layout/dist/vue-golden-layout.js","vue-property-decorator":"../node_modules/vue-property-decorator/lib/vue-property-decorator.js","golden-layout/src/css/goldenlayout-base.css":"../node_modules/golden-layout/src/css/goldenlayout-base.css","golden-layout/src/css/goldenlayout-dark-theme.css":"../node_modules/golden-layout/src/css/goldenlayout-base.css"}]},{},["index.js"], null)_gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./gl-router.vue?vue&type=template&id=5eafe7f9& */ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./router/gl-router.vue?vue&type=template&id=5eafe7f9&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
-/***/ "./router/utils.ts":
-/*!*************************!*\
-  !*** ./router/utils.ts ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (this && this.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (_) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var golden_vue_1 = __webpack_require__(/*! ../golden.vue */ "./golden.vue");
-var utils_1 = __webpack_require__(/*! ../utils */ "./utils.ts");
-var roles_1 = __webpack_require__(/*! ../roles */ "./roles/index.ts");
-var vue_1 = __webpack_require__(/*! vue */ "vue");
-function defaultTitler(route) {
-    //The last case is to warn the programmer who would have forgotten that detail
-    return route ? ((route.meta && route.meta.title) || 'set $route.meta.title') : '';
-}
-exports.defaultTitler = defaultTitler;
-exports.RouteComponentName = '$router-route';
-function freezeValue(object, path, value) {
-    var props = path.split('.'), forced = props.pop();
-    for (var _i = 0, props_1 = props; _i < props_1.length; _i++) {
-        var property = props_1[_i];
-        Object.defineProperty(object, property, {
-            value: object = Object.create(object[property]),
-            writable: false
-        });
-    }
-    Object.defineProperty(object, forced, {
-        value: value,
-        writable: false
-    });
-}
-function freezeRoute(component, route) {
-    //Simulate a _routerRoot object so that all children have a $route object set to this route object
-    var routerRoot = component._routerRoot = Object.create(component._routerRoot);
-    freezeValue(routerRoot, '_route', route);
-    freezeValue(routerRoot, '_router.history.current', route);
-}
-exports.freezeRoute = freezeRoute;
-function routeParent(parent, route) {
-    var template;
-    if (parent._glRouter)
-        template = parent.$scopedSlots.route ?
-            parent.$scopedSlots.route(route) :
-            parent.$slots.route;
-    return { template: template, parent: parent };
-}
-function vueComponent(comp, namedComponents) {
-    return __awaiter(this, void 0, void 0, function () {
-        function componentIsVueConstructor() { return component.prototype instanceof vue_1.default; }
-        var component;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    component = 'string' === typeof comp ? namedComponents[comp] : comp;
-                    console.assert("Component registered : \"" + comp + "\".");
-                    if ('function' === typeof component && !componentIsVueConstructor)
-                        //AsyncComponentFactory<any, any, any, any> | FunctionalComponentOptions<any, PropsDefinition<any>>
-                        component = component();
-                    if (!(component instanceof Promise)) return [3 /*break*/, 2];
-                    return [4 /*yield*/, component];
-                case 1:
-                    component = _a.sent();
-                    _a.label = 2;
-                case 2: return [2 /*return*/, componentIsVueConstructor() ?
-                        component :
-                        vue_1.default.extend(component)];
-            }
-        });
-    });
-}
-function createRouteComponent(comp, routerSpec, route) {
-    var parent = routerSpec.parent, template = routerSpec.template;
-    var itr;
-    for (itr = comp; itr && itr != roles_1.goldenItem; itr = itr.super)
-        ;
-    if (itr) {
-        return new comp({
-            parent: parent,
-            propsData: route
-        });
-    }
-    var component = template ? new vue_1.default({
-        render: function (ce) {
-            // `instanceof Array` fails in popouts: `template` is a `window.opener.Array` then
-            return utils_1.xInstanceOf(template, 'Array') ?
-                ce('div', { class: 'glComponent' }, template) :
-                template;
-        },
-        mounted: function () {
-            new comp({
-                el: component.$el.querySelector('main') || undefined,
-                parent: component
-            });
-        },
-        parent: parent
-    }) : new comp({ parent: parent });
-    return component;
-}
-function renderInContainer(container, component) {
-    //TODO: document why we don't use simply component.$mount(container.getElement());
-    var el = document.createElement('div');
-    container.getElement().append(el);
-    component.$mount(el);
-}
-function getRouteComponent(gl, router, path) {
-    return __awaiter(this, void 0, void 0, function () {
-        var route, compSpec, component, _a;
-        return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    route = gl.$router.resolve({ path: path }).route, compSpec = gl.$router.getMatchedComponents({ path: path })[0];
-                    console.assert(compSpec, "Path resolves to a component: " + path);
-                    _a = createRouteComponent;
-                    return [4 /*yield*/, vueComponent(compSpec, gl.$options.components || {})];
-                case 1:
-                    component = _a.apply(void 0, [_b.sent(),
-                        routeParent(router, route), route]);
-                    //freezeRoute(component, route);
-                    return [2 /*return*/, component];
-            }
-        });
-    });
-}
-exports.getRouteComponent = getRouteComponent;
-function renderRoute(gl, container, state) {
-    return __awaiter(this, void 0, void 0, function () {
-        var parent, _glRouter, _a, _b;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
-                case 0:
-                    parent = container.parent, _glRouter = parent.vueObject._glRouter;
-                    if (_glRouter)
-                        parent = _glRouter;
-                    else {
-                        while (!parent.vueObject || !parent.vueObject._isVue)
-                            parent = parent.parent;
-                        parent = parent.vueObject;
-                    }
-                    _a = renderInContainer;
-                    _b = [container];
-                    return [4 /*yield*/, getRouteComponent(gl, parent, state.path)];
-                case 1:
-                    _a.apply(void 0, _b.concat([_c.sent()]));
-                    return [2 /*return*/];
-            }
-        });
-    });
-}
-function UsingRoutes(target) {
-    golden_vue_1.registerGlobalComponent(exports.RouteComponentName, renderRoute);
-}
-exports.UsingRoutes = UsingRoutes;
-
-
-/***/ }),
-
-/***/ "./utils.ts":
-/*!******************!*\
-  !*** ./utils.ts ***!
-  \******************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.isSubWindow = /[?&]gl-window=/.test(window.location.search);
-var GoldenLayout = __webpack_require__(/*! golden-layout */ "golden-layout");
-var $ = __webpack_require__(/*! jquery */ "jquery");
-function newSemaphore() {
-    var access, rv = new Promise(function (resolve, reject) {
-        access = { resolve: resolve, reject: reject };
-    });
-    Object.assign(rv, access);
-    return rv;
-}
-exports.newSemaphore = newSemaphore;
-var lm = GoldenLayout.__lm;
-/**
- * Equivalent of `obj instanceof name` but accepting cross-windows classes.
- * @example
- *  A popup and the main window both have an `Array` class defined - and they are different
- *  Therefore `x instanceof Array` will return false if the Array class is from the other window
- */
-function xInstanceOf(obj, name) {
-    var browser = obj.constructor;
-    while (browser.name !== name && browser.super)
-        browser = browser.super;
-    return browser.name === name;
-}
-exports.xInstanceOf = xInstanceOf;
-function localWindow(obj) {
-    if (!obj || 'object' != typeof obj)
-        return obj;
-    var rv = xInstanceOf(obj, 'Array') ? [] : {};
-    for (var i in obj)
-        rv[i] = localWindow(obj[i]);
-    return rv;
-}
-exports.localWindow = localWindow;
-exports.statusChange = {
-    poppingOut: false,
-    poppingIn: false,
-    unloading: false
-};
-// hook `createPopout` to give objects instead of destroying then on-destroy
-var oldCreatePopout = lm.LayoutManager.prototype.createPopout;
-lm.LayoutManager.prototype.createPopout = function (item) {
-    var rv;
-    exports.statusChange.poppingOut = true;
-    try {
-        item.emit && item.emit('beforePopOut', item);
-        if (!(item.contentItems || item[0].content).length)
-            return null;
-        rv = oldCreatePopout.apply(this, arguments);
-    }
-    finally {
-        exports.statusChange.poppingOut = false;
-    }
-    item.emit && item.emit('poppedOut', rv);
-    if (item[0])
-        item = item[0];
-    var rootPaths = {}, gl = this.vueObject;
-    function ref(path) { rootPaths[path] = gl.getChild(path); }
-    if (item.content) { //config
-        if (item.vue)
-            ref(item.vue);
-        for (var i = 0; item.content[i]; ++i)
-            ref(item.content[i].vue);
-    }
-    else { //item
-        var obj = item.vueObject;
-        if (obj && obj.nodePath)
-            rootPaths[obj.nodePath] = obj;
-        for (var _i = 0, _a = item.contentItems; _i < _a.length; _i++) {
-            var sub = _a[_i];
-            obj = sub.vueObject;
-            rootPaths[obj.nodePath] = obj;
-        }
-    }
-    var ppWindow = rv.getWindow();
-    ppWindow.poppedoutVue = {
-        layout: gl,
-        path: rootPaths
-    };
-    ppWindow.addEventListener('beforeunload', function () {
-        if (!rv.poppedIn)
-            for (var p in rootPaths)
-                rootPaths[p].delete();
-    });
-    rv.on('initialised', function () {
-        var ppGl = rv.getGlInstance(), emptyCheck = null;
-        //Automatically closes the window when there is no more tabs
-        ppGl.on('itemDestroyed', function () {
-            if (!emptyCheck)
-                emptyCheck = setTimeout(function () {
-                    emptyCheck = null;
-                    if (!ppGl.root.contentItems.length)
-                        ppWindow.close();
-                });
-        });
-    });
-    return rv;
-};
-var bp = lm.controls.BrowserPopout.prototype;
-// hook `createPopout` to give objects instead of destroying then on-destroy
-var oldPopIn = bp.popIn;
-bp.popIn = function () {
-    var rv;
-    exports.statusChange.poppingIn = true;
-    // GL bug-fix: poping-in empty window
-    try {
-        this.emit('beforePopIn');
-        this.poppedIn = true;
-        rv = this.getGlInstance().root.contentItems.length ?
-            oldPopIn.apply(this, arguments) :
-            this.close();
-    }
-    finally {
-        exports.statusChange.poppingIn = false;
-    }
-    return rv;
-};
-window.addEventListener('beforeunload', function () { exports.statusChange.unloading = true; });
-/**
- * Determine if the user is dradding a tab
- */
-function isDragging() {
-    return $('body').hasClass('lm_dragging');
-}
-exports.isDragging = isDragging;
-
-
-/***/ }),
-
-/***/ "golden-layout":
-/*!********************************!*\
-  !*** external "golden-layout" ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("golden-layout");
-
-/***/ }),
-
-/***/ "golden-layout/src/css/goldenlayout-base.css":
-/*!**************************************************************!*\
-  !*** external "golden-layout/src/css/goldenlayout-base.css" ***!
-  \**************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("golden-layout/src/css/goldenlayout-base.css");
-
-/***/ }),
-
-/***/ "jquery":
-/*!*************************!*\
-  !*** external "jquery" ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("jquery");
-
-/***/ }),
-
-/***/ "vue":
-/*!**********************!*\
-  !*** external "vue" ***!
-  \**********************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("vue");
-
-/***/ }),
-
-/***/ "vue-property-decorator":
-/*!*****************************************!*\
-  !*** external "vue-property-decorator" ***!
-  \*****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("vue-property-decorator");
-
-/***/ }),
-
-/***/ "vue-resize-directive":
-/*!***************************************!*\
-  !*** external "vue-resize-directive" ***!
-  \***************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("vue-resize-directive");
-
-/***/ })
-
-/******/ });
-});
-//# sourceMappingURL=vue-golden-layout.js.map
-},{"golden-layout":"../node_modules/golden-layout/dist/goldenlayout.js","golden-layout/src/css/goldenlayout-base.css":"../node_modules/golden-layout/src/css/goldenlayout-base.css","jquery":"../node_modules/jquery/dist/jquery.js","vue":"../node_modules/vue/dist/vue.runtime.esm.js","vue-property-decorator":"../node_modules/vue-property-decorator/lib/vue-property-decorator.js","vue-resize-directive":"../node_modules/vue-resize-directive/dist/Vueresize.js"}],"../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css":[function(require,module,exports) {
-
-        var reloadCSS = require('_css_loader');
-        module.hot.dispose(reloadCSS);
-        module.hot.accept(reloadCSS);
-      
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
-"use strict";
-
-require("babel-polyfill");
-
-require("spinal-model-graph");
-
-var _spinal = _interopRequireDefault(require("./spinal"));
-
-var _vue = _interopRequireDefault(require("vue"));
-
-var _App = _interopRequireDefault(require("./App.vue"));
-
-var _vueGoldenLayout = _interopRequireDefault(require("vue-golden-layout"));
-
-var _vuePropertyDecorator = require("vue-property-decorator");
-
-require("golden-layout/src/css/goldenlayout-base.css");
-
-require("golden-layout/src/css/goldenlayout-dark-theme.css");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-/*
- * Copyright 2020 SpinalCom - www.spinalcom.com
- * 
- * This file is part of SpinalCore.
- * 
- * Please read all of the following terms and conditions
- * of the Free Software license Agreement ("Agreement")
- * carefully.
- * 
- * This Agreement is a legally binding contract between
- * the Licensee (as defined below) and SpinalCom that
- * sets forth the terms and conditions that govern your
- * use of the Program. By installing and/or using the
- * Program, you agree to abide by all the terms and
- * conditions stated or referenced herein.
- * 
- * If you do not agree to abide by these terms and
- * conditions, do not demonstrate your acceptance and do
- * not install or use the Program.
- * You should have received a copy of the license along
- * with this file. If not, see
- * <http://resources.spinalcom.com/licenses.pdf>.
- */
-_vue.default.use(_vueGoldenLayout.default);
-
-_vue.default.config.productionTip = false;
-new _vue.default({
-  render: function render(h) {
-    return h(_App.default);
-  }
-}).$mount("#app");
-},{"babel-polyfill":"../../../node_modules/babel-polyfill/lib/index.js","spinal-model-graph":"../node_modules/spinal-model-graph/dist/src/index.js","./spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./App.vue":"App.vue","vue-golden-layout":"../node_modules/vue-golden-layout/dist/vue-golden-layout.js","vue-property-decorator":"../node_modules/vue-property-decorator/lib/vue-property-decorator.js","golden-layout/src/css/goldenlayout-base.css":"../node_modules/golden-layout/src/css/goldenlayout-base.css","golden-layout/src/css/goldenlayout-dark-theme.css":"../node_modules/golden-layout/src/css/goldenlayout-dark-theme.css"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
-var global = arguments[3];
-var OVERLAY_ID = '__parcel__error__overlay__';
-var OldModule = module.bundle.Module;
-
-function Module(moduleName) {
-  OldModule.call(this, moduleName);
-  this.hot = {
-    data: module.bundle.hotData,
-    _acceptCallbacks: [],
-    _disposeCallbacks: [],
-    accept: function (fn) {
-      this._acceptCallbacks.push(fn || function () {});
-    },
-    dispose: function (fn) {
-      this._disposeCallbacks.push(fn);
-    }
-  };
-  module.bundle.hotData = null;
-}
-
-module.bundle.Module = Module;
-var checkedAssets, assetsToAccept;
-var parent = module.bundle.parent;
-
-if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
-  var hostname = "" || location.hostname;
-  var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "43179" + '/');
-
-  ws.onmessage = function (event) {
-    checkedAssets = {};
-    assetsToAccept = [];
-    var data = JSON.parse(event.data);
-
-    if (data.type === 'update') {
-      var handled = false;
-      data.assets.forEach(function (asset) {
-        if (!asset.isNew) {
-          var didAccept = hmrAcceptCheck(global.parcelRequire, asset.id);
-
-          if (didAccept) {
-            handled = true;
-          }
-        }
-      }); // Enable HMR for CSS by default.
-
-      handled = handled || data.assets.every(function (asset) {
-        return asset.type === 'css' && asset.generated.js;
-      });
-
-      if (handled) {
-        console.clear();
-        data.assets.forEach(function (asset) {
-          hmrApply(global.parcelRequire, asset);
-        });
-        assetsToAccept.forEach(function (v) {
-          hmrAcceptRun(v[0], v[1]);
-        });
-      } else if (location.reload) {
-        // `location` global exists in a web worker context but lacks `.reload()` function.
-        location.reload();
-      }
-    }
-
-    if (data.type === 'reload') {
-      ws.close();
-
-      ws.onclose = function () {
-        location.reload();
-      };
-    }
-
-    if (data.type === 'error-resolved') {
-      console.log('[parcel] ✨ Error resolved');
-      removeErrorOverlay();
-    }
-
-    if (data.type === 'error') {
-      console.error('[parcel] 🚨  ' + data.error.message + '\n' + data.error.stack);
-      removeErrorOverlay();
-      var overlay = createErrorOverlay(data);
-      document.body.appendChild(overlay);
-    }
-  };
-}
-
-function removeErrorOverlay() {
-  var overlay = document.getElementById(OVERLAY_ID);
-
-  if (overlay) {
-    overlay.remove();
-  }
-}
-
-function createErrorOverlay(data) {
-  var overlay = document.createElement('div');
-  overlay.id = OVERLAY_ID; // html encode message and stack trace
-
-  var message = document.createElement('div');
-  var stackTrace = document.createElement('pre');
-  message.innerText = data.error.message;
-  stackTrace.innerText = data.error.stack;
-  overlay.innerHTML = '<div style="background: black; font-size: 16px; color: white; position: fixed; height: 100%; width: 100%; top: 0px; left: 0px; padding: 30px; opacity: 0.85; font-family: Menlo, Consolas, monospace; z-index: 9999;">' + '<span style="background: red; padding: 2px 4px; border-radius: 2px;">ERROR</span>' + '<span style="top: 2px; margin-left: 5px; position: relative;">🚨</span>' + '<div style="font-size: 18px; font-weight: bold; margin-top: 20px;">' + message.innerHTML + '</div>' + '<pre>' + stackTrace.innerHTML + '</pre>' + '</div>';
-  return overlay;
-}
-
-function getParents(bundle, id) {
-  var modules = bundle.modules;
-
-  if (!modules) {
-    return [];
-  }
-
-  var parents = [];
-  var k, d, dep;
-
-  for (k in modules) {
-    for (d in modules[k][1]) {
-      dep = modules[k][1][d];
-
-      if (dep === id || Array.isArray(dep) && dep[dep.length - 1] === id) {
-        parents.push(k);
-      }
-    }
-  }
-
-  if (bundle.parent) {
-    parents = parents.concat(getParents(bundle.parent, id));
-  }
-
-  return parents;
-}
-
-function hmrApply(bundle, asset) {
-  var modules = bundle.modules;
-
-  if (!modules) {
-    return;
-  }
-
-  if (modules[asset.id] || !bundle.parent) {
-    var fn = new Function('require', 'module', 'exports', asset.generated.js);
-    asset.isNew = !modules[asset.id];
-    modules[asset.id] = [fn, asset.deps];
-  } else if (bundle.parent) {
-    hmrApply(bundle.parent, asset);
-  }
-}
-
-function hmrAcceptCheck(bundle, id) {
-  var modules = bundle.modules;
-
-  if (!modules) {
-    return;
-  }
-
-  if (!modules[id] && bundle.parent) {
-    return hmrAcceptCheck(bundle.parent, id);
-  }
-
-  if (checkedAssets[id]) {
-    return;
-  }
-
-  checkedAssets[id] = true;
-  var cached = bundle.cache[id];
-  assetsToAccept.push([bundle, id]);
-
-  if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
-    return true;
-  }
-
-  return getParents(global.parcelRequire, id).some(function (id) {
-    return hmrAcceptCheck(global.parcelRequire, id);
-  });
-}
-
-function hmrAcceptRun(bundle, id) {
-  var cached = bundle.cache[id];
-  bundle.hotData = {};
-
-  if (cached) {
-    cached.hot.data = bundle.hotData;
-  }
-
-  if (cached && cached.hot && cached.hot._disposeCallbacks.length) {
-    cached.hot._disposeCallbacks.forEach(function (cb) {
-      cb(bundle.hotData);
-    });
-  }
-
-  delete bundle.cache[id];
-  bundle(id);
-  cached = bundle.cache[id];
-
-  if (cached && cached.hot && cached.hot._acceptCallbacks.length) {
-    cached.hot._acceptCallbacks.forEach(function (cb) {
-      cb();
-    });
-
-    return true;
-  }
-}
-},{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
+},{"babel-polyfill":"../../../node_modules/babel-polyfill/lib/index.js","spinal-model-graph":"../node_modules/spinal-model-graph/dist/src/index.js","./spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./App.vue":"App.vue","vue-golden-layout":"../node_modules/vue-golden-layout/dist/vue-golden-layout.js","vue-property-decorator":"../node_modules/vue-property-decorator/lib/vue-property-decorator.js","golden-layout/src/css/goldenlayout-base.css":"../node_modules/golden-layout/src/css/goldenlayout-base.css","golden-layout/src/css/goldenlayout-dark-theme.css":"../node_modules/golden-layout/src/css/goldenlayout-base.css"}]},{},["index.js"], null)

@@ -25,7 +25,7 @@ with this file. If not, see
   <div ref="appGraph" class="app-Graph">
     <div class="dropdown">
       <button id="button" class="button" v-on:click="showLegend">
-        <img src="/assets/logo.png" alt="" />
+        <img src="/assets/info.png" alt="" />
       </button>
 
       <div id="myDropdown" class="dropdown-content">
@@ -40,7 +40,7 @@ with this file. If not, see
           </li>
           <li>
             <img src="/assets/lastnode.png" alt="" />
-            <p>Last Node</p>
+            <p>Leaf Node</p>
           </li>
           <li>
             <img src="/assets/lstptr.png" alt="" />
@@ -54,17 +54,18 @@ with this file. If not, see
             <img src="/assets/ptrlst.png" alt="" />
             <p>Relation PtrLst</p>
           </li>
+          <hr />
           <li>
             <img src="/assets/mouse2.png" alt="" />
-            <p>LClick: graph depth</p>
+            <p>Left Click: chldren course</p>
           </li>
           <li>
             <img src="/assets/mouse2.png" alt="" />
-            <p>RClick: parents course</p>
+            <p>Right Click: parent course</p>
           </li>
           <li>
             <img src="/assets/mouse2.png" alt="" />
-            <p>DblClick: starting Node</p>
+            <p>Middle Click: open the node in a new panel</p>
           </li>
         </ul>
       </div>
@@ -78,10 +79,15 @@ import Spinal from "../spinal";
 
 export default {
   name: "AppGraph",
+  data() {
+    return {
+      show: 0
+    };
+  },
   mounted() {
     const spinal = Spinal.getInstance();
     this.viewer = new Viewer(spinal);
-    this.viewer.init(this.$refs.appGraph);
+    this.viewer.init(this.$refs.appGraph, this.server_id);
   },
   methods: {
     resize() {
@@ -90,6 +96,9 @@ export default {
     showLegend() {
       document.getElementById("myDropdown").classList.toggle("show");
     }
+  },
+  props: {
+    server_id: { require: true, type: Number }
   }
 };
 </script>
@@ -104,18 +113,19 @@ export default {
   height: 100%;
   overflow: hidden;
 }
-$blue: #1686d9;
+$blue: #666;
 
 .dropdown {
   position: relative;
-  float: left;
+  float: right;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
+  right: 0px;
   background-color: #222;
-  min-width: 200px;
+  min-width: 340px;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(76, 69, 69, 0.2);
   z-index: 1;
@@ -128,20 +138,21 @@ $blue: #1686d9;
 
 .button {
   cursor: help;
+  outline: none;
   margin-right: 3px;
   width: 25px;
   height: 25px;
   background-color: $blue;
-  border: 2px solid white;
+  border: 2px solid black;
   border-radius: 35px;
   text-decoration: none;
   padding: 5px 5px;
-  color: white;
+  color: black;
   display: inline-block;
   &:hover {
-    background-color: white;
+    background-color: rgb(187, 184, 184);
     color: $blue;
-    border: 2px solid $blue;
+    border: 2px solid black;
   }
 }
 .button img {
@@ -149,8 +160,8 @@ $blue: #1686d9;
   cursor: help;
   margin-left: -5px;
   margin-top: -5px;
-  width: 20px;
-  height: 20px;
+  width: 21px;
+  height: 21px;
 }
 ul {
   list-style-type: none;

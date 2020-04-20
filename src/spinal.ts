@@ -58,20 +58,10 @@ export class Spinal {
   }
 
 
-  getServeIdByName(name) {
-    const url = window.location.href;
-    name = name.replace(/[[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-      results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return "";
-    return results[2].replace(/\+/g, " ");
-  }
 
 
-  load() {
 
-    let serve_id = parseInt(this.getServeIdByName("id"));
+  load(serve_id) {
     return new Promise((resolve, reject) => {
       this.conn.load_ptr(serve_id,
         (model) => {

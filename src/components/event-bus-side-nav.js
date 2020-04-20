@@ -24,5 +24,5 @@
 
 
 import Vue from 'vue';
-const EventBusHelp = new Vue();
-export default EventBusHelp;
+const EventBusSideNav = new Vue();
+export default EventBusSideNav;

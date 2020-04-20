@@ -70,10 +70,12 @@ class Viewer {
     }
 
   }
-  async init(element: any) {
-    this.element = element;
+  async init(element: any, server_id) {
 
-    const data = <SpinalNode<any>>(await this.graph.load()); //load graph
+    this.element = element;
+    console.log(this.element);
+
+    const data = <SpinalNode<any>>(await this.graph.load(server_id)); //load graph
 
     this.width = element.clientWidth - this.margin.left - this.margin.right;
     this.height = element.clientHeight - this.margin.top - this.margin.bottom;
@@ -150,7 +152,6 @@ class Viewer {
 
       const nodes = flatten(root) // recover ids nodes
       const links = createLinks(nodes)  //recover links
-      console.log(nodes);
 
       //build the d3 links************************************/
       link = mylink
@@ -201,11 +202,19 @@ class Viewer {
         .enter()
         .append('g')
         .attr('class', 'node')
+        .attr('id', 'test')
         .attr('stroke-width', 1.2)
         .style('fill', color)
         .style('opacity', 1)
-        .on('click', click)
+        .on('click', leftclick)
         .on("contextmenu", rightclick)
+        .on("auxclick", function (d) {
+          var evnt = window.event
+          if ((<any>evnt).which === 2) {
+            newpage(d);
+          }
+
+        })
         .call(d3.drag()
           .on('start', dragstarted)
           .on('drag', dragged)
@@ -282,7 +291,6 @@ class Viewer {
       }
 
       if (d.data.category === "node") {
-        console.log(d);
 
         return style.nodefill.objClosed;
 
@@ -318,7 +326,7 @@ class Viewer {
     }
 
 
-    //node clicked function
+    //node clicked function children course
     async function leftclick(d: D3Node) {
 
       const realNode = (FileSystem._objects[d.data._serverId]);
@@ -331,6 +339,7 @@ class Viewer {
       update()
     }
 
+    //node clicked function parent course
     async function rightclick(d: D3Node) {
       d3.event.preventDefault();
       const realNode = (FileSystem._objects[d.data._serverId]);
@@ -343,33 +352,32 @@ class Viewer {
     }
     let timeoutclick = null;
 
+    //starting node
     async function newpage(d: D3Node) {
-
-      let myWindow = window.open("", "");
-      let location = "/html/graph/?id=" + d.data._serverId;
-      myWindow.document.location = <any>(location);
-      myWindow.focus();
-
-    }
-
-    async function click(d: D3Node) {
-
-      if (timeoutclick === null) {
-        timeoutclick = setTimeout(() => {
-          timeoutclick = null;
-          leftclick(d);
-        }, 500);
-
-      } else if (d.data.category === "node") {
-        clearTimeout(timeoutclick);
-        timeoutclick = null;
-        newpage(d);
-
+      if (d.data.category === "node") {
+        const server_id = d.data._serverId;
+        EventBus.$emit("server_id", server_id);
       }
-
-
-
     }
+
+    // async function click(d: D3Node) {
+
+    //   if (timeoutclick === null) {
+    //     timeoutclick = setTimeout(() => {
+    //       timeoutclick = null;
+    //       leftclick(d);
+    //     }, 500);
+
+    //   } else if (d.data.category === "node") {
+    //     clearTimeout(timeoutclick);
+    //     timeoutclick = null;
+    //     newpage(d);
+
+    //   }
+
+
+
+    // }
 
     // dragstarted function
     function dragstarted(d: D3Node) {

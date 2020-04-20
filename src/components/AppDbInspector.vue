@@ -25,42 +25,43 @@ with this file. If not, see
   <div ref="appDbInspector" class="app-Db-Inspector">
     <div class="dropdown1">
       <button id="button" class="button" v-on:click="showLegend">
-        <img src="/assets/logo.png" alt="" />
+        <img src="/assets/info.png" alt="" />
       </button>
       <div id="myDropdown1" class="dropdown1-content">
         <ul class="demo1">
           <li>
             <img src="/assets/simplenode.png" alt="" />
-            <p>Close Node</p>
+            <p>Closed Model</p>
           </li>
           <li>
             <img src="/assets/open.png" alt="" />
-            <p>Open Node</p>
+            <p>Open Or Void Model</p>
           </li>
           <li>
             <img src="/assets/last.png" alt="" />
-            <p>Last Node</p>
+            <p>Atomic Model</p>
           </li>
           <li>
             <img src="/assets/ptr.png" alt="" />
-            <p>Close Ptr Node</p>
+            <p>Closed Ptr Or Pbr</p>
           </li>
           <li>
             <img src="/assets/start.png" alt="" />
-            <p>Open Ptr Node</p>
+            <p>Open Ptr Or Pbr</p>
           </li>
 
           <li>
             <img src="/assets/ids.png" alt="" />
-            <p>Close Ref Node</p>
+            <p>Closed Lst</p>
           </li>
           <li>
             <img src="/assets/idsopen.png" alt="" />
-            <p>Open Ref Node</p>
+            <p>Open Lst</p>
           </li>
+          <hr />
           <li>
             <img src="/assets/mouse2.png" alt="" />
-            <p>graph depth</p>
+            <p>Left Click: Open Object Attribut</p>
           </li>
         </ul>
       </div>
@@ -104,18 +105,19 @@ export default {
   height: 100%;
   overflow: hidden;
 }
-$blue: #1686d9;
+$blue: #666;
 
 .dropdown1 {
   position: relative;
-  float: left;
+  float: right;
 }
 
 .dropdown1-content {
   display: none;
   position: absolute;
+  right: 0px;
   background-color: #222;
-  min-width: 150px;
+  min-width: 270px;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(71, 69, 69, 0.2);
   z-index: 1;
@@ -128,20 +130,21 @@ $blue: #1686d9;
 
 .button {
   cursor: help;
+  outline: none;
   margin-right: 3px;
   width: 25px;
   height: 25px;
   background-color: $blue;
-  border: 2px solid white;
+  border: 2px solid black;
   border-radius: 35px;
   text-decoration: none;
   padding: 5px 5px;
-  color: white;
+  color: black;
   display: inline-block;
   &:hover {
-    background-color: white;
+    background-color: rgb(187, 184, 184);
     color: $blue;
-    border: 2px solid $blue;
+    border: 2px solid black;
   }
 }
 .button img {
@@ -149,8 +152,8 @@ $blue: #1686d9;
   cursor: help;
   margin-left: -5px;
   margin-top: -5px;
-  width: 20px;
-  height: 20px;
+  width: 21px;
+  height: 21px;
 }
 ul {
   list-style-type: none;

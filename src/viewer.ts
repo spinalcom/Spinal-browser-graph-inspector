@@ -30,13 +30,14 @@ import d3 = require("d3"); // lib d3js
 import ANode from './nodeModel/ANode'; //interface Node
 
 import { D3Node } from './nodeModel/D3Node'; //interface D3Node
-import nodeFactory from "./nodeModel/NodeFactory";
+import NodeFactory from "./nodeModel/NodeFactory";
 import { FileSystem } from 'spinal-core-connectorjs_type';
 import { SpinalNode } from 'spinal-model-graph';
 import EventBus from "./components/event-bus.js";
 import EventBusElement from "./components/event-bus-element-inspector.js";
-class Viewer {
 
+
+class Viewer {
   graph: Spinal;
   width: number;
   height: number;
@@ -45,8 +46,11 @@ class Viewer {
   svg: any;
   simulation: any;
   visualisation: boolean = false;
+  nodeFactory: NodeFactory;
+
   constructor(spinal: Spinal) {
-    this.graph = spinal
+    this.graph = spinal;
+    this.nodeFactory = new NodeFactory();
   }
   resize() {
     const element = this.element;
@@ -72,10 +76,12 @@ class Viewer {
   }
   async init(element: any, server_id) {
 
+
     this.element = element;
     console.log(this.element);
 
     const data = <SpinalNode<any>>(await this.graph.load(server_id)); //load graph
+    console.log("data", data);
 
     this.width = element.clientWidth - this.margin.left - this.margin.right;
     this.height = element.clientHeight - this.margin.top - this.margin.bottom;
@@ -84,7 +90,7 @@ class Viewer {
 
 
     //build hierarchy d3 graph from entry point
-    const root = nodeFactory.createNode(data);
+    const root = this.nodeFactory.createNode(data);
 
 
 
@@ -148,10 +154,51 @@ class Viewer {
     var edgepaths = svg.selectAll(".edgepath");
 
 
+
+    //node clicked function children course
+    const leftclick = async (d: D3Node) => {
+      console.log("leftclick");
+
+      const realNode = (FileSystem._objects[d.data._serverId]);
+
+      if (ANode.collapseOrOpen(d)) {
+        await ANode.updateChildren(d, this.nodeFactory);
+      }
+      EventBus.$emit("realNode", realNode);
+      EventBusElement.$emit("realNodeElement", realNode);
+      update()
+    }
+
+    //node clicked function parent course
+    const rightclick = async (d: D3Node) => {
+      console.log("rightclick");
+      d3.event.preventDefault();
+      const realNode = (FileSystem._objects[d.data._serverId]);
+      if (ANode.collapseOrOpenParent(d)) {
+        await ANode.updateParent(d, this.nodeFactory);
+      }
+
+      update();
+
+    }
+    let timeoutclick = null;
+
+    //starting node
+    const newpage = async (d: D3Node) => {
+      console.log("middleclick");
+      if (d.data.category === "node") {
+        const server_id = d.data._serverId;
+        EventBus.$emit("server_id", server_id);
+      }
+    }
+
+
+
     function update() {
 
       const nodes = flatten(root) // recover ids nodes
       const links = createLinks(nodes)  //recover links
+      console.log("update", nodes, links);
 
       //build the d3 links************************************/
       link = mylink
@@ -323,41 +370,6 @@ class Viewer {
       edgepaths.attr('d', function (d: any) {
         return 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y;
       });
-    }
-
-
-    //node clicked function children course
-    async function leftclick(d: D3Node) {
-
-      const realNode = (FileSystem._objects[d.data._serverId]);
-
-      if (ANode.collapseOrOpen(d)) {
-        await ANode.updateChildren(d, nodeFactory);
-      }
-      EventBus.$emit("realNode", realNode);
-      EventBusElement.$emit("realNodeElement", realNode);
-      update()
-    }
-
-    //node clicked function parent course
-    async function rightclick(d: D3Node) {
-      d3.event.preventDefault();
-      const realNode = (FileSystem._objects[d.data._serverId]);
-      if (ANode.collapseOrOpenParent(d)) {
-        await ANode.updateParent(d, nodeFactory);
-      }
-
-      update();
-
-    }
-    let timeoutclick = null;
-
-    //starting node
-    async function newpage(d: D3Node) {
-      if (d.data.category === "node") {
-        const server_id = d.data._serverId;
-        EventBus.$emit("server_id", server_id);
-      }
     }
 
     // async function click(d: D3Node) {

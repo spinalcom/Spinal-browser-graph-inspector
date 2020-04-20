@@ -69,8 +69,11 @@ with this file. If not, see
               :closable="true"
               v-for="(id, index) in ids"
               :key="index"
+              @resize="onResize('app-graph')"
+              @show="onShow(index)"
+              @hide="onHide(index)"
             >
-              <app-Graph :ref="'app-graph' + index" :server_id="id"></app-Graph>
+              <app-Graph ref="app-graph" :id="'app-graph' + index" :server_id="id"></app-Graph>
             </gl-component>
           </gl-stack>
           <gl-col class="col" :width="40">
@@ -121,10 +124,15 @@ export default {
   },
   data() {
     return {
-      ids: []
+      ids: [],
+      currentIdx : 0
     };
   },
   methods: {
+    onShow(index) {console.log("onShow", index);
+    },
+onHide(index) {console.log("onHide", index);
+},
     initids() {
       EventBus.$on("server_id", server_id => {
         console.log(this.$refs);
@@ -135,7 +143,11 @@ export default {
       });
     },
     onResize(ref) {
-      this.$refs[ref].resize();
+      console.log(ref);
+      
+      this.$refs[ref].forEach(el => {
+        el.resize();
+      });
     },
     closeSlideMenu() {
       document.getElementById("side-menu").style.width = "0";
@@ -158,6 +170,7 @@ export default {
   },
   mounted() {
     this.initids();
+    console.log(this.$refs);
   },
   created() {
     var server_id = parseInt(this.getServeIdByName("id"));

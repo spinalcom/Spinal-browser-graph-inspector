@@ -19,7 +19,7 @@
     "d3-context-menu": "^1.1.2",
     "d3-hierarchy": "^1.1.9",
     "golden-layout": "^1.5.9",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "parcel-bundler": "^1.12.4",
     "spinal-core-connectorjs_type": "git+https://github.com/spinalcom/spinal-core-connectorjs_type.git",
     "spinal-env-viewer-graph-service": "git+https://github.com/spinalcom/Spinal-Graph-Service.git",

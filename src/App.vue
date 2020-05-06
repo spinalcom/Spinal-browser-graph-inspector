@@ -22,16 +22,8 @@ with this file. If not, see
 <http://resources.spinalcom.com/licenses.pdf>.
 -->
 <template>
-  <!-- eslint-disable vue/html-self-closing -->
   <div class="graph">
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-      crossorigin="anonymous"
-    />
     <app-header></app-header>
-    ​
     <div class="container">
       <div id="side-menu" class="side-nav">
         <div class="header-nav">
@@ -44,25 +36,18 @@ with this file. If not, see
           <div class="logo"><img src="/assets/spinal.png" alt="" /></div>
         </div>
         <div class="login">
-          <a href="" v-on:click="rederictionDrive"
+          <a href="#" v-on:click="rederictionDrive"
             ><img src="/assets/return.png" alt="" /> Return to SpinalBIM
             Drive</a
           >
-          <a href="#"><img src="/assets/logout.png" alt="" /> Sign out</a>
+          <div class="signout" v-on:click="signOut">
+            <a href="#"><img src="/assets/logout.png" alt="" /> Sign out</a>
+          </div>
         </div>
       </div>
       <golden-layout class="golden">
         <gl-row :has-headers="true">
-          <gl-stack :width="60">
-            <!-- <gl-component
-              class="comp"
-              title="Graph Node Inspector"
-              :closable="false"
-              @resize="onResize('app-Graph')"
-            >
-              <app-Graph ref="app-Graph"></app-Graph>
-            </gl-component> -->
-            ​
+          <gl-stack :width="70">
             <gl-component
               class="comp"
               title="Graph Node Inspector"
@@ -71,15 +56,19 @@ with this file. If not, see
               :key="index"
               @resize="onResize('app-graph')"
             >
-              <app-Graph ref="app-graph" :id="'app-graph' + index" :server_id="id"></app-Graph>
+              <app-Graph
+                ref="app-graph"
+                :id="'app-graph' + index"
+                :server_id="id"
+              ></app-Graph>
             </gl-component>
           </gl-stack>
-          <gl-col class="col" :width="40">
+          <gl-col class="col" :width="30">
             <gl-component
               class="comp"
               title="DB Inspector"
               :closable="false"
-              :height="70"
+              :height="55"
             >
               <app-Db-Inspector ref="app-Db-Inspector"></app-Db-Inspector>
             </gl-component>
@@ -99,16 +88,15 @@ with this file. If not, see
 ​
 <script lang="ts">
 import Vue from "vue";
+import Spinal from "./spinal";
 import { Component, Inject, Model, Prop, Watch } from "vue-property-decorator";
 import AppHeader from "./components/AppHeader.vue";
 import AppGraph from "./components/AppGraph.vue";
 import AppElement from "./components/AppElement.vue";
 import AppDbInspector from "./components/AppDbInspector.vue";
-import EventBusSideNav from "./components/event-bus-side-nav.js";
 import EventBus from "./components/event-bus.js";
 
-EventBusSideNav.$on("size", size => {
-  console.log(size);
+EventBus.$on("size", (size) => {
   document.getElementById("side-menu").style.width = size;
 });
 
@@ -118,7 +106,7 @@ export default {
     AppHeader,
     AppGraph,
     AppElement,
-    AppDbInspector
+    AppDbInspector,
   },
   data() {
     return {
@@ -127,27 +115,28 @@ export default {
   },
   methods: {
     initids() {
-      EventBus.$on("server_id", server_id => {
-        console.log(this.$refs);
-
+      EventBus.$on("server_id", (server_id) => {
         this.ids.push(server_id);
-        console.log(this.ids);
-        console.log(server_id);
       });
     },
     onResize(ref) {
-      this.$refs[ref].forEach(el => {
+      this.$refs[ref].forEach((el) => {
         el.resize();
       });
     },
     closeSlideMenu() {
       document.getElementById("side-menu").style.width = "0";
     },
+    signOut() {
+      const spinal = Spinal.getInstance();
+      spinal.disconnect();
+      // window.localStorage.removeItem("spinalhome_cfg");
+      // document.location.href = "/html/drive";
+    },
     rederictionDrive() {
-      let myWindow = window.open("", "");
       let location = "/html/drive/";
-      myWindow.document.location = <any>location;
-      myWindow.focus();
+      window.document.location = <any>location;
+      window.focus();
     },
     getServeIdByName(name) {
       const url = window.location.href;
@@ -157,7 +146,7 @@ export default {
       if (!results) return null;
       if (!results[2]) return "";
       return results[2].replace(/\+/g, " ");
-    }
+    },
   },
   mounted() {
     this.initids();
@@ -165,7 +154,7 @@ export default {
   created() {
     var server_id = parseInt(this.getServeIdByName("id"));
     this.ids.push(server_id);
-  }
+  },
 };
 </script>
 
@@ -275,5 +264,25 @@ body,
   width: 25px;
   height: 25px;
   padding: 10px;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(201, 194, 194);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b4f5ab;
 }
 </style>

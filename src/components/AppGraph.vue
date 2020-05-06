@@ -81,25 +81,25 @@ export default {
   name: "AppGraph",
   data() {
     return {
-      show: 0
+      show: 0,
     };
   },
   mounted() {
     const spinal = Spinal.getInstance();
-    this.viewer = new Viewer(spinal);
-    this.viewer.init(this.$refs.appGraph, this.server_id);
+    const viewer = new Viewer(spinal);
+    viewer.init(this.$refs.appGraph, this.server_id);
   },
   methods: {
     resize() {
-      this.viewer.resize.call(this.viewer);
+      // viewer.resize.call(this.viewer);
     },
     showLegend() {
       document.getElementById("myDropdown").classList.toggle("show");
-    }
+    },
   },
   props: {
-    server_id: { require: true, type: Number }
-  }
+    server_id: { require: true, type: Number },
+  },
 };
 </script>
 

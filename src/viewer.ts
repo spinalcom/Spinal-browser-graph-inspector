@@ -24,8 +24,6 @@
 //load the libraries 
 import 'spinal-model-graph'
 import Spinal from "./spinal.js"; //graph connection and recovery
-import NodeG from "./nodeModel/NodeG"; //type node
-import NodeRelationG from "./nodeModel/NodeRelationG"; // type relation
 import d3 = require("d3"); // lib d3js
 import ANode from './nodeModel/ANode'; //interface Node
 
@@ -34,8 +32,6 @@ import NodeFactory from "./nodeModel/NodeFactory";
 import { FileSystem } from 'spinal-core-connectorjs_type';
 import { SpinalNode } from 'spinal-model-graph';
 import EventBus from "./components/event-bus.js";
-import EventBusElement from "./components/event-bus-element-inspector.js";
-
 
 class Viewer {
   graph: Spinal;
@@ -52,6 +48,7 @@ class Viewer {
     this.graph = spinal;
     this.nodeFactory = new NodeFactory();
   }
+  //resize function
   resize() {
     const element = this.element;
     let width1 = element.clientWidth - this.margin.left - this.margin.right;
@@ -62,6 +59,7 @@ class Viewer {
       this.draw();
     }
   }
+  //draw function
 
   draw() {
 
@@ -74,26 +72,25 @@ class Viewer {
     }
 
   }
-  async init(element: any, server_id) {
 
+  // initialisation function
+  async init(element: any, server_id) {
 
     this.element = element;
     console.log(this.element);
 
+    this.element = element;//initialisation of DOMElement
     const data = <SpinalNode<any>>(await this.graph.load(server_id)); //load graph
-    console.log("data", data);
+    this.width = element.clientWidth - this.margin.left - this.margin.right;//width of element
+    this.height = element.clientHeight - this.margin.top - this.margin.bottom;//height of element
 
     this.width = element.clientWidth - this.margin.left - this.margin.right;
     this.height = element.clientHeight - this.margin.top - this.margin.bottom;
     let i = 0;
-    let node: any, link: any;
-
+    let node: any, link: any, edgepath: any, arrowhead: any;
 
     //build hierarchy d3 graph from entry point
     const root = this.nodeFactory.createNode(data);
-
-
-
     //create the svg
     this.svg = d3.select(element).append('svg')
       .call(d3.zoom().scaleExtent([1 / 2, 8]).on('zoom', zoomed))
@@ -101,45 +98,26 @@ class Viewer {
       .attr("width", this.width + this.margin.right + this.margin.left)
       .attr("height", this.height + this.margin.top + this.margin.bottom)
 
-
+    //create svg groupe 
     const svg = this.svg.append('g')
       .attr("transform", "translate("
         + this.margin.left + "," + this.margin.top + ")");
 
-    //create legend groupe
-    const legend = svg.append('g')
-
     //create links group
-    const mylink = svg.append('g')
-
-
-
-    //create arrow head svg
-    svg.append('defs').append('marker')
-      .attr('id', 'arrowhead')
-      .attr('viewBox', '-0 -5 10 10')
-      .attr('refX', 16)
-      .attr('refY', 0)
-      .attr('orient', 'auto')
-      .attr('markerWidth', 8)
-      .attr('markerHeight', 8)
-      .attr('xoverflow', 'visible')
-      .append('svg:path')
-      .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
-      .attr('fill', '#f8f8f8')
-      .style('stroke', 'none');
-
+    const mylink = svg.append('g');
+    const myedgepath = svg.append('g');
+    const myarrowhead = svg.append('g');
 
     //create the simulation force 
     var simulation = d3.forceSimulation()
-      .force('charge', d3.forceManyBody().strength(-3000)) //charge — nodes repel from each other which prevents overlap
+      .force('charge', d3.forceManyBody().strength(-2000)) //charge — nodes repel from each other which prevents overlap
       .force('link', d3.forceLink().id(function (d: D3Node) { //link — specifies that id is the link variable
         let res = d.id + 10
         return res.toString();
       })
         .distance(function (d: any) {
           if (d.target.data.category === "node") {
-            return 200;
+            return 100;
           }
 
           return 70;
@@ -150,47 +128,40 @@ class Viewer {
       .on('tick', ticked)
 
     this.simulation = simulation;
-    //declare arrowhead path
-    var edgepaths = svg.selectAll(".edgepath");
-
-
 
     //node clicked function children course
     const leftclick = async (d: D3Node) => {
-      console.log("leftclick");
 
       const realNode = (FileSystem._objects[d.data._serverId]);
-
       if (ANode.collapseOrOpen(d)) {
         await ANode.updateChildren(d, this.nodeFactory);
       }
       EventBus.$emit("realNode", realNode);
-      EventBusElement.$emit("realNodeElement", realNode);
+      EventBus.$emit("realNodeElement", realNode);
       update()
     }
 
     //node clicked function parent course
     const rightclick = async (d: D3Node) => {
-      console.log("rightclick");
       d3.event.preventDefault();
       const realNode = (FileSystem._objects[d.data._serverId]);
       if (ANode.collapseOrOpenParent(d)) {
         await ANode.updateParent(d, this.nodeFactory);
       }
-
       update();
-
     }
-    let timeoutclick = null;
 
-    //starting node
+    //node clicked function strating node in new tab
     const newpage = async (d: D3Node) => {
-      console.log("middleclick");
       if (d.data.category === "node") {
         const server_id = d.data._serverId;
         EventBus.$emit("server_id", server_id);
       }
+      update();
     }
+
+
+
 
 
 
@@ -200,14 +171,13 @@ class Viewer {
       const links = createLinks(nodes)  //recover links
       console.log("update", nodes, links);
 
-      //build the d3 links************************************/
+
+      //build the d3 links
       link = mylink
         .selectAll('.link')
         .data(links, function (d: any) {
-
           return d.target.id
         })
-
       link.exit().remove()
 
       const linkEnter = link
@@ -218,8 +188,9 @@ class Viewer {
         .style('stroke', '#f8f8f8')
         .style('opacity', '0.5')
         .style('stroke-width', 2)
+      link = linkEnter.merge(link);
 
-      edgepaths = svg.selectAll(".edgepath")
+      edgepath = myedgepath.selectAll(".edgepath")
         .data(links)
         .enter()
         .append('path')
@@ -228,15 +199,27 @@ class Viewer {
         .attr('stroke-opacity', 0)
         .attr('id', function (d, i) { return 'edgepath' + i })
         .style("pointer-events", "none");
-
-      link = linkEnter.merge(link)
-
+      edgepath = edgepath.merge(edgepath);
 
 
 
+      //create arrow head svg
+      arrowhead = svg.append('defs').append('marker')
+        .attr('id', 'arrowhead')
+        .attr('viewBox', '-0 -5 10 10')
+        .attr('refX', 16)
+        .attr('refY', 0)
+        .attr('orient', 'auto')
+        .attr('markerWidth', 8)
+        .attr('markerHeight', 8)
+        .attr('xoverflow', 'visible')
+        .append('svg:path')
+        .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
+        .attr('fill', '#f8f8f8')
+        .style('stroke', 'none');
+      arrowhead = arrowhead.merge(arrowhead);
 
-
-      //build the d3 nodes ************************************/
+      //build the d3 nodes
       node = svg
         .selectAll('.node')
         .data(nodes, function (d: D3Node) {
@@ -302,20 +285,17 @@ class Viewer {
           else {
             return d.data.name + "{" + realNode.getNbChildren() + "}";
           }
-
         })
         .attr('transform', `translate(-17,-15)`)
         .style('fill', "#fff")
         .style('font-family', "sans-serif")
-
       node = nodeEnter.merge(node)
-
 
       //append the data to the simulation
       simulation.force<any>('link').links(links);
       simulation.nodes(nodes)
     }
-
+    //color palette of nodes and relations
     let style = {
       nodefill: {
         empty: "#fff", // or atomic or unknown
@@ -327,7 +307,6 @@ class Viewer {
       }
     };
 
-
     //node color function
     function color(d) {
       if (d.data.hasChildren === false) {
@@ -336,13 +315,9 @@ class Viewer {
       if (d.data._serverId === root.data._serverId) {
         return style.nodefill.enterpoint;
       }
-
       if (d.data.category === "node") {
-
         return style.nodefill.objClosed;
-
       }
-
       if (d.data.category === "relation") {
         if (d.data.type === "PtrLst") {
           return style.nodefill.ptrlst;
@@ -352,9 +327,7 @@ class Viewer {
           return style.nodefill.ref;
         }
       }
-
     }
-
 
     //node ticked function
     function ticked() {
@@ -367,29 +340,11 @@ class Viewer {
       node
         .attr('transform', function (d) { return `translate(${d.x}, ${d.y})` })
 
-      edgepaths.attr('d', function (d: any) {
+      edgepath.attr('d', function (d: any) {
         return 'M ' + d.source.x + ' ' + d.source.y + ' L ' + d.target.x + ' ' + d.target.y;
       });
     }
 
-    // async function click(d: D3Node) {
-
-    //   if (timeoutclick === null) {
-    //     timeoutclick = setTimeout(() => {
-    //       timeoutclick = null;
-    //       leftclick(d);
-    //     }, 500);
-
-    //   } else if (d.data.category === "node") {
-    //     clearTimeout(timeoutclick);
-    //     timeoutclick = null;
-    //     newpage(d);
-
-    //   }
-
-
-
-    // }
 
     // dragstarted function
     function dragstarted(d: D3Node) {
@@ -397,7 +352,6 @@ class Viewer {
       d.fx = d.x
       d.fy = d.y
     }
-
 
     // dragged function
     function dragged(d: D3Node) {
@@ -416,8 +370,6 @@ class Viewer {
     function flatten(root: any): D3Node[] {
       const nodes: Set<D3Node> = new Set();
 
-
-
       function recurse(node) {
         if (nodes.has(node)) return;
         if (!node.id) node.id = ++i;
@@ -430,7 +382,7 @@ class Viewer {
       recurse(root)
       return Array.from(nodes)
     }
-
+    //chek link exist  
     function chekLink(source: D3Node, target: D3Node, links: any[]): boolean {
       for (let index = 0; index < links.length; index++) {
         if (source.data === links[index].source.data && target.data === links[index].target.data) {
@@ -438,10 +390,9 @@ class Viewer {
         }
       }
       return false
-
     }
 
-
+    //create links 
     function createLinks(nodes: D3Node[]) {
       const links = []
       let id = 0
@@ -468,20 +419,14 @@ class Viewer {
             }
           }
       }
-
-
       return links
-
-
     }
 
     // Zoom function
     function zoomed() {
       svg.attr('transform', d3.event.transform)
     }
-
     update()
-
   }
 
 

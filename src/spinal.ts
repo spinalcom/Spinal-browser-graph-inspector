@@ -22,25 +22,13 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 
-import { FileSystem } from "spinal-core-connectorjs_type";
-
-const config = {
-  spinalConnector: {
-    user: 168,
-    password: 'IZEnMGgpUZxm',
-    host: 'localhost',
-    port: 8080,
-    protocol: 'http'
-  },
-  file: {
-    path: '/__users__/admin/Digital_twin'
-  }
-};
-var spinalCore = require('spinal-core-connectorjs');
+import { FileSystem, spinalCore } from "spinal-core-connectorjs_type";
+import axios from "axios";
 var spinalgraph = require('spinal-model-graph');
 
 export class Spinal {
   static instance = null;
+  connectPromise = null;
   conn: spinal.FileSystem;
   static getInstance(): Spinal {
     if (Spinal.instance === null) {
@@ -49,19 +37,49 @@ export class Spinal {
     return Spinal.instance;
   }
   private constructor() {
-    const connect_opt =
-      `http://${config.spinalConnector.user}:${config.spinalConnector.password}@${
-      config.spinalConnector.host}:${config.spinalConnector.port}/`;
-
-    this.conn = spinalCore.connect(connect_opt);
-    FileSystem.CONNECTOR_TYPE = "Browser";
+    this.connectPromise = null;
+    this.connect();
+  }
+  getauth(): { "username": string, "password": string } {
+    const encryptedHex = window.localStorage.getItem('spinalhome_cfg');
+    return JSON.parse(atob(encryptedHex));
+  }
+  disconnect() {
+    window.localStorage.removeItem('spinalhome_cfg');
+    // @ts-ignore
+    window.location = "/html/drive/";
   }
 
+  connect() {
+    if (this.connectPromise !== null) {
+      return this.connectPromise;
+    }
+    const serverHost = window.location.origin
+    FileSystem.CONNECTOR_TYPE = "Browser";
+    const user = this.getauth();
 
+    this.connectPromise = new Promise((resolve, reject) => {
+      return axios.get(`${serverHost}/get_user_id`, {
+        params: {
+          u: user.username,
+          p: user.password
+        }
+      }).then(response => {
+        let id = parseInt(response.data);
+        const host = serverHost.replace(/https?:\/\//, "");
+        this.conn = spinalCore.connect(
+          `http://${id}:${user.password}@${host}/`
+        );
+        resolve(this.conn);
+      }, () => {
+        reject('Authentication Connection Error');
+      });
+    })
+    return this.connectPromise;
+  }
 
-
-
-  load(serve_id) {
+  async load(serve_id) {
+    await this.connect()
     return new Promise((resolve, reject) => {
       this.conn.load_ptr(serve_id,
         (model) => {
@@ -73,14 +91,9 @@ export class Spinal {
             // on success
             resolve(model);
           }
-
         })
     })
   }
-
-
-
-
 }
 
 export default Spinal

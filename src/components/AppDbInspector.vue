@@ -73,14 +73,13 @@ with this file. If not, see
 import Viewer from "../viewer";
 import Spinal from "../spinal";
 import Vue from "vue";
-import EventBus from "./event-bus";
 import { dbInspector } from "../dbInspector";
 
 export default {
   name: "AppDbInspector",
   data() {
     return {
-      server_id: -1
+      server_id: -1,
     };
   },
   mounted() {
@@ -90,8 +89,8 @@ export default {
     resize() {},
     showLegend() {
       document.getElementById("myDropdown1").classList.toggle("show");
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -169,5 +168,15 @@ ul li img {
 ul li p {
   display: inline-block;
   vertical-align: middle;
+}
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 200px;
+  height: 100px;
+  padding: 2px;
+  font: 12px sans-serif;
+  background: lightsteelblue;
+  pointer-events: none;
 }
 </style>

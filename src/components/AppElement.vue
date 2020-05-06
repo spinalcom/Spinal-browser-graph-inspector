@@ -38,24 +38,23 @@ import Viewer from "../viewer";
 import Spinal from "../spinal";
 import Vue from "vue";
 import EventBus from "./event-bus";
-import EventBusElement from "./event-bus-element-inspector";
 import elementVueRec from "./elementVueRec.vue";
 
 export default {
   name: "AppElement",
   data() {
     return {
-      server_id: -1
+      server_id: -1,
     };
   },
   components: {
-    elementVueRec
+    elementVueRec,
   },
   mounted() {
-    EventBusElement.$on("realNodeElement", realNode => {
+    EventBus.$on("realNodeElement", (realNode) => {
       this.server_id = realNode._server_id;
     });
-  }
+  },
 };
 </script>
 

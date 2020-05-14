@@ -24,7 +24,9 @@ with this file. If not, see
 <template>
   <div class="app-header">
     <div class="logo"><img src="/assets/spinal.png" alt="" /></div>
-    <div class="title">Graph_node_inspector</div>
+    <div class="title">
+      <h3>Graph_node_inspector</h3>
+    </div>
     <div class="any">
       <span class="user">admin</span>
       <div class="navbar">
@@ -43,16 +45,14 @@ with this file. If not, see
 </template>
 
 <script>
-import EventBusSideNav from "./event-bus-side-nav.js";
+import EventBus from "./event-bus.js";
 
 export default {
   name: "AppHeader",
   methods: {
     openSlideMenu() {
-      console.log("envoie");
-
       let size = "400px";
-      EventBusSideNav.$emit("size", size);
+      EventBus.$emit("size", size);
     }
   }
 };

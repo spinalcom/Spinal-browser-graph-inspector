@@ -71,5 +71,6 @@ class NodeFactory {
   }
 }
 
-const nodeFactory = new NodeFactory()
-export default nodeFactory;
+// const nodeFactory = new NodeFactory()
+// export default nodeFactory;
+export default NodeFactory;

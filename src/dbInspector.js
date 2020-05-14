@@ -38,8 +38,8 @@ export function dbInspector(domElement) {
   let svgGroup, rootnode, draw, update, centerNode, textGrp;
   let tree_idx = 0;
   let depthLength = [];
-  let viewerWidth = 50;
-  let viewerHeight = 50;
+  var viewerWidth = 50;
+  var viewerHeight = 50;
   let ptr_folow = [];
   let animation_duration = 500;
   let style = {
@@ -61,11 +61,13 @@ export function dbInspector(domElement) {
                   ${d.y} ${d.x}`;
     return path;
   };
+
   let zoom = () => {
     if (d3.event.transform != null) {
       svgGroup.attr("transform", d3.event.transform);
     }
   };
+
   let calc_dist_depth = (depth, mult) => {
     let i = 0;
     let res = 0;
@@ -82,8 +84,10 @@ export function dbInspector(domElement) {
   function start(domElement) {
 
     let element = d3.select(domElement);
-    viewerWidth = element._groups[0][0].clientWidth;
-    viewerHeight = element._groups[0][0].clientHeight;
+    console.log(element);
+
+    viewerWidth = domElement.clientWidth;
+    viewerHeight = domElement.clientHeight;
 
     let tree = d3.tree().size([392, 732]);
 
@@ -91,11 +95,13 @@ export function dbInspector(domElement) {
       .zoom()
       .scaleExtent([0.1, 3])
       .on("zoom", zoom);
-    viewerWidth = 732;
-    viewerHeight = 392;
+
     centerNode = function (d) {
       let x, y;
-      let depth = d.depth + 1;
+      let depth =
+        d.depth + 1;
+      console.log("depth", d.depth);
+
       let scale = 1;
       x = 0;
       depth -= d.depth;
@@ -115,10 +121,11 @@ export function dbInspector(domElement) {
         .duration(animation_duration)
         .call(
           zoomListener.transform,
-          d3.zoomIdentity.translate(x, y).scale(scale)
+          d3.zoomIdentity.translate(x, y).scale(scale + 0.4)
         );
     };
     element.select("svg").remove();
+
     let baseSvg = element
       .append("svg")
       .attr("width", viewerWidth)
@@ -137,6 +144,7 @@ export function dbInspector(domElement) {
       .attr("fill", "#999");
 
     svgGroup = baseSvg.append("g");
+
     let onNodeClick = d => {
       if (d.children) {
         d._children = d.children;
@@ -170,6 +178,7 @@ export function dbInspector(domElement) {
       update(d);
       centerNode(d);
     };
+
     draw = () => {
       baseSvg.attr("width", viewerWidth).attr("height", viewerHeight);
       if (textGrp) {
@@ -177,7 +186,7 @@ export function dbInspector(domElement) {
           .attr("x", viewerWidth / 2)
           .attr("y", viewerHeight / 2)
           .text(
-            'Please Drop file from "File Explorer" here to inspect them.'
+            'Please Browse The Graph To View Node Information'
           );
       }
       if (!rootnode) return;
@@ -219,7 +228,11 @@ export function dbInspector(domElement) {
         .attr("class", "node")
         .attr("transform", () => {
           return "translate(" + source.y0 + "," + source.x0 + ")";
-        });
+        })
+        .on("mouseover", mouseover)
+        .on("mousemove", mousemove)
+        .on("mouseout", mouseleave);
+
 
 
       nodeEnter
@@ -363,27 +376,109 @@ export function dbInspector(domElement) {
       });
     };
 
-    // resize
-    // let check_redraw = () => {
-    //   if (viewerWidth != domElement.clientWidth || viewerHeight != domElement.clientHeight) {
-    //     viewerWidth = domElement.clientWidth;
-    //     viewerHeight = domElement.clientHeight;
-    //     draw();
-    //   }
-    // };
+    let check_redraw = () => {
+      if (viewerWidth != domElement.clientWidth || viewerHeight != domElement.clientHeight) {
+        viewerWidth = domElement.clientWidth;
+        viewerHeight = domElement.clientHeight;
+        draw();
+        centerNode(rootnode);
 
+      }
+    };
+    setInterval(() => {
+      check_redraw();
+    }, 500);
 
   }
+
+  var Tooltip = d3.select(domElement)
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .attr("width", "70px")
+    .attr("height", "70px")
+    .style("background-color", "#0a3e44")
+    .style("border", "solid")
+    .style("border-width", "1px")
+    .style("border-radius", "5px")
+    .style("padding", "2px")
+    .style("position", "fixed")
+    .style("font-size", "15px")
 
   let add_table_row = (table, key, value) => {
     let tr = table.append("tr");
     tr.append("td").text(key);
     tr.append("td").text(value);
+    $(document).ready(function () {
+      $("tr:first-child").css("background-color", "black");
+    });
+
   };
 
   function strncmp(a, b, n) {
     return a.substring(0, n) == b.substring(0, n);
   }
+
+
+  function mouseover(d) {
+    Tooltip
+      .transition()
+      .duration(300)
+      .style("opacity", 1);
+
+    Tooltip.selectAll("table").remove();
+    let table = Tooltip.append("table");
+
+    add_table_row(table, "Contructor:", d.data._constructor);
+    add_table_row(table, "Server_id:", d.data._server_id);
+
+
+
+    let m = window.FileSystem._objects[d.data._server_id];
+    if (m) {
+      if (m instanceof window.Lst) {
+        add_table_row(table, "Length", m.length);
+      } else if (m instanceof window.Str) {
+        let data = m.get();
+        add_table_row(table, "Data", data);
+        add_table_row(table, "Length", m.length);
+        let imgtype = "data:image/";
+        if (strncmp(data, imgtype, imgtype.length)) {
+          let tr = table.append("tr");
+          tr.append("td").text("Preview");
+          let img = tr.append("td").append("img");
+          img.attr("src", data);
+          img.attr("alt", "preview");
+          img.style("max-height", 100);
+          img.style("max-width", 100);
+        }
+      } else if (m instanceof window.Val) {
+        add_table_row(table, "Value", m.get());
+      } else if (m instanceof window.Ptr) {
+        add_table_row(table, "Target Ptr", m.data.value);
+      } else if (m instanceof window.TypedArray) {
+        add_table_row(table, "Data", m.get());
+      }
+    }
+
+  }
+
+  function mousemove() {
+    Tooltip
+      .style("left", d3.event.pageX + "px")
+      .style("top", d3.event.pageY + "px");
+  }
+
+  function mouseleave(d) {
+    Tooltip.selectAll("table").remove();
+
+    Tooltip
+      .transition()
+      .duration(300)
+      .style("opacity", 1e-6);
+
+  }
+
 
   let timeout_check_node = null;
   let timeout_update_graph = null;

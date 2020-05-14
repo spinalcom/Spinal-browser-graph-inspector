@@ -144,24 +144,11 @@ export default elementVueRec;
 
 <style>
 ul {
-  margin: 2rem;
+  margin: 10px;
   /* padding: 5px; */
 }
 li {
-  margin-left: 5px;
-  padding-left: 5px;
-}
-td {
-  text-align: left;
-  padding: 8px;
-  border: 3px solid #44475c;
-
-  border-right: 2px solid #7d82a8;
-}
-table td:last-child {
-  border-right: none;
-}
-table tbody tr:nth-child(2n) td {
-  background: #d4d8f9;
+  margin-left: 2px;
+  padding-left: 2px;
 }
 </style>

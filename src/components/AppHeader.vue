@@ -53,8 +53,8 @@ export default {
     openSlideMenu() {
       let size = "400px";
       EventBus.$emit("size", size);
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -96,7 +96,7 @@ import AppElement from "./components/AppElement.vue";
 import AppDbInspector from "./components/AppDbInspector.vue";
 import EventBus from "./components/event-bus.js";
 
-EventBus.$on("size", (size) => {
+EventBus.$on("size", size => {
   document.getElementById("side-menu").style.width = size;
 });
 
@@ -106,21 +106,21 @@ export default {
     AppHeader,
     AppGraph,
     AppElement,
-    AppDbInspector,
+    AppDbInspector
   },
   data() {
     return {
-      ids: [],
+      ids: []
     };
   },
   methods: {
     initids() {
-      EventBus.$on("server_id", (server_id) => {
+      EventBus.$on("server_id", server_id => {
         this.ids.push(server_id);
       });
     },
     onResize(ref) {
-      this.$refs[ref].forEach((el) => {
+      this.$refs[ref].forEach(el => {
         el.resize();
       });
     },
@@ -146,7 +146,7 @@ export default {
       if (!results) return null;
       if (!results[2]) return "";
       return results[2].replace(/\+/g, " ");
-    },
+    }
   },
   mounted() {
     this.initids();
@@ -154,7 +154,7 @@ export default {
   created() {
     var server_id = parseInt(this.getServeIdByName("id"));
     this.ids.push(server_id);
-  },
+  }
 };
 </script>
 

@@ -45,32 +45,32 @@ import {
   Lst,
   Str,
   Val,
-  Bool,
+  Bool
 } from "spinal-core-connectorjs_type";
 const elementVueRec = Vue.extend({
   name: "elementVueRec",
   components: {
-    elementVueRec,
+    elementVueRec
   },
   props: {
     attrName: {
       default: () => {
         return "";
       },
-      type: String,
+      type: String
     },
     sever_Id: {
       require: true,
       type: Number,
       default: () => {
         return -1;
-      },
-    },
+      }
+    }
   },
   data() {
     return {
       name: "",
-      items: [],
+      items: []
     };
   },
   methods: {
@@ -110,7 +110,7 @@ const elementVueRec = Vue.extend({
         for (let index = 0; index < node.length; index++) {
           this.items.push({
             attrName: index.toString(),
-            sever_Id: node[index]._server_id,
+            sever_Id: node[index]._server_id
           });
         }
       } else {
@@ -123,11 +123,11 @@ const elementVueRec = Vue.extend({
           const attr = node._attribute_names[index];
           this.items.push({
             attrName: attr,
-            sever_Id: node[attr]._server_id,
+            sever_Id: node[attr]._server_id
           });
         }
       }
-    },
+    }
   },
   mounted() {
     this.update();
@@ -136,8 +136,8 @@ const elementVueRec = Vue.extend({
     sever_Id() {
       this.items = [];
       this.update();
-    },
-  },
+    }
+  }
 });
 export default elementVueRec;
 </script>
@@ -151,17 +151,4 @@ li {
   margin-left: 2px;
   padding-left: 2px;
 }
-/* td {
-  text-align: left;
-  padding: 8px;
-  border: 3px solid #44475c;
-
-  border-right: 2px solid #7d82a8;
-}
-table td:last-child {
-  border-right: none;
-}
-table tbody tr:nth-child(2n) td {
-  background: #d4d8f9;
-} */
 </style>

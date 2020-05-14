@@ -43,6 +43,7 @@ class Viewer {
   simulation: any;
   visualisation: boolean = false;
   nodeFactory: NodeFactory;
+  stateCourse: boolean = false;
 
   constructor(spinal: Spinal) {
     this.graph = spinal;
@@ -129,9 +130,12 @@ class Viewer {
 
     this.simulation = simulation;
 
-    //node clicked function children course
-    const leftclick = async (d: D3Node) => {
 
+
+
+
+    //node clicked function children course
+    const ChildrenCourse = async (d: D3Node) => {
       const realNode = (FileSystem._objects[d.data._serverId]);
       if (ANode.collapseOrOpen(d)) {
         await ANode.updateChildren(d, this.nodeFactory);
@@ -142,12 +146,13 @@ class Viewer {
     }
 
     //node clicked function parent course
-    const rightclick = async (d: D3Node) => {
-      d3.event.preventDefault();
+    const parentCourse = async (d: D3Node) => {
       const realNode = (FileSystem._objects[d.data._serverId]);
       if (ANode.collapseOrOpenParent(d)) {
         await ANode.updateParent(d, this.nodeFactory);
       }
+      EventBus.$emit("realNode", realNode);
+      EventBus.$emit("realNodeElement", realNode);
       update();
     }
 
@@ -160,9 +165,19 @@ class Viewer {
       update();
     }
 
+    const openNodeInDbInspector = async (d: D3Node) => {
+      d3.event.preventDefault();
+      const realNode = (FileSystem._objects[d.data._serverId]);
+      EventBus.$emit("realNode", realNode);
+      EventBus.$emit("realNodeElement", realNode);
+      update();
 
+    }
 
-
+    const click = async (d: D3Node) => {
+      if (this.stateCourse === false) ChildrenCourse(d);
+      else parentCourse(d);
+    }
 
 
     function update() {
@@ -236,8 +251,8 @@ class Viewer {
         .attr('stroke-width', 1.2)
         .style('fill', color)
         .style('opacity', 1)
-        .on('click', leftclick)
-        .on("contextmenu", rightclick)
+        .on('click', click)
+        .on("contextmenu", openNodeInDbInspector)
         .on("auxclick", function (d) {
           var evnt = window.event
           if ((<any>evnt).which === 2) {

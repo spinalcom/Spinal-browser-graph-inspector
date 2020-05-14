@@ -64497,8 +64497,8 @@ function () {
 
                             if (!chekLink(parent, _node, links)) {
                               links.push({
-                                source: parent,
-                                target: _node,
+                                // source: node,
+                                // target: parent,
                                 index: id++
                               });
                             }

@@ -23,52 +23,11 @@ with this file. If not, see
 -->
 <template>
   <div ref="appGraph" class="app-Graph">
-    <div class="dropdown">
-      <button id="button" class="button" v-on:click="showLegend">
-        <img src="/assets/info.png" alt="" />
+    <legendVueGraph></legendVueGraph>
+    <div id="rates">
+      <button id="course" v-on:click="setCourse">
+        {{ courseType }}
       </button>
-
-      <div id="myDropdown" class="dropdown-content">
-        <ul class="demo">
-          <li>
-            <img src="/assets/start.png" alt="" />
-            <p>Strating Node</p>
-          </li>
-          <li>
-            <img src="/assets/simplenode.png" alt="" />
-            <p>Simple Node</p>
-          </li>
-          <li>
-            <img src="/assets/lastnode.png" alt="" />
-            <p>Leaf Node</p>
-          </li>
-          <li>
-            <img src="/assets/lstptr.png" alt="" />
-            <p>Relation LstPtr</p>
-          </li>
-          <li>
-            <img src="/assets/ref.png" alt="" />
-            <p>Relation Ref</p>
-          </li>
-          <li>
-            <img src="/assets/ptrlst.png" alt="" />
-            <p>Relation PtrLst</p>
-          </li>
-          <hr />
-          <li>
-            <img src="/assets/mouse2.png" alt="" />
-            <p>Left Click: chldren course</p>
-          </li>
-          <li>
-            <img src="/assets/mouse2.png" alt="" />
-            <p>Right Click: parent course</p>
-          </li>
-          <li>
-            <img src="/assets/mouse2.png" alt="" />
-            <p>Middle Click: open the node in a new panel</p>
-          </li>
-        </ul>
-      </div>
     </div>
   </div>
 </template>
@@ -76,30 +35,41 @@ with this file. If not, see
 <script>
 import Viewer from "../viewer";
 import Spinal from "../spinal";
+import EventBus from "./event-bus";
+import legendVueGraph from "./legendVueGraph";
 
 export default {
   name: "AppGraph",
   data() {
     return {
-      show: 0,
+      state: false,
+      legend: false,
+      courseType: "Children Course"
     };
+  },
+  components: {
+    legendVueGraph
   },
   mounted() {
     const spinal = Spinal.getInstance();
-    const viewer = new Viewer(spinal);
-    viewer.init(this.$refs.appGraph, this.server_id);
+    this.viewer = new Viewer(spinal);
+    this.viewer.init(this.$refs.appGraph, this.server_id);
   },
   methods: {
+    setCourse() {
+      this.state = !this.state;
+      this.viewer.stateCourse = this.state;
+      if (this.courseType === "Children Course")
+        this.courseType = "Parent Course";
+      else this.courseType = "Children Course";
+    },
     resize() {
-      // viewer.resize.call(this.viewer);
-    },
-    showLegend() {
-      document.getElementById("myDropdown").classList.toggle("show");
-    },
+      this.viewer.resize.call(this.viewer);
+    }
   },
   props: {
-    server_id: { require: true, type: Number },
-  },
+    server_id: { require: true, type: Number }
+  }
 };
 </script>
 
@@ -114,68 +84,27 @@ export default {
   overflow: hidden;
 }
 $blue: #666;
-
-.dropdown {
-  position: relative;
-  float: right;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  right: 0px;
-  background-color: #222;
-  min-width: 340px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(76, 69, 69, 0.2);
-  z-index: 1;
-  font-family: "Gill Sans", sans-serif;
-}
-
-.show {
-  display: block;
-}
-
-.button {
-  cursor: help;
-  outline: none;
-  margin-right: 3px;
-  width: 25px;
-  height: 25px;
-  background-color: $blue;
-  border: 2px solid black;
-  border-radius: 35px;
-  text-decoration: none;
-  padding: 5px 5px;
-  color: black;
-  display: inline-block;
-  &:hover {
-    background-color: rgb(187, 184, 184);
-    color: $blue;
-    border: 2px solid black;
-  }
-}
-.button img {
-  font-size: 24px;
-  cursor: help;
-  margin-left: -5px;
-  margin-top: -5px;
-  width: 21px;
+.typecourse {
+  vertical-align: middle;
+  width: 100px;
   height: 21px;
 }
-ul {
-  list-style-type: none;
-}
-ul li {
-  margin: 5px;
-}
-ul li img {
-  vertical-align: middle;
-  width: 20px;
-  height: 20px;
-}
-ul li p {
+#course {
+  cursor: alias;
+  outline: none;
+  color: #fff;
+  background: #666;
+  padding: 5px;
   display: inline-block;
-  vertical-align: middle;
+  border: none;
+  transition: all 0.4s ease 0s;
+  font-family: "Gill Sans", sans-serif;
+  &:hover {
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    transition: all 0.4s ease 0s;
+  }
 }
 </style>

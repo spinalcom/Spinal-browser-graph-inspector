@@ -38,8 +38,8 @@ export function dbInspector(domElement) {
   let svgGroup, rootnode, draw, update, centerNode, textGrp;
   let tree_idx = 0;
   let depthLength = [];
-  let viewerWidth = 50;
-  let viewerHeight = 50;
+  var viewerWidth = 50;
+  var viewerHeight = 50;
   let ptr_folow = [];
   let animation_duration = 500;
   let style = {
@@ -84,8 +84,10 @@ export function dbInspector(domElement) {
   function start(domElement) {
 
     let element = d3.select(domElement);
-    viewerWidth = element._groups[0][0].clientWidth;
-    viewerHeight = element._groups[0][0].clientHeight;
+    console.log(element);
+
+    viewerWidth = domElement.clientWidth;
+    viewerHeight = domElement.clientHeight;
 
     let tree = d3.tree().size([392, 732]);
 
@@ -93,11 +95,13 @@ export function dbInspector(domElement) {
       .zoom()
       .scaleExtent([0.1, 3])
       .on("zoom", zoom);
-    viewerWidth = 732;
-    viewerHeight = 392;
+
     centerNode = function (d) {
       let x, y;
-      let depth = d.depth + 1;
+      let depth =
+        d.depth + 1;
+      console.log("depth", d.depth);
+
       let scale = 1;
       x = 0;
       depth -= d.depth;
@@ -117,7 +121,7 @@ export function dbInspector(domElement) {
         .duration(animation_duration)
         .call(
           zoomListener.transform,
-          d3.zoomIdentity.translate(x, y).scale(scale)
+          d3.zoomIdentity.translate(x, y).scale(scale + 0.4)
         );
     };
     element.select("svg").remove();
@@ -182,7 +186,7 @@ export function dbInspector(domElement) {
           .attr("x", viewerWidth / 2)
           .attr("y", viewerHeight / 2)
           .text(
-            'Please Drop file from "File Explorer" here to inspect them.'
+            'Please Browse The Graph To View Node Information'
           );
       }
       if (!rootnode) return;
@@ -372,15 +376,18 @@ export function dbInspector(domElement) {
       });
     };
 
-    // resize
-    // let check_redraw = () => {
-    //   if (viewerWidth != domElement.clientWidth || viewerHeight != domElement.clientHeight) {
-    //     viewerWidth = domElement.clientWidth;
-    //     viewerHeight = domElement.clientHeight;
-    //     draw();
-    //   }
-    // };
+    let check_redraw = () => {
+      if (viewerWidth != domElement.clientWidth || viewerHeight != domElement.clientHeight) {
+        viewerWidth = domElement.clientWidth;
+        viewerHeight = domElement.clientHeight;
+        draw();
+        centerNode(rootnode);
 
+      }
+    };
+    setInterval(() => {
+      check_redraw();
+    }, 500);
 
   }
 

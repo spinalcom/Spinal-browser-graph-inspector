@@ -23,12 +23,12 @@ with this file. If not, see
 -->
 <template>
   <div id="app-Element">
+    <div class="message">
+      {{ info() ? message : emptymessage }}
+    </div>
     <ul>
-      <elementVueRec
-        :attrName="''"
-        :sever_Id="server_id"
-        class="element"
-      ></elementVueRec>
+      <elementVueRec :attrName="''" :sever_Id="server_id" class="element">
+      </elementVueRec>
     </ul>
   </div>
 </template>
@@ -45,21 +45,39 @@ export default {
   data() {
     return {
       server_id: -1,
+      message: "Please Browse The Graph To View Node Information",
+      emptymessage: ""
     };
   },
   components: {
-    elementVueRec,
+    elementVueRec
+  },
+  methods: {
+    info() {
+      if (this.server_id === -1) {
+        return true;
+      } else return false;
+    }
   },
   mounted() {
-    EventBus.$on("realNodeElement", (realNode) => {
+    EventBus.$on("realNodeElement", realNode => {
       this.server_id = realNode._server_id;
     });
-  },
+  }
 };
 </script>
 
 <style>
 .element {
   font-family: sans-serif;
+}
+.message {
+  min-width: 350px;
+  position: absolute;
+  color: #999;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>

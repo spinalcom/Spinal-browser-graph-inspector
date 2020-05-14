@@ -23,49 +23,7 @@ with this file. If not, see
 -->
 <template>
   <div ref="appDbInspector" class="app-Db-Inspector">
-    <div class="dropdown1">
-      <button id="button" class="button" v-on:click="showLegend">
-        <img src="/assets/info.png" alt="" />
-      </button>
-      <div id="myDropdown1" class="dropdown1-content">
-        <ul class="demo1">
-          <li>
-            <img src="/assets/simplenode.png" alt="" />
-            <p>Closed Model</p>
-          </li>
-          <li>
-            <img src="/assets/open.png" alt="" />
-            <p>Open Or Void Model</p>
-          </li>
-          <li>
-            <img src="/assets/last.png" alt="" />
-            <p>Atomic Model</p>
-          </li>
-          <li>
-            <img src="/assets/ptr.png" alt="" />
-            <p>Closed Ptr Or Pbr</p>
-          </li>
-          <li>
-            <img src="/assets/start.png" alt="" />
-            <p>Open Ptr Or Pbr</p>
-          </li>
-
-          <li>
-            <img src="/assets/ids.png" alt="" />
-            <p>Closed Lst</p>
-          </li>
-          <li>
-            <img src="/assets/idsopen.png" alt="" />
-            <p>Open Lst</p>
-          </li>
-          <hr />
-          <li>
-            <img src="/assets/mouse2.png" alt="" />
-            <p>Left Click: Open Object Attribut</p>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <legendVueInspector></legendVueInspector>
   </div>
 </template>
 
@@ -74,13 +32,18 @@ import Viewer from "../viewer";
 import Spinal from "../spinal";
 import Vue from "vue";
 import { dbInspector } from "../dbInspector";
+import legendVueInspector from "./legendVueInspector";
 
 export default {
   name: "AppDbInspector",
   data() {
     return {
       server_id: -1,
+      legend: false
     };
+  },
+  components: {
+    legendVueInspector
   },
   mounted() {
     dbInspector(this.$refs.appDbInspector);
@@ -88,9 +51,9 @@ export default {
   methods: {
     resize() {},
     showLegend() {
-      document.getElementById("myDropdown1").classList.toggle("show");
-    },
-  },
+      this.legend = !this.legend;
+    }
+  }
 };
 </script>
 
@@ -100,83 +63,9 @@ export default {
   margin: 0;
 }
 .app-Db-Inspector {
+  position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-}
-$blue: #666;
-
-.dropdown1 {
-  position: relative;
-  float: right;
-}
-
-.dropdown1-content {
-  display: none;
-  position: absolute;
-  right: 0px;
-  background-color: #222;
-  min-width: 270px;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(71, 69, 69, 0.2);
-  z-index: 1;
-  font-family: "Gill Sans", sans-serif;
-}
-
-.show {
-  display: block;
-}
-
-.button {
-  cursor: help;
-  outline: none;
-  margin-right: 3px;
-  width: 25px;
-  height: 25px;
-  background-color: $blue;
-  border: 2px solid black;
-  border-radius: 35px;
-  text-decoration: none;
-  padding: 5px 5px;
-  color: black;
-  display: inline-block;
-  &:hover {
-    background-color: rgb(187, 184, 184);
-    color: $blue;
-    border: 2px solid black;
-  }
-}
-.button img {
-  font-size: 24px;
-  cursor: help;
-  margin-left: -5px;
-  margin-top: -5px;
-  width: 21px;
-  height: 21px;
-}
-ul {
-  list-style-type: none;
-}
-ul li {
-  margin: 5px;
-}
-ul li img {
-  vertical-align: middle;
-  width: 20px;
-  height: 20px;
-}
-ul li p {
-  display: inline-block;
-  vertical-align: middle;
-}
-div.tooltip {
-  position: absolute;
-  text-align: center;
-  width: 200px;
-  height: 100px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: lightsteelblue;
-  pointer-events: none;
 }
 </style>

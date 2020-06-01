@@ -42,6 +42,10 @@ with this file. If not, see
           <p>Leaf Node</p>
         </li>
         <li>
+          <img src="/assets/ptrlst.png" alt="" />
+          <p>Relation PtrLst</p>
+        </li>
+        <li>
           <img src="/assets/lstptr.png" alt="" />
           <p>Relation LstPtr</p>
         </li>
@@ -49,19 +53,16 @@ with this file. If not, see
           <img src="/assets/ref.png" alt="" />
           <p>Relation Ref</p>
         </li>
-        <li>
-          <img src="/assets/ptrlst.png" alt="" />
-          <p>Relation PtrLst</p>
-        </li>
+
         <hr />
         <li>
           <img src="/assets/mouse2.png" alt="" />
-          <img src="/assets/childcourse.png" class="typecourse" alt="" />
+          <img src="/assets/childcourse.png" class="typecourse1" alt="" />
           <p>: chldren course</p>
         </li>
         <li>
           <img src="/assets/mouse2.png" alt="" />
-          <img src="/assets/parentcourse.png" class="typecourse" alt="" />
+          <img src="/assets/parentcourse.png" class="typecourse2" alt="" />
           <p>: parent course</p>
         </li>
         <li>
@@ -109,7 +110,7 @@ $blue: #666;
   position: absolute;
   right: 0px;
   background-color: #222;
-  min-width: 340px;
+  min-width: 320px;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(76, 69, 69, 0.2);
   z-index: 1;
@@ -122,8 +123,8 @@ $blue: #666;
   cursor: help;
   outline: none;
   margin-right: 3px;
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   background-color: $blue;
   border: 2px solid black;
   border-radius: 35px;
@@ -140,10 +141,10 @@ $blue: #666;
 .button img {
   font-size: 24px;
   cursor: help;
-  margin-left: -5px;
-  margin-top: -5px;
-  width: 21px;
-  height: 21px;
+  margin-left: -6px;
+  margin-top: -6px;
+  width: 22px;
+  height: 22px;
 }
 ul {
   list-style-type: none;
@@ -159,5 +160,12 @@ ul li img {
 ul li p {
   display: inline-block;
   vertical-align: middle;
+  font-size: 14px;
+}
+.typecourse1 {
+  width: 80px;
+}
+.typecourse2 {
+  width: 70px;
 }
 </style>

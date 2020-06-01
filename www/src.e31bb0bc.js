@@ -64673,7 +64673,7 @@ function () {
                   }).style("pointer-events", "none");
                   edgepath = edgepath.merge(edgepath); //create arrow head svg
 
-                  arrowhead = svg.append('defs').append('marker').attr('id', 'arrowhead').attr('viewBox', '-0 -5 10 10').attr('refX', 16).attr('refY', 0).attr('orient', 'auto').attr('markerWidth', 8).attr('markerHeight', 8).attr('xoverflow', 'visible').append('svg:path').attr('d', 'M 0,-5 L 10 ,0 L 0,5').attr('fill', '#f8f8f8').style('stroke', 'none');
+                  arrowhead = svg.append('defs').append('svg:marker').attr('class', 'arrowhead').attr('id', 'arrowhead').attr('viewBox', '-0 -5 10 10').attr('refX', 16).attr('refY', 0).attr('orient', 'auto').attr('markerWidth', 8).attr('markerHeight', 8).attr('xoverflow', 'visible').append('svg:path').attr('d', 'M 0,-5 L 10 ,0 L 0,5').attr('fill', '#f8f8f8').style('stroke', 'none');
                   arrowhead = arrowhead.merge(arrowhead); //build the d3 nodes
 
                   node = svg.selectAll('.node').data(nodes, function (d) {
@@ -64746,7 +64746,7 @@ function () {
                 //build hierarchy d3 graph from entry point
                 root = this.nodeFactory.createNode(data); //create the svg
 
-                this.svg = d3.select(element).append('svg').call(d3.zoom().scaleExtent([1 / 2, 8]).on('zoom', zoomed)).on("dblclick.zoom", null).attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom); //create svg groupe 
+                this.svg = d3.select(element).append('svg').call(d3.zoom().scaleExtent([0.01, 8]).on('zoom', zoomed)).on("dblclick.zoom", null).attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom); //create svg groupe 
 
                 svg = this.svg.append('g').attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")"); //create links group
 
@@ -64754,18 +64754,15 @@ function () {
                 myedgepath = svg.append('g');
                 myarrowhead = svg.append('g'); //create the simulation force 
 
-                simulation = d3.forceSimulation().force('charge', d3.forceManyBody().strength(-2000)) //charge — nodes repel from each other which prevents overlap
+                simulation = d3.forceSimulation() // .alphaDecay(-0.01)
+                .force('charge', d3.forceManyBody().strength(-1000)) //charge — nodes repel from each other which prevents overlap
                 .force('link', d3.forceLink().id(function (d) {
                   var res = d.id + 10;
                   return res.toString();
                 }).distance(function (d) {
-                  if (d.target.data.category === "node") {
-                    return 100;
-                  }
-
-                  return 70;
-                }).strength(5)).force('center', d3.forceCenter(this.width / 2, this.height / 2)) //center — pulls all nodes to the center
-                .force("collide ", d3.forceCollide().radius(7)) //collide-specify a ‘repel radius’ of 10 x node radius — to prevent overlap and leave space for label
+                  if (d.target.data.category === "node") return 100;else return 70;
+                }).strength(2)).force('center', d3.forceCenter(this.width / 2, this.height / 2)) //center — pulls all nodes to the center
+                .force("collide ", d3.forceCollide(5).strength(10)) //collide-specify a ‘repel radius’ of 10 x node radius — to prevent overlap and leave space for label
                 .on('tick', ticked);
                 this.simulation = simulation; //node clicked function children course
 
@@ -64910,9 +64907,9 @@ function () {
                 style = {
                   nodefill: {
                     empty: "#fff",
-                    enterpoint: "#eaa7a7",
-                    ptrlst: "#7efed4",
-                    lstptr: "f10808",
+                    enterpoint: "#F3FF00",
+                    ptrlst: "#F40911",
+                    lstptr: "#E47579",
                     ref: "09bf3b",
                     objClosed: "#320ff2"
                   }
@@ -64941,6 +64938,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+//
 //
 //
 //
@@ -65117,6 +65115,17 @@ var staticRenderFns = [
       _c("li", [
         _c("img", {
           attrs: {
+            src: "/html/graph/ptrlst.5899b7ee.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Relation PtrLst")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
             src: "/html/graph/lstptr.f19be4be.png",
             alt: ""
           }
@@ -65136,17 +65145,6 @@ var staticRenderFns = [
         _c("p", [_vm._v("Relation Ref")])
       ]),
       _vm._v(" "),
-      _c("li", [
-        _c("img", {
-          attrs: {
-            src: "/html/graph/ptrlst.5899b7ee.png",
-            alt: ""
-          }
-        }),
-        _vm._v(" "),
-        _c("p", [_vm._v("Relation PtrLst")])
-      ]),
-      _vm._v(" "),
       _c("hr"),
       _vm._v(" "),
       _c("li", [
@@ -65158,7 +65156,7 @@ var staticRenderFns = [
         }),
         _vm._v(" "),
         _c("img", {
-          staticClass: "typecourse",
+          staticClass: "typecourse1",
           attrs: {
             src: "/html/graph/childcourse.843a5970.png",
             alt: ""
@@ -65177,7 +65175,7 @@ var staticRenderFns = [
         }),
         _vm._v(" "),
         _c("img", {
-          staticClass: "typecourse",
+          staticClass: "typecourse2",
           attrs: {
             src: "/html/graph/parentcourse.600c78ee.png",
             alt: ""
@@ -65222,7 +65220,7 @@ render._withStripped = true
           };
         })());
       
-},{"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/info.png":[["info.b69a0da0.png","assets/info.png"],"assets/info.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/start.png":[["start.975fde4d.png","assets/start.png"],"assets/start.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/simplenode.png":[["simplenode.9edf869f.png","assets/simplenode.png"],"assets/simplenode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/lastnode.png":[["lastnode.729b0447.png","assets/lastnode.png"],"assets/lastnode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/lstptr.png":[["lstptr.f19be4be.png","assets/lstptr.png"],"assets/lstptr.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ref.png":[["ref.24f81928.png","assets/ref.png"],"assets/ref.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ptrlst.png":[["ptrlst.5899b7ee.png","assets/ptrlst.png"],"assets/ptrlst.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/mouse2.png":[["mouse2.ded68c6b.png","assets/mouse2.png"],"assets/mouse2.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/childcourse.png":[["childcourse.843a5970.png","assets/childcourse.png"],"assets/childcourse.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/parentcourse.png":[["parentcourse.600c78ee.png","assets/parentcourse.png"],"assets/parentcourse.png"]}],"components/AppGraph.vue":[function(require,module,exports) {
+},{"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/info.png":[["info.b69a0da0.png","assets/info.png"],"assets/info.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/start.png":[["start.975fde4d.png","assets/start.png"],"assets/start.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/simplenode.png":[["simplenode.9edf869f.png","assets/simplenode.png"],"assets/simplenode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/lastnode.png":[["lastnode.729b0447.png","assets/lastnode.png"],"assets/lastnode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ptrlst.png":[["ptrlst.5899b7ee.png","assets/ptrlst.png"],"assets/ptrlst.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/lstptr.png":[["lstptr.f19be4be.png","assets/lstptr.png"],"assets/lstptr.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/ref.png":[["ref.24f81928.png","assets/ref.png"],"assets/ref.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/mouse2.png":[["mouse2.ded68c6b.png","assets/mouse2.png"],"assets/mouse2.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/childcourse.png":[["childcourse.843a5970.png","assets/childcourse.png"],"assets/childcourse.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/spinal-browser-graph/src/assets/parentcourse.png":[["parentcourse.600c78ee.png","assets/parentcourse.png"],"assets/parentcourse.png"]}],"components/AppGraph.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -65297,10 +65295,10 @@ var _default = {
       this.state = !this.state;
       this.viewer.stateCourse = this.state;
       if (this.courseType === "Children Course") this.courseType = "Parent Course";else this.courseType = "Children Course";
-    },
-    resize: function resize() {
-      this.viewer.resize.call(this.viewer);
-    }
+    } // resize() {
+    //   this.viewer.resize.call(this.viewer);
+    // }
+
   },
   props: {
     server_id: {
@@ -65664,231 +65662,7 @@ render._withStripped = true
           };
         })());
       
-},{"../viewer":"viewer.ts","../spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./event-bus":"components/event-bus.js","./elementVueRec.vue":"components/elementVueRec.vue"}],"../node_modules/d3-context-menu/js/d3-context-menu.js":[function(require,module,exports) {
-var define;
-(function(root, factory) {
-	if (typeof module === 'object' && module.exports) {
-		var d3 = require('d3');
-		module.exports = factory(d3);
-	} else if(typeof define === 'function' && define.amd) {
-		try {
-			var d3 = require('d3');
-		} catch (e) {
-			d3 = root.d3;
-		}
-
-		d3.contextMenu = factory(d3);
-		define([], function() {
-			return d3.contextMenu;
-		});
-	} else if(root.d3) {
-		root.d3.contextMenu = factory(root.d3);
-	}
-}(this,
-	function (d3) {
-		var utils = {
-			noop: function () {},
-
-			/**
-			 * @param {*} value
-			 * @returns {Boolean}
-			 */
-			isFn: function (value) {
-				return typeof value === 'function';
-			},
-
-			/**
-			 * @param {*} value
-			 * @returns {Function}
-			 */
-			const: function (value) {
-				return function () { return value; };
-			},
-
-			/**
-			 * @param {Function|*} value
-			 * @param {*} [fallback]
-			 * @returns {Function}
-			 */
-			toFactory: function (value, fallback) {
-				value = (value === undefined) ? fallback : value;
-				return utils.isFn(value) ? value : utils.const(value);
-			}
-		};
-
-		// global state for d3-context-menu
-		var d3ContextMenu = null;
-
-		var closeMenu = function () {
-			// global state is populated if a menu is currently opened
-			if (d3ContextMenu) {
-				d3.select('.d3-context-menu').remove();
-				d3.select('body').on('mousedown.d3-context-menu', null);
-				d3ContextMenu.boundCloseCallback();
-				d3ContextMenu = null;
-			}
-		};
-
-		/**
-		 * Calls API method (e.g. `close`) or
-		 * returns handler function for the `contextmenu` event
-		 * @param {Function|Array|String} menuItems
-		 * @param {Function|Object} config
-		 * @returns {?Function}
-		 */
-		return function (menuItems, config) {
-			// allow for `d3.contextMenu('close');` calls
-			// to programatically close the menu
-			if (menuItems === 'close') {
-				return closeMenu();
-			}
-
-			// for convenience, make `menuItems` a factory
-			// and `config` an object
-			menuItems = utils.toFactory(menuItems);
-
-			if (utils.isFn(config)) {
-				config = { onOpen: config };
-			}
-			else {
-				config = config || {};
-			}
-
-			// resolve config
-			var openCallback = config.onOpen || utils.noop;
-			var closeCallback = config.onClose || utils.noop;
-			var positionFactory = utils.toFactory(config.position);
-			var themeFactory = utils.toFactory(config.theme, 'd3-context-menu-theme');
-
-			/**
-			 * Context menu event handler
-			 * @param {*} data
-			 * @param {Number} index
-			 */
-			return function (data, index) {
-				var element = this;
-
-				// close any menu that's already opened
-				closeMenu();
-
-				// store close callback already bound to the correct args and scope
-				d3ContextMenu = {
-					boundCloseCallback: closeCallback.bind(element, data, index)
-				};
-
-				// create the div element that will hold the context menu
-				d3.selectAll('.d3-context-menu').data([1])
-					.enter()
-					.append('div')
-					.attr('class', 'd3-context-menu ' + themeFactory.bind(element)(data, index));
-
-				// close menu on mousedown outside
-				d3.select('body').on('mousedown.d3-context-menu', closeMenu);
-				d3.select('body').on('click.d3-context-menu', closeMenu);
-
-				var parent = d3.selectAll('.d3-context-menu')
-					.on('contextmenu', function() {
-						closeMenu();
-						d3.event.preventDefault();
-						d3.event.stopPropagation();
-					})
-					.append('ul');
-
-				parent.call(createNestedMenu, element);
-
-				// the openCallback allows an action to fire before the menu is displayed
-				// an example usage would be closing a tooltip
-				if (openCallback.bind(element)(data, index) === false) {
-					return;
-				}
-        
-				//console.log(this.parentNode.parentNode.parentNode);//.getBoundingClientRect());   Use this if you want to align your menu from the containing element, otherwise aligns towards center of window
-
-				// get position
-				var position = positionFactory.bind(element)(data, index);
-
-				var doc = document.documentElement;
-				var pageWidth = window.innerWidth || doc.clientWidth;
-				var pageHeight = window.innerHeight || doc.clientHeight;
-
-				var horizontalAlignment = 'left';
-				var horizontalAlignmentReset = 'right';
-				var horizontalValue = position ? position.left : d3.event.pageX - 2;
-				if (d3.event.pageX > pageWidth/2){
-					horizontalAlignment = 'right';
-					horizontalAlignmentReset = 'left';
-					horizontalValue = position ? pageWidth - position.left : pageWidth - d3.event.pageX - 2;
-				} 
-				
-
-				var verticalAlignment = 'top';
-				var verticalAlignmentReset = 'bottom';
-				var verticalValue = position ? position.top : d3.event.pageY - 2;
-				if (d3.event.pageY > pageHeight/2){
-					verticalAlignment = 'bottom';
-					verticalAlignmentReset = 'top';
-					verticalValue = position ? pageHeight - position.top : pageHeight - d3.event.pageY - 2	;
-				} 
-
-				// display context menu
-				d3.select('.d3-context-menu')
-					.style(horizontalAlignment, (horizontalValue) + 'px')
-					.style(horizontalAlignmentReset, null)
-					.style(verticalAlignment, (verticalValue) + 'px')
-					.style(verticalAlignmentReset, null)
-					.style('display', 'block');
-
-				d3.event.preventDefault();
-				d3.event.stopPropagation();
-
-
-				function createNestedMenu(parent, root, depth = 0) {
-					var resolve = function (value) {
-						return utils.toFactory(value).call(root, data, index);
-					};
-
-					parent.selectAll('li')
-					.data(function (d) {
-							var baseData = depth === 0 ? menuItems : d.children;
-							return resolve(baseData);
-						})
-						.enter()
-						.append('li')
-						.each(function (d) {
-							// get value of each data
-							var isDivider = !!resolve(d.divider);
-							var isDisabled = !!resolve(d.disabled);
-							var hasChildren = !!resolve(d.children);
-							var hasAction = !!d.action;
-							var text = isDivider ? '<hr>' : resolve(d.title);
-
-							var listItem = d3.select(this)
-								.classed('is-divider', isDivider)
-								.classed('is-disabled', isDisabled)
-								.classed('is-header', !hasChildren && !hasAction)
-								.classed('is-parent', hasChildren)
-								.html(text)
-								.on('click', function () {
-									// do nothing if disabled or no action
-									if (isDisabled || !hasAction) return;
-
-									d.action.call(root, data, index);
-									closeMenu();
-								});
-
-							if (hasChildren) {
-								// create children(`next parent`) and call recursive
-								var children = listItem.append('ul').classed('is-children', true);
-								createNestedMenu(children, root, ++depth)
-							}
-						});
-				}
-			};
-		};
-	}
-));
-
-},{"d3":"../node_modules/d3/index.js"}],"dbInspector.js":[function(require,module,exports) {
+},{"../viewer":"viewer.ts","../spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","./event-bus":"components/event-bus.js","./elementVueRec.vue":"components/elementVueRec.vue"}],"dbInspector.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -65924,8 +65698,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 var d3 = require("d3");
-
-var d3ContextMenu = require("d3-context-menu");
 
 function dbInspector(domElement) {
   _eventBus.default.$on("realNode", function (realNode) {
@@ -66007,7 +65779,8 @@ function dbInspector(domElement) {
 
       x -= calc_dist_depth(d.depth, 6) * scale;
       y = y * scale + viewerHeight / 2;
-      baseSvg.transition().duration(animation_duration).call(zoomListener.transform, d3.zoomIdentity.translate(x, y).scale(scale + 0.4));
+      console.log(scale);
+      baseSvg.transition().duration(animation_duration).call(zoomListener.transform, d3.zoomIdentity.translate(x, y).scale(scale));
     };
 
     element.select("svg").remove();
@@ -66057,7 +65830,7 @@ function dbInspector(domElement) {
       baseSvg.attr("width", viewerWidth).attr("height", viewerHeight);
 
       if (textGrp) {
-        textGrp.attr("x", viewerWidth / 2).attr("y", viewerHeight / 2).text('Please Browse The Graph To View Node Information');
+        textGrp.attr("x", viewerWidth / 2).attr("y", viewerHeight / 2).text('Please Browse The Graph To View Node Information').style('font-family', "sans-serif");
       }
 
       if (!rootnode) return;
@@ -66608,7 +66381,7 @@ function dbInspector(domElement) {
 
   ;
 }
-},{"d3":"../node_modules/d3/index.js","d3-context-menu":"../node_modules/d3-context-menu/js/d3-context-menu.js","./components/event-bus":"components/event-bus.js"}],"components/legendVueInspector.vue":[function(require,module,exports) {
+},{"d3":"../node_modules/d3/index.js","./components/event-bus":"components/event-bus.js"}],"components/legendVueInspector.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -67171,11 +66944,6 @@ exports.default = {
                           attrs: {
                             title: "Graph Node Inspector",
                             closable: true
-                          },
-                          on: {
-                            resize: function($event) {
-                              return _vm.onResize("app-graph")
-                            }
                           }
                         },
                         [

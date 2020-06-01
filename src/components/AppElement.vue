@@ -76,6 +76,8 @@ export default {
   position: absolute;
   color: #999;
   text-align: center;
+  font-family: sans-serif;
+  white-space: nowrap;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

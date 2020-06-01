@@ -62,10 +62,10 @@ export default {
       if (this.courseType === "Children Course")
         this.courseType = "Parent Course";
       else this.courseType = "Children Course";
-    },
-    resize() {
-      this.viewer.resize.call(this.viewer);
     }
+    // resize() {
+    //   this.viewer.resize.call(this.viewer);
+    // }
   },
   props: {
     server_id: { require: true, type: Number }

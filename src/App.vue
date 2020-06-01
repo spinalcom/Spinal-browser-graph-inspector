@@ -54,7 +54,6 @@ with this file. If not, see
               :closable="true"
               v-for="(id, index) in ids"
               :key="index"
-              @resize="onResize('app-graph')"
             >
               <app-Graph
                 ref="app-graph"

@@ -94,7 +94,7 @@ class Viewer {
     const root = this.nodeFactory.createNode(data);
     //create the svg
     this.svg = d3.select(element).append('svg')
-      .call(d3.zoom().scaleExtent([1 / 2, 8]).on('zoom', zoomed))
+      .call(d3.zoom().scaleExtent([0.01, 8]).on('zoom', zoomed))
       .on("dblclick.zoom", null)
       .attr("width", this.width + this.margin.right + this.margin.left)
       .attr("height", this.height + this.margin.top + this.margin.bottom)
@@ -111,21 +111,18 @@ class Viewer {
 
     //create the simulation force 
     var simulation = d3.forceSimulation()
-      .force('charge', d3.forceManyBody().strength(-2000)) //charge — nodes repel from each other which prevents overlap
+      // .alphaDecay(-0.01)
+      .force('charge', d3.forceManyBody().strength(-1000)) //charge — nodes repel from each other which prevents overlap
       .force('link', d3.forceLink().id(function (d: D3Node) { //link — specifies that id is the link variable
         let res = d.id + 10
         return res.toString();
       })
         .distance(function (d: any) {
-          if (d.target.data.category === "node") {
-            return 100;
-          }
-
-          return 70;
-        }).strength(5))
-
+          if (d.target.data.category === "node") return 100;
+          else return 70;
+        }).strength(2))
       .force('center', d3.forceCenter(this.width / 2, this.height / 2)) //center — pulls all nodes to the center
-      .force("collide ", d3.forceCollide().radius(7)) //collide-specify a ‘repel radius’ of 10 x node radius — to prevent overlap and leave space for label
+      .force("collide ", d3.forceCollide(5).strength(10)) //collide-specify a ‘repel radius’ of 10 x node radius — to prevent overlap and leave space for label
       .on('tick', ticked)
 
     this.simulation = simulation;
@@ -219,7 +216,8 @@ class Viewer {
 
 
       //create arrow head svg
-      arrowhead = svg.append('defs').append('marker')
+      arrowhead = svg.append('defs').append('svg:marker')
+        .attr('class', 'arrowhead')
         .attr('id', 'arrowhead')
         .attr('viewBox', '-0 -5 10 10')
         .attr('refX', 16)
@@ -314,9 +312,9 @@ class Viewer {
     let style = {
       nodefill: {
         empty: "#fff", // or atomic or unknown
-        enterpoint: "#eaa7a7",
-        ptrlst: "#7efed4",
-        lstptr: "f10808",
+        enterpoint: "#F3FF00",
+        ptrlst: "#F40911",
+        lstptr: "#E47579",
         ref: "09bf3b",
         objClosed: "#320ff2"
       }

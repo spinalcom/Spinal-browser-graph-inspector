@@ -134,8 +134,8 @@ $blue: #666;
   cursor: help;
   outline: none;
   margin-right: 3px;
-  width: 25px;
-  height: 25px;
+  width: 24px;
+  height: 24px;
   background-color: $blue;
   border: 2px solid black;
   border-radius: 35px;
@@ -152,10 +152,10 @@ $blue: #666;
 .button img {
   font-size: 24px;
   cursor: help;
-  margin-left: -5px;
-  margin-top: -5px;
-  width: 21px;
-  height: 21px;
+  margin-left: -6px;
+  margin-top: -6px;
+  width: 22px;
+  height: 22px;
 }
 ul {
   list-style-type: none;
@@ -171,6 +171,7 @@ ul li img {
 ul li p {
   display: inline-block;
   vertical-align: middle;
+  font-size: 14px;
 }
 div.tooltip {
   position: absolute;

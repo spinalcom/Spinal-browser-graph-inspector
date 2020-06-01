@@ -64430,6 +64430,7 @@ function () {
       left: 90
     };
     this.visualisation = false;
+    this.stateCourse = false;
     this.graph = spinal;
     this.nodeFactory = new NodeFactory_1.default();
   } //resize function
@@ -64463,13 +64464,13 @@ function () {
     value: function init(element, server_id) {
       return __awaiter(this, void 0, void 0,
       /*#__PURE__*/
-      regeneratorRuntime.mark(function _callee4() {
+      regeneratorRuntime.mark(function _callee6() {
         var _this = this;
 
-        var data, i, node, link, edgepath, arrowhead, root, svg, mylink, myedgepath, myarrowhead, simulation, leftclick, rightclick, newpage, update, style, color, ticked, dragstarted, dragged, dragended, flatten, chekLink, createLinks, zoomed;
-        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+        var data, i, node, link, edgepath, arrowhead, root, svg, mylink, myedgepath, myarrowhead, simulation, ChildrenCourse, parentCourse, newpage, openNodeInDbInspector, click, update, style, color, ticked, dragstarted, dragged, dragended, flatten, chekLink, createLinks, zoomed;
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
                 zoomed = function _ref10() {
                   svg.attr('transform', d3.event.transform);
@@ -64497,8 +64498,8 @@ function () {
 
                             if (!chekLink(parent, _node, links)) {
                               links.push({
-                                // source: node,
-                                // target: parent,
+                                source: parent,
+                                target: _node,
                                 index: id++
                               });
                             }
@@ -64679,7 +64680,7 @@ function () {
                     return d.id.toString();
                   });
                   node.exit().remove();
-                  var nodeEnter = node.enter().append('g').attr('class', 'node').attr('id', 'test').attr('stroke-width', 1.2).style('fill', color).style('opacity', 1).on('click', leftclick).on("contextmenu", rightclick).on("auxclick", function (d) {
+                  var nodeEnter = node.enter().append('g').attr('class', 'node').attr('id', 'test').attr('stroke-width', 1.2).style('fill', color).style('opacity', 1).on('click', click).on("contextmenu", openNodeInDbInspector).on("auxclick", function (d) {
                     var evnt = window.event;
 
                     if (evnt.which === 2) {
@@ -64729,11 +64730,11 @@ function () {
                 console.log(this.element);
                 this.element = element; //initialisation of DOMElement
 
-                _context4.next = 15;
+                _context6.next = 15;
                 return this.graph.load(server_id);
 
               case 15:
-                data = _context4.sent;
+                data = _context6.sent;
                 //load graph
                 this.width = element.clientWidth - this.margin.left - this.margin.right; //width of element
 
@@ -64768,7 +64769,7 @@ function () {
                 .on('tick', ticked);
                 this.simulation = simulation; //node clicked function children course
 
-                leftclick = function leftclick(d) {
+                ChildrenCourse = function ChildrenCourse(d) {
                   return __awaiter(_this, void 0, void 0,
                   /*#__PURE__*/
                   regeneratorRuntime.mark(function _callee() {
@@ -64802,7 +64803,7 @@ function () {
                 }; //node clicked function parent course
 
 
-                rightclick = function rightclick(d) {
+                parentCourse = function parentCourse(d) {
                   return __awaiter(_this, void 0, void 0,
                   /*#__PURE__*/
                   regeneratorRuntime.mark(function _callee2() {
@@ -64811,21 +64812,22 @@ function () {
                       while (1) {
                         switch (_context2.prev = _context2.next) {
                           case 0:
-                            d3.event.preventDefault();
                             realNode = spinal_core_connectorjs_type_1.FileSystem._objects[d.data._serverId];
 
                             if (!ANode_1.default.collapseOrOpenParent(d)) {
-                              _context2.next = 5;
+                              _context2.next = 4;
                               break;
                             }
 
-                            _context2.next = 5;
+                            _context2.next = 4;
                             return ANode_1.default.updateParent(d, this.nodeFactory);
 
-                          case 5:
+                          case 4:
+                            event_bus_js_1.default.$emit("realNode", realNode);
+                            event_bus_js_1.default.$emit("realNodeElement", realNode);
                             update();
 
-                          case 6:
+                          case 7:
                           case "end":
                             return _context2.stop();
                         }
@@ -64861,6 +64863,49 @@ function () {
                   }));
                 };
 
+                openNodeInDbInspector = function openNodeInDbInspector(d) {
+                  return __awaiter(_this, void 0, void 0,
+                  /*#__PURE__*/
+                  regeneratorRuntime.mark(function _callee4() {
+                    var realNode;
+                    return regeneratorRuntime.wrap(function _callee4$(_context4) {
+                      while (1) {
+                        switch (_context4.prev = _context4.next) {
+                          case 0:
+                            d3.event.preventDefault();
+                            realNode = spinal_core_connectorjs_type_1.FileSystem._objects[d.data._serverId];
+                            event_bus_js_1.default.$emit("realNode", realNode);
+                            event_bus_js_1.default.$emit("realNodeElement", realNode);
+                            update();
+
+                          case 5:
+                          case "end":
+                            return _context4.stop();
+                        }
+                      }
+                    }, _callee4);
+                  }));
+                };
+
+                click = function click(d) {
+                  return __awaiter(_this, void 0, void 0,
+                  /*#__PURE__*/
+                  regeneratorRuntime.mark(function _callee5() {
+                    return regeneratorRuntime.wrap(function _callee5$(_context5) {
+                      while (1) {
+                        switch (_context5.prev = _context5.next) {
+                          case 0:
+                            if (this.stateCourse === false) ChildrenCourse(d);else parentCourse(d);
+
+                          case 1:
+                          case "end":
+                            return _context5.stop();
+                        }
+                      }
+                    }, _callee5, this);
+                  }));
+                };
+
                 //color palette of nodes and relations
                 style = {
                   nodefill: {
@@ -64875,12 +64920,12 @@ function () {
 
                 update();
 
-              case 34:
+              case 36:
               case "end":
-                return _context4.stop();
+                return _context6.stop();
             }
           }
-        }, _callee4, this);
+        }, _callee6, this);
       }));
     }
   }]);
@@ -64889,20 +64934,17 @@ function () {
 }();
 
 exports.default = Viewer;
-},{"spinal-model-graph":"../node_modules/spinal-model-graph/dist/src/index.js","d3":"../node_modules/d3/index.js","./nodeModel/ANode":"nodeModel/ANode.ts","./nodeModel/NodeFactory":"nodeModel/NodeFactory.ts","spinal-core-connectorjs_type":"../node_modules/spinal-core-connectorjs_type/dist/SpinalModel.js","./components/event-bus.js":"components/event-bus.js"}],"components/AppGraph.vue":[function(require,module,exports) {
+},{"spinal-model-graph":"../node_modules/spinal-model-graph/dist/src/index.js","d3":"../node_modules/d3/index.js","./nodeModel/ANode":"nodeModel/ANode.ts","./nodeModel/NodeFactory":"nodeModel/NodeFactory.ts","spinal-core-connectorjs_type":"../node_modules/spinal-core-connectorjs_type/dist/SpinalModel.js","./components/event-bus.js":"components/event-bus.js"}],"components/legendVueGraph.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-var _viewer = _interopRequireDefault(require("../viewer"));
-
-var _spinal = _interopRequireDefault(require("../spinal"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+//
+//
+//
+//
 //
 //
 //
@@ -64979,23 +65021,285 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 var _default = {
+  name: "legendVueGraph",
+  data: function data() {
+    return {
+      legend: false
+    };
+  },
+  methods: {
+    showLegend: function showLegend() {
+      this.legend = !this.legend;
+    }
+  }
+};
+exports.default = _default;
+        var $e2b273 = exports.default || module.exports;
+      
+      if (typeof $e2b273 === 'function') {
+        $e2b273 = $e2b273.options;
+      }
+    
+        /* template */
+        Object.assign($e2b273, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "dropdown" }, [
+    _c(
+      "button",
+      {
+        staticClass: "button",
+        attrs: { id: "button" },
+        on: { click: _vm.showLegend }
+      },
+      [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/info.b69a0da0.png",
+            alt: ""
+          }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "dropdown-content",
+        class: { show: _vm.legend },
+        attrs: { id: "myDropdown" }
+      },
+      [_vm._m(0)]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "demo" }, [
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/start.975fde4d.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Strating Node")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/simplenode.9edf869f.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Simple Node")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/lastnode.729b0447.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Leaf Node")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/lstptr.f19be4be.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Relation LstPtr")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/ref.24f81928.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Relation Ref")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/ptrlst.5899b7ee.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Relation PtrLst")])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/mouse2.ded68c6b.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "typecourse",
+          attrs: {
+            src: "/html/graph/childcourse.843a5970.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v(": chldren course")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/mouse2.ded68c6b.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("img", {
+          staticClass: "typecourse",
+          attrs: {
+            src: "/html/graph/parentcourse.600c78ee.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v(": parent course")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/mouse2.ded68c6b.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Middle Click: open the node in a new panel")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/mouse2.ded68c6b.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Right Click: open the node in DB Inspector")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-e2b273",
+            functional: undefined
+          };
+        })());
+      
+},{"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/info.png":[["info.b69a0da0.png","assets/info.png"],"assets/info.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/start.png":[["start.975fde4d.png","assets/start.png"],"assets/start.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/simplenode.png":[["simplenode.9edf869f.png","assets/simplenode.png"],"assets/simplenode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/lastnode.png":[["lastnode.729b0447.png","assets/lastnode.png"],"assets/lastnode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/lstptr.png":[["lstptr.f19be4be.png","assets/lstptr.png"],"assets/lstptr.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/ref.png":[["ref.24f81928.png","assets/ref.png"],"assets/ref.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/ptrlst.png":[["ptrlst.5899b7ee.png","assets/ptrlst.png"],"assets/ptrlst.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/mouse2.png":[["mouse2.ded68c6b.png","assets/mouse2.png"],"assets/mouse2.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/childcourse.png":[["childcourse.843a5970.png","assets/childcourse.png"],"assets/childcourse.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/parentcourse.png":[["parentcourse.600c78ee.png","assets/parentcourse.png"],"assets/parentcourse.png"]}],"components/AppGraph.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _viewer = _interopRequireDefault(require("../viewer"));
+
+var _spinal = _interopRequireDefault(require("../spinal"));
+
+var _eventBus = _interopRequireDefault(require("./event-bus"));
+
+var _legendVueGraph = _interopRequireDefault(require("./legendVueGraph"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
   name: "AppGraph",
   data: function data() {
     return {
-      show: 0
+      state: false,
+      legend: false,
+      courseType: "Children Course"
     };
+  },
+  components: {
+    legendVueGraph: _legendVueGraph.default
   },
   mounted: function mounted() {
     var spinal = _spinal.default.getInstance();
 
-    var viewer = new _viewer.default(spinal);
-    viewer.init(this.$refs.appGraph, this.server_id);
+    this.viewer = new _viewer.default(spinal);
+    this.viewer.init(this.$refs.appGraph, this.server_id);
   },
   methods: {
-    resize: function resize() {// viewer.resize.call(this.viewer);
+    setCourse: function setCourse() {
+      this.state = !this.state;
+      this.viewer.stateCourse = this.state;
+      if (this.courseType === "Children Course") this.courseType = "Parent Course";else this.courseType = "Children Course";
     },
-    showLegend: function showLegend() {
-      document.getElementById("myDropdown").classList.toggle("show");
+    resize: function resize() {
+      this.viewer.resize.call(this.viewer);
     }
   },
   props: {
@@ -65018,144 +65322,24 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { ref: "appGraph", staticClass: "app-Graph" }, [
-    _c("div", { staticClass: "dropdown" }, [
-      _c(
-        "button",
-        {
-          staticClass: "button",
-          attrs: { id: "button" },
-          on: { click: _vm.showLegend }
-        },
-        [
-          _c("img", {
-            attrs: {
-              src: "/html/graph/info.b69a0da0.png",
-              alt: ""
-            }
-          })
-        ]
-      ),
+  return _c(
+    "div",
+    { ref: "appGraph", staticClass: "app-Graph" },
+    [
+      _c("legendVueGraph"),
       _vm._v(" "),
-      _vm._m(0)
-    ])
-  ])
+      _c("div", { attrs: { id: "rates" } }, [
+        _c(
+          "button",
+          { attrs: { id: "course" }, on: { click: _vm.setCourse } },
+          [_vm._v("\n      " + _vm._s(_vm.courseType) + "\n    ")]
+        )
+      ])
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "dropdown-content", attrs: { id: "myDropdown" } },
-      [
-        _c("ul", { staticClass: "demo" }, [
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/start.975fde4d.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Strating Node")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/simplenode.9edf869f.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Simple Node")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/lastnode.729b0447.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Leaf Node")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/lstptr.f19be4be.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Relation LstPtr")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/ref.24f81928.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Relation Ref")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/ptrlst.5899b7ee.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Relation PtrLst")])
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/mouse2.ded68c6b.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Left Click: chldren course")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/mouse2.ded68c6b.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Right Click: parent course")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/mouse2.ded68c6b.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Middle Click: open the node in a new panel")])
-          ])
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
           return {
@@ -65167,7 +65351,7 @@ render._withStripped = true
           };
         })());
       
-},{"../viewer":"viewer.ts","../spinal":"spinal.ts","/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/info.png":[["info.b69a0da0.png","assets/info.png"],"assets/info.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/start.png":[["start.975fde4d.png","assets/start.png"],"assets/start.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/simplenode.png":[["simplenode.9edf869f.png","assets/simplenode.png"],"assets/simplenode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/lastnode.png":[["lastnode.729b0447.png","assets/lastnode.png"],"assets/lastnode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/lstptr.png":[["lstptr.f19be4be.png","assets/lstptr.png"],"assets/lstptr.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/ref.png":[["ref.24f81928.png","assets/ref.png"],"assets/ref.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/ptrlst.png":[["ptrlst.5899b7ee.png","assets/ptrlst.png"],"assets/ptrlst.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/mouse2.png":[["mouse2.ded68c6b.png","assets/mouse2.png"],"assets/mouse2.png"]}],"components/elementVueRec.vue":[function(require,module,exports) {
+},{"../viewer":"viewer.ts","../spinal":"spinal.ts","./event-bus":"components/event-bus.js","./legendVueGraph":"components/legendVueGraph.vue"}],"components/elementVueRec.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -65413,11 +65597,20 @@ var _default = {
   name: "AppElement",
   data: function data() {
     return {
-      server_id: -1
+      server_id: -1,
+      message: "Please Browse The Graph To View Node Information",
+      emptymessage: ""
     };
   },
   components: {
     elementVueRec: _elementVueRec.default
+  },
+  methods: {
+    info: function info() {
+      if (this.server_id === -1) {
+        return true;
+      } else return false;
+    }
   },
   mounted: function mounted() {
     var _this = this;
@@ -65441,6 +65634,12 @@ exports.default = _default;
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { attrs: { id: "app-Element" } }, [
+    _c("div", { staticClass: "message" }, [
+      _vm._v(
+        "\n    " + _vm._s(_vm.info() ? _vm.message : _vm.emptymessage) + "\n  "
+      )
+    ]),
+    _vm._v(" "),
     _c(
       "ul",
       [
@@ -65783,16 +65982,16 @@ function dbInspector(domElement) {
 
   function start(domElement) {
     var element = d3.select(domElement);
-    viewerWidth = element._groups[0][0].clientWidth;
-    viewerHeight = element._groups[0][0].clientHeight;
+    console.log(element);
+    viewerWidth = domElement.clientWidth;
+    viewerHeight = domElement.clientHeight;
     var tree = d3.tree().size([392, 732]);
     var zoomListener = d3.zoom().scaleExtent([0.1, 3]).on("zoom", zoom);
-    viewerWidth = 732;
-    viewerHeight = 392;
 
     centerNode = function centerNode(d) {
       var x, y;
       var depth = d.depth + 1;
+      console.log("depth", d.depth);
       var scale = 1;
       x = 0;
       depth -= d.depth;
@@ -65808,7 +66007,7 @@ function dbInspector(domElement) {
 
       x -= calc_dist_depth(d.depth, 6) * scale;
       y = y * scale + viewerHeight / 2;
-      baseSvg.transition().duration(animation_duration).call(zoomListener.transform, d3.zoomIdentity.translate(x, y).scale(scale));
+      baseSvg.transition().duration(animation_duration).call(zoomListener.transform, d3.zoomIdentity.translate(x, y).scale(scale + 0.4));
     };
 
     element.select("svg").remove();
@@ -65858,7 +66057,7 @@ function dbInspector(domElement) {
       baseSvg.attr("width", viewerWidth).attr("height", viewerHeight);
 
       if (textGrp) {
-        textGrp.attr("x", viewerWidth / 2).attr("y", viewerHeight / 2).text('Please Drop file from "File Explorer" here to inspect them.');
+        textGrp.attr("x", viewerWidth / 2).attr("y", viewerHeight / 2).text('Please Browse The Graph To View Node Information');
       }
 
       if (!rootnode) return;
@@ -65996,15 +66195,20 @@ function dbInspector(domElement) {
         d.x0 = d.x;
         d.y0 = d.y;
       });
-    }; // resize
-    // let check_redraw = () => {
-    //   if (viewerWidth != domElement.clientWidth || viewerHeight != domElement.clientHeight) {
-    //     viewerWidth = domElement.clientWidth;
-    //     viewerHeight = domElement.clientHeight;
-    //     draw();
-    //   }
-    // };
+    };
 
+    var check_redraw = function check_redraw() {
+      if (viewerWidth != domElement.clientWidth || viewerHeight != domElement.clientHeight) {
+        viewerWidth = domElement.clientWidth;
+        viewerHeight = domElement.clientHeight;
+        draw();
+        centerNode(rootnode);
+      }
+    };
+
+    setInterval(function () {
+      check_redraw();
+    }, 500);
   }
 
   var Tooltip = d3.select(domElement).append("div").style("opacity", 0).attr("class", "tooltip").attr("width", "70px").attr("height", "70px").style("background-color", "#0a3e44").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "2px").style("position", "fixed").style("font-size", "15px");
@@ -66404,24 +66608,34 @@ function dbInspector(domElement) {
 
   ;
 }
-},{"d3":"../node_modules/d3/index.js","d3-context-menu":"../node_modules/d3-context-menu/js/d3-context-menu.js","./components/event-bus":"components/event-bus.js"}],"components/AppDbInspector.vue":[function(require,module,exports) {
+},{"d3":"../node_modules/d3/index.js","d3-context-menu":"../node_modules/d3-context-menu/js/d3-context-menu.js","./components/event-bus":"components/event-bus.js"}],"components/legendVueInspector.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-
-var _viewer = _interopRequireDefault(require("../viewer"));
-
-var _spinal = _interopRequireDefault(require("../spinal"));
-
-var _vue = _interopRequireDefault(require("vue"));
-
-var _dbInspector = require("../dbInspector");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -66494,11 +66708,228 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 var _default = {
+  name: "legendVueInspector",
+  data: function data() {
+    return {
+      legend: false
+    };
+  },
+  methods: {
+    showLegend: function showLegend() {
+      this.legend = !this.legend;
+    }
+  }
+};
+exports.default = _default;
+        var $bfcf60 = exports.default || module.exports;
+      
+      if (typeof $bfcf60 === 'function') {
+        $bfcf60 = $bfcf60.options;
+      }
+    
+        /* template */
+        Object.assign($bfcf60, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "dropdown1" }, [
+    _c(
+      "button",
+      {
+        staticClass: "button",
+        attrs: { id: "button" },
+        on: { click: _vm.showLegend }
+      },
+      [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/info.b69a0da0.png",
+            alt: ""
+          }
+        })
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "dropdown1-content",
+        class: { show: _vm.legend },
+        attrs: { id: "myDropdown1" }
+      },
+      [_vm._m(0)]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "demo1" }, [
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/simplenode.9edf869f.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Closed Model")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/open.c57e971c.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Open Or Void Model")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/last.048c611e.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Atomic Model")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/ptr.dfb52c0e.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Closed Ptr Or Pbr")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/start.975fde4d.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Open Ptr Or Pbr")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/ids.c8bd3cf9.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Closed Lst")])
+      ]),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/idsopen.fba40b9c.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Open Lst")])
+      ]),
+      _vm._v(" "),
+      _c("hr"),
+      _vm._v(" "),
+      _c("li", [
+        _c("img", {
+          attrs: {
+            src: "/html/graph/mouse2.ded68c6b.png",
+            alt: ""
+          }
+        }),
+        _vm._v(" "),
+        _c("p", [_vm._v("Left Click: Open Object Attribut")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: "data-v-bfcf60",
+            functional: undefined
+          };
+        })());
+      
+},{"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/info.png":[["info.b69a0da0.png","assets/info.png"],"assets/info.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/simplenode.png":[["simplenode.9edf869f.png","assets/simplenode.png"],"assets/simplenode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/open.png":[["open.c57e971c.png","assets/open.png"],"assets/open.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/last.png":[["last.048c611e.png","assets/last.png"],"assets/last.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/ptr.png":[["ptr.dfb52c0e.png","assets/ptr.png"],"assets/ptr.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/start.png":[["start.975fde4d.png","assets/start.png"],"assets/start.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/ids.png":[["ids.c8bd3cf9.png","assets/ids.png"],"assets/ids.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/idsopen.png":[["idsopen.fba40b9c.png","assets/idsopen.png"],"assets/idsopen.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/mouse2.png":[["mouse2.ded68c6b.png","assets/mouse2.png"],"assets/mouse2.png"]}],"components/AppDbInspector.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _viewer = _interopRequireDefault(require("../viewer"));
+
+var _spinal = _interopRequireDefault(require("../spinal"));
+
+var _vue = _interopRequireDefault(require("vue"));
+
+var _dbInspector = require("../dbInspector");
+
+var _legendVueInspector = _interopRequireDefault(require("./legendVueInspector"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
   name: "AppDbInspector",
   data: function data() {
     return {
-      server_id: -1
+      server_id: -1,
+      legend: false
     };
+  },
+  components: {
+    legendVueInspector: _legendVueInspector.default
   },
   mounted: function mounted() {
     (0, _dbInspector.dbInspector)(this.$refs.appDbInspector);
@@ -66506,7 +66937,7 @@ var _default = {
   methods: {
     resize: function resize() {},
     showLegend: function showLegend() {
-      document.getElementById("myDropdown1").classList.toggle("show");
+      this.legend = !this.legend;
     }
   }
 };
@@ -66523,133 +66954,14 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { ref: "appDbInspector", staticClass: "app-Db-Inspector" }, [
-    _c("div", { staticClass: "dropdown1" }, [
-      _c(
-        "button",
-        {
-          staticClass: "button",
-          attrs: { id: "button" },
-          on: { click: _vm.showLegend }
-        },
-        [
-          _c("img", {
-            attrs: {
-              src: "/html/graph/info.b69a0da0.png",
-              alt: ""
-            }
-          })
-        ]
-      ),
-      _vm._v(" "),
-      _vm._m(0)
-    ])
-  ])
+  return _c(
+    "div",
+    { ref: "appDbInspector", staticClass: "app-Db-Inspector" },
+    [_c("legendVueInspector")],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "dropdown1-content", attrs: { id: "myDropdown1" } },
-      [
-        _c("ul", { staticClass: "demo1" }, [
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/simplenode.9edf869f.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Closed Model")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/open.c57e971c.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Open Or Void Model")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/last.048c611e.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Atomic Model")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/ptr.dfb52c0e.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Closed Ptr Or Pbr")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/start.975fde4d.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Open Ptr Or Pbr")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/ids.c8bd3cf9.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Closed Lst")])
-          ]),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/idsopen.fba40b9c.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Open Lst")])
-          ]),
-          _vm._v(" "),
-          _c("hr"),
-          _vm._v(" "),
-          _c("li", [
-            _c("img", {
-              attrs: {
-                src: "/html/graph/mouse2.ded68c6b.png",
-                alt: ""
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Left Click: Open Object Attribut")])
-          ])
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
           return {
@@ -66661,7 +66973,7 @@ render._withStripped = true
           };
         })());
       
-},{"../viewer":"viewer.ts","../spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","../dbInspector":"dbInspector.js","/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/info.png":[["info.b69a0da0.png","assets/info.png"],"assets/info.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/simplenode.png":[["simplenode.9edf869f.png","assets/simplenode.png"],"assets/simplenode.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/open.png":[["open.c57e971c.png","assets/open.png"],"assets/open.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/last.png":[["last.048c611e.png","assets/last.png"],"assets/last.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/ptr.png":[["ptr.dfb52c0e.png","assets/ptr.png"],"assets/ptr.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/start.png":[["start.975fde4d.png","assets/start.png"],"assets/start.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/ids.png":[["ids.c8bd3cf9.png","assets/ids.png"],"assets/ids.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/idsopen.png":[["idsopen.fba40b9c.png","assets/idsopen.png"],"assets/idsopen.png"],"/home/spinalcom/Documents/work/spinalcom/Spinal-browser-graph-inspector/module/Spinal-browser-graph-inspector/src/assets/mouse2.png":[["mouse2.ded68c6b.png","assets/mouse2.png"],"assets/mouse2.png"]}],"App.vue":[function(require,module,exports) {
+},{"../viewer":"viewer.ts","../spinal":"spinal.ts","vue":"../node_modules/vue/dist/vue.runtime.esm.js","../dbInspector":"dbInspector.js","./legendVueInspector":"components/legendVueInspector.vue"}],"App.vue":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {

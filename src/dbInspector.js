@@ -23,7 +23,6 @@
  */
 
 var d3 = require("d3");
-var d3ContextMenu = require("d3-context-menu");
 import EventBus from "./components/event-bus";
 
 
@@ -116,12 +115,14 @@ export function dbInspector(domElement) {
       }
       x -= calc_dist_depth(d.depth, 6) * scale;
       y = (y * scale) + (viewerHeight / 2);
+      console.log(scale);
+
       baseSvg
         .transition()
         .duration(animation_duration)
         .call(
           zoomListener.transform,
-          d3.zoomIdentity.translate(x, y).scale(scale + 0.4)
+          d3.zoomIdentity.translate(x, y).scale(scale)
         );
     };
     element.select("svg").remove();
@@ -187,7 +188,8 @@ export function dbInspector(domElement) {
           .attr("y", viewerHeight / 2)
           .text(
             'Please Browse The Graph To View Node Information'
-          );
+          ).style('font-family', "sans-serif")
+          ;
       }
       if (!rootnode) return;
       rootnode.x0 = viewerHeight / 2;

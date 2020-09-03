@@ -40,12 +40,11 @@ abstract class ANode {
   constructor(node: SpinalAnyNode) {
     this.id = node.getId().get();
     this._serverId = node._server_id;
-    this.name = node.getName().get();
+    this.name = node.getName() ? node.getName().get() : undefined
     this.category = "undef";
     this.hasChildren = false;
     this.children = [];
     this._children = null;
-
   }
 
   getChildren(node: D3Node): Promise<SpinalAnyNode[]> {

@@ -1,4 +1,4 @@
-.app-header[data-v-b9f5b8] {
+.app-header[data-v-ea51c6] {
   display: flex;
   align-content: center;
   justify-content: space-between;
@@ -7,7 +7,7 @@
   overflow: hidden;
   color: #fff;
 }
-p[data-v-b9f5b8] {
+p[data-v-ea51c6] {
   display: block;
   font-size: 1.5em;
   margin-block-start: 0.83em;
@@ -16,48 +16,48 @@ p[data-v-b9f5b8] {
   margin-inline-end: 0px;
   font-weight: bold;
 }
-.logo img[data-v-b9f5b8] {
+.logo img[data-v-ea51c6] {
   font-size: 24px;
   float: left;
   width: auto;
   height: 73px;
 }
-.any img[data-v-b9f5b8] {
+.any img[data-v-ea51c6] {
   font-size: 24px;
   margin-left: -5px;
   margin-top: -5px;
   width: 30px;
   height: 30px;
 }
-ul[data-v-b9f5b8] {
+ul[data-v-ea51c6] {
   float: left;
   width: calc(100%-200%);
 }
-ul li[data-v-b9f5b8] {
+ul li[data-v-ea51c6] {
     padding: 20px;
     display: inline-block;
 }
-ul li a[data-v-b9f5b8] {
+ul li a[data-v-ea51c6] {
       color: #fff;
       text-decoration: none;
 }
-.svg[data-v-b9f5b8] {
+.svg[data-v-ea51c6] {
   width: 20px;
   height: 20px;
 }
-.any[data-v-b9f5b8] {
+.any[data-v-ea51c6] {
   content: "";
   width: 90px;
   display: flex;
   justify-content: space-between;
   vertical-align: middle;
 }
-.any .user[data-v-b9f5b8] {
+.any .user[data-v-ea51c6] {
   color: black;
   vertical-align: middle;
   margin-top: 20px;
 }
-.title[data-v-b9f5b8] {
+.title[data-v-ea51c6] {
   font-family: sans-serif;
   font-size: 1.5em;
   margin-block-start: 0.83em;
@@ -70,14 +70,14 @@ ul li a[data-v-b9f5b8] {
   height: 20px;
   text-align: center;
 }
-a[data-v-b9f5b8] {
+a[data-v-ea51c6] {
   text-decoration: none;
   color: black;
 }
-a[data-v-b9f5b8]:hover {
+a[data-v-ea51c6]:hover {
     text-decoration: underline;
 }
-.navbar a[data-v-b9f5b8] {
+.navbar a[data-v-ea51c6] {
   float: right;
   display: block;
   color: black;
@@ -87,13 +87,13 @@ a[data-v-b9f5b8]:hover {
   text-decoration: none;
   font-size: 17px;
 }
-.navbar a[data-v-b9f5b8]:hover {
+.navbar a[data-v-ea51c6]:hover {
   border-radius: 45%;
   background-color: #e0dbdb;
   color: #000;
   transition: 0.1s;
 }
-.side-nav[data-v-b9f5b8] {
+.side-nav[data-v-ea51c6] {
   height: 100%;
   width: 0;
   position: fixed;
@@ -106,15 +106,15 @@ a[data-v-b9f5b8]:hover {
   padding-top: 60px;
   transition: 0.5s;
 }
-*[data-v-4c555f] {
+*[data-v-f78c38] {
   padding: 0;
   margin: 0;
 }
-.dropdown[data-v-4c555f] {
+.dropdown[data-v-f78c38] {
   position: relative;
   float: right;
 }
-.dropdown-content[data-v-4c555f] {
+.dropdown-content[data-v-f78c38] {
   display: none;
   position: absolute;
   right: 0px;
@@ -125,10 +125,10 @@ a[data-v-b9f5b8]:hover {
   z-index: 1;
   font-family: "Gill Sans", sans-serif;
 }
-.show[data-v-4c555f] {
+.show[data-v-f78c38] {
   display: block;
 }
-.button[data-v-4c555f] {
+.button[data-v-f78c38] {
   cursor: help;
   outline: none;
   margin-right: 3px;
@@ -142,12 +142,12 @@ a[data-v-b9f5b8]:hover {
   color: black;
   display: inline-block;
 }
-.button[data-v-4c555f]:hover {
+.button[data-v-f78c38]:hover {
     background-color: #bbb8b8;
     color: #666;
     border: 2px solid black;
 }
-.button img[data-v-4c555f] {
+.button img[data-v-f78c38] {
   font-size: 24px;
   cursor: help;
   margin-left: -6px;
@@ -155,43 +155,43 @@ a[data-v-b9f5b8]:hover {
   width: 22px;
   height: 22px;
 }
-ul[data-v-4c555f] {
+ul[data-v-f78c38] {
   list-style-type: none;
 }
-ul li[data-v-4c555f] {
+ul li[data-v-f78c38] {
   margin: 5px;
 }
-ul li img[data-v-4c555f] {
+ul li img[data-v-f78c38] {
   vertical-align: middle;
   width: 20px;
   height: 20px;
 }
-ul li p[data-v-4c555f] {
+ul li p[data-v-f78c38] {
   display: inline-block;
   vertical-align: middle;
   font-size: 14px;
 }
-.typecourse1[data-v-4c555f] {
+.typecourse1[data-v-f78c38] {
   width: 80px;
 }
-.typecourse2[data-v-4c555f] {
+.typecourse2[data-v-f78c38] {
   width: 70px;
 }
-*[data-v-8dc959] {
+*[data-v-a4580f] {
   padding: 0;
   margin: 0;
 }
-.app-Graph[data-v-8dc959] {
+.app-Graph[data-v-a4580f] {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-.typecourse[data-v-8dc959] {
+.typecourse[data-v-a4580f] {
   vertical-align: middle;
   width: 100px;
   height: 21px;
 }
-#course[data-v-8dc959] {
+#course[data-v-a4580f] {
   cursor: alias;
   outline: none;
   color: #fff;
@@ -202,7 +202,7 @@ ul li p[data-v-4c555f] {
   transition: all 0.4s ease 0s;
   font-family: "Gill Sans", sans-serif;
 }
-#course[data-v-8dc959]:hover {
+#course[data-v-a4580f]:hover {
     text-shadow: 0px 0px 6px white;
     -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
     -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
@@ -229,15 +229,15 @@ li {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}*[data-v-3e507a] {
+}*[data-v-a53f40] {
   padding: 0;
   margin: 0;
 }
-.dropdown1[data-v-3e507a] {
+.dropdown1[data-v-a53f40] {
   position: relative;
   float: right;
 }
-.dropdown1-content[data-v-3e507a] {
+.dropdown1-content[data-v-a53f40] {
   display: none;
   position: absolute;
   right: 0px;
@@ -248,10 +248,10 @@ li {
   z-index: 1;
   font-family: "Gill Sans", sans-serif;
 }
-.show[data-v-3e507a] {
+.show[data-v-a53f40] {
   display: block;
 }
-.button[data-v-3e507a] {
+.button[data-v-a53f40] {
   cursor: help;
   outline: none;
   margin-right: 3px;
@@ -265,12 +265,12 @@ li {
   color: black;
   display: inline-block;
 }
-.button[data-v-3e507a]:hover {
+.button[data-v-a53f40]:hover {
     background-color: #bbb8b8;
     color: #666;
     border: 2px solid black;
 }
-.button img[data-v-3e507a] {
+.button img[data-v-a53f40] {
   font-size: 24px;
   cursor: help;
   margin-left: -6px;
@@ -278,23 +278,23 @@ li {
   width: 22px;
   height: 22px;
 }
-ul[data-v-3e507a] {
+ul[data-v-a53f40] {
   list-style-type: none;
 }
-ul li[data-v-3e507a] {
+ul li[data-v-a53f40] {
   margin: 5px;
 }
-ul li img[data-v-3e507a] {
+ul li img[data-v-a53f40] {
   vertical-align: middle;
   width: 20px;
   height: 20px;
 }
-ul li p[data-v-3e507a] {
+ul li p[data-v-a53f40] {
   display: inline-block;
   vertical-align: middle;
   font-size: 14px;
 }
-div.tooltip[data-v-3e507a] {
+div.tooltip[data-v-a53f40] {
   position: absolute;
   text-align: center;
   width: 200px;
@@ -304,11 +304,11 @@ div.tooltip[data-v-3e507a] {
   background: lightsteelblue;
   pointer-events: none;
 }
-*[data-v-7922ee] {
+*[data-v-c7b511] {
   padding: 0;
   margin: 0;
 }
-.app-Db-Inspector[data-v-7922ee] {
+.app-Db-Inspector[data-v-c7b511] {
   position: relative;
   width: 100%;
   height: 100%;

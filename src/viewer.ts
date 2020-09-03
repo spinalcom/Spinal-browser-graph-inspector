@@ -287,21 +287,28 @@ class Viewer {
 
       //add node labels
       nodeEnter.append("text")
-        .text(function (d) {
-          const realNode = (FileSystem._objects[d.data._serverId]);
-          if (d.data.name === "undefined") {
-            d.data.name = "Graph";
-          }
-          if (d.data.category === "node") {
-            return d.data.name;
-          }
-          else {
-            return d.data.name + "{" + realNode.getNbChildren() + "}";
-          }
-        })
-        .attr('transform', `translate(-17,-15)`)
-        .style('fill', "#fff")
-        .style('font-family', "sans-serif")
+      .text(function (d) {
+        const realNode = (FileSystem._objects[d.data._serverId]);
+        if (d.data.name === "undefined") {
+          d.data.name = "Graph";
+        }
+        if (d.data.name === undefined) {
+          d.data.name = "undefined"
+        }
+        if (d.data.category === "node") {
+          return d.data.name;
+        }
+        else {
+          return d.data.name + "{" + realNode.getNbChildren() + "}";
+        }
+      })
+      .attr('transform', `translate(-17,-15)`)
+      .style('fill', "#fff")
+      .style('font-family', "sans-serif")
+      .style('font-style', function (d) {
+        if (d.data.name === "undefined") return 'italic';
+        return 'normal';
+      })
       node = nodeEnter.merge(node)
 
       //append the data to the simulation

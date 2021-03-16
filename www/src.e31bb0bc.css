@@ -1,4 +1,4 @@
-.app-header[data-v-ea51c6] {
+.app-header[data-v-6f9685] {
   display: flex;
   align-content: center;
   justify-content: space-between;
@@ -7,7 +7,7 @@
   overflow: hidden;
   color: #fff;
 }
-p[data-v-ea51c6] {
+p[data-v-6f9685] {
   display: block;
   font-size: 1.5em;
   margin-block-start: 0.83em;
@@ -16,48 +16,48 @@ p[data-v-ea51c6] {
   margin-inline-end: 0px;
   font-weight: bold;
 }
-.logo img[data-v-ea51c6] {
+.logo img[data-v-6f9685] {
   font-size: 24px;
   float: left;
   width: auto;
   height: 73px;
 }
-.any img[data-v-ea51c6] {
+.any img[data-v-6f9685] {
   font-size: 24px;
   margin-left: -5px;
   margin-top: -5px;
   width: 30px;
   height: 30px;
 }
-ul[data-v-ea51c6] {
+ul[data-v-6f9685] {
   float: left;
   width: calc(100%-200%);
 }
-ul li[data-v-ea51c6] {
+ul li[data-v-6f9685] {
     padding: 20px;
     display: inline-block;
 }
-ul li a[data-v-ea51c6] {
+ul li a[data-v-6f9685] {
       color: #fff;
       text-decoration: none;
 }
-.svg[data-v-ea51c6] {
+.svg[data-v-6f9685] {
   width: 20px;
   height: 20px;
 }
-.any[data-v-ea51c6] {
+.any[data-v-6f9685] {
   content: "";
   width: 90px;
   display: flex;
   justify-content: space-between;
   vertical-align: middle;
 }
-.any .user[data-v-ea51c6] {
+.any .user[data-v-6f9685] {
   color: black;
   vertical-align: middle;
   margin-top: 20px;
 }
-.title[data-v-ea51c6] {
+.title[data-v-6f9685] {
   font-family: sans-serif;
   font-size: 1.5em;
   margin-block-start: 0.83em;
@@ -70,14 +70,14 @@ ul li a[data-v-ea51c6] {
   height: 20px;
   text-align: center;
 }
-a[data-v-ea51c6] {
+a[data-v-6f9685] {
   text-decoration: none;
   color: black;
 }
-a[data-v-ea51c6]:hover {
+a[data-v-6f9685]:hover {
     text-decoration: underline;
 }
-.navbar a[data-v-ea51c6] {
+.navbar a[data-v-6f9685] {
   float: right;
   display: block;
   color: black;
@@ -87,13 +87,13 @@ a[data-v-ea51c6]:hover {
   text-decoration: none;
   font-size: 17px;
 }
-.navbar a[data-v-ea51c6]:hover {
+.navbar a[data-v-6f9685]:hover {
   border-radius: 45%;
   background-color: #e0dbdb;
   color: #000;
   transition: 0.1s;
 }
-.side-nav[data-v-ea51c6] {
+.side-nav[data-v-6f9685] {
   height: 100%;
   width: 0;
   position: fixed;
@@ -106,15 +106,15 @@ a[data-v-ea51c6]:hover {
   padding-top: 60px;
   transition: 0.5s;
 }
-*[data-v-f78c38] {
+*[data-v-232af1] {
   padding: 0;
   margin: 0;
 }
-.dropdown[data-v-f78c38] {
+.dropdown[data-v-232af1] {
   position: relative;
   float: right;
 }
-.dropdown-content[data-v-f78c38] {
+.dropdown-content[data-v-232af1] {
   display: none;
   position: absolute;
   right: 0px;
@@ -125,10 +125,10 @@ a[data-v-ea51c6]:hover {
   z-index: 1;
   font-family: "Gill Sans", sans-serif;
 }
-.show[data-v-f78c38] {
+.show[data-v-232af1] {
   display: block;
 }
-.button[data-v-f78c38] {
+.button[data-v-232af1] {
   cursor: help;
   outline: none;
   margin-right: 3px;
@@ -142,12 +142,12 @@ a[data-v-ea51c6]:hover {
   color: black;
   display: inline-block;
 }
-.button[data-v-f78c38]:hover {
+.button[data-v-232af1]:hover {
     background-color: #bbb8b8;
     color: #666;
     border: 2px solid black;
 }
-.button img[data-v-f78c38] {
+.button img[data-v-232af1] {
   font-size: 24px;
   cursor: help;
   margin-left: -6px;
@@ -155,43 +155,43 @@ a[data-v-ea51c6]:hover {
   width: 22px;
   height: 22px;
 }
-ul[data-v-f78c38] {
+ul[data-v-232af1] {
   list-style-type: none;
 }
-ul li[data-v-f78c38] {
+ul li[data-v-232af1] {
   margin: 5px;
 }
-ul li img[data-v-f78c38] {
+ul li img[data-v-232af1] {
   vertical-align: middle;
   width: 20px;
   height: 20px;
 }
-ul li p[data-v-f78c38] {
+ul li p[data-v-232af1] {
   display: inline-block;
   vertical-align: middle;
   font-size: 14px;
 }
-.typecourse1[data-v-f78c38] {
+.typecourse1[data-v-232af1] {
   width: 80px;
 }
-.typecourse2[data-v-f78c38] {
+.typecourse2[data-v-232af1] {
   width: 70px;
 }
-*[data-v-a4580f] {
+*[data-v-d9667e] {
   padding: 0;
   margin: 0;
 }
-.app-Graph[data-v-a4580f] {
+.app-Graph[data-v-d9667e] {
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
-.typecourse[data-v-a4580f] {
+.typecourse[data-v-d9667e] {
   vertical-align: middle;
   width: 100px;
   height: 21px;
 }
-#course[data-v-a4580f] {
+#course[data-v-d9667e] {
   cursor: alias;
   outline: none;
   color: #fff;
@@ -202,7 +202,7 @@ ul li p[data-v-f78c38] {
   transition: all 0.4s ease 0s;
   font-family: "Gill Sans", sans-serif;
 }
-#course[data-v-a4580f]:hover {
+#course[data-v-d9667e]:hover {
     text-shadow: 0px 0px 6px white;
     -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
     -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
@@ -229,15 +229,15 @@ li {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}*[data-v-a53f40] {
+}*[data-v-0c86a4] {
   padding: 0;
   margin: 0;
 }
-.dropdown1[data-v-a53f40] {
+.dropdown1[data-v-0c86a4] {
   position: relative;
   float: right;
 }
-.dropdown1-content[data-v-a53f40] {
+.dropdown1-content[data-v-0c86a4] {
   display: none;
   position: absolute;
   right: 0px;
@@ -248,10 +248,10 @@ li {
   z-index: 1;
   font-family: "Gill Sans", sans-serif;
 }
-.show[data-v-a53f40] {
+.show[data-v-0c86a4] {
   display: block;
 }
-.button[data-v-a53f40] {
+.button[data-v-0c86a4] {
   cursor: help;
   outline: none;
   margin-right: 3px;
@@ -265,12 +265,12 @@ li {
   color: black;
   display: inline-block;
 }
-.button[data-v-a53f40]:hover {
+.button[data-v-0c86a4]:hover {
     background-color: #bbb8b8;
     color: #666;
     border: 2px solid black;
 }
-.button img[data-v-a53f40] {
+.button img[data-v-0c86a4] {
   font-size: 24px;
   cursor: help;
   margin-left: -6px;
@@ -278,23 +278,23 @@ li {
   width: 22px;
   height: 22px;
 }
-ul[data-v-a53f40] {
+ul[data-v-0c86a4] {
   list-style-type: none;
 }
-ul li[data-v-a53f40] {
+ul li[data-v-0c86a4] {
   margin: 5px;
 }
-ul li img[data-v-a53f40] {
+ul li img[data-v-0c86a4] {
   vertical-align: middle;
   width: 20px;
   height: 20px;
 }
-ul li p[data-v-a53f40] {
+ul li p[data-v-0c86a4] {
   display: inline-block;
   vertical-align: middle;
   font-size: 14px;
 }
-div.tooltip[data-v-a53f40] {
+div.tooltip[data-v-0c86a4] {
   position: absolute;
   text-align: center;
   width: 200px;
@@ -304,11 +304,11 @@ div.tooltip[data-v-a53f40] {
   background: lightsteelblue;
   pointer-events: none;
 }
-*[data-v-c7b511] {
+*[data-v-38f71a] {
   padding: 0;
   margin: 0;
 }
-.app-Db-Inspector[data-v-c7b511] {
+.app-Db-Inspector[data-v-38f71a] {
   position: relative;
   width: 100%;
   height: 100%;

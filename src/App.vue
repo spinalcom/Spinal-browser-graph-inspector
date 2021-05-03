@@ -284,4 +284,8 @@ body,
 ::-webkit-scrollbar-thumb:hover {
   background: #b4f5ab;
 }
+
+.app-Db-Inspector .tooltip {
+  pointer-events: none;
+}
 </style>

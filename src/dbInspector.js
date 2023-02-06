@@ -24,7 +24,7 @@
 
 var d3 = require("d3");
 import EventBus from "./components/event-bus";
-
+import { Model, Lst, TypedArray, Str, Val, Ptr, Bool } from 'spinal-core-connectorjs';
 
 export function dbInspector(domElement) {
 
@@ -83,8 +83,6 @@ export function dbInspector(domElement) {
   function start(domElement) {
 
     let element = d3.select(domElement);
-    console.log(element);
-
     viewerWidth = domElement.clientWidth;
     viewerHeight = domElement.clientHeight;
 
@@ -97,10 +95,9 @@ export function dbInspector(domElement) {
 
     centerNode = function (d) {
       let x, y;
+      if (!d) return;
       let depth =
         d.depth + 1;
-      console.log("depth", d.depth);
-
       let scale = 1;
       x = 0;
       depth -= d.depth;
@@ -115,8 +112,6 @@ export function dbInspector(domElement) {
       }
       x -= calc_dist_depth(d.depth, 6) * scale;
       y = (y * scale) + (viewerHeight / 2);
-      console.log(scale);
-
       baseSvg
         .transition()
         .duration(animation_duration)
@@ -259,7 +254,7 @@ export function dbInspector(domElement) {
           return d.data.name;
         })
         .attr("fill", "#EEE")
-        .on("click", click_focus)
+        .on("click", click_focus);
 
       var nodeUpdate = nodeEnter.merge(node);
       nodeUpdate
@@ -344,7 +339,7 @@ export function dbInspector(domElement) {
         })
         .attr("fill", "none")
         .style("stroke", "#8d8d8d")
-        .attr('stroke-width', 2)
+        .attr('stroke-width', 2);
 
       // UPDATE
       let linkUpdate = linkEnter.merge(link);
@@ -405,7 +400,7 @@ export function dbInspector(domElement) {
     .style("border-radius", "5px")
     .style("padding", "2px")
     .style("position", "fixed")
-    .style("font-size", "15px")
+    .style("font-size", "15px");
 
   let add_table_row = (table, key, value) => {
     let tr = table.append("tr");
@@ -505,19 +500,19 @@ export function dbInspector(domElement) {
       if (!name) name = n.data.name;
       n.data._constructor = m.constructor.name;
       n.data._server_id = m._server_id;
-      if (m instanceof window.Val || m instanceof window.Bool) {
+      if (m instanceof Val || m instanceof Bool) {
         n.data.name = n.data.name.replace(/ *= [.\-\w]*/g, "");
         n.data.name += ` = ${m.get()}`;
-      } else if (m instanceof window.Str) {
+      } else if (m instanceof Str) {
         let str = m.get();
         if (str.length > 25) str = str.substring(0, 25) + "...";
         n.data.name = n.data.name.replace(/ *= *"*\w*.*"*/g, "");
         n.data.data = `${name} = "${m.get()}"`;
         n.data.name += ` = "${str}"`;
-      } else if (m instanceof window.TypedArray) {
+      } else if (m instanceof TypedArray) {
         n.data.name = n.data.name.replace(/ *= [0-9.e-]*/g, "");
         n.data.name += ` = ${m._size}`;
-      } else if (m instanceof window.Ptr) {
+      } else if (m instanceof Ptr) {
         n.data.ptr = m.data.value;
         n.data.name = n.data.name.replace(/ *= *"*\w*"*/g, "");
         n.data.name += ` = "${m.data.value}"`;
@@ -529,7 +524,7 @@ export function dbInspector(domElement) {
             check_nodes_rec(children[0]);
           }
         });
-      } else if (m instanceof window.Lst) {
+      } else if (m instanceof Lst) {
         n.data.name = n.data.name.replace(/\[[0-9]*\]/g, "");
         n.data.name += `[${m.length}]`;
         n.data.lst = true;
@@ -581,7 +576,7 @@ export function dbInspector(domElement) {
         if (children.length === 0) {
           n.children = n._children = n.data.children = n.data._children = null;
         }
-      } else if (m instanceof window.Model) {
+      } else if (m instanceof Model) {
         n.data.obj = true;
         n.data.name = n.data.name.replace(/{[0-9]*}/g, "");
         n.data.name += `{${m._attribute_names.length}}`;
@@ -655,7 +650,7 @@ export function dbInspector(domElement) {
     n.data._server_id = m._server_id;
 
     ++depth;
-    if (m instanceof window.Lst) {
+    if (m instanceof Lst) {
       n.data.name = n.data.name.replace(/\[[0-9]*\]/g, "");
       n.data.name += `[${m.length}]`;
       n.data.lst = true;
@@ -674,20 +669,20 @@ export function dbInspector(domElement) {
         pushToJson(m[i], res, n, max_depth, depth);
         n.children.push(res);
       }
-    } else if (m instanceof window.Val || m instanceof window.Bool) {
+    } else if (m instanceof Val || m instanceof Bool) {
       n.data.name += ` = ${m.get()}`;
-    } else if (m instanceof window.Str) {
+    } else if (m instanceof Str) {
       let str = m.get();
       if (str.length > 25) str = str.substring(0, 25) + "...";
       n.data.data = `${name} = "${m.get()}"`;
       n.data.name += ` = "${str}"`;
-    } else if (m instanceof window.Ptr) {
+    } else if (m instanceof Ptr) {
       n.data.haveChild = true;
       n.data.ptr = m.data.value;
       n.data.name += ` = "${m.data.value}"`;
-    } else if (m instanceof window.TypedArray) {
+    } else if (m instanceof TypedArray) {
       n.data.name += ` = ${m._size}`;
-    } else if (m instanceof window.Model) {
+    } else if (m instanceof Model) {
       n.data.obj = true;
       n.data.name = n.data.name.replace(/{[0-9]*}/g, "");
       n.data.name += `{${m._attribute_names.length}}`;
@@ -726,7 +721,7 @@ export function dbInspector(domElement) {
     n._server_id = m._server_id;
 
     ++depth;
-    if (m instanceof window.Lst) {
+    if (m instanceof Lst) {
       n.name += `[${m.length}]`;
       n.lst = true;
       if (m.length == 0) return;
@@ -740,20 +735,20 @@ export function dbInspector(domElement) {
         toJson(m[i], res, max_depth, depth);
         n.children.push(res);
       }
-    } else if (m instanceof window.Val || m instanceof window.Bool) {
+    } else if (m instanceof Val || m instanceof Bool) {
       n.name += ` = ${m.get()}`;
-    } else if (m instanceof window.Str) {
+    } else if (m instanceof Str) {
       let str = m.get();
       if (str.length > 25) str = str.substring(0, 25) + "...";
       n.data = `${name} = "${m.get()}"`;
       n.name += ` = "${str}"`;
-    } else if (m instanceof window.Ptr) {
+    } else if (m instanceof Ptr) {
       n.haveChild = true;
       n.ptr = m.data.value;
       n.name += ` = "${m.data.value}"`;
-    } else if (m instanceof window.TypedArray) {
+    } else if (m instanceof TypedArray) {
       n.name += ` = ${m._size}`;
-    } else if (m instanceof window.Model) {
+    } else if (m instanceof Model) {
       n.obj = true;
       n.name += `{${m._attribute_names.length}}`;
       if (depth > max_depth) {

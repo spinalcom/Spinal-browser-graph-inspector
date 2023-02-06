@@ -78,8 +78,6 @@ class Viewer {
   async init(element: any, server_id) {
 
     this.element = element;
-    console.log(this.element);
-
     this.element = element;//initialisation of DOMElement
     const data = <SpinalNode<any>>(await this.graph.load(server_id)); //load graph
     this.width = element.clientWidth - this.margin.left - this.margin.right;//width of element
@@ -181,8 +179,6 @@ class Viewer {
 
       const nodes = flatten(root) // recover ids nodes
       const links = createLinks(nodes)  //recover links
-      console.log("update", nodes, links);
-
 
       //build the d3 links
       link = mylink

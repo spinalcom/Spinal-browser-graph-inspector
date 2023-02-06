@@ -26,10 +26,19 @@ with this file. If not, see
     <div class="message">
       {{ info() ? message : emptymessage }}
     </div>
-    <ul>
-      <elementVueRec :attrName="''" :sever_Id="server_id" class="element">
-      </elementVueRec>
-    </ul>
+    <table class="styled-table">
+      <thead>
+        <tr>
+          <th>Info Node</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="ligne in target" :key="ligne.key" class="active-row">
+          <td>{{ ligne.key }}</td>
+          <td>{{ ligne.value }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -39,6 +48,11 @@ import Spinal from "../spinal";
 import Vue from "vue";
 import EventBus from "./event-bus";
 import elementVueRec from "./elementVueRec.vue";
+import {
+  SpinalNode,
+  SpinalRelationLstPtr,
+  BaseSpinalRelation
+} from "spinal-model-graph";
 
 export default {
   name: "AppElement",
@@ -46,7 +60,8 @@ export default {
     return {
       server_id: -1,
       message: "Please Browse The Graph To View Node Information",
-      emptymessage: ""
+      emptymessage: "",
+      target: []
     };
   },
   components: {
@@ -62,6 +77,16 @@ export default {
   mounted() {
     EventBus.$on("realNodeElement", realNode => {
       this.server_id = realNode._server_id;
+      this.target = [{ key: "serverId", value: realNode._server_id }];
+      if (realNode instanceof SpinalNode) {
+        this.target.push(
+          { key: "staticId", value: realNode.info.id.get() },
+          { key: "name", value: realNode.info.name.get() },
+          { key: "type", value: realNode.info.type.get() }
+        );
+      } else if (realNode instanceof BaseSpinalRelation) {
+        console.log(realNode);
+      }
     });
   }
 };
@@ -81,5 +106,31 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.styled-table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+}
+
+.styled-table thead tr {
+  color: #ffffff;
+  text-align: left;
+}
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr.active-row {
+  font-weight: bold;
+  color: #009879;
 }
 </style>

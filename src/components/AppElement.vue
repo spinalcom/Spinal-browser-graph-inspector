@@ -47,7 +47,6 @@ import Viewer from "../viewer";
 import Spinal from "../spinal";
 import Vue from "vue";
 import EventBus from "./event-bus";
-import elementVueRec from "./elementVueRec.vue";
 import {
   SpinalNode,
   SpinalRelationLstPtr,
@@ -64,9 +63,7 @@ export default {
       target: []
     };
   },
-  components: {
-    elementVueRec
-  },
+  components: {},
   methods: {
     info() {
       if (this.server_id === -1) {

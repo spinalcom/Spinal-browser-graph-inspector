@@ -27,11 +27,6 @@ with this file. If not, see
       {{ info() ? message : emptymessage }}
     </div>
     <table class="styled-table">
-      <thead>
-        <tr>
-          <th>Info Node</th>
-        </tr>
-      </thead>
       <tbody>
         <tr v-for="ligne in target" :key="ligne.key" class="active-row">
           <td>{{ ligne.key }}</td>
@@ -50,6 +45,8 @@ import EventBus from "./event-bus";
 import {
   SpinalNode,
   SpinalRelationLstPtr,
+  SpinalRelationPtrLst,
+  SpinalRelationRef,
   BaseSpinalRelation
 } from "spinal-model-graph";
 
@@ -81,8 +78,21 @@ export default {
           { key: "name", value: realNode.info.name.get() },
           { key: "type", value: realNode.info.type.get() }
         );
-      } else if (realNode instanceof BaseSpinalRelation) {
-        console.log(realNode);
+      } else if (
+        realNode instanceof SpinalRelationLstPtr ||
+        realNode instanceof SpinalRelationPtrLst ||
+        realNode instanceof SpinalRelationRef
+      ) {
+        this.target.push(
+          { key: "name", value: realNode.name.get() },
+          { key: "Nb Childrens", value: realNode.children.length }
+        );
+      } else if (
+        realNode instanceof Str ||
+        realNode instanceof Bool ||
+        realNode instanceof Val
+      ) {
+        this.target.push({ key: "value", value: realNode.get() });
       }
     });
   }

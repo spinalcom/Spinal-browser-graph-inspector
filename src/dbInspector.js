@@ -142,6 +142,8 @@ export function dbInspector(domElement) {
     svgGroup = baseSvg.append("g");
 
     let onNodeClick = d => {
+      const realNode = FileSystem._objects[d.data._server_id];
+      EventBus.$emit("realNodeElement", realNode);
       if (d.children) {
         d._children = d.children;
         d.children = null;
@@ -153,7 +155,7 @@ export function dbInspector(domElement) {
         if (!(d.children || d._children)) {
           let m = window.FileSystem._objects[d.data._server_id];
           if (m) {
-            if (m instanceof window.Ptr) {
+            if (m instanceof Ptr) {
               m.load(ptr => {
                 ptr.bind(onTreeChange, false);
                 let res = {};
@@ -433,9 +435,9 @@ export function dbInspector(domElement) {
 
     let m = window.FileSystem._objects[d.data._server_id];
     if (m) {
-      if (m instanceof window.Lst) {
+      if (m instanceof Lst) {
         add_table_row(table, "Length", m.length);
-      } else if (m instanceof window.Str) {
+      } else if (m instanceof Str) {
         let data = m.get();
         add_table_row(table, "Data", data);
         add_table_row(table, "Length", m.length);
@@ -449,11 +451,11 @@ export function dbInspector(domElement) {
           img.style("max-height", 100);
           img.style("max-width", 100);
         }
-      } else if (m instanceof window.Val) {
+      } else if (m instanceof Val) {
         add_table_row(table, "Value", m.get());
-      } else if (m instanceof window.Ptr) {
+      } else if (m instanceof Ptr) {
         add_table_row(table, "Target Ptr", m.data.value);
-      } else if (m instanceof window.TypedArray) {
+      } else if (m instanceof TypedArray) {
         add_table_row(table, "Data", m.get());
       }
     }

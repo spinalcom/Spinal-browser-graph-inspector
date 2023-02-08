@@ -197,6 +197,8 @@ export function dbInspector(domElement) {
 
 
     let click_focus = d => {
+      const realNode = FileSystem._objects[d.data._server_id];
+      EventBus.$emit("realNodeElement", realNode);
       centerNode(d);
     };
     update = source => {
@@ -408,10 +410,6 @@ export function dbInspector(domElement) {
     let tr = table.append("tr");
     tr.append("td").text(key);
     tr.append("td").text(value);
-    $(document).ready(function () {
-      $("tr:first-child").css("background-color", "black");
-    });
-
   };
 
   function strncmp(a, b, n) {

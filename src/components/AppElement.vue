@@ -29,8 +29,8 @@ with this file. If not, see
     <table class="styled-table">
       <tbody>
         <tr v-for="ligne in target" :key="ligne.key" class="active-row">
-          <td>{{ ligne.key }}</td>
-          <td>{{ ligne.value }}</td>
+          <td @click="copyData(ligne.key)">{{ ligne.key }}</td>
+          <td @click="copyData(ligne.value)">{{ ligne.value }}</td>
         </tr>
       </tbody>
     </table>
@@ -66,33 +66,93 @@ export default {
       if (this.server_id === -1) {
         return true;
       } else return false;
+    },
+    async copyData(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch(e) {
+          alert('Cannot copy');
+      }
+    },
+    handleAtomic(model, key = model.constructor.name, force = false) {
+      if (
+        model instanceof Str ||
+        model instanceof Bool ||
+        model instanceof Val
+      ) {
+        this.target.push({ key, value: model.get() });
+        return true;
+      } else if (
+        model instanceof Ptr ||
+        model instanceof Pbr
+        ) {
+        this.target.push({ key, value: `target = ${model.data.value}` });
+      } else if (force) {
+        this.target.push({ key, value: "" });
+        return true;
+      }
+      return false;
+    },
+    handleSpinalNode(model) {
+      if (model instanceof SpinalNode) {
+        return this.handleobject(model.info);
+      }
+      return false;
+    },
+    handleobject(model) {
+      for (const key of model._attribute_names) {
+        if (Object.hasOwnProperty.call(model, key)) {
+          const element = model[key];
+          this.handleAtomic(element, key, true);
+        }
+      }
+      return true;
+    },
+    handleLst(model) {
+      if (model instanceof Lst) {
+        for (let idx = 0; idx < model.length; idx++) {
+          const element = model[idx];
+          this.handleAtomic(element, idx, true);
+        }
+        return true;
+      }
+      return false;
+    },
+    handleSpinalRelation(model) {
+      if (
+        model instanceof SpinalRelationLstPtr ||
+        model instanceof SpinalRelationRef
+      ) {
+        this.target.push(
+          { key: "name", value: model.name.get() },
+          { key: "Nb Childrens", value: model.children.length }
+        );
+        return true;
+      } else if (
+        model instanceof SpinalRelationPtrLst 
+      ) {
+        this.target.push(
+          { key: "name", value: model.name.get() },
+          { key: "Nb Childrens", value: model.children.info.ids.length }
+        );
+        return true;
+      }
+      return false
     }
   },
   mounted() {
-    EventBus.$on("realNodeElement", realNode => {
-      this.server_id = realNode._server_id;
-      this.target = [{ key: "serverId", value: realNode._server_id }];
-      if (realNode instanceof SpinalNode) {
-        this.target.push(
-          { key: "staticId", value: realNode.info.id.get() },
-          { key: "name", value: realNode.info.name.get() },
-          { key: "type", value: realNode.info.type.get() }
-        );
-      } else if (
-        realNode instanceof SpinalRelationLstPtr ||
-        realNode instanceof SpinalRelationPtrLst ||
-        realNode instanceof SpinalRelationRef
-      ) {
-        this.target.push(
-          { key: "name", value: realNode.name.get() },
-          { key: "Nb Childrens", value: realNode.children.length }
-        );
-      } else if (
-        realNode instanceof Str ||
-        realNode instanceof Bool ||
-        realNode instanceof Val
-      ) {
-        this.target.push({ key: "value", value: realNode.get() });
+    EventBus.$on("realNodeElement", model => {
+      this.server_id = model._server_id;
+      this.target = [{ key: "serverId", value: model._server_id }];
+      const fcts = [
+        this.handleSpinalNode,
+        this.handleSpinalRelation,
+        this.handleAtomic,
+        this.handleLst,
+        this.handleobject
+      ];
+      for (const fct of fcts) {
+        if (fct(model)) return;
       }
     });
   }
@@ -100,6 +160,10 @@ export default {
 </script>
 
 <style>
+#app-Element {
+  display: flex;
+  justify-content: center;
+}
 .element {
   font-family: sans-serif;
 }
@@ -117,16 +181,17 @@ export default {
 
 .styled-table {
   border-collapse: collapse;
-  margin: 25px 0;
+  margin: 8px 0 25px 0;
   font-size: 0.9em;
   font-family: sans-serif;
   min-width: 400px;
+  width: calc(100% - 16px);
 }
 
-.styled-table thead tr {
+/* .styled-table thead tr {
   color: #ffffff;
   text-align: left;
-}
+} */
 .styled-table th,
 .styled-table td {
   padding: 12px 15px;
@@ -137,7 +202,13 @@ export default {
 }
 
 .styled-table tbody tr.active-row {
-  font-weight: bold;
-  color: #009879;
+  color: #fff;
 }
+.styled-table tbody tr.active-row td {
+  cursor: pointer;
+}
+.styled-table tbody tr.active-row td:hover {
+  background-color: #eeeeee0f;
+}
+
 </style>

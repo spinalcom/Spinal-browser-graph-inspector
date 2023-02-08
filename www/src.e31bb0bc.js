@@ -22850,7 +22850,7 @@ module.exports = {
   "_resolved": "https://registry.npmjs.org/axios/-/axios-0.21.4.tgz",
   "_shasum": "c67b90dc0568e5c1cf2b0b858c43ba28e2eda575",
   "_spec": "axios@^0.21.1",
-  "_where": "/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector",
+  "_where": "/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector",
   "author": {
     "name": "Matt Zabriskie"
   },
@@ -31943,14 +31943,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $b60865 = exports.default || module.exports;
+        var $899ca6 = exports.default || module.exports;
       
-      if (typeof $b60865 === 'function') {
-        $b60865 = $b60865.options;
+      if (typeof $899ca6 === 'function') {
+        $899ca6 = $899ca6.options;
       }
     
         /* template */
-        Object.assign($b60865, (function () {
+        Object.assign($899ca6, (function () {
           var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"app-header"},[_vm._m(0),_vm._v(" "),_vm._m(1),_vm._v(" "),_c('div',{staticClass:"any"},[_c('span',{staticClass:"user"},[_vm._v("admin")]),_vm._v(" "),_c('div',{staticClass:"navbar"},[_c('span',{staticClass:"open-slide"},[_c('a',{attrs:{"href":"#"},on:{"click":_vm.openSlideMenu}},[_c('svg',{staticClass:"svg",attrs:{"width":"30","height":"30"}},[_c('path',{attrs:{"d":"M0,5 20,5","stroke":"#4d4c4c","stroke-width":"2"}}),_vm._v(" "),_c('path',{attrs:{"d":"M0,10 20,10","stroke":"#4d4c4c","stroke-width":"2"}}),_vm._v(" "),_c('path',{attrs:{"d":"M0,15 20,15","stroke":"#4d4c4c","stroke-width":"2"}})])])])])])])}
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"logo"},[_c('img',{attrs:{"src":"/html/graph-inspector/spinal.5801a626.png","alt":""}})])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"title"},[_c('h3',[_vm._v("Graph_node_inspector")])])}]
 
@@ -31958,12 +31958,12 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-b60865",
+            _scopeId: "data-v-899ca6",
             functional: undefined
           };
         })());
       
-},{"./event-bus.js":"vsAR","/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/spinal.png":[["spinal.5801a626.png","LSif"],"LSif"]}],"pT13":[function(require,module,exports) {
+},{"./event-bus.js":"vsAR","/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/spinal.png":[["spinal.5801a626.png","LSif"],"LSif"]}],"pT13":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57530,14 +57530,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $933fc6 = exports.default || module.exports;
+        var $173c24 = exports.default || module.exports;
       
-      if (typeof $933fc6 === 'function') {
-        $933fc6 = $933fc6.options;
+      if (typeof $173c24 === 'function') {
+        $173c24 = $173c24.options;
       }
     
         /* template */
-        Object.assign($933fc6, (function () {
+        Object.assign($173c24, (function () {
           var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dropdown"},[_c('button',{staticClass:"button",attrs:{"id":"button"},on:{"click":_vm.showLegend}},[_c('img',{attrs:{"src":"/html/graph-inspector/info.b69a0da0.png","alt":""}})]),_vm._v(" "),_c('div',{staticClass:"dropdown-content",class:{ show: _vm.legend },attrs:{"id":"myDropdown"}},[_vm._m(0)])])}
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"demo"},[_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/start.975fde4d.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Strating Node")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/simplenode.9edf869f.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Simple Node")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/lastnode.729b0447.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Leaf Node")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/ptrlst.5899b7ee.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Relation PtrLst")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/lstptr.f19be4be.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Relation LstPtr")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/ref.24f81928.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Relation Ref")])]),_vm._v(" "),_c('hr'),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/mouse2.ded68c6b.png","alt":""}}),_vm._v(" "),_c('img',{staticClass:"typecourse1",attrs:{"src":"/html/graph-inspector/childcourse.843a5970.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v(": chldren course")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/mouse2.ded68c6b.png","alt":""}}),_vm._v(" "),_c('img',{staticClass:"typecourse2",attrs:{"src":"/html/graph-inspector/parentcourse.600c78ee.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v(": parent course")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/mouse2.ded68c6b.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Middle Click: open the node in a new panel")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/mouse2.ded68c6b.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Right Click: open the node in DB Inspector")])])])}]
 
@@ -57545,12 +57545,12 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-933fc6",
+            _scopeId: "data-v-173c24",
             functional: undefined
           };
         })());
       
-},{"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/info.png":[["info.b69a0da0.png","Ep6t"],"Ep6t"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/start.png":[["start.975fde4d.png","CLHz"],"CLHz"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/simplenode.png":[["simplenode.9edf869f.png","GzfO"],"GzfO"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/lastnode.png":[["lastnode.729b0447.png","piLg"],"piLg"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/ptrlst.png":[["ptrlst.5899b7ee.png","IQyh"],"IQyh"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/lstptr.png":[["lstptr.f19be4be.png","R4Pz"],"R4Pz"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/ref.png":[["ref.24f81928.png","uEP9"],"uEP9"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/mouse2.png":[["mouse2.ded68c6b.png","TFRb"],"TFRb"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/childcourse.png":[["childcourse.843a5970.png","Ij5q"],"Ij5q"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/parentcourse.png":[["parentcourse.600c78ee.png","cBFS"],"cBFS"]}],"dFLK":[function(require,module,exports) {
+},{"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/info.png":[["info.b69a0da0.png","Ep6t"],"Ep6t"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/start.png":[["start.975fde4d.png","CLHz"],"CLHz"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/simplenode.png":[["simplenode.9edf869f.png","GzfO"],"GzfO"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/lastnode.png":[["lastnode.729b0447.png","piLg"],"piLg"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/ptrlst.png":[["ptrlst.5899b7ee.png","IQyh"],"IQyh"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/lstptr.png":[["lstptr.f19be4be.png","R4Pz"],"R4Pz"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/ref.png":[["ref.24f81928.png","uEP9"],"uEP9"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/mouse2.png":[["mouse2.ded68c6b.png","TFRb"],"TFRb"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/childcourse.png":[["childcourse.843a5970.png","Ij5q"],"Ij5q"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/parentcourse.png":[["parentcourse.600c78ee.png","cBFS"],"cBFS"]}],"dFLK":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -57630,14 +57630,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $81aa95 = exports.default || module.exports;
+        var $e58b75 = exports.default || module.exports;
       
-      if (typeof $81aa95 === 'function') {
-        $81aa95 = $81aa95.options;
+      if (typeof $e58b75 === 'function') {
+        $e58b75 = $e58b75.options;
       }
     
         /* template */
-        Object.assign($81aa95, (function () {
+        Object.assign($e58b75, (function () {
           var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"appGraph",staticClass:"app-Graph"},[_c('legendVueGraph'),_vm._v(" "),_c('div',{attrs:{"id":"rates"}},[_c('button',{attrs:{"id":"course"},on:{"click":_vm.setCourse}},[_vm._v("\n      "+_vm._s(_vm.courseType)+"\n    ")])])],1)}
 var staticRenderFns = []
 
@@ -57645,7 +57645,7 @@ var staticRenderFns = []
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-81aa95",
+            _scopeId: "data-v-e58b75",
             functional: undefined
           };
         })());
@@ -57663,45 +57663,13 @@ var _vue = _interopRequireDefault(require("vue"));
 var _eventBus = _interopRequireDefault(require("./event-bus"));
 var _spinalModelGraph = require("spinal-model-graph");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var methodName = context.method, method = delegate.iterator[methodName]; if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator.return && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel; var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) keys.push(key); return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, catch: function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var _default = {
   name: "AppElement",
   data: function data() {
@@ -57718,54 +57686,135 @@ var _default = {
       if (this.server_id === -1) {
         return true;
       } else return false;
+    },
+    copyData: function copyData(text) {
+      return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return navigator.clipboard.writeText(text);
+            case 3:
+              _context.next = 8;
+              break;
+            case 5:
+              _context.prev = 5;
+              _context.t0 = _context["catch"](0);
+              alert('Cannot copy');
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 5]]);
+      }))();
+    },
+    handleAtomic: function handleAtomic(model) {
+      var key = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : model.constructor.name;
+      var force = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
+      if (model instanceof Str || model instanceof Bool || model instanceof Val) {
+        this.target.push({
+          key: key,
+          value: model.get()
+        });
+        return true;
+      } else if (model instanceof Ptr || model instanceof Pbr) {
+        this.target.push({
+          key: key,
+          value: "target = ".concat(model.data.value)
+        });
+      } else if (force) {
+        this.target.push({
+          key: key,
+          value: ""
+        });
+        return true;
+      }
+      return false;
+    },
+    handleSpinalNode: function handleSpinalNode(model) {
+      if (model instanceof _spinalModelGraph.SpinalNode) {
+        return this.handleobject(model.info);
+      }
+      return false;
+    },
+    handleobject: function handleobject(model) {
+      var _iterator = _createForOfIteratorHelper(model._attribute_names),
+        _step;
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var key = _step.value;
+          if (Object.hasOwnProperty.call(model, key)) {
+            var element = model[key];
+            this.handleAtomic(element, key, true);
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+      return true;
+    },
+    handleLst: function handleLst(model) {
+      if (model instanceof Lst) {
+        for (var idx = 0; idx < model.length; idx++) {
+          var element = model[idx];
+          this.handleAtomic(element, idx, true);
+        }
+        return true;
+      }
+      return false;
+    },
+    handleSpinalRelation: function handleSpinalRelation(model) {
+      if (model instanceof _spinalModelGraph.SpinalRelationLstPtr || model instanceof _spinalModelGraph.SpinalRelationRef) {
+        this.target.push({
+          key: "name",
+          value: model.name.get()
+        }, {
+          key: "Nb Childrens",
+          value: model.children.length
+        });
+        return true;
+      } else if (model instanceof _spinalModelGraph.SpinalRelationPtrLst) {
+        this.target.push({
+          key: "name",
+          value: model.name.get()
+        }, {
+          key: "Nb Childrens",
+          value: model.children.info.ids.length
+        });
+        return true;
+      }
+      return false;
     }
   },
   mounted: function mounted() {
     var _this = this;
-    _eventBus.default.$on("realNodeElement", function (realNode) {
-      _this.server_id = realNode._server_id;
+    _eventBus.default.$on("realNodeElement", function (model) {
+      _this.server_id = model._server_id;
       _this.target = [{
         key: "serverId",
-        value: realNode._server_id
+        value: model._server_id
       }];
-      if (realNode instanceof _spinalModelGraph.SpinalNode) {
-        _this.target.push({
-          key: "staticId",
-          value: realNode.info.id.get()
-        }, {
-          key: "name",
-          value: realNode.info.name.get()
-        }, {
-          key: "type",
-          value: realNode.info.type.get()
-        });
-      } else if (realNode instanceof _spinalModelGraph.SpinalRelationLstPtr || realNode instanceof _spinalModelGraph.SpinalRelationPtrLst || realNode instanceof _spinalModelGraph.SpinalRelationRef) {
-        _this.target.push({
-          key: "name",
-          value: realNode.name.get()
-        }, {
-          key: "Nb Childrens",
-          value: realNode.children.length
-        });
-      } else if (realNode instanceof Str || realNode instanceof Bool || realNode instanceof Val) {
-        _this.target.push({
-          key: "value",
-          value: realNode.get()
-        });
+      var fcts = [_this.handleSpinalNode, _this.handleSpinalRelation, _this.handleAtomic, _this.handleLst, _this.handleobject];
+      for (var _i = 0, _fcts = fcts; _i < _fcts.length; _i++) {
+        var fct = _fcts[_i];
+        if (fct(model)) return;
       }
     });
   }
 };
 exports.default = _default;
-        var $3e074a = exports.default || module.exports;
+        var $96c024 = exports.default || module.exports;
       
-      if (typeof $3e074a === 'function') {
-        $3e074a = $3e074a.options;
+      if (typeof $96c024 === 'function') {
+        $96c024 = $96c024.options;
       }
     
         /* template */
-        Object.assign($3e074a, (function () {
-          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app-Element"}},[_c('div',{staticClass:"message"},[_vm._v("\n    "+_vm._s(_vm.info() ? _vm.message : _vm.emptymessage)+"\n  ")]),_vm._v(" "),_c('table',{staticClass:"styled-table"},[_c('tbody',_vm._l((_vm.target),function(ligne){return _c('tr',{key:ligne.key,staticClass:"active-row"},[_c('td',[_vm._v(_vm._s(ligne.key))]),_vm._v(" "),_c('td',[_vm._v(_vm._s(ligne.value))])])}),0)])])}
+        Object.assign($96c024, (function () {
+          var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{attrs:{"id":"app-Element"}},[_c('div',{staticClass:"message"},[_vm._v("\n    "+_vm._s(_vm.info() ? _vm.message : _vm.emptymessage)+"\n  ")]),_vm._v(" "),_c('table',{staticClass:"styled-table"},[_c('tbody',_vm._l((_vm.target),function(ligne){return _c('tr',{key:ligne.key,staticClass:"active-row"},[_c('td',{on:{"click":function($event){return _vm.copyData(ligne.key)}}},[_vm._v(_vm._s(ligne.key))]),_vm._v(" "),_c('td',{on:{"click":function($event){return _vm.copyData(ligne.value)}}},[_vm._v(_vm._s(ligne.value))])])}),0)])])}
 var staticRenderFns = []
 
           return {
@@ -57933,6 +57982,8 @@ function dbInspector(domElement) {
       update(rootnode);
     };
     var click_focus = function click_focus(d) {
+      var realNode = FileSystem._objects[d.data._server_id];
+      _eventBus.default.$emit("realNodeElement", realNode);
       centerNode(d);
     };
     update = function update(source) {
@@ -58072,9 +58123,6 @@ function dbInspector(domElement) {
     var tr = table.append("tr");
     tr.append("td").text(key);
     tr.append("td").text(value);
-    $(document).ready(function () {
-      $("tr:first-child").css("background-color", "black");
-    });
   };
   function strncmp(a, b, n) {
     return a.substring(0, n) == b.substring(0, n);
@@ -58516,14 +58564,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $f77f6b = exports.default || module.exports;
+        var $230552 = exports.default || module.exports;
       
-      if (typeof $f77f6b === 'function') {
-        $f77f6b = $f77f6b.options;
+      if (typeof $230552 === 'function') {
+        $230552 = $230552.options;
       }
     
         /* template */
-        Object.assign($f77f6b, (function () {
+        Object.assign($230552, (function () {
           var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"dropdown1"},[_c('button',{staticClass:"button",attrs:{"id":"button"},on:{"click":_vm.showLegend}},[_c('img',{attrs:{"src":"/html/graph-inspector/info.b69a0da0.png","alt":""}})]),_vm._v(" "),_c('div',{staticClass:"dropdown1-content",class:{ show: _vm.legend },attrs:{"id":"myDropdown1"}},[_vm._m(0)])])}
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('ul',{staticClass:"demo1"},[_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/simplenode.9edf869f.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Closed Model")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/open.c57e971c.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Open Or Void Model")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/last.048c611e.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Atomic Model")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/ptr.dfb52c0e.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Closed Ptr Or Pbr")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/start.975fde4d.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Open Ptr Or Pbr")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/ids.c8bd3cf9.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Closed Lst")])]),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/idsopen.fba40b9c.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Open Lst")])]),_vm._v(" "),_c('hr'),_vm._v(" "),_c('li',[_c('img',{attrs:{"src":"/html/graph-inspector/mouse2.ded68c6b.png","alt":""}}),_vm._v(" "),_c('p',[_vm._v("Left Click: Open Object Attribut")])])])}]
 
@@ -58531,12 +58579,12 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-f77f6b",
+            _scopeId: "data-v-230552",
             functional: undefined
           };
         })());
       
-},{"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/info.png":[["info.b69a0da0.png","Ep6t"],"Ep6t"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/simplenode.png":[["simplenode.9edf869f.png","GzfO"],"GzfO"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/open.png":[["open.c57e971c.png","Hyld"],"Hyld"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/last.png":[["last.048c611e.png","wHkF"],"wHkF"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/ptr.png":[["ptr.dfb52c0e.png","jdS5"],"jdS5"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/start.png":[["start.975fde4d.png","CLHz"],"CLHz"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/ids.png":[["ids.c8bd3cf9.png","KNUv"],"KNUv"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/idsopen.png":[["idsopen.fba40b9c.png","hvb0"],"hvb0"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/mouse2.png":[["mouse2.ded68c6b.png","TFRb"],"TFRb"]}],"V2nc":[function(require,module,exports) {
+},{"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/info.png":[["info.b69a0da0.png","Ep6t"],"Ep6t"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/simplenode.png":[["simplenode.9edf869f.png","GzfO"],"GzfO"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/open.png":[["open.c57e971c.png","Hyld"],"Hyld"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/last.png":[["last.048c611e.png","wHkF"],"wHkF"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/ptr.png":[["ptr.dfb52c0e.png","jdS5"],"jdS5"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/start.png":[["start.975fde4d.png","CLHz"],"CLHz"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/ids.png":[["ids.c8bd3cf9.png","KNUv"],"KNUv"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/idsopen.png":[["idsopen.fba40b9c.png","hvb0"],"hvb0"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/mouse2.png":[["mouse2.ded68c6b.png","TFRb"],"TFRb"]}],"V2nc":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -58600,14 +58648,14 @@ var _default = {
   }
 };
 exports.default = _default;
-        var $043e17 = exports.default || module.exports;
+        var $6831d8 = exports.default || module.exports;
       
-      if (typeof $043e17 === 'function') {
-        $043e17 = $043e17.options;
+      if (typeof $6831d8 === 'function') {
+        $6831d8 = $6831d8.options;
       }
     
         /* template */
-        Object.assign($043e17, (function () {
+        Object.assign($6831d8, (function () {
           var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"appDbInspector",staticClass:"app-Db-Inspector"},[_c('legendVueInspector')],1)}
 var staticRenderFns = []
 
@@ -58615,7 +58663,7 @@ var staticRenderFns = []
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-043e17",
+            _scopeId: "data-v-6831d8",
             functional: undefined
           };
         })());
@@ -58697,14 +58745,14 @@ exports.default = {
     this.ids.push(server_id);
   }
 };
-        var $51c53d = exports.default || module.exports;
+        var $5269e8 = exports.default || module.exports;
       
-      if (typeof $51c53d === 'function') {
-        $51c53d = $51c53d.options;
+      if (typeof $5269e8 === 'function') {
+        $5269e8 = $5269e8.options;
       }
     
         /* template */
-        Object.assign($51c53d, (function () {
+        Object.assign($5269e8, (function () {
           var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"graph"},[_c('app-header'),_vm._v(" "),_c('div',{staticClass:"container"},[_c('div',{staticClass:"side-nav",attrs:{"id":"side-menu"}},[_c('div',{staticClass:"header-nav"},[_c('a',{staticClass:"btn-close",attrs:{"href":"#"},on:{"click":_vm.closeSlideMenu}},[_c('svg',{staticClass:"svg",attrs:{"width":"30","height":"30"}},[_c('path',{attrs:{"d":"M0,5 20,5","stroke":"#4d4c4c","stroke-width":"2"}}),_vm._v(" "),_c('path',{attrs:{"d":"M0,10 20,10","stroke":"#4d4c4c","stroke-width":"2"}}),_vm._v(" "),_c('path',{attrs:{"d":"M0,15 20,15","stroke":"#4d4c4c","stroke-width":"2"}})])]),_vm._v(" "),_vm._m(0)]),_vm._v(" "),_c('div',{staticClass:"login"},[_c('a',{attrs:{"href":"#"},on:{"click":_vm.rederictionDrive}},[_c('img',{attrs:{"src":"/html/graph-inspector/return.0aded5cd.png","alt":""}}),_vm._v(" Return to SpinalBIM\n          Drive")]),_vm._v(" "),_c('div',{staticClass:"signout",on:{"click":_vm.signOut}},[_vm._m(1)])])]),_vm._v(" "),_c('golden-layout',{staticClass:"golden"},[_c('gl-row',{attrs:{"has-headers":true}},[_c('gl-stack',{attrs:{"width":70}},_vm._l((_vm.ids),function(id,index){return _c('gl-component',{key:index,staticClass:"comp",attrs:{"title":"Graph Node Inspector","closable":true}},[_c('app-Graph',{ref:"app-graph",refInFor:true,attrs:{"id":'app-graph' + index,"server_id":id}})],1)}),1),_vm._v(" "),_c('gl-col',{staticClass:"col",attrs:{"width":30}},[_c('gl-component',{staticClass:"comp",attrs:{"title":"DB Inspector","closable":false,"height":55}},[_c('app-Db-Inspector',{ref:"app-Db-Inspector"})],1),_vm._v(" "),_c('gl-component',{staticClass:"comp",attrs:{"title":"Element Node Inspector","closable":true}},[_c('app-Element')],1)],1)],1)],1)],1)],1)}
 var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"logo"},[_c('img',{attrs:{"src":"/html/graph-inspector/spinal.5801a626.png","alt":""}})])},function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('a',{attrs:{"href":"#"}},[_c('img',{attrs:{"src":"/html/graph-inspector/logout.8f74ff45.png","alt":""}}),_vm._v(" Sign out")])}]
 
@@ -58717,7 +58765,7 @@ var staticRenderFns = [function () {var _vm=this;var _h=_vm.$createElement;var _
           };
         })());
       
-},{"./spinal":"cW2r","./components/AppHeader.vue":"oO4l","./components/AppGraph.vue":"dFLK","./components/AppElement.vue":"hoMT","./components/AppDbInspector.vue":"V2nc","./components/event-bus.js":"vsAR","/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/spinal.png":[["spinal.5801a626.png","LSif"],"LSif"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/return.png":[["return.0aded5cd.png","CVFO"],"CVFO"],"/home/aguili/Documents/work/spinalcom/BOS/module/Spinal-browser-graph-inspector/src/assets/logout.png":[["logout.8f74ff45.png","mQuz"],"mQuz"]}],"JKEC":[function(require,module,exports) {
+},{"./spinal":"cW2r","./components/AppHeader.vue":"oO4l","./components/AppGraph.vue":"dFLK","./components/AppElement.vue":"hoMT","./components/AppDbInspector.vue":"V2nc","./components/event-bus.js":"vsAR","/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/spinal.png":[["spinal.5801a626.png","LSif"],"LSif"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/return.png":[["return.0aded5cd.png","CVFO"],"CVFO"],"/home/ubuntu/spinalcom/spinal-viewer_town_hall_8060/module/Spinal-browser-graph-inspector/src/assets/logout.png":[["logout.8f74ff45.png","mQuz"],"mQuz"]}],"JKEC":[function(require,module,exports) {
 var define;
 (function($){var lm={"config":{},"container":{},"controls":{},"errors":{},"items":{},"utils":{}};
 lm.utils.F = function() {
@@ -77087,41 +77135,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 });
 },{"css-element-queries/src/ResizeSensor.js":"lrk1","lodash.debounce":"PZFh"}],"jmJb":[function(require,module,exports) {
 var define;
-/*
- * Copyright 2023 SpinalCom - www.spinalcom.com
- * 
- * This file is part of SpinalCore.
- * 
- * Please read all of the following terms and conditions
- * of the Free Software license Agreement ("Agreement")
- * carefully.
- * 
- * This Agreement is a legally binding contract between
- * the Licensee (as defined below) and SpinalCom that
- * sets forth the terms and conditions that govern your
- * use of the Program. By installing and/or using the
- * Program, you agree to abide by all the terms and
- * conditions stated or referenced herein.
- * 
- * If you do not agree to abide by these terms and
- * conditions, do not demonstrate your acceptance and do
- * not install or use the Program.
- * You should have received a copy of the license along
- * with this file. If not, see
- * <http://resources.spinalcom.com/licenses.pdf>.
- */
-
 (function webpackUniversalModuleDefinition(root, factory) {
-  if (typeof exports === 'object' && typeof module === 'object')
-    module.exports = factory();
-  else if (typeof define === 'function' && define.amd)
-    define("vue-golden-layout", [], factory);
-  else if (typeof exports === 'object')
-    exports["vue-golden-layout"] = factory();
-  else
-    root["vue-golden-layout"] = factory();
+    if (typeof exports === 'object' && typeof module === 'object')
+        module.exports = factory();
+    else if (typeof define === 'function' && define.amd)
+        define("vue-golden-layout", [], factory);
+    else if (typeof exports === 'object')
+        exports["vue-golden-layout"] = factory();
+    else
+        root["vue-golden-layout"] = factory();
 })(window, function () {
-  return /******/ (function (modules) { // webpackBootstrap
+    return /******/ (function (modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -77131,14 +77155,14 @@ var define;
 /******/ 		// Check if module is in cache
 /******/ 		if (installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
-        /******/
+                /******/
 }
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
-        /******/
+                /******/
 };
 /******/
 /******/ 		// Execute the module function
@@ -77149,7 +77173,7 @@ var define;
 /******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
-      /******/
+            /******/
 }
 /******/
 /******/
@@ -77163,19 +77187,19 @@ var define;
 /******/ 	__webpack_require__.d = function (exports, name, getter) {
 /******/ 		if (!__webpack_require__.o(exports, name)) {
 /******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-        /******/
+                /******/
 }
-      /******/
+            /******/
 };
 /******/
 /******/ 	// define __esModule on exports
 /******/ 	__webpack_require__.r = function (exports) {
 /******/ 		if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
 /******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-        /******/
+                /******/
 }
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-      /******/
+            /******/
 };
 /******/
 /******/ 	// create a fake namespace object
@@ -77192,7 +77216,7 @@ var define;
 /******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
 /******/ 		if (mode & 2 && typeof value != 'string') for (var key in value) __webpack_require__.d(ns, key, function (key) { return value[key]; }.bind(null, key));
 /******/ 		return ns;
-      /******/
+            /******/
 };
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -77202,7 +77226,7 @@ var define;
 /******/ 			function getModuleExports() { return module; };
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
-      /******/
+            /******/
 };
 /******/
 /******/ 	// Object.prototype.hasOwnProperty.call
@@ -77214,7 +77238,7 @@ var define;
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = "./index.ts");
-    /******/
+        /******/
 })
 /************************************************************************/
 /******/({
@@ -77226,23 +77250,23 @@ var define;
 /*! exports provided: default */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "../node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-        // Imports
+                // Imports
 
 
-        var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
-        // Module
-        ___CSS_LOADER_EXPORT___.push([module.i, "\n.glComponent {\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\toverflow: auto;\n}\r\n", "", { "version": 3, "sources": ["webpack://../gl-component.vue"], "names": [], "mappings": ";AAMA;CACA,WAAA;CACA,YAAA;CACA,cAAA;AACA", "sourcesContent": ["<template>\r\n\t<div class=\"glComponent\">\r\n\t\t<slot />\r\n\t</div>\r\n</template>\r\n<style>\r\n.glComponent {\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\toverflow: auto;\r\n}\r\n</style>\r\n<script lang=\"ts\">\r\nimport { Component, Model, Watch } from 'vue-property-decorator'\r\nimport { goldenChild } from './roles'\r\nimport { Dictionary } from './utils.js'\r\n\r\n@Component\r\nexport default class glComponent extends goldenChild {\r\n\ttoggleMaximise() {\r\n\t\tthis.container && this.container.toggleMaximise();\r\n\t}\r\n\t\r\n\tgetChildConfig() : any {\r\n\t\treturn {\r\n\t\t\ttype: 'component',\r\n\t\t\tisClosable: this.closable,\r\n\t\t\treorderEnabled: this.reorderEnabled\r\n\t\t};\r\n\t}\r\n}\r\n</script>"], "sourceRoot": "" }]);
+                var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
+                // Module
+                ___CSS_LOADER_EXPORT___.push([module.i, "\n.glComponent {\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\toverflow: auto;\n}\r\n", "", { "version": 3, "sources": ["webpack://../gl-component.vue"], "names": [], "mappings": ";AAMA;CACA,WAAA;CACA,YAAA;CACA,cAAA;AACA", "sourcesContent": ["<template>\r\n\t<div class=\"glComponent\">\r\n\t\t<slot />\r\n\t</div>\r\n</template>\r\n<style>\r\n.glComponent {\r\n\twidth: 100%;\r\n\theight: 100%;\r\n\toverflow: auto;\r\n}\r\n</style>\r\n<script lang=\"ts\">\r\nimport { Component, Model, Watch } from 'vue-property-decorator'\r\nimport { goldenChild } from './roles'\r\nimport { Dictionary } from './utils.js'\r\n\r\n@Component\r\nexport default class glComponent extends goldenChild {\r\n\ttoggleMaximise() {\r\n\t\tthis.container && this.container.toggleMaximise();\r\n\t}\r\n\t\r\n\tgetChildConfig() : any {\r\n\t\treturn {\r\n\t\t\ttype: 'component',\r\n\t\t\tisClosable: this.closable,\r\n\t\t\treorderEnabled: this.reorderEnabled\r\n\t\t};\r\n\t}\r\n}\r\n</script>"], "sourceRoot": "" }]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib/index.js?!./golden.vue?vue&type=style&index=0&lang=css&":
@@ -77252,23 +77276,23 @@ var define;
 /*! exports provided: default */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "../node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../node_modules/css-loader/dist/runtime/api.js */ "../node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
-        // Imports
+                // Imports
 
 
-        var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
-        // Module
-        ___CSS_LOADER_EXPORT___.push([module.i, "\n.dstack_anchor {\r\n    position: absolute;\r\n    right: 6px;\r\n    width: 11px;\r\n    height: 11px;\n}\n.dstack_anchor::after {\r\n\tcontent: \"\\2693\";\n}\r\n", "", { "version": 3, "sources": ["webpack://../golden.vue"], "names": [], "mappings": ";AAMA;IACA,kBAAA;IACA,UAAA;IACA,WAAA;IACA,YAAA;AACA;AACA;CACA,gBAAA;AACA", "sourcesContent": ["<template>\r\n\t<div ref=\"layoutRoot\" v-resize=\"onResize\">\r\n\t\t<slot v-if=\"!isSubWindow\" />\r\n\t</div>\r\n</template>\r\n<style>\r\n.dstack_anchor {\r\n    position: absolute;\r\n    right: 6px;\r\n    width: 11px;\r\n    height: 11px;\r\n}\r\n.dstack_anchor::after {\r\n\tcontent: \"\\2693\";\r\n}\r\n</style>\r\n<script lang=\"ts\">\r\nimport Vue, { VNode, VueConstructor } from 'vue'\r\nimport { Component, Model, Prop, Watch, Provide } from 'vue-property-decorator'\r\nimport * as GoldenLayout from 'golden-layout'\r\nimport { goldenContainer, goldenChild, goldenItem } from './roles'\r\nimport * as resize from 'vue-resize-directive'\r\nimport { isSubWindow, Dictionary, Semaphore, newSemaphore, statusChange, localWindow, isDragging } from './utils'\r\nimport * as $ from 'jquery'\r\n\r\nexport class CreationError extends Error {\r\n\tinner: Error\r\n\tconstructor(inner: Error) {\r\n\t\tsuper();\r\n\t\tthis.inner = inner;\r\n\t}\r\n}\r\n\r\nexport type globalComponent = (gl: goldenLayout, container: any, state: any)=> void;\r\nvar globalComponents: Dictionary<globalComponent> = {};\r\n\r\n// https://github.com/rpkilby/vue-nonreactive/\r\nfunction unobserve(obj: any, key: string = 'prototype') {\r\n\tconst Observer = (new Vue()).$data\r\n                                .__ob__\r\n                                .constructor;\r\n\tobj.__ob__ = new Observer({});\r\n}\r\n\r\nunobserve(GoldenLayout);\r\nunobserve((<any>GoldenLayout).__lm.items.AbstractContentItem);\r\n\r\nexport const genericTemplate = 'Generic.Vue';\r\nexport function registerGlobalComponent(name: string, comp: globalComponent) {\r\n\tconsole.assert(!globalComponents[name], `Component name \"${name}\" unused`);\r\n\tglobalComponents[name] = comp;\r\n}\r\n\r\ninterface slotComponent {\r\n\tcustomVueComponent: VueConstructor\r\n\tcontent: any\r\n}\r\n\r\nconst componentEvents = ['open', 'destroy', 'close', 'tab', 'hide', 'show', 'resize', 'showed'];\r\nconst itemEvents = ['stateChanged', 'titleChanged', 'activeContentItemChanged', 'beforeItemDestroyed', 'itemDestroyed', 'itemCreated'];\r\nconst layoutEvents = ['itemCreated', 'stackCreated', 'rowCreated', 'tabCreated', 'columnCreated', 'componentCreated',\r\n\t'selectionChanged', 'windowOpened', 'windowClosed', 'itemDestroyed', 'initialised', 'activeContentItemChanged'];\r\n\r\n@Component({directives: {resize}})\r\nexport default class goldenLayout extends goldenContainer {\r\n\t$router : any\r\n\tisSubWindow: boolean = isSubWindow\r\n\t//Settings\r\n\t@Prop({default: true}) hasHeaders: boolean\r\n\t@Prop({default: true}) reorderEnabled: boolean\r\n\t@Prop({default: false}) selectionEnabled: boolean\r\n\t@Prop({default: true}) popoutWholeStack: boolean\r\n\t@Prop({default: true}) closePopoutsOnUnload: boolean\r\n\t@Prop({default: true}) showPopoutIcon: boolean\r\n\t@Prop({default: true}) showMaximiseIcon: boolean\r\n\t@Prop({default: true}) showCloseIcon: boolean\r\n\t@Model('state', {default: null}) state: any\r\n\r\n\t@Watch('hasHeaders') @Watch('reorderEnabled') @Watch('selectionEnabled') @Watch('popoutWholeStack')\r\n\t@Watch('blockedPopoutsThrowError') @Watch('closePopoutsOnUnload') @Watch('showPopoutIcon')\r\n\t@Watch('showMaximiseIcon') @Watch('showCloseIcon')\r\n\tsettingsChanged() {\r\n\t\t//TODO: change settings in this.gl\r\n\t}\r\n\r\n\t@Prop({default: 5}) popupTimeout: number\r\n\r\n\t@Prop({default: 5}) borderWidth: number\r\n\t@Prop({default: 10}) minItemHeight: number\r\n\t@Prop({default: 10}) minItemWidth: number\r\n\t@Prop({default: 20}) headerHeight: number\r\n\t@Prop({default: 300}) dragProxyWidth: number\r\n\t@Prop({default: 200}) dragProxyHeight: number\r\n\r\n\t@Watch('borderWidth') @Watch('minItemHeight') @Watch('minItemWidth')\r\n\t@Watch('headerHeight') @Watch('dragProxyWidth') @Watch('dragProxyHeight')\r\n\tdimensionsChanged() {\r\n\t\t//TODO: change settings in this.gl\r\n\t}\r\n\r\n\tgotState(state: any) {\r\n\t\tstate = localWindow(state);\r\n\t\tif(!isSubWindow && !statusChange.unloading)\r\n\t\t\tthis.$emit('state', GoldenLayout.minifyConfig(state), state);\r\n\t}\r\n/*\r\n\tlabels: {\r\n\t\tclose: 'close',\r\n\t\tmaximise: 'maximise',\r\n\t\tminimise: 'minimise',\r\n\t\tpopout: 'open in new window'\r\n\t},*/\r\n\r\n\tgl: GoldenLayout\r\n\t\r\n\t//#region vNode helpers\r\n\t\r\n\tappendVNodes(container: any, vNodes: any, state?: any) {\r\n\t\tvar el = document.createElement('div');\r\n\t\tcontainer.getElement().append(el);\r\n\t\trenderVNodes(this, el, vNodes, {\r\n\t\t\tclass: 'glComponent'\r\n\t\t}, state);\r\n\t}\r\n\tslotComponentWrap(slot: any) {\r\n\t\treturn (container: any, state: any) => this.appendVNodes(container, slot, state);\r\n\t}\r\n\tglobalComponentWrap(globComponent: globalComponent) {\r\n\t\treturn async (container: any, state: any) => {\r\n\t\t\tawait this.glo;\r\n\t\t\tglobComponent(this, container, state);\r\n\t\t};\r\n\t}\r\n\r\n\t//#endregion\r\n\t//cached by Vue\r\n\tget glo(): Semaphore<any> {\r\n\t\treturn newSemaphore();\r\n\t}\r\n\tget definedVueComponent() { return this; }\r\n\t@Provide() layout: goldenLayout\r\n\tconstructor() {\r\n\t\tsuper();\r\n\t\tthis.layout = this;\r\n\t}\r\n\t@Provide() groupColor: string|null = null\r\n\t\r\n\tgetSubChild(path: string): goldenChild {\r\n\t\tif(!isSubWindow) return this.getChild(path);\r\n\t\tvar rootPathLength: number = 0, rootPathComponent: goldenItem|null = null;\r\n\t\tfor(let compPath in this.rootPath) {\r\n\t\t\tlet compPathLength: number = compPath.length;\r\n\t\t\tif(path.substring(0, compPathLength) === compPath &&\r\n\t\t\t\tcompPathLength  > rootPathLength)\r\n\t\t\t\t\t[rootPathLength, rootPathComponent] = [compPathLength, this.rootPath[compPath]];\r\n\t\t}\r\n\t\trootPathComponent = (<goldenItem>rootPathComponent).childMe;\r\n\t\tvar remainingPath = path.substr(rootPathLength+1);\r\n\t\treturn remainingPath ?\r\n\t\t\t(<goldenContainer>rootPathComponent).getChild(remainingPath) :\r\n\t\t\t<goldenChild>rootPathComponent;\r\n\t}\r\n\trootPath?: {[path: string]: goldenItem}\r\n\tparentLayout?: goldenLayout\r\n\tasync mounted() {\r\n\t\tvar me = this, gl: GoldenLayout,\r\n\t\t\tstate = this.state instanceof Promise ?\r\n\t\t\t\tthis.state : Promise.resolve(this.state);\r\n\r\n\t\tstate\r\n\t\t\t.then(async (state: any)=> {\r\n\t\t\tif(state && !isSubWindow) {\r\n\t\t\t\tthis.config = state.content ?\r\n\t\t\t\t\tstate :\r\n\t\t\t\t\tGoldenLayout.unminifyConfig(state);\r\n\t\t\t} else {\r\n\t\t\t\tthis.config.settings = {\r\n\t\t\t\t\thasHeaders: this.hasHeaders,\r\n\t\t\t\t\treorderEnabled: this.reorderEnabled,\r\n\t\t\t\t\tselectionEnabled: this.selectionEnabled,\r\n\t\t\t\t\tpopoutWholeStack: this.popoutWholeStack,\r\n\t\t\t\t\tclosePopoutsOnUnload: this.closePopoutsOnUnload,\r\n\t\t\t\t\tshowPopoutIcon: this.showPopoutIcon,\r\n\t\t\t\t\tshowMaximiseIcon: this.showMaximiseIcon,\r\n\t\t\t\t\tshowCloseIcon: this.showCloseIcon\r\n\t\t\t\t};\r\n\t\t\t\tthis.config.dimensions = {\r\n\t\t\t\t\tborderWidth: this.borderWidth,\r\n\t\t\t\t\tminItemHeight: this.minItemHeight,\r\n\t\t\t\t\tminItemWidth: this.minItemWidth,\r\n\t\t\t\t\theaderHeight: this.headerHeight,\r\n\t\t\t\t\tdragProxyWidth: this.dragProxyWidth,\r\n\t\t\t\t\tdragProxyHeight: this.dragProxyHeight\r\n\t\t\t\t};\r\n\t\t\t}\r\n\t\t\tthis.gl = gl = new GoldenLayout(this.config, $(<HTMLElement>this.$refs.layoutRoot));\r\n\t\t\t(<any>gl).vueObject = this;\r\n\t\t\tvar poppedoutVue = (<any>window).poppedoutVue;\r\n\t\t\tif(poppedoutVue) {\r\n\t\t\t\tthis.rootPath = poppedoutVue.path;\r\n\t\t\t\tthis.parentLayout = poppedoutVue.layout;\r\n\t\t\t}\r\n\t\t\t//#region Register gl-components\r\n\t\t\t// In a popup, use parents's registrations\r\n\t\t\tif(this.parentLayout)\r\n\t\t\t\t(<any>gl)._components = (<any>this.parentLayout.gl)._components\r\n\t\t\telse {\r\n\t\t\t\tgl.registerComponent(genericTemplate, \r\n\t\t\t\t\t(container: any, state: any)=> {\r\n\t\t\t\t\t\ttry {\r\n\t\t\t\t\t\t\tvar component = this.getSubChild(container._config.vue)\r\n\t\t\t\t\t\t\tcontainer.getElement().append(component.$el);\r\n\t\t\t\t\t\t\tforwardEvt(container, component, componentEvents);\r\n\t\t\t\t\t\t\tcomponent.container = container;\r\n\t\t\t\t\t\t} catch(x) {\r\n\t\t\t\t\t\t\tthis.$emit('creation-error', x);\r\n\t\t\t\t\t\t\tthrow new CreationError(x)\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t});\r\n\t\t\t\t// Register global components given by other vue-components\r\n\t\t\t\tfor(var tpl in globalComponents)\r\n\t\t\t\t\tgl.registerComponent(tpl, this.globalComponentWrap(globalComponents[tpl]));\r\n\t\t\t}\r\n\t\t\t//#endregion\r\n\t\t\t\t\r\n\t\t\t//#region Events\r\n\t\t\tvar raiseStateChanged: (arg?: number)=> void;\r\n\t\t\t//TODO: have only one raiseStateChanged function ?\r\n\t\t\tif(this.popupTimeout) {\r\n\t\t\t\tconst maxRetries = 10 * this.popupTimeout;\r\n\t\t\t\traiseStateChanged = (retry?: number)=> {\r\n\t\t\t\t\tif('number'!== typeof retry) retry = 0;\r\n\t\t\t\t\tsetTimeout(()=> {\r\n\t\t\t\t\t\tvar config;\r\n\t\t\t\t\t\ttry {\r\n\t\t\t\t\t\t\t//gl.toConfig() raise exceptions when opening a popup\r\n\t\t\t\t\t\t\t//it also raise a 'stateChanged' event when closing a popup => inf call\r\n\t\t\t\t\t\t\tconfig = gl.toConfig();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch(e) {\r\n\t\t\t\t\t\t\tif(<number>retry < maxRetries)\r\n\t\t\t\t\t\t\t\traiseStateChanged(++(<number>retry));\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\tthrow e;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif(config) {\r\n\t\t\t\t\t\t\tthis.gotState(config);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}, 100);\r\n\t\t\t\t};\r\n\t\t\t} else {\r\n\t\t\t\traiseStateChanged = ()=> {\r\n\t\t\t\t\tvar config;\r\n\t\t\t\t\ttry {\r\n\t\t\t\t\t\t//gl.toConfig() raise exceptions when opening a popup\r\n\t\t\t\t\t\t//it also raise a 'stateChanged' event when closing a popup => inf call\r\n\t\t\t\t\t\tconfig = gl.toConfig();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch(e) {}\r\n\t\t\t\t\tif(config) {\r\n\t\t\t\t\t\tthis.gotState(config);\r\n\t\t\t\t\t}\r\n\t\t\t\t};\r\n\t\t\t}\r\n\t\t\tgl.on('stateChanged', raiseStateChanged);\r\n\t\t\tgl.on('initialised', () => {\r\n\t\t\t\tthis.glo.resolve(gl);\r\n\t\t\t});\r\n\t\t\tfunction colorizeTab(tab: any, color: string) {\r\n\t\t\t\ttab.element.css('background-color', color);\r\n\t\t\t}\r\n\t\t\tgl.on('itemCreated', (itm: any) => {\r\n\t\t\t\titm.vueObject = itm === gl.root ? this :\r\n\t\t\t\t\titm.config.vue ?\r\n\t\t\t\t\t\tthis.getSubChild(itm.config.vue) :\r\n\t\t\t\t\t\t{};\r\n\t\t\t\titm.vueObject.glObject = itm;\r\n\t\t\t\tif(itm.config.vue && itm.vueObject.nodePath && !isSubWindow) {\r\n\t\t\t\t\titm.config.__defineGetter__('vue', ()=> itm.vueObject.nodePath);\r\n\t\t\t\t}\r\n\t\t\t\tif(itm.vueObject.initialState)\r\n\t\t\t\t\titm.vueObject.initialState(itm.config);\r\n\t\t\t\t//Q&D: This should be done in roles/child.ts, but inheritance does not rhyme with Vue\r\n\t\t\t\titm.vueObject.syncedState = itm.config.componentState;\r\n\r\n\t\t\t\tif(itm.vueObject.$emit)\r\n\t\t\t\t\tforwardEvt(itm, itm.vueObject, itemEvents);\r\n\t\t\t\tvar color = itm.vueObject.childMe && itm.vueObject.childMe.tabColor;\r\n\t\t\t\tif(color && itm.tab)\r\n\t\t\t\t\tcolorizeTab(itm.tab, color);\r\n\t\t\t});\r\n\t\t\tgl.on('tabCreated', (itm: any) => {\r\n\t\t\t\tvar vo = itm.contentItem.vueObject,\r\n\t\t\t\t\tcolor = vo && vo.childMe.tabColor;\r\n\t\t\t\tif(color)\r\n\t\t\t\t\tcolorizeTab(itm, color);\r\n\t\t\t});\r\n\t\t\tgl.on('itemDestroyed', (itm: any) => {\r\n\t\t\t\tif(!isDragging()) {\r\n\t\t\t\t\titm.emit('destroyed', itm);\r\n\r\n\t\t\t\t\tif(!statusChange.poppingOut && !statusChange.poppingIn &&\r\n\t\t\t\t\t\t\t!itm.vueObject._isBeingDestroyed && !itm.vueObject._isDestroyed ) {\r\n\t\t\t\t\t\titm.vueObject.glObject = null;\r\n\t\t\t\t\t\titm.vueObject.delete && itm.vueObject.delete();\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\t//Bugfix: when destroying a tab before itm, stack' activeItemIndex is not updated and become invalid\r\n\t\t\t\tif(itm.parent && itm.parent.isStack && itm.parent.contentItems.indexOf(itm) < itm.parent.config.activeItemIndex)\r\n\t\t\t\t\tsetTimeout(()=> {\r\n\t\t\t\t\t\t--itm.parent.config.activeItemIndex;\r\n\t\t\t\t\t});\r\n\t\t\t});\r\n\t\t\tforwardEvt(gl, this, layoutEvents);\r\n\t\t\t//#endregion\r\n\t\t\ttry{\r\n\t\t\t\tgl.init();\r\n\t\t\t} catch(e) {\r\n\t\t\t\tthis.glo.reject(e);\r\n\t\t\t\tif(e.type === 'popoutBlocked')\r\n\t\t\t\t\talert('The browser has blocked the pop-up you requested. Please allow pop-ups for this site.');\r\n\t\t\t}\r\n\t\t});\r\n\t}\r\n\tonResize() {\r\n\t\tthis.gl && this.gl.updateSize(10, 10);\r\n\t\tthis.gl && this.gl.updateSize();\r\n\t}\r\n\tdestroyed() {\r\n\t\tstatusChange.unloading = true;\r\n\t\tthis.gl.destroy();\r\n\t\tstatusChange.unloading = false;\r\n\t}\r\n}\r\n\r\nexport function renderVNodes(parent: any, el: any, vNodes: any, options?: any, state?: any) {\r\n\treturn new Vue({\r\n\t\trender: function(ce): VNode {\r\n\t\t\tvar vn = 'function'=== typeof vNodes ?\r\n\t\t\t\tvNodes(state) : vNodes;\r\n\t\t\treturn ce('div', options, vn instanceof Array ? vn : [vn]);\r\n\t\t},\r\n\t\tparent,\r\n\t\tel\r\n\t});\r\n}\r\nfunction forwardEvt(from: any, toward: any, events: any) {\r\n\tfor(let event of events)\r\n\t\tfrom.on(event, (...args : any[] ) =>\r\n\t\t\t'object'=== typeof event?\r\n\t\t\t\ttoward.$emit(event.type, event):\r\n\t\t\t\ttoward.$emit(event, ...args));\r\n}\r\n</script>\r\n"], "sourceRoot": "" }]);
+                var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
+                // Module
+                ___CSS_LOADER_EXPORT___.push([module.i, "\n.dstack_anchor {\r\n    position: absolute;\r\n    right: 6px;\r\n    width: 11px;\r\n    height: 11px;\n}\n.dstack_anchor::after {\r\n\tcontent: \"\\2693\";\n}\r\n", "", { "version": 3, "sources": ["webpack://../golden.vue"], "names": [], "mappings": ";AAMA;IACA,kBAAA;IACA,UAAA;IACA,WAAA;IACA,YAAA;AACA;AACA;CACA,gBAAA;AACA", "sourcesContent": ["<template>\r\n\t<div ref=\"layoutRoot\" v-resize=\"onResize\">\r\n\t\t<slot v-if=\"!isSubWindow\" />\r\n\t</div>\r\n</template>\r\n<style>\r\n.dstack_anchor {\r\n    position: absolute;\r\n    right: 6px;\r\n    width: 11px;\r\n    height: 11px;\r\n}\r\n.dstack_anchor::after {\r\n\tcontent: \"\\2693\";\r\n}\r\n</style>\r\n<script lang=\"ts\">\r\nimport Vue, { VNode, VueConstructor } from 'vue'\r\nimport { Component, Model, Prop, Watch, Provide } from 'vue-property-decorator'\r\nimport * as GoldenLayout from 'golden-layout'\r\nimport { goldenContainer, goldenChild, goldenItem } from './roles'\r\nimport * as resize from 'vue-resize-directive'\r\nimport { isSubWindow, Dictionary, Semaphore, newSemaphore, statusChange, localWindow, isDragging } from './utils'\r\nimport * as $ from 'jquery'\r\n\r\nexport class CreationError extends Error {\r\n\tinner: Error\r\n\tconstructor(inner: Error) {\r\n\t\tsuper();\r\n\t\tthis.inner = inner;\r\n\t}\r\n}\r\n\r\nexport type globalComponent = (gl: goldenLayout, container: any, state: any)=> void;\r\nvar globalComponents: Dictionary<globalComponent> = {};\r\n\r\n// https://github.com/rpkilby/vue-nonreactive/\r\nfunction unobserve(obj: any, key: string = 'prototype') {\r\n\tconst Observer = (new Vue()).$data\r\n                                .__ob__\r\n                                .constructor;\r\n\tobj.__ob__ = new Observer({});\r\n}\r\n\r\nunobserve(GoldenLayout);\r\nunobserve((<any>GoldenLayout).__lm.items.AbstractContentItem);\r\n\r\nexport const genericTemplate = 'Generic.Vue';\r\nexport function registerGlobalComponent(name: string, comp: globalComponent) {\r\n\tconsole.assert(!globalComponents[name], `Component name \"${name}\" unused`);\r\n\tglobalComponents[name] = comp;\r\n}\r\n\r\ninterface slotComponent {\r\n\tcustomVueComponent: VueConstructor\r\n\tcontent: any\r\n}\r\n\r\nconst componentEvents = ['open', 'destroy', 'close', 'tab', 'hide', 'show', 'resize', 'showed'];\r\nconst itemEvents = ['stateChanged', 'titleChanged', 'activeContentItemChanged', 'beforeItemDestroyed', 'itemDestroyed', 'itemCreated'];\r\nconst layoutEvents = ['itemCreated', 'stackCreated', 'rowCreated', 'tabCreated', 'columnCreated', 'componentCreated',\r\n\t'selectionChanged', 'windowOpened', 'windowClosed', 'itemDestroyed', 'initialised', 'activeContentItemChanged'];\r\n\r\n@Component({directives: {resize}})\r\nexport default class goldenLayout extends goldenContainer {\r\n\t$router : any\r\n\tisSubWindow: boolean = isSubWindow\r\n\t//Settings\r\n\t@Prop({default: true}) hasHeaders: boolean\r\n\t@Prop({default: true}) reorderEnabled: boolean\r\n\t@Prop({default: false}) selectionEnabled: boolean\r\n\t@Prop({default: true}) popoutWholeStack: boolean\r\n\t@Prop({default: true}) closePopoutsOnUnload: boolean\r\n\t@Prop({default: true}) showPopoutIcon: boolean\r\n\t@Prop({default: true}) showMaximiseIcon: boolean\r\n\t@Prop({default: true}) showCloseIcon: boolean\r\n\t@Model('state', {default: null}) state: any\r\n\r\n\t@Watch('hasHeaders') @Watch('reorderEnabled') @Watch('selectionEnabled') @Watch('popoutWholeStack')\r\n\t@Watch('blockedPopoutsThrowError') @Watch('closePopoutsOnUnload') @Watch('showPopoutIcon')\r\n\t@Watch('showMaximiseIcon') @Watch('showCloseIcon')\r\n\tsettingsChanged() {\r\n\t\t//TODO: change settings in this.gl\r\n\t}\r\n\r\n\t@Prop({default: 5}) popupTimeout: number\r\n\r\n\t@Prop({default: 5}) borderWidth: number\r\n\t@Prop({default: 10}) minItemHeight: number\r\n\t@Prop({default: 10}) minItemWidth: number\r\n\t@Prop({default: 20}) headerHeight: number\r\n\t@Prop({default: 300}) dragProxyWidth: number\r\n\t@Prop({default: 200}) dragProxyHeight: number\r\n\r\n\t@Watch('borderWidth') @Watch('minItemHeight') @Watch('minItemWidth')\r\n\t@Watch('headerHeight') @Watch('dragProxyWidth') @Watch('dragProxyHeight')\r\n\tdimensionsChanged() {\r\n\t\t//TODO: change settings in this.gl\r\n\t}\r\n\r\n\tgotState(state: any) {\r\n\t\tstate = localWindow(state);\r\n\t\tif(!isSubWindow && !statusChange.unloading)\r\n\t\t\tthis.$emit('state', GoldenLayout.minifyConfig(state), state);\r\n\t}\r\n/*\r\n\tlabels: {\r\n\t\tclose: 'close',\r\n\t\tmaximise: 'maximise',\r\n\t\tminimise: 'minimise',\r\n\t\tpopout: 'open in new window'\r\n\t},*/\r\n\r\n\tgl: GoldenLayout\r\n\t\r\n\t//#region vNode helpers\r\n\t\r\n\tappendVNodes(container: any, vNodes: any, state?: any) {\r\n\t\tvar el = document.createElement('div');\r\n\t\tcontainer.getElement().append(el);\r\n\t\trenderVNodes(this, el, vNodes, {\r\n\t\t\tclass: 'glComponent'\r\n\t\t}, state);\r\n\t}\r\n\tslotComponentWrap(slot: any) {\r\n\t\treturn (container: any, state: any) => this.appendVNodes(container, slot, state);\r\n\t}\r\n\tglobalComponentWrap(globComponent: globalComponent) {\r\n\t\treturn async (container: any, state: any) => {\r\n\t\t\tawait this.glo;\r\n\t\t\tglobComponent(this, container, state);\r\n\t\t};\r\n\t}\r\n\r\n\t//#endregion\r\n\t//cached by Vue\r\n\tget glo(): Semaphore<any> {\r\n\t\treturn newSemaphore();\r\n\t}\r\n\tget definedVueComponent() { return this; }\r\n\t@Provide() layout: goldenLayout\r\n\tconstructor() {\r\n\t\tsuper();\r\n\t\tthis.layout = this;\r\n\t}\r\n\t@Provide() groupColor: string|null = null\r\n\t\r\n\tgetSubChild(path: string): goldenChild {\r\n\t\tif(!isSubWindow) return this.getChild(path);\r\n\t\tvar rootPathLength: number = 0, rootPathComponent: goldenItem|null = null;\r\n\t\tfor(let compPath in this.rootPath) {\r\n\t\t\tlet compPathLength: number = compPath.length;\r\n\t\t\tif(path.substring(0, compPathLength) === compPath &&\r\n\t\t\t\tcompPathLength  > rootPathLength)\r\n\t\t\t\t\t[rootPathLength, rootPathComponent] = [compPathLength, this.rootPath[compPath]];\r\n\t\t}\r\n\t\trootPathComponent = (<goldenItem>rootPathComponent).childMe;\r\n\t\tvar remainingPath = path.substr(rootPathLength+1);\r\n\t\treturn remainingPath ?\r\n\t\t\t(<goldenContainer>rootPathComponent).getChild(remainingPath) :\r\n\t\t\t<goldenChild>rootPathComponent;\r\n\t}\r\n\trootPath?: {[path: string]: goldenItem}\r\n\tparentLayout?: goldenLayout\r\n\tasync mounted() {\r\n\t\tvar me = this, gl: GoldenLayout,\r\n\t\t\tstate = this.state instanceof Promise ?\r\n\t\t\t\tthis.state : Promise.resolve(this.state);\r\n\r\n\t\tstate\r\n\t\t\t.then(async (state: any)=> {\r\n\t\t\tif(state && !isSubWindow) {\r\n\t\t\t\tthis.config = state.content ?\r\n\t\t\t\t\tstate :\r\n\t\t\t\t\tGoldenLayout.unminifyConfig(state);\r\n\t\t\t} else {\r\n\t\t\t\tthis.config.settings = {\r\n\t\t\t\t\thasHeaders: this.hasHeaders,\r\n\t\t\t\t\treorderEnabled: this.reorderEnabled,\r\n\t\t\t\t\tselectionEnabled: this.selectionEnabled,\r\n\t\t\t\t\tpopoutWholeStack: this.popoutWholeStack,\r\n\t\t\t\t\tclosePopoutsOnUnload: this.closePopoutsOnUnload,\r\n\t\t\t\t\tshowPopoutIcon: this.showPopoutIcon,\r\n\t\t\t\t\tshowMaximiseIcon: this.showMaximiseIcon,\r\n\t\t\t\t\tshowCloseIcon: this.showCloseIcon\r\n\t\t\t\t};\r\n\t\t\t\tthis.config.dimensions = {\r\n\t\t\t\t\tborderWidth: this.borderWidth,\r\n\t\t\t\t\tminItemHeight: this.minItemHeight,\r\n\t\t\t\t\tminItemWidth: this.minItemWidth,\r\n\t\t\t\t\theaderHeight: this.headerHeight,\r\n\t\t\t\t\tdragProxyWidth: this.dragProxyWidth,\r\n\t\t\t\t\tdragProxyHeight: this.dragProxyHeight\r\n\t\t\t\t};\r\n\t\t\t}\r\n\t\t\tthis.gl = gl = new GoldenLayout(this.config, $(<HTMLElement>this.$refs.layoutRoot));\r\n\t\t\t(<any>gl).vueObject = this;\r\n\t\t\tvar poppedoutVue = (<any>window).poppedoutVue;\r\n\t\t\tif(poppedoutVue) {\r\n\t\t\t\tthis.rootPath = poppedoutVue.path;\r\n\t\t\t\tthis.parentLayout = poppedoutVue.layout;\r\n\t\t\t}\r\n\t\t\t//#region Register gl-components\r\n\t\t\t// In a popup, use parents's registrations\r\n\t\t\tif(this.parentLayout)\r\n\t\t\t\t(<any>gl)._components = (<any>this.parentLayout.gl)._components\r\n\t\t\telse {\r\n\t\t\t\tgl.registerComponent(genericTemplate, \r\n\t\t\t\t\t(container: any, state: any)=> {\r\n\t\t\t\t\t\ttry {\r\n\t\t\t\t\t\t\tvar component = this.getSubChild(container._config.vue)\r\n\t\t\t\t\t\t\tcontainer.getElement().append(component.$el);\r\n\t\t\t\t\t\t\tforwardEvt(container, component, componentEvents);\r\n\t\t\t\t\t\t\tcomponent.container = container;\r\n\t\t\t\t\t\t} catch(x) {\r\n\t\t\t\t\t\t\tthis.$emit('creation-error', x);\r\n\t\t\t\t\t\t\tthrow new CreationError(x)\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t});\r\n\t\t\t\t// Register global components given by other vue-components\r\n\t\t\t\tfor(var tpl in globalComponents)\r\n\t\t\t\t\tgl.registerComponent(tpl, this.globalComponentWrap(globalComponents[tpl]));\r\n\t\t\t}\r\n\t\t\t//#endregion\r\n\t\t\t\t\r\n\t\t\t//#region Events\r\n\t\t\tvar raiseStateChanged: (arg?: number)=> void;\r\n\t\t\t//TODO: have only one raiseStateChanged function ?\r\n\t\t\tif(this.popupTimeout) {\r\n\t\t\t\tconst maxRetries = 10 * this.popupTimeout;\r\n\t\t\t\traiseStateChanged = (retry?: number)=> {\r\n\t\t\t\t\tif('number'!== typeof retry) retry = 0;\r\n\t\t\t\t\tsetTimeout(()=> {\r\n\t\t\t\t\t\tvar config;\r\n\t\t\t\t\t\ttry {\r\n\t\t\t\t\t\t\t//gl.toConfig() raise exceptions when opening a popup\r\n\t\t\t\t\t\t\t//it also raise a 'stateChanged' event when closing a popup => inf call\r\n\t\t\t\t\t\t\tconfig = gl.toConfig();\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tcatch(e) {\r\n\t\t\t\t\t\t\tif(<number>retry < maxRetries)\r\n\t\t\t\t\t\t\t\traiseStateChanged(++(<number>retry));\r\n\t\t\t\t\t\t\telse\r\n\t\t\t\t\t\t\t\tthrow e;\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t\tif(config) {\r\n\t\t\t\t\t\t\tthis.gotState(config);\r\n\t\t\t\t\t\t}\r\n\t\t\t\t\t}, 100);\r\n\t\t\t\t};\r\n\t\t\t} else {\r\n\t\t\t\traiseStateChanged = ()=> {\r\n\t\t\t\t\tvar config;\r\n\t\t\t\t\ttry {\r\n\t\t\t\t\t\t//gl.toConfig() raise exceptions when opening a popup\r\n\t\t\t\t\t\t//it also raise a 'stateChanged' event when closing a popup => inf call\r\n\t\t\t\t\t\tconfig = gl.toConfig();\r\n\t\t\t\t\t}\r\n\t\t\t\t\tcatch(e) {}\r\n\t\t\t\t\tif(config) {\r\n\t\t\t\t\t\tthis.gotState(config);\r\n\t\t\t\t\t}\r\n\t\t\t\t};\r\n\t\t\t}\r\n\t\t\tgl.on('stateChanged', raiseStateChanged);\r\n\t\t\tgl.on('initialised', () => {\r\n\t\t\t\tthis.glo.resolve(gl);\r\n\t\t\t});\r\n\t\t\tfunction colorizeTab(tab: any, color: string) {\r\n\t\t\t\ttab.element.css('background-color', color);\r\n\t\t\t}\r\n\t\t\tgl.on('itemCreated', (itm: any) => {\r\n\t\t\t\titm.vueObject = itm === gl.root ? this :\r\n\t\t\t\t\titm.config.vue ?\r\n\t\t\t\t\t\tthis.getSubChild(itm.config.vue) :\r\n\t\t\t\t\t\t{};\r\n\t\t\t\titm.vueObject.glObject = itm;\r\n\t\t\t\tif(itm.config.vue && itm.vueObject.nodePath && !isSubWindow) {\r\n\t\t\t\t\titm.config.__defineGetter__('vue', ()=> itm.vueObject.nodePath);\r\n\t\t\t\t}\r\n\t\t\t\tif(itm.vueObject.initialState)\r\n\t\t\t\t\titm.vueObject.initialState(itm.config);\r\n\t\t\t\t//Q&D: This should be done in roles/child.ts, but inheritance does not rhyme with Vue\r\n\t\t\t\titm.vueObject.syncedState = itm.config.componentState;\r\n\r\n\t\t\t\tif(itm.vueObject.$emit)\r\n\t\t\t\t\tforwardEvt(itm, itm.vueObject, itemEvents);\r\n\t\t\t\tvar color = itm.vueObject.childMe && itm.vueObject.childMe.tabColor;\r\n\t\t\t\tif(color && itm.tab)\r\n\t\t\t\t\tcolorizeTab(itm.tab, color);\r\n\t\t\t});\r\n\t\t\tgl.on('tabCreated', (itm: any) => {\r\n\t\t\t\tvar vo = itm.contentItem.vueObject,\r\n\t\t\t\t\tcolor = vo && vo.childMe.tabColor;\r\n\t\t\t\tif(color)\r\n\t\t\t\t\tcolorizeTab(itm, color);\r\n\t\t\t});\r\n\t\t\tgl.on('itemDestroyed', (itm: any) => {\r\n\t\t\t\tif(!isDragging()) {\r\n\t\t\t\t\titm.emit('destroyed', itm);\r\n\r\n\t\t\t\t\tif(!statusChange.poppingOut && !statusChange.poppingIn &&\r\n\t\t\t\t\t\t\t!itm.vueObject._isBeingDestroyed && !itm.vueObject._isDestroyed ) {\r\n\t\t\t\t\t\titm.vueObject.glObject = null;\r\n\t\t\t\t\t\titm.vueObject.delete && itm.vueObject.delete();\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t\t//Bugfix: when destroying a tab before itm, stack' activeItemIndex is not updated and become invalid\r\n\t\t\t\tif(itm.parent && itm.parent.isStack && itm.parent.contentItems.indexOf(itm) < itm.parent.config.activeItemIndex)\r\n\t\t\t\t\tsetTimeout(()=> {\r\n\t\t\t\t\t\t--itm.parent.config.activeItemIndex;\r\n\t\t\t\t\t});\r\n\t\t\t});\r\n\t\t\tforwardEvt(gl, this, layoutEvents);\r\n\t\t\t//#endregion\r\n\t\t\ttry{\r\n\t\t\t\tgl.init();\r\n\t\t\t} catch(e) {\r\n\t\t\t\tthis.glo.reject(e);\r\n\t\t\t\tif(e.type === 'popoutBlocked')\r\n\t\t\t\t\talert('The browser has blocked the pop-up you requested. Please allow pop-ups for this site.');\r\n\t\t\t}\r\n\t\t});\r\n\t}\r\n\tonResize() {\r\n\t\tthis.gl && this.gl.updateSize(10, 10);\r\n\t\tthis.gl && this.gl.updateSize();\r\n\t}\r\n\tdestroyed() {\r\n\t\tstatusChange.unloading = true;\r\n\t\tthis.gl.destroy();\r\n\t\tstatusChange.unloading = false;\r\n\t}\r\n}\r\n\r\nexport function renderVNodes(parent: any, el: any, vNodes: any, options?: any, state?: any) {\r\n\treturn new Vue({\r\n\t\trender: function(ce): VNode {\r\n\t\t\tvar vn = 'function'=== typeof vNodes ?\r\n\t\t\t\tvNodes(state) : vNodes;\r\n\t\t\treturn ce('div', options, vn instanceof Array ? vn : [vn]);\r\n\t\t},\r\n\t\tparent,\r\n\t\tel\r\n\t});\r\n}\r\nfunction forwardEvt(from: any, toward: any, events: any) {\r\n\tfor(let event of events)\r\n\t\tfrom.on(event, (...args : any[] ) =>\r\n\t\t\t'object'=== typeof event?\r\n\t\t\t\ttoward.$emit(event.type, event):\r\n\t\t\t\ttoward.$emit(event, ...args));\r\n}\r\n</script>\r\n"], "sourceRoot": "" }]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/css-loader/dist/runtime/api.js":
@@ -77278,75 +77302,75 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
 
-        /*
-          MIT License http://www.opensource.org/licenses/mit-license.php
-          Author Tobias Koppers @sokra
-        */
-        // css base code, injected by the css-loader
-        // eslint-disable-next-line func-names
-        module.exports = function (cssWithMappingToString) {
-          var list = []; // return the list of modules as css string
+                /*
+                  MIT License http://www.opensource.org/licenses/mit-license.php
+                  Author Tobias Koppers @sokra
+                */
+                // css base code, injected by the css-loader
+                // eslint-disable-next-line func-names
+                module.exports = function (cssWithMappingToString) {
+                    var list = []; // return the list of modules as css string
 
-          list.toString = function toString() {
-            return this.map(function (item) {
-              var content = cssWithMappingToString(item);
+                    list.toString = function toString() {
+                        return this.map(function (item) {
+                            var content = cssWithMappingToString(item);
 
-              if (item[2]) {
-                return "@media ".concat(item[2], " {").concat(content, "}");
-              }
+                            if (item[2]) {
+                                return "@media ".concat(item[2], " {").concat(content, "}");
+                            }
 
-              return content;
-            }).join('');
-          }; // import a list of modules into the list
-          // eslint-disable-next-line func-names
+                            return content;
+                        }).join('');
+                    }; // import a list of modules into the list
+                    // eslint-disable-next-line func-names
 
 
-          list.i = function (modules, mediaQuery, dedupe) {
-            if (typeof modules === 'string') {
-              // eslint-disable-next-line no-param-reassign
-              modules = [[null, modules, '']];
-            }
+                    list.i = function (modules, mediaQuery, dedupe) {
+                        if (typeof modules === 'string') {
+                            // eslint-disable-next-line no-param-reassign
+                            modules = [[null, modules, '']];
+                        }
 
-            var alreadyImportedModules = {};
+                        var alreadyImportedModules = {};
 
-            if (dedupe) {
-              for (var i = 0; i < this.length; i++) {
-                // eslint-disable-next-line prefer-destructuring
-                var id = this[i][0];
+                        if (dedupe) {
+                            for (var i = 0; i < this.length; i++) {
+                                // eslint-disable-next-line prefer-destructuring
+                                var id = this[i][0];
 
-                if (id != null) {
-                  alreadyImportedModules[id] = true;
-                }
-              }
-            }
+                                if (id != null) {
+                                    alreadyImportedModules[id] = true;
+                                }
+                            }
+                        }
 
-            for (var _i = 0; _i < modules.length; _i++) {
-              var item = [].concat(modules[_i]);
+                        for (var _i = 0; _i < modules.length; _i++) {
+                            var item = [].concat(modules[_i]);
 
-              if (dedupe && alreadyImportedModules[item[0]]) {
-                // eslint-disable-next-line no-continue
-                continue;
-              }
+                            if (dedupe && alreadyImportedModules[item[0]]) {
+                                // eslint-disable-next-line no-continue
+                                continue;
+                            }
 
-              if (mediaQuery) {
-                if (!item[2]) {
-                  item[2] = mediaQuery;
-                } else {
-                  item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
-                }
-              }
+                            if (mediaQuery) {
+                                if (!item[2]) {
+                                    item[2] = mediaQuery;
+                                } else {
+                                    item[2] = "".concat(mediaQuery, " and ").concat(item[2]);
+                                }
+                            }
 
-              list.push(item);
-            }
-          };
+                            list.push(item);
+                        }
+                    };
 
-          return list;
-        };
+                    return list;
+                };
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/css-loader/dist/runtime/cssWithMappingToString.js":
@@ -77356,41 +77380,41 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
 
-        function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+                function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
-        function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+                function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-        function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+                function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-        function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+                function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-        function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+                function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
-        function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+                function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-        module.exports = function cssWithMappingToString(item) {
-          var _item = _slicedToArray(item, 4),
-            content = _item[1],
-            cssMapping = _item[3];
+                module.exports = function cssWithMappingToString(item) {
+                    var _item = _slicedToArray(item, 4),
+                        content = _item[1],
+                        cssMapping = _item[3];
 
-          if (typeof btoa === 'function') {
-            // eslint-disable-next-line no-undef
-            var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(cssMapping))));
-            var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
-            var sourceMapping = "/*# ".concat(data, " */");
-            var sourceURLs = cssMapping.sources.map(function (source) {
-              return "/*# sourceURL=".concat(cssMapping.sourceRoot || '').concat(source, " */");
-            });
-            return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
-          }
+                    if (typeof btoa === 'function') {
+                        // eslint-disable-next-line no-undef
+                        var base64 = btoa(unescape(encodeURIComponent(JSON.stringify(cssMapping))));
+                        var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
+                        var sourceMapping = "/*# ".concat(data, " */");
+                        var sourceURLs = cssMapping.sources.map(function (source) {
+                            return "/*# sourceURL=".concat(cssMapping.sourceRoot || '').concat(source, " */");
+                        });
+                        return [content].concat(sourceURLs).concat([sourceMapping]).join('\n');
+                    }
 
-          return [content].join('\n');
-        };
+                    return [content].join('\n');
+                };
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/style-loader/dist/cjs.js!../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib/index.js?!./gl-component.vue?vue&type=style&index=0&lang=css&":
@@ -77400,26 +77424,26 @@ var define;
 /*! exports provided: default */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_component_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib??vue-loader-options!./gl-component.vue?vue&type=style&index=0&lang=css& */ "../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib/index.js?!./gl-component.vue?vue&type=style&index=0&lang=css&");
 
 
 
-        var options = {};
+                var options = {};
 
-        options.insert = "head";
-        options.singleton = false;
+                options.insert = "head";
+                options.singleton = false;
 
-        var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_component_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+                var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_component_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_component_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/style-loader/dist/cjs.js!../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib/index.js?!./golden.vue?vue&type=style&index=0&lang=css&":
@@ -77429,26 +77453,26 @@ var define;
 /*! exports provided: default */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_golden_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib??vue-loader-options!./golden.vue?vue&type=style&index=0&lang=css& */ "../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib/index.js?!./golden.vue?vue&type=style&index=0&lang=css&");
 
 
 
-        var options = {};
+                var options = {};
 
-        options.insert = "head";
-        options.singleton = false;
+                options.insert = "head";
+                options.singleton = false;
 
-        var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_golden_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+                var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_golden_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_golden_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js":
@@ -77458,278 +77482,275 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
 
-        var isOldIE = function isOldIE() {
-          var memo;
-          return function memorize() {
-            if (typeof memo === 'undefined') {
-              // Test for IE <= 9 as proposed by Browserhacks
-              // @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
-              // Tests for existence of standard globals is to allow style-loader
-              // to operate correctly into non-standard environments
-              // @see https://github.com/webpack-contrib/style-loader/issues/177
-              memo = Boolean(window && document && document.all && !window.atob);
-            }
+                var isOldIE = function isOldIE() {
+                    var memo;
+                    return function memorize() {
+                        if (typeof memo === 'undefined') {
+                            // Test for IE <= 9 as proposed by Browserhacks
+                            // @see http://browserhacks.com/#hack-e71d8692f65334173fee715c222cb805
+                            // Tests for existence of standard globals is to allow style-loader
+                            // to operate correctly into non-standard environments
+                            // @see https://github.com/webpack-contrib/style-loader/issues/177
+                            memo = Boolean(window && document && document.all && !window.atob);
+                        }
 
-            return memo;
-          };
-        }();
+                        return memo;
+                    };
+                }();
 
-        var getTarget = function getTarget() {
-          var memo = {};
-          return function memorize(target) {
-            if (typeof memo[target] === 'undefined') {
-              var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
+                var getTarget = function getTarget() {
+                    var memo = {};
+                    return function memorize(target) {
+                        if (typeof memo[target] === 'undefined') {
+                            var styleTarget = document.querySelector(target); // Special case to return head of iframe instead of iframe itself
 
-              if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
-                try {
-                  // This will throw an exception if access to iframe is blocked
-                  // due to cross-origin restrictions
-                  styleTarget = styleTarget.contentDocument.head;
-                } catch (e) {
-                  // istanbul ignore next
-                  styleTarget = null;
+                            if (window.HTMLIFrameElement && styleTarget instanceof window.HTMLIFrameElement) {
+                                try {
+                                    // This will throw an exception if access to iframe is blocked
+                                    // due to cross-origin restrictions
+                                    styleTarget = styleTarget.contentDocument.head;
+                                } catch (e) {
+                                    // istanbul ignore next
+                                    styleTarget = null;
+                                }
+                            }
+
+                            memo[target] = styleTarget;
+                        }
+
+                        return memo[target];
+                    };
+                }();
+
+                var stylesInDom = [];
+
+                function getIndexByIdentifier(identifier) {
+                    var result = -1;
+
+                    for (var i = 0; i < stylesInDom.length; i++) {
+                        if (stylesInDom[i].identifier === identifier) {
+                            result = i;
+                            break;
+                        }
+                    }
+
+                    return result;
                 }
-              }
 
-              memo[target] = styleTarget;
-            }
+                function modulesToDom(list, options) {
+                    var idCountMap = {};
+                    var identifiers = [];
 
-            return memo[target];
-          };
-        }();
+                    for (var i = 0; i < list.length; i++) {
+                        var item = list[i];
+                        var id = options.base ? item[0] + options.base : item[0];
+                        var count = idCountMap[id] || 0;
+                        var identifier = "".concat(id, " ").concat(count);
+                        idCountMap[id] = count + 1;
+                        var index = getIndexByIdentifier(identifier);
+                        var obj = {
+                            css: item[1],
+                            media: item[2],
+                            sourceMap: item[3]
+                        };
 
-        var stylesInDom = [];
+                        if (index !== -1) {
+                            stylesInDom[index].references++;
+                            stylesInDom[index].updater(obj);
+                        } else {
+                            stylesInDom.push({
+                                identifier: identifier,
+                                updater: addStyle(obj, options),
+                                references: 1
+                            });
+                        }
 
-        function getIndexByIdentifier(identifier) {
-          var result = -1;
+                        identifiers.push(identifier);
+                    }
 
-          for (var i = 0; i < stylesInDom.length; i++) {
-            if (stylesInDom[i].identifier === identifier) {
-              result = i;
-              break;
-            }
-          }
+                    return identifiers;
+                }
 
-          return result;
-        }
+                function insertStyleElement(options) {
+                    var style = document.createElement('style');
+                    var attributes = options.attributes || {};
 
-        function modulesToDom(list, options) {
-          var idCountMap = {};
-          var identifiers = [];
+                    if (typeof attributes.nonce === 'undefined') {
+                        var nonce = true ? __webpack_require__.nc : undefined;
 
-          for (var i = 0; i < list.length; i++) {
-            var item = list[i];
-            var id = options.base ? item[0] + options.base : item[0];
-            var count = idCountMap[id] || 0;
-            var identifier = "".concat(id, " ").concat(count);
-            idCountMap[id] = count + 1;
-            var index = getIndexByIdentifier(identifier);
-            var obj = {
-              css: item[1],
-              media: item[2],
-              sourceMap: item[3]
-            };
+                        if (nonce) {
+                            attributes.nonce = nonce;
+                        }
+                    }
 
-            if (index !== -1) {
-              stylesInDom[index].references++;
-              stylesInDom[index].updater(obj);
-            } else {
-              stylesInDom.push({
-                identifier: identifier,
-                updater: addStyle(obj, options),
-                references: 1
-              });
-            }
+                    Object.keys(attributes).forEach(function (key) {
+                        style.setAttribute(key, attributes[key]);
+                    });
 
-            identifiers.push(identifier);
-          }
+                    if (typeof options.insert === 'function') {
+                        options.insert(style);
+                    } else {
+                        var target = getTarget(options.insert || 'head');
 
-          return identifiers;
-        }
+                        if (!target) {
+                            throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
+                        }
 
-        function insertStyleElement(options) {
-          var style = document.createElement('style');
-          var attributes = options.attributes || {};
+                        target.appendChild(style);
+                    }
 
-          if (typeof attributes.nonce === 'undefined') {
-            var nonce = true ? __webpack_require__.nc : undefined;
+                    return style;
+                }
 
-            if (nonce) {
-              attributes.nonce = nonce;
-            }
-          }
+                function removeStyleElement(style) {
+                    // istanbul ignore if
+                    if (style.parentNode === null) {
+                        return false;
+                    }
 
-          Object.keys(attributes).forEach(function (key) {
-            style.setAttribute(key, attributes[key]);
-          });
-
-          if (typeof options.insert === 'function') {
-            options.insert(style);
-          } else {
-            var target = getTarget(options.insert || 'head');
-
-            if (!target) {
-              throw new Error("Couldn't find a style target. This probably means that the value for the 'insert' parameter is invalid.");
-            }
-
-            target.appendChild(style);
-          }
-
-          return style;
-        }
-
-        function removeStyleElement(style) {
-          // istanbul ignore if
-          if (style.parentNode === null) {
-            return false;
-          }
-
-          style.parentNode.removeChild(style);
-        }
-        /* istanbul ignore next  */
+                    style.parentNode.removeChild(style);
+                }
+                /* istanbul ignore next  */
 
 
-        var replaceText = function replaceText() {
-          var textStore = [];
-          return function replace(index, replacement) {
-            textStore[index] = replacement;
-            return textStore.filter(Boolean).join('\n');
-          };
-        }();
+                var replaceText = function replaceText() {
+                    var textStore = [];
+                    return function replace(index, replacement) {
+                        textStore[index] = replacement;
+                        return textStore.filter(Boolean).join('\n');
+                    };
+                }();
 
-        function applyToSingletonTag(style, index, remove, obj) {
-          var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
+                function applyToSingletonTag(style, index, remove, obj) {
+                    var css = remove ? '' : obj.media ? "@media ".concat(obj.media, " {").concat(obj.css, "}") : obj.css; // For old IE
 
-          /* istanbul ignore if  */
+                    /* istanbul ignore if  */
 
-          if (style.styleSheet) {
-            style.styleSheet.cssText = replaceText(index, css);
-          } else {
-            var cssNode = document.createTextNode(css);
-            var childNodes = style.childNodes;
+                    if (style.styleSheet) {
+                        style.styleSheet.cssText = replaceText(index, css);
+                    } else {
+                        var cssNode = document.createTextNode(css);
+                        var childNodes = style.childNodes;
 
-            if (childNodes[index]) {
-              style.removeChild(childNodes[index]);
-            }
+                        if (childNodes[index]) {
+                            style.removeChild(childNodes[index]);
+                        }
 
-            if (childNodes.length) {
-              style.insertBefore(cssNode, childNodes[index]);
-            } else {
-              style.appendChild(cssNode);
-            }
-          }
-        }
+                        if (childNodes.length) {
+                            style.insertBefore(cssNode, childNodes[index]);
+                        } else {
+                            style.appendChild(cssNode);
+                        }
+                    }
+                }
 
-        function applyToTag(style, options, obj) {
-          var css = obj.css;
-          var media = obj.media;
-          var sourceMap = obj.sourceMap;
+                function applyToTag(style, options, obj) {
+                    var css = obj.css;
+                    var media = obj.media;
+                    var sourceMap = obj.sourceMap;
 
-          if (media) {
-            style.setAttribute('media', media);
-          } else {
-            style.removeAttribute('media');
-          }
-
-          // if (sourceMap && typeof btoa !== 'undefined') {
-          //   css += "\n/*# sourceMappingURL=data:application/json;base64,".concat(btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))), " */");
-          // } // For old IE
-
-          /* istanbul ignore if  */
+                    if (media) {
+                        style.setAttribute('media', media);
+                    } else {
+                        style.removeAttribute('media');
+                    }
 
 
-          if (style.styleSheet) {
-            style.styleSheet.cssText = css;
-          } else {
-            while (style.firstChild) {
-              style.removeChild(style.firstChild);
-            }
+                    /* istanbul ignore if  */
 
-            style.appendChild(document.createTextNode(css));
-          }
-        }
 
-        var singleton = null;
-        var singletonCounter = 0;
+                    if (style.styleSheet) {
+                        style.styleSheet.cssText = css;
+                    } else {
+                        while (style.firstChild) {
+                            style.removeChild(style.firstChild);
+                        }
 
-        function addStyle(obj, options) {
-          var style;
-          var update;
-          var remove;
+                        style.appendChild(document.createTextNode(css));
+                    }
+                }
 
-          if (options.singleton) {
-            var styleIndex = singletonCounter++;
-            style = singleton || (singleton = insertStyleElement(options));
-            update = applyToSingletonTag.bind(null, style, styleIndex, false);
-            remove = applyToSingletonTag.bind(null, style, styleIndex, true);
-          } else {
-            style = insertStyleElement(options);
-            update = applyToTag.bind(null, style, options);
+                var singleton = null;
+                var singletonCounter = 0;
 
-            remove = function remove() {
-              removeStyleElement(style);
-            };
-          }
+                function addStyle(obj, options) {
+                    var style;
+                    var update;
+                    var remove;
 
-          update(obj);
-          return function updateStyle(newObj) {
-            if (newObj) {
-              if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap) {
-                return;
-              }
+                    if (options.singleton) {
+                        var styleIndex = singletonCounter++;
+                        style = singleton || (singleton = insertStyleElement(options));
+                        update = applyToSingletonTag.bind(null, style, styleIndex, false);
+                        remove = applyToSingletonTag.bind(null, style, styleIndex, true);
+                    } else {
+                        style = insertStyleElement(options);
+                        update = applyToTag.bind(null, style, options);
 
-              update(obj = newObj);
-            } else {
-              remove();
-            }
-          };
-        }
+                        remove = function remove() {
+                            removeStyleElement(style);
+                        };
+                    }
 
-        module.exports = function (list, options) {
-          options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
-          // tags it will allow on a page
+                    update(obj);
+                    return function updateStyle(newObj) {
+                        if (newObj) {
+                            if (newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap) {
+                                return;
+                            }
 
-          if (!options.singleton && typeof options.singleton !== 'boolean') {
-            options.singleton = isOldIE();
-          }
+                            update(obj = newObj);
+                        } else {
+                            remove();
+                        }
+                    };
+                }
 
-          list = list || [];
-          var lastIdentifiers = modulesToDom(list, options);
-          return function update(newList) {
-            newList = newList || [];
+                module.exports = function (list, options) {
+                    options = options || {}; // Force single-tag solution on IE6-9, which has a hard limit on the # of <style>
+                    // tags it will allow on a page
 
-            if (Object.prototype.toString.call(newList) !== '[object Array]') {
-              return;
-            }
+                    if (!options.singleton && typeof options.singleton !== 'boolean') {
+                        options.singleton = isOldIE();
+                    }
 
-            for (var i = 0; i < lastIdentifiers.length; i++) {
-              var identifier = lastIdentifiers[i];
-              var index = getIndexByIdentifier(identifier);
-              stylesInDom[index].references--;
-            }
+                    list = list || [];
+                    var lastIdentifiers = modulesToDom(list, options);
+                    return function update(newList) {
+                        newList = newList || [];
 
-            var newLastIdentifiers = modulesToDom(newList, options);
+                        if (Object.prototype.toString.call(newList) !== '[object Array]') {
+                            return;
+                        }
 
-            for (var _i = 0; _i < lastIdentifiers.length; _i++) {
-              var _identifier = lastIdentifiers[_i];
+                        for (var i = 0; i < lastIdentifiers.length; i++) {
+                            var identifier = lastIdentifiers[i];
+                            var index = getIndexByIdentifier(identifier);
+                            stylesInDom[index].references--;
+                        }
 
-              var _index = getIndexByIdentifier(_identifier);
+                        var newLastIdentifiers = modulesToDom(newList, options);
 
-              if (stylesInDom[_index].references === 0) {
-                stylesInDom[_index].updater();
+                        for (var _i = 0; _i < lastIdentifiers.length; _i++) {
+                            var _identifier = lastIdentifiers[_i];
 
-                stylesInDom.splice(_index, 1);
-              }
-            }
+                            var _index = getIndexByIdentifier(_identifier);
 
-            lastIdentifiers = newLastIdentifiers;
-          };
-        };
+                            if (stylesInDom[_index].references === 0) {
+                                stylesInDom[_index].updater();
 
-        /***/
+                                stylesInDom.splice(_index, 1);
+                            }
+                        }
+
+                        lastIdentifiers = newLastIdentifiers;
+                    };
+                };
+
+                /***/
 }),
 
 /***/ "../node_modules/ts-loader/index.js?!../node_modules/vue-loader/lib/index.js?!../node_modules/source-map-loader/dist/cjs.js!./gl-component.vue?vue&type=script&lang=ts&":
@@ -77739,54 +77760,54 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var roles_1 = __webpack_require__(/*! ./roles */ "./roles/index.ts");
-        var glComponent = /** @class */ (function (_super) {
-          __extends(glComponent, _super);
-          function glComponent() {
-            return _super !== null && _super.apply(this, arguments) || this;
-          }
-          glComponent.prototype.toggleMaximise = function () {
-            this.container && this.container.toggleMaximise();
-          };
-          glComponent.prototype.getChildConfig = function () {
-            return {
-              type: 'component',
-              isClosable: this.closable,
-              reorderEnabled: this.reorderEnabled
-            };
-          };
-          glComponent = __decorate([
-            vue_property_decorator_1.Component
-          ], glComponent);
-          return glComponent;
-        }(roles_1.goldenChild));
-        exports.default = glComponent;
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var roles_1 = __webpack_require__(/*! ./roles */ "./roles/index.ts");
+                var glComponent = /** @class */ (function (_super) {
+                    __extends(glComponent, _super);
+                    function glComponent() {
+                        return _super !== null && _super.apply(this, arguments) || this;
+                    }
+                    glComponent.prototype.toggleMaximise = function () {
+                        this.container && this.container.toggleMaximise();
+                    };
+                    glComponent.prototype.getChildConfig = function () {
+                        return {
+                            type: 'component',
+                            isClosable: this.closable,
+                            reorderEnabled: this.reorderEnabled
+                        };
+                    };
+                    glComponent = __decorate([
+                        vue_property_decorator_1.Component
+                    ], glComponent);
+                    return glComponent;
+                }(roles_1.goldenChild));
+                exports.default = glComponent;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/ts-loader/index.js?!../node_modules/vue-loader/lib/index.js?!../node_modules/source-map-loader/dist/cjs.js!./gl-group.vue?vue&type=script&lang=ts&":
@@ -77796,44 +77817,44 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var roles_1 = __webpack_require__(/*! ./roles */ "./roles/index.ts");
-        var glGroup = /** @class */ (function (_super) {
-          __extends(glGroup, _super);
-          function glGroup() {
-            return _super !== null && _super.apply(this, arguments) || this;
-          }
-          glGroup = __decorate([
-            vue_property_decorator_1.Component
-          ], glGroup);
-          return glGroup;
-        }(roles_1.goldenLink));
-        exports.default = glGroup;
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var roles_1 = __webpack_require__(/*! ./roles */ "./roles/index.ts");
+                var glGroup = /** @class */ (function (_super) {
+                    __extends(glGroup, _super);
+                    function glGroup() {
+                        return _super !== null && _super.apply(this, arguments) || this;
+                    }
+                    glGroup = __decorate([
+                        vue_property_decorator_1.Component
+                    ], glGroup);
+                    return glGroup;
+                }(roles_1.goldenLink));
+                exports.default = glGroup;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/ts-loader/index.js?!../node_modules/vue-loader/lib/index.js?!../node_modules/source-map-loader/dist/cjs.js!./golden.vue?vue&type=script&lang=ts&":
@@ -77843,505 +77864,505 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        var __metadata = (this && this.__metadata) || function (k, v) {
-          if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-        };
-        var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-          function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-          return new (P || (P = Promise))(function (resolve, reject) {
-            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-            step((generator = generator.apply(thisArg, _arguments || [])).next());
-          });
-        };
-        var __generator = (this && this.__generator) || function (thisArg, body) {
-          var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-          return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
-          function verb(n) { return function (v) { return step([n, v]); }; }
-          function step(op) {
-            if (f) throw new TypeError("Generator is already executing.");
-            while (_) try {
-              if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-              if (y = 0, t) op = [op[0] & 2, t.value];
-              switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                  if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                  if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                  if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                  if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                  if (t[2]) _.ops.pop();
-                  _.trys.pop(); continue;
-              }
-              op = body.call(thisArg, _);
-            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-          }
-        };
-        var __spreadArrays = (this && this.__spreadArrays) || function () {
-          for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-          for (var r = Array(s), k = 0, i = 0; i < il; i++)
-            for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
-              r[k] = a[j];
-          return r;
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        exports.renderVNodes = exports.registerGlobalComponent = exports.genericTemplate = exports.CreationError = void 0;
-        var vue_1 = __webpack_require__(/*! vue */ "vue");
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var GoldenLayout = __webpack_require__(/*! golden-layout */ "golden-layout");
-        var roles_1 = __webpack_require__(/*! ./roles */ "./roles/index.ts");
-        var resize = __webpack_require__(/*! vue-resize-directive */ "vue-resize-directive");
-        var utils_1 = __webpack_require__(/*! ./utils */ "./utils.ts");
-        var $ = __webpack_require__(/*! jquery */ "jquery");
-        var CreationError = /** @class */ (function (_super) {
-          __extends(CreationError, _super);
-          function CreationError(inner) {
-            var _this = _super.call(this) || this;
-            _this.inner = inner;
-            return _this;
-          }
-          return CreationError;
-        }(Error));
-        exports.CreationError = CreationError;
-        var globalComponents = {};
-        // https://github.com/rpkilby/vue-nonreactive/
-        function unobserve(obj, key) {
-          if (key === void 0) { key = 'prototype'; }
-          var Observer = (new vue_1.default()).$data
-            .__ob__
-            .constructor;
-          obj.__ob__ = new Observer({});
-        }
-        unobserve(GoldenLayout);
-        unobserve(GoldenLayout.__lm.items.AbstractContentItem);
-        exports.genericTemplate = 'Generic.Vue';
-        function registerGlobalComponent(name, comp) {
-          console.assert(!globalComponents[name], "Component name \"" + name + "\" unused");
-          globalComponents[name] = comp;
-        }
-        exports.registerGlobalComponent = registerGlobalComponent;
-        var componentEvents = ['open', 'destroy', 'close', 'tab', 'hide', 'show', 'resize', 'showed'];
-        var itemEvents = ['stateChanged', 'titleChanged', 'activeContentItemChanged', 'beforeItemDestroyed', 'itemDestroyed', 'itemCreated'];
-        var layoutEvents = ['itemCreated', 'stackCreated', 'rowCreated', 'tabCreated', 'columnCreated', 'componentCreated',
-          'selectionChanged', 'windowOpened', 'windowClosed', 'itemDestroyed', 'initialised', 'activeContentItemChanged'];
-        var goldenLayout = /** @class */ (function (_super) {
-          __extends(goldenLayout, _super);
-          function goldenLayout() {
-            var _this = _super.call(this) || this;
-            _this.isSubWindow = utils_1.isSubWindow;
-            _this.groupColor = null;
-            _this.layout = _this;
-            return _this;
-          }
-          goldenLayout.prototype.settingsChanged = function () {
-            //TODO: change settings in this.gl
-          };
-          goldenLayout.prototype.dimensionsChanged = function () {
-            //TODO: change settings in this.gl
-          };
-          goldenLayout.prototype.gotState = function (state) {
-            state = utils_1.localWindow(state);
-            if (!utils_1.isSubWindow && !utils_1.statusChange.unloading)
-              this.$emit('state', GoldenLayout.minifyConfig(state), state);
-          };
-          //#region vNode helpers
-          goldenLayout.prototype.appendVNodes = function (container, vNodes, state) {
-            var el = document.createElement('div');
-            container.getElement().append(el);
-            renderVNodes(this, el, vNodes, {
-              class: 'glComponent'
-            }, state);
-          };
-          goldenLayout.prototype.slotComponentWrap = function (slot) {
-            var _this = this;
-            return function (container, state) { return _this.appendVNodes(container, slot, state); };
-          };
-          goldenLayout.prototype.globalComponentWrap = function (globComponent) {
-            var _this = this;
-            return function (container, state) {
-              return __awaiter(_this, void 0, void 0, function () {
-                return __generator(this, function (_a) {
-                  switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.glo];
-                    case 1:
-                      _a.sent();
-                      globComponent(this, container, state);
-                      return [2 /*return*/];
-                  }
-                });
-              });
-            };
-          };
-          Object.defineProperty(goldenLayout.prototype, "glo", {
-            //#endregion
-            //cached by Vue
-            get: function () {
-              return utils_1.newSemaphore();
-            },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(goldenLayout.prototype, "definedVueComponent", {
-            get: function () { return this; },
-            enumerable: false,
-            configurable: true
-          });
-          goldenLayout.prototype.getSubChild = function (path) {
-            var _a;
-            if (!utils_1.isSubWindow)
-              return this.getChild(path);
-            var rootPathLength = 0, rootPathComponent = null;
-            for (var compPath in this.rootPath) {
-              var compPathLength = compPath.length;
-              if (path.substring(0, compPathLength) === compPath &&
-                compPathLength > rootPathLength)
-                _a = [compPathLength, this.rootPath[compPath]], rootPathLength = _a[0], rootPathComponent = _a[1];
-            }
-            rootPathComponent = rootPathComponent.childMe;
-            var remainingPath = path.substr(rootPathLength + 1);
-            return remainingPath ?
-              rootPathComponent.getChild(remainingPath) :
-              rootPathComponent;
-          };
-          goldenLayout.prototype.mounted = function () {
-            return __awaiter(this, void 0, void 0, function () {
-              var me, gl, state;
-              var _this = this;
-              return __generator(this, function (_a) {
-                me = this, state = this.state instanceof Promise ?
-                  this.state : Promise.resolve(this.state);
-                state
-                  .then(function (state) {
-                    return __awaiter(_this, void 0, void 0, function () {
-                      function colorizeTab(tab, color) {
-                        tab.element.css('background-color', color);
-                      }
-                      var poppedoutVue, tpl, raiseStateChanged, maxRetries_1;
-                      var _this = this;
-                      return __generator(this, function (_a) {
-                        if (state && !utils_1.isSubWindow) {
-                          this.config = state.content ?
-                            state :
-                            GoldenLayout.unminifyConfig(state);
-                        }
-                        else {
-                          this.config.settings = {
-                            hasHeaders: this.hasHeaders,
-                            reorderEnabled: this.reorderEnabled,
-                            selectionEnabled: this.selectionEnabled,
-                            popoutWholeStack: this.popoutWholeStack,
-                            closePopoutsOnUnload: this.closePopoutsOnUnload,
-                            showPopoutIcon: this.showPopoutIcon,
-                            showMaximiseIcon: this.showMaximiseIcon,
-                            showCloseIcon: this.showCloseIcon
-                          };
-                          this.config.dimensions = {
-                            borderWidth: this.borderWidth,
-                            minItemHeight: this.minItemHeight,
-                            minItemWidth: this.minItemWidth,
-                            headerHeight: this.headerHeight,
-                            dragProxyWidth: this.dragProxyWidth,
-                            dragProxyHeight: this.dragProxyHeight
-                          };
-                        }
-                        this.gl = gl = new GoldenLayout(this.config, $(this.$refs.layoutRoot));
-                        gl.vueObject = this;
-                        poppedoutVue = window.poppedoutVue;
-                        if (poppedoutVue) {
-                          this.rootPath = poppedoutVue.path;
-                          this.parentLayout = poppedoutVue.layout;
-                        }
-                        //#region Register gl-components
-                        // In a popup, use parents's registrations
-                        if (this.parentLayout)
-                          gl._components = this.parentLayout.gl._components;
-                        else {
-                          gl.registerComponent(exports.genericTemplate, function (container, state) {
-                            try {
-                              var component = _this.getSubChild(container._config.vue);
-                              container.getElement().append(component.$el);
-                              forwardEvt(container, component, componentEvents);
-                              component.container = container;
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                var __metadata = (this && this.__metadata) || function (k, v) {
+                    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+                };
+                var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+                    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+                    return new (P || (P = Promise))(function (resolve, reject) {
+                        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+                        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+                        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+                        step((generator = generator.apply(thisArg, _arguments || [])).next());
+                    });
+                };
+                var __generator = (this && this.__generator) || function (thisArg, body) {
+                    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+                    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
+                    function verb(n) { return function (v) { return step([n, v]); }; }
+                    function step(op) {
+                        if (f) throw new TypeError("Generator is already executing.");
+                        while (_) try {
+                            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                            if (y = 0, t) op = [op[0] & 2, t.value];
+                            switch (op[0]) {
+                                case 0: case 1: t = op; break;
+                                case 4: _.label++; return { value: op[1], done: false };
+                                case 5: _.label++; y = op[1]; op = [0]; continue;
+                                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                                default:
+                                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                                    if (t[2]) _.ops.pop();
+                                    _.trys.pop(); continue;
                             }
-                            catch (x) {
-                              _this.$emit('creation-error', x);
-                              throw new CreationError(x);
-                            }
-                          });
-                          // Register global components given by other vue-components
-                          for (tpl in globalComponents)
-                            gl.registerComponent(tpl, this.globalComponentWrap(globalComponents[tpl]));
+                            op = body.call(thisArg, _);
+                        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+                        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+                    }
+                };
+                var __spreadArrays = (this && this.__spreadArrays) || function () {
+                    for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
+                    for (var r = Array(s), k = 0, i = 0; i < il; i++)
+                        for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+                            r[k] = a[j];
+                    return r;
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                exports.renderVNodes = exports.registerGlobalComponent = exports.genericTemplate = exports.CreationError = void 0;
+                var vue_1 = __webpack_require__(/*! vue */ "vue");
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var GoldenLayout = __webpack_require__(/*! golden-layout */ "golden-layout");
+                var roles_1 = __webpack_require__(/*! ./roles */ "./roles/index.ts");
+                var resize = __webpack_require__(/*! vue-resize-directive */ "vue-resize-directive");
+                var utils_1 = __webpack_require__(/*! ./utils */ "./utils.ts");
+                var $ = __webpack_require__(/*! jquery */ "jquery");
+                var CreationError = /** @class */ (function (_super) {
+                    __extends(CreationError, _super);
+                    function CreationError(inner) {
+                        var _this = _super.call(this) || this;
+                        _this.inner = inner;
+                        return _this;
+                    }
+                    return CreationError;
+                }(Error));
+                exports.CreationError = CreationError;
+                var globalComponents = {};
+                // https://github.com/rpkilby/vue-nonreactive/
+                function unobserve(obj, key) {
+                    if (key === void 0) { key = 'prototype'; }
+                    var Observer = (new vue_1.default()).$data
+                        .__ob__
+                        .constructor;
+                    obj.__ob__ = new Observer({});
+                }
+                unobserve(GoldenLayout);
+                unobserve(GoldenLayout.__lm.items.AbstractContentItem);
+                exports.genericTemplate = 'Generic.Vue';
+                function registerGlobalComponent(name, comp) {
+                    console.assert(!globalComponents[name], "Component name \"" + name + "\" unused");
+                    globalComponents[name] = comp;
+                }
+                exports.registerGlobalComponent = registerGlobalComponent;
+                var componentEvents = ['open', 'destroy', 'close', 'tab', 'hide', 'show', 'resize', 'showed'];
+                var itemEvents = ['stateChanged', 'titleChanged', 'activeContentItemChanged', 'beforeItemDestroyed', 'itemDestroyed', 'itemCreated'];
+                var layoutEvents = ['itemCreated', 'stackCreated', 'rowCreated', 'tabCreated', 'columnCreated', 'componentCreated',
+                    'selectionChanged', 'windowOpened', 'windowClosed', 'itemDestroyed', 'initialised', 'activeContentItemChanged'];
+                var goldenLayout = /** @class */ (function (_super) {
+                    __extends(goldenLayout, _super);
+                    function goldenLayout() {
+                        var _this = _super.call(this) || this;
+                        _this.isSubWindow = utils_1.isSubWindow;
+                        _this.groupColor = null;
+                        _this.layout = _this;
+                        return _this;
+                    }
+                    goldenLayout.prototype.settingsChanged = function () {
+                        //TODO: change settings in this.gl
+                    };
+                    goldenLayout.prototype.dimensionsChanged = function () {
+                        //TODO: change settings in this.gl
+                    };
+                    goldenLayout.prototype.gotState = function (state) {
+                        state = utils_1.localWindow(state);
+                        if (!utils_1.isSubWindow && !utils_1.statusChange.unloading)
+                            this.$emit('state', GoldenLayout.minifyConfig(state), state);
+                    };
+                    //#region vNode helpers
+                    goldenLayout.prototype.appendVNodes = function (container, vNodes, state) {
+                        var el = document.createElement('div');
+                        container.getElement().append(el);
+                        renderVNodes(this, el, vNodes, {
+                            class: 'glComponent'
+                        }, state);
+                    };
+                    goldenLayout.prototype.slotComponentWrap = function (slot) {
+                        var _this = this;
+                        return function (container, state) { return _this.appendVNodes(container, slot, state); };
+                    };
+                    goldenLayout.prototype.globalComponentWrap = function (globComponent) {
+                        var _this = this;
+                        return function (container, state) {
+                            return __awaiter(_this, void 0, void 0, function () {
+                                return __generator(this, function (_a) {
+                                    switch (_a.label) {
+                                        case 0: return [4 /*yield*/, this.glo];
+                                        case 1:
+                                            _a.sent();
+                                            globComponent(this, container, state);
+                                            return [2 /*return*/];
+                                    }
+                                });
+                            });
+                        };
+                    };
+                    Object.defineProperty(goldenLayout.prototype, "glo", {
+                        //#endregion
+                        //cached by Vue
+                        get: function () {
+                            return utils_1.newSemaphore();
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    Object.defineProperty(goldenLayout.prototype, "definedVueComponent", {
+                        get: function () { return this; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    goldenLayout.prototype.getSubChild = function (path) {
+                        var _a;
+                        if (!utils_1.isSubWindow)
+                            return this.getChild(path);
+                        var rootPathLength = 0, rootPathComponent = null;
+                        for (var compPath in this.rootPath) {
+                            var compPathLength = compPath.length;
+                            if (path.substring(0, compPathLength) === compPath &&
+                                compPathLength > rootPathLength)
+                                _a = [compPathLength, this.rootPath[compPath]], rootPathLength = _a[0], rootPathComponent = _a[1];
                         }
-                        //TODO: have only one raiseStateChanged function ?
-                        if (this.popupTimeout) {
-                          maxRetries_1 = 10 * this.popupTimeout;
-                          raiseStateChanged = function (retry) {
-                            if ('number' !== typeof retry)
-                              retry = 0;
-                            setTimeout(function () {
-                              var config;
-                              try {
-                                //gl.toConfig() raise exceptions when opening a popup
-                                //it also raise a 'stateChanged' event when closing a popup => inf call
-                                config = gl.toConfig();
-                              }
-                              catch (e) {
-                                if (retry < maxRetries_1)
-                                  raiseStateChanged(++retry);
-                                else
-                                  throw e;
-                              }
-                              if (config) {
-                                _this.gotState(config);
-                              }
-                            }, 100);
-                          };
-                        }
-                        else {
-                          raiseStateChanged = function () {
-                            var config;
-                            try {
-                              //gl.toConfig() raise exceptions when opening a popup
-                              //it also raise a 'stateChanged' event when closing a popup => inf call
-                              config = gl.toConfig();
-                            }
-                            catch (e) { }
-                            if (config) {
-                              _this.gotState(config);
-                            }
-                          };
-                        }
-                        gl.on('stateChanged', raiseStateChanged);
-                        gl.on('initialised', function () {
-                          _this.glo.resolve(gl);
-                        });
-                        gl.on('itemCreated', function (itm) {
-                          itm.vueObject = itm === gl.root ? _this :
-                            itm.config.vue ?
-                              _this.getSubChild(itm.config.vue) :
-                              {};
-                          itm.vueObject.glObject = itm;
-                          if (itm.config.vue && itm.vueObject.nodePath && !utils_1.isSubWindow) {
-                            itm.config.__defineGetter__('vue', function () { return itm.vueObject.nodePath; });
-                          }
-                          if (itm.vueObject.initialState)
-                            itm.vueObject.initialState(itm.config);
-                          //Q&D: This should be done in roles/child.ts, but inheritance does not rhyme with Vue
-                          itm.vueObject.syncedState = itm.config.componentState;
-                          if (itm.vueObject.$emit)
-                            forwardEvt(itm, itm.vueObject, itemEvents);
-                          var color = itm.vueObject.childMe && itm.vueObject.childMe.tabColor;
-                          if (color && itm.tab)
-                            colorizeTab(itm.tab, color);
-                        });
-                        gl.on('tabCreated', function (itm) {
-                          var vo = itm.contentItem.vueObject, color = vo && vo.childMe.tabColor;
-                          if (color)
-                            colorizeTab(itm, color);
-                        });
-                        gl.on('itemDestroyed', function (itm) {
-                          if (!utils_1.isDragging()) {
-                            itm.emit('destroyed', itm);
-                            if (!utils_1.statusChange.poppingOut && !utils_1.statusChange.poppingIn &&
-                              !itm.vueObject._isBeingDestroyed && !itm.vueObject._isDestroyed) {
-                              itm.vueObject.glObject = null;
-                              itm.vueObject.delete && itm.vueObject.delete();
-                            }
-                          }
-                          //Bugfix: when destroying a tab before itm, stack' activeItemIndex is not updated and become invalid
-                          if (itm.parent && itm.parent.isStack && itm.parent.contentItems.indexOf(itm) < itm.parent.config.activeItemIndex)
-                            setTimeout(function () {
-                              --itm.parent.config.activeItemIndex;
+                        rootPathComponent = rootPathComponent.childMe;
+                        var remainingPath = path.substr(rootPathLength + 1);
+                        return remainingPath ?
+                            rootPathComponent.getChild(remainingPath) :
+                            rootPathComponent;
+                    };
+                    goldenLayout.prototype.mounted = function () {
+                        return __awaiter(this, void 0, void 0, function () {
+                            var me, gl, state;
+                            var _this = this;
+                            return __generator(this, function (_a) {
+                                me = this, state = this.state instanceof Promise ?
+                                    this.state : Promise.resolve(this.state);
+                                state
+                                    .then(function (state) {
+                                        return __awaiter(_this, void 0, void 0, function () {
+                                            function colorizeTab(tab, color) {
+                                                tab.element.css('background-color', color);
+                                            }
+                                            var poppedoutVue, tpl, raiseStateChanged, maxRetries_1;
+                                            var _this = this;
+                                            return __generator(this, function (_a) {
+                                                if (state && !utils_1.isSubWindow) {
+                                                    this.config = state.content ?
+                                                        state :
+                                                        GoldenLayout.unminifyConfig(state);
+                                                }
+                                                else {
+                                                    this.config.settings = {
+                                                        hasHeaders: this.hasHeaders,
+                                                        reorderEnabled: this.reorderEnabled,
+                                                        selectionEnabled: this.selectionEnabled,
+                                                        popoutWholeStack: this.popoutWholeStack,
+                                                        closePopoutsOnUnload: this.closePopoutsOnUnload,
+                                                        showPopoutIcon: this.showPopoutIcon,
+                                                        showMaximiseIcon: this.showMaximiseIcon,
+                                                        showCloseIcon: this.showCloseIcon
+                                                    };
+                                                    this.config.dimensions = {
+                                                        borderWidth: this.borderWidth,
+                                                        minItemHeight: this.minItemHeight,
+                                                        minItemWidth: this.minItemWidth,
+                                                        headerHeight: this.headerHeight,
+                                                        dragProxyWidth: this.dragProxyWidth,
+                                                        dragProxyHeight: this.dragProxyHeight
+                                                    };
+                                                }
+                                                this.gl = gl = new GoldenLayout(this.config, $(this.$refs.layoutRoot));
+                                                gl.vueObject = this;
+                                                poppedoutVue = window.poppedoutVue;
+                                                if (poppedoutVue) {
+                                                    this.rootPath = poppedoutVue.path;
+                                                    this.parentLayout = poppedoutVue.layout;
+                                                }
+                                                //#region Register gl-components
+                                                // In a popup, use parents's registrations
+                                                if (this.parentLayout)
+                                                    gl._components = this.parentLayout.gl._components;
+                                                else {
+                                                    gl.registerComponent(exports.genericTemplate, function (container, state) {
+                                                        try {
+                                                            var component = _this.getSubChild(container._config.vue);
+                                                            container.getElement().append(component.$el);
+                                                            forwardEvt(container, component, componentEvents);
+                                                            component.container = container;
+                                                        }
+                                                        catch (x) {
+                                                            _this.$emit('creation-error', x);
+                                                            throw new CreationError(x);
+                                                        }
+                                                    });
+                                                    // Register global components given by other vue-components
+                                                    for (tpl in globalComponents)
+                                                        gl.registerComponent(tpl, this.globalComponentWrap(globalComponents[tpl]));
+                                                }
+                                                //TODO: have only one raiseStateChanged function ?
+                                                if (this.popupTimeout) {
+                                                    maxRetries_1 = 10 * this.popupTimeout;
+                                                    raiseStateChanged = function (retry) {
+                                                        if ('number' !== typeof retry)
+                                                            retry = 0;
+                                                        setTimeout(function () {
+                                                            var config;
+                                                            try {
+                                                                //gl.toConfig() raise exceptions when opening a popup
+                                                                //it also raise a 'stateChanged' event when closing a popup => inf call
+                                                                config = gl.toConfig();
+                                                            }
+                                                            catch (e) {
+                                                                if (retry < maxRetries_1)
+                                                                    raiseStateChanged(++retry);
+                                                                else
+                                                                    throw e;
+                                                            }
+                                                            if (config) {
+                                                                _this.gotState(config);
+                                                            }
+                                                        }, 100);
+                                                    };
+                                                }
+                                                else {
+                                                    raiseStateChanged = function () {
+                                                        var config;
+                                                        try {
+                                                            //gl.toConfig() raise exceptions when opening a popup
+                                                            //it also raise a 'stateChanged' event when closing a popup => inf call
+                                                            config = gl.toConfig();
+                                                        }
+                                                        catch (e) { }
+                                                        if (config) {
+                                                            _this.gotState(config);
+                                                        }
+                                                    };
+                                                }
+                                                gl.on('stateChanged', raiseStateChanged);
+                                                gl.on('initialised', function () {
+                                                    _this.glo.resolve(gl);
+                                                });
+                                                gl.on('itemCreated', function (itm) {
+                                                    itm.vueObject = itm === gl.root ? _this :
+                                                        itm.config.vue ?
+                                                            _this.getSubChild(itm.config.vue) :
+                                                            {};
+                                                    itm.vueObject.glObject = itm;
+                                                    if (itm.config.vue && itm.vueObject.nodePath && !utils_1.isSubWindow) {
+                                                        itm.config.__defineGetter__('vue', function () { return itm.vueObject.nodePath; });
+                                                    }
+                                                    if (itm.vueObject.initialState)
+                                                        itm.vueObject.initialState(itm.config);
+                                                    //Q&D: This should be done in roles/child.ts, but inheritance does not rhyme with Vue
+                                                    itm.vueObject.syncedState = itm.config.componentState;
+                                                    if (itm.vueObject.$emit)
+                                                        forwardEvt(itm, itm.vueObject, itemEvents);
+                                                    var color = itm.vueObject.childMe && itm.vueObject.childMe.tabColor;
+                                                    if (color && itm.tab)
+                                                        colorizeTab(itm.tab, color);
+                                                });
+                                                gl.on('tabCreated', function (itm) {
+                                                    var vo = itm.contentItem.vueObject, color = vo && vo.childMe.tabColor;
+                                                    if (color)
+                                                        colorizeTab(itm, color);
+                                                });
+                                                gl.on('itemDestroyed', function (itm) {
+                                                    if (!utils_1.isDragging()) {
+                                                        itm.emit('destroyed', itm);
+                                                        if (!utils_1.statusChange.poppingOut && !utils_1.statusChange.poppingIn &&
+                                                            !itm.vueObject._isBeingDestroyed && !itm.vueObject._isDestroyed) {
+                                                            itm.vueObject.glObject = null;
+                                                            itm.vueObject.delete && itm.vueObject.delete();
+                                                        }
+                                                    }
+                                                    //Bugfix: when destroying a tab before itm, stack' activeItemIndex is not updated and become invalid
+                                                    if (itm.parent && itm.parent.isStack && itm.parent.contentItems.indexOf(itm) < itm.parent.config.activeItemIndex)
+                                                        setTimeout(function () {
+                                                            --itm.parent.config.activeItemIndex;
+                                                        });
+                                                });
+                                                forwardEvt(gl, this, layoutEvents);
+                                                //#endregion
+                                                try {
+                                                    gl.init();
+                                                }
+                                                catch (e) {
+                                                    this.glo.reject(e);
+                                                    if (e.type === 'popoutBlocked')
+                                                        alert('The browser has blocked the pop-up you requested. Please allow pop-ups for this site.');
+                                                }
+                                                return [2 /*return*/];
+                                            });
+                                        });
+                                    });
+                                return [2 /*return*/];
                             });
                         });
-                        forwardEvt(gl, this, layoutEvents);
-                        //#endregion
-                        try {
-                          gl.init();
-                        }
-                        catch (e) {
-                          this.glo.reject(e);
-                          if (e.type === 'popoutBlocked')
-                            alert('The browser has blocked the pop-up you requested. Please allow pop-ups for this site.');
-                        }
-                        return [2 /*return*/];
-                      });
+                    };
+                    goldenLayout.prototype.onResize = function () {
+                        this.gl && this.gl.updateSize(10, 10);
+                        this.gl && this.gl.updateSize();
+                    };
+                    goldenLayout.prototype.destroyed = function () {
+                        utils_1.statusChange.unloading = true;
+                        this.gl.destroy();
+                        utils_1.statusChange.unloading = false;
+                    };
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: true }),
+                        __metadata("design:type", Boolean)
+                    ], goldenLayout.prototype, "hasHeaders", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: true }),
+                        __metadata("design:type", Boolean)
+                    ], goldenLayout.prototype, "reorderEnabled", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: false }),
+                        __metadata("design:type", Boolean)
+                    ], goldenLayout.prototype, "selectionEnabled", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: true }),
+                        __metadata("design:type", Boolean)
+                    ], goldenLayout.prototype, "popoutWholeStack", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: true }),
+                        __metadata("design:type", Boolean)
+                    ], goldenLayout.prototype, "closePopoutsOnUnload", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: true }),
+                        __metadata("design:type", Boolean)
+                    ], goldenLayout.prototype, "showPopoutIcon", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: true }),
+                        __metadata("design:type", Boolean)
+                    ], goldenLayout.prototype, "showMaximiseIcon", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: true }),
+                        __metadata("design:type", Boolean)
+                    ], goldenLayout.prototype, "showCloseIcon", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Model('state', { default: null }),
+                        __metadata("design:type", Object)
+                    ], goldenLayout.prototype, "state", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Watch('hasHeaders'),
+                        vue_property_decorator_1.Watch('reorderEnabled'),
+                        vue_property_decorator_1.Watch('selectionEnabled'),
+                        vue_property_decorator_1.Watch('popoutWholeStack'),
+                        vue_property_decorator_1.Watch('blockedPopoutsThrowError'),
+                        vue_property_decorator_1.Watch('closePopoutsOnUnload'),
+                        vue_property_decorator_1.Watch('showPopoutIcon'),
+                        vue_property_decorator_1.Watch('showMaximiseIcon'),
+                        vue_property_decorator_1.Watch('showCloseIcon'),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", []),
+                        __metadata("design:returntype", void 0)
+                    ], goldenLayout.prototype, "settingsChanged", null);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: 5 }),
+                        __metadata("design:type", Number)
+                    ], goldenLayout.prototype, "popupTimeout", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: 5 }),
+                        __metadata("design:type", Number)
+                    ], goldenLayout.prototype, "borderWidth", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: 10 }),
+                        __metadata("design:type", Number)
+                    ], goldenLayout.prototype, "minItemHeight", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: 10 }),
+                        __metadata("design:type", Number)
+                    ], goldenLayout.prototype, "minItemWidth", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: 20 }),
+                        __metadata("design:type", Number)
+                    ], goldenLayout.prototype, "headerHeight", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: 300 }),
+                        __metadata("design:type", Number)
+                    ], goldenLayout.prototype, "dragProxyWidth", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: 200 }),
+                        __metadata("design:type", Number)
+                    ], goldenLayout.prototype, "dragProxyHeight", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Watch('borderWidth'),
+                        vue_property_decorator_1.Watch('minItemHeight'),
+                        vue_property_decorator_1.Watch('minItemWidth'),
+                        vue_property_decorator_1.Watch('headerHeight'),
+                        vue_property_decorator_1.Watch('dragProxyWidth'),
+                        vue_property_decorator_1.Watch('dragProxyHeight'),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", []),
+                        __metadata("design:returntype", void 0)
+                    ], goldenLayout.prototype, "dimensionsChanged", null);
+                    __decorate([
+                        vue_property_decorator_1.Provide(),
+                        __metadata("design:type", goldenLayout)
+                    ], goldenLayout.prototype, "layout", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Provide(),
+                        __metadata("design:type", Object)
+                    ], goldenLayout.prototype, "groupColor", void 0);
+                    goldenLayout = __decorate([
+                        vue_property_decorator_1.Component({ directives: { resize: resize } }),
+                        __metadata("design:paramtypes", [])
+                    ], goldenLayout);
+                    return goldenLayout;
+                }(roles_1.goldenContainer));
+                exports.default = goldenLayout;
+                function renderVNodes(parent, el, vNodes, options, state) {
+                    return new vue_1.default({
+                        render: function (ce) {
+                            var vn = 'function' === typeof vNodes ?
+                                vNodes(state) : vNodes;
+                            return ce('div', options, vn instanceof Array ? vn : [vn]);
+                        },
+                        parent: parent,
+                        el: el
                     });
-                  });
-                return [2 /*return*/];
-              });
-            });
-          };
-          goldenLayout.prototype.onResize = function () {
-            this.gl && this.gl.updateSize(10, 10);
-            this.gl && this.gl.updateSize();
-          };
-          goldenLayout.prototype.destroyed = function () {
-            utils_1.statusChange.unloading = true;
-            this.gl.destroy();
-            utils_1.statusChange.unloading = false;
-          };
-          __decorate([
-            vue_property_decorator_1.Prop({ default: true }),
-            __metadata("design:type", Boolean)
-          ], goldenLayout.prototype, "hasHeaders", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: true }),
-            __metadata("design:type", Boolean)
-          ], goldenLayout.prototype, "reorderEnabled", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: false }),
-            __metadata("design:type", Boolean)
-          ], goldenLayout.prototype, "selectionEnabled", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: true }),
-            __metadata("design:type", Boolean)
-          ], goldenLayout.prototype, "popoutWholeStack", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: true }),
-            __metadata("design:type", Boolean)
-          ], goldenLayout.prototype, "closePopoutsOnUnload", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: true }),
-            __metadata("design:type", Boolean)
-          ], goldenLayout.prototype, "showPopoutIcon", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: true }),
-            __metadata("design:type", Boolean)
-          ], goldenLayout.prototype, "showMaximiseIcon", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: true }),
-            __metadata("design:type", Boolean)
-          ], goldenLayout.prototype, "showCloseIcon", void 0);
-          __decorate([
-            vue_property_decorator_1.Model('state', { default: null }),
-            __metadata("design:type", Object)
-          ], goldenLayout.prototype, "state", void 0);
-          __decorate([
-            vue_property_decorator_1.Watch('hasHeaders'),
-            vue_property_decorator_1.Watch('reorderEnabled'),
-            vue_property_decorator_1.Watch('selectionEnabled'),
-            vue_property_decorator_1.Watch('popoutWholeStack'),
-            vue_property_decorator_1.Watch('blockedPopoutsThrowError'),
-            vue_property_decorator_1.Watch('closePopoutsOnUnload'),
-            vue_property_decorator_1.Watch('showPopoutIcon'),
-            vue_property_decorator_1.Watch('showMaximiseIcon'),
-            vue_property_decorator_1.Watch('showCloseIcon'),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", []),
-            __metadata("design:returntype", void 0)
-          ], goldenLayout.prototype, "settingsChanged", null);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: 5 }),
-            __metadata("design:type", Number)
-          ], goldenLayout.prototype, "popupTimeout", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: 5 }),
-            __metadata("design:type", Number)
-          ], goldenLayout.prototype, "borderWidth", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: 10 }),
-            __metadata("design:type", Number)
-          ], goldenLayout.prototype, "minItemHeight", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: 10 }),
-            __metadata("design:type", Number)
-          ], goldenLayout.prototype, "minItemWidth", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: 20 }),
-            __metadata("design:type", Number)
-          ], goldenLayout.prototype, "headerHeight", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: 300 }),
-            __metadata("design:type", Number)
-          ], goldenLayout.prototype, "dragProxyWidth", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: 200 }),
-            __metadata("design:type", Number)
-          ], goldenLayout.prototype, "dragProxyHeight", void 0);
-          __decorate([
-            vue_property_decorator_1.Watch('borderWidth'),
-            vue_property_decorator_1.Watch('minItemHeight'),
-            vue_property_decorator_1.Watch('minItemWidth'),
-            vue_property_decorator_1.Watch('headerHeight'),
-            vue_property_decorator_1.Watch('dragProxyWidth'),
-            vue_property_decorator_1.Watch('dragProxyHeight'),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", []),
-            __metadata("design:returntype", void 0)
-          ], goldenLayout.prototype, "dimensionsChanged", null);
-          __decorate([
-            vue_property_decorator_1.Provide(),
-            __metadata("design:type", goldenLayout)
-          ], goldenLayout.prototype, "layout", void 0);
-          __decorate([
-            vue_property_decorator_1.Provide(),
-            __metadata("design:type", Object)
-          ], goldenLayout.prototype, "groupColor", void 0);
-          goldenLayout = __decorate([
-            vue_property_decorator_1.Component({ directives: { resize: resize } }),
-            __metadata("design:paramtypes", [])
-          ], goldenLayout);
-          return goldenLayout;
-        }(roles_1.goldenContainer));
-        exports.default = goldenLayout;
-        function renderVNodes(parent, el, vNodes, options, state) {
-          return new vue_1.default({
-            render: function (ce) {
-              var vn = 'function' === typeof vNodes ?
-                vNodes(state) : vNodes;
-              return ce('div', options, vn instanceof Array ? vn : [vn]);
-            },
-            parent: parent,
-            el: el
-          });
-        }
-        exports.renderVNodes = renderVNodes;
-        function forwardEvt(from, toward, events) {
-          var _loop_1 = function (event_1) {
-            from.on(event_1, function () {
-              var args = [];
-              for (var _i = 0; _i < arguments.length; _i++) {
-                args[_i] = arguments[_i];
-              }
-              return 'object' === typeof event_1 ?
-                toward.$emit(event_1.type, event_1) : toward.$emit.apply(toward, __spreadArrays([event_1], args));
-            });
-          };
-          for (var _i = 0, events_1 = events; _i < events_1.length; _i++) {
-            var event_1 = events_1[_i];
-            _loop_1(event_1);
-          }
-        }
+                }
+                exports.renderVNodes = renderVNodes;
+                function forwardEvt(from, toward, events) {
+                    var _loop_1 = function (event_1) {
+                        from.on(event_1, function () {
+                            var args = [];
+                            for (var _i = 0; _i < arguments.length; _i++) {
+                                args[_i] = arguments[_i];
+                            }
+                            return 'object' === typeof event_1 ?
+                                toward.$emit(event_1.type, event_1) : toward.$emit.apply(toward, __spreadArrays([event_1], args));
+                        });
+                    };
+                    for (var _i = 0, events_1 = events; _i < events_1.length; _i++) {
+                        var event_1 = events_1[_i];
+                        _loop_1(event_1);
+                    }
+                }
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/ts-loader/index.js?!../node_modules/vue-loader/lib/index.js?!../node_modules/source-map-loader/dist/cjs.js!./router/gl-container-route.vue?vue&type=script&lang=ts&":
@@ -78351,51 +78372,51 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        var __metadata = (this && this.__metadata) || function (k, v) {
-          if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        var roles_1 = __webpack_require__(/*! ../roles */ "./roles/index.ts");
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var glContainerRoute = /** @class */ (function (_super) {
-          __extends(glContainerRoute, _super);
-          function glContainerRoute() {
-            return _super !== null && _super.apply(this, arguments) || this;
-          }
-          __decorate([
-            vue_property_decorator_1.Prop(),
-            __metadata("design:type", Object)
-          ], glContainerRoute.prototype, "component", void 0);
-          glContainerRoute = __decorate([
-            vue_property_decorator_1.Component
-          ], glContainerRoute);
-          return glContainerRoute;
-        }(roles_1.glCustomContainer));
-        exports.default = glContainerRoute;
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                var __metadata = (this && this.__metadata) || function (k, v) {
+                    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                var roles_1 = __webpack_require__(/*! ../roles */ "./roles/index.ts");
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var glContainerRoute = /** @class */ (function (_super) {
+                    __extends(glContainerRoute, _super);
+                    function glContainerRoute() {
+                        return _super !== null && _super.apply(this, arguments) || this;
+                    }
+                    __decorate([
+                        vue_property_decorator_1.Prop(),
+                        __metadata("design:type", Object)
+                    ], glContainerRoute.prototype, "component", void 0);
+                    glContainerRoute = __decorate([
+                        vue_property_decorator_1.Component
+                    ], glContainerRoute);
+                    return glContainerRoute;
+                }(roles_1.glCustomContainer));
+                exports.default = glContainerRoute;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/ts-loader/index.js?!../node_modules/vue-loader/lib/index.js?!../node_modules/source-map-loader/dist/cjs.js!./router/gl-route.vue?vue&type=script&lang=ts&":
@@ -78405,131 +78426,131 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        var __metadata = (this && this.__metadata) || function (k, v) {
-          if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-        };
-        var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-          function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-          return new (P || (P = Promise))(function (resolve, reject) {
-            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-            step((generator = generator.apply(thisArg, _arguments || [])).next());
-          });
-        };
-        var __generator = (this && this.__generator) || function (thisArg, body) {
-          var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-          return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
-          function verb(n) { return function (v) { return step([n, v]); }; }
-          function step(op) {
-            if (f) throw new TypeError("Generator is already executing.");
-            while (_) try {
-              if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-              if (y = 0, t) op = [op[0] & 2, t.value];
-              switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                  if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                  if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                  if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                  if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                  if (t[2]) _.ops.pop();
-                  _.trys.pop(); continue;
-              }
-              op = body.call(thisArg, _);
-            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-          }
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        var vue_1 = __webpack_require__(/*! vue */ "vue");
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var roles_1 = __webpack_require__(/*! ../roles */ "./roles/index.ts");
-        var gl_component_route_1 = __webpack_require__(/*! ./gl-component-route */ "./router/gl-component-route.ts");
-        var gl_container_route_vue_1 = __webpack_require__(/*! ./gl-container-route.vue */ "./router/gl-container-route.vue");
-        var gl_component_vue_1 = __webpack_require__(/*! ../gl-component.vue */ "./gl-component.vue");
-        var gl_route_base_1 = __webpack_require__(/*! ./gl-route-base */ "./router/gl-route-base.ts");
-        var utils_1 = __webpack_require__(/*! ./utils */ "./router/utils.ts");
-        var utils_2 = __webpack_require__(/*! ../utils */ "./utils.ts");
-        var glRoute = /** @class */ (function (_super) {
-          __extends(glRoute, _super);
-          function glRoute() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.type = null;
-            return _this;
-          }
-          Object.defineProperty(glRoute.prototype, "fullPath", {
-            get: function () { return this.$route.fullPath; },
-            enumerable: false,
-            configurable: true
-          });
-          glRoute.prototype.created = function () {
-            return __awaiter(this, void 0, void 0, function () {
-              var route, comp;
-              return __generator(this, function (_a) {
-                switch (_a.label) {
-                  case 0:
-                    route = this.$router.resolve(this.location).route, comp = this.$router.getMatchedComponents(route)[0];
-                    // In case of AsyncComponent
-                    if ('function' === typeof comp && !(comp.prototype instanceof vue_1.default)) {
-                      comp = comp().component;
-                      //TODO: use AsyncComponentFactory loading/error rv
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                var __metadata = (this && this.__metadata) || function (k, v) {
+                    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+                };
+                var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+                    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+                    return new (P || (P = Promise))(function (resolve, reject) {
+                        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+                        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+                        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+                        step((generator = generator.apply(thisArg, _arguments || [])).next());
+                    });
+                };
+                var __generator = (this && this.__generator) || function (thisArg, body) {
+                    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+                    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
+                    function verb(n) { return function (v) { return step([n, v]); }; }
+                    function step(op) {
+                        if (f) throw new TypeError("Generator is already executing.");
+                        while (_) try {
+                            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                            if (y = 0, t) op = [op[0] & 2, t.value];
+                            switch (op[0]) {
+                                case 0: case 1: t = op; break;
+                                case 4: _.label++; return { value: op[1], done: false };
+                                case 5: _.label++; y = op[1]; op = [0]; continue;
+                                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                                default:
+                                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                                    if (t[2]) _.ops.pop();
+                                    _.trys.pop(); continue;
+                            }
+                            op = body.call(thisArg, _);
+                        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+                        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
                     }
-                    if (!(comp instanceof Promise)) return [3 /*break*/, 2];
-                    return [4 /*yield*/, comp];
-                  case 1:
-                    comp = _a.sent();
-                    _a.label = 2;
-                  case 2:
-                    this.component = comp;
-                    this.type = 'function' === typeof comp && utils_2.xInstanceOf(comp.prototype, 'glCustomContainer') ?
-                      'container' : 'component';
-                    utils_1.freezeRoute(this, route);
-                    return [2 /*return*/];
-                }
-              });
-            });
-          };
-          __decorate([
-            vue_property_decorator_1.Prop({ default: 'Loading' }),
-            __metadata("design:type", String)
-          ], glRoute.prototype, "loading", void 0);
-          glRoute = __decorate([
-            vue_property_decorator_1.Component({
-              mixins: [roles_1.glCustomContainer],
-              components: { glComponentRoute: gl_component_route_1.default, glContainerRoute: gl_container_route_vue_1.default, glComponent: gl_component_vue_1.default }
-            })
-          ], glRoute);
-          return glRoute;
-        }(gl_route_base_1.default));
-        exports.default = glRoute;
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                var vue_1 = __webpack_require__(/*! vue */ "vue");
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var roles_1 = __webpack_require__(/*! ../roles */ "./roles/index.ts");
+                var gl_component_route_1 = __webpack_require__(/*! ./gl-component-route */ "./router/gl-component-route.ts");
+                var gl_container_route_vue_1 = __webpack_require__(/*! ./gl-container-route.vue */ "./router/gl-container-route.vue");
+                var gl_component_vue_1 = __webpack_require__(/*! ../gl-component.vue */ "./gl-component.vue");
+                var gl_route_base_1 = __webpack_require__(/*! ./gl-route-base */ "./router/gl-route-base.ts");
+                var utils_1 = __webpack_require__(/*! ./utils */ "./router/utils.ts");
+                var utils_2 = __webpack_require__(/*! ../utils */ "./utils.ts");
+                var glRoute = /** @class */ (function (_super) {
+                    __extends(glRoute, _super);
+                    function glRoute() {
+                        var _this = _super !== null && _super.apply(this, arguments) || this;
+                        _this.type = null;
+                        return _this;
+                    }
+                    Object.defineProperty(glRoute.prototype, "fullPath", {
+                        get: function () { return this.$route.fullPath; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    glRoute.prototype.created = function () {
+                        return __awaiter(this, void 0, void 0, function () {
+                            var route, comp;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        route = this.$router.resolve(this.location).route, comp = this.$router.getMatchedComponents(route)[0];
+                                        // In case of AsyncComponent
+                                        if ('function' === typeof comp && !(comp.prototype instanceof vue_1.default)) {
+                                            comp = comp().component;
+                                            //TODO: use AsyncComponentFactory loading/error rv
+                                        }
+                                        if (!(comp instanceof Promise)) return [3 /*break*/, 2];
+                                        return [4 /*yield*/, comp];
+                                    case 1:
+                                        comp = _a.sent();
+                                        _a.label = 2;
+                                    case 2:
+                                        this.component = comp;
+                                        this.type = 'function' === typeof comp && utils_2.xInstanceOf(comp.prototype, 'glCustomContainer') ?
+                                            'container' : 'component';
+                                        utils_1.freezeRoute(this, route);
+                                        return [2 /*return*/];
+                                }
+                            });
+                        });
+                    };
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: 'Loading' }),
+                        __metadata("design:type", String)
+                    ], glRoute.prototype, "loading", void 0);
+                    glRoute = __decorate([
+                        vue_property_decorator_1.Component({
+                            mixins: [roles_1.glCustomContainer],
+                            components: { glComponentRoute: gl_component_route_1.default, glContainerRoute: gl_container_route_vue_1.default, glComponent: gl_component_vue_1.default }
+                        })
+                    ], glRoute);
+                    return glRoute;
+                }(gl_route_base_1.default));
+                exports.default = glRoute;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/ts-loader/index.js?!../node_modules/vue-loader/lib/index.js?!../node_modules/source-map-loader/dist/cjs.js!./router/gl-router.vue?vue&type=script&lang=ts&":
@@ -78539,194 +78560,194 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        var __metadata = (this && this.__metadata) || function (k, v) {
-          if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-        };
-        var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-          function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-          return new (P || (P = Promise))(function (resolve, reject) {
-            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-            step((generator = generator.apply(thisArg, _arguments || [])).next());
-          });
-        };
-        var __generator = (this && this.__generator) || function (thisArg, body) {
-          var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-          return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
-          function verb(n) { return function (v) { return step([n, v]); }; }
-          function step(op) {
-            if (f) throw new TypeError("Generator is already executing.");
-            while (_) try {
-              if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-              if (y = 0, t) op = [op[0] & 2, t.value];
-              switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                  if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                  if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                  if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                  if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                  if (t[2]) _.ops.pop();
-                  _.trys.pop(); continue;
-              }
-              op = body.call(thisArg, _);
-            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-          }
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var roles_1 = __webpack_require__(/*! ../roles */ "./roles/index.ts");
-        var gl_dstack_1 = __webpack_require__(/*! ../gl-dstack */ "./gl-dstack.ts");
-        var gl_route_vue_1 = __webpack_require__(/*! ./gl-route.vue */ "./router/gl-route.vue");
-        var utils_1 = __webpack_require__(/*! ./utils */ "./router/utils.ts");
-        function opened(location) {
-          return function (l) { return (!!l.path && l.path === location.path) || (!!l.name && l.name === location.name); };
-        }
-        var glRouter = /** @class */ (function (_super) {
-          __extends(glRouter, _super);
-          function glRouter() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.activeRoute = null;
-            return _this;
-          }
-          Object.defineProperty(glRouter.prototype, "_glRouter", {
-            get: function () { return this; },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(glRouter.prototype, "definedVueComponent", {
-            get: function () {
-              return this.$parent.definedVueComponent;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          glRouter.prototype.mounted = function () {
-            return __awaiter(this, void 0, void 0, function () {
-              return __generator(this, function (_a) {
-                switch (_a.label) {
-                  case 0:
-                    //With immediate: true, the watch is called before $refs are initialised
-                    return [4 /*yield*/, this.layout.glo];
-                  case 1:
-                    //With immediate: true, the watch is called before $refs are initialised
-                    _a.sent();
-                    this.change(this.$route);
-                    return [2 /*return*/];
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                var __metadata = (this && this.__metadata) || function (k, v) {
+                    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+                };
+                var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+                    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+                    return new (P || (P = Promise))(function (resolve, reject) {
+                        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+                        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+                        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+                        step((generator = generator.apply(thisArg, _arguments || [])).next());
+                    });
+                };
+                var __generator = (this && this.__generator) || function (thisArg, body) {
+                    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+                    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
+                    function verb(n) { return function (v) { return step([n, v]); }; }
+                    function step(op) {
+                        if (f) throw new TypeError("Generator is already executing.");
+                        while (_) try {
+                            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                            if (y = 0, t) op = [op[0] & 2, t.value];
+                            switch (op[0]) {
+                                case 0: case 1: t = op; break;
+                                case 4: _.label++; return { value: op[1], done: false };
+                                case 5: _.label++; y = op[1]; op = [0]; continue;
+                                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                                default:
+                                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                                    if (t[2]) _.ops.pop();
+                                    _.trys.pop(); continue;
+                            }
+                            op = body.call(thisArg, _);
+                        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+                        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+                    }
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var roles_1 = __webpack_require__(/*! ../roles */ "./roles/index.ts");
+                var gl_dstack_1 = __webpack_require__(/*! ../gl-dstack */ "./gl-dstack.ts");
+                var gl_route_vue_1 = __webpack_require__(/*! ./gl-route.vue */ "./router/gl-route.vue");
+                var utils_1 = __webpack_require__(/*! ./utils */ "./router/utils.ts");
+                function opened(location) {
+                    return function (l) { return (!!l.path && l.path === location.path) || (!!l.name && l.name === location.name); };
                 }
-              });
-            });
-          };
-          glRouter.prototype.isEmpty = function (route) {
-            return route.path === this.emptyRoute;
-          };
-          glRouter.prototype.setPath = function (path) {
-            if (path && path != this.$route.fullPath)
-              this.$router.replace(path);
-          };
-          glRouter.prototype.change = function (route) {
-            return __awaiter(this, void 0, void 0, function () {
-              var location, already;
-              return __generator(this, function (_a) {
-                if (route) {
-                  location = { path: route.fullPath };
-                  if (!route.matched.length) {
-                    if (route.path === '/')
-                      location = { path: this.emptyRoute };
-                    else
-                      return [2 /*return*/];
-                  }
-                  already = this.routes.find(opened(location));
-                  if (!already)
-                    this.routes.push(location);
-                  this.activeRoute = location.path;
-                }
-                return [2 /*return*/];
-              });
-            });
-          };
-          glRouter.prototype.destroyedRoute = function (route) {
-            if (route.closable) {
-              var ndx = this.routes.findIndex(opened(route.location));
-              if (~ndx)
-                this.routes.splice(ndx, 1);
-              else
-                console.assert(false, 'Closed route is in the array');
-            }
-          };
-          __decorate([
-            vue_property_decorator_1.Prop({ default: false }),
-            __metadata("design:type", Boolean)
-          ], glRouter.prototype, "closable", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({
-              default: utils_1.defaultTitler,
-              type: Function
-            }),
-            vue_property_decorator_1.Provide(),
-            __metadata("design:type", Function)
-          ], glRouter.prototype, "titler", void 0);
-          __decorate([
-            vue_property_decorator_1.Provide(),
-            __metadata("design:type", Object),
-            __metadata("design:paramtypes", [])
-          ], glRouter.prototype, "_glRouter", null);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: '/' }),
-            __metadata("design:type", String)
-          ], glRouter.prototype, "emptyRoute", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: function () { return []; } }),
-            __metadata("design:type", Array)
-          ], glRouter.prototype, "routes", void 0);
-          __decorate([
-            vue_property_decorator_1.Watch('activeRoute'),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [String]),
-            __metadata("design:returntype", void 0)
-          ], glRouter.prototype, "setPath", null);
-          __decorate([
-            vue_property_decorator_1.Watch('$route'),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [Object]),
-            __metadata("design:returntype", Promise)
-          ], glRouter.prototype, "change", null);
-          glRouter = __decorate([
-            vue_property_decorator_1.Component({ components: { glRoute: gl_route_vue_1.default, glDstack: gl_dstack_1.default } }),
-            utils_1.UsingRoutes
-          ], glRouter);
-          return glRouter;
-        }(roles_1.glCustomContainer));
-        exports.default = glRouter;
+                var glRouter = /** @class */ (function (_super) {
+                    __extends(glRouter, _super);
+                    function glRouter() {
+                        var _this = _super !== null && _super.apply(this, arguments) || this;
+                        _this.activeRoute = null;
+                        return _this;
+                    }
+                    Object.defineProperty(glRouter.prototype, "_glRouter", {
+                        get: function () { return this; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    Object.defineProperty(glRouter.prototype, "definedVueComponent", {
+                        get: function () {
+                            return this.$parent.definedVueComponent;
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    glRouter.prototype.mounted = function () {
+                        return __awaiter(this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0:
+                                        //With immediate: true, the watch is called before $refs are initialised
+                                        return [4 /*yield*/, this.layout.glo];
+                                    case 1:
+                                        //With immediate: true, the watch is called before $refs are initialised
+                                        _a.sent();
+                                        this.change(this.$route);
+                                        return [2 /*return*/];
+                                }
+                            });
+                        });
+                    };
+                    glRouter.prototype.isEmpty = function (route) {
+                        return route.path === this.emptyRoute;
+                    };
+                    glRouter.prototype.setPath = function (path) {
+                        if (path && path != this.$route.fullPath)
+                            this.$router.replace(path);
+                    };
+                    glRouter.prototype.change = function (route) {
+                        return __awaiter(this, void 0, void 0, function () {
+                            var location, already;
+                            return __generator(this, function (_a) {
+                                if (route) {
+                                    location = { path: route.fullPath };
+                                    if (!route.matched.length) {
+                                        if (route.path === '/')
+                                            location = { path: this.emptyRoute };
+                                        else
+                                            return [2 /*return*/];
+                                    }
+                                    already = this.routes.find(opened(location));
+                                    if (!already)
+                                        this.routes.push(location);
+                                    this.activeRoute = location.path;
+                                }
+                                return [2 /*return*/];
+                            });
+                        });
+                    };
+                    glRouter.prototype.destroyedRoute = function (route) {
+                        if (route.closable) {
+                            var ndx = this.routes.findIndex(opened(route.location));
+                            if (~ndx)
+                                this.routes.splice(ndx, 1);
+                            else
+                                console.assert(false, 'Closed route is in the array');
+                        }
+                    };
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: false }),
+                        __metadata("design:type", Boolean)
+                    ], glRouter.prototype, "closable", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({
+                            default: utils_1.defaultTitler,
+                            type: Function
+                        }),
+                        vue_property_decorator_1.Provide(),
+                        __metadata("design:type", Function)
+                    ], glRouter.prototype, "titler", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Provide(),
+                        __metadata("design:type", Object),
+                        __metadata("design:paramtypes", [])
+                    ], glRouter.prototype, "_glRouter", null);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: '/' }),
+                        __metadata("design:type", String)
+                    ], glRouter.prototype, "emptyRoute", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: function () { return []; } }),
+                        __metadata("design:type", Array)
+                    ], glRouter.prototype, "routes", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Watch('activeRoute'),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", [String]),
+                        __metadata("design:returntype", void 0)
+                    ], glRouter.prototype, "setPath", null);
+                    __decorate([
+                        vue_property_decorator_1.Watch('$route'),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", [Object]),
+                        __metadata("design:returntype", Promise)
+                    ], glRouter.prototype, "change", null);
+                    glRouter = __decorate([
+                        vue_property_decorator_1.Component({ components: { glRoute: gl_route_vue_1.default, glDstack: gl_dstack_1.default } }),
+                        utils_1.UsingRoutes
+                    ], glRouter);
+                    return glRouter;
+                }(roles_1.glCustomContainer));
+                exports.default = glRouter;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./gl-component.vue?vue&type=template&id=324e7223&":
@@ -78736,22 +78757,22 @@ var define;
 /*! exports provided: render, staticRenderFns */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function () { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function () { return staticRenderFns; });
-        var render = function () {
-          var _vm = this;
-          var _h = _vm.$createElement;
-          var _c = _vm._self._c || _h;
-          return _c("div", { staticClass: "glComponent" }, [_vm._t("default")], 2);
-        };
-        var staticRenderFns = [];
-        render._withStripped = true;
+                var render = function () {
+                    var _vm = this;
+                    var _h = _vm.$createElement;
+                    var _c = _vm._self._c || _h;
+                    return _c("div", { staticClass: "glComponent" }, [_vm._t("default")], 2);
+                };
+                var staticRenderFns = [];
+                render._withStripped = true;
 
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./gl-group.vue?vue&type=template&id=4a7e71a5&":
@@ -78761,22 +78782,22 @@ var define;
 /*! exports provided: render, staticRenderFns */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function () { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function () { return staticRenderFns; });
-        var render = function () {
-          var _vm = this;
-          var _h = _vm.$createElement;
-          var _c = _vm._self._c || _h;
-          return _c("div", { staticStyle: { display: "none" } }, [_vm._t("default")], 2);
-        };
-        var staticRenderFns = [];
-        render._withStripped = true;
+                var render = function () {
+                    var _vm = this;
+                    var _h = _vm.$createElement;
+                    var _c = _vm._self._c || _h;
+                    return _c("div", { staticStyle: { display: "none" } }, [_vm._t("default")], 2);
+                };
+                var staticRenderFns = [];
+                render._withStripped = true;
 
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./golden.vue?vue&type=template&id=30c4e8d2&":
@@ -78786,37 +78807,37 @@ var define;
 /*! exports provided: render, staticRenderFns */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function () { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function () { return staticRenderFns; });
-        var render = function () {
-          var _vm = this;
-          var _h = _vm.$createElement;
-          var _c = _vm._self._c || _h;
-          return _c(
-            "div",
-            {
-              directives: [
-                {
-                  name: "resize",
-                  rawName: "v-resize",
-                  value: _vm.onResize,
-                  expression: "onResize"
-                }
-              ],
-              ref: "layoutRoot"
-            },
-            [!_vm.isSubWindow ? _vm._t("default") : _vm._e()],
-            2
-          );
-        };
-        var staticRenderFns = [];
-        render._withStripped = true;
+                var render = function () {
+                    var _vm = this;
+                    var _h = _vm.$createElement;
+                    var _c = _vm._self._c || _h;
+                    return _c(
+                        "div",
+                        {
+                            directives: [
+                                {
+                                    name: "resize",
+                                    rawName: "v-resize",
+                                    value: _vm.onResize,
+                                    expression: "onResize"
+                                }
+                            ],
+                            ref: "layoutRoot"
+                        },
+                        [!_vm.isSubWindow ? _vm._t("default") : _vm._e()],
+                        2
+                    );
+                };
+                var staticRenderFns = [];
+                render._withStripped = true;
 
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./router/gl-container-route.vue?vue&type=template&id=14074b06&":
@@ -78826,34 +78847,34 @@ var define;
 /*! exports provided: render, staticRenderFns */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function () { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function () { return staticRenderFns; });
-        var render = function () {
-          var _vm = this;
-          var _h = _vm.$createElement;
-          var _c = _vm._self._c || _h;
-          return _c(
-            "gl-col",
-            {
-              attrs: {
-                "tab-id": _vm.tabId,
-                title: _vm.title,
-                closable: false,
-                "color-group": true
-              }
-            },
-            [_c({ extends: _vm.component }, { tag: "component" })],
-            1
-          );
-        };
-        var staticRenderFns = [];
-        render._withStripped = true;
+                var render = function () {
+                    var _vm = this;
+                    var _h = _vm.$createElement;
+                    var _c = _vm._self._c || _h;
+                    return _c(
+                        "gl-col",
+                        {
+                            attrs: {
+                                "tab-id": _vm.tabId,
+                                title: _vm.title,
+                                closable: false,
+                                "color-group": true
+                            }
+                        },
+                        [_c({ extends: _vm.component }, { tag: "component" })],
+                        1
+                    );
+                };
+                var staticRenderFns = [];
+                render._withStripped = true;
 
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./router/gl-route.vue?vue&type=template&id=768cfac9&":
@@ -78863,52 +78884,52 @@ var define;
 /*! exports provided: render, staticRenderFns */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function () { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function () { return staticRenderFns; });
-        var render = function () {
-          var _vm = this;
-          var _h = _vm.$createElement;
-          var _c = _vm._self._c || _h;
-          return _vm.type === "component"
-            ? _c(
-              "gl-component-route",
-              {
-                attrs: {
-                  path: _vm.path,
-                  name: _vm.name,
-                  component: _vm.component,
-                  closable: _vm.closable,
-                  "reorder-enabled": _vm.reorderEnabled,
-                  "tab-id": _vm.fullPath
-                }
-              },
-              [_vm._t("default")],
-              2
-            )
-            : _vm.type === "container"
-              ? _c("gl-container-route", {
-                attrs: {
-                  component: _vm.component,
-                  closable: _vm.closable,
-                  "reorder-enabled": _vm.reorderEnabled,
-                  "tab-id": _vm.fullPath,
-                  title: _vm.compTitle
-                }
-              })
-              : _c(
-                "gl-component",
-                { attrs: { title: _vm.compTitle, "tab-id": _vm.fullPath } },
-                [_vm._v("\n\t" + _vm._s(_vm.loading) + "...\n")]
-              );
-        };
-        var staticRenderFns = [];
-        render._withStripped = true;
+                var render = function () {
+                    var _vm = this;
+                    var _h = _vm.$createElement;
+                    var _c = _vm._self._c || _h;
+                    return _vm.type === "component"
+                        ? _c(
+                            "gl-component-route",
+                            {
+                                attrs: {
+                                    path: _vm.path,
+                                    name: _vm.name,
+                                    component: _vm.component,
+                                    closable: _vm.closable,
+                                    "reorder-enabled": _vm.reorderEnabled,
+                                    "tab-id": _vm.fullPath
+                                }
+                            },
+                            [_vm._t("default")],
+                            2
+                        )
+                        : _vm.type === "container"
+                            ? _c("gl-container-route", {
+                                attrs: {
+                                    component: _vm.component,
+                                    closable: _vm.closable,
+                                    "reorder-enabled": _vm.reorderEnabled,
+                                    "tab-id": _vm.fullPath,
+                                    title: _vm.compTitle
+                                }
+                            })
+                            : _c(
+                                "gl-component",
+                                { attrs: { title: _vm.compTitle, "tab-id": _vm.fullPath } },
+                                [_vm._v("\n\t" + _vm._s(_vm.loading) + "...\n")]
+                            );
+                };
+                var staticRenderFns = [];
+                render._withStripped = true;
 
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./router/gl-router.vue?vue&type=template&id=5eafe7f9&":
@@ -78918,52 +78939,52 @@ var define;
 /*! exports provided: render, staticRenderFns */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function () { return render; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function () { return staticRenderFns; });
-        var render = function () {
-          var _vm = this;
-          var _h = _vm.$createElement;
-          var _c = _vm._self._c || _h;
-          return _c(
-            "gl-dstack",
-            {
-              attrs: { closable: _vm.closable },
-              model: {
-                value: _vm.activeRoute,
-                callback: function ($$v) {
-                  _vm.activeRoute = $$v;
-                },
-                expression: "activeRoute"
-              }
-            },
-            [
-              _vm._t("default"),
-              _vm._v(" "),
-              _vm._l(_vm.routes, function (route) {
-                return _c("gl-route", {
-                  key: route.path,
-                  attrs: {
-                    path: route.path,
-                    name: route.name,
-                    "tab-id": route.path,
-                    closable: !_vm.isEmpty(route),
-                    "reorder-enabled": !_vm.isEmpty(route)
-                  },
-                  on: { destroy: _vm.destroyedRoute }
-                });
-              })
-            ],
-            2
-          );
-        };
-        var staticRenderFns = [];
-        render._withStripped = true;
+                var render = function () {
+                    var _vm = this;
+                    var _h = _vm.$createElement;
+                    var _c = _vm._self._c || _h;
+                    return _c(
+                        "gl-dstack",
+                        {
+                            attrs: { closable: _vm.closable },
+                            model: {
+                                value: _vm.activeRoute,
+                                callback: function ($$v) {
+                                    _vm.activeRoute = $$v;
+                                },
+                                expression: "activeRoute"
+                            }
+                        },
+                        [
+                            _vm._t("default"),
+                            _vm._v(" "),
+                            _vm._l(_vm.routes, function (route) {
+                                return _c("gl-route", {
+                                    key: route.path,
+                                    attrs: {
+                                        path: route.path,
+                                        name: route.name,
+                                        "tab-id": route.path,
+                                        closable: !_vm.isEmpty(route),
+                                        "reorder-enabled": !_vm.isEmpty(route)
+                                    },
+                                    on: { destroy: _vm.destroyedRoute }
+                                });
+                            })
+                        ],
+                        2
+                    );
+                };
+                var staticRenderFns = [];
+                render._withStripped = true;
 
 
 
-        /***/
+                /***/
 }),
 
 /***/ "../node_modules/vue-loader/lib/runtime/componentNormalizer.js":
@@ -78973,110 +78994,110 @@ var define;
 /*! exports provided: default */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function () { return normalizeComponent; });
-        /* globals __VUE_SSR_CONTEXT__ */
+                /* globals __VUE_SSR_CONTEXT__ */
 
-        // IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
-        // This module is a runtime utility for cleaner component module output and will
-        // be included in the final webpack user bundle.
+                // IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+                // This module is a runtime utility for cleaner component module output and will
+                // be included in the final webpack user bundle.
 
-        function normalizeComponent(
-          scriptExports,
-          render,
-          staticRenderFns,
-          functionalTemplate,
-          injectStyles,
-          scopeId,
-          moduleIdentifier, /* server only */
-          shadowMode /* vue-cli only */
-        ) {
-          // Vue.extend constructor export interop
-          var options = typeof scriptExports === 'function'
-            ? scriptExports.options
-            : scriptExports;
+                function normalizeComponent(
+                    scriptExports,
+                    render,
+                    staticRenderFns,
+                    functionalTemplate,
+                    injectStyles,
+                    scopeId,
+                    moduleIdentifier, /* server only */
+                    shadowMode /* vue-cli only */
+                ) {
+                    // Vue.extend constructor export interop
+                    var options = typeof scriptExports === 'function'
+                        ? scriptExports.options
+                        : scriptExports;
 
-          // render functions
-          if (render) {
-            options.render = render;
-            options.staticRenderFns = staticRenderFns;
-            options._compiled = true;
-          }
+                    // render functions
+                    if (render) {
+                        options.render = render;
+                        options.staticRenderFns = staticRenderFns;
+                        options._compiled = true;
+                    }
 
-          // functional template
-          if (functionalTemplate) {
-            options.functional = true;
-          }
+                    // functional template
+                    if (functionalTemplate) {
+                        options.functional = true;
+                    }
 
-          // scopedId
-          if (scopeId) {
-            options._scopeId = 'data-v-' + scopeId;
-          }
+                    // scopedId
+                    if (scopeId) {
+                        options._scopeId = 'data-v-' + scopeId;
+                    }
 
-          var hook;
-          if (moduleIdentifier) { // server build
-            hook = function (context) {
-              // 2.3 injection
-              context =
-                context || // cached call
-                (this.$vnode && this.$vnode.ssrContext) || // stateful
-                (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
-              // 2.2 with runInNewContext: true
-              if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
-                context = __VUE_SSR_CONTEXT__;
-              }
-              // inject component styles
-              if (injectStyles) {
-                injectStyles.call(this, context);
-              }
-              // register component module identifier for async chunk inferrence
-              if (context && context._registeredComponents) {
-                context._registeredComponents.add(moduleIdentifier);
-              }
-            };
-            // used by ssr in case component is cached and beforeCreate
-            // never gets called
-            options._ssrRegister = hook;
-          } else if (injectStyles) {
-            hook = shadowMode
-              ? function () {
-                injectStyles.call(
-                  this,
-                  (options.functional ? this.parent : this).$root.$options.shadowRoot
-                );
-              }
-              : injectStyles;
-          }
+                    var hook;
+                    if (moduleIdentifier) { // server build
+                        hook = function (context) {
+                            // 2.3 injection
+                            context =
+                                context || // cached call
+                                (this.$vnode && this.$vnode.ssrContext) || // stateful
+                                (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext); // functional
+                            // 2.2 with runInNewContext: true
+                            if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+                                context = __VUE_SSR_CONTEXT__;
+                            }
+                            // inject component styles
+                            if (injectStyles) {
+                                injectStyles.call(this, context);
+                            }
+                            // register component module identifier for async chunk inferrence
+                            if (context && context._registeredComponents) {
+                                context._registeredComponents.add(moduleIdentifier);
+                            }
+                        };
+                        // used by ssr in case component is cached and beforeCreate
+                        // never gets called
+                        options._ssrRegister = hook;
+                    } else if (injectStyles) {
+                        hook = shadowMode
+                            ? function () {
+                                injectStyles.call(
+                                    this,
+                                    (options.functional ? this.parent : this).$root.$options.shadowRoot
+                                );
+                            }
+                            : injectStyles;
+                    }
 
-          if (hook) {
-            if (options.functional) {
-              // for template-only hot-reload because in that case the render fn doesn't
-              // go through the normalizer
-              options._injectStyles = hook;
-              // register for functional component in vue file
-              var originalRender = options.render;
-              options.render = function renderWithStyleInjection(h, context) {
-                hook.call(context);
-                return originalRender(h, context);
-              };
-            } else {
-              // inject component registration as beforeCreate hook
-              var existing = options.beforeCreate;
-              options.beforeCreate = existing
-                ? [].concat(existing, hook)
-                : [hook];
-            }
-          }
+                    if (hook) {
+                        if (options.functional) {
+                            // for template-only hot-reload because in that case the render fn doesn't
+                            // go through the normalizer
+                            options._injectStyles = hook;
+                            // register for functional component in vue file
+                            var originalRender = options.render;
+                            options.render = function renderWithStyleInjection(h, context) {
+                                hook.call(context);
+                                return originalRender(h, context);
+                            };
+                        } else {
+                            // inject component registration as beforeCreate hook
+                            var existing = options.beforeCreate;
+                            options.beforeCreate = existing
+                                ? [].concat(existing, hook)
+                                : [hook];
+                        }
+                    }
 
-          return {
-            exports: scriptExports,
-            options: options
-          };
-        }
+                    return {
+                        exports: scriptExports,
+                        options: options
+                    };
+                }
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./colors.ts":
@@ -79086,37 +79107,37 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        Object.defineProperty(exports, "__esModule", { value: true });
-        exports.freeColor = exports.allocateColor = void 0;
-        var palette = [
-          '#ffe0b7', '#fca570', '#fff089', '#f8f644',
-          '#d5dc1d', '#c4f129', '#d0ffea', '#97edca',
-          '#f1f2ff', '#c9d4fd', '#f6d896', '#fcf7be',
-          '#ecebe7', '#e3cddf', '#dceaee', '#f8e398'
-        ];
-        var allocations = new Array(palette.length).fill(false);
-        var fallBack = '#fff';
-        function allocateColor() {
-          var rv = allocations.findIndex(function (a) { return !a; });
-          if (!~rv)
-            return fallBack;
-          allocations[rv] = true;
-          return palette[rv];
-        }
-        exports.allocateColor = allocateColor;
-        function freeColor(c) {
-          if (c === fallBack)
-            return;
-          var ndx = palette.indexOf(c);
-          console.assert(~ndx, 'Specified color exists in palette');
-          allocations[ndx] = false;
-        }
-        exports.freeColor = freeColor;
+                Object.defineProperty(exports, "__esModule", { value: true });
+                exports.freeColor = exports.allocateColor = void 0;
+                var palette = [
+                    '#ffe0b7', '#fca570', '#fff089', '#f8f644',
+                    '#d5dc1d', '#c4f129', '#d0ffea', '#97edca',
+                    '#f1f2ff', '#c9d4fd', '#f6d896', '#fcf7be',
+                    '#ecebe7', '#e3cddf', '#dceaee', '#f8e398'
+                ];
+                var allocations = new Array(palette.length).fill(false);
+                var fallBack = '#fff';
+                function allocateColor() {
+                    var rv = allocations.findIndex(function (a) { return !a; });
+                    if (!~rv)
+                        return fallBack;
+                    allocations[rv] = true;
+                    return palette[rv];
+                }
+                exports.allocateColor = allocateColor;
+                function freeColor(c) {
+                    if (c === fallBack)
+                        return;
+                    var ndx = palette.indexOf(c);
+                    console.assert(~ndx, 'Specified color exists in palette');
+                    allocations[ndx] = false;
+                }
+                exports.freeColor = freeColor;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./gl-component.vue":
@@ -79126,8 +79147,8 @@ var define;
 /*! no static exports found */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _gl_component_vue_vue_type_template_id_324e7223___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gl-component.vue?vue&type=template&id=324e7223& */ "./gl-component.vue?vue&type=template&id=324e7223&");
 /* harmony import */ var _gl_component_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gl-component.vue?vue&type=script&lang=ts& */ "./gl-component.vue?vue&type=script&lang=ts&");
 /* harmony reexport (unknown) */ for (var __WEBPACK_IMPORT_KEY__ in _gl_component_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if (["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function (key) { __webpack_require__.d(__webpack_exports__, key, function () { return _gl_component_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }); }(__WEBPACK_IMPORT_KEY__));
@@ -79139,25 +79160,25 @@ var define;
 
 
 
-        /* normalize component */
+                /* normalize component */
 
-        var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-          _gl_component_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
-          _gl_component_vue_vue_type_template_id_324e7223___WEBPACK_IMPORTED_MODULE_0__["render"],
-          _gl_component_vue_vue_type_template_id_324e7223___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-          false,
-          null,
-          null,
-          null
+                var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+                    _gl_component_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+                    _gl_component_vue_vue_type_template_id_324e7223___WEBPACK_IMPORTED_MODULE_0__["render"],
+                    _gl_component_vue_vue_type_template_id_324e7223___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+                    false,
+                    null,
+                    null,
+                    null
 
-        );
+                );
 
-        /* hot reload */
-        if (false) { var api; }
-        component.options.__file = "gl-component.vue";
+                /* hot reload */
+                if (false) { var api; }
+                component.options.__file = "gl-component.vue";
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
-        /***/
+                /***/
 }),
 
 /***/ "./gl-component.vue?vue&type=script&lang=ts&":
@@ -79167,14 +79188,14 @@ var define;
 /*! no static exports found */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_component_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/ts-loader??ref--0!../node_modules/vue-loader/lib??vue-loader-options!../node_modules/source-map-loader/dist/cjs.js!./gl-component.vue?vue&type=script&lang=ts& */ "../node_modules/ts-loader/index.js?!../node_modules/vue-loader/lib/index.js?!../node_modules/source-map-loader/dist/cjs.js!./gl-component.vue?vue&type=script&lang=ts&");
 /* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_component_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_component_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for (var __WEBPACK_IMPORT_KEY__ in _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_component_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__) if (["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function (key) { __webpack_require__.d(__webpack_exports__, key, function () { return _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_component_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__[key]; }); }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_component_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default.a);
 
-        /***/
+                /***/
 }),
 
 /***/ "./gl-component.vue?vue&type=style&index=0&lang=css&":
@@ -79184,12 +79205,12 @@ var define;
 /*! no exports provided */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_component_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/style-loader/dist/cjs.js!../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib??vue-loader-options!./gl-component.vue?vue&type=style&index=0&lang=css& */ "../node_modules/style-loader/dist/cjs.js!../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib/index.js?!./gl-component.vue?vue&type=style&index=0&lang=css&");
-        /* empty/unused harmony star reexport */
+                /* empty/unused harmony star reexport */
 
-        /***/
+                /***/
 }),
 
 /***/ "./gl-component.vue?vue&type=template&id=324e7223&":
@@ -79199,8 +79220,8 @@ var define;
 /*! exports provided: render, staticRenderFns */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_component_vue_vue_type_template_id_324e7223___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../node_modules/vue-loader/lib??vue-loader-options!./gl-component.vue?vue&type=template&id=324e7223& */ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./gl-component.vue?vue&type=template&id=324e7223&");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function () { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_component_vue_vue_type_template_id_324e7223___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
@@ -79208,7 +79229,7 @@ var define;
 
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./gl-dstack.ts":
@@ -79218,245 +79239,245 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        var __metadata = (this && this.__metadata) || function (k, v) {
-          if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-        };
-        var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-          function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-          return new (P || (P = Promise))(function (resolve, reject) {
-            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-            step((generator = generator.apply(thisArg, _arguments || [])).next());
-          });
-        };
-        var __generator = (this && this.__generator) || function (thisArg, body) {
-          var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-          return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
-          function verb(n) { return function (v) { return step([n, v]); }; }
-          function step(op) {
-            if (f) throw new TypeError("Generator is already executing.");
-            while (_) try {
-              if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-              if (y = 0, t) op = [op[0] & 2, t.value];
-              switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                  if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                  if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                  if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                  if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                  if (t[2]) _.ops.pop();
-                  _.trys.pop(); continue;
-              }
-              op = body.call(thisArg, _);
-            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-          }
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var gl_groups_1 = __webpack_require__(/*! ./gl-groups */ "./gl-groups.ts");
-        var vue_1 = __webpack_require__(/*! vue */ "vue");
-        var $ = __webpack_require__(/*! jquery */ "jquery");
-        var glDstack = /** @class */ (function (_super) {
-          __extends(glDstack, _super);
-          function glDstack() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.cachedStack = null;
-            return _this;
-          }
-          // eslint-disable-next-line no-unused-vars
-          glDstack.prototype.tabChange = function (tabId) { };
-          glDstack.prototype.progTabChange = function (tabId) {
-            if ('undefined' !== typeof tabId && null !== tabId) {
-              for (var _i = 0, _a = this.$children; _i < _a.length; _i++) {
-                var child = _a[_i];
-                if (child.givenTabId === tabId) {
-                  child.focus();
-                  break;
-                }
-              }
-            }
-          };
-          Object.defineProperty(glDstack.prototype, "glChildrenTarget", {
-            get: function () { return this.stack; },
-            enumerable: false,
-            configurable: true
-          });
-          glDstack.prototype.getChildConfig = function () {
-            var config = gl_groups_1.glRow.extendOptions.methods.getChildConfig.apply(this); //super is a @Component
-            this.content = config.content.filter(function (x) { return !x.isClosable && !x.reorderEnabled; });
-            config.content = [{
-              type: 'stack',
-              content: config.content.slice(0)
-            }];
-            return config;
-          };
-          glDstack.prototype.initialState = function () {
-            this.initStack(this.stack);
-          };
-          Object.defineProperty(glDstack.prototype, "activeContentItemChanged", {
-            get: function () {
-              var _this = this;
-              return (function () {
-                var vueObject = _this.stack.getActiveContentItem().vueObject;
-                if (vueObject)
-                  _this.tabChange(vueObject.givenTabId);
-              }).bind(this);
-            },
-            enumerable: false,
-            configurable: true
-          });
-          glDstack.prototype.initStack = function (stack) {
-            var _this = this;
-            stack.on('activeContentItemChanged', this.activeContentItemChanged);
-            stack.on('beforePopOut', function (stack) {
-              stack.contentItems
-                .filter(function (x) { return !x.config.isClosable && !x.config.reorderEnabled; })
-                .forEach(function (comp, index) {
-                  stack.removeChild(comp);
-                  if (index < stack.config.activeItemIndex)
-                    --stack.config.activeItemIndex;
-                });
-            });
-            stack.on('poppedOut', function (bw) {
-              return bw.on('beforePopIn', function () {
-                // TODO: store the d-stack nodePath in the window config to pop-in in the right d-stack even after page reload
-                var bwGl = bw.getGlInstance(), childConfig = $.extend(true, {}, bwGl.toConfig()).content[0], stack = _this.stack;
-                for (var _i = 0, _a = childConfig.content; _i < _a.length; _i++) {
-                  var item = _a[_i];
-                  stack.addChild(item);
-                }
-                bwGl.root.contentItems = [];
-              });
-            });
-            stack.on('itemCreated', function (event) {
-              _this.addAnchor(event.origin);
-            });
-          };
-          glDstack.prototype.addAnchor = function (item) {
-            if (item.parent === this.stack && !item.config.isClosable && !item.config.reorderEnabled)
-              setTimeout(function () {
-                var tab = item.tab;
-                if (tab)
-                  tab.element.append('<b class="dstack_anchor" />');
-              });
-          };
-          Object.defineProperty(glDstack.prototype, "stack", {
-            get: function () {
-              var _this = this;
-              var ci = this.glObject, rv;
-              if (!ci)
-                return null;
-              if (this.cachedStack && this.cachedStack.vueObject.glObject)
-                return this.cachedStack;
-              rv = ci.contentItems.find(function (x) { return x.isStack; });
-              if (!rv) {
-                ci.addChild({
-                  type: 'stack',
-                  content: this.content.slice(0)
-                }, 0);
-                rv = ci.contentItems[0];
-                for (var _i = 0, _a = rv.contentItems; _i < _a.length; _i++) {
-                  var item = _a[_i];
-                  this.addAnchor(item);
-                }
-                this.initStack(rv);
-                this.activeContentItemChanged();
-              }
-              rv.on('destroyed', function () {
-                return vue_1.default.nextTick(function () {
-                  _this.cachedStack = null;
-                  _this.stack;
-                });
-              });
-              return this.cachedStack = rv;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          glDstack.prototype.observe = function (obj) {
-            //stacks created by the users are created without an activeItemIndex
-            //set `activeItemIndex` observed
-            if (obj) {
-              var config = obj.config, aii = config.activeItemIndex;
-              delete config.activeItemIndex;
-              this.$set(config, 'activeItemIndex', aii);
-            }
-          };
-          glDstack.prototype.created = function () {
-            return __awaiter(this, void 0, void 0, function () {
-              return __generator(this, function (_a) {
-                switch (_a.label) {
-                  case 0: return [4 /*yield*/, this.layout.glo];
-                  case 1:
-                    _a.sent();
-                    this.stack;
-                    return [2 /*return*/];
-                }
-              });
-            });
-          };
-          __decorate([
-            vue_property_decorator_1.Prop({ default: false }),
-            __metadata("design:type", Boolean)
-          ], glDstack.prototype, "closable", void 0);
-          __decorate([
-            vue_property_decorator_1.Model('tab-change'),
-            __metadata("design:type", String)
-          ], glDstack.prototype, "activeTab", void 0);
-          __decorate([
-            vue_property_decorator_1.Emit(),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [String]),
-            __metadata("design:returntype", void 0)
-          ], glDstack.prototype, "tabChange", null);
-          __decorate([
-            vue_property_decorator_1.Watch('activeTab', { immediate: true }),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [Object]),
-            __metadata("design:returntype", void 0)
-          ], glDstack.prototype, "progTabChange", null);
-          __decorate([
-            vue_property_decorator_1.Watch('stack.vueObject.glObject'),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [Object]),
-            __metadata("design:returntype", void 0)
-          ], glDstack.prototype, "observe", null);
-          glDstack = __decorate([
-            vue_property_decorator_1.Component
-          ], glDstack);
-          return glDstack;
-        }(gl_groups_1.glRow));
-        exports.default = glDstack;
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                var __metadata = (this && this.__metadata) || function (k, v) {
+                    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+                };
+                var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+                    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+                    return new (P || (P = Promise))(function (resolve, reject) {
+                        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+                        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+                        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+                        step((generator = generator.apply(thisArg, _arguments || [])).next());
+                    });
+                };
+                var __generator = (this && this.__generator) || function (thisArg, body) {
+                    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+                    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
+                    function verb(n) { return function (v) { return step([n, v]); }; }
+                    function step(op) {
+                        if (f) throw new TypeError("Generator is already executing.");
+                        while (_) try {
+                            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                            if (y = 0, t) op = [op[0] & 2, t.value];
+                            switch (op[0]) {
+                                case 0: case 1: t = op; break;
+                                case 4: _.label++; return { value: op[1], done: false };
+                                case 5: _.label++; y = op[1]; op = [0]; continue;
+                                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                                default:
+                                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                                    if (t[2]) _.ops.pop();
+                                    _.trys.pop(); continue;
+                            }
+                            op = body.call(thisArg, _);
+                        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+                        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+                    }
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var gl_groups_1 = __webpack_require__(/*! ./gl-groups */ "./gl-groups.ts");
+                var vue_1 = __webpack_require__(/*! vue */ "vue");
+                var $ = __webpack_require__(/*! jquery */ "jquery");
+                var glDstack = /** @class */ (function (_super) {
+                    __extends(glDstack, _super);
+                    function glDstack() {
+                        var _this = _super !== null && _super.apply(this, arguments) || this;
+                        _this.cachedStack = null;
+                        return _this;
+                    }
+                    // eslint-disable-next-line no-unused-vars
+                    glDstack.prototype.tabChange = function (tabId) { };
+                    glDstack.prototype.progTabChange = function (tabId) {
+                        if ('undefined' !== typeof tabId && null !== tabId) {
+                            for (var _i = 0, _a = this.$children; _i < _a.length; _i++) {
+                                var child = _a[_i];
+                                if (child.givenTabId === tabId) {
+                                    child.focus();
+                                    break;
+                                }
+                            }
+                        }
+                    };
+                    Object.defineProperty(glDstack.prototype, "glChildrenTarget", {
+                        get: function () { return this.stack; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    glDstack.prototype.getChildConfig = function () {
+                        var config = gl_groups_1.glRow.extendOptions.methods.getChildConfig.apply(this); //super is a @Component
+                        this.content = config.content.filter(function (x) { return !x.isClosable && !x.reorderEnabled; });
+                        config.content = [{
+                            type: 'stack',
+                            content: config.content.slice(0)
+                        }];
+                        return config;
+                    };
+                    glDstack.prototype.initialState = function () {
+                        this.initStack(this.stack);
+                    };
+                    Object.defineProperty(glDstack.prototype, "activeContentItemChanged", {
+                        get: function () {
+                            var _this = this;
+                            return (function () {
+                                var vueObject = _this.stack.getActiveContentItem().vueObject;
+                                if (vueObject)
+                                    _this.tabChange(vueObject.givenTabId);
+                            }).bind(this);
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    glDstack.prototype.initStack = function (stack) {
+                        var _this = this;
+                        stack.on('activeContentItemChanged', this.activeContentItemChanged);
+                        stack.on('beforePopOut', function (stack) {
+                            stack.contentItems
+                                .filter(function (x) { return !x.config.isClosable && !x.config.reorderEnabled; })
+                                .forEach(function (comp, index) {
+                                    stack.removeChild(comp);
+                                    if (index < stack.config.activeItemIndex)
+                                        --stack.config.activeItemIndex;
+                                });
+                        });
+                        stack.on('poppedOut', function (bw) {
+                            return bw.on('beforePopIn', function () {
+                                // TODO: store the d-stack nodePath in the window config to pop-in in the right d-stack even after page reload
+                                var bwGl = bw.getGlInstance(), childConfig = $.extend(true, {}, bwGl.toConfig()).content[0], stack = _this.stack;
+                                for (var _i = 0, _a = childConfig.content; _i < _a.length; _i++) {
+                                    var item = _a[_i];
+                                    stack.addChild(item);
+                                }
+                                bwGl.root.contentItems = [];
+                            });
+                        });
+                        stack.on('itemCreated', function (event) {
+                            _this.addAnchor(event.origin);
+                        });
+                    };
+                    glDstack.prototype.addAnchor = function (item) {
+                        if (item.parent === this.stack && !item.config.isClosable && !item.config.reorderEnabled)
+                            setTimeout(function () {
+                                var tab = item.tab;
+                                if (tab)
+                                    tab.element.append('<b class="dstack_anchor" />');
+                            });
+                    };
+                    Object.defineProperty(glDstack.prototype, "stack", {
+                        get: function () {
+                            var _this = this;
+                            var ci = this.glObject, rv;
+                            if (!ci)
+                                return null;
+                            if (this.cachedStack && this.cachedStack.vueObject.glObject)
+                                return this.cachedStack;
+                            rv = ci.contentItems.find(function (x) { return x.isStack; });
+                            if (!rv) {
+                                ci.addChild({
+                                    type: 'stack',
+                                    content: this.content.slice(0)
+                                }, 0);
+                                rv = ci.contentItems[0];
+                                for (var _i = 0, _a = rv.contentItems; _i < _a.length; _i++) {
+                                    var item = _a[_i];
+                                    this.addAnchor(item);
+                                }
+                                this.initStack(rv);
+                                this.activeContentItemChanged();
+                            }
+                            rv.on('destroyed', function () {
+                                return vue_1.default.nextTick(function () {
+                                    _this.cachedStack = null;
+                                    _this.stack;
+                                });
+                            });
+                            return this.cachedStack = rv;
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    glDstack.prototype.observe = function (obj) {
+                        //stacks created by the users are created without an activeItemIndex
+                        //set `activeItemIndex` observed
+                        if (obj) {
+                            var config = obj.config, aii = config.activeItemIndex;
+                            delete config.activeItemIndex;
+                            this.$set(config, 'activeItemIndex', aii);
+                        }
+                    };
+                    glDstack.prototype.created = function () {
+                        return __awaiter(this, void 0, void 0, function () {
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, this.layout.glo];
+                                    case 1:
+                                        _a.sent();
+                                        this.stack;
+                                        return [2 /*return*/];
+                                }
+                            });
+                        });
+                    };
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: false }),
+                        __metadata("design:type", Boolean)
+                    ], glDstack.prototype, "closable", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Model('tab-change'),
+                        __metadata("design:type", String)
+                    ], glDstack.prototype, "activeTab", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Emit(),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", [String]),
+                        __metadata("design:returntype", void 0)
+                    ], glDstack.prototype, "tabChange", null);
+                    __decorate([
+                        vue_property_decorator_1.Watch('activeTab', { immediate: true }),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", [Object]),
+                        __metadata("design:returntype", void 0)
+                    ], glDstack.prototype, "progTabChange", null);
+                    __decorate([
+                        vue_property_decorator_1.Watch('stack.vueObject.glObject'),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", [Object]),
+                        __metadata("design:returntype", void 0)
+                    ], glDstack.prototype, "observe", null);
+                    glDstack = __decorate([
+                        vue_property_decorator_1.Component
+                    ], glDstack);
+                    return glDstack;
+                }(gl_groups_1.glRow));
+                exports.default = glDstack;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./gl-group.vue":
@@ -79466,8 +79487,8 @@ var define;
 /*! no static exports found */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _gl_group_vue_vue_type_template_id_4a7e71a5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gl-group.vue?vue&type=template&id=4a7e71a5& */ "./gl-group.vue?vue&type=template&id=4a7e71a5&");
 /* harmony import */ var _gl_group_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gl-group.vue?vue&type=script&lang=ts& */ "./gl-group.vue?vue&type=script&lang=ts&");
 /* harmony reexport (unknown) */ for (var __WEBPACK_IMPORT_KEY__ in _gl_group_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if (["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function (key) { __webpack_require__.d(__webpack_exports__, key, function () { return _gl_group_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }); }(__WEBPACK_IMPORT_KEY__));
@@ -79477,25 +79498,25 @@ var define;
 
 
 
-        /* normalize component */
+                /* normalize component */
 
-        var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-          _gl_group_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
-          _gl_group_vue_vue_type_template_id_4a7e71a5___WEBPACK_IMPORTED_MODULE_0__["render"],
-          _gl_group_vue_vue_type_template_id_4a7e71a5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-          false,
-          null,
-          null,
-          null
+                var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+                    _gl_group_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+                    _gl_group_vue_vue_type_template_id_4a7e71a5___WEBPACK_IMPORTED_MODULE_0__["render"],
+                    _gl_group_vue_vue_type_template_id_4a7e71a5___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+                    false,
+                    null,
+                    null,
+                    null
 
-        );
+                );
 
-        /* hot reload */
-        if (false) { var api; }
-        component.options.__file = "gl-group.vue";
+                /* hot reload */
+                if (false) { var api; }
+                component.options.__file = "gl-group.vue";
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
-        /***/
+                /***/
 }),
 
 /***/ "./gl-group.vue?vue&type=script&lang=ts&":
@@ -79505,14 +79526,14 @@ var define;
 /*! no static exports found */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_group_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/ts-loader??ref--0!../node_modules/vue-loader/lib??vue-loader-options!../node_modules/source-map-loader/dist/cjs.js!./gl-group.vue?vue&type=script&lang=ts& */ "../node_modules/ts-loader/index.js?!../node_modules/vue-loader/lib/index.js?!../node_modules/source-map-loader/dist/cjs.js!./gl-group.vue?vue&type=script&lang=ts&");
 /* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_group_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_group_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for (var __WEBPACK_IMPORT_KEY__ in _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_group_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__) if (["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function (key) { __webpack_require__.d(__webpack_exports__, key, function () { return _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_group_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__[key]; }); }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_group_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default.a);
 
-        /***/
+                /***/
 }),
 
 /***/ "./gl-group.vue?vue&type=template&id=4a7e71a5&":
@@ -79522,8 +79543,8 @@ var define;
 /*! exports provided: render, staticRenderFns */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_group_vue_vue_type_template_id_4a7e71a5___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../node_modules/vue-loader/lib??vue-loader-options!./gl-group.vue?vue&type=template&id=4a7e71a5& */ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./gl-group.vue?vue&type=template&id=4a7e71a5&");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function () { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_group_vue_vue_type_template_id_4a7e71a5___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
@@ -79531,7 +79552,7 @@ var define;
 
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./gl-groups.ts":
@@ -79541,182 +79562,182 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __assign = (this && this.__assign) || function () {
-          __assign = Object.assign || function (t) {
-            for (var s, i = 1, n = arguments.length; i < n; i++) {
-              s = arguments[i];
-              for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-            }
-            return t;
-          };
-          return __assign.apply(this, arguments);
-        };
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        var __metadata = (this && this.__metadata) || function (k, v) {
-          if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-        };
-        var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-          function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-          return new (P || (P = Promise))(function (resolve, reject) {
-            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-            step((generator = generator.apply(thisArg, _arguments || [])).next());
-          });
-        };
-        var __generator = (this && this.__generator) || function (thisArg, body) {
-          var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-          return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
-          function verb(n) { return function (v) { return step([n, v]); }; }
-          function step(op) {
-            if (f) throw new TypeError("Generator is already executing.");
-            while (_) try {
-              if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-              if (y = 0, t) op = [op[0] & 2, t.value];
-              switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                  if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                  if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                  if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                  if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                  if (t[2]) _.ops.pop();
-                  _.trys.pop(); continue;
-              }
-              op = body.call(thisArg, _);
-            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-          }
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        exports.glStack = exports.glCol = exports.glRow = exports.glGroup = void 0;
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var gl_group_vue_1 = __webpack_require__(/*! ./gl-group.vue */ "./gl-group.vue");
-        // We have to re-define : ts is lost with Vue files
-        var glGroup = /** @class */ (function (_super) {
-          __extends(glGroup, _super);
-          function glGroup() {
-            return _super !== null && _super.apply(this, arguments) || this;
-          }
-          return glGroup;
-        }(gl_group_vue_1.default));
-        exports.glGroup = glGroup;
-        var glRow = /** @class */ (function (_super) {
-          __extends(glRow, _super);
-          function glRow() {
-            return _super !== null && _super.apply(this, arguments) || this;
-          }
-          glRow.prototype.getChildConfig = function () {
-            return __assign({ isClosable: this.closable, type: 'row' }, this.config);
-          };
-          glRow = __decorate([
-            vue_property_decorator_1.Component
-          ], glRow);
-          return glRow;
-        }(glGroup));
-        exports.glRow = glRow;
-        var glCol = /** @class */ (function (_super) {
-          __extends(glCol, _super);
-          function glCol() {
-            return _super !== null && _super.apply(this, arguments) || this;
-          }
-          glCol.prototype.getChildConfig = function () {
-            return __assign({ isClosable: this.closable, type: 'column' }, this.config);
-          };
-          glCol = __decorate([
-            vue_property_decorator_1.Component
-          ], glCol);
-          return glCol;
-        }(glGroup));
-        exports.glCol = glCol;
-        var glStack = /** @class */ (function (_super) {
-          __extends(glStack, _super);
-          function glStack() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.type = 'stack';
-            return _this;
-          }
-          glStack.prototype.tabChange = function (tabId) { };
-          glStack.prototype.progTabChange = function (tabId) {
-            for (var _i = 0, _a = this.glChildren; _i < _a.length; _i++) {
-              var child = _a[_i];
-              if (child.givenTabId === tabId)
-                this.glObject.setActiveContentItem(child.container.parent);
-            }
-          };
-          glStack.prototype.watchActiveIndex = function () {
-            return __awaiter(this, void 0, void 0, function () {
-              var _this = this;
-              return __generator(this, function (_a) {
-                switch (_a.label) {
-                  case 0: return [4 /*yield*/, this.layout.glo];
-                  case 1:
-                    _a.sent();
-                    if (this.glObject)
-                      this.glObject.on('activeContentItemChanged', function (item) {
-                        var v = _this.glObject.config.activeItemIndex;
-                        if ('number' === typeof v)
-                          _this.tabChange(item.vueObject.givenTabId);
-                      });
-                    return [2 /*return*/];
-                }
-              });
-            });
-          };
-          glStack.prototype.getChildConfig = function () {
-            var _this = this;
-            this.watchActiveIndex();
-            return __assign({ activeItemIndex: Math.max(0, this.$children.findIndex(function (c) { return c.givenTabId === _this.activeTab; })), isClosable: this.closable, type: 'stack' }, this.config);
-          };
-          __decorate([
-            vue_property_decorator_1.Model('tab-change'),
-            __metadata("design:type", String)
-          ], glStack.prototype, "activeTab", void 0);
-          __decorate([
-            vue_property_decorator_1.Emit(),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [String]),
-            __metadata("design:returntype", void 0)
-          ], glStack.prototype, "tabChange", null);
-          __decorate([
-            vue_property_decorator_1.Watch('activeTab'),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [Object]),
-            __metadata("design:returntype", void 0)
-          ], glStack.prototype, "progTabChange", null);
-          glStack = __decorate([
-            vue_property_decorator_1.Component
-          ], glStack);
-          return glStack;
-        }(glGroup));
-        exports.glStack = glStack;
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __assign = (this && this.__assign) || function () {
+                    __assign = Object.assign || function (t) {
+                        for (var s, i = 1, n = arguments.length; i < n; i++) {
+                            s = arguments[i];
+                            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                                t[p] = s[p];
+                        }
+                        return t;
+                    };
+                    return __assign.apply(this, arguments);
+                };
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                var __metadata = (this && this.__metadata) || function (k, v) {
+                    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+                };
+                var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+                    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+                    return new (P || (P = Promise))(function (resolve, reject) {
+                        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+                        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+                        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+                        step((generator = generator.apply(thisArg, _arguments || [])).next());
+                    });
+                };
+                var __generator = (this && this.__generator) || function (thisArg, body) {
+                    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+                    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
+                    function verb(n) { return function (v) { return step([n, v]); }; }
+                    function step(op) {
+                        if (f) throw new TypeError("Generator is already executing.");
+                        while (_) try {
+                            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                            if (y = 0, t) op = [op[0] & 2, t.value];
+                            switch (op[0]) {
+                                case 0: case 1: t = op; break;
+                                case 4: _.label++; return { value: op[1], done: false };
+                                case 5: _.label++; y = op[1]; op = [0]; continue;
+                                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                                default:
+                                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                                    if (t[2]) _.ops.pop();
+                                    _.trys.pop(); continue;
+                            }
+                            op = body.call(thisArg, _);
+                        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+                        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+                    }
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                exports.glStack = exports.glCol = exports.glRow = exports.glGroup = void 0;
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var gl_group_vue_1 = __webpack_require__(/*! ./gl-group.vue */ "./gl-group.vue");
+                // We have to re-define : ts is lost with Vue files
+                var glGroup = /** @class */ (function (_super) {
+                    __extends(glGroup, _super);
+                    function glGroup() {
+                        return _super !== null && _super.apply(this, arguments) || this;
+                    }
+                    return glGroup;
+                }(gl_group_vue_1.default));
+                exports.glGroup = glGroup;
+                var glRow = /** @class */ (function (_super) {
+                    __extends(glRow, _super);
+                    function glRow() {
+                        return _super !== null && _super.apply(this, arguments) || this;
+                    }
+                    glRow.prototype.getChildConfig = function () {
+                        return __assign({ isClosable: this.closable, type: 'row' }, this.config);
+                    };
+                    glRow = __decorate([
+                        vue_property_decorator_1.Component
+                    ], glRow);
+                    return glRow;
+                }(glGroup));
+                exports.glRow = glRow;
+                var glCol = /** @class */ (function (_super) {
+                    __extends(glCol, _super);
+                    function glCol() {
+                        return _super !== null && _super.apply(this, arguments) || this;
+                    }
+                    glCol.prototype.getChildConfig = function () {
+                        return __assign({ isClosable: this.closable, type: 'column' }, this.config);
+                    };
+                    glCol = __decorate([
+                        vue_property_decorator_1.Component
+                    ], glCol);
+                    return glCol;
+                }(glGroup));
+                exports.glCol = glCol;
+                var glStack = /** @class */ (function (_super) {
+                    __extends(glStack, _super);
+                    function glStack() {
+                        var _this = _super !== null && _super.apply(this, arguments) || this;
+                        _this.type = 'stack';
+                        return _this;
+                    }
+                    glStack.prototype.tabChange = function (tabId) { };
+                    glStack.prototype.progTabChange = function (tabId) {
+                        for (var _i = 0, _a = this.glChildren; _i < _a.length; _i++) {
+                            var child = _a[_i];
+                            if (child.givenTabId === tabId)
+                                this.glObject.setActiveContentItem(child.container.parent);
+                        }
+                    };
+                    glStack.prototype.watchActiveIndex = function () {
+                        return __awaiter(this, void 0, void 0, function () {
+                            var _this = this;
+                            return __generator(this, function (_a) {
+                                switch (_a.label) {
+                                    case 0: return [4 /*yield*/, this.layout.glo];
+                                    case 1:
+                                        _a.sent();
+                                        if (this.glObject)
+                                            this.glObject.on('activeContentItemChanged', function (item) {
+                                                var v = _this.glObject.config.activeItemIndex;
+                                                if ('number' === typeof v)
+                                                    _this.tabChange(item.vueObject.givenTabId);
+                                            });
+                                        return [2 /*return*/];
+                                }
+                            });
+                        });
+                    };
+                    glStack.prototype.getChildConfig = function () {
+                        var _this = this;
+                        this.watchActiveIndex();
+                        return __assign({ activeItemIndex: Math.max(0, this.$children.findIndex(function (c) { return c.givenTabId === _this.activeTab; })), isClosable: this.closable, type: 'stack' }, this.config);
+                    };
+                    __decorate([
+                        vue_property_decorator_1.Model('tab-change'),
+                        __metadata("design:type", String)
+                    ], glStack.prototype, "activeTab", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Emit(),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", [String]),
+                        __metadata("design:returntype", void 0)
+                    ], glStack.prototype, "tabChange", null);
+                    __decorate([
+                        vue_property_decorator_1.Watch('activeTab'),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", [Object]),
+                        __metadata("design:returntype", void 0)
+                    ], glStack.prototype, "progTabChange", null);
+                    glStack = __decorate([
+                        vue_property_decorator_1.Component
+                    ], glStack);
+                    return glStack;
+                }(glGroup));
+                exports.glStack = glStack;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./golden.vue":
@@ -79726,8 +79747,8 @@ var define;
 /*! no static exports found */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _golden_vue_vue_type_template_id_30c4e8d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./golden.vue?vue&type=template&id=30c4e8d2& */ "./golden.vue?vue&type=template&id=30c4e8d2&");
 /* harmony import */ var _golden_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./golden.vue?vue&type=script&lang=ts& */ "./golden.vue?vue&type=script&lang=ts&");
 /* harmony reexport (unknown) */ for (var __WEBPACK_IMPORT_KEY__ in _golden_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if (["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function (key) { __webpack_require__.d(__webpack_exports__, key, function () { return _golden_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }); }(__WEBPACK_IMPORT_KEY__));
@@ -79739,25 +79760,25 @@ var define;
 
 
 
-        /* normalize component */
+                /* normalize component */
 
-        var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-          _golden_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
-          _golden_vue_vue_type_template_id_30c4e8d2___WEBPACK_IMPORTED_MODULE_0__["render"],
-          _golden_vue_vue_type_template_id_30c4e8d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-          false,
-          null,
-          null,
-          null
+                var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+                    _golden_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+                    _golden_vue_vue_type_template_id_30c4e8d2___WEBPACK_IMPORTED_MODULE_0__["render"],
+                    _golden_vue_vue_type_template_id_30c4e8d2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+                    false,
+                    null,
+                    null,
+                    null
 
-        );
+                );
 
-        /* hot reload */
-        if (false) { var api; }
-        component.options.__file = "golden.vue";
+                /* hot reload */
+                if (false) { var api; }
+                component.options.__file = "golden.vue";
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
-        /***/
+                /***/
 }),
 
 /***/ "./golden.vue?vue&type=script&lang=ts&":
@@ -79767,14 +79788,14 @@ var define;
 /*! no static exports found */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_golden_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/ts-loader??ref--0!../node_modules/vue-loader/lib??vue-loader-options!../node_modules/source-map-loader/dist/cjs.js!./golden.vue?vue&type=script&lang=ts& */ "../node_modules/ts-loader/index.js?!../node_modules/vue-loader/lib/index.js?!../node_modules/source-map-loader/dist/cjs.js!./golden.vue?vue&type=script&lang=ts&");
 /* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_golden_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_golden_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for (var __WEBPACK_IMPORT_KEY__ in _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_golden_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__) if (["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function (key) { __webpack_require__.d(__webpack_exports__, key, function () { return _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_golden_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__[key]; }); }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_golden_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default.a);
 
-        /***/
+                /***/
 }),
 
 /***/ "./golden.vue?vue&type=style&index=0&lang=css&":
@@ -79784,12 +79805,12 @@ var define;
 /*! no exports provided */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_golden_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/style-loader/dist/cjs.js!../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib??vue-loader-options!./golden.vue?vue&type=style&index=0&lang=css& */ "../node_modules/style-loader/dist/cjs.js!../node_modules/css-loader/dist/cjs.js!../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../node_modules/vue-loader/lib/index.js?!./golden.vue?vue&type=style&index=0&lang=css&");
-        /* empty/unused harmony star reexport */
+                /* empty/unused harmony star reexport */
 
-        /***/
+                /***/
 }),
 
 /***/ "./golden.vue?vue&type=template&id=30c4e8d2&":
@@ -79799,8 +79820,8 @@ var define;
 /*! exports provided: render, staticRenderFns */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_golden_vue_vue_type_template_id_30c4e8d2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../node_modules/vue-loader/lib??vue-loader-options!./golden.vue?vue&type=template&id=30c4e8d2& */ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./golden.vue?vue&type=template&id=30c4e8d2&");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function () { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_golden_vue_vue_type_template_id_30c4e8d2___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
@@ -79808,7 +79829,7 @@ var define;
 
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./index.ts":
@@ -79818,48 +79839,48 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        Object.defineProperty(exports, "__esModule", { value: true });
-        exports.glRoute = exports.glRouter = exports.glDstack = exports.glStack = exports.glCol = exports.glRow = exports.glComponent = exports.goldenLayout = exports.isSubWindow = exports.glCustomContainer = exports.registerGlobalComponent = void 0;
-        __webpack_require__(/*! golden-layout/src/css/goldenlayout-base.css */ "golden-layout/src/css/goldenlayout-base.css");
-        var golden_vue_1 = __webpack_require__(/*! ./golden.vue */ "./golden.vue");
-        exports.goldenLayout = golden_vue_1.default;
-        var golden_vue_2 = __webpack_require__(/*! ./golden.vue */ "./golden.vue");
-        Object.defineProperty(exports, "registerGlobalComponent", { enumerable: true, get: function () { return golden_vue_2.registerGlobalComponent; } });
-        var gl_component_vue_1 = __webpack_require__(/*! ./gl-component.vue */ "./gl-component.vue");
-        exports.glComponent = gl_component_vue_1.default;
-        var gl_groups_1 = __webpack_require__(/*! ./gl-groups */ "./gl-groups.ts");
-        Object.defineProperty(exports, "glRow", { enumerable: true, get: function () { return gl_groups_1.glRow; } });
-        Object.defineProperty(exports, "glCol", { enumerable: true, get: function () { return gl_groups_1.glCol; } });
-        Object.defineProperty(exports, "glStack", { enumerable: true, get: function () { return gl_groups_1.glStack; } });
-        var gl_dstack_1 = __webpack_require__(/*! ./gl-dstack */ "./gl-dstack.ts");
-        exports.glDstack = gl_dstack_1.default;
-        var gl_router_vue_1 = __webpack_require__(/*! ./router/gl-router.vue */ "./router/gl-router.vue");
-        exports.glRouter = gl_router_vue_1.default;
-        var gl_route_vue_1 = __webpack_require__(/*! ./router/gl-route.vue */ "./router/gl-route.vue");
-        exports.glRoute = gl_route_vue_1.default;
-        var roles_1 = __webpack_require__(/*! ./roles */ "./roles/index.ts");
-        Object.defineProperty(exports, "glCustomContainer", { enumerable: true, get: function () { return roles_1.glCustomContainer; } });
-        var utils_1 = __webpack_require__(/*! ./utils */ "./utils.ts");
-        Object.defineProperty(exports, "isSubWindow", { enumerable: true, get: function () { return utils_1.isSubWindow; } });
-        var components = {
-          goldenLayout: golden_vue_1.default, glComponent: gl_component_vue_1.default,
-          glRow: gl_groups_1.glRow, glCol: gl_groups_1.glCol, glStack: gl_groups_1.glStack, glDstack: gl_dstack_1.default,
-          glRouter: gl_router_vue_1.default, glRoute: gl_route_vue_1.default
-        };
-        /**
-         * Vue plugin installation
-         */
-        exports.default = {
-          install: function (vue) {
-            for (var i in components)
-              vue.component(i, components[i]);
-          }
-        };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                exports.glRoute = exports.glRouter = exports.glDstack = exports.glStack = exports.glCol = exports.glRow = exports.glComponent = exports.goldenLayout = exports.isSubWindow = exports.glCustomContainer = exports.registerGlobalComponent = void 0;
+                __webpack_require__(/*! golden-layout/src/css/goldenlayout-base.css */ "golden-layout/src/css/goldenlayout-base.css");
+                var golden_vue_1 = __webpack_require__(/*! ./golden.vue */ "./golden.vue");
+                exports.goldenLayout = golden_vue_1.default;
+                var golden_vue_2 = __webpack_require__(/*! ./golden.vue */ "./golden.vue");
+                Object.defineProperty(exports, "registerGlobalComponent", { enumerable: true, get: function () { return golden_vue_2.registerGlobalComponent; } });
+                var gl_component_vue_1 = __webpack_require__(/*! ./gl-component.vue */ "./gl-component.vue");
+                exports.glComponent = gl_component_vue_1.default;
+                var gl_groups_1 = __webpack_require__(/*! ./gl-groups */ "./gl-groups.ts");
+                Object.defineProperty(exports, "glRow", { enumerable: true, get: function () { return gl_groups_1.glRow; } });
+                Object.defineProperty(exports, "glCol", { enumerable: true, get: function () { return gl_groups_1.glCol; } });
+                Object.defineProperty(exports, "glStack", { enumerable: true, get: function () { return gl_groups_1.glStack; } });
+                var gl_dstack_1 = __webpack_require__(/*! ./gl-dstack */ "./gl-dstack.ts");
+                exports.glDstack = gl_dstack_1.default;
+                var gl_router_vue_1 = __webpack_require__(/*! ./router/gl-router.vue */ "./router/gl-router.vue");
+                exports.glRouter = gl_router_vue_1.default;
+                var gl_route_vue_1 = __webpack_require__(/*! ./router/gl-route.vue */ "./router/gl-route.vue");
+                exports.glRoute = gl_route_vue_1.default;
+                var roles_1 = __webpack_require__(/*! ./roles */ "./roles/index.ts");
+                Object.defineProperty(exports, "glCustomContainer", { enumerable: true, get: function () { return roles_1.glCustomContainer; } });
+                var utils_1 = __webpack_require__(/*! ./utils */ "./utils.ts");
+                Object.defineProperty(exports, "isSubWindow", { enumerable: true, get: function () { return utils_1.isSubWindow; } });
+                var components = {
+                    goldenLayout: golden_vue_1.default, glComponent: gl_component_vue_1.default,
+                    glRow: gl_groups_1.glRow, glCol: gl_groups_1.glCol, glStack: gl_groups_1.glStack, glDstack: gl_dstack_1.default,
+                    glRouter: gl_router_vue_1.default, glRoute: gl_route_vue_1.default
+                };
+                /**
+                 * Vue plugin installation
+                 */
+                exports.default = {
+                    install: function (vue) {
+                        for (var i in components)
+                            vue.component(i, components[i]);
+                    }
+                };
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./roles/child.ts":
@@ -79869,271 +79890,271 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __assign = (this && this.__assign) || function () {
-          __assign = Object.assign || function (t) {
-            for (var s, i = 1, n = arguments.length; i < n; i++) {
-              s = arguments[i];
-              for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-            }
-            return t;
-          };
-          return __assign.apply(this, arguments);
-        };
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        var __metadata = (this && this.__metadata) || function (k, v) {
-          if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        exports.goldenChild = void 0;
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var utils_1 = __webpack_require__(/*! ../utils */ "./utils.ts");
-        var index_1 = __webpack_require__(/*! ./index */ "./roles/index.ts");
-        var golden_1 = __webpack_require__(/*! ../golden */ "./golden.vue");
-        var goldenChild = /** @class */ (function (_super) {
-          __extends(goldenChild, _super);
-          function goldenChild() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.container = null;
-            return _this;
-          }
-          goldenChild.prototype.reWidth = function (w) { this.container && this.container.setSize(w, false); };
-          goldenChild.prototype.reHeight = function (h) { this.container && this.container.setSize(false, h); };
-          goldenChild.prototype.getChildConfig = function () { return null; };
-          Object.defineProperty(goldenChild.prototype, "glParent", {
-            get: function () { return this.glObject.parent.vueObject; },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(goldenChild.prototype, "vueParent", {
-            /**
-              * Gets the Vue container that is not a component definition and therefore actually contains this
-              */
-            get: function () {
-              return this.$parent.parentMe;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(goldenChild.prototype, "definedVueComponent", {
-            get: function () {
-              return this.$parent.definedVueComponent;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(goldenChild.prototype, "givenTabId", {
-            get: function () { return this.givenProp('tabId'); },
-            enumerable: false,
-            configurable: true
-          });
-          goldenChild.prototype.setTitle = function (title) {
-            if (this.container)
-              this.container.setTitle(title);
-          };
-          goldenChild.prototype.givenProp = function (prop) {
-            var itr = this;
-            while (!itr[prop] && utils_1.xInstanceOf(itr.$parent, 'glCustomContainer'))
-              itr = itr.$parent;
-            return itr[prop];
-          };
-          goldenChild.prototype.rootProp = function (prop) {
-            var itr = this, rv = itr[prop];
-            while (utils_1.xInstanceOf(itr.$parent, 'glCustomContainer')) {
-              itr = itr.$parent;
-              if (prop in itr)
-                rv = itr[prop];
-            }
-            return rv;
-          };
-          Object.defineProperty(goldenChild.prototype, "tabColor", {
-            get: function () {
-              return this.belongGroupColor;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          goldenChild.prototype.hide = function () { this.container && this.container.hide(); };
-          goldenChild.prototype.show = function () { this.container && this.container.show(); };
-          goldenChild.prototype.focus = function () {
-            var brwsr = this.childMe.glObject, doc;
-            if (brwsr) {
-              // TODO: cfr layout.selectionEnabled
-              this.show();
-              for (; !brwsr.isRoot; brwsr = brwsr.parent) {
-                if (brwsr.parent.isStack)
-                  brwsr.parent.setActiveContentItem(brwsr);
-              }
-              doc = brwsr.layoutManager.container[0].ownerDocument;
-              (doc.defaultView || doc.parentWindow).focus();
-            }
-            else
-              this.shouldFocus = true;
-          };
-          goldenChild.prototype.glObjectSet = function (v) {
-            if (!v)
-              this.delete();
-            else if (this.shouldFocus) {
-              this.shouldFocus = false;
-              this.focus();
-            }
-          };
-          goldenChild.prototype.setContainer = function () {
-            if (this.glObject) {
-              var parent = this.glObject.parent;
-              this.container && (!parent.isStack ||
-                parent.contentItems[parent.config.activeItemIndex] === this.glObject) && this.container[this.hidden ? "hide" : "show"]();
-            }
-          };
-          goldenChild.prototype.delete = function () {
-            if (!utils_1.statusChange.unloading && !this._isDestroyed) { // If unloading, it might persist corrupted data
-              this.$parent.computeChildrenPath();
-              //this.$emit('destroy', this); //Already emited as a forward-event.
-              this.$destroy();
-            }
-          };
-          goldenChild.prototype.created = function () {
-            if (!this.vueParent.addGlChild)
-              throw new Error('gl-child can only appear directly in a golden-layout container');
-          };
-          Object.defineProperty(goldenChild.prototype, "childMe", {
-            // Don't remove: goldenItem is weirdly inherited in popouts
-            get: function () { return this; },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(goldenChild.prototype, "nodePath", {
-            // Defined when this is a pop-out mirror component
-            get: function () {
-              return this.vueParent.childPath(this.childMe);
-            },
-            enumerable: false,
-            configurable: true
-          });
-          goldenChild.prototype.innerStateChanged = function () {
-            if (this.glObject)
-              this.glObject.emitBubblingEvent('stateChanged');
-          };
-          goldenChild.prototype.mounted = function () {
-            var dimensions = {};
-            if (undefined !== this.width)
-              dimensions.width = this.width;
-            if (undefined !== this.height)
-              dimensions.height = this.height;
-            var childConfig = this.getChildConfig();
-            if (childConfig) //glCustomContainer shouldn't mount as their child is already mounted in the vueParent
-              this.vueParent.addGlChild(__assign(__assign(__assign({}, dimensions), childConfig), { isClosable: this.rootProp('closable'), reorderEnabled: this.rootProp('reorderEnabled'), title: childConfig.title || this.givenProp('title'), vue: this.nodePath, componentState: this.syncedState }), this);
-          };
-          goldenChild.prototype.destroyed = function () {
-            if (this.glObject && this.glObject.parent && ~this.glObject.parent.contentItems.indexOf(this.glObject))
-              this.glObject.parent.removeChild(this.glObject);
-          };
-          __decorate([
-            vue_property_decorator_1.Inject(),
-            __metadata("design:type", golden_1.default)
-          ], goldenChild.prototype, "layout", void 0);
-          __decorate([
-            vue_property_decorator_1.Inject({ from: 'groupColor' }),
-            __metadata("design:type", String)
-          ], goldenChild.prototype, "belongGroupColor", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop(),
-            __metadata("design:type", Number)
-          ], goldenChild.prototype, "width", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop(),
-            __metadata("design:type", Number)
-          ], goldenChild.prototype, "height", void 0);
-          __decorate([
-            vue_property_decorator_1.Watch('width'),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [Number]),
-            __metadata("design:returntype", void 0)
-          ], goldenChild.prototype, "reWidth", null);
-          __decorate([
-            vue_property_decorator_1.Watch('height'),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [Number]),
-            __metadata("design:returntype", void 0)
-          ], goldenChild.prototype, "reHeight", null);
-          __decorate([
-            vue_property_decorator_1.Prop(),
-            __metadata("design:type", String)
-          ], goldenChild.prototype, "tabId", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop(),
-            __metadata("design:type", String)
-          ], goldenChild.prototype, "title", void 0);
-          __decorate([
-            vue_property_decorator_1.Watch('title'),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [Object]),
-            __metadata("design:returntype", void 0)
-          ], goldenChild.prototype, "setTitle", null);
-          __decorate([
-            vue_property_decorator_1.Watch('glObject'),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [Boolean]),
-            __metadata("design:returntype", void 0)
-          ], goldenChild.prototype, "glObjectSet", null);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: false }),
-            __metadata("design:type", Boolean)
-          ], goldenChild.prototype, "hidden", void 0);
-          __decorate([
-            vue_property_decorator_1.Watch('container'),
-            vue_property_decorator_1.Watch('hidden'),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", []),
-            __metadata("design:returntype", void 0)
-          ], goldenChild.prototype, "setContainer", null);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: true }),
-            __metadata("design:type", Boolean)
-          ], goldenChild.prototype, "closable", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: true }),
-            __metadata("design:type", Boolean)
-          ], goldenChild.prototype, "reorderEnabled", void 0);
-          __decorate([
-            vue_property_decorator_1.PropSync('state', { default: function () { return ({}); } }),
-            __metadata("design:type", Object)
-          ], goldenChild.prototype, "syncedState", void 0);
-          __decorate([
-            vue_property_decorator_1.Watch('state', { deep: true }),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", []),
-            __metadata("design:returntype", void 0)
-          ], goldenChild.prototype, "innerStateChanged", null);
-          goldenChild = __decorate([
-            vue_property_decorator_1.Component
-          ], goldenChild);
-          return goldenChild;
-        }(index_1.goldenItem));
-        exports.goldenChild = goldenChild;
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __assign = (this && this.__assign) || function () {
+                    __assign = Object.assign || function (t) {
+                        for (var s, i = 1, n = arguments.length; i < n; i++) {
+                            s = arguments[i];
+                            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                                t[p] = s[p];
+                        }
+                        return t;
+                    };
+                    return __assign.apply(this, arguments);
+                };
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                var __metadata = (this && this.__metadata) || function (k, v) {
+                    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                exports.goldenChild = void 0;
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var utils_1 = __webpack_require__(/*! ../utils */ "./utils.ts");
+                var index_1 = __webpack_require__(/*! ./index */ "./roles/index.ts");
+                var golden_1 = __webpack_require__(/*! ../golden */ "./golden.vue");
+                var goldenChild = /** @class */ (function (_super) {
+                    __extends(goldenChild, _super);
+                    function goldenChild() {
+                        var _this = _super !== null && _super.apply(this, arguments) || this;
+                        _this.container = null;
+                        return _this;
+                    }
+                    goldenChild.prototype.reWidth = function (w) { this.container && this.container.setSize(w, false); };
+                    goldenChild.prototype.reHeight = function (h) { this.container && this.container.setSize(false, h); };
+                    goldenChild.prototype.getChildConfig = function () { return null; };
+                    Object.defineProperty(goldenChild.prototype, "glParent", {
+                        get: function () { return this.glObject.parent.vueObject; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    Object.defineProperty(goldenChild.prototype, "vueParent", {
+                        /**
+                          * Gets the Vue container that is not a component definition and therefore actually contains this
+                          */
+                        get: function () {
+                            return this.$parent.parentMe;
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    Object.defineProperty(goldenChild.prototype, "definedVueComponent", {
+                        get: function () {
+                            return this.$parent.definedVueComponent;
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    Object.defineProperty(goldenChild.prototype, "givenTabId", {
+                        get: function () { return this.givenProp('tabId'); },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    goldenChild.prototype.setTitle = function (title) {
+                        if (this.container)
+                            this.container.setTitle(title);
+                    };
+                    goldenChild.prototype.givenProp = function (prop) {
+                        var itr = this;
+                        while (!itr[prop] && utils_1.xInstanceOf(itr.$parent, 'glCustomContainer'))
+                            itr = itr.$parent;
+                        return itr[prop];
+                    };
+                    goldenChild.prototype.rootProp = function (prop) {
+                        var itr = this, rv = itr[prop];
+                        while (utils_1.xInstanceOf(itr.$parent, 'glCustomContainer')) {
+                            itr = itr.$parent;
+                            if (prop in itr)
+                                rv = itr[prop];
+                        }
+                        return rv;
+                    };
+                    Object.defineProperty(goldenChild.prototype, "tabColor", {
+                        get: function () {
+                            return this.belongGroupColor;
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    goldenChild.prototype.hide = function () { this.container && this.container.hide(); };
+                    goldenChild.prototype.show = function () { this.container && this.container.show(); };
+                    goldenChild.prototype.focus = function () {
+                        var brwsr = this.childMe.glObject, doc;
+                        if (brwsr) {
+                            // TODO: cfr layout.selectionEnabled
+                            this.show();
+                            for (; !brwsr.isRoot; brwsr = brwsr.parent) {
+                                if (brwsr.parent.isStack)
+                                    brwsr.parent.setActiveContentItem(brwsr);
+                            }
+                            doc = brwsr.layoutManager.container[0].ownerDocument;
+                            (doc.defaultView || doc.parentWindow).focus();
+                        }
+                        else
+                            this.shouldFocus = true;
+                    };
+                    goldenChild.prototype.glObjectSet = function (v) {
+                        if (!v)
+                            this.delete();
+                        else if (this.shouldFocus) {
+                            this.shouldFocus = false;
+                            this.focus();
+                        }
+                    };
+                    goldenChild.prototype.setContainer = function () {
+                        if (this.glObject) {
+                            var parent = this.glObject.parent;
+                            this.container && (!parent.isStack ||
+                                parent.contentItems[parent.config.activeItemIndex] === this.glObject) && this.container[this.hidden ? "hide" : "show"]();
+                        }
+                    };
+                    goldenChild.prototype.delete = function () {
+                        if (!utils_1.statusChange.unloading && !this._isDestroyed) { // If unloading, it might persist corrupted data
+                            this.$parent.computeChildrenPath();
+                            //this.$emit('destroy', this); //Already emited as a forward-event.
+                            this.$destroy();
+                        }
+                    };
+                    goldenChild.prototype.created = function () {
+                        if (!this.vueParent.addGlChild)
+                            throw new Error('gl-child can only appear directly in a golden-layout container');
+                    };
+                    Object.defineProperty(goldenChild.prototype, "childMe", {
+                        // Don't remove: goldenItem is weirdly inherited in popouts
+                        get: function () { return this; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    Object.defineProperty(goldenChild.prototype, "nodePath", {
+                        // Defined when this is a pop-out mirror component
+                        get: function () {
+                            return this.vueParent.childPath(this.childMe);
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    goldenChild.prototype.innerStateChanged = function () {
+                        if (this.glObject)
+                            this.glObject.emitBubblingEvent('stateChanged');
+                    };
+                    goldenChild.prototype.mounted = function () {
+                        var dimensions = {};
+                        if (undefined !== this.width)
+                            dimensions.width = this.width;
+                        if (undefined !== this.height)
+                            dimensions.height = this.height;
+                        var childConfig = this.getChildConfig();
+                        if (childConfig) //glCustomContainer shouldn't mount as their child is already mounted in the vueParent
+                            this.vueParent.addGlChild(__assign(__assign(__assign({}, dimensions), childConfig), { isClosable: this.rootProp('closable'), reorderEnabled: this.rootProp('reorderEnabled'), title: childConfig.title || this.givenProp('title'), vue: this.nodePath, componentState: this.syncedState }), this);
+                    };
+                    goldenChild.prototype.destroyed = function () {
+                        if (this.glObject && this.glObject.parent && ~this.glObject.parent.contentItems.indexOf(this.glObject))
+                            this.glObject.parent.removeChild(this.glObject);
+                    };
+                    __decorate([
+                        vue_property_decorator_1.Inject(),
+                        __metadata("design:type", golden_1.default)
+                    ], goldenChild.prototype, "layout", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Inject({ from: 'groupColor' }),
+                        __metadata("design:type", String)
+                    ], goldenChild.prototype, "belongGroupColor", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop(),
+                        __metadata("design:type", Number)
+                    ], goldenChild.prototype, "width", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop(),
+                        __metadata("design:type", Number)
+                    ], goldenChild.prototype, "height", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Watch('width'),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", [Number]),
+                        __metadata("design:returntype", void 0)
+                    ], goldenChild.prototype, "reWidth", null);
+                    __decorate([
+                        vue_property_decorator_1.Watch('height'),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", [Number]),
+                        __metadata("design:returntype", void 0)
+                    ], goldenChild.prototype, "reHeight", null);
+                    __decorate([
+                        vue_property_decorator_1.Prop(),
+                        __metadata("design:type", String)
+                    ], goldenChild.prototype, "tabId", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop(),
+                        __metadata("design:type", String)
+                    ], goldenChild.prototype, "title", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Watch('title'),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", [Object]),
+                        __metadata("design:returntype", void 0)
+                    ], goldenChild.prototype, "setTitle", null);
+                    __decorate([
+                        vue_property_decorator_1.Watch('glObject'),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", [Boolean]),
+                        __metadata("design:returntype", void 0)
+                    ], goldenChild.prototype, "glObjectSet", null);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: false }),
+                        __metadata("design:type", Boolean)
+                    ], goldenChild.prototype, "hidden", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Watch('container'),
+                        vue_property_decorator_1.Watch('hidden'),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", []),
+                        __metadata("design:returntype", void 0)
+                    ], goldenChild.prototype, "setContainer", null);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: true }),
+                        __metadata("design:type", Boolean)
+                    ], goldenChild.prototype, "closable", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: true }),
+                        __metadata("design:type", Boolean)
+                    ], goldenChild.prototype, "reorderEnabled", void 0);
+                    __decorate([
+                        vue_property_decorator_1.PropSync('state', { default: function () { return ({}); } }),
+                        __metadata("design:type", Object)
+                    ], goldenChild.prototype, "syncedState", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Watch('state', { deep: true }),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", []),
+                        __metadata("design:returntype", void 0)
+                    ], goldenChild.prototype, "innerStateChanged", null);
+                    goldenChild = __decorate([
+                        vue_property_decorator_1.Component
+                    ], goldenChild);
+                    return goldenChild;
+                }(index_1.goldenItem));
+                exports.goldenChild = goldenChild;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./roles/container.ts":
@@ -80143,137 +80164,137 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        var __metadata = (this && this.__metadata) || function (k, v) {
-          if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        exports.goldenContainer = void 0;
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var index_1 = __webpack_require__(/*! ./index */ "./roles/index.ts");
-        var colors_1 = __webpack_require__(/*! ../colors */ "./colors.ts");
-        var golden_vue_1 = __webpack_require__(/*! ../golden.vue */ "./golden.vue");
-        var goldenContainer = /** @class */ (function (_super) {
-          __extends(goldenContainer, _super);
-          function goldenContainer() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.config = {
-              content: []
-            };
-            // Hack to force child-path re-computation
-            _this.watchComputeChildrenPath = 0;
-            return _this;
-          }
-          Object.defineProperty(goldenContainer.prototype, "definedVueComponent", {
-            get: function () { throw 'Not overriden'; },
-            enumerable: false,
-            configurable: true
-          });
-          goldenContainer.prototype.computeChildrenPath = function () { ++this.watchComputeChildrenPath; };
-          goldenContainer.prototype.childPath = function (comp) {
-            this.computeChildrenPath();
-            var rv = this.childMe.nodePath ? this.childMe.nodePath + "." : '';
-            var ndx = this.vueChildren().indexOf(comp);
-            console.assert(!!~ndx, 'Child exists');
-            return rv + ndx;
-          };
-          goldenContainer.prototype.getChild = function (path) {
-            var nrs = path.split('.');
-            var ndx_string = nrs.shift();
-            if (ndx_string === undefined) {
-              throw "Invalid operation";
-            }
-            var ndx = parseInt(ndx_string);
-            var next = this.vueChild(ndx);
-            console.assert(next !== undefined && next !== null, "Vue structure correspond to loaded GL configuration");
-            return nrs.length ? next.getChild(nrs.join('.')) : next;
-          };
-          Object.defineProperty(goldenContainer.prototype, "glChildrenTarget", {
-            //In order to be overriden
-            get: function () { return this.glObject; },
-            enumerable: false,
-            configurable: true
-          });
-          goldenContainer.prototype.addGlChild = function (child, comp) {
-            if (comp && 'component' === child.type) {
-              if (!child.componentName)
-                child.componentName = golden_vue_1.genericTemplate;
-              if (!child.componentState)
-                child.componentState = {};
-            }
-            var ci = this.glChildrenTarget;
-            if (ci)
-              ci.addChild(child);
-            else
-              this.config.content.push(child);
-          };
-          Object.defineProperty(goldenContainer.prototype, "glChildren", {
-            get: function () {
-              return this.glObject.contentItems.map(function (x) { return x.vueObject; });
-            },
-            enumerable: false,
-            configurable: true
-          });
-          goldenContainer.prototype.vueChild = function (child) {
-            return this.$children[child].childMe;
-          };
-          /**
-            * Get the list of Vue children and not their definition abstract component
-            */
-          goldenContainer.prototype.vueChildren = function () {
-            return this.$children.map(function (comp) { return comp.childMe; }).filter(function (x) { return x instanceof index_1.goldenItem; });
-          };
-          goldenContainer.prototype.destroyed = function () {
-            if (this.groupColor)
-              colors_1.freeColor(this.groupColor);
-          };
-          __decorate([
-            vue_property_decorator_1.Provide(),
-            __metadata("design:type", Object)
-          ], goldenContainer.prototype, "groupColor", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: false }),
-            __metadata("design:type", Boolean)
-          ], goldenContainer.prototype, "colorGroup", void 0);
-          goldenContainer = __decorate([
-            vue_property_decorator_1.Component({
-              mixins: [{
-                data: function (vm) {
-                  if (vm.colorGroup)
-                    vm.groupColor = colors_1.allocateColor();
-                  else if (vm.belongGroupColor)
-                    vm.groupColor = vm.belongGroupColor;
-                  return {};
-                }
-              }]
-            })
-          ], goldenContainer);
-          return goldenContainer;
-        }(index_1.goldenItem));
-        exports.goldenContainer = goldenContainer;
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                var __metadata = (this && this.__metadata) || function (k, v) {
+                    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                exports.goldenContainer = void 0;
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var index_1 = __webpack_require__(/*! ./index */ "./roles/index.ts");
+                var colors_1 = __webpack_require__(/*! ../colors */ "./colors.ts");
+                var golden_vue_1 = __webpack_require__(/*! ../golden.vue */ "./golden.vue");
+                var goldenContainer = /** @class */ (function (_super) {
+                    __extends(goldenContainer, _super);
+                    function goldenContainer() {
+                        var _this = _super !== null && _super.apply(this, arguments) || this;
+                        _this.config = {
+                            content: []
+                        };
+                        // Hack to force child-path re-computation
+                        _this.watchComputeChildrenPath = 0;
+                        return _this;
+                    }
+                    Object.defineProperty(goldenContainer.prototype, "definedVueComponent", {
+                        get: function () { throw 'Not overriden'; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    goldenContainer.prototype.computeChildrenPath = function () { ++this.watchComputeChildrenPath; };
+                    goldenContainer.prototype.childPath = function (comp) {
+                        this.computeChildrenPath();
+                        var rv = this.childMe.nodePath ? this.childMe.nodePath + "." : '';
+                        var ndx = this.vueChildren().indexOf(comp);
+                        console.assert(!!~ndx, 'Child exists');
+                        return rv + ndx;
+                    };
+                    goldenContainer.prototype.getChild = function (path) {
+                        var nrs = path.split('.');
+                        var ndx_string = nrs.shift();
+                        if (ndx_string === undefined) {
+                            throw "Invalid operation";
+                        }
+                        var ndx = parseInt(ndx_string);
+                        var next = this.vueChild(ndx);
+                        console.assert(next !== undefined && next !== null, "Vue structure correspond to loaded GL configuration");
+                        return nrs.length ? next.getChild(nrs.join('.')) : next;
+                    };
+                    Object.defineProperty(goldenContainer.prototype, "glChildrenTarget", {
+                        //In order to be overriden
+                        get: function () { return this.glObject; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    goldenContainer.prototype.addGlChild = function (child, comp) {
+                        if (comp && 'component' === child.type) {
+                            if (!child.componentName)
+                                child.componentName = golden_vue_1.genericTemplate;
+                            if (!child.componentState)
+                                child.componentState = {};
+                        }
+                        var ci = this.glChildrenTarget;
+                        if (ci)
+                            ci.addChild(child);
+                        else
+                            this.config.content.push(child);
+                    };
+                    Object.defineProperty(goldenContainer.prototype, "glChildren", {
+                        get: function () {
+                            return this.glObject.contentItems.map(function (x) { return x.vueObject; });
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    goldenContainer.prototype.vueChild = function (child) {
+                        return this.$children[child].childMe;
+                    };
+                    /**
+                      * Get the list of Vue children and not their definition abstract component
+                      */
+                    goldenContainer.prototype.vueChildren = function () {
+                        return this.$children.map(function (comp) { return comp.childMe; }).filter(function (x) { return x instanceof index_1.goldenItem; });
+                    };
+                    goldenContainer.prototype.destroyed = function () {
+                        if (this.groupColor)
+                            colors_1.freeColor(this.groupColor);
+                    };
+                    __decorate([
+                        vue_property_decorator_1.Provide(),
+                        __metadata("design:type", Object)
+                    ], goldenContainer.prototype, "groupColor", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: false }),
+                        __metadata("design:type", Boolean)
+                    ], goldenContainer.prototype, "colorGroup", void 0);
+                    goldenContainer = __decorate([
+                        vue_property_decorator_1.Component({
+                            mixins: [{
+                                data: function (vm) {
+                                    if (vm.colorGroup)
+                                        vm.groupColor = colors_1.allocateColor();
+                                    else if (vm.belongGroupColor)
+                                        vm.groupColor = vm.belongGroupColor;
+                                    return {};
+                                }
+                            }]
+                        })
+                    ], goldenContainer);
+                    return goldenContainer;
+                }(index_1.goldenItem));
+                exports.goldenContainer = goldenContainer;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./roles/index.ts":
@@ -80283,26 +80304,26 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __createBinding = (this && this.__createBinding) || (Object.create ? (function (o, m, k, k2) {
-          if (k2 === undefined) k2 = k;
-          Object.defineProperty(o, k2, { enumerable: true, get: function () { return m[k]; } });
-        }) : (function (o, m, k, k2) {
-          if (k2 === undefined) k2 = k;
-          o[k2] = m[k];
-        }));
-        var __exportStar = (this && this.__exportStar) || function (m, exports) {
-          for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        __exportStar(__webpack_require__(/*! ./item */ "./roles/item.ts"), exports);
-        __exportStar(__webpack_require__(/*! ./container */ "./roles/container.ts"), exports);
-        __exportStar(__webpack_require__(/*! ./child */ "./roles/child.ts"), exports);
-        __exportStar(__webpack_require__(/*! ./link */ "./roles/link.ts"), exports);
+                var __createBinding = (this && this.__createBinding) || (Object.create ? (function (o, m, k, k2) {
+                    if (k2 === undefined) k2 = k;
+                    Object.defineProperty(o, k2, { enumerable: true, get: function () { return m[k]; } });
+                }) : (function (o, m, k, k2) {
+                    if (k2 === undefined) k2 = k;
+                    o[k2] = m[k];
+                }));
+                var __exportStar = (this && this.__exportStar) || function (m, exports) {
+                    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                __exportStar(__webpack_require__(/*! ./item */ "./roles/item.ts"), exports);
+                __exportStar(__webpack_require__(/*! ./container */ "./roles/container.ts"), exports);
+                __exportStar(__webpack_require__(/*! ./child */ "./roles/child.ts"), exports);
+                __exportStar(__webpack_require__(/*! ./link */ "./roles/link.ts"), exports);
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./roles/item.ts":
@@ -80312,53 +80333,53 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        Object.defineProperty(exports, "__esModule", { value: true });
-        exports.goldenItem = void 0;
-        var vue_1 = __webpack_require__(/*! vue */ "vue");
-        var goldenItem = /** @class */ (function (_super) {
-          __extends(goldenItem, _super);
-          function goldenItem() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.glObject = null;
-            return _this;
-          }
-          Object.defineProperty(goldenItem.prototype, "childMe", {
-            // To be overriden
-            get: function () { return this; },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(goldenItem.prototype, "parentMe", {
-            get: function () { return this; },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(goldenItem.prototype, "nodePath", {
-            get: function () { return ''; },
-            enumerable: false,
-            configurable: true
-          });
-          return goldenItem;
-        }(vue_1.default));
-        exports.goldenItem = goldenItem;
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                Object.defineProperty(exports, "__esModule", { value: true });
+                exports.goldenItem = void 0;
+                var vue_1 = __webpack_require__(/*! vue */ "vue");
+                var goldenItem = /** @class */ (function (_super) {
+                    __extends(goldenItem, _super);
+                    function goldenItem() {
+                        var _this = _super !== null && _super.apply(this, arguments) || this;
+                        _this.glObject = null;
+                        return _this;
+                    }
+                    Object.defineProperty(goldenItem.prototype, "childMe", {
+                        // To be overriden
+                        get: function () { return this; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    Object.defineProperty(goldenItem.prototype, "parentMe", {
+                        get: function () { return this; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    Object.defineProperty(goldenItem.prototype, "nodePath", {
+                        get: function () { return ''; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    return goldenItem;
+                }(vue_1.default));
+                exports.goldenItem = goldenItem;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./roles/link.ts":
@@ -80368,103 +80389,103 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        var __metadata = (this && this.__metadata) || function (k, v) {
-          if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        exports.glCustomContainer = exports.goldenLink = void 0;
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var container_1 = __webpack_require__(/*! ./container */ "./roles/container.ts");
-        var child_1 = __webpack_require__(/*! ./child */ "./roles/child.ts");
-        var goldenLink = /** @class */ (function (_super) {
-          __extends(goldenLink, _super);
-          function goldenLink() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.watchComputeChildrenPath = 0;
-            return _this;
-          }
-          Object.defineProperty(goldenLink.prototype, "glChildrenTarget", {
-            //readonly glChildrenTarget: any
-            get: function () { return this.glObject; },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(goldenLink.prototype, "tabColor", {
-            get: function () {
-              return this.belongGroupColor || this.groupColor;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          goldenLink = __decorate([
-            vue_property_decorator_1.Component({ mixins: [container_1.goldenContainer] })
-          ], goldenLink);
-          return goldenLink;
-        }(child_1.goldenChild));
-        exports.goldenLink = goldenLink;
-        var glCustomContainer = /** @class */ (function (_super) {
-          __extends(glCustomContainer, _super);
-          function glCustomContainer() {
-            var _this = _super.call(this) || this;
-            _this.destructor = _this.delete.bind(_this);
-            return _this;
-          }
-          Object.defineProperty(glCustomContainer.prototype, "definedVueComponent", {
-            get: function () { return this; },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(glCustomContainer.prototype, "childMe", {
-            get: function () {
-              var sub = this.$children[0], rv = sub && sub.childMe;
-              if (this.cachedChildMe)
-                this.cachedChildMe.$off('destroy', this.destructor);
-              if (rv)
-                rv.$on('destroy', this.destructor);
-              return rv;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(glCustomContainer.prototype, "parentMe", {
-            get: function () {
-              return this.vueParent;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          glCustomContainer.prototype.getChildConfig = function () { return null; };
-          glCustomContainer = __decorate([
-            vue_property_decorator_1.Component,
-            __metadata("design:paramtypes", [])
-          ], glCustomContainer);
-          return glCustomContainer;
-        }(goldenLink));
-        exports.glCustomContainer = glCustomContainer;
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                var __metadata = (this && this.__metadata) || function (k, v) {
+                    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                exports.glCustomContainer = exports.goldenLink = void 0;
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var container_1 = __webpack_require__(/*! ./container */ "./roles/container.ts");
+                var child_1 = __webpack_require__(/*! ./child */ "./roles/child.ts");
+                var goldenLink = /** @class */ (function (_super) {
+                    __extends(goldenLink, _super);
+                    function goldenLink() {
+                        var _this = _super !== null && _super.apply(this, arguments) || this;
+                        _this.watchComputeChildrenPath = 0;
+                        return _this;
+                    }
+                    Object.defineProperty(goldenLink.prototype, "glChildrenTarget", {
+                        //readonly glChildrenTarget: any
+                        get: function () { return this.glObject; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    Object.defineProperty(goldenLink.prototype, "tabColor", {
+                        get: function () {
+                            return this.belongGroupColor || this.groupColor;
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    goldenLink = __decorate([
+                        vue_property_decorator_1.Component({ mixins: [container_1.goldenContainer] })
+                    ], goldenLink);
+                    return goldenLink;
+                }(child_1.goldenChild));
+                exports.goldenLink = goldenLink;
+                var glCustomContainer = /** @class */ (function (_super) {
+                    __extends(glCustomContainer, _super);
+                    function glCustomContainer() {
+                        var _this = _super.call(this) || this;
+                        _this.destructor = _this.delete.bind(_this);
+                        return _this;
+                    }
+                    Object.defineProperty(glCustomContainer.prototype, "definedVueComponent", {
+                        get: function () { return this; },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    Object.defineProperty(glCustomContainer.prototype, "childMe", {
+                        get: function () {
+                            var sub = this.$children[0], rv = sub && sub.childMe;
+                            if (this.cachedChildMe)
+                                this.cachedChildMe.$off('destroy', this.destructor);
+                            if (rv)
+                                rv.$on('destroy', this.destructor);
+                            return rv;
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    Object.defineProperty(glCustomContainer.prototype, "parentMe", {
+                        get: function () {
+                            return this.vueParent;
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    glCustomContainer.prototype.getChildConfig = function () { return null; };
+                    glCustomContainer = __decorate([
+                        vue_property_decorator_1.Component,
+                        __metadata("design:paramtypes", [])
+                    ], glCustomContainer);
+                    return glCustomContainer;
+                }(goldenLink));
+                exports.glCustomContainer = glCustomContainer;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./router/gl-component-route.ts":
@@ -80474,63 +80495,63 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        var __metadata = (this && this.__metadata) || function (k, v) {
-          if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var utils_1 = __webpack_require__(/*! ./utils */ "./router/utils.ts");
-        var gl_route_base_1 = __webpack_require__(/*! ./gl-route-base */ "./router/gl-route-base.ts");
-        var glComponentRoute = /** @class */ (function (_super) {
-          __extends(glComponentRoute, _super);
-          function glComponentRoute() {
-            return _super !== null && _super.apply(this, arguments) || this;
-          }
-          glComponentRoute.prototype.getChildConfig = function () {
-            return {
-              type: 'component',
-              title: this.compTitle,
-              isClosable: this.closable,
-              reorderEnabled: this.reorderEnabled,
-              componentName: utils_1.RouteComponentName,
-              componentState: this.location
-            };
-          };
-          glComponentRoute.prototype.render = function (v) { };
-          __decorate([
-            vue_property_decorator_1.Prop(),
-            __metadata("design:type", Object)
-          ], glComponentRoute.prototype, "component", void 0);
-          glComponentRoute = __decorate([
-            vue_property_decorator_1.Component
-          ], glComponentRoute);
-          return glComponentRoute;
-        }(gl_route_base_1.default));
-        exports.default = glComponentRoute;
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                var __metadata = (this && this.__metadata) || function (k, v) {
+                    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var utils_1 = __webpack_require__(/*! ./utils */ "./router/utils.ts");
+                var gl_route_base_1 = __webpack_require__(/*! ./gl-route-base */ "./router/gl-route-base.ts");
+                var glComponentRoute = /** @class */ (function (_super) {
+                    __extends(glComponentRoute, _super);
+                    function glComponentRoute() {
+                        return _super !== null && _super.apply(this, arguments) || this;
+                    }
+                    glComponentRoute.prototype.getChildConfig = function () {
+                        return {
+                            type: 'component',
+                            title: this.compTitle,
+                            isClosable: this.closable,
+                            reorderEnabled: this.reorderEnabled,
+                            componentName: utils_1.RouteComponentName,
+                            componentState: this.location
+                        };
+                    };
+                    glComponentRoute.prototype.render = function (v) { };
+                    __decorate([
+                        vue_property_decorator_1.Prop(),
+                        __metadata("design:type", Object)
+                    ], glComponentRoute.prototype, "component", void 0);
+                    glComponentRoute = __decorate([
+                        vue_property_decorator_1.Component
+                    ], glComponentRoute);
+                    return glComponentRoute;
+                }(gl_route_base_1.default));
+                exports.default = glComponentRoute;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./router/gl-container-route.vue":
@@ -80540,8 +80561,8 @@ var define;
 /*! no static exports found */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _gl_container_route_vue_vue_type_template_id_14074b06___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gl-container-route.vue?vue&type=template&id=14074b06& */ "./router/gl-container-route.vue?vue&type=template&id=14074b06&");
 /* harmony import */ var _gl_container_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gl-container-route.vue?vue&type=script&lang=ts& */ "./router/gl-container-route.vue?vue&type=script&lang=ts&");
 /* harmony reexport (unknown) */ for (var __WEBPACK_IMPORT_KEY__ in _gl_container_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if (["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function (key) { __webpack_require__.d(__webpack_exports__, key, function () { return _gl_container_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }); }(__WEBPACK_IMPORT_KEY__));
@@ -80551,25 +80572,25 @@ var define;
 
 
 
-        /* normalize component */
+                /* normalize component */
 
-        var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-          _gl_container_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
-          _gl_container_route_vue_vue_type_template_id_14074b06___WEBPACK_IMPORTED_MODULE_0__["render"],
-          _gl_container_route_vue_vue_type_template_id_14074b06___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-          false,
-          null,
-          null,
-          null
+                var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+                    _gl_container_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+                    _gl_container_route_vue_vue_type_template_id_14074b06___WEBPACK_IMPORTED_MODULE_0__["render"],
+                    _gl_container_route_vue_vue_type_template_id_14074b06___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+                    false,
+                    null,
+                    null,
+                    null
 
-        );
+                );
 
-        /* hot reload */
-        if (false) { var api; }
-        component.options.__file = "router/gl-container-route.vue";
+                /* hot reload */
+                if (false) { var api; }
+                component.options.__file = "router/gl-container-route.vue";
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
-        /***/
+                /***/
 }),
 
 /***/ "./router/gl-container-route.vue?vue&type=script&lang=ts&":
@@ -80579,14 +80600,14 @@ var define;
 /*! no static exports found */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_container_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/ts-loader??ref--0!../../node_modules/vue-loader/lib??vue-loader-options!../../node_modules/source-map-loader/dist/cjs.js!./gl-container-route.vue?vue&type=script&lang=ts& */ "../node_modules/ts-loader/index.js?!../node_modules/vue-loader/lib/index.js?!../node_modules/source-map-loader/dist/cjs.js!./router/gl-container-route.vue?vue&type=script&lang=ts&");
 /* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_container_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_container_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for (var __WEBPACK_IMPORT_KEY__ in _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_container_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__) if (["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function (key) { __webpack_require__.d(__webpack_exports__, key, function () { return _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_container_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__[key]; }); }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_container_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default.a);
 
-        /***/
+                /***/
 }),
 
 /***/ "./router/gl-container-route.vue?vue&type=template&id=14074b06&":
@@ -80596,8 +80617,8 @@ var define;
 /*! exports provided: render, staticRenderFns */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_container_route_vue_vue_type_template_id_14074b06___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./gl-container-route.vue?vue&type=template&id=14074b06& */ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./router/gl-container-route.vue?vue&type=template&id=14074b06&");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function () { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_container_route_vue_vue_type_template_id_14074b06___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
@@ -80605,7 +80626,7 @@ var define;
 
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./router/gl-route-base.ts":
@@ -80615,113 +80636,113 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __extends = (this && this.__extends) || (function () {
-          var extendStatics = function (d, b) {
-            extendStatics = Object.setPrototypeOf ||
-              ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-              function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
-            return extendStatics(d, b);
-          };
-          return function (d, b) {
-            extendStatics(d, b);
-            function __() { this.constructor = d; }
-            d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-          };
-        })();
-        var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-          var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-          if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-          else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-          return c > 3 && r && Object.defineProperty(target, key, r), r;
-        };
-        var __metadata = (this && this.__metadata) || function (k, v) {
-          if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
-        var roles_1 = __webpack_require__(/*! ../roles */ "./roles/index.ts");
-        var utils_1 = __webpack_require__(/*! ./utils */ "./router/utils.ts");
-        // TODO 2 route-base created for each route
-        var glRouteBase = /** @class */ (function (_super) {
-          __extends(glRouteBase, _super);
-          function glRouteBase() {
-            return _super !== null && _super.apply(this, arguments) || this;
-          }
-          Object.defineProperty(glRouteBase.prototype, "compTitle", {
-            get: function () {
-              return this.title ||
-                (this.titler.bind(this) || utils_1.defaultTitler)(this.$router.resolve(this.location).route);
-            },
-            enumerable: false,
-            configurable: true
-          });
-          Object.defineProperty(glRouteBase.prototype, "location", {
-            get: function () {
-              console.assert(!!this.name || !!this.path, 'At least one route specification - `name` or `path` is given.');
-              if (!this.syncedState.path && !this.syncedState.name) {
-                // TODO Find out why this is necessary
-                this.syncedState.name = this.name;
-                this.syncedState.path = this.path;
-              }
-              var rv = {};
-              if (this.name)
-                rv.name = this.name;
-              if (this.path)
-                rv.path = this.path;
-              return rv;
-            },
-            enumerable: false,
-            configurable: true
-          });
-          glRouteBase.prototype.setTitle = function (title) {
-            if (this.container)
-              this.container.setTitle(title);
-          };
-          __decorate([
-            vue_property_decorator_1.Prop(),
-            __metadata("design:type", String)
-          ], glRouteBase.prototype, "path", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop(),
-            __metadata("design:type", String)
-          ], glRouteBase.prototype, "name", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: false }),
-            __metadata("design:type", Boolean)
-          ], glRouteBase.prototype, "closable", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop({ default: false }),
-            __metadata("design:type", Boolean)
-          ], glRouteBase.prototype, "reorderEnabled", void 0);
-          __decorate([
-            vue_property_decorator_1.Inject(),
-            __metadata("design:type", Function)
-          ], glRouteBase.prototype, "titler", void 0);
-          __decorate([
-            vue_property_decorator_1.Inject(),
-            __metadata("design:type", Object)
-          ], glRouteBase.prototype, "_glRouter", void 0);
-          __decorate([
-            vue_property_decorator_1.Prop(),
-            __metadata("design:type", String)
-          ], glRouteBase.prototype, "title", void 0);
-          __decorate([
-            vue_property_decorator_1.Watch('compTitle'),
-            __metadata("design:type", Function),
-            __metadata("design:paramtypes", [Object]),
-            __metadata("design:returntype", void 0)
-          ], glRouteBase.prototype, "setTitle", null);
-          glRouteBase = __decorate([
-            vue_property_decorator_1.Component
-          ], glRouteBase);
-          return glRouteBase;
-        }(roles_1.goldenLink));
-        exports.default = glRouteBase;
+                var __extends = (this && this.__extends) || (function () {
+                    var extendStatics = function (d, b) {
+                        extendStatics = Object.setPrototypeOf ||
+                            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+                            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+                        return extendStatics(d, b);
+                    };
+                    return function (d, b) {
+                        extendStatics(d, b);
+                        function __() { this.constructor = d; }
+                        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+                    };
+                })();
+                var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+                    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+                    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+                    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+                    return c > 3 && r && Object.defineProperty(target, key, r), r;
+                };
+                var __metadata = (this && this.__metadata) || function (k, v) {
+                    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                var vue_property_decorator_1 = __webpack_require__(/*! vue-property-decorator */ "vue-property-decorator");
+                var roles_1 = __webpack_require__(/*! ../roles */ "./roles/index.ts");
+                var utils_1 = __webpack_require__(/*! ./utils */ "./router/utils.ts");
+                // TODO 2 route-base created for each route
+                var glRouteBase = /** @class */ (function (_super) {
+                    __extends(glRouteBase, _super);
+                    function glRouteBase() {
+                        return _super !== null && _super.apply(this, arguments) || this;
+                    }
+                    Object.defineProperty(glRouteBase.prototype, "compTitle", {
+                        get: function () {
+                            return this.title ||
+                                (this.titler.bind(this) || utils_1.defaultTitler)(this.$router.resolve(this.location).route);
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    Object.defineProperty(glRouteBase.prototype, "location", {
+                        get: function () {
+                            console.assert(!!this.name || !!this.path, 'At least one route specification - `name` or `path` is given.');
+                            if (!this.syncedState.path && !this.syncedState.name) {
+                                // TODO Find out why this is necessary
+                                this.syncedState.name = this.name;
+                                this.syncedState.path = this.path;
+                            }
+                            var rv = {};
+                            if (this.name)
+                                rv.name = this.name;
+                            if (this.path)
+                                rv.path = this.path;
+                            return rv;
+                        },
+                        enumerable: false,
+                        configurable: true
+                    });
+                    glRouteBase.prototype.setTitle = function (title) {
+                        if (this.container)
+                            this.container.setTitle(title);
+                    };
+                    __decorate([
+                        vue_property_decorator_1.Prop(),
+                        __metadata("design:type", String)
+                    ], glRouteBase.prototype, "path", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop(),
+                        __metadata("design:type", String)
+                    ], glRouteBase.prototype, "name", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: false }),
+                        __metadata("design:type", Boolean)
+                    ], glRouteBase.prototype, "closable", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop({ default: false }),
+                        __metadata("design:type", Boolean)
+                    ], glRouteBase.prototype, "reorderEnabled", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Inject(),
+                        __metadata("design:type", Function)
+                    ], glRouteBase.prototype, "titler", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Inject(),
+                        __metadata("design:type", Object)
+                    ], glRouteBase.prototype, "_glRouter", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Prop(),
+                        __metadata("design:type", String)
+                    ], glRouteBase.prototype, "title", void 0);
+                    __decorate([
+                        vue_property_decorator_1.Watch('compTitle'),
+                        __metadata("design:type", Function),
+                        __metadata("design:paramtypes", [Object]),
+                        __metadata("design:returntype", void 0)
+                    ], glRouteBase.prototype, "setTitle", null);
+                    glRouteBase = __decorate([
+                        vue_property_decorator_1.Component
+                    ], glRouteBase);
+                    return glRouteBase;
+                }(roles_1.goldenLink));
+                exports.default = glRouteBase;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./router/gl-route.vue":
@@ -80731,8 +80752,8 @@ var define;
 /*! no static exports found */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _gl_route_vue_vue_type_template_id_768cfac9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gl-route.vue?vue&type=template&id=768cfac9& */ "./router/gl-route.vue?vue&type=template&id=768cfac9&");
 /* harmony import */ var _gl_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gl-route.vue?vue&type=script&lang=ts& */ "./router/gl-route.vue?vue&type=script&lang=ts&");
 /* harmony reexport (unknown) */ for (var __WEBPACK_IMPORT_KEY__ in _gl_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if (["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function (key) { __webpack_require__.d(__webpack_exports__, key, function () { return _gl_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }); }(__WEBPACK_IMPORT_KEY__));
@@ -80742,25 +80763,25 @@ var define;
 
 
 
-        /* normalize component */
+                /* normalize component */
 
-        var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-          _gl_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
-          _gl_route_vue_vue_type_template_id_768cfac9___WEBPACK_IMPORTED_MODULE_0__["render"],
-          _gl_route_vue_vue_type_template_id_768cfac9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-          false,
-          null,
-          null,
-          null
+                var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+                    _gl_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+                    _gl_route_vue_vue_type_template_id_768cfac9___WEBPACK_IMPORTED_MODULE_0__["render"],
+                    _gl_route_vue_vue_type_template_id_768cfac9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+                    false,
+                    null,
+                    null,
+                    null
 
-        );
+                );
 
-        /* hot reload */
-        if (false) { var api; }
-        component.options.__file = "router/gl-route.vue";
+                /* hot reload */
+                if (false) { var api; }
+                component.options.__file = "router/gl-route.vue";
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
-        /***/
+                /***/
 }),
 
 /***/ "./router/gl-route.vue?vue&type=script&lang=ts&":
@@ -80770,14 +80791,14 @@ var define;
 /*! no static exports found */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/ts-loader??ref--0!../../node_modules/vue-loader/lib??vue-loader-options!../../node_modules/source-map-loader/dist/cjs.js!./gl-route.vue?vue&type=script&lang=ts& */ "../node_modules/ts-loader/index.js?!../node_modules/vue-loader/lib/index.js?!../node_modules/source-map-loader/dist/cjs.js!./router/gl-route.vue?vue&type=script&lang=ts&");
 /* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for (var __WEBPACK_IMPORT_KEY__ in _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__) if (["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function (key) { __webpack_require__.d(__webpack_exports__, key, function () { return _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__[key]; }); }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_route_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default.a);
 
-        /***/
+                /***/
 }),
 
 /***/ "./router/gl-route.vue?vue&type=template&id=768cfac9&":
@@ -80787,8 +80808,8 @@ var define;
 /*! exports provided: render, staticRenderFns */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_route_vue_vue_type_template_id_768cfac9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./gl-route.vue?vue&type=template&id=768cfac9& */ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./router/gl-route.vue?vue&type=template&id=768cfac9&");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function () { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_route_vue_vue_type_template_id_768cfac9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
@@ -80796,7 +80817,7 @@ var define;
 
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./router/gl-router.vue":
@@ -80806,8 +80827,8 @@ var define;
 /*! no static exports found */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gl-router.vue?vue&type=template&id=5eafe7f9& */ "./router/gl-router.vue?vue&type=template&id=5eafe7f9&");
 /* harmony import */ var _gl_router_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./gl-router.vue?vue&type=script&lang=ts& */ "./router/gl-router.vue?vue&type=script&lang=ts&");
 /* harmony reexport (unknown) */ for (var __WEBPACK_IMPORT_KEY__ in _gl_router_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__) if (["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function (key) { __webpack_require__.d(__webpack_exports__, key, function () { return _gl_router_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__[key]; }); }(__WEBPACK_IMPORT_KEY__));
@@ -80817,25 +80838,25 @@ var define;
 
 
 
-        /* normalize component */
+                /* normalize component */
 
-        var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-          _gl_router_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
-          _gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__["render"],
-          _gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-          false,
-          null,
-          null,
-          null
+                var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+                    _gl_router_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_1__["default"],
+                    _gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__["render"],
+                    _gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+                    false,
+                    null,
+                    null,
+                    null
 
-        );
+                );
 
-        /* hot reload */
-        if (false) { var api; }
-        component.options.__file = "router/gl-router.vue";
+                /* hot reload */
+                if (false) { var api; }
+                component.options.__file = "router/gl-router.vue";
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
-        /***/
+                /***/
 }),
 
 /***/ "./router/gl-router.vue?vue&type=script&lang=ts&":
@@ -80845,14 +80866,14 @@ var define;
 /*! no static exports found */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_router_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/ts-loader??ref--0!../../node_modules/vue-loader/lib??vue-loader-options!../../node_modules/source-map-loader/dist/cjs.js!./gl-router.vue?vue&type=script&lang=ts& */ "../node_modules/ts-loader/index.js?!../node_modules/vue-loader/lib/index.js?!../node_modules/source-map-loader/dist/cjs.js!./router/gl-router.vue?vue&type=script&lang=ts&");
 /* harmony import */ var _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_router_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_router_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for (var __WEBPACK_IMPORT_KEY__ in _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_router_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__) if (["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function (key) { __webpack_require__.d(__webpack_exports__, key, function () { return _node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_router_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0__[key]; }); }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_ts_loader_index_js_ref_0_node_modules_vue_loader_lib_index_js_vue_loader_options_node_modules_source_map_loader_dist_cjs_js_gl_router_vue_vue_type_script_lang_ts___WEBPACK_IMPORTED_MODULE_0___default.a);
 
-        /***/
+                /***/
 }),
 
 /***/ "./router/gl-router.vue?vue&type=template&id=5eafe7f9&":
@@ -80862,8 +80883,8 @@ var define;
 /*! exports provided: render, staticRenderFns */
 /***/ (function (module, __webpack_exports__, __webpack_require__) {
 
-        "use strict";
-        __webpack_require__.r(__webpack_exports__);
+                "use strict";
+                __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../node_modules/vue-loader/lib??vue-loader-options!./gl-router.vue?vue&type=template&id=5eafe7f9& */ "../node_modules/vue-loader/lib/loaders/templateLoader.js?!../node_modules/vue-loader/lib/index.js?!./router/gl-router.vue?vue&type=template&id=5eafe7f9&");
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function () { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_gl_router_vue_vue_type_template_id_5eafe7f9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
@@ -80871,7 +80892,7 @@ var define;
 
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./router/utils.ts":
@@ -80881,193 +80902,193 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-          function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-          return new (P || (P = Promise))(function (resolve, reject) {
-            function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-            function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-            step((generator = generator.apply(thisArg, _arguments || [])).next());
-          });
-        };
-        var __generator = (this && this.__generator) || function (thisArg, body) {
-          var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-          return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
-          function verb(n) { return function (v) { return step([n, v]); }; }
-          function step(op) {
-            if (f) throw new TypeError("Generator is already executing.");
-            while (_) try {
-              if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-              if (y = 0, t) op = [op[0] & 2, t.value];
-              switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                  if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                  if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                  if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                  if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                  if (t[2]) _.ops.pop();
-                  _.trys.pop(); continue;
-              }
-              op = body.call(thisArg, _);
-            } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-            if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-          }
-        };
-        Object.defineProperty(exports, "__esModule", { value: true });
-        exports.UsingRoutes = exports.getRouteComponent = exports.freezeRoute = exports.RouteComponentName = exports.defaultTitler = void 0;
-        var golden_vue_1 = __webpack_require__(/*! ../golden.vue */ "./golden.vue");
-        var utils_1 = __webpack_require__(/*! ../utils */ "./utils.ts");
-        var roles_1 = __webpack_require__(/*! ../roles */ "./roles/index.ts");
-        var vue_1 = __webpack_require__(/*! vue */ "vue");
-        function defaultTitler(route) {
-          //The last case is to warn the programmer who would have forgotten that detail
-          return route ? ((route.meta && route.meta.title) || 'set $route.meta.title') : '';
-        }
-        exports.defaultTitler = defaultTitler;
-        exports.RouteComponentName = '$router-route';
-        function freezeValue(object, path, value) {
-          var props = path.split('.'), forced = props.pop();
-          for (var _i = 0, props_1 = props; _i < props_1.length; _i++) {
-            var property = props_1[_i];
-            Object.defineProperty(object, property, {
-              value: object = Object.create(object[property]),
-              writable: false
-            });
-          }
-          Object.defineProperty(object, forced, {
-            value: value,
-            writable: false
-          });
-        }
-        function freezeRoute(component, route) {
-          //Simulate a _routerRoot object so that all children have a $route object set to this route object
-          var routerRoot = component._routerRoot = Object.create(component._routerRoot);
-          freezeValue(routerRoot, '_route', route);
-          freezeValue(routerRoot, '_router.history.current', route);
-        }
-        exports.freezeRoute = freezeRoute;
-        function routeParent(parent, route) {
-          var template;
-          if (parent._glRouter)
-            template = parent.$scopedSlots.route ?
-              parent.$scopedSlots.route(route) :
-              parent.$slots.route;
-          return { template: template, parent: parent };
-        }
-        function vueComponent(comp, namedComponents) {
-          return __awaiter(this, void 0, void 0, function () {
-            function componentIsVueConstructor() { return component.prototype instanceof vue_1.default; }
-            var component;
-            return __generator(this, function (_a) {
-              switch (_a.label) {
-                case 0:
-                  component = 'string' === typeof comp ? namedComponents[comp] : comp;
-                  console.assert("Component registered : \"" + comp + "\".");
-                  if ('function' === typeof component && !componentIsVueConstructor)
-                    //AsyncComponentFactory<any, any, any, any> | FunctionalComponentOptions<any, PropsDefinition<any>>
-                    component = component();
-                  if (!(component instanceof Promise)) return [3 /*break*/, 2];
-                  return [4 /*yield*/, component];
-                case 1:
-                  component = _a.sent();
-                  _a.label = 2;
-                case 2: return [2 /*return*/, componentIsVueConstructor() ?
-                  component :
-                  vue_1.default.extend(component)];
-              }
-            });
-          });
-        }
-        function createRouteComponent(comp, routerSpec, route) {
-          var parent = routerSpec.parent, template = routerSpec.template;
-          var itr;
-          for (itr = comp; itr && itr != roles_1.goldenItem; itr = itr.super)
-            ;
-          if (itr) {
-            return new comp({
-              parent: parent,
-              propsData: route
-            });
-          }
-          var component = template ? new vue_1.default({
-            render: function (ce) {
-              // `instanceof Array` fails in popouts: `template` is a `window.opener.Array` then
-              return utils_1.xInstanceOf(template, 'Array') ?
-                ce('div', { class: 'glComponent' }, template) :
-                template;
-            },
-            mounted: function () {
-              new comp({
-                el: component.$el.querySelector('main') || undefined,
-                parent: component
-              });
-            },
-            parent: parent
-          }) : new comp({ parent: parent });
-          return component;
-        }
-        function renderInContainer(container, component) {
-          //TODO: document why we don't use simply component.$mount(container.getElement());
-          var el = document.createElement('div');
-          container.getElement().append(el);
-          component.$mount(el);
-        }
-        function getRouteComponent(gl, router, path) {
-          return __awaiter(this, void 0, void 0, function () {
-            var route, compSpec, component, _a;
-            return __generator(this, function (_b) {
-              switch (_b.label) {
-                case 0:
-                  route = gl.$router.resolve({ path: path }).route, compSpec = gl.$router.getMatchedComponents({ path: path })[0];
-                  console.assert(compSpec, "Path resolves to a component: " + path);
-                  _a = createRouteComponent;
-                  return [4 /*yield*/, vueComponent(compSpec, gl.$options.components || {})];
-                case 1:
-                  component = _a.apply(void 0, [_b.sent(), routeParent(router, route), route]);
-                  //freezeRoute(component, route);
-                  return [2 /*return*/, component];
-              }
-            });
-          });
-        }
-        exports.getRouteComponent = getRouteComponent;
-        function renderRoute(gl, container, state) {
-          return __awaiter(this, void 0, void 0, function () {
-            var parent, _glRouter, _a, _b;
-            return __generator(this, function (_c) {
-              switch (_c.label) {
-                case 0:
-                  parent = container.parent, _glRouter = parent.vueObject._glRouter;
-                  if (_glRouter)
-                    parent = _glRouter;
-                  else {
-                    while (!parent.vueObject || !parent.vueObject._isVue)
-                      parent = parent.parent;
-                    parent = parent.vueObject;
-                  }
-                  _a = renderInContainer;
-                  _b = [container];
-                  return [4 /*yield*/, getRouteComponent(gl, parent, state.path)];
-                case 1:
-                  _a.apply(void 0, _b.concat([_c.sent()]));
-                  return [2 /*return*/];
-              }
-            });
-          });
-        }
-        function UsingRoutes(target) {
-          golden_vue_1.registerGlobalComponent(exports.RouteComponentName, renderRoute);
-        }
-        exports.UsingRoutes = UsingRoutes;
+                var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+                    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+                    return new (P || (P = Promise))(function (resolve, reject) {
+                        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+                        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+                        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+                        step((generator = generator.apply(thisArg, _arguments || [])).next());
+                    });
+                };
+                var __generator = (this && this.__generator) || function (thisArg, body) {
+                    var _ = { label: 0, sent: function () { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+                    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function () { return this; }), g;
+                    function verb(n) { return function (v) { return step([n, v]); }; }
+                    function step(op) {
+                        if (f) throw new TypeError("Generator is already executing.");
+                        while (_) try {
+                            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+                            if (y = 0, t) op = [op[0] & 2, t.value];
+                            switch (op[0]) {
+                                case 0: case 1: t = op; break;
+                                case 4: _.label++; return { value: op[1], done: false };
+                                case 5: _.label++; y = op[1]; op = [0]; continue;
+                                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                                default:
+                                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                                    if (t[2]) _.ops.pop();
+                                    _.trys.pop(); continue;
+                            }
+                            op = body.call(thisArg, _);
+                        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+                        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+                    }
+                };
+                Object.defineProperty(exports, "__esModule", { value: true });
+                exports.UsingRoutes = exports.getRouteComponent = exports.freezeRoute = exports.RouteComponentName = exports.defaultTitler = void 0;
+                var golden_vue_1 = __webpack_require__(/*! ../golden.vue */ "./golden.vue");
+                var utils_1 = __webpack_require__(/*! ../utils */ "./utils.ts");
+                var roles_1 = __webpack_require__(/*! ../roles */ "./roles/index.ts");
+                var vue_1 = __webpack_require__(/*! vue */ "vue");
+                function defaultTitler(route) {
+                    //The last case is to warn the programmer who would have forgotten that detail
+                    return route ? ((route.meta && route.meta.title) || 'set $route.meta.title') : '';
+                }
+                exports.defaultTitler = defaultTitler;
+                exports.RouteComponentName = '$router-route';
+                function freezeValue(object, path, value) {
+                    var props = path.split('.'), forced = props.pop();
+                    for (var _i = 0, props_1 = props; _i < props_1.length; _i++) {
+                        var property = props_1[_i];
+                        Object.defineProperty(object, property, {
+                            value: object = Object.create(object[property]),
+                            writable: false
+                        });
+                    }
+                    Object.defineProperty(object, forced, {
+                        value: value,
+                        writable: false
+                    });
+                }
+                function freezeRoute(component, route) {
+                    //Simulate a _routerRoot object so that all children have a $route object set to this route object
+                    var routerRoot = component._routerRoot = Object.create(component._routerRoot);
+                    freezeValue(routerRoot, '_route', route);
+                    freezeValue(routerRoot, '_router.history.current', route);
+                }
+                exports.freezeRoute = freezeRoute;
+                function routeParent(parent, route) {
+                    var template;
+                    if (parent._glRouter)
+                        template = parent.$scopedSlots.route ?
+                            parent.$scopedSlots.route(route) :
+                            parent.$slots.route;
+                    return { template: template, parent: parent };
+                }
+                function vueComponent(comp, namedComponents) {
+                    return __awaiter(this, void 0, void 0, function () {
+                        function componentIsVueConstructor() { return component.prototype instanceof vue_1.default; }
+                        var component;
+                        return __generator(this, function (_a) {
+                            switch (_a.label) {
+                                case 0:
+                                    component = 'string' === typeof comp ? namedComponents[comp] : comp;
+                                    console.assert("Component registered : \"" + comp + "\".");
+                                    if ('function' === typeof component && !componentIsVueConstructor)
+                                        //AsyncComponentFactory<any, any, any, any> | FunctionalComponentOptions<any, PropsDefinition<any>>
+                                        component = component();
+                                    if (!(component instanceof Promise)) return [3 /*break*/, 2];
+                                    return [4 /*yield*/, component];
+                                case 1:
+                                    component = _a.sent();
+                                    _a.label = 2;
+                                case 2: return [2 /*return*/, componentIsVueConstructor() ?
+                                    component :
+                                    vue_1.default.extend(component)];
+                            }
+                        });
+                    });
+                }
+                function createRouteComponent(comp, routerSpec, route) {
+                    var parent = routerSpec.parent, template = routerSpec.template;
+                    var itr;
+                    for (itr = comp; itr && itr != roles_1.goldenItem; itr = itr.super)
+                        ;
+                    if (itr) {
+                        return new comp({
+                            parent: parent,
+                            propsData: route
+                        });
+                    }
+                    var component = template ? new vue_1.default({
+                        render: function (ce) {
+                            // `instanceof Array` fails in popouts: `template` is a `window.opener.Array` then
+                            return utils_1.xInstanceOf(template, 'Array') ?
+                                ce('div', { class: 'glComponent' }, template) :
+                                template;
+                        },
+                        mounted: function () {
+                            new comp({
+                                el: component.$el.querySelector('main') || undefined,
+                                parent: component
+                            });
+                        },
+                        parent: parent
+                    }) : new comp({ parent: parent });
+                    return component;
+                }
+                function renderInContainer(container, component) {
+                    //TODO: document why we don't use simply component.$mount(container.getElement());
+                    var el = document.createElement('div');
+                    container.getElement().append(el);
+                    component.$mount(el);
+                }
+                function getRouteComponent(gl, router, path) {
+                    return __awaiter(this, void 0, void 0, function () {
+                        var route, compSpec, component, _a;
+                        return __generator(this, function (_b) {
+                            switch (_b.label) {
+                                case 0:
+                                    route = gl.$router.resolve({ path: path }).route, compSpec = gl.$router.getMatchedComponents({ path: path })[0];
+                                    console.assert(compSpec, "Path resolves to a component: " + path);
+                                    _a = createRouteComponent;
+                                    return [4 /*yield*/, vueComponent(compSpec, gl.$options.components || {})];
+                                case 1:
+                                    component = _a.apply(void 0, [_b.sent(), routeParent(router, route), route]);
+                                    //freezeRoute(component, route);
+                                    return [2 /*return*/, component];
+                            }
+                        });
+                    });
+                }
+                exports.getRouteComponent = getRouteComponent;
+                function renderRoute(gl, container, state) {
+                    return __awaiter(this, void 0, void 0, function () {
+                        var parent, _glRouter, _a, _b;
+                        return __generator(this, function (_c) {
+                            switch (_c.label) {
+                                case 0:
+                                    parent = container.parent, _glRouter = parent.vueObject._glRouter;
+                                    if (_glRouter)
+                                        parent = _glRouter;
+                                    else {
+                                        while (!parent.vueObject || !parent.vueObject._isVue)
+                                            parent = parent.parent;
+                                        parent = parent.vueObject;
+                                    }
+                                    _a = renderInContainer;
+                                    _b = [container];
+                                    return [4 /*yield*/, getRouteComponent(gl, parent, state.path)];
+                                case 1:
+                                    _a.apply(void 0, _b.concat([_c.sent()]));
+                                    return [2 /*return*/];
+                            }
+                        });
+                    });
+                }
+                function UsingRoutes(target) {
+                    golden_vue_1.registerGlobalComponent(exports.RouteComponentName, renderRoute);
+                }
+                exports.UsingRoutes = UsingRoutes;
 
 
-        /***/
+                /***/
 }),
 
 /***/ "./utils.ts":
@@ -81077,158 +81098,158 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports, __webpack_require__) {
 
-        "use strict";
+                "use strict";
 
-        Object.defineProperty(exports, "__esModule", { value: true });
-        exports.isDragging = exports.statusChange = exports.localWindow = exports.xInstanceOf = exports.newSemaphore = exports.isSubWindow = void 0;
-        exports.isSubWindow = /[?&]gl-window=/.test(window.location.search);
-        var GoldenLayout = __webpack_require__(/*! golden-layout */ "golden-layout");
-        var $ = __webpack_require__(/*! jquery */ "jquery");
-        function newSemaphore() {
-          var access, rv = new Promise(function (resolve, reject) {
-            access = { resolve: resolve, reject: reject };
-          });
-          Object.assign(rv, access);
-          return rv;
-        }
-        exports.newSemaphore = newSemaphore;
-        var lm = GoldenLayout.__lm;
-        /**
-         * Equivalent of `obj instanceof name` but accepting cross-windows classes.
-         * @example
-         *  A popup and the main window both have an `Array` class defined - and they are different
-         *  Therefore `x instanceof Array` will return false if the Array class is from the other window
-         */
-        function xInstanceOf(obj, name) {
-          var browser = obj.constructor;
-          while (browser.name !== name && browser.super)
-            browser = browser.super;
-          return browser.name === name;
-        }
-        exports.xInstanceOf = xInstanceOf;
-        function localWindow(obj) {
-          if (!obj || 'object' != typeof obj)
-            return obj;
-          var rv = xInstanceOf(obj, 'Array') ? [] : {};
-          for (var i in obj)
-            rv[i] = localWindow(obj[i]);
-          return rv;
-        }
-        exports.localWindow = localWindow;
-        exports.statusChange = {
-          poppingOut: false,
-          poppingIn: false,
-          unloading: false
-        };
-        // hook `createPopout` to give objects instead of destroying then on-destroy
-        var oldCreatePopout = lm.LayoutManager.prototype.createPopout;
-        lm.LayoutManager.prototype.createPopout = function (item) {
-          var rv;
-          exports.statusChange.poppingOut = true;
-          try {
-            item.emit && item.emit('beforePopOut', item);
-            if (!(item.contentItems || item[0].content).length)
-              return null;
-            rv = oldCreatePopout.apply(this, arguments);
-          }
-          finally {
-            exports.statusChange.poppingOut = false;
-          }
-          item.emit && item.emit('poppedOut', rv);
-          if (item[0])
-            item = item[0];
-          var rootPaths = {}, gl = this.vueObject;
-          function ref(path) { rootPaths[path] = gl.getChild(path); }
-          if (item.content) { //config
-            if (item.vue)
-              ref(item.vue);
-            for (var i = 0; item.content[i]; ++i)
-              ref(item.content[i].vue);
-          }
-          else { //item
-            var obj = item.vueObject;
-            if (obj && obj.nodePath)
-              rootPaths[obj.nodePath] = obj;
-            for (var _i = 0, _a = item.contentItems; _i < _a.length; _i++) {
-              var sub = _a[_i];
-              obj = sub.vueObject;
-              rootPaths[obj.nodePath] = obj;
-            }
-          }
-          var ppWindow = rv.getWindow();
-          ppWindow.poppedoutVue = {
-            layout: gl,
-            path: rootPaths
-          };
-          ppWindow.addEventListener('beforeunload', function () {
-            if (!rv.poppedIn)
-              for (var p in rootPaths)
-                rootPaths[p].delete();
-          });
-          rv.on('initialised', function () {
-            var ppGl = rv.getGlInstance(), emptyCheck = null;
-            //Automatically closes the window when there is no more tabs
-            ppGl.on('itemDestroyed', function () {
-              if (!emptyCheck)
-                emptyCheck = setTimeout(function () {
-                  emptyCheck = null;
-                  if (!ppGl.root.contentItems.length)
-                    ppWindow.close();
-                });
-            });
-          });
-          return rv;
-        };
-        var bp = lm.controls.BrowserPopout.prototype;
-        // hook `createPopout` to give objects instead of destroying then on-destroy
-        var oldPopIn = bp.popIn;
-        bp.popIn = function () {
-          var rv;
-          exports.statusChange.poppingIn = true;
-          // GL bug-fix: poping-in empty window
-          try {
-            this.emit('beforePopIn');
-            this.poppedIn = true;
-            rv = this.getGlInstance().root.contentItems.length ?
-              oldPopIn.apply(this, arguments) :
-              this.close();
-          }
-          finally {
-            exports.statusChange.poppingIn = false;
-          }
-          return rv;
-        };
-        window.addEventListener('beforeunload', function () { exports.statusChange.unloading = true; });
-        /**
-         * Determine if the user is dradding a tab
-         */
-        function isDragging() {
-          return $('body').hasClass('lm_dragging');
-        }
-        exports.isDragging = isDragging;
-        function enumerable(e) {
-          //https://stackoverflow.com/questions/40930251/how-to-create-a-typescript-enumerablefalse-decorator-for-a-property
-          var rv = function (target, name, desc) {
-            if (desc) {
-              desc.enumerable = e;
-              return desc;
-            }
-            Object.defineProperty(target, name, {
-              set: function (value) {
-                Object.defineProperty(this, name, {
-                  value: value,
-                  enumerable: e, writable: true, configurable: true,
-                });
-              },
-              enumerable: e,
-              configurable: true,
-            });
-          };
-          return rv;
-        }
+                Object.defineProperty(exports, "__esModule", { value: true });
+                exports.isDragging = exports.statusChange = exports.localWindow = exports.xInstanceOf = exports.newSemaphore = exports.isSubWindow = void 0;
+                exports.isSubWindow = /[?&]gl-window=/.test(window.location.search);
+                var GoldenLayout = __webpack_require__(/*! golden-layout */ "golden-layout");
+                var $ = __webpack_require__(/*! jquery */ "jquery");
+                function newSemaphore() {
+                    var access, rv = new Promise(function (resolve, reject) {
+                        access = { resolve: resolve, reject: reject };
+                    });
+                    Object.assign(rv, access);
+                    return rv;
+                }
+                exports.newSemaphore = newSemaphore;
+                var lm = GoldenLayout.__lm;
+                /**
+                 * Equivalent of `obj instanceof name` but accepting cross-windows classes.
+                 * @example
+                 *  A popup and the main window both have an `Array` class defined - and they are different
+                 *  Therefore `x instanceof Array` will return false if the Array class is from the other window
+                 */
+                function xInstanceOf(obj, name) {
+                    var browser = obj.constructor;
+                    while (browser.name !== name && browser.super)
+                        browser = browser.super;
+                    return browser.name === name;
+                }
+                exports.xInstanceOf = xInstanceOf;
+                function localWindow(obj) {
+                    if (!obj || 'object' != typeof obj)
+                        return obj;
+                    var rv = xInstanceOf(obj, 'Array') ? [] : {};
+                    for (var i in obj)
+                        rv[i] = localWindow(obj[i]);
+                    return rv;
+                }
+                exports.localWindow = localWindow;
+                exports.statusChange = {
+                    poppingOut: false,
+                    poppingIn: false,
+                    unloading: false
+                };
+                // hook `createPopout` to give objects instead of destroying then on-destroy
+                var oldCreatePopout = lm.LayoutManager.prototype.createPopout;
+                lm.LayoutManager.prototype.createPopout = function (item) {
+                    var rv;
+                    exports.statusChange.poppingOut = true;
+                    try {
+                        item.emit && item.emit('beforePopOut', item);
+                        if (!(item.contentItems || item[0].content).length)
+                            return null;
+                        rv = oldCreatePopout.apply(this, arguments);
+                    }
+                    finally {
+                        exports.statusChange.poppingOut = false;
+                    }
+                    item.emit && item.emit('poppedOut', rv);
+                    if (item[0])
+                        item = item[0];
+                    var rootPaths = {}, gl = this.vueObject;
+                    function ref(path) { rootPaths[path] = gl.getChild(path); }
+                    if (item.content) { //config
+                        if (item.vue)
+                            ref(item.vue);
+                        for (var i = 0; item.content[i]; ++i)
+                            ref(item.content[i].vue);
+                    }
+                    else { //item
+                        var obj = item.vueObject;
+                        if (obj && obj.nodePath)
+                            rootPaths[obj.nodePath] = obj;
+                        for (var _i = 0, _a = item.contentItems; _i < _a.length; _i++) {
+                            var sub = _a[_i];
+                            obj = sub.vueObject;
+                            rootPaths[obj.nodePath] = obj;
+                        }
+                    }
+                    var ppWindow = rv.getWindow();
+                    ppWindow.poppedoutVue = {
+                        layout: gl,
+                        path: rootPaths
+                    };
+                    ppWindow.addEventListener('beforeunload', function () {
+                        if (!rv.poppedIn)
+                            for (var p in rootPaths)
+                                rootPaths[p].delete();
+                    });
+                    rv.on('initialised', function () {
+                        var ppGl = rv.getGlInstance(), emptyCheck = null;
+                        //Automatically closes the window when there is no more tabs
+                        ppGl.on('itemDestroyed', function () {
+                            if (!emptyCheck)
+                                emptyCheck = setTimeout(function () {
+                                    emptyCheck = null;
+                                    if (!ppGl.root.contentItems.length)
+                                        ppWindow.close();
+                                });
+                        });
+                    });
+                    return rv;
+                };
+                var bp = lm.controls.BrowserPopout.prototype;
+                // hook `createPopout` to give objects instead of destroying then on-destroy
+                var oldPopIn = bp.popIn;
+                bp.popIn = function () {
+                    var rv;
+                    exports.statusChange.poppingIn = true;
+                    // GL bug-fix: poping-in empty window
+                    try {
+                        this.emit('beforePopIn');
+                        this.poppedIn = true;
+                        rv = this.getGlInstance().root.contentItems.length ?
+                            oldPopIn.apply(this, arguments) :
+                            this.close();
+                    }
+                    finally {
+                        exports.statusChange.poppingIn = false;
+                    }
+                    return rv;
+                };
+                window.addEventListener('beforeunload', function () { exports.statusChange.unloading = true; });
+                /**
+                 * Determine if the user is dradding a tab
+                 */
+                function isDragging() {
+                    return $('body').hasClass('lm_dragging');
+                }
+                exports.isDragging = isDragging;
+                function enumerable(e) {
+                    //https://stackoverflow.com/questions/40930251/how-to-create-a-typescript-enumerablefalse-decorator-for-a-property
+                    var rv = function (target, name, desc) {
+                        if (desc) {
+                            desc.enumerable = e;
+                            return desc;
+                        }
+                        Object.defineProperty(target, name, {
+                            set: function (value) {
+                                Object.defineProperty(this, name, {
+                                    value: value,
+                                    enumerable: e, writable: true, configurable: true,
+                                });
+                            },
+                            enumerable: e,
+                            configurable: true,
+                        });
+                    };
+                    return rv;
+                }
 
 
-        /***/
+                /***/
 }),
 
 /***/ "golden-layout":
@@ -81238,9 +81259,9 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports) {
 
-        module.exports = require("golden-layout");
+                module.exports = require("golden-layout");
 
-        /***/
+                /***/
 }),
 
 /***/ "golden-layout/src/css/goldenlayout-base.css":
@@ -81250,9 +81271,9 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports) {
 
-        module.exports = require("golden-layout/src/css/goldenlayout-base.css");
+                module.exports = require("golden-layout/src/css/goldenlayout-base.css");
 
-        /***/
+                /***/
 }),
 
 /***/ "jquery":
@@ -81262,9 +81283,9 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports) {
 
-        module.exports = require("jquery");
+                module.exports = require("jquery");
 
-        /***/
+                /***/
 }),
 
 /***/ "vue":
@@ -81274,9 +81295,9 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports) {
 
-        module.exports = require("vue");
+                module.exports = require("vue");
 
-        /***/
+                /***/
 }),
 
 /***/ "vue-property-decorator":
@@ -81286,9 +81307,9 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports) {
 
-        module.exports = require("vue-property-decorator");
+                module.exports = require("vue-property-decorator");
 
-        /***/
+                /***/
 }),
 
 /***/ "vue-resize-directive":
@@ -81298,16 +81319,15 @@ var define;
 /*! no static exports found */
 /***/ (function (module, exports) {
 
-        module.exports = require("vue-resize-directive");
+                module.exports = require("vue-resize-directive");
 
-        /***/
+                /***/
 })
 
-    /******/
+        /******/
 });
 });
 //# sourceMappingURL=vue-golden-layout.js.map
-
 },{"golden-layout":"JKEC","golden-layout/src/css/goldenlayout-base.css":"rDkK","jquery":"juYr","vue":"QPfz","vue-property-decorator":"oHlX","vue-resize-directive":"A4BV"}],"Focm":[function(require,module,exports) {
 "use strict";
 

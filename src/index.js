@@ -25,17 +25,18 @@
 
 import "babel-polyfill";
 import 'spinal-model-graph';
-import Spinal from "./spinal";
+import "./spinal";
 import Vue from "vue";
 
 import App from "./App.vue";
 
-import vgl from 'vue-golden-layout'
-import { Component, Inject, Model, Prop, Watch } from 'vue-property-decorator'
-import 'golden-layout/src/css/goldenlayout-base.css'
-import 'golden-layout/src/css/goldenlayout-dark-theme.css'
-
-
+import vgl from 'vue-golden-layout';
+import 'golden-layout/src/css/goldenlayout-base.css';
+import 'golden-layout/src/css/goldenlayout-dark-theme.css';
+import 'vue-material/dist/vue-material.min.css';
+import 'vue-material/dist/theme/default.css';
+import { MdSnackbar } from 'vue-material/dist/components';
+Vue.use(MdSnackbar);
 
 Vue.use(vgl);
 Vue.config.productionTip = false;

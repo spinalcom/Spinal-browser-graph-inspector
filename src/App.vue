@@ -86,9 +86,7 @@ with this file. If not, see
 </template>
 ​
 <script lang="ts">
-import Vue from "vue";
 import Spinal from "./spinal";
-import { Component, Inject, Model, Prop, Watch } from "vue-property-decorator";
 import AppHeader from "./components/AppHeader.vue";
 import AppGraph from "./components/AppGraph.vue";
 import AppElement from "./components/AppElement.vue";

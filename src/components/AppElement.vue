@@ -34,22 +34,21 @@ with this file. If not, see
         </tr>
       </tbody>
     </table>
+    <md-snackbar :md-position="'left'" :md-active.sync="showSnackbar">
+      <span>{{ msgSnackbar }}</span>
+    </md-snackbar>
   </div>
 </template>
 
 <script>
-import Viewer from "../viewer";
-import Spinal from "../spinal";
-import Vue from "vue";
 import EventBus from "./event-bus";
 import {
   SpinalNode,
   SpinalRelationLstPtr,
   SpinalRelationPtrLst,
-  SpinalRelationRef,
-  BaseSpinalRelation
+  SpinalRelationRef
 } from "spinal-model-graph";
-
+import { copyToClipboard } from "../utils/copyToClipboard";
 export default {
   name: "AppElement",
   data() {
@@ -57,7 +56,9 @@ export default {
       server_id: -1,
       message: "Please Browse The Graph To View Node Information",
       emptymessage: "",
-      target: []
+      target: [],
+      showSnackbar: false,
+      msgSnackbar: ""
     };
   },
   components: {},
@@ -69,9 +70,12 @@ export default {
     },
     async copyData(text) {
       try {
-        await navigator.clipboard.writeText(text);
-      } catch(e) {
-          alert('Cannot copy');
+        await copyToClipboard(text);
+        this.showSnackbar = true;
+        this.msgSnackbar = "copied to clipboard";
+      } catch (error) {
+        this.showSnackbar = true;
+        this.msgSnackbar = error;
       }
     },
     handleAtomic(model, key = model.constructor.name, force = false) {
@@ -82,10 +86,7 @@ export default {
       ) {
         this.target.push({ key, value: model.get() });
         return true;
-      } else if (
-        model instanceof Ptr ||
-        model instanceof Pbr
-        ) {
+      } else if (model instanceof Ptr || model instanceof Pbr) {
         this.target.push({ key, value: `target = ${model.data.value}` });
       } else if (force) {
         this.target.push({ key, value: "" });
@@ -128,16 +129,14 @@ export default {
           { key: "Nb Childrens", value: model.children.length }
         );
         return true;
-      } else if (
-        model instanceof SpinalRelationPtrLst 
-      ) {
+      } else if (model instanceof SpinalRelationPtrLst) {
         this.target.push(
           { key: "name", value: model.name.get() },
           { key: "Nb Childrens", value: model.children.info.ids.length }
         );
         return true;
       }
-      return false
+      return false;
     }
   },
   mounted() {
@@ -210,5 +209,4 @@ export default {
 .styled-table tbody tr.active-row td:hover {
   background-color: #eeeeee0f;
 }
-
 </style>

@@ -24,13 +24,12 @@
 //load the libraries
 import "spinal-model-graph";
 import Spinal from "./spinal.js"; //graph connection and recovery
-import d3 = require("d3"); // lib d3js
-import ANode from "./nodeModel/ANode"; //interface Node
-
-import { D3Node } from "./nodeModel/D3Node"; //interface D3Node
-import NodeFactory from "./nodeModel/NodeFactory";
-import { FileSystem } from "spinal-core-connectorjs_type";
-import { SpinalNode } from "spinal-model-graph";
+import * as d3 from "d3"; // lib d3js
+import { ANode } from "./nodeModel/ANode"; //interface Node
+import type { D3Node } from "./nodeModel/D3Node"; //interface D3Node
+import { NodeFactory } from "./nodeModel/NodeFactory";
+import { FileSystem } from "spinal-core-connectorjs";
+import { type SpinalNode, SpinalGraph } from "spinal-model-graph";
 import EventBus from "./components/event-bus.js";
 
 class Viewer {
@@ -94,12 +93,7 @@ class Viewer {
     this.svg = d3
       .select(element)
       .append("svg")
-      .call(
-        d3
-          .zoom()
-          .scaleExtent([0.01, 8])
-          .on("zoom", zoomed)
-      )
+      .call(d3.zoom().scaleExtent([0.01, 8]).on("zoom", zoomed))
       .on("dblclick.zoom", null)
       .attr("width", this.width + this.margin.right + this.margin.left)
       .attr("height", this.height + this.margin.top + this.margin.bottom);
@@ -126,12 +120,12 @@ class Viewer {
         "link",
         d3
           .forceLink()
-          .id(function(d: D3Node) {
+          .id((d: D3Node) => {
             //link — specifies that id is the link variable
             let res = d.id + 10;
             return res.toString();
           })
-          .distance(function(d: any) {
+          .distance(function (d: any) {
             if (d.target.data.category === "node") return 100;
             else return 70;
           })
@@ -192,7 +186,7 @@ class Viewer {
       const links = createLinks(nodes); //recover links
 
       //build the d3 links
-      link = mylink.selectAll(".link").data(links, function(d: any) {
+      link = mylink.selectAll(".link").data(links, function (d: any) {
         return d.target.id;
       });
       link.exit().remove();
@@ -215,7 +209,7 @@ class Viewer {
         .attr("class", "edgepath")
         .attr("fill-opacity", 0)
         .attr("stroke-opacity", 0)
-        .attr("id", function(d, i) {
+        .attr("id", function (d, i) {
           return "edgepath" + i;
         })
         .style("pointer-events", "none");
@@ -241,7 +235,7 @@ class Viewer {
       arrowhead = arrowhead.merge(arrowhead);
 
       //build the d3 nodes
-      node = svg.selectAll(".node").data(nodes, function(d: D3Node) {
+      node = svg.selectAll(".node").data(nodes, function (d: D3Node) {
         return d.id.toString();
       });
 
@@ -257,7 +251,7 @@ class Viewer {
         .style("opacity", 1)
         .on("click", click)
         .on("contextmenu", openNodeInDbInspector)
-        .on("auxclick", function(d) {
+        .on("auxclick", function (d) {
           var evnt = window.event;
           if ((<any>evnt).which === 2) {
             newpage(d);
@@ -271,7 +265,7 @@ class Viewer {
             .on("end", dragended)
         );
 
-      nodeEnter.append(function(d) {
+      nodeEnter.append(function (d) {
         //create nodes Node
         if (d.data.category === "node") {
           const doc = document.createElementNS(
@@ -300,13 +294,12 @@ class Viewer {
       //add node labels
       nodeEnter
         .append("text")
-        .text(function(d) {
+        .text(function (d: D3Node) {
           const realNode = FileSystem._objects[d.data._serverId];
-          if (d.data.name === "undefined") {
-            d.data.name = "Graph";
-          }
-          if (d.data.name === undefined) {
-            d.data.name = "undefined";
+          if (realNode instanceof SpinalGraph) {
+            d.data.name = "SpinalGraph";
+          } else if (d.data.name === "undefined" || d.data.name === undefined) {
+            d.data.name = "undefined name";
           }
           if (d.data.category === "node") {
             return d.data.name;
@@ -317,7 +310,7 @@ class Viewer {
         .attr("transform", `translate(-17,-15)`)
         .style("fill", "#fff")
         .style("font-family", "sans-serif")
-        .style("font-style", function(d) {
+        .style("font-style", function (d) {
           if (d.data.name === "undefined") return "italic";
           return "normal";
         });
@@ -335,8 +328,8 @@ class Viewer {
         ptrlst: "#F40911",
         lstptr: "#E47579",
         ref: "09bf3b",
-        objClosed: "#320ff2"
-      }
+        objClosed: "#320ff2",
+      },
     };
 
     //node color function
@@ -364,24 +357,24 @@ class Viewer {
     //node ticked function
     function ticked() {
       link
-        .attr("x1", function(d) {
+        .attr("x1", function (d) {
           return d.source.x;
         })
-        .attr("y1", function(d) {
+        .attr("y1", function (d) {
           return d.source.y;
         })
-        .attr("x2", function(d) {
+        .attr("x2", function (d) {
           return d.target.x;
         })
-        .attr("y2", function(d) {
+        .attr("y2", function (d) {
           return d.target.y;
         });
 
-      node.attr("transform", function(d) {
+      node.attr("transform", function (d) {
         return `translate(${d.x}, ${d.y})`;
       });
 
-      edgepath.attr("d", function(d: any) {
+      edgepath.attr("d", function (d: any) {
         return (
           "M " +
           d.source.x +
@@ -446,7 +439,11 @@ class Viewer {
 
     //create links
     function createLinks(nodes: D3Node[]) {
-      const links = [];
+      const links: {
+        source: D3Node;
+        target: D3Node;
+        index: number;
+      }[] = [];
       let id = 0;
       for (const node of nodes) {
         if (Array.isArray(node.parent)) {
@@ -455,7 +452,7 @@ class Viewer {
               links.push({
                 source: parent,
                 target: node,
-                index: id++
+                index: id++,
               });
             }
           }
@@ -466,7 +463,7 @@ class Viewer {
               links.push({
                 source: node,
                 target: child,
-                index: id++
+                index: id++,
               });
             }
           }

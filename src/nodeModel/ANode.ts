@@ -1,19 +1,19 @@
 /*
- * Copyright 2020 SpinalCom - www.spinalcom.com
- *
+ * Copyright 2024 SpinalCom - www.spinalcom.com
+ * 
  * This file is part of SpinalCore.
- *
+ * 
  * Please read all of the following terms and conditions
- * of the Free Software license Agreement ("Agreement")
+ * of the Software license Agreement ("Agreement")
  * carefully.
- *
+ * 
  * This Agreement is a legally binding contract between
  * the Licensee (as defined below) and SpinalCom that
  * sets forth the terms and conditions that govern your
  * use of the Program. By installing and/or using the
  * Program, you agree to abide by all the terms and
  * conditions stated or referenced herein.
- *
+ * 
  * If you do not agree to abide by these terms and
  * conditions, do not demonstrate your acceptance and do
  * not install or use the Program.
@@ -21,12 +21,13 @@
  * with this file. If not, see
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
-import { D3Node } from "./D3Node";
-import { SpinalAnyNode } from "./types";
-import { FileSystem } from "spinal-core-connectorjs_type";
+
+import type { D3Node } from "./D3Node";
+import type { SpinalAnyNode } from "./types";
+import { FileSystem } from "spinal-core-connectorjs";
 import { SpinalNode } from "spinal-model-graph";
 
-abstract class ANode {
+export class ANode {
   id: string;
   _serverId: number;
   name: string;
@@ -35,12 +36,12 @@ abstract class ANode {
   contextIds: string[];
   hasChildren: boolean;
   children: ANode[];
-  _children: ANode[];
+  _children: ANode[] | null;
 
   constructor(node: SpinalAnyNode) {
     this.id = node.getId().get();
-    this._serverId = node._server_id;
-    this.name = node.getName() ? node.getName().get() : undefined
+    this._serverId = node._server_id!;
+    this.name = node.getName() ? node.getName().get() : "undefined name"
     this.category = "undef";
     this.hasChildren = false;
     this.children = [];
@@ -131,18 +132,18 @@ abstract class ANode {
   }
 
   static async updateParent(node: D3Node, nodeFactory) {
-    const promise = [];
+    const promise: Promise<SpinalNode>[] = [];
     const realNode = (FileSystem._objects[node.data._serverId]);
     if (realNode instanceof SpinalNode) {
       for (const [, listnode] of realNode.parents) {
-        for (let index = 0; index < listnode.length; index++) {
-          promise.push(listnode[index].load());
+        for (const item of listnode) {
+          // @ts-ignore
+          promise.push(item.load());
         }
       }
       const parents = await Promise.all(promise);
       node.parent = [];
       for (const parent of parents) {
-
         const n = nodeFactory.createNode(parent)
         node.parent.push(n)
       }
@@ -156,4 +157,3 @@ abstract class ANode {
   }
 
 }
-export default ANode

@@ -1,10 +1,10 @@
 <!--
-Copyright 2020 SpinalCom - www.spinalcom.com
+Copyright 2024 SpinalCom - www.spinalcom.com
 
 This file is part of SpinalCore.
 
 Please read all of the following terms and conditions
-of the Free Software license Agreement ("Agreement")
+of the Software license Agreement ("Agreement")
 carefully.
 
 This Agreement is a legally binding contract between
@@ -21,6 +21,7 @@ You should have received a copy of the license along
 with this file. If not, see
 <http://resources.spinalcom.com/licenses.pdf>.
 -->
+
 <template>
   <div id="app-Element">
     <div class="message">
@@ -34,9 +35,9 @@ with this file. If not, see
         </tr>
       </tbody>
     </table>
-    <md-snackbar :md-position="'left'" :md-active.sync="showSnackbar">
-      <span>{{ msgSnackbar }}</span>
-    </md-snackbar>
+    <v-snackbar v-model="showSnackbar">
+      {{ msgSnackbar }}
+    </v-snackbar>
   </div>
 </template>
 
@@ -46,7 +47,7 @@ import {
   SpinalNode,
   SpinalRelationLstPtr,
   SpinalRelationPtrLst,
-  SpinalRelationRef
+  SpinalRelationRef,
 } from "spinal-model-graph";
 import { copyToClipboard } from "../utils/copyToClipboard";
 export default {
@@ -58,7 +59,7 @@ export default {
       emptymessage: "",
       target: [],
       showSnackbar: false,
-      msgSnackbar: ""
+      msgSnackbar: "",
     };
   },
   components: {},
@@ -137,10 +138,10 @@ export default {
         return true;
       }
       return false;
-    }
+    },
   },
   mounted() {
-    EventBus.$on("realNodeElement", model => {
+    EventBus.$on("realNodeElement", (model) => {
       this.server_id = model._server_id;
       this.target = [{ key: "serverId", value: model._server_id }];
       const fcts = [
@@ -148,20 +149,22 @@ export default {
         this.handleSpinalRelation,
         this.handleAtomic,
         this.handleLst,
-        this.handleobject
+        this.handleobject,
       ];
       for (const fct of fcts) {
         if (fct(model)) return;
       }
     });
-  }
+  },
 };
 </script>
 
 <style>
 #app-Element {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  overflow: auto;
+  height: 100%;
 }
 .element {
   font-family: sans-serif;
@@ -187,10 +190,6 @@ export default {
   width: calc(100% - 16px);
 }
 
-/* .styled-table thead tr {
-  color: #ffffff;
-  text-align: left;
-} */
 .styled-table th,
 .styled-table td {
   padding: 12px 15px;

@@ -22,7 +22,7 @@
  * <http://resources.spinalcom.com/licenses.pdf>.
  */
 
-import { FileSystem, spinalCore } from "spinal-core-connectorjs_type";
+import { FileSystem, spinalCore } from "spinal-core-connectorjs";
 import axios from "axios";
 
 export class Spinal {

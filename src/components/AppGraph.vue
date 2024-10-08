@@ -1,10 +1,10 @@
 <!--
-Copyright 2020 SpinalCom - www.spinalcom.com
+Copyright 2024 SpinalCom - www.spinalcom.com
 
 This file is part of SpinalCore.
 
 Please read all of the following terms and conditions
-of the Free Software license Agreement ("Agreement")
+of the Software license Agreement ("Agreement")
 carefully.
 
 This Agreement is a legally binding contract between
@@ -21,6 +21,7 @@ You should have received a copy of the license along
 with this file. If not, see
 <http://resources.spinalcom.com/licenses.pdf>.
 -->
+
 <template>
   <div ref="appGraph" class="app-Graph">
     <legendVueGraph></legendVueGraph>
@@ -35,7 +36,6 @@ with this file. If not, see
 <script>
 import Viewer from "../viewer";
 import Spinal from "../spinal";
-import EventBus from "./event-bus";
 import legendVueGraph from "./legendVueGraph";
 
 export default {
@@ -44,11 +44,11 @@ export default {
     return {
       state: false,
       legend: false,
-      courseType: "Children Course"
+      courseType: "Children Course",
     };
   },
   components: {
-    legendVueGraph
+    legendVueGraph,
   },
   mounted() {
     const spinal = Spinal.getInstance();
@@ -62,18 +62,15 @@ export default {
       if (this.courseType === "Children Course")
         this.courseType = "Parent Course";
       else this.courseType = "Children Course";
-    }
-    // resize() {
-    //   this.viewer.resize.call(this.viewer);
-    // }
+    },
   },
   props: {
-    server_id: { require: true, type: Number }
-  }
+    server_id: { require: true, type: Number },
+  },
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 * {
   padding: 0;
   margin: 0;
@@ -83,7 +80,6 @@ export default {
   height: 100%;
   overflow: hidden;
 }
-$blue: #666;
 .typecourse {
   vertical-align: middle;
   width: 100px;
@@ -99,12 +95,12 @@ $blue: #666;
   border: none;
   transition: all 0.4s ease 0s;
   font-family: "Gill Sans", sans-serif;
-  &:hover {
-    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
-    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-    box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-    transition: all 0.4s ease 0s;
-  }
+}
+#course:hover {
+  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+  transition: all 0.4s ease 0s;
 }
 </style>

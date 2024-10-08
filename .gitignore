@@ -3,4 +3,5 @@ node_modules
 .apps.json
 .config.json
 launch.config.js
-
+.parcel-cache
+.vscode

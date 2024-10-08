@@ -1,10 +1,10 @@
 <!--
-Copyright 2020 SpinalCom - www.spinalcom.com
+Copyright 2024 SpinalCom - www.spinalcom.com
 
 This file is part of SpinalCore.
 
 Please read all of the following terms and conditions
-of the Free Software license Agreement ("Agreement")
+of the Software license Agreement ("Agreement")
 carefully.
 
 This Agreement is a legally binding contract between
@@ -21,96 +21,90 @@ You should have received a copy of the license along
 with this file. If not, see
 <http://resources.spinalcom.com/licenses.pdf>.
 -->
+
 <template>
   <div class="dropdown">
-    <button id="button" class="button" v-on:click="showLegend">
-      <img src="/assets/info.png" alt="" />
+    <button id="button" class="button" @click="legend = !legend">
+      <img src="../assets/info.png" alt="" />
     </button>
 
     <div id="myDropdown" class="dropdown-content" :class="{ show: legend }">
-      <ul class="demo">
-        <li>
-          <img src="/assets/start.png" alt="" />
-          <p>Strating Node</p>
-        </li>
-        <li>
-          <img src="/assets/simplenode.png" alt="" />
-          <p>Simple Node</p>
-        </li>
-        <li>
-          <img src="/assets/lastnode.png" alt="" />
-          <p>Leaf Node</p>
-        </li>
-        <li>
-          <img src="/assets/ptrlst.png" alt="" />
-          <p>Relation PtrLst</p>
-        </li>
-        <li>
-          <img src="/assets/lstptr.png" alt="" />
-          <p>Relation LstPtr</p>
-        </li>
-        <li>
-          <img src="/assets/ref.png" alt="" />
-          <p>Relation Ref</p>
-        </li>
+      <table class="legend-table-graph-inspector">
+        <tr>
+          <th>
+            <img width="20px" src="../assets/start.png?width=20" alt="" />
+          </th>
+          <th>Strating Node</th>
+        </tr>
 
-        <hr />
-        <li>
-          <img src="/assets/mouse2.png" alt="" />
-          <img src="/assets/childcourse.png" class="typecourse1" alt="" />
-          <p>: chldren course</p>
-        </li>
-        <li>
-          <img src="/assets/mouse2.png" alt="" />
-          <img src="/assets/parentcourse.png" class="typecourse2" alt="" />
-          <p>: parent course</p>
-        </li>
-        <li>
-          <img src="/assets/mouse2.png" alt="" />
-          <p>Middle Click: open the node in a new panel</p>
-        </li>
-        <li>
-          <img src="/assets/mouse2.png" alt="" />
-          <p>Right Click: open the node in DB Inspector</p>
-        </li>
-      </ul>
+        <tr>
+          <th>
+            <img width="20px" src="../assets/simplenode.png?width=20" alt="" />
+          </th>
+          <th>Simple Node</th>
+        </tr>
+        <tr>
+          <th>
+            <img width="20px" src="../assets/lastnode.png?width=20" alt="" />
+          </th>
+          <th>Leaf Node</th>
+        </tr>
+        <tr>
+          <th>
+            <img width="20px" src="../assets/ptrlst.png?width=20" alt="" />
+          </th>
+          <th>Relation PtrLst</th>
+        </tr>
+        <tr>
+          <th>
+            <img width="20px" src="../assets/lstptr.png?width=20" alt="" />
+          </th>
+          <th>Relation LstPtr</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd">
+          <th><img width="20px" src="../assets/ref.png?width=20" alt="" /></th>
+          <th>Relation Ref</th>
+        </tr>
+        <tr>
+          <th><v-icon>mdi-mouse-left-click-outline</v-icon></th>
+          <th>open / close the selection</th>
+        </tr>
+        <tr style="border-bottom: 1px solid #ddd">
+          <th><v-icon>mdi-mouse-right-click-outline</v-icon></th>
+          <th>select only</th>
+        </tr>
+      </table>
+      <p style="text-align: center">
+        <img src="../assets/childcourse.png" class="typecourse1" alt="" /> or
+        <img src="../assets/parentcourse.png" class="typecourse2" alt="" /> to
+        select the method to traverse the graph
+      </p>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "legendVueGraph",
-  data() {
-    return {
-      legend: false
-    };
-  },
-
-  methods: {
-    showLegend() {
-      this.legend = !this.legend;
-    }
-  }
-};
+<script setup>
+import { ref } from "vue";
+let legend = ref(false);
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 * {
   padding: 0;
   margin: 0;
 }
-$blue: #666;
 .dropdown {
   position: relative;
   float: right;
 }
 .dropdown-content {
   display: none;
+  border: white solid 1px;
+  border-radius: 13px;
   position: absolute;
   right: 0px;
   background-color: #222;
-  min-width: 320px;
+  min-width: 248px;
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(76, 69, 69, 0.2);
   z-index: 1;
@@ -125,18 +119,18 @@ $blue: #666;
   margin-right: 3px;
   width: 24px;
   height: 24px;
-  background-color: $blue;
+  background-color: #666;
   border: 2px solid black;
   border-radius: 35px;
   text-decoration: none;
   padding: 5px 5px;
   color: black;
   display: inline-block;
-  &:hover {
-    background-color: rgb(187, 184, 184);
-    color: $blue;
-    border: 2px solid black;
-  }
+}
+.button :hover {
+  background-color: rgb(187, 184, 184);
+  color: #666;
+  border: 2px solid black;
 }
 .button img {
   font-size: 24px;
@@ -146,22 +140,19 @@ $blue: #666;
   width: 22px;
   height: 22px;
 }
-ul {
-  list-style-type: none;
+.legend-table-graph-inspector {
+  border-collapse: collapse;
+  margin: 6px 0;
+  width: 100%;
+  font-family: sans-serif;
 }
-ul li {
-  margin: 5px;
+.legend-table-graph-inspector * {
+  text-align: left;
 }
-ul li img {
-  vertical-align: middle;
-  width: 20px;
-  height: 20px;
+.legend-table-graph-inspector th:first-child {
+  text-align: center;
 }
-ul li p {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 14px;
-}
+
 .typecourse1 {
   width: 80px;
 }

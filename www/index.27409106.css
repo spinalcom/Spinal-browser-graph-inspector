@@ -61814,26 +61814,39 @@ div.tooltip[data-v-b83c68] {
   overflow: hidden;
 }
 
-[data-v-bcd94d]::-webkit-scrollbar {
+[data-v-eef408]::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 
-[data-v-bcd94d]::-webkit-scrollbar-track {
+[data-v-eef408]::-webkit-scrollbar-track {
   border-radius: 10px;
   box-shadow: inset 0 0 5px gray;
 }
 
-[data-v-bcd94d]::-webkit-scrollbar-thumb {
+[data-v-eef408]::-webkit-scrollbar-thumb {
   background: #c9c2c2;
   border-radius: 10px;
 }
 
-[data-v-bcd94d]::-webkit-scrollbar-thumb:hover {
+[data-v-eef408]::-webkit-scrollbar-thumb:hover {
   background: #b4f5ab;
 }
 
-.app-Db-Inspector .tooltip[data-v-bcd94d] {
+.app-Db-Inspector .tooltip {
+  text-align: center;
+  color: #eee;
   pointer-events: none;
+  background: #09373f;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  padding: 8px;
+  font: 10px sans-serif;
+  position: absolute;
+}
+
+.app-Db-Inspector .tooltip tr:nth-child(odd) {
+  color: #fff;
+  background-color: #232322;
 }
 /*# sourceMappingURL=index.27409106.css.map */

@@ -156,8 +156,21 @@ const layoutConfig = ref(miniRowConfig);
 ::-webkit-scrollbar-thumb:hover {
   background: #b4f5ab;
 }
-
+</style>
+<style>
 .app-Db-Inspector .tooltip {
+  position: absolute;
+  text-align: center;
+  padding: 8px;
+  font: 10px sans-serif;
+  background: #09373f;
+  color: #eee;
+  border: solid 1px #aaa;
+  border-radius: 8px;
   pointer-events: none;
+}
+.app-Db-Inspector .tooltip tr:nth-child(odd) {
+  background-color: #232322;
+  color: #fff;
 }
 </style>

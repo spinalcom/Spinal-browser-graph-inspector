@@ -29,6 +29,9 @@ with this file. If not, see
       <button id="course" v-on:click="setCourse">
         {{ courseType }}
       </button>
+      <button id="layout" v-on:click="toggleLayout">
+        {{ layoutLabel }}
+      </button>
     </div>
   </div>
 </template>
@@ -45,6 +48,7 @@ export default {
       state: false,
       legend: false,
       courseType: "Children Course",
+      layoutLabel: "Force Layout",
     };
   },
   components: {
@@ -62,6 +66,15 @@ export default {
       if (this.courseType === "Children Course")
         this.courseType = "Parent Course";
       else this.courseType = "Children Course";
+    },
+    toggleLayout() {
+      if (this.layoutLabel === "Force Layout") {
+        this.viewer.setLayoutMode("force");
+        this.layoutLabel = "DAG Layout";
+      } else {
+        this.viewer.setLayoutMode("dag");
+        this.layoutLabel = "Force Layout";
+      }
     },
   },
   props: {

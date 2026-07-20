@@ -32,6 +32,9 @@ import { FileSystem } from "spinal-core-connectorjs";
 import { type SpinalNode, SpinalGraph } from "spinal-model-graph";
 import EventBus from "./components/event-bus.js";
 
+const HORIZONTAL_SPACING = 200;
+const VERTICAL_SPACING = 60;
+
 class Viewer {
   graph: SpinalIO;
   width!: number;
@@ -43,6 +46,19 @@ class Viewer {
   visualisation: boolean = false;
   nodeFactory: NodeFactory;
   stateCourse: boolean = false;
+  layoutMode: "dag" | "force" = "dag";
+  private _render: (() => void) | null = null;
+  private _update: (() => void) | null = null;
+
+  setLayoutMode(mode: "dag" | "force") {
+    this.layoutMode = mode;
+    if (mode === "force") {
+      if (this._update) this._update();
+    } else {
+      if (this.simulation) this.simulation.stop();
+      if (this._render) this._render();
+    }
+  }
 
   constructor(spinal: SpinalIO) {
     this.graph = spinal;
@@ -67,10 +83,12 @@ class Viewer {
       this.svg
         .attr("width", this.width + this.margin.right + this.margin.left)
         .attr("height", this.height + this.margin.top + this.margin.bottom);
-      this.simulation.force(
-        "center",
-        d3.forceCenter(this.width / 2, this.height / 2),
-      ); //center — pulls all nodes to the center
+      if (this.layoutMode === "force" && this.simulation) {
+        this.simulation.force(
+          "center",
+          d3.forceCenter(this.width / 2, this.height / 2),
+        );
+      }
     }
   }
 
@@ -84,11 +102,15 @@ class Viewer {
 
     this.width = element.clientWidth - this.margin.left - this.margin.right;
     this.height = element.clientHeight - this.margin.top - this.margin.bottom;
+    const self = this;
     let i = 0;
-    let node: any, link: any, edgepath: any, arrowhead: any;
+    let node: any, link: any, edgepath: any;
 
     //build hierarchy d3 graph from entry point
     const root = this.nodeFactory.createNode(data);
+    // Pin root at center
+    root.x = this.width / 2;
+    root.y = this.height / 2;
     //create the svg
     this.svg = d3
       .select(element)
@@ -110,37 +132,102 @@ class Viewer {
     const mylink = svg.append("g");
     const myedgepath = svg.append("g");
 
-    //create the simulation force
-    var simulation = d3
+    // DAG layout: position new nodes relative to an anchor, avoiding column overlap
+    const positionNewNodes = (
+      anchor: D3Node,
+      newNodes: D3Node[],
+      direction: "right" | "left",
+    ) => {
+      const ax = anchor.x ?? this.width / 2;
+      const ay = anchor.y ?? this.height / 2;
+      const targetX =
+        ax + (direction === "right" ? HORIZONTAL_SPACING : -HORIZONTAL_SPACING);
+      const count = newNodes.length;
+      const totalHeight = (count - 1) * VERTICAL_SPACING;
+
+      // Collect y-positions already occupied at the target column (within half a column width)
+      const colTolerance = HORIZONTAL_SPACING * 0.4;
+      const occupiedYs: number[] = [];
+      for (const n of this.nodeFactory.nodeMap.values()) {
+        if (
+          n.x !== undefined &&
+          n.y !== undefined &&
+          Math.abs(n.x - targetX) < colTolerance &&
+          !newNodes.includes(n)
+        ) {
+          occupiedYs.push(n.y);
+        }
+      }
+      occupiedYs.sort((a, b) => a - b);
+
+      // Try to center around the anchor; fall back to placing below existing nodes
+      let startY = ay - totalHeight / 2;
+      if (occupiedYs.length > 0) {
+        const proposedYs = Array.from(
+          { length: count },
+          (_, i) => startY + i * VERTICAL_SPACING,
+        );
+        const hasOverlap = proposedYs.some((py) =>
+          occupiedYs.some((oy) => Math.abs(oy - py) < VERTICAL_SPACING * 0.9),
+        );
+        if (hasOverlap) {
+          startY = occupiedYs[occupiedYs.length - 1] + VERTICAL_SPACING;
+        }
+      }
+
+      newNodes.forEach((n, idx) => {
+        n.x = targetX;
+        n.y = startY + idx * VERTICAL_SPACING;
+      });
+    };
+
+    // Force simulation — created once, stopped initially (DAG mode default)
+    this.simulation = d3
       .forceSimulation()
-      // .alphaDecay(-0.01)
-      .force("charge", d3.forceManyBody().strength(-1000)) //charge — nodes repel from each other which prevents overlap
+      .force("charge", d3.forceManyBody().strength(-1000))
       .force(
         "link",
         d3
           .forceLink()
-          .id((d: D3Node) => {
-            //link — specifies that id is the link variable
-            let res = d.id + 10;
-            return res.toString();
-          })
-          .distance(function (d: any) {
-            if (d.target.data.category === "node") return 100;
-            else return 70;
-          })
+          .id((d: D3Node) => (d.id + 10).toString())
+          .distance((d: any) => (d.target.data.category === "node" ? 100 : 70))
           .strength(2),
       )
-      .force("center", d3.forceCenter(this.width / 2, this.height / 2)) //center — pulls all nodes to the center
-      .force("collide ", d3.forceCollide(5).strength(10)) //collide-specify a ‘repel radius’ of 10 x node radius — to prevent overlap and leave space for label
-      .on("tick", ticked);
+      .force("center", d3.forceCenter(this.width / 2, this.height / 2))
+      .force("collide", d3.forceCollide(5).strength(10))
+      .on("tick", () => {
+        if (link && node && edgepath) render();
+      })
+      .stop();
 
-    this.simulation = simulation;
+    // Add arrowhead marker once
+    this.svg
+      .append("defs")
+      .append("svg:marker")
+      .attr("id", "arrowhead")
+      .attr("viewBox", "-0 -5 10 10")
+      .attr("refX", 16)
+      .attr("refY", 0)
+      .attr("orient", "auto")
+      .attr("markerWidth", 8)
+      .attr("markerHeight", 8)
+      .attr("xoverflow", "visible")
+      .append("svg:path")
+      .attr("d", "M 0,-5 L 10 ,0 L 0,5")
+      .attr("fill", "#f8f8f8")
+      .style("stroke", "none");
 
     //node clicked function children course
     const ChildrenCourse = async (d: D3Node) => {
       const realNode = FileSystem._objects[d.data._serverId];
       if (ANode.collapseOrOpen(d)) {
         await ANode.updateChildren(d, this.nodeFactory);
+        if (this.layoutMode === "dag") {
+          const newChildren = (d.children || []).filter(
+            (c) => c.x === undefined,
+          );
+          positionNewNodes(d, newChildren, "right");
+        }
       }
       EventBus.$emit("realNode", realNode);
       EventBus.$emit("realNodeElement", realNode);
@@ -152,6 +239,10 @@ class Viewer {
       const realNode = FileSystem._objects[d.data._serverId];
       if (ANode.collapseOrOpenParent(d)) {
         await ANode.updateParent(d, this.nodeFactory);
+        if (this.layoutMode === "dag") {
+          const newParents = (d.parent || []).filter((p) => p.x === undefined);
+          positionNewNodes(d, newParents, "left");
+        }
       }
       EventBus.$emit("realNode", realNode);
       EventBus.$emit("realNodeElement", realNode);
@@ -213,25 +304,6 @@ class Viewer {
         })
         .style("pointer-events", "none");
       edgepath = edgepath.merge(edgepath);
-
-      //create arrow head svg
-      arrowhead = svg
-        .append("defs")
-        .append("svg:marker")
-        .attr("class", "arrowhead")
-        .attr("id", "arrowhead")
-        .attr("viewBox", "-0 -5 10 10")
-        .attr("refX", 16)
-        .attr("refY", 0)
-        .attr("orient", "auto")
-        .attr("markerWidth", 8)
-        .attr("markerHeight", 8)
-        .attr("xoverflow", "visible")
-        .append("svg:path")
-        .attr("d", "M 0,-5 L 10 ,0 L 0,5")
-        .attr("fill", "#f8f8f8")
-        .style("stroke", "none");
-      arrowhead = arrowhead.merge(arrowhead);
 
       //build the d3 nodes
       node = svg.selectAll(".node").data(nodes, function (d: D3Node) {
@@ -315,9 +387,14 @@ class Viewer {
         });
       node = nodeEnter.merge(node);
 
-      //append the data to the simulation
-      simulation.force<any>("link").links(links);
-      simulation.nodes(nodes);
+      // Render: DAG uses direct positioning; force hands off to simulation
+      if (self.layoutMode === "force") {
+        self.simulation.force<any>("link").links(links);
+        self.simulation.nodes(nodes);
+        self.simulation.alpha(0.3).restart();
+      } else {
+        render();
+      }
     }
     //color palette of nodes and relations
     let style = {
@@ -356,8 +433,11 @@ class Viewer {
       }
     }
 
-    //node ticked function
-    function ticked() {
+    //render function — directly positions all DOM elements
+    self._render = render;
+    self._update = update;
+    function render() {
+      if (!link || !node || !edgepath) return;
       link
         .attr("x1", function (d) {
           return d.source.x;
@@ -377,35 +457,25 @@ class Viewer {
       });
 
       edgepath.attr("d", function (d: any) {
-        return (
-          "M " +
-          d.source.x +
-          " " +
-          d.source.y +
-          " L " +
-          d.target.x +
-          " " +
-          d.target.y
-        );
+        return `M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`;
       });
     }
 
     // dragstarted function
     function dragstarted(d: D3Node) {
-      if (!d3.event.active) simulation.alphaTarget(0.1).restart();
       d.fx = d.x;
       d.fy = d.y;
     }
 
     // dragged function
     function dragged(d: D3Node) {
-      d.fx = d3.event.x;
-      d.fy = d3.event.y;
+      d.x = d3.event.x;
+      d.y = d3.event.y;
+      render();
     }
 
     // dragended function
     function dragended(d: D3Node) {
-      if (!d3.event.active) simulation.alphaTarget(0);
       d.fx = null;
       d.fy = null;
     }

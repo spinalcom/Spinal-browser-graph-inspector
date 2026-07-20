@@ -96822,7 +96822,7 @@ class ViewerForce {
                 edgepath.attr("d", (d)=>`M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`);
             }
             function dragstarted(d) {
-                if (!self.simulation.event.active) self.simulation.alphaTarget(0.3).restart();
+                if (!_d3.event.active) self.simulation.alphaTarget(0.3).restart();
                 d.fx = d.x;
                 d.fy = d.y;
             }
@@ -96831,7 +96831,7 @@ class ViewerForce {
                 d.fy = _d3.event.y;
             }
             function dragended(d) {
-                if (!self.simulation.event.active) self.simulation.alphaTarget(0);
+                if (!_d3.event.active) self.simulation.alphaTarget(0);
                 d.fx = null;
                 d.fy = null;
             }

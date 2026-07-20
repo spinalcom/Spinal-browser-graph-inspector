@@ -412,8 +412,7 @@ class ViewerForce {
     }
 
     function dragstarted(d: D3Node) {
-      if (!self.simulation.event.active)
-        self.simulation.alphaTarget(0.3).restart();
+      if (!d3.event.active) self.simulation.alphaTarget(0.3).restart();
       d.fx = d.x;
       d.fy = d.y;
     }
@@ -424,7 +423,7 @@ class ViewerForce {
     }
 
     function dragended(d: D3Node) {
-      if (!self.simulation.event.active) self.simulation.alphaTarget(0);
+      if (!d3.event.active) self.simulation.alphaTarget(0);
       d.fx = null;
       d.fy = null;
     }

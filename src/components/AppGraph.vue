@@ -35,7 +35,7 @@ with this file. If not, see
 
 <script>
 import Viewer from "../viewer";
-import Spinal from "../spinal";
+import SpinalIO from "../spinal";
 import legendVueGraph from "./legendVueGraph";
 
 export default {
@@ -51,7 +51,7 @@ export default {
     legendVueGraph,
   },
   mounted() {
-    const spinal = Spinal.getInstance();
+    const spinal = SpinalIO.getInstance();
     this.viewer = new Viewer(spinal);
     this.viewer.init(this.$refs.appGraph, this.server_id);
   },

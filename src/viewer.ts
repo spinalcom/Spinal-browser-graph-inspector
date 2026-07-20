@@ -23,7 +23,7 @@
  */
 //load the libraries
 import "spinal-model-graph";
-import Spinal from "./spinal.js"; //graph connection and recovery
+import SpinalIO from "./spinal.js"; //graph connection and recovery
 import * as d3 from "d3"; // lib d3js
 import { ANode } from "./nodeModel/ANode"; //interface Node
 import type { D3Node } from "./nodeModel/D3Node"; //interface D3Node
@@ -33,18 +33,18 @@ import { type SpinalNode, SpinalGraph } from "spinal-model-graph";
 import EventBus from "./components/event-bus.js";
 
 class Viewer {
-  graph: Spinal;
-  width: number;
-  height: number;
+  graph: SpinalIO;
+  width!: number;
+  height!: number;
   margin = { top: 20, right: 90, bottom: 30, left: 90 };
-  element: any;
+  element!: HTMLElement;
   svg: any;
   simulation: any;
   visualisation: boolean = false;
   nodeFactory: NodeFactory;
   stateCourse: boolean = false;
 
-  constructor(spinal: Spinal) {
+  constructor(spinal: SpinalIO) {
     this.graph = spinal;
     this.nodeFactory = new NodeFactory();
   }
@@ -69,13 +69,13 @@ class Viewer {
         .attr("height", this.height + this.margin.top + this.margin.bottom);
       this.simulation.force(
         "center",
-        d3.forceCenter(this.width / 2, this.height / 2)
+        d3.forceCenter(this.width / 2, this.height / 2),
       ); //center — pulls all nodes to the center
     }
   }
 
   // initialisation function
-  async init(element: any, server_id) {
+  async init(element: HTMLElement, server_id: number) {
     this.element = element;
     this.element = element; //initialisation of DOMElement
     const data = <SpinalNode<any>>await this.graph.load(server_id); //load graph
@@ -103,13 +103,12 @@ class Viewer {
       .append("g")
       .attr(
         "transform",
-        "translate(" + this.margin.left + "," + this.margin.top + ")"
+        "translate(" + this.margin.left + "," + this.margin.top + ")",
       );
 
     //create links group
     const mylink = svg.append("g");
     const myedgepath = svg.append("g");
-    const myarrowhead = svg.append("g");
 
     //create the simulation force
     var simulation = d3
@@ -129,7 +128,7 @@ class Viewer {
             if (d.target.data.category === "node") return 100;
             else return 70;
           })
-          .strength(2)
+          .strength(2),
       )
       .force("center", d3.forceCenter(this.width / 2, this.height / 2)) //center — pulls all nodes to the center
       .force("collide ", d3.forceCollide(5).strength(10)) //collide-specify a ‘repel radius’ of 10 x node radius — to prevent overlap and leave space for label
@@ -262,7 +261,7 @@ class Viewer {
             .drag()
             .on("start", dragstarted)
             .on("drag", dragged)
-            .on("end", dragended)
+            .on("end", dragended),
         );
 
       nodeEnter.append(function (d) {
@@ -270,7 +269,7 @@ class Viewer {
         if (d.data.category === "node") {
           const doc = document.createElementNS(
             "http://www.w3.org/2000/svg",
-            "circle"
+            "circle",
           );
           doc.setAttribute("r", "10");
           doc.setAttribute("stroke", "#f8f8f8");
@@ -280,7 +279,7 @@ class Viewer {
         //create nodes Relation
         const svg1 = document.createElementNS(
           "http://www.w3.org/2000/svg",
-          "rect"
+          "rect",
         );
         svg1.setAttribute("width", "20");
         svg1.setAttribute("height", "20");
@@ -327,7 +326,8 @@ class Viewer {
         enterpoint: "#F3FF00",
         ptrlst: "#F40911",
         lstptr: "#E47579",
-        ref: "09bf3b",
+        lstptrLst: "#f1ba02",
+        ref: "#09bf3b",
         objClosed: "#320ff2",
       },
     };
@@ -348,6 +348,8 @@ class Viewer {
           return style.nodefill.ptrlst;
         } else if (d.data.type === "LstPtr") {
           return style.nodefill.lstptr;
+        } else if (d.data.type === "LstPtrLst") {
+          return style.nodefill.lstptrLst;
         } else if (d.data.type === "Ref") {
           return style.nodefill.ref;
         }

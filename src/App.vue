@@ -37,7 +37,7 @@ function logOut() {
   spinal.disconnect();
 }
 
-function getServeIdByName(name) {
+function getAttrFromUrlQuery(name: string) {
   const url = window.location.href;
   name = name.replace(/[[\]]/g, "\\$&");
   var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
@@ -46,7 +46,8 @@ function getServeIdByName(name) {
   if (!results[2]) return "NaN";
   return results[2].replace(/\+/g, " ");
 }
-const server_id = ref(parseInt(getServeIdByName("id")));
+
+const server_id = ref(parseInt(getAttrFromUrlQuery("id")));
 const miniRowConfig: LayoutConfig = {
   root: {
     type: ItemType.row,

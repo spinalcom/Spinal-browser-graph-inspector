@@ -27,12 +27,14 @@
     "process": "^0.11.10",
     "sass": "^1.79.4",
     "sharp": "^0.31.3",
-    "spinal-core-connectorjs": "github:spinalcom/spinal-core-connectorjs",
-    "spinal-core-connectorjs_type": "git+https://github.com/spinalcom/spinal-core-connectorjs_type.git",
-    "spinal-env-viewer-graph-service": "git+https://github.com/spinalcom/Spinal-Graph-Service.git",
-    "spinal-model-graph": "git+https://github.com/spinalcom/spinal-model-graph.git",
     "tiny-emitter": "^2.1.0",
     "vue": "^3.5.11",
     "vuetify": "^3.7.2"
+  },
+  "spinalDependencies": {
+    "spinal-core-connectorjs": "spinal-core-connectorjs",
+    "spinal-core-connectorjs_type": "spinal-core-connectorjs_type",
+    "spinal-env-viewer-graph-service": "Spinal-Graph-Service",
+    "spinal-model-graph": "spinal-model-graph@lstptrlst"
   }
 }

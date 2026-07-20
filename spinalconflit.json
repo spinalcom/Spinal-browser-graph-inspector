@@ -1,0 +1,13 @@
+{
+  "spinal-model-graph": {
+    "forceCommit": "lstptrlst",
+    "found": {
+      "lstptrlst": [
+        "spinal-browser-graph-inspector"
+      ],
+      "": [
+        "spinal-env-viewer-graph-service"
+      ]
+    }
+  }
+}

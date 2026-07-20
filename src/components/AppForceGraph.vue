@@ -23,7 +23,7 @@ with this file. If not, see
 -->
 
 <template>
-  <div ref="appGraph" class="app-Graph">
+  <div ref="appForceGraph" class="app-graph-force">
     <legendVueGraph></legendVueGraph>
     <div id="rates">
       <button id="course" v-on:click="setCourse">
@@ -34,48 +34,44 @@ with this file. If not, see
 </template>
 
 <script>
-import Viewer from "../viewerDag";
+import Viewer from "../viewerForce";
 import SpinalIO from "../spinal";
 import legendVueGraph from "./legendVueGraph";
 
 export default {
-  name: "AppGraph",
+  name: "AppForceGraph",
   data() {
     return {
       state: false,
-      legend: false,
       courseType: "Children Course",
     };
   },
-  components: {
-    legendVueGraph,
-  },
+  components: { legendVueGraph },
   mounted() {
     const spinal = SpinalIO.getInstance();
     this.viewer = new Viewer(spinal);
-    this.viewer.init(this.$refs.appGraph, this.server_id);
+    this.initialized = false;
   },
   methods: {
+    tryInit() {
+      if (this.initialized) return;
+      const el = this.$refs.appForceGraph;
+      if (!el || el.clientWidth === 0 || el.clientHeight === 0) return;
+      this.initialized = true;
+      this.viewer.init(el, this.server_id);
+    },
     setCourse() {
       this.state = !this.state;
       this.viewer.stateCourse = this.state;
-      if (this.courseType === "Children Course")
-        this.courseType = "Parent Course";
-      else this.courseType = "Children Course";
+      this.courseType = this.state ? "Parent Course" : "Children Course";
     },
   },
-  props: {
-    server_id: { require: true, type: Number },
-  },
+  props: { server_id: { require: true, type: Number } },
 };
 </script>
 
 <style scoped>
-* {
-  padding: 0;
-  margin: 0;
-}
-.app-Graph {
+.app-graph-force {
   width: 100%;
   height: 100%;
   overflow: hidden;

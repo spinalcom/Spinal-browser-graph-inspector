@@ -25,10 +25,39 @@ with this file. If not, see
 <template>
   <div ref="appGraph" class="app-Graph">
     <legendVueGraph></legendVueGraph>
-    <div id="rates">
-      <button id="course" v-on:click="setCourse">
-        {{ courseType }}
-      </button>
+    <div class="top-controls">
+      <div id="rates">
+        <button id="course" v-on:click="setCourse">
+          {{ courseType }}
+        </button>
+      </div>
+      <div class="search-panel">
+        <input
+          v-model="searchQuery"
+          class="search-input"
+          type="text"
+          placeholder="Search node name..."
+          @input="onSearchInput"
+          @keydown.enter.prevent="nextSearchResult"
+        />
+        <button
+          class="search-btn"
+          @click="prevSearchResult"
+          :disabled="matchCount === 0"
+        >
+          Prev
+        </button>
+        <button
+          class="search-btn"
+          @click="nextSearchResult"
+          :disabled="matchCount === 0"
+        >
+          Next
+        </button>
+        <span class="search-count">
+          {{ searchPosition }} / {{ matchCount }}
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -45,6 +74,9 @@ export default {
       state: false,
       legend: false,
       courseType: "Children Course",
+      searchQuery: "",
+      matchCount: 0,
+      searchPosition: 0,
     };
   },
   components: {
@@ -63,6 +95,21 @@ export default {
         this.courseType = "Parent Course";
       else this.courseType = "Children Course";
     },
+    onSearchInput() {
+      const state = this.viewer.setSearchQuery(this.searchQuery);
+      this.matchCount = state.count;
+      this.searchPosition = state.current;
+    },
+    nextSearchResult() {
+      const state = this.viewer.selectNextSearchMatch();
+      this.matchCount = state.count;
+      this.searchPosition = state.current;
+    },
+    prevSearchResult() {
+      const state = this.viewer.selectPreviousSearchMatch();
+      this.matchCount = state.count;
+      this.searchPosition = state.current;
+    },
   },
   props: {
     server_id: { require: true, type: Number },
@@ -79,6 +126,21 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  position: relative;
+}
+
+.top-controls {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 6px;
+  z-index: 2;
 }
 .typecourse {
   vertical-align: middle;
@@ -86,20 +148,56 @@ export default {
   height: 21px;
 }
 #course {
-  cursor: alias;
-  outline: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  background: rgba(80, 80, 80, 0.9);
   color: #fff;
-  background: #666;
-  padding: 5px;
-  display: inline-block;
-  border: none;
-  transition: all 0.4s ease 0s;
+  padding: 4px 8px;
+  cursor: pointer;
+  outline: none;
 }
 #course:hover {
-  text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
-  -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-  transition: all 0.4s ease 0s;
+  background: rgba(95, 95, 95, 0.95);
+}
+
+.search-panel {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.search-input {
+  width: 200px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  background: rgba(20, 20, 20, 0.8);
+  color: #fff;
+  padding: 4px 8px;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.search-btn {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  background: rgba(80, 80, 80, 0.9);
+  color: #fff;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.search-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.search-count {
+  color: #fff;
+  min-width: 50px;
+  text-align: center;
+  font-size: 12px;
 }
 </style>

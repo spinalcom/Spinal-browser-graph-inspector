@@ -175,6 +175,8 @@ var _vuetifyDefault = parcelHelpers.interopDefault(_vuetify);
 var _vue = require("vue");
 var _appVue = require("./App.vue");
 var _appVueDefault = parcelHelpers.interopDefault(_appVue);
+var _spinalModelGraph = require("spinal-model-graph");
+(0, _spinalModelGraph.SpinalNode).DISABLE_UPGRADE_TO_LST_PTR_LST = true;
 window.__VUE_OPTIONS_API__ = true;
 window.__VUE_PROD_DEVTOOLS__ = true;
 window.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = true;
@@ -185,7 +187,7 @@ window.setImmediate = (cb)=>{
     return window.setTimeout(cb, 0);
 };
 
-},{"./assets/main.css":"7SfAk","golden-layout/dist/css/goldenlayout-base.css":"54jYv","golden-layout/dist/css/themes/goldenlayout-dark-theme.css":"8gm6h","@mdi/font/css/materialdesignicons.css":"19mpe","./plugins/vuetify":"iiUTV","vue":"gzxs9","./App.vue":"fYNyc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7SfAk":[function() {},{}],"54jYv":[function() {},{}],"8gm6h":[function() {},{}],"19mpe":[function() {},{}],"iiUTV":[function(require,module,exports) {
+},{"./assets/main.css":"7SfAk","golden-layout/dist/css/goldenlayout-base.css":"54jYv","golden-layout/dist/css/themes/goldenlayout-dark-theme.css":"8gm6h","@mdi/font/css/materialdesignicons.css":"19mpe","./plugins/vuetify":"iiUTV","vue":"gzxs9","./App.vue":"fYNyc","spinal-model-graph":"fkEXw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7SfAk":[function() {},{}],"54jYv":[function() {},{}],"8gm6h":[function() {},{}],"19mpe":[function() {},{}],"iiUTV":[function(require,module,exports) {
 /*
  * Copyright 2024 SpinalCom - www.spinalcom.com
  *
@@ -56294,7 +56296,7 @@ let initialize = ()=>{
     script.render = require("1acfbd1bbcbf482e").render;
     script.__cssModules = require("1a028366bf399ff9").default;
     require("ad251a7c70ee37a9").default(script);
-    script.__scopeId = "data-v-058e65";
+    script.__scopeId = "data-v-556211";
     script.__file = "AppGraph.vue";
 };
 initialize();
@@ -56315,7 +56317,10 @@ exports.default = {
         return {
             state: false,
             legend: false,
-            courseType: "Children Course"
+            courseType: "Children Course",
+            searchQuery: "",
+            matchCount: 0,
+            searchPosition: 0
         };
     },
     components: {
@@ -56332,6 +56337,21 @@ exports.default = {
             this.viewer.stateCourse = this.state;
             if (this.courseType === "Children Course") this.courseType = "Parent Course";
             else this.courseType = "Children Course";
+        },
+        onSearchInput () {
+            const state = this.viewer.setSearchQuery(this.searchQuery);
+            this.matchCount = state.count;
+            this.searchPosition = state.current;
+        },
+        nextSearchResult () {
+            const state = this.viewer.selectNextSearchMatch();
+            this.matchCount = state.count;
+            this.searchPosition = state.current;
+        },
+        prevSearchResult () {
+            const state = this.viewer.selectPreviousSearchMatch();
+            this.matchCount = state.count;
+            this.searchPosition = state.current;
         }
     },
     props: {
@@ -56342,263 +56362,7 @@ exports.default = {
     }
 };
 
-},{"../spinal":"2Kgs7","./legendVueGraph":"lWT06","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../viewerDag":"aJu6i"}],"lWT06":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let script;
-let initialize = ()=>{
-    script = require("b3ad08411532749e");
-    if (script.__esModule) script = script.default;
-    script.render = require("65116feae8f12e0f").render;
-    script.__cssModules = require("301fadd326b095a0").default;
-    require("1d402cae9c8cbe8d").default(script);
-    script.__scopeId = "data-v-b08bf7";
-    script.__file = "legendVueGraph.vue";
-};
-initialize();
-exports.default = script;
-
-},{"b3ad08411532749e":"f1j75","65116feae8f12e0f":"kVeXJ","301fadd326b095a0":"irouL","1d402cae9c8cbe8d":"42nvf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"f1j75":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _vue = require("vue");
-exports.default = {
-    __name: "legendVueGraph",
-    setup (__props, { expose: __expose }) {
-        __expose();
-        let legend = (0, _vue.ref)(false);
-        const __returned__ = {
-            get legend () {
-                return legend;
-            },
-            set legend (v){
-                legend = v;
-            },
-            ref: (0, _vue.ref)
-        };
-        Object.defineProperty(__returned__, "__isScriptSetup", {
-            enumerable: false,
-            value: true
-        });
-        return __returned__;
-    }
-};
-
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kVeXJ":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "render", ()=>render);
-var _vue = require("vue");
-var _infoPng = require("../assets/info.png");
-var _infoPngDefault = parcelHelpers.interopDefault(_infoPng);
-var _startPngWidth20 = require("../assets/start.png?width=20");
-var _startPngWidth20Default = parcelHelpers.interopDefault(_startPngWidth20);
-var _simplenodePngWidth20 = require("../assets/simplenode.png?width=20");
-var _simplenodePngWidth20Default = parcelHelpers.interopDefault(_simplenodePngWidth20);
-var _lastnodePngWidth20 = require("../assets/lastnode.png?width=20");
-var _lastnodePngWidth20Default = parcelHelpers.interopDefault(_lastnodePngWidth20);
-var _ptrlstPngWidth20 = require("../assets/ptrlst.png?width=20");
-var _ptrlstPngWidth20Default = parcelHelpers.interopDefault(_ptrlstPngWidth20);
-var _lstptrPngWidth20 = require("../assets/lstptr.png?width=20");
-var _lstptrPngWidth20Default = parcelHelpers.interopDefault(_lstptrPngWidth20);
-var _lstptrlstPngWidth20 = require("../assets/lstptrlst.png?width=20");
-var _lstptrlstPngWidth20Default = parcelHelpers.interopDefault(_lstptrlstPngWidth20);
-var _refPngWidth20 = require("../assets/ref.png?width=20");
-var _refPngWidth20Default = parcelHelpers.interopDefault(_refPngWidth20);
-var _childcoursePng = require("../assets/childcourse.png");
-var _childcoursePngDefault = parcelHelpers.interopDefault(_childcoursePng);
-var _parentcoursePng = require("../assets/parentcourse.png");
-var _parentcoursePngDefault = parcelHelpers.interopDefault(_parentcoursePng);
-const _hoisted_1 = {
-    class: "dropdown"
-};
-const _hoisted_2 = {
-    class: "legend-table-graph-inspector"
-};
-const _hoisted_3 = {
-    style: {
-        "border-bottom": "1px solid #ddd"
-    }
-};
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-    const _component_v_icon = (0, _vue.resolveComponent)("v-icon");
-    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
-        (0, _vue.createElementVNode)("button", {
-            id: "button",
-            class: "button",
-            onClick: _cache[0] || (_cache[0] = ($event)=>$setup.legend = !$setup.legend)
-        }, _cache[1] || (_cache[1] = [
-            (0, _vue.createElementVNode)("img", {
-                src: (0, _infoPngDefault.default),
-                alt: ""
-            }, null, -1)
-        ])),
-        (0, _vue.createElementVNode)("div", {
-            id: "myDropdown",
-            class: (0, _vue.normalizeClass)([
-                "dropdown-content",
-                {
-                    show: $setup.legend
-                }
-            ])
-        }, [
-            (0, _vue.createElementVNode)("table", _hoisted_2, [
-                _cache[6] || (_cache[6] = (0, _vue.createElementVNode)("tr", null, [
-                    (0, _vue.createElementVNode)("th", null, [
-                        (0, _vue.createElementVNode)("img", {
-                            width: "20px",
-                            src: (0, _startPngWidth20Default.default),
-                            alt: ""
-                        })
-                    ]),
-                    (0, _vue.createElementVNode)("th", null, "Strating Node")
-                ], -1)),
-                _cache[7] || (_cache[7] = (0, _vue.createElementVNode)("tr", null, [
-                    (0, _vue.createElementVNode)("th", null, [
-                        (0, _vue.createElementVNode)("img", {
-                            width: "20px",
-                            src: (0, _simplenodePngWidth20Default.default),
-                            alt: ""
-                        })
-                    ]),
-                    (0, _vue.createElementVNode)("th", null, "Simple Node")
-                ], -1)),
-                _cache[8] || (_cache[8] = (0, _vue.createElementVNode)("tr", null, [
-                    (0, _vue.createElementVNode)("th", null, [
-                        (0, _vue.createElementVNode)("img", {
-                            width: "20px",
-                            src: (0, _lastnodePngWidth20Default.default),
-                            alt: ""
-                        })
-                    ]),
-                    (0, _vue.createElementVNode)("th", null, "Leaf Node")
-                ], -1)),
-                _cache[9] || (_cache[9] = (0, _vue.createElementVNode)("tr", null, [
-                    (0, _vue.createElementVNode)("th", null, [
-                        (0, _vue.createElementVNode)("img", {
-                            width: "20px",
-                            src: (0, _ptrlstPngWidth20Default.default),
-                            alt: ""
-                        })
-                    ]),
-                    (0, _vue.createElementVNode)("th", null, "Relation PtrLst")
-                ], -1)),
-                _cache[10] || (_cache[10] = (0, _vue.createElementVNode)("tr", null, [
-                    (0, _vue.createElementVNode)("th", null, [
-                        (0, _vue.createElementVNode)("img", {
-                            width: "20px",
-                            src: (0, _lstptrPngWidth20Default.default),
-                            alt: ""
-                        })
-                    ]),
-                    (0, _vue.createElementVNode)("th", null, "Relation LstPtr")
-                ], -1)),
-                _cache[11] || (_cache[11] = (0, _vue.createElementVNode)("tr", null, [
-                    (0, _vue.createElementVNode)("th", null, [
-                        (0, _vue.createElementVNode)("img", {
-                            width: "20px",
-                            src: (0, _lstptrlstPngWidth20Default.default),
-                            alt: ""
-                        })
-                    ]),
-                    (0, _vue.createElementVNode)("th", null, "Relation LstPtrLst")
-                ], -1)),
-                _cache[12] || (_cache[12] = (0, _vue.createElementVNode)("tr", {
-                    style: {
-                        "border-bottom": "1px solid #ddd"
-                    }
-                }, [
-                    (0, _vue.createElementVNode)("th", null, [
-                        (0, _vue.createElementVNode)("img", {
-                            width: "20px",
-                            src: (0, _refPngWidth20Default.default),
-                            alt: ""
-                        })
-                    ]),
-                    (0, _vue.createElementVNode)("th", null, "Relation Ref")
-                ], -1)),
-                (0, _vue.createElementVNode)("tr", null, [
-                    (0, _vue.createElementVNode)("th", null, [
-                        (0, _vue.createVNode)(_component_v_icon, null, {
-                            default: (0, _vue.withCtx)(()=>_cache[2] || (_cache[2] = [
-                                    (0, _vue.createTextVNode)("mdi-mouse-left-click-outline")
-                                ])),
-                            _: 1
-                        })
-                    ]),
-                    _cache[3] || (_cache[3] = (0, _vue.createElementVNode)("th", null, "open / close the selection", -1))
-                ]),
-                (0, _vue.createElementVNode)("tr", _hoisted_3, [
-                    (0, _vue.createElementVNode)("th", null, [
-                        (0, _vue.createVNode)(_component_v_icon, null, {
-                            default: (0, _vue.withCtx)(()=>_cache[4] || (_cache[4] = [
-                                    (0, _vue.createTextVNode)("mdi-mouse-right-click-outline")
-                                ])),
-                            _: 1
-                        })
-                    ]),
-                    _cache[5] || (_cache[5] = (0, _vue.createElementVNode)("th", null, "select only", -1))
-                ])
-            ]),
-            _cache[13] || (_cache[13] = (0, _vue.createElementVNode)("p", {
-                style: {
-                    "text-align": "center"
-                }
-            }, [
-                (0, _vue.createElementVNode)("img", {
-                    src: (0, _childcoursePngDefault.default),
-                    class: "typecourse1",
-                    alt: ""
-                }),
-                (0, _vue.createTextVNode)(" or "),
-                (0, _vue.createElementVNode)("img", {
-                    src: (0, _parentcoursePngDefault.default),
-                    class: "typecourse2",
-                    alt: ""
-                }),
-                (0, _vue.createTextVNode)(" to select the method to traverse the graph ")
-            ], -1))
-        ], 2)
-    ]);
-}
-
-},{"vue":"gzxs9","../assets/info.png":"bqrZM","../assets/start.png?width=20":"iyRQp","../assets/simplenode.png?width=20":"a6Rgr","../assets/lastnode.png?width=20":"6xQgR","../assets/ptrlst.png?width=20":"dYsXM","../assets/lstptr.png?width=20":"f6hSS","../assets/lstptrlst.png?width=20":"8lURG","../assets/ref.png?width=20":"gndBy","../assets/childcourse.png":"eCAAQ","../assets/parentcourse.png":"hv20Q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bqrZM":[function(require,module,exports) {
-module.exports = require("88ae4b337f3793d6").getBundleURL("cGaT9") + "info.5747d858.png";
-
-},{"88ae4b337f3793d6":"lgJ39"}],"iyRQp":[function(require,module,exports) {
-module.exports = require("a35dd9170f739f9b").getBundleURL("cGaT9") + "start.0093b889.png";
-
-},{"a35dd9170f739f9b":"lgJ39"}],"a6Rgr":[function(require,module,exports) {
-module.exports = require("5ee649999f40ca3c").getBundleURL("cGaT9") + "simplenode.a96bc1f7.png";
-
-},{"5ee649999f40ca3c":"lgJ39"}],"6xQgR":[function(require,module,exports) {
-module.exports = require("f8c454f68eedf2e4").getBundleURL("cGaT9") + "lastnode.d663fabe.png";
-
-},{"f8c454f68eedf2e4":"lgJ39"}],"dYsXM":[function(require,module,exports) {
-module.exports = require("351028aec740abfd").getBundleURL("cGaT9") + "ptrlst.cda76af6.png";
-
-},{"351028aec740abfd":"lgJ39"}],"f6hSS":[function(require,module,exports) {
-module.exports = require("4182993eb179eed9").getBundleURL("cGaT9") + "lstptr.e2808a73.png";
-
-},{"4182993eb179eed9":"lgJ39"}],"8lURG":[function(require,module,exports) {
-module.exports = require("894d1ce896f9d385").getBundleURL("cGaT9") + "lstptrlst.cded48d6.png";
-
-},{"894d1ce896f9d385":"lgJ39"}],"gndBy":[function(require,module,exports) {
-module.exports = require("b7fd9c11715944ab").getBundleURL("cGaT9") + "ref.1607cc19.png";
-
-},{"b7fd9c11715944ab":"lgJ39"}],"eCAAQ":[function(require,module,exports) {
-module.exports = require("999fa6263ed7cfef").getBundleURL("cGaT9") + "childcourse.4530ee49.png";
-
-},{"999fa6263ed7cfef":"lgJ39"}],"hv20Q":[function(require,module,exports) {
-module.exports = require("8c37f8e11049b779").getBundleURL("cGaT9") + "parentcourse.119469c6.png";
-
-},{"8c37f8e11049b779":"lgJ39"}],"irouL":[function() {},{}],"42nvf":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let NOOP = ()=>{};
-exports.default = (script)=>{};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aJu6i":[function(require,module,exports) {
+},{"../viewerDag":"aJu6i","../spinal":"2Kgs7","./legendVueGraph":"lWT06","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aJu6i":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 /*
@@ -56716,6 +56480,12 @@ class ViewerDag {
             writable: true,
             value: false
         });
+        Object.defineProperty(this, "searchActions", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: null
+        });
         this.graph = spinal;
         this.nodeFactory = new (0, _nodeFactory.NodeFactory)();
     }
@@ -56732,6 +56502,27 @@ class ViewerDag {
     draw() {
         if (typeof this.svg !== "undefined") this.svg.attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom);
     }
+    setSearchQuery(query) {
+        if (!this.searchActions) return {
+            count: 0,
+            current: 0
+        };
+        return this.searchActions.updateSearch(query);
+    }
+    selectNextSearchMatch() {
+        if (!this.searchActions) return {
+            count: 0,
+            current: 0
+        };
+        return this.searchActions.moveSearch(1);
+    }
+    selectPreviousSearchMatch() {
+        if (!this.searchActions) return {
+            count: 0,
+            current: 0
+        };
+        return this.searchActions.moveSearch(-1);
+    }
     init(element, server_id) {
         return __awaiter(this, void 0, void 0, function*() {
             this.element = element;
@@ -56742,14 +56533,19 @@ class ViewerDag {
             let i = 0;
             let node, link, edgepath;
             let selectedNode = null;
+            let searchQuery = "";
+            let searchMatches = [];
+            let searchMatchIndex = -1;
+            let currentTransform = _d3.zoomIdentity;
             const SELECTION_COLOR = "#ff8c00";
             const root = this.nodeFactory.createNode(data);
             root.x = this.width / 2;
             root.y = this.height / 2;
-            this.svg = _d3.select(element).append("svg").call(_d3.zoom().scaleExtent([
+            const zoomBehavior = _d3.zoom().scaleExtent([
                 0.01,
                 8
-            ]).on("zoom", zoomed)).on("dblclick.zoom", null).attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom);
+            ]).on("zoom", zoomed);
+            this.svg = _d3.select(element).append("svg").call(zoomBehavior).on("dblclick.zoom", null).attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom);
             const defs = this.svg.append("defs");
             for (const [id, fill] of [
                 [
@@ -56764,6 +56560,63 @@ class ViewerDag {
             const svg = this.svg.append("g").attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
             const mylink = svg.append("g");
             const myedgepath = svg.append("g");
+            const getSearchableName = (d)=>{
+                const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                if (realNode instanceof (0, _spinalModelGraph.SpinalGraph)) return "spinalgraph";
+                if (d.data.name === "undefined" || d.data.name === undefined) return "undefined name";
+                return String(d.data.name).toLowerCase();
+            };
+            const getSearchState = ()=>({
+                    count: searchMatches.length,
+                    current: searchMatches.length > 0 && searchMatchIndex >= 0 ? searchMatchIndex + 1 : 0
+                });
+            const centerOnNode = (d)=>{
+                if (!d || d.x === undefined || d.y === undefined) return;
+                const scale = currentTransform && currentTransform.k ? currentTransform.k : 1;
+                const tx = this.width / 2 - d.x * scale;
+                const ty = this.height / 2 - d.y * scale;
+                const transform = _d3.zoomIdentity.translate(tx, ty).scale(scale);
+                this.svg.transition().duration(250).call(zoomBehavior.transform, transform);
+            };
+            const syncSearchMatches = (nodes)=>{
+                if (!searchQuery) {
+                    searchMatches = [];
+                    searchMatchIndex = -1;
+                    return;
+                }
+                searchMatches = nodes.filter((n)=>getSearchableName(n).includes(searchQuery));
+                if (searchMatches.length === 0) {
+                    searchMatchIndex = -1;
+                    return;
+                }
+                const indexFromCurrent = selectedNode ? searchMatches.indexOf(selectedNode) : -1;
+                if (indexFromCurrent !== -1) searchMatchIndex = indexFromCurrent;
+                else if (searchMatchIndex < 0 || searchMatchIndex >= searchMatches.length) searchMatchIndex = 0;
+            };
+            const selectCurrentSearchMatch = (centerSelection)=>{
+                if (searchMatches.length === 0 || searchMatchIndex < 0) return getSearchState();
+                selectedNode = searchMatches[searchMatchIndex];
+                applySelection();
+                if (centerSelection) centerOnNode(selectedNode);
+                return getSearchState();
+            };
+            const updateSearch = (query)=>{
+                searchQuery = (query || "").trim().toLowerCase();
+                const nodes = flatten(root);
+                syncSearchMatches(nodes);
+                if (searchMatches.length > 0) return selectCurrentSearchMatch(true);
+                applySelection();
+                return getSearchState();
+            };
+            const moveSearch = (direction)=>{
+                if (searchMatches.length === 0) return getSearchState();
+                searchMatchIndex = (searchMatchIndex + direction + searchMatches.length) % searchMatches.length;
+                return selectCurrentSearchMatch(true);
+            };
+            this.searchActions = {
+                updateSearch,
+                moveSearch
+            };
             // Position new nodes relative to an anchor, avoiding column overlap
             const positionNewNodes = (anchor, newNodes, direction)=>{
                 var _a, _b;
@@ -56835,11 +56688,13 @@ class ViewerDag {
             function update() {
                 const nodes = flatten(root);
                 const links = createLinks(nodes);
+                syncSearchMatches(nodes);
                 link = mylink.selectAll(".link").data(links, function(d) {
                     return d.target.id;
                 });
-                link.exit().remove();
-                const linkEnter = link.enter().append("line").attr("class", "link").attr("marker-end", "url(#arrowhead)").style("stroke", "#f8f8f8").style("opacity", "0.5").style("stroke-width", 2);
+                link.exit().transition().duration(200).style("opacity", 0).remove();
+                const linkEnter = link.enter().append("line").attr("class", "link").attr("marker-end", "url(#arrowhead)").style("stroke", "#f8f8f8").style("opacity", 0).style("stroke-width", 2);
+                linkEnter.transition().duration(200).style("opacity", "1");
                 link = linkEnter.merge(link);
                 edgepath = myedgepath.selectAll(".edgepath").data(links).enter().append("path").attr("class", "edgepath").attr("fill-opacity", 0).attr("stroke-opacity", 0).attr("id", function(_d, idx) {
                     return "edgepath" + idx;
@@ -56848,11 +56703,12 @@ class ViewerDag {
                 node = svg.selectAll(".node").data(nodes, function(d) {
                     return d.id.toString();
                 });
-                node.exit().remove();
-                const nodeEnter = node.enter().append("g").attr("class", "node").attr("id", "test").attr("stroke-width", 1.2).style("fill", color).style("opacity", 1).on("click", click).on("contextmenu", openNodeInDbInspector).on("auxclick", function(d) {
+                node.exit().transition().duration(200).style("opacity", 0).remove();
+                const nodeEnter = node.enter().append("g").attr("class", "node").attr("id", "test").attr("stroke-width", 1.2).style("fill", color).style("opacity", 0).on("click", click).on("contextmenu", openNodeInDbInspector).on("auxclick", function(d) {
                     const evnt = window.event;
                     if (evnt.which === 2) newpage(d);
-                }).call(_d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended));
+                });
+                nodeEnter.transition().duration(200).style("opacity", 1);
                 nodeEnter.append(function(d) {
                     if (d.data.category === "node") {
                         const doc = document.createElementNS("http://www.w3.org/2000/svg", "circle");
@@ -56908,9 +56764,11 @@ class ViewerDag {
             function applySelection() {
                 if (!node || !link) return;
                 node.selectAll("circle, rect").attr("stroke", "#f8f8f8").attr("stroke-width", 1.2);
-                link.style("stroke", "#f8f8f8").style("opacity", "0.5").style("stroke-width", 2).attr("marker-end", "url(#arrowhead)");
+                node.selectAll("text").style("fill", "#fff").attr("stroke", "#000").attr("stroke-width", "3px");
+                link.style("stroke", "#f8f8f8").style("opacity", "1").style("stroke-width", 2).attr("marker-end", "url(#arrowhead)");
                 if (!selectedNode) return;
                 node.filter((d)=>d === selectedNode).selectAll("circle, rect").attr("stroke", SELECTION_COLOR).attr("stroke-width", 3);
+                node.filter((d)=>d === selectedNode).selectAll("text").style("fill", SELECTION_COLOR).attr("stroke", "#000").attr("stroke-width", "3px");
                 node.filter((d)=>d === selectedNode).raise();
                 link.filter((d)=>d.source === selectedNode || d.target === selectedNode).style("stroke", SELECTION_COLOR).style("opacity", "1").style("stroke-width", 2).attr("marker-end", "url(#arrowhead-selected)");
             }
@@ -56919,19 +56777,6 @@ class ViewerDag {
                 link.attr("x1", (d)=>d.source.x).attr("y1", (d)=>d.source.y).attr("x2", (d)=>d.target.x).attr("y2", (d)=>d.target.y);
                 node.attr("transform", (d)=>`translate(${d.x}, ${d.y})`);
                 edgepath.attr("d", (d)=>`M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`);
-            }
-            function dragstarted(d) {
-                d.fx = d.x;
-                d.fy = d.y;
-            }
-            function dragged(d) {
-                d.x = _d3.event.x;
-                d.y = _d3.event.y;
-                render();
-            }
-            function dragended(d) {
-                d.fx = null;
-                d.fy = null;
             }
             function flatten(root) {
                 const nodes = new Set();
@@ -56974,6 +56819,7 @@ class ViewerDag {
                 return links;
             }
             function zoomed() {
+                currentTransform = _d3.event.transform;
                 svg.attr("transform", _d3.event.transform);
             }
             update();
@@ -58045,7 +57891,7 @@ exports.DEFAULT_FIND_PREDICATE = DEFAULT_FIND_PREDICATE;
                 relation = this._createRelation(relationName, relationType);
                 this.setDirectModificationDate();
             }
-            if (SpinalRelationFactory_1.SpinalRelationFactory.canUpgradeRelation(relation)) relation = yield SpinalRelationFactory_1.SpinalRelationFactory.upgradeRelationToLstPtrLst(relation, this);
+            if (SpinalNode.DISABLE_UPGRADE_TO_LST_PTR_LST === false && SpinalRelationFactory_1.SpinalRelationFactory.canUpgradeRelation(relation)) relation = yield SpinalRelationFactory_1.SpinalRelationFactory.upgradeRelationToLstPtrLst(relation, this);
             const res = yield relation.addChild(child);
             this.setDirectModificationDate();
             // Send add child event via spinal-event-emitter
@@ -59006,6 +58852,13 @@ exports.DEFAULT_FIND_PREDICATE = DEFAULT_FIND_PREDICATE;
     }
 }
 exports.SpinalNode = SpinalNode;
+/**
+ * use this static variable to disable the upgrade of relations to LstPtrLst when adding a child.
+ * This is useful for performance reasons when adding many children to a node
+ * or when the organ using the graph is supposed to only read it.
+ * @static
+ * @type {boolean}
+ */ SpinalNode.DISABLE_UPGRADE_TO_LST_PTR_LST = false;
 spinal_core_connectorjs_1.spinalCore.register_models([
     SpinalNode
 ]);
@@ -94829,6 +94682,12 @@ class ANode {
             writable: true,
             value: void 0
         });
+        Object.defineProperty(this, "hasLoadedParent", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.id = node.getId().get();
         this._serverId = node._server_id;
         this.name = node.getName() ? node.getName().get() : "undefined name";
@@ -94836,6 +94695,7 @@ class ANode {
         this.hasChildren = false;
         this.children = [];
         this._children = null;
+        this.hasLoadedParent = false;
     }
     getChildren(node) {
         return Promise.resolve([]);
@@ -94863,26 +94723,31 @@ class ANode {
         return "#ff4433";
     }
     static collapseOrOpen(node) {
+        if (Array.isArray(node.children)) {
+            node._children = node.children;
+            node.children = null;
+            return false;
+        }
         if (Array.isArray(node._children)) {
             node.children = node._children;
             node._children = null;
             return false;
-        } else {
-            node._children = node.children;
-            node.children = null;
-            return true;
         }
+        return true;
     }
     static collapseOrOpenParent(node) {
+        if (!node.data.hasLoadedParent) return true;
+        if (Array.isArray(node.parent)) {
+            node._parent = node.parent;
+            node.parent = null;
+            return false;
+        }
         if (Array.isArray(node._parent)) {
             node.parent = node._parent;
             node._parent = null;
             return false;
-        } else {
-            node._parent = node.parent;
-            node.parent = null;
-            return true;
         }
+        return true;
     }
     static updateChildren(node, nodeFactory) {
         return __awaiter(this, void 0, void 0, function*() {
@@ -94915,6 +94780,7 @@ class ANode {
                     s
                 ];
             }
+            node.data.hasLoadedParent = true;
         });
     }
 }
@@ -95154,7 +95020,263 @@ E.prototype = {
 module.exports = E;
 module.exports.TinyEmitter = E;
 
-},{}],"i7Av3":[function(require,module,exports) {
+},{}],"lWT06":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let script;
+let initialize = ()=>{
+    script = require("b3ad08411532749e");
+    if (script.__esModule) script = script.default;
+    script.render = require("65116feae8f12e0f").render;
+    script.__cssModules = require("301fadd326b095a0").default;
+    require("1d402cae9c8cbe8d").default(script);
+    script.__scopeId = "data-v-b08bf7";
+    script.__file = "legendVueGraph.vue";
+};
+initialize();
+exports.default = script;
+
+},{"b3ad08411532749e":"f1j75","65116feae8f12e0f":"kVeXJ","301fadd326b095a0":"irouL","1d402cae9c8cbe8d":"42nvf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"f1j75":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _vue = require("vue");
+exports.default = {
+    __name: "legendVueGraph",
+    setup (__props, { expose: __expose }) {
+        __expose();
+        let legend = (0, _vue.ref)(false);
+        const __returned__ = {
+            get legend () {
+                return legend;
+            },
+            set legend (v){
+                legend = v;
+            },
+            ref: (0, _vue.ref)
+        };
+        Object.defineProperty(__returned__, "__isScriptSetup", {
+            enumerable: false,
+            value: true
+        });
+        return __returned__;
+    }
+};
+
+},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kVeXJ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "render", ()=>render);
+var _vue = require("vue");
+var _infoPng = require("../assets/info.png");
+var _infoPngDefault = parcelHelpers.interopDefault(_infoPng);
+var _startPngWidth20 = require("../assets/start.png?width=20");
+var _startPngWidth20Default = parcelHelpers.interopDefault(_startPngWidth20);
+var _simplenodePngWidth20 = require("../assets/simplenode.png?width=20");
+var _simplenodePngWidth20Default = parcelHelpers.interopDefault(_simplenodePngWidth20);
+var _lastnodePngWidth20 = require("../assets/lastnode.png?width=20");
+var _lastnodePngWidth20Default = parcelHelpers.interopDefault(_lastnodePngWidth20);
+var _ptrlstPngWidth20 = require("../assets/ptrlst.png?width=20");
+var _ptrlstPngWidth20Default = parcelHelpers.interopDefault(_ptrlstPngWidth20);
+var _lstptrPngWidth20 = require("../assets/lstptr.png?width=20");
+var _lstptrPngWidth20Default = parcelHelpers.interopDefault(_lstptrPngWidth20);
+var _lstptrlstPngWidth20 = require("../assets/lstptrlst.png?width=20");
+var _lstptrlstPngWidth20Default = parcelHelpers.interopDefault(_lstptrlstPngWidth20);
+var _refPngWidth20 = require("../assets/ref.png?width=20");
+var _refPngWidth20Default = parcelHelpers.interopDefault(_refPngWidth20);
+var _childcoursePng = require("../assets/childcourse.png");
+var _childcoursePngDefault = parcelHelpers.interopDefault(_childcoursePng);
+var _parentcoursePng = require("../assets/parentcourse.png");
+var _parentcoursePngDefault = parcelHelpers.interopDefault(_parentcoursePng);
+const _hoisted_1 = {
+    class: "dropdown"
+};
+const _hoisted_2 = {
+    class: "legend-table-graph-inspector"
+};
+const _hoisted_3 = {
+    style: {
+        "border-bottom": "1px solid #ddd"
+    }
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_v_icon = (0, _vue.resolveComponent)("v-icon");
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
+        (0, _vue.createElementVNode)("button", {
+            id: "button",
+            class: "button",
+            onClick: _cache[0] || (_cache[0] = ($event)=>$setup.legend = !$setup.legend)
+        }, _cache[1] || (_cache[1] = [
+            (0, _vue.createElementVNode)("img", {
+                src: (0, _infoPngDefault.default),
+                alt: ""
+            }, null, -1)
+        ])),
+        (0, _vue.createElementVNode)("div", {
+            id: "myDropdown",
+            class: (0, _vue.normalizeClass)([
+                "dropdown-content",
+                {
+                    show: $setup.legend
+                }
+            ])
+        }, [
+            (0, _vue.createElementVNode)("table", _hoisted_2, [
+                _cache[6] || (_cache[6] = (0, _vue.createElementVNode)("tr", null, [
+                    (0, _vue.createElementVNode)("th", null, [
+                        (0, _vue.createElementVNode)("img", {
+                            width: "20px",
+                            src: (0, _startPngWidth20Default.default),
+                            alt: ""
+                        })
+                    ]),
+                    (0, _vue.createElementVNode)("th", null, "Strating Node")
+                ], -1)),
+                _cache[7] || (_cache[7] = (0, _vue.createElementVNode)("tr", null, [
+                    (0, _vue.createElementVNode)("th", null, [
+                        (0, _vue.createElementVNode)("img", {
+                            width: "20px",
+                            src: (0, _simplenodePngWidth20Default.default),
+                            alt: ""
+                        })
+                    ]),
+                    (0, _vue.createElementVNode)("th", null, "Simple Node")
+                ], -1)),
+                _cache[8] || (_cache[8] = (0, _vue.createElementVNode)("tr", null, [
+                    (0, _vue.createElementVNode)("th", null, [
+                        (0, _vue.createElementVNode)("img", {
+                            width: "20px",
+                            src: (0, _lastnodePngWidth20Default.default),
+                            alt: ""
+                        })
+                    ]),
+                    (0, _vue.createElementVNode)("th", null, "Leaf Node")
+                ], -1)),
+                _cache[9] || (_cache[9] = (0, _vue.createElementVNode)("tr", null, [
+                    (0, _vue.createElementVNode)("th", null, [
+                        (0, _vue.createElementVNode)("img", {
+                            width: "20px",
+                            src: (0, _ptrlstPngWidth20Default.default),
+                            alt: ""
+                        })
+                    ]),
+                    (0, _vue.createElementVNode)("th", null, "Relation PtrLst")
+                ], -1)),
+                _cache[10] || (_cache[10] = (0, _vue.createElementVNode)("tr", null, [
+                    (0, _vue.createElementVNode)("th", null, [
+                        (0, _vue.createElementVNode)("img", {
+                            width: "20px",
+                            src: (0, _lstptrPngWidth20Default.default),
+                            alt: ""
+                        })
+                    ]),
+                    (0, _vue.createElementVNode)("th", null, "Relation LstPtr")
+                ], -1)),
+                _cache[11] || (_cache[11] = (0, _vue.createElementVNode)("tr", null, [
+                    (0, _vue.createElementVNode)("th", null, [
+                        (0, _vue.createElementVNode)("img", {
+                            width: "20px",
+                            src: (0, _lstptrlstPngWidth20Default.default),
+                            alt: ""
+                        })
+                    ]),
+                    (0, _vue.createElementVNode)("th", null, "Relation LstPtrLst")
+                ], -1)),
+                _cache[12] || (_cache[12] = (0, _vue.createElementVNode)("tr", {
+                    style: {
+                        "border-bottom": "1px solid #ddd"
+                    }
+                }, [
+                    (0, _vue.createElementVNode)("th", null, [
+                        (0, _vue.createElementVNode)("img", {
+                            width: "20px",
+                            src: (0, _refPngWidth20Default.default),
+                            alt: ""
+                        })
+                    ]),
+                    (0, _vue.createElementVNode)("th", null, "Relation Ref")
+                ], -1)),
+                (0, _vue.createElementVNode)("tr", null, [
+                    (0, _vue.createElementVNode)("th", null, [
+                        (0, _vue.createVNode)(_component_v_icon, null, {
+                            default: (0, _vue.withCtx)(()=>_cache[2] || (_cache[2] = [
+                                    (0, _vue.createTextVNode)("mdi-mouse-left-click-outline")
+                                ])),
+                            _: 1
+                        })
+                    ]),
+                    _cache[3] || (_cache[3] = (0, _vue.createElementVNode)("th", null, "open / close the selection", -1))
+                ]),
+                (0, _vue.createElementVNode)("tr", _hoisted_3, [
+                    (0, _vue.createElementVNode)("th", null, [
+                        (0, _vue.createVNode)(_component_v_icon, null, {
+                            default: (0, _vue.withCtx)(()=>_cache[4] || (_cache[4] = [
+                                    (0, _vue.createTextVNode)("mdi-mouse-right-click-outline")
+                                ])),
+                            _: 1
+                        })
+                    ]),
+                    _cache[5] || (_cache[5] = (0, _vue.createElementVNode)("th", null, "select only", -1))
+                ])
+            ]),
+            _cache[13] || (_cache[13] = (0, _vue.createElementVNode)("p", {
+                style: {
+                    "text-align": "center"
+                }
+            }, [
+                (0, _vue.createElementVNode)("img", {
+                    src: (0, _childcoursePngDefault.default),
+                    class: "typecourse1",
+                    alt: ""
+                }),
+                (0, _vue.createTextVNode)(" or "),
+                (0, _vue.createElementVNode)("img", {
+                    src: (0, _parentcoursePngDefault.default),
+                    class: "typecourse2",
+                    alt: ""
+                }),
+                (0, _vue.createTextVNode)(" to select the method to traverse the graph ")
+            ], -1))
+        ], 2)
+    ]);
+}
+
+},{"vue":"gzxs9","../assets/info.png":"bqrZM","../assets/start.png?width=20":"iyRQp","../assets/simplenode.png?width=20":"a6Rgr","../assets/lastnode.png?width=20":"6xQgR","../assets/ptrlst.png?width=20":"dYsXM","../assets/lstptr.png?width=20":"f6hSS","../assets/lstptrlst.png?width=20":"8lURG","../assets/ref.png?width=20":"gndBy","../assets/childcourse.png":"eCAAQ","../assets/parentcourse.png":"hv20Q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bqrZM":[function(require,module,exports) {
+module.exports = require("88ae4b337f3793d6").getBundleURL("cGaT9") + "info.5747d858.png";
+
+},{"88ae4b337f3793d6":"lgJ39"}],"iyRQp":[function(require,module,exports) {
+module.exports = require("a35dd9170f739f9b").getBundleURL("cGaT9") + "start.0093b889.png";
+
+},{"a35dd9170f739f9b":"lgJ39"}],"a6Rgr":[function(require,module,exports) {
+module.exports = require("5ee649999f40ca3c").getBundleURL("cGaT9") + "simplenode.a96bc1f7.png";
+
+},{"5ee649999f40ca3c":"lgJ39"}],"6xQgR":[function(require,module,exports) {
+module.exports = require("f8c454f68eedf2e4").getBundleURL("cGaT9") + "lastnode.d663fabe.png";
+
+},{"f8c454f68eedf2e4":"lgJ39"}],"dYsXM":[function(require,module,exports) {
+module.exports = require("351028aec740abfd").getBundleURL("cGaT9") + "ptrlst.cda76af6.png";
+
+},{"351028aec740abfd":"lgJ39"}],"f6hSS":[function(require,module,exports) {
+module.exports = require("4182993eb179eed9").getBundleURL("cGaT9") + "lstptr.e2808a73.png";
+
+},{"4182993eb179eed9":"lgJ39"}],"8lURG":[function(require,module,exports) {
+module.exports = require("894d1ce896f9d385").getBundleURL("cGaT9") + "lstptrlst.cded48d6.png";
+
+},{"894d1ce896f9d385":"lgJ39"}],"gndBy":[function(require,module,exports) {
+module.exports = require("b7fd9c11715944ab").getBundleURL("cGaT9") + "ref.1607cc19.png";
+
+},{"b7fd9c11715944ab":"lgJ39"}],"eCAAQ":[function(require,module,exports) {
+module.exports = require("999fa6263ed7cfef").getBundleURL("cGaT9") + "childcourse.4530ee49.png";
+
+},{"999fa6263ed7cfef":"lgJ39"}],"hv20Q":[function(require,module,exports) {
+module.exports = require("8c37f8e11049b779").getBundleURL("cGaT9") + "parentcourse.119469c6.png";
+
+},{"8c37f8e11049b779":"lgJ39"}],"irouL":[function() {},{}],"42nvf":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let NOOP = ()=>{};
+exports.default = (script)=>{};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"i7Av3":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "render", ()=>render);
@@ -95164,17 +95286,64 @@ const _hoisted_1 = {
     class: "app-Graph"
 };
 const _hoisted_2 = {
+    class: "top-controls"
+};
+const _hoisted_3 = {
     id: "rates"
+};
+const _hoisted_4 = {
+    class: "search-panel"
+};
+const _hoisted_5 = [
+    "disabled"
+];
+const _hoisted_6 = [
+    "disabled"
+];
+const _hoisted_7 = {
+    class: "search-count"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_legendVueGraph = (0, _vue.resolveComponent)("legendVueGraph");
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
         (0, _vue.createVNode)(_component_legendVueGraph),
         (0, _vue.createElementVNode)("div", _hoisted_2, [
-            (0, _vue.createElementVNode)("button", {
-                id: "course",
-                onClick: _cache[0] || (_cache[0] = (...args)=>$options.setCourse && $options.setCourse(...args))
-            }, (0, _vue.toDisplayString)($data.courseType), 1)
+            (0, _vue.createElementVNode)("div", _hoisted_3, [
+                (0, _vue.createElementVNode)("button", {
+                    id: "course",
+                    onClick: _cache[0] || (_cache[0] = (...args)=>$options.setCourse && $options.setCourse(...args))
+                }, (0, _vue.toDisplayString)($data.courseType), 1)
+            ]),
+            (0, _vue.createElementVNode)("div", _hoisted_4, [
+                (0, _vue.withDirectives)((0, _vue.createElementVNode)("input", {
+                    "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event)=>$data.searchQuery = $event),
+                    class: "search-input",
+                    type: "text",
+                    placeholder: "Search node name...",
+                    onInput: _cache[2] || (_cache[2] = (...args)=>$options.onSearchInput && $options.onSearchInput(...args)),
+                    onKeydown: _cache[3] || (_cache[3] = (0, _vue.withKeys)((0, _vue.withModifiers)((...args)=>$options.nextSearchResult && $options.nextSearchResult(...args), [
+                        "prevent"
+                    ]), [
+                        "enter"
+                    ]))
+                }, null, 544), [
+                    [
+                        (0, _vue.vModelText),
+                        $data.searchQuery
+                    ]
+                ]),
+                (0, _vue.createElementVNode)("button", {
+                    class: "search-btn",
+                    onClick: _cache[4] || (_cache[4] = (...args)=>$options.prevSearchResult && $options.prevSearchResult(...args)),
+                    disabled: $data.matchCount === 0
+                }, " Prev ", 8, _hoisted_5),
+                (0, _vue.createElementVNode)("button", {
+                    class: "search-btn",
+                    onClick: _cache[5] || (_cache[5] = (...args)=>$options.nextSearchResult && $options.nextSearchResult(...args)),
+                    disabled: $data.matchCount === 0
+                }, " Next ", 8, _hoisted_6),
+                (0, _vue.createElementVNode)("span", _hoisted_7, (0, _vue.toDisplayString)($data.searchPosition) + " / " + (0, _vue.toDisplayString)($data.matchCount), 1)
+            ])
         ])
     ], 512);
 }
@@ -96435,7 +96604,7 @@ let initialize = ()=>{
     script.render = require("31edf68f8ee59e53").render;
     script.__cssModules = require("cf502a1f5728c19f").default;
     require("ca204d8d5b94f6de").default(script);
-    script.__scopeId = "data-v-f9ac8f";
+    script.__scopeId = "data-v-ac04a3";
     script.__file = "AppForceGraph.vue";
 };
 initialize();
@@ -96488,7 +96657,7 @@ exports.default = {
     }
 };
 
-},{"../spinal":"2Kgs7","./legendVueGraph":"lWT06","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../viewerForce":"4m7V4"}],"4m7V4":[function(require,module,exports) {
+},{"../viewerForce":"4m7V4","../spinal":"2Kgs7","./legendVueGraph":"lWT06","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4m7V4":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 /*
@@ -96894,6 +97063,9 @@ const _hoisted_1 = {
     class: "app-graph-force"
 };
 const _hoisted_2 = {
+    class: "top-controls"
+};
+const _hoisted_3 = {
     id: "rates"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -96901,10 +97073,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
         (0, _vue.createVNode)(_component_legendVueGraph),
         (0, _vue.createElementVNode)("div", _hoisted_2, [
-            (0, _vue.createElementVNode)("button", {
-                id: "course",
-                onClick: _cache[0] || (_cache[0] = (...args)=>$options.setCourse && $options.setCourse(...args))
-            }, (0, _vue.toDisplayString)($data.courseType), 1)
+            (0, _vue.createElementVNode)("div", _hoisted_3, [
+                (0, _vue.createElementVNode)("button", {
+                    id: "course",
+                    onClick: _cache[0] || (_cache[0] = (...args)=>$options.setCourse && $options.setCourse(...args))
+                }, (0, _vue.toDisplayString)($data.courseType), 1)
+            ])
         ])
     ], 512);
 }

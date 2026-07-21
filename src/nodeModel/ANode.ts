@@ -37,6 +37,7 @@ export abstract class ANode {
   hasChildren: boolean;
   children: ANode[];
   _children: ANode[] | null;
+  hasLoadedParent: boolean;
 
   constructor(node: SpinalAnyNode) {
     this.id = node.getId().get();
@@ -46,6 +47,7 @@ export abstract class ANode {
     this.hasChildren = false;
     this.children = [];
     this._children = null;
+    this.hasLoadedParent = false;
   }
 
   getChildren(node: D3Node): Promise<SpinalAnyNode[]> {
@@ -81,27 +83,36 @@ export abstract class ANode {
   }
 
   static collapseOrOpen(node: D3Node): boolean {
+    if (Array.isArray(node.children)) {
+      node._children = node.children;
+      node.children = null;
+      return false;
+    }
+
     if (Array.isArray(node._children)) {
       node.children = node._children;
       node._children = null;
       return false;
-    } else {
-      node._children = node.children;
-      node.children = null;
-      return true;
     }
+
+    return true;
   }
 
   static collapseOrOpenParent(node: D3Node): boolean {
+    if (!node.data.hasLoadedParent) return true;
+    if (Array.isArray(node.parent)) {
+      node._parent = node.parent;
+      node.parent = null;
+      return false;
+    }
+
     if (Array.isArray(node._parent)) {
       node.parent = node._parent;
       node._parent = null;
       return false;
-    } else {
-      node._parent = node.parent;
-      node.parent = null;
-      return true;
     }
+
+    return true;
   }
 
   static async updateChildren(node: D3Node, nodeFactory: NodeFactory) {
@@ -140,5 +151,6 @@ export abstract class ANode {
       const s = nodeFactory.createNode(parent);
       node.parent = [s];
     }
+    node.data.hasLoadedParent = true;
   }
 }

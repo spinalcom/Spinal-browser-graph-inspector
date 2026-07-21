@@ -43,6 +43,10 @@ class ViewerDag {
   svg: any;
   nodeFactory: NodeFactory;
   stateCourse: boolean = false;
+  searchActions: {
+    updateSearch: (query: string) => { count: number; current: number };
+    moveSearch: (direction: number) => { count: number; current: number };
+  } | null = null;
 
   constructor(spinal: SpinalIO) {
     this.graph = spinal;
@@ -68,6 +72,21 @@ class ViewerDag {
     }
   }
 
+  setSearchQuery(query: string) {
+    if (!this.searchActions) return { count: 0, current: 0 };
+    return this.searchActions.updateSearch(query);
+  }
+
+  selectNextSearchMatch() {
+    if (!this.searchActions) return { count: 0, current: 0 };
+    return this.searchActions.moveSearch(1);
+  }
+
+  selectPreviousSearchMatch() {
+    if (!this.searchActions) return { count: 0, current: 0 };
+    return this.searchActions.moveSearch(-1);
+  }
+
   async init(element: HTMLElement, server_id: number) {
     this.element = element;
     const data = <SpinalNode<any>>await this.graph.load(server_id);
@@ -78,16 +97,22 @@ class ViewerDag {
     let i = 0;
     let node: any, link: any, edgepath: any;
     let selectedNode: D3Node | null = null;
+    let searchQuery = "";
+    let searchMatches: D3Node[] = [];
+    let searchMatchIndex = -1;
+    let currentTransform: any = d3.zoomIdentity;
     const SELECTION_COLOR = "#ff8c00";
 
     const root = this.nodeFactory.createNode(data);
     root.x = this.width / 2;
     root.y = this.height / 2;
 
+    const zoomBehavior = d3.zoom().scaleExtent([0.01, 8]).on("zoom", zoomed);
+
     this.svg = d3
       .select(element)
       .append("svg")
-      .call(d3.zoom().scaleExtent([0.01, 8]).on("zoom", zoomed))
+      .call(zoomBehavior as any)
       .on("dblclick.zoom", null)
       .attr("width", this.width + this.margin.right + this.margin.left)
       .attr("height", this.height + this.margin.top + this.margin.bottom);
@@ -122,6 +147,100 @@ class ViewerDag {
 
     const mylink = svg.append("g");
     const myedgepath = svg.append("g");
+
+    const getSearchableName = (d: D3Node) => {
+      const realNode = FileSystem._objects[d.data._serverId];
+      if (realNode instanceof SpinalGraph) return "spinalgraph";
+      if (d.data.name === "undefined" || d.data.name === undefined)
+        return "undefined name";
+      return String(d.data.name).toLowerCase();
+    };
+
+    const getSearchState = () => ({
+      count: searchMatches.length,
+      current:
+        searchMatches.length > 0 && searchMatchIndex >= 0
+          ? searchMatchIndex + 1
+          : 0,
+    });
+
+    const centerOnNode = (d: D3Node | null) => {
+      if (!d || d.x === undefined || d.y === undefined) return;
+      const scale =
+        currentTransform && currentTransform.k ? currentTransform.k : 1;
+      const tx = this.width / 2 - d.x * scale;
+      const ty = this.height / 2 - d.y * scale;
+      const transform = d3.zoomIdentity.translate(tx, ty).scale(scale);
+      this.svg
+        .transition()
+        .duration(250)
+        .call(zoomBehavior.transform, transform);
+    };
+
+    const syncSearchMatches = (nodes: D3Node[]) => {
+      if (!searchQuery) {
+        searchMatches = [];
+        searchMatchIndex = -1;
+        return;
+      }
+
+      searchMatches = nodes.filter((n) =>
+        getSearchableName(n).includes(searchQuery),
+      );
+
+      if (searchMatches.length === 0) {
+        searchMatchIndex = -1;
+        return;
+      }
+
+      const indexFromCurrent = selectedNode
+        ? searchMatches.indexOf(selectedNode)
+        : -1;
+      if (indexFromCurrent !== -1) {
+        searchMatchIndex = indexFromCurrent;
+      } else if (
+        searchMatchIndex < 0 ||
+        searchMatchIndex >= searchMatches.length
+      ) {
+        searchMatchIndex = 0;
+      }
+    };
+
+    const selectCurrentSearchMatch = (centerSelection: boolean) => {
+      if (searchMatches.length === 0 || searchMatchIndex < 0)
+        return getSearchState();
+      selectedNode = searchMatches[searchMatchIndex];
+
+      applySelection();
+      if (centerSelection) centerOnNode(selectedNode);
+      return getSearchState();
+    };
+
+    const updateSearch = (query: string) => {
+      searchQuery = (query || "").trim().toLowerCase();
+      const nodes = flatten(root);
+      syncSearchMatches(nodes);
+
+      if (searchMatches.length > 0) {
+        return selectCurrentSearchMatch(true);
+      }
+
+      applySelection();
+      return getSearchState();
+    };
+
+    const moveSearch = (direction: number) => {
+      if (searchMatches.length === 0) return getSearchState();
+      searchMatchIndex =
+        (searchMatchIndex + direction + searchMatches.length) %
+        searchMatches.length;
+      return selectCurrentSearchMatch(true);
+    };
+
+    this.searchActions = {
+      updateSearch,
+      moveSearch,
+    };
 
     // Position new nodes relative to an anchor, avoiding column overlap
     const positionNewNodes = (
@@ -222,10 +341,12 @@ class ViewerDag {
       const nodes = flatten(root);
       const links = createLinks(nodes);
 
+      syncSearchMatches(nodes);
+
       link = mylink.selectAll(".link").data(links, function (d: any) {
         return d.target.id;
       });
-      link.exit().remove();
+      link.exit().transition().duration(200).style("opacity", 0).remove();
 
       const linkEnter = link
         .enter()
@@ -233,8 +354,9 @@ class ViewerDag {
         .attr("class", "link")
         .attr("marker-end", "url(#arrowhead)")
         .style("stroke", "#f8f8f8")
-        .style("opacity", "0.5")
+        .style("opacity", 0)
         .style("stroke-width", 2);
+      linkEnter.transition().duration(200).style("opacity", "1");
       link = linkEnter.merge(link);
 
       edgepath = myedgepath
@@ -254,7 +376,7 @@ class ViewerDag {
       node = svg.selectAll(".node").data(nodes, function (d: D3Node) {
         return d.id.toString();
       });
-      node.exit().remove();
+      node.exit().transition().duration(200).style("opacity", 0).remove();
 
       const nodeEnter = node
         .enter()
@@ -263,7 +385,7 @@ class ViewerDag {
         .attr("id", "test")
         .attr("stroke-width", 1.2)
         .style("fill", color)
-        .style("opacity", 1)
+        .style("opacity", 0)
         .on("click", click)
         .on("contextmenu", openNodeInDbInspector)
         .on("auxclick", function (d: D3Node) {
@@ -271,14 +393,9 @@ class ViewerDag {
           if ((<any>evnt).which === 2) {
             newpage(d);
           }
-        })
-        .call(
-          d3
-            .drag()
-            .on("start", dragstarted)
-            .on("drag", dragged)
-            .on("end", dragended),
-        );
+        });
+
+      nodeEnter.transition().duration(200).style("opacity", 1);
 
       nodeEnter.append(function (d: D3Node) {
         if (d.data.category === "node") {
@@ -367,9 +484,14 @@ class ViewerDag {
         .selectAll("circle, rect")
         .attr("stroke", "#f8f8f8")
         .attr("stroke-width", 1.2);
+      node
+        .selectAll("text")
+        .style("fill", "#fff")
+        .attr("stroke", "#000")
+        .attr("stroke-width", "3px");
       link
         .style("stroke", "#f8f8f8")
-        .style("opacity", "0.5")
+        .style("opacity", "1")
         .style("stroke-width", 2)
         .attr("marker-end", "url(#arrowhead)");
       if (!selectedNode) return;
@@ -378,6 +500,12 @@ class ViewerDag {
         .selectAll("circle, rect")
         .attr("stroke", SELECTION_COLOR)
         .attr("stroke-width", 3);
+      node
+        .filter((d: D3Node) => d === selectedNode)
+        .selectAll("text")
+        .style("fill", SELECTION_COLOR)
+        .attr("stroke", "#000")
+        .attr("stroke-width", "3px");
       node.filter((d: D3Node) => d === selectedNode).raise();
       link
         .filter(
@@ -404,22 +532,6 @@ class ViewerDag {
         (d: any) =>
           `M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`,
       );
-    }
-
-    function dragstarted(d: D3Node) {
-      d.fx = d.x;
-      d.fy = d.y;
-    }
-
-    function dragged(d: D3Node) {
-      d.x = d3.event.x;
-      d.y = d3.event.y;
-      render();
-    }
-
-    function dragended(d: D3Node) {
-      d.fx = null;
-      d.fy = null;
     }
 
     function flatten(root: any): D3Node[] {
@@ -465,6 +577,7 @@ class ViewerDag {
     }
 
     function zoomed() {
+      currentTransform = d3.event.transform;
       svg.attr("transform", d3.event.transform);
     }
 

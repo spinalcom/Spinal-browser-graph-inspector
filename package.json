@@ -35,6 +35,6 @@
     "spinal-core-connectorjs": "spinal-core-connectorjs",
     "spinal-core-connectorjs_type": "spinal-core-connectorjs_type",
     "spinal-env-viewer-graph-service": "Spinal-Graph-Service",
-    "spinal-model-graph": "spinal-model-graph@lstptrlst"
+    "spinal-model-graph": "spinal-model-graph"
   }
 }

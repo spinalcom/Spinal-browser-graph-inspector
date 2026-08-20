@@ -28,6 +28,9 @@ import "@mdi/font/css/materialdesignicons.css";
 import vuetify from "./plugins/vuetify";
 import { createApp } from "vue";
 import App from "./App.vue";
+import { SpinalNode } from "spinal-model-graph";
+
+SpinalNode.DISABLE_UPGRADE_TO_LST_PTR_LST = true;
 
 window.__VUE_OPTIONS_API__ = true;
 window.__VUE_PROD_DEVTOOLS__ = true;

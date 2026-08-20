@@ -1,19 +1,19 @@
 /*
  * Copyright 2024 SpinalCom - www.spinalcom.com
- * 
+ *
  * This file is part of SpinalCore.
- * 
+ *
  * Please read all of the following terms and conditions
  * of the Software license Agreement ("Agreement")
  * carefully.
- * 
+ *
  * This Agreement is a legally binding contract between
  * the Licensee (as defined below) and SpinalCom that
  * sets forth the terms and conditions that govern your
  * use of the Program. By installing and/or using the
  * Program, you agree to abide by all the terms and
  * conditions stated or referenced herein.
- * 
+ *
  * If you do not agree to abide by these terms and
  * conditions, do not demonstrate your acceptance and do
  * not install or use the Program.
@@ -23,42 +23,41 @@
  */
 
 import type { D3Node } from "./D3Node";
+import type { NodeFactory } from "./NodeFactory";
 import type { SpinalAnyNode } from "./types";
 import { FileSystem } from "spinal-core-connectorjs";
 import { SpinalNode } from "spinal-model-graph";
 
-export class ANode {
+export abstract class ANode {
   id: string;
   _serverId: number;
   name: string;
-  type: string;
+  type!: string; // type filled in subClass
   category: string;
-  contextIds: string[];
   hasChildren: boolean;
   children: ANode[];
   _children: ANode[] | null;
+  hasLoadedParent: boolean;
 
   constructor(node: SpinalAnyNode) {
     this.id = node.getId().get();
     this._serverId = node._server_id!;
-    this.name = node.getName() ? node.getName().get() : "undefined name"
+    this.name = node.getName() ? node.getName().get() : "undefined name";
     this.category = "undef";
     this.hasChildren = false;
     this.children = [];
     this._children = null;
+    this.hasLoadedParent = false;
   }
 
   getChildren(node: D3Node): Promise<SpinalAnyNode[]> {
     return Promise.resolve([]);
   }
 
-
   static getActifChild(node: D3Node): D3Node[] {
-
     if (Array.isArray(node.children)) {
       return node.children;
-    } else if (Array.isArray(node._children))
-      return node._children;
+    } else if (Array.isArray(node._children)) return node._children;
     else {
       node.children = [];
       return node.children;
@@ -73,67 +72,67 @@ export class ANode {
       }
     }
     return false;
-
   }
   isOpen(): boolean {
-    return (this._children === null);
+    return this._children === null;
   }
 
   getColor(): string {
-    if (!this.isOpen() && this.hasChildren)
-      return "#f00";
-    return "#ff4433"
+    if (!this.isOpen() && this.hasChildren) return "#f00";
+    return "#ff4433";
   }
 
   static collapseOrOpen(node: D3Node): boolean {
+    if (Array.isArray(node.children)) {
+      node._children = node.children;
+      node.children = null;
+      return false;
+    }
+
     if (Array.isArray(node._children)) {
       node.children = node._children;
       node._children = null;
-      return false;
-    } else {
-      node._children = node.children;
-      node.children = null;
       return true;
     }
 
+    return true;
   }
 
   static collapseOrOpenParent(node: D3Node): boolean {
+    if (!node.data.hasLoadedParent) return true;
+    if (Array.isArray(node.parent)) {
+      node._parent = node.parent;
+      node.parent = null;
+      return false;
+    }
+
     if (Array.isArray(node._parent)) {
       node.parent = node._parent;
       node._parent = null;
-      return false;
-    } else {
-      node._parent = node.parent;
-      node.parent = null;
       return true;
     }
 
+    return true;
   }
 
+  static async updateChildren(node: D3Node, nodeFactory: NodeFactory) {
+    const children: SpinalAnyNode[] = await node.data.getChildren();
 
-  static async updateChildren(node: D3Node, nodeFactory) {
-    const children: SpinalAnyNode[] = await node.data.getChildren()
-
-    const c = ANode.getActifChild(node)
+    const c = ANode.getActifChild(node);
     for (const child of children) {
-
       if (ANode.checkChildExist(child.getId().get(), node)) {
         // update node
         continue;
       }
 
-
-
-      const n = nodeFactory.createNode(child, node)
-      c.push(n)
+      const n = nodeFactory.createNode(child, node);
+      c.push(n);
     }
-
   }
 
-  static async updateParent(node: D3Node, nodeFactory) {
+  static async updateParent(node: D3Node, nodeFactory: NodeFactory) {
     const promise: Promise<SpinalNode>[] = [];
-    const realNode = (FileSystem._objects[node.data._serverId]);
+    const realNode = FileSystem._objects[node.data._serverId];
     if (realNode instanceof SpinalNode) {
       for (const [, listnode] of realNode.parents) {
         for (const item of listnode) {
@@ -144,16 +143,14 @@ export class ANode {
       const parents = await Promise.all(promise);
       node.parent = [];
       for (const parent of parents) {
-        const n = nodeFactory.createNode(parent)
-        node.parent.push(n)
+        const n = nodeFactory.createNode(parent);
+        node.parent.push(n);
       }
     } else {
       const parent = await realNode.parent.load();
       const s = nodeFactory.createNode(parent);
       node.parent = [s];
-
     }
-
+    node.data.hasLoadedParent = true;
   }
-
 }

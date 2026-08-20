@@ -61,6 +61,12 @@ with this file. If not, see
           </th>
           <th>Relation LstPtr</th>
         </tr>
+        <tr>
+          <th>
+            <img width="20px" src="../assets/lstptrlst.png?width=20" alt="" />
+          </th>
+          <th>Relation LstPtrLst</th>
+        </tr>
         <tr style="border-bottom: 1px solid #ddd">
           <th><img width="20px" src="../assets/ref.png?width=20" alt="" /></th>
           <th>Relation Ref</th>

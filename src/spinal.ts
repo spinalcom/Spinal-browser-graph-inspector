@@ -25,22 +25,24 @@
 import { FileSystem, spinalCore } from "spinal-core-connectorjs";
 import axios from "axios";
 
-export class Spinal {
-  static instance = null;
-  connectPromise = null;
-  conn: spinal.FileSystem;
-  static getInstance(): Spinal {
-    if (Spinal.instance === null) {
-      Spinal.instance = new Spinal();
+export class SpinalIO {
+  static instance: SpinalIO | null = null;
+  connectPromise: Promise<FileSystem> | null = null;
+  conn!: FileSystem;
+  static getInstance(): SpinalIO {
+    if (SpinalIO.instance === null) {
+      SpinalIO.instance = new SpinalIO();
     }
-    return Spinal.instance;
+    return SpinalIO.instance;
   }
   private constructor() {
-    this.connectPromise = null;
     this.connect();
   }
   getauth(): { username: string; password: string } {
     const encryptedHex = window.localStorage.getItem("spinalhome_cfg");
+    if (!encryptedHex) {
+      throw new Error("No authentication data found in localStorage");
+    }
     return JSON.parse(atob(encryptedHex));
   }
   disconnect() {
@@ -57,35 +59,31 @@ export class Spinal {
     FileSystem.CONNECTOR_TYPE = "Browser";
     const user = this.getauth();
 
-    this.connectPromise = new Promise((resolve, reject) => {
-      return axios
-        .get(`${serverHost}/get_user_id`, {
+    this.connectPromise = new Promise<FileSystem>(async (resolve, reject) => {
+      try {
+        const response = await axios.get(`${serverHost}/get_user_id`, {
           params: {
             u: user.username,
-            p: user.password
-          }
-        })
-        .then(
-          response => {
-            let id = parseInt(response.data);
-            const host = serverHost.replace(/https?:\/\//, "");
-            this.conn = spinalCore.connect(
-              `http://${id}:${user.password}@${host}/`
-            );
-            resolve(this.conn);
+            p: user.password,
           },
-          () => {
-            reject("Authentication Connection Error");
-          }
+        });
+        let id = parseInt(response.data);
+        const host = serverHost.replace(/https?:\/\//, "");
+        this.conn = spinalCore.connect(
+          `http://${id}:${user.password}@${host}/`,
         );
+        resolve(this.conn);
+      } catch (error) {
+        reject("Authentication Connection Error");
+      }
     });
     return this.connectPromise;
   }
 
-  async load(serve_id) {
+  async load(server_id: number) {
     await this.connect();
     return new Promise((resolve, reject) => {
-      this.conn.load_ptr(serve_id, model => {
+      this.conn.load_ptr(server_id, (model) => {
         if (!model) {
           // on error
           alert("error model not found.");
@@ -99,4 +97,4 @@ export class Spinal {
   }
 }
 
-export default Spinal;
+export default SpinalIO;

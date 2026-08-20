@@ -127,13 +127,13 @@ export default {
       ) {
         this.target.push(
           { key: "name", value: model.name.get() },
-          { key: "Nb Childrens", value: model.children.length }
+          { key: "Nb Childrens", value: model.children.length },
         );
         return true;
       } else if (model instanceof SpinalRelationPtrLst) {
         this.target.push(
           { key: "name", value: model.name.get() },
-          { key: "Nb Childrens", value: model.children.info.ids.length }
+          { key: "Nb Childrens", value: model.children.info.ids.length },
         );
         return true;
       }
@@ -165,6 +165,7 @@ export default {
   /* justify-content: center; */
   overflow: auto;
   height: 100%;
+  position: relative;
 }
 .element {
   font-family: sans-serif;

@@ -175,6 +175,8 @@ var _vuetifyDefault = parcelHelpers.interopDefault(_vuetify);
 var _vue = require("vue");
 var _appVue = require("./App.vue");
 var _appVueDefault = parcelHelpers.interopDefault(_appVue);
+var _spinalModelGraph = require("spinal-model-graph");
+(0, _spinalModelGraph.SpinalNode).DISABLE_UPGRADE_TO_LST_PTR_LST = true;
 window.__VUE_OPTIONS_API__ = true;
 window.__VUE_PROD_DEVTOOLS__ = true;
 window.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = true;
@@ -185,7 +187,7 @@ window.setImmediate = (cb)=>{
     return window.setTimeout(cb, 0);
 };
 
-},{"./assets/main.css":"7SfAk","golden-layout/dist/css/goldenlayout-base.css":"54jYv","golden-layout/dist/css/themes/goldenlayout-dark-theme.css":"8gm6h","@mdi/font/css/materialdesignicons.css":"19mpe","./plugins/vuetify":"iiUTV","vue":"gzxs9","./App.vue":"fYNyc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7SfAk":[function() {},{}],"54jYv":[function() {},{}],"8gm6h":[function() {},{}],"19mpe":[function() {},{}],"iiUTV":[function(require,module,exports) {
+},{"./assets/main.css":"7SfAk","golden-layout/dist/css/goldenlayout-base.css":"54jYv","golden-layout/dist/css/themes/goldenlayout-dark-theme.css":"8gm6h","@mdi/font/css/materialdesignicons.css":"19mpe","./plugins/vuetify":"iiUTV","vue":"gzxs9","./App.vue":"fYNyc","spinal-model-graph":"fkEXw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7SfAk":[function() {},{}],"54jYv":[function() {},{}],"8gm6h":[function() {},{}],"19mpe":[function() {},{}],"iiUTV":[function(require,module,exports) {
 /*
  * Copyright 2024 SpinalCom - www.spinalcom.com
  *
@@ -42046,7 +42048,7 @@ let initialize = ()=>{
     script.render = require("8a4954974a3e2a08").render;
     script.__cssModules = require("f5f81ab60053088e").default;
     require("7e9898e9b122e745").default(script);
-    script.__scopeId = "data-v-eef408";
+    script.__scopeId = "data-v-5a04b7";
     script.__file = "App.vue";
 };
 initialize();
@@ -42056,8 +42058,6 @@ exports.default = script;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _vue = require("vue");
-var _goldenLayout = require("./plugins/GoldenLayout");
-var _goldenLayout1 = require("golden-layout");
 var _spinal = require("./spinal");
 var _spinalDefault = parcelHelpers.interopDefault(_spinal);
 var _appGraphVue = require("./components/AppGraph.vue");
@@ -42066,142 +42066,8 @@ var _appElementVue = require("./components/AppElement.vue");
 var _appElementVueDefault = parcelHelpers.interopDefault(_appElementVue);
 var _appDbInspectorVue = require("./components/AppDbInspector.vue");
 var _appDbInspectorVueDefault = parcelHelpers.interopDefault(_appDbInspectorVue);
-exports.default = /*@__PURE__*/ (0, _vue.defineComponent)({
-    __name: "App",
-    setup (__props, { expose: __expose }) {
-        __expose();
-        const drawer = (0, _vue.ref)(false);
-        function logOut() {
-            const spinal = (0, _spinalDefault.default).getInstance();
-            spinal.disconnect();
-        }
-        function getServeIdByName(name) {
-            const url = window.location.href;
-            name = name.replace(/[[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
-            if (!results) return "NaN";
-            if (!results[2]) return "NaN";
-            return results[2].replace(/\+/g, " ");
-        }
-        const server_id = (0, _vue.ref)(parseInt(getServeIdByName("id")));
-        const miniRowConfig = {
-            root: {
-                type: (0, _goldenLayout1.ItemType).row,
-                content: [
-                    {
-                        type: "component",
-                        title: "Graph Node Inspector",
-                        header: {
-                            show: "top"
-                        },
-                        componentType: "graphinspector",
-                        width: 70
-                    },
-                    {
-                        type: (0, _goldenLayout1.ItemType).column,
-                        content: [
-                            {
-                                type: "component",
-                                title: "node inspector",
-                                header: {
-                                    show: "top"
-                                },
-                                componentType: "nodeinspector",
-                                componentState: {
-                                    abc: 123
-                                }
-                            },
-                            {
-                                type: "component",
-                                title: "Element Node Inspector",
-                                header: {
-                                    show: "top",
-                                    popout: false
-                                },
-                                componentType: "elementinspector"
-                            }
-                        ]
-                    }
-                ]
-            }
-        };
-        const layoutConfig = (0, _vue.ref)(miniRowConfig);
-        const __returned__ = {
-            drawer,
-            logOut,
-            getServeIdByName,
-            server_id,
-            miniRowConfig,
-            layoutConfig,
-            get GoldenLayout () {
-                return 0, _goldenLayout.GoldenLayout;
-            },
-            AppGraph: (0, _appGraphVueDefault.default),
-            AppElement: (0, _appElementVueDefault.default),
-            AppDbInspector: (0, _appDbInspectorVueDefault.default)
-        };
-        Object.defineProperty(__returned__, "__isScriptSetup", {
-            enumerable: false,
-            value: true
-        });
-        return __returned__;
-    }
-});
-
-},{"vue":"gzxs9","./plugins/GoldenLayout":"dCBTx","golden-layout":"5WVCw","./components/AppGraph.vue":"gI0mP","./components/AppElement.vue":"2WQLE","./components/AppDbInspector.vue":"lr4tq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./spinal":"2Kgs7"}],"dCBTx":[function(require,module,exports) {
-/*
- * Copyright 2024 SpinalCom - www.spinalcom.com
- *
- * This file is part of SpinalCore.
- *
- * Please read all of the following terms and conditions
- * of the Software license Agreement ("Agreement")
- * carefully.
- *
- * This Agreement is a legally binding contract between
- * the Licensee (as defined below) and SpinalCom that
- * sets forth the terms and conditions that govern your
- * use of the Program. By installing and/or using the
- * Program, you agree to abide by all the terms and
- * conditions stated or referenced herein.
- *
- * If you do not agree to abide by these terms and
- * conditions, do not demonstrate your acceptance and do
- * not install or use the Program.
- * You should have received a copy of the license along
- * with this file. If not, see
- * <http://resources.spinalcom.com/licenses.pdf>.
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "GoldenLayout", ()=>(0, _goldenLayoutVueDefault.default));
-var _goldenLayoutVue = require("./GoldenLayout.vue");
-var _goldenLayoutVueDefault = parcelHelpers.interopDefault(_goldenLayoutVue);
-
-},{"./GoldenLayout.vue":"ahhQB","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ahhQB":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let script;
-let initialize = ()=>{
-    script = require("35cb37ddbe3bb181");
-    if (script.__esModule) script = script.default;
-    script.render = require("65ceb25276e81912").render;
-    require("52de0617eee89f0c").default(script);
-    script.__scopeId = "data-v-38e49d";
-    script.__file = "GoldenLayout.vue";
-};
-initialize();
-exports.default = script;
-
-},{"35cb37ddbe3bb181":"7jL40","65ceb25276e81912":"Vw8Qb","52de0617eee89f0c":"gAVAn","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7jL40":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _vue = require("vue");
-var _goldenLayout = require("golden-layout");
-var _glTemplateVue = require("./GlTemplate.vue");
-var _glTemplateVueDefault = parcelHelpers.interopDefault(_glTemplateVue);
-var _consts = require("./consts");
-var _slotExtrVue = require("./utils/SlotExtr.vue");
-var _slotExtrVueDefault = parcelHelpers.interopDefault(_slotExtrVue);
+var _appForceGraphVue = require("./components/AppForceGraph.vue");
+var _appForceGraphVueDefault = parcelHelpers.interopDefault(_appForceGraphVue);
 var __awaiter = undefined && undefined.__awaiter || function(thisArg, _arguments, P, generator) {
     function adopt(value) {
         return value instanceof P ? value : new P(function(resolve) {
@@ -42229,197 +42095,94 @@ var __awaiter = undefined && undefined.__awaiter || function(thisArg, _arguments
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-/*******************
- * Prop
- *******************/ exports.default = /*@__PURE__*/ (0, _vue.defineComponent)({
-    __name: "GoldenLayout",
-    props: {
-        config: {
-            type: Object,
-            default: ()=>({})
-        }
-    },
+exports.default = /*@__PURE__*/ (0, _vue.defineComponent)({
+    __name: "App",
     setup (__props, { expose: __expose }) {
-        const props = __props;
-        /*******************
-         * Data
-         *******************/ const GLRoot = (0, _vue.ref)(null);
-        const GlcKeyPrefix = (0, _vue.readonly)((0, _vue.ref)("glc_"));
-        const MapComponents = new Map();
-        const AllComponents = (0, _vue.ref)(new Map());
-        const UnusedIndexes = [];
-        const instance = (0, _vue.getCurrentInstance)();
-        const slots = instance.slots;
-        const predef = (0, _vue.ref)();
-        const routeChildren = {};
-        let GLayout;
-        let CurIndex = 0;
-        let GlBoundingClientRect;
-        (0, _vue.provide)((0, _consts.layoutKey), instance === null || instance === void 0 ? void 0 : instance.exposed);
-        /*******************
-         * Method
-         *******************/ /** @internal */ const addComponent = (componentType, componentState)=>__awaiter(this, void 0, void 0, function*() {
+        __expose();
+        const drawer = (0, _vue.ref)(false);
+        const activeTab = (0, _vue.ref)("dag");
+        const forceGraphRef = (0, _vue.ref)(null);
+        function setActiveTab(tab) {
+            return __awaiter(this, void 0, void 0, function*() {
                 var _a;
-                const glc = slots[componentType] || ((_a = predef.value) === null || _a === void 0 ? void 0 : _a.slots)[componentType];
-                if (!glc) throw new Error(`addComponent: Component '${componentType}' not found in slots`);
-                let index = CurIndex;
-                if (UnusedIndexes.length > 0) index = UnusedIndexes.pop();
-                else CurIndex++;
-                AllComponents.value.set(index, ()=>glc(componentState));
-                return index;
-            });
-        const addGlComponent = (componentType_1, title_1, ...args_1)=>__awaiter(this, [
-                componentType_1,
-                title_1,
-                ...args_1
-            ], void 0, function*(componentType, title, componentState) {
-                if (componentType.length == 0) throw new Error("addGlComponent: Component's type is empty");
-                const index = yield addComponent(componentType, componentState);
-                yield (0, _vue.nextTick)(); // wait 1 tick for vue to add the dom
-                GLayout.addComponent(componentType, Object.assign({
-                    refId: index
-                }, componentState || {}), title);
-            });
-        const loadGLLayout = (layoutConfig)=>__awaiter(this, void 0, void 0, function*() {
-                GLayout.clear();
-                AllComponents.value.clear();
-                const config = layoutConfig.resolved ? (0, _goldenLayout.LayoutConfig).fromResolved(layoutConfig) : layoutConfig;
-                let contents = [
-                    config.root.content
-                ];
-                let index = 0;
-                while(contents.length > 0){
-                    const content = contents.shift();
-                    for (let itemConfig of content){
-                        if (itemConfig.type == "component") {
-                            index = yield addComponent(itemConfig.componentType, itemConfig.componentState);
-                            if (typeof itemConfig.componentState == "object") itemConfig.componentState.refId = index;
-                            else itemConfig.componentState = {
-                                refId: index
-                            };
-                        } else if (itemConfig.content.length > 0) contents.push(itemConfig.content);
-                    }
+                activeTab.value = tab;
+                if (tab === "force") {
+                    yield (0, _vue.nextTick)();
+                    (_a = forceGraphRef.value) === null || _a === void 0 || _a.tryInit();
                 }
-                yield (0, _vue.nextTick)(); // wait 1 tick for vue to add the dom
-                GLayout.loadLayout(config);
             });
-        const getLayoutConfig = ()=>{
-            return GLayout.saveLayout();
-        };
-        /*******************
-         * Mount
-         *******************/ (0, _vue.onMounted)(()=>{
-            if (GLRoot.value == null) throw new Error("Golden Layout can't find the root DOM!");
-            const onResize = ()=>{
-                const dom = GLRoot.value;
-                let width = dom ? dom.offsetWidth : 0;
-                let height = dom ? dom.offsetHeight : 0;
-                GLayout.setSize(width, height);
-            };
-            window.addEventListener("resize", onResize, {
-                passive: true
-            });
-            const handleBeforeVirtualRectingEvent = (count)=>{
-                GlBoundingClientRect = GLRoot.value.getBoundingClientRect();
-            };
-            const handleContainerVirtualRectingRequiredEvent = (container, width, height)=>{
-                const component = MapComponents.get(container);
-                if (!component || !(component === null || component === void 0 ? void 0 : component.glc)) throw new Error("handleContainerVirtualRectingRequiredEvent: Component not found");
-                const containerBoundingClientRect = container.element.getBoundingClientRect();
-                const left = containerBoundingClientRect.left - GlBoundingClientRect.left;
-                const top = containerBoundingClientRect.top - GlBoundingClientRect.top;
-                component.glc.setPosAndSize(left, top, width, height);
-            };
-            const handleContainerVirtualVisibilityChangeRequiredEvent = (container, visible)=>{
-                const component = MapComponents.get(container);
-                if (!component || !(component === null || component === void 0 ? void 0 : component.glc)) throw new Error("handleContainerVirtualVisibilityChangeRequiredEvent: Component not found");
-                component.glc.setVisibility(visible);
-            };
-            const handleContainerVirtualZIndexChangeRequiredEvent = (container, logicalZIndex, defaultZIndex)=>{
-                const component = MapComponents.get(container);
-                if (!component || !(component === null || component === void 0 ? void 0 : component.glc)) throw new Error("handleContainerVirtualZIndexChangeRequiredEvent: Component not found");
-                component.glc.setZIndex(defaultZIndex);
-            };
-            const bindComponentEventListener = (container, itemConfig)=>{
-                let refId = -1;
-                if (itemConfig && itemConfig.componentState) refId = itemConfig.componentState.refId;
-                else throw new Error("bindComponentEventListener: component's ref id is required");
-                const ref = GlcKeyPrefix.value + refId;
-                const component = instance === null || instance === void 0 ? void 0 : instance.refs[ref];
-                MapComponents.set(container, {
-                    refId,
-                    glc: component[0]
-                });
-                container.virtualRectingRequiredEvent = (container, width, height)=>handleContainerVirtualRectingRequiredEvent(container, width, height);
-                container.virtualVisibilityChangeRequiredEvent = (container, visible)=>handleContainerVirtualVisibilityChangeRequiredEvent(container, visible);
-                container.virtualZIndexChangeRequiredEvent = (container, logicalZIndex, defaultZIndex)=>handleContainerVirtualZIndexChangeRequiredEvent(container, logicalZIndex, defaultZIndex);
-                return {
-                    component,
-                    virtual: true
-                };
-            };
-            const unbindComponentEventListener = (container)=>{
-                const component = MapComponents.get(container);
-                if (!component || !(component === null || component === void 0 ? void 0 : component.glc)) throw new Error("handleUnbindComponentEvent: Component not found");
-                MapComponents.delete(container);
-                AllComponents.value.delete(component.refId);
-                UnusedIndexes.push(component.refId);
-                Object.entries(routeChildren).find(([key, value])=>{
-                    if (value === component.refId) {
-                        delete routeChildren[key];
-                        return true;
-                    }
-                    return false;
-                });
-            };
-            GLayout = new (0, _goldenLayout.VirtualLayout)(GLRoot.value, bindComponentEventListener, unbindComponentEventListener);
-            GLayout.beforeVirtualRectingEvent = handleBeforeVirtualRectingEvent;
-            if (props.config) loadGLLayout(props.config);
+        }
+        // Resize state
+        const leftWidth = (0, _vue.ref)(70); // % width of graph panel
+        const topHeight = (0, _vue.ref)(50); // % height of top inspector pane
+        const appLayout = (0, _vue.ref)(null);
+        const inspectorPanel = (0, _vue.ref)(null);
+        const resizing = (0, _vue.ref)(null);
+        function startResizeH(e) {
+            resizing.value = "horizontal";
+            e.preventDefault();
+        }
+        function startResizeV(e) {
+            resizing.value = "vertical";
+            e.preventDefault();
+        }
+        function onMouseMove(e) {
+            if (!resizing.value) return;
+            if (resizing.value === "horizontal" && appLayout.value) {
+                const rect = appLayout.value.getBoundingClientRect();
+                const pct = (e.clientX - rect.left) / rect.width * 100;
+                leftWidth.value = Math.min(Math.max(pct, 20), 85);
+            } else if (resizing.value === "vertical" && inspectorPanel.value) {
+                const rect = inspectorPanel.value.getBoundingClientRect();
+                const pct = (e.clientY - rect.top) / rect.height * 100;
+                topHeight.value = Math.min(Math.max(pct, 10), 90);
+            }
+        }
+        function onMouseUp() {
+            resizing.value = null;
+        }
+        (0, _vue.onMounted)(()=>{
+            document.addEventListener("mousemove", onMouseMove);
+            document.addEventListener("mouseup", onMouseUp);
         });
-        const components = (0, _vue.ref)({});
-        /*******************
-         * Expose
-         *******************/ __expose({
-            addGlComponent,
-            loadGLLayout,
-            getLayoutConfig
+        (0, _vue.onUnmounted)(()=>{
+            document.removeEventListener("mousemove", onMouseMove);
+            document.removeEventListener("mouseup", onMouseUp);
         });
+        function logOut() {
+            const spinal = (0, _spinalDefault.default).getInstance();
+            spinal.disconnect();
+        }
+        function getAttrFromUrlQuery(name) {
+            const url = window.location.href;
+            name = name.replace(/[[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"), results = regex.exec(url);
+            if (!results) return "NaN";
+            if (!results[2]) return "NaN";
+            return results[2].replace(/\+/g, " ");
+        }
+        const server_id = (0, _vue.ref)(parseInt(getAttrFromUrlQuery("id")));
         const __returned__ = {
-            props,
-            GLRoot,
-            GlcKeyPrefix,
-            MapComponents,
-            AllComponents,
-            UnusedIndexes,
-            instance,
-            slots,
-            predef,
-            routeChildren,
-            get GLayout () {
-                return GLayout;
-            },
-            set GLayout (v){
-                GLayout = v;
-            },
-            get CurIndex () {
-                return CurIndex;
-            },
-            set CurIndex (v){
-                CurIndex = v;
-            },
-            get GlBoundingClientRect () {
-                return GlBoundingClientRect;
-            },
-            set GlBoundingClientRect (v){
-                GlBoundingClientRect = v;
-            },
-            addComponent,
-            addGlComponent,
-            loadGLLayout,
-            getLayoutConfig,
-            components,
-            GlTemplate: (0, _glTemplateVueDefault.default),
-            SlotExtr: (0, _slotExtrVueDefault.default)
+            drawer,
+            activeTab,
+            forceGraphRef,
+            setActiveTab,
+            leftWidth,
+            topHeight,
+            appLayout,
+            inspectorPanel,
+            resizing,
+            startResizeH,
+            startResizeV,
+            onMouseMove,
+            onMouseUp,
+            logOut,
+            getAttrFromUrlQuery,
+            server_id,
+            AppGraph: (0, _appGraphVueDefault.default),
+            AppElement: (0, _appElementVueDefault.default),
+            AppDbInspector: (0, _appDbInspectorVueDefault.default),
+            AppForceGraph: (0, _appForceGraphVueDefault.default)
         };
         Object.defineProperty(__returned__, "__isScriptSetup", {
             enumerable: false,
@@ -42429,7789 +42192,7 @@ var __awaiter = undefined && undefined.__awaiter || function(thisArg, _arguments
     }
 });
 
-},{"vue":"gzxs9","golden-layout":"5WVCw","./GlTemplate.vue":"Owrft","./consts":"itWm8","./utils/SlotExtr.vue":"5F7Fe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5WVCw":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ComponentContainer", ()=>(0, _componentContainer.ComponentContainer));
-parcelHelpers.export(exports, "BrowserPopout", ()=>(0, _browserPopout.BrowserPopout));
-parcelHelpers.export(exports, "DragSource", ()=>(0, _dragSource.DragSource));
-parcelHelpers.export(exports, "Header", ()=>(0, _header.Header));
-parcelHelpers.export(exports, "Tab", ()=>(0, _tab.Tab));
-parcelHelpers.export(exports, "GoldenLayout", ()=>(0, _goldenLayout.GoldenLayout));
-parcelHelpers.export(exports, "ComponentItem", ()=>(0, _componentItem.ComponentItem));
-parcelHelpers.export(exports, "ContentItem", ()=>(0, _contentItem.ContentItem));
-parcelHelpers.export(exports, "RowOrColumn", ()=>(0, _rowOrColumn.RowOrColumn));
-parcelHelpers.export(exports, "Stack", ()=>(0, _stack.Stack));
-parcelHelpers.export(exports, "LayoutManager", ()=>(0, _layoutManager.LayoutManager));
-parcelHelpers.export(exports, "EventEmitter", ()=>(0, _eventEmitter.EventEmitter));
-parcelHelpers.export(exports, "EventHub", ()=>(0, _eventHub.EventHub));
-parcelHelpers.export(exports, "StyleConstants", ()=>(0, _styleConstants.StyleConstants));
-parcelHelpers.export(exports, "VirtualLayout", ()=>(0, _virtualLayout.VirtualLayout));
-var _config = require("./ts/config/config");
-parcelHelpers.exportAll(_config, exports);
-var _resolvedConfig = require("./ts/config/resolved-config");
-parcelHelpers.exportAll(_resolvedConfig, exports);
-var _componentContainer = require("./ts/container/component-container");
-var _browserPopout = require("./ts/controls/browser-popout");
-var _dragSource = require("./ts/controls/drag-source");
-var _header = require("./ts/controls/header");
-var _tab = require("./ts/controls/tab");
-var _externalError = require("./ts/errors/external-error");
-parcelHelpers.exportAll(_externalError, exports);
-var _goldenLayout = require("./ts/golden-layout");
-var _componentItem = require("./ts/items/component-item");
-var _contentItem = require("./ts/items/content-item");
-var _rowOrColumn = require("./ts/items/row-or-column");
-var _stack = require("./ts/items/stack");
-var _layoutManager = require("./ts/layout-manager");
-var _eventEmitter = require("./ts/utils/event-emitter");
-var _eventHub = require("./ts/utils/event-hub");
-var _i18NStrings = require("./ts/utils/i18n-strings");
-parcelHelpers.exportAll(_i18NStrings, exports);
-var _styleConstants = require("./ts/utils/style-constants");
-var _types = require("./ts/utils/types");
-parcelHelpers.exportAll(_types, exports);
-var _virtualLayout = require("./ts/virtual-layout");
-
-},{"./ts/config/config":"3GcjJ","./ts/config/resolved-config":false,"./ts/container/component-container":false,"./ts/controls/browser-popout":false,"./ts/controls/drag-source":false,"./ts/controls/header":false,"./ts/controls/tab":false,"./ts/errors/external-error":false,"./ts/golden-layout":false,"./ts/items/component-item":false,"./ts/items/content-item":false,"./ts/items/row-or-column":false,"./ts/items/stack":false,"./ts/layout-manager":false,"./ts/utils/event-emitter":false,"./ts/utils/event-hub":false,"./ts/utils/i18n-strings":false,"./ts/utils/style-constants":false,"./ts/utils/types":"dBAL3","./ts/virtual-layout":"9NAhe","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3GcjJ":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ItemConfig", ()=>ItemConfig);
-parcelHelpers.export(exports, "HeaderedItemConfig", ()=>HeaderedItemConfig);
-parcelHelpers.export(exports, "StackItemConfig", ()=>StackItemConfig);
-parcelHelpers.export(exports, "ComponentItemConfig", ()=>ComponentItemConfig);
-parcelHelpers.export(exports, "RowOrColumnItemConfig", ()=>RowOrColumnItemConfig);
-parcelHelpers.export(exports, "RootItemConfig", ()=>RootItemConfig);
-parcelHelpers.export(exports, "LayoutConfig", ()=>LayoutConfig);
-parcelHelpers.export(exports, "PopoutLayoutConfig", ()=>PopoutLayoutConfig);
-/** @internal */ parcelHelpers.export(exports, "parseSize", ()=>parseSize);
-/** @internal */ parcelHelpers.export(exports, "formatSize", ()=>formatSize);
-/** @internal */ parcelHelpers.export(exports, "formatUndefinableSize", ()=>formatUndefinableSize);
-var _externalError = require("../errors/external-error");
-var _internalError = require("../errors/internal-error");
-var _i18NStrings = require("../utils/i18n-strings");
-var _types = require("../utils/types");
-var _utils = require("../utils/utils");
-var _resolvedConfig = require("./resolved-config");
-var ItemConfig;
-(function(ItemConfig) {
-    /** @internal */ function resolve(itemConfig, rowAndColumnChildLegacySizeDefault) {
-        switch(itemConfig.type){
-            case (0, _types.ItemType).ground:
-                throw new (0, _externalError.ConfigurationError)("ItemConfig cannot specify type ground", JSON.stringify(itemConfig));
-            case (0, _types.ItemType).row:
-            case (0, _types.ItemType).column:
-                return RowOrColumnItemConfig.resolve(itemConfig, rowAndColumnChildLegacySizeDefault);
-            case (0, _types.ItemType).stack:
-                return StackItemConfig.resolve(itemConfig, rowAndColumnChildLegacySizeDefault);
-            case (0, _types.ItemType).component:
-                return ComponentItemConfig.resolve(itemConfig, rowAndColumnChildLegacySizeDefault);
-            default:
-                throw new (0, _internalError.UnreachableCaseError)("UCUICR55499", itemConfig.type);
-        }
-    }
-    ItemConfig.resolve = resolve;
-    /** @internal */ function resolveContent(content) {
-        if (content === undefined) return [];
-        else {
-            const count = content.length;
-            const result = new Array(count);
-            for(let i = 0; i < count; i++)result[i] = ItemConfig.resolve(content[i], false);
-            return result;
-        }
-    }
-    ItemConfig.resolveContent = resolveContent;
-    /** @internal */ function resolveId(id) {
-        if (id === undefined) return (0, _resolvedConfig.ResolvedItemConfig).defaults.id;
-        else {
-            if (Array.isArray(id)) {
-                if (id.length === 0) return (0, _resolvedConfig.ResolvedItemConfig).defaults.id;
-                else return id[0];
-            } else return id;
-        }
-    }
-    ItemConfig.resolveId = resolveId;
-    /** @internal */ function resolveSize(size, width, height, rowAndColumnChildLegacySizeDefault) {
-        // Remove support for rowAndColumnChildLegacySizeDefault in a major version release
-        if (size !== undefined) return parseSize(size, [
-            (0, _types.SizeUnitEnum).Percent,
-            (0, _types.SizeUnitEnum).Fractional
-        ]);
-        else if (width !== undefined || height !== undefined) {
-            if (width !== undefined) return {
-                size: width,
-                sizeUnit: (0, _types.SizeUnitEnum).Percent
-            };
-            else {
-                if (height !== undefined) return {
-                    size: height,
-                    sizeUnit: (0, _types.SizeUnitEnum).Percent
-                };
-                else throw new (0, _internalError.UnexpectedUndefinedError)("CRS33390");
-            }
-        } else {
-            if (rowAndColumnChildLegacySizeDefault) return {
-                size: 50,
-                sizeUnit: (0, _types.SizeUnitEnum).Percent
-            };
-            else return {
-                size: (0, _resolvedConfig.ResolvedItemConfig).defaults.size,
-                sizeUnit: (0, _resolvedConfig.ResolvedItemConfig).defaults.sizeUnit
-            };
-        }
-    }
-    ItemConfig.resolveSize = resolveSize;
-    /** @internal */ function resolveMinSize(minSize, minWidth, minHeight) {
-        if (minSize !== undefined) return parseSize(minSize, [
-            (0, _types.SizeUnitEnum).Pixel
-        ]);
-        else {
-            const minWidthDefined = minWidth !== undefined;
-            const minHeightDefined = minHeight !== undefined;
-            if (minWidthDefined || minHeightDefined) {
-                if (minWidthDefined) return {
-                    size: minWidth,
-                    sizeUnit: (0, _types.SizeUnitEnum).Pixel
-                };
-                else return {
-                    size: minHeight,
-                    sizeUnit: (0, _types.SizeUnitEnum).Pixel
-                };
-            } else return {
-                size: (0, _resolvedConfig.ResolvedItemConfig).defaults.minSize,
-                sizeUnit: (0, _resolvedConfig.ResolvedItemConfig).defaults.minSizeUnit
-            };
-        }
-    }
-    ItemConfig.resolveMinSize = resolveMinSize;
-    /** @internal */ function calculateSizeWidthHeightSpecificationType(config) {
-        if (config.size !== undefined) return 1 /* Size */ ;
-        else {
-            if (config.width !== undefined || config.height !== undefined) return 2 /* WidthOrHeight */ ;
-            else return 0 /* None */ ;
-        }
-    }
-    ItemConfig.calculateSizeWidthHeightSpecificationType = calculateSizeWidthHeightSpecificationType;
-    function isGround(config) {
-        return config.type === (0, _types.ItemType).ground;
-    }
-    ItemConfig.isGround = isGround;
-    function isRow(config) {
-        return config.type === (0, _types.ItemType).row;
-    }
-    ItemConfig.isRow = isRow;
-    function isColumn(config) {
-        return config.type === (0, _types.ItemType).column;
-    }
-    ItemConfig.isColumn = isColumn;
-    function isStack(config) {
-        return config.type === (0, _types.ItemType).stack;
-    }
-    ItemConfig.isStack = isStack;
-    function isComponent(config) {
-        return config.type === (0, _types.ItemType).component;
-    }
-    ItemConfig.isComponent = isComponent;
-})(ItemConfig || (ItemConfig = {}));
-var HeaderedItemConfig;
-(function(HeaderedItemConfig) {
-    const legacyMaximisedId = "__glMaximised";
-    let Header;
-    (function(Header) {
-        function resolve(header, hasHeaders) {
-            var _a;
-            if (header === undefined && hasHeaders === undefined) return undefined;
-            else {
-                const result = {
-                    show: (_a = header === null || header === void 0 ? void 0 : header.show) !== null && _a !== void 0 ? _a : hasHeaders === undefined ? undefined : hasHeaders ? (0, _resolvedConfig.ResolvedLayoutConfig).Header.defaults.show : false,
-                    popout: header === null || header === void 0 ? void 0 : header.popout,
-                    maximise: header === null || header === void 0 ? void 0 : header.maximise,
-                    close: header === null || header === void 0 ? void 0 : header.close,
-                    minimise: header === null || header === void 0 ? void 0 : header.minimise,
-                    tabDropdown: header === null || header === void 0 ? void 0 : header.tabDropdown
-                };
-                return result;
-            }
-        }
-        Header.resolve = resolve;
-    })(Header = HeaderedItemConfig.Header || (HeaderedItemConfig.Header = {}));
-    /** @internal */ function resolveIdAndMaximised(config) {
-        let id;
-        // To support legacy configs with Id saved as an array of string, assign config.id to a type which includes string array
-        let legacyId = config.id;
-        let legacyMaximised = false;
-        if (legacyId === undefined) id = (0, _resolvedConfig.ResolvedItemConfig).defaults.id;
-        else if (Array.isArray(legacyId)) {
-            const idx = legacyId.findIndex((id)=>id === legacyMaximisedId);
-            if (idx > 0) {
-                legacyMaximised = true;
-                legacyId = legacyId.splice(idx, 1);
-            }
-            if (legacyId.length > 0) id = legacyId[0];
-            else id = (0, _resolvedConfig.ResolvedItemConfig).defaults.id;
-        } else id = legacyId;
-        let maximised;
-        if (config.maximised !== undefined) maximised = config.maximised;
-        else maximised = legacyMaximised;
-        return {
-            id,
-            maximised
-        };
-    }
-    HeaderedItemConfig.resolveIdAndMaximised = resolveIdAndMaximised;
-})(HeaderedItemConfig || (HeaderedItemConfig = {}));
-var StackItemConfig;
-(function(StackItemConfig) {
-    /** @internal */ function resolve(itemConfig, rowAndColumnChildLegacySizeDefault) {
-        var _a, _b;
-        const { id, maximised } = HeaderedItemConfig.resolveIdAndMaximised(itemConfig);
-        const { size, sizeUnit } = ItemConfig.resolveSize(itemConfig.size, itemConfig.width, itemConfig.height, rowAndColumnChildLegacySizeDefault);
-        const { size: minSize, sizeUnit: minSizeUnit } = ItemConfig.resolveMinSize(itemConfig.minSize, itemConfig.minWidth, itemConfig.minHeight);
-        const result = {
-            type: (0, _types.ItemType).stack,
-            content: resolveContent(itemConfig.content),
-            size,
-            sizeUnit,
-            minSize,
-            minSizeUnit,
-            id,
-            maximised,
-            isClosable: (_a = itemConfig.isClosable) !== null && _a !== void 0 ? _a : (0, _resolvedConfig.ResolvedItemConfig).defaults.isClosable,
-            activeItemIndex: (_b = itemConfig.activeItemIndex) !== null && _b !== void 0 ? _b : (0, _resolvedConfig.ResolvedStackItemConfig).defaultActiveItemIndex,
-            header: HeaderedItemConfig.Header.resolve(itemConfig.header, itemConfig.hasHeaders)
-        };
-        return result;
-    }
-    StackItemConfig.resolve = resolve;
-    /** @internal */ function fromResolved(resolvedConfig) {
-        const result = {
-            type: (0, _types.ItemType).stack,
-            content: fromResolvedContent(resolvedConfig.content),
-            size: formatSize(resolvedConfig.size, resolvedConfig.sizeUnit),
-            minSize: formatUndefinableSize(resolvedConfig.minSize, resolvedConfig.minSizeUnit),
-            id: resolvedConfig.id,
-            maximised: resolvedConfig.maximised,
-            isClosable: resolvedConfig.isClosable,
-            activeItemIndex: resolvedConfig.activeItemIndex,
-            header: (0, _resolvedConfig.ResolvedHeaderedItemConfig).Header.createCopy(resolvedConfig.header)
-        };
-        return result;
-    }
-    StackItemConfig.fromResolved = fromResolved;
-    /** @internal */ function resolveContent(content) {
-        if (content === undefined) return [];
-        else {
-            const count = content.length;
-            const result = new Array(count);
-            for(let i = 0; i < count; i++){
-                const childItemConfig = content[i];
-                const itemConfig = ItemConfig.resolve(childItemConfig, false);
-                if (!(0, _resolvedConfig.ResolvedItemConfig).isComponentItem(itemConfig)) throw new (0, _internalError.AssertError)("UCUSICRC91114", JSON.stringify(itemConfig));
-                else result[i] = itemConfig;
-            }
-            return result;
-        }
-    }
-    /** @internal */ function fromResolvedContent(resolvedContent) {
-        const count = resolvedContent.length;
-        const result = new Array(count);
-        for(let i = 0; i < count; i++){
-            const resolvedContentConfig = resolvedContent[i];
-            result[i] = ComponentItemConfig.fromResolved(resolvedContentConfig);
-        }
-        return result;
-    }
-})(StackItemConfig || (StackItemConfig = {}));
-var ComponentItemConfig;
-(function(ComponentItemConfig) {
-    /** @internal */ function resolve(itemConfig, rowAndColumnChildLegacySizeDefault) {
-        var _a, _b, _c;
-        let componentType = itemConfig.componentType;
-        if (componentType === undefined) componentType = itemConfig.componentName;
-        if (componentType === undefined) throw new Error("ComponentItemConfig.componentType is undefined");
-        else {
-            const { id, maximised } = HeaderedItemConfig.resolveIdAndMaximised(itemConfig);
-            let title;
-            if (itemConfig.title === undefined || itemConfig.title === "") title = ComponentItemConfig.componentTypeToTitle(componentType);
-            else title = itemConfig.title;
-            const { size, sizeUnit } = ItemConfig.resolveSize(itemConfig.size, itemConfig.width, itemConfig.height, rowAndColumnChildLegacySizeDefault);
-            const { size: minSize, sizeUnit: minSizeUnit } = ItemConfig.resolveMinSize(itemConfig.minSize, itemConfig.minWidth, itemConfig.minHeight);
-            const result = {
-                type: itemConfig.type,
-                content: [],
-                size,
-                sizeUnit,
-                minSize,
-                minSizeUnit,
-                id,
-                maximised,
-                isClosable: (_a = itemConfig.isClosable) !== null && _a !== void 0 ? _a : (0, _resolvedConfig.ResolvedItemConfig).defaults.isClosable,
-                reorderEnabled: (_b = itemConfig.reorderEnabled) !== null && _b !== void 0 ? _b : (0, _resolvedConfig.ResolvedComponentItemConfig).defaultReorderEnabled,
-                title,
-                header: HeaderedItemConfig.Header.resolve(itemConfig.header, itemConfig.hasHeaders),
-                componentType,
-                componentState: (_c = itemConfig.componentState) !== null && _c !== void 0 ? _c : {}
-            };
-            return result;
-        }
-    }
-    ComponentItemConfig.resolve = resolve;
-    /** @internal */ function fromResolved(resolvedConfig) {
-        const result = {
-            type: (0, _types.ItemType).component,
-            size: formatSize(resolvedConfig.size, resolvedConfig.sizeUnit),
-            minSize: formatUndefinableSize(resolvedConfig.minSize, resolvedConfig.minSizeUnit),
-            id: resolvedConfig.id,
-            maximised: resolvedConfig.maximised,
-            isClosable: resolvedConfig.isClosable,
-            reorderEnabled: resolvedConfig.reorderEnabled,
-            title: resolvedConfig.title,
-            header: (0, _resolvedConfig.ResolvedHeaderedItemConfig).Header.createCopy(resolvedConfig.header),
-            componentType: resolvedConfig.componentType,
-            componentState: (0, _utils.deepExtendValue)(undefined, resolvedConfig.componentState)
-        };
-        return result;
-    }
-    ComponentItemConfig.fromResolved = fromResolved;
-    function componentTypeToTitle(componentType) {
-        const componentTypeType = typeof componentType;
-        switch(componentTypeType){
-            case "string":
-                return componentType;
-            case "number":
-                return componentType.toString();
-            case "boolean":
-                return componentType.toString();
-            default:
-                return "";
-        }
-    }
-    ComponentItemConfig.componentTypeToTitle = componentTypeToTitle;
-})(ComponentItemConfig || (ComponentItemConfig = {}));
-var RowOrColumnItemConfig;
-(function(RowOrColumnItemConfig) {
-    function isChildItemConfig(itemConfig) {
-        switch(itemConfig.type){
-            case (0, _types.ItemType).row:
-            case (0, _types.ItemType).column:
-            case (0, _types.ItemType).stack:
-            case (0, _types.ItemType).component:
-                return true;
-            case (0, _types.ItemType).ground:
-                return false;
-            default:
-                throw new (0, _internalError.UnreachableCaseError)("UROCOSPCICIC13687", itemConfig.type);
-        }
-    }
-    RowOrColumnItemConfig.isChildItemConfig = isChildItemConfig;
-    /** @internal */ function resolve(itemConfig, rowAndColumnChildLegacySizeDefault) {
-        var _a;
-        const { size, sizeUnit } = ItemConfig.resolveSize(itemConfig.size, itemConfig.width, itemConfig.height, rowAndColumnChildLegacySizeDefault);
-        const { size: minSize, sizeUnit: minSizeUnit } = ItemConfig.resolveMinSize(itemConfig.minSize, itemConfig.minWidth, itemConfig.minHeight);
-        const result = {
-            type: itemConfig.type,
-            content: RowOrColumnItemConfig.resolveContent(itemConfig.content),
-            size,
-            sizeUnit,
-            minSize,
-            minSizeUnit,
-            id: ItemConfig.resolveId(itemConfig.id),
-            isClosable: (_a = itemConfig.isClosable) !== null && _a !== void 0 ? _a : (0, _resolvedConfig.ResolvedItemConfig).defaults.isClosable
-        };
-        return result;
-    }
-    RowOrColumnItemConfig.resolve = resolve;
-    /** @internal */ function fromResolved(resolvedConfig) {
-        const result = {
-            type: resolvedConfig.type,
-            content: fromResolvedContent(resolvedConfig.content),
-            size: formatSize(resolvedConfig.size, resolvedConfig.sizeUnit),
-            minSize: formatUndefinableSize(resolvedConfig.minSize, resolvedConfig.minSizeUnit),
-            id: resolvedConfig.id,
-            isClosable: resolvedConfig.isClosable
-        };
-        return result;
-    }
-    RowOrColumnItemConfig.fromResolved = fromResolved;
-    /** @internal */ function resolveContent(content) {
-        if (content === undefined) return [];
-        else {
-            const count = content.length;
-            const childItemConfigs = new Array(count);
-            let widthOrHeightSpecifiedAtLeastOnce = false;
-            let sizeSpecifiedAtLeastOnce = false;
-            for(let i = 0; i < count; i++){
-                const childItemConfig = content[i];
-                if (!RowOrColumnItemConfig.isChildItemConfig(childItemConfig)) throw new (0, _externalError.ConfigurationError)("ItemConfig is not Row, Column or Stack", childItemConfig);
-                else {
-                    if (!sizeSpecifiedAtLeastOnce) {
-                        const sizeWidthHeightSpecificationType = ItemConfig.calculateSizeWidthHeightSpecificationType(childItemConfig);
-                        switch(sizeWidthHeightSpecificationType){
-                            case 0 /* None */ :
-                                break;
-                            case 2 /* WidthOrHeight */ :
-                                widthOrHeightSpecifiedAtLeastOnce = true;
-                                break;
-                            case 1 /* Size */ :
-                                sizeSpecifiedAtLeastOnce = true;
-                                break;
-                            default:
-                                throw new (0, _internalError.UnreachableCaseError)("ROCICRC87556", sizeWidthHeightSpecificationType);
-                        }
-                    }
-                    childItemConfigs[i] = childItemConfig;
-                }
-            }
-            let legacySizeDefault;
-            if (sizeSpecifiedAtLeastOnce) legacySizeDefault = false;
-            else if (widthOrHeightSpecifiedAtLeastOnce) legacySizeDefault = true;
-            else legacySizeDefault = false;
-            const result = new Array(count);
-            for(let i = 0; i < count; i++){
-                const childItemConfig = childItemConfigs[i];
-                const resolvedChildItemConfig = ItemConfig.resolve(childItemConfig, legacySizeDefault);
-                if (!(0, _resolvedConfig.ResolvedRowOrColumnItemConfig).isChildItemConfig(resolvedChildItemConfig)) throw new (0, _internalError.AssertError)("UROCOSPIC99512", JSON.stringify(resolvedChildItemConfig));
-                else result[i] = resolvedChildItemConfig;
-            }
-            return result;
-        }
-    }
-    RowOrColumnItemConfig.resolveContent = resolveContent;
-    /** @internal */ function fromResolvedContent(resolvedContent) {
-        const count = resolvedContent.length;
-        const result = new Array(count);
-        for(let i = 0; i < count; i++){
-            const resolvedContentConfig = resolvedContent[i];
-            const type = resolvedContentConfig.type;
-            let contentConfig;
-            switch(type){
-                case (0, _types.ItemType).row:
-                case (0, _types.ItemType).column:
-                    contentConfig = RowOrColumnItemConfig.fromResolved(resolvedContentConfig);
-                    break;
-                case (0, _types.ItemType).stack:
-                    contentConfig = StackItemConfig.fromResolved(resolvedContentConfig);
-                    break;
-                case (0, _types.ItemType).component:
-                    contentConfig = ComponentItemConfig.fromResolved(resolvedContentConfig);
-                    break;
-                default:
-                    throw new (0, _internalError.UnreachableCaseError)("ROCICFRC44797", type);
-            }
-            result[i] = contentConfig;
-        }
-        return result;
-    }
-})(RowOrColumnItemConfig || (RowOrColumnItemConfig = {}));
-var RootItemConfig;
-(function(RootItemConfig) {
-    function isRootItemConfig(itemConfig) {
-        switch(itemConfig.type){
-            case (0, _types.ItemType).row:
-            case (0, _types.ItemType).column:
-            case (0, _types.ItemType).stack:
-            case (0, _types.ItemType).component:
-                return true;
-            case (0, _types.ItemType).ground:
-                return false;
-            default:
-                throw new (0, _internalError.UnreachableCaseError)("URICIR23687", itemConfig.type);
-        }
-    }
-    RootItemConfig.isRootItemConfig = isRootItemConfig;
-    /** @internal */ function resolve(itemConfig) {
-        if (itemConfig === undefined) return undefined;
-        else {
-            const result = ItemConfig.resolve(itemConfig, false);
-            if (!(0, _resolvedConfig.ResolvedRootItemConfig).isRootItemConfig(result)) throw new (0, _externalError.ConfigurationError)("ItemConfig is not Row, Column or Stack", JSON.stringify(itemConfig));
-            else return result;
-        }
-    }
-    RootItemConfig.resolve = resolve;
-    /** @internal */ function fromResolvedOrUndefined(resolvedItemConfig) {
-        if (resolvedItemConfig === undefined) return undefined;
-        else {
-            const type = resolvedItemConfig.type;
-            switch(type){
-                case (0, _types.ItemType).row:
-                case (0, _types.ItemType).column:
-                    return RowOrColumnItemConfig.fromResolved(resolvedItemConfig);
-                case (0, _types.ItemType).stack:
-                    return StackItemConfig.fromResolved(resolvedItemConfig);
-                case (0, _types.ItemType).component:
-                    return ComponentItemConfig.fromResolved(resolvedItemConfig);
-                default:
-                    throw new (0, _internalError.UnreachableCaseError)("RICFROU89921", type);
-            }
-        }
-    }
-    RootItemConfig.fromResolvedOrUndefined = fromResolvedOrUndefined;
-})(RootItemConfig || (RootItemConfig = {}));
-var LayoutConfig;
-(function(LayoutConfig) {
-    let Settings;
-    (function(Settings) {
-        function resolve(settings) {
-            var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
-            const result = {
-                constrainDragToContainer: (_a = settings === null || settings === void 0 ? void 0 : settings.constrainDragToContainer) !== null && _a !== void 0 ? _a : (0, _resolvedConfig.ResolvedLayoutConfig).Settings.defaults.constrainDragToContainer,
-                reorderEnabled: (_b = settings === null || settings === void 0 ? void 0 : settings.reorderEnabled) !== null && _b !== void 0 ? _b : (0, _resolvedConfig.ResolvedLayoutConfig).Settings.defaults.reorderEnabled,
-                popoutWholeStack: (_c = settings === null || settings === void 0 ? void 0 : settings.popoutWholeStack) !== null && _c !== void 0 ? _c : (0, _resolvedConfig.ResolvedLayoutConfig).Settings.defaults.popoutWholeStack,
-                blockedPopoutsThrowError: (_d = settings === null || settings === void 0 ? void 0 : settings.blockedPopoutsThrowError) !== null && _d !== void 0 ? _d : (0, _resolvedConfig.ResolvedLayoutConfig).Settings.defaults.blockedPopoutsThrowError,
-                closePopoutsOnUnload: (_e = settings === null || settings === void 0 ? void 0 : settings.closePopoutsOnUnload) !== null && _e !== void 0 ? _e : (0, _resolvedConfig.ResolvedLayoutConfig).Settings.defaults.closePopoutsOnUnload,
-                responsiveMode: (_f = settings === null || settings === void 0 ? void 0 : settings.responsiveMode) !== null && _f !== void 0 ? _f : (0, _resolvedConfig.ResolvedLayoutConfig).Settings.defaults.responsiveMode,
-                tabOverlapAllowance: (_g = settings === null || settings === void 0 ? void 0 : settings.tabOverlapAllowance) !== null && _g !== void 0 ? _g : (0, _resolvedConfig.ResolvedLayoutConfig).Settings.defaults.tabOverlapAllowance,
-                reorderOnTabMenuClick: (_h = settings === null || settings === void 0 ? void 0 : settings.reorderOnTabMenuClick) !== null && _h !== void 0 ? _h : (0, _resolvedConfig.ResolvedLayoutConfig).Settings.defaults.reorderOnTabMenuClick,
-                tabControlOffset: (_j = settings === null || settings === void 0 ? void 0 : settings.tabControlOffset) !== null && _j !== void 0 ? _j : (0, _resolvedConfig.ResolvedLayoutConfig).Settings.defaults.tabControlOffset,
-                popInOnClose: (_k = settings === null || settings === void 0 ? void 0 : settings.popInOnClose) !== null && _k !== void 0 ? _k : (0, _resolvedConfig.ResolvedLayoutConfig).Settings.defaults.popInOnClose
-            };
-            return result;
-        }
-        Settings.resolve = resolve;
-    })(Settings = LayoutConfig.Settings || (LayoutConfig.Settings = {}));
-    let Dimensions;
-    (function(Dimensions) {
-        /** @internal */ function resolve(dimensions) {
-            var _a, _b, _c, _d, _e;
-            const { size: defaultMinItemHeight, sizeUnit: defaultMinItemHeightUnit } = Dimensions.resolveDefaultMinItemHeight(dimensions);
-            const { size: defaultMinItemWidth, sizeUnit: defaultMinItemWidthUnit } = Dimensions.resolveDefaultMinItemWidth(dimensions);
-            const result = {
-                borderWidth: (_a = dimensions === null || dimensions === void 0 ? void 0 : dimensions.borderWidth) !== null && _a !== void 0 ? _a : (0, _resolvedConfig.ResolvedLayoutConfig).Dimensions.defaults.borderWidth,
-                borderGrabWidth: (_b = dimensions === null || dimensions === void 0 ? void 0 : dimensions.borderGrabWidth) !== null && _b !== void 0 ? _b : (0, _resolvedConfig.ResolvedLayoutConfig).Dimensions.defaults.borderGrabWidth,
-                defaultMinItemHeight,
-                defaultMinItemHeightUnit,
-                defaultMinItemWidth,
-                defaultMinItemWidthUnit,
-                headerHeight: (_c = dimensions === null || dimensions === void 0 ? void 0 : dimensions.headerHeight) !== null && _c !== void 0 ? _c : (0, _resolvedConfig.ResolvedLayoutConfig).Dimensions.defaults.headerHeight,
-                dragProxyWidth: (_d = dimensions === null || dimensions === void 0 ? void 0 : dimensions.dragProxyWidth) !== null && _d !== void 0 ? _d : (0, _resolvedConfig.ResolvedLayoutConfig).Dimensions.defaults.dragProxyWidth,
-                dragProxyHeight: (_e = dimensions === null || dimensions === void 0 ? void 0 : dimensions.dragProxyHeight) !== null && _e !== void 0 ? _e : (0, _resolvedConfig.ResolvedLayoutConfig).Dimensions.defaults.dragProxyHeight
-            };
-            return result;
-        }
-        Dimensions.resolve = resolve;
-        /** @internal */ function fromResolved(resolvedDimensions) {
-            const result = {
-                borderWidth: resolvedDimensions.borderWidth,
-                borderGrabWidth: resolvedDimensions.borderGrabWidth,
-                defaultMinItemHeight: formatSize(resolvedDimensions.defaultMinItemHeight, resolvedDimensions.defaultMinItemHeightUnit),
-                defaultMinItemWidth: formatSize(resolvedDimensions.defaultMinItemWidth, resolvedDimensions.defaultMinItemWidthUnit),
-                headerHeight: resolvedDimensions.headerHeight,
-                dragProxyWidth: resolvedDimensions.dragProxyWidth,
-                dragProxyHeight: resolvedDimensions.dragProxyHeight
-            };
-            return result;
-        }
-        Dimensions.fromResolved = fromResolved;
-        /** @internal */ function resolveDefaultMinItemHeight(dimensions) {
-            const height = dimensions === null || dimensions === void 0 ? void 0 : dimensions.defaultMinItemHeight;
-            if (height === undefined) return {
-                size: (0, _resolvedConfig.ResolvedLayoutConfig).Dimensions.defaults.defaultMinItemHeight,
-                sizeUnit: (0, _resolvedConfig.ResolvedLayoutConfig).Dimensions.defaults.defaultMinItemHeightUnit
-            };
-            else return parseSize(height, [
-                (0, _types.SizeUnitEnum).Pixel
-            ]);
-        }
-        Dimensions.resolveDefaultMinItemHeight = resolveDefaultMinItemHeight;
-        /** @internal */ function resolveDefaultMinItemWidth(dimensions) {
-            const width = dimensions === null || dimensions === void 0 ? void 0 : dimensions.defaultMinItemWidth;
-            if (width === undefined) return {
-                size: (0, _resolvedConfig.ResolvedLayoutConfig).Dimensions.defaults.defaultMinItemWidth,
-                sizeUnit: (0, _resolvedConfig.ResolvedLayoutConfig).Dimensions.defaults.defaultMinItemWidthUnit
-            };
-            else return parseSize(width, [
-                (0, _types.SizeUnitEnum).Pixel
-            ]);
-        }
-        Dimensions.resolveDefaultMinItemWidth = resolveDefaultMinItemWidth;
-    })(Dimensions = LayoutConfig.Dimensions || (LayoutConfig.Dimensions = {}));
-    let Header;
-    (function(Header) {
-        /** @internal */ function resolve(header, settings, labels) {
-            var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
-            let show;
-            if ((header === null || header === void 0 ? void 0 : header.show) !== undefined) show = header.show;
-            else if (settings !== undefined && settings.hasHeaders !== undefined) show = settings.hasHeaders ? (0, _resolvedConfig.ResolvedLayoutConfig).Header.defaults.show : false;
-            else show = (0, _resolvedConfig.ResolvedLayoutConfig).Header.defaults.show;
-            const result = {
-                show,
-                popout: (_b = (_a = header === null || header === void 0 ? void 0 : header.popout) !== null && _a !== void 0 ? _a : labels === null || labels === void 0 ? void 0 : labels.popout) !== null && _b !== void 0 ? _b : (settings === null || settings === void 0 ? void 0 : settings.showPopoutIcon) === false ? false : (0, _resolvedConfig.ResolvedLayoutConfig).Header.defaults.popout,
-                dock: (_d = (_c = header === null || header === void 0 ? void 0 : header.popin) !== null && _c !== void 0 ? _c : labels === null || labels === void 0 ? void 0 : labels.popin) !== null && _d !== void 0 ? _d : (0, _resolvedConfig.ResolvedLayoutConfig).Header.defaults.dock,
-                maximise: (_f = (_e = header === null || header === void 0 ? void 0 : header.maximise) !== null && _e !== void 0 ? _e : labels === null || labels === void 0 ? void 0 : labels.maximise) !== null && _f !== void 0 ? _f : (settings === null || settings === void 0 ? void 0 : settings.showMaximiseIcon) === false ? false : (0, _resolvedConfig.ResolvedLayoutConfig).Header.defaults.maximise,
-                close: (_h = (_g = header === null || header === void 0 ? void 0 : header.close) !== null && _g !== void 0 ? _g : labels === null || labels === void 0 ? void 0 : labels.close) !== null && _h !== void 0 ? _h : (settings === null || settings === void 0 ? void 0 : settings.showCloseIcon) === false ? false : (0, _resolvedConfig.ResolvedLayoutConfig).Header.defaults.close,
-                minimise: (_k = (_j = header === null || header === void 0 ? void 0 : header.minimise) !== null && _j !== void 0 ? _j : labels === null || labels === void 0 ? void 0 : labels.minimise) !== null && _k !== void 0 ? _k : (0, _resolvedConfig.ResolvedLayoutConfig).Header.defaults.minimise,
-                tabDropdown: (_m = (_l = header === null || header === void 0 ? void 0 : header.tabDropdown) !== null && _l !== void 0 ? _l : labels === null || labels === void 0 ? void 0 : labels.tabDropdown) !== null && _m !== void 0 ? _m : (0, _resolvedConfig.ResolvedLayoutConfig).Header.defaults.tabDropdown
-            };
-            return result;
-        }
-        Header.resolve = resolve;
-    })(Header = LayoutConfig.Header || (LayoutConfig.Header = {}));
-    function isPopout(config) {
-        return "parentId" in config || "indexInParent" in config || "window" in config;
-    }
-    LayoutConfig.isPopout = isPopout;
-    /** @internal */ function resolve(layoutConfig) {
-        if (isPopout(layoutConfig)) return PopoutLayoutConfig.resolve(layoutConfig);
-        else {
-            let root;
-            if (layoutConfig.root !== undefined) root = layoutConfig.root;
-            else if (layoutConfig.content !== undefined && layoutConfig.content.length > 0) root = layoutConfig.content[0];
-            else root = undefined;
-            const config = {
-                resolved: true,
-                root: RootItemConfig.resolve(root),
-                openPopouts: LayoutConfig.resolveOpenPopouts(layoutConfig.openPopouts),
-                dimensions: LayoutConfig.Dimensions.resolve(layoutConfig.dimensions),
-                settings: LayoutConfig.Settings.resolve(layoutConfig.settings),
-                header: LayoutConfig.Header.resolve(layoutConfig.header, layoutConfig.settings, layoutConfig.labels)
-            };
-            return config;
-        }
-    }
-    LayoutConfig.resolve = resolve;
-    function fromResolved(config) {
-        const result = {
-            root: RootItemConfig.fromResolvedOrUndefined(config.root),
-            openPopouts: PopoutLayoutConfig.fromResolvedArray(config.openPopouts),
-            settings: (0, _resolvedConfig.ResolvedLayoutConfig).Settings.createCopy(config.settings),
-            dimensions: LayoutConfig.Dimensions.fromResolved(config.dimensions),
-            header: (0, _resolvedConfig.ResolvedLayoutConfig).Header.createCopy(config.header)
-        };
-        return result;
-    }
-    LayoutConfig.fromResolved = fromResolved;
-    function isResolved(configOrResolvedConfig) {
-        const config = configOrResolvedConfig;
-        return config.resolved !== undefined && config.resolved === true;
-    }
-    LayoutConfig.isResolved = isResolved;
-    /** @internal */ function resolveOpenPopouts(popoutConfigs) {
-        if (popoutConfigs === undefined) return [];
-        else {
-            const count = popoutConfigs.length;
-            const result = new Array(count);
-            for(let i = 0; i < count; i++)result[i] = PopoutLayoutConfig.resolve(popoutConfigs[i]);
-            return result;
-        }
-    }
-    LayoutConfig.resolveOpenPopouts = resolveOpenPopouts;
-})(LayoutConfig || (LayoutConfig = {}));
-var PopoutLayoutConfig;
-(function(PopoutLayoutConfig) {
-    let Window;
-    (function(Window) {
-        /** @internal */ function resolve(window, dimensions) {
-            var _a, _b, _c, _d, _e, _f, _g, _h;
-            let result;
-            const defaults = (0, _resolvedConfig.ResolvedPopoutLayoutConfig).Window.defaults;
-            if (window !== undefined) result = {
-                width: (_a = window.width) !== null && _a !== void 0 ? _a : defaults.width,
-                height: (_b = window.height) !== null && _b !== void 0 ? _b : defaults.height,
-                left: (_c = window.left) !== null && _c !== void 0 ? _c : defaults.left,
-                top: (_d = window.top) !== null && _d !== void 0 ? _d : defaults.top
-            };
-            else result = {
-                width: (_e = dimensions === null || dimensions === void 0 ? void 0 : dimensions.width) !== null && _e !== void 0 ? _e : defaults.width,
-                height: (_f = dimensions === null || dimensions === void 0 ? void 0 : dimensions.height) !== null && _f !== void 0 ? _f : defaults.height,
-                left: (_g = dimensions === null || dimensions === void 0 ? void 0 : dimensions.left) !== null && _g !== void 0 ? _g : defaults.left,
-                top: (_h = dimensions === null || dimensions === void 0 ? void 0 : dimensions.top) !== null && _h !== void 0 ? _h : defaults.top
-            };
-            return result;
-        }
-        Window.resolve = resolve;
-        /** @internal */ function fromResolved(resolvedWindow) {
-            const result = {
-                width: resolvedWindow.width === null ? undefined : resolvedWindow.width,
-                height: resolvedWindow.height === null ? undefined : resolvedWindow.height,
-                left: resolvedWindow.left === null ? undefined : resolvedWindow.left,
-                top: resolvedWindow.top === null ? undefined : resolvedWindow.top
-            };
-            return result;
-        }
-        Window.fromResolved = fromResolved;
-    })(Window = PopoutLayoutConfig.Window || (PopoutLayoutConfig.Window = {}));
-    /** @internal */ function resolve(popoutConfig) {
-        var _a, _b;
-        let root;
-        if (popoutConfig.root !== undefined) root = popoutConfig.root;
-        else if (popoutConfig.content !== undefined && popoutConfig.content.length > 0) root = popoutConfig.content[0];
-        else root = undefined;
-        const config = {
-            root: RootItemConfig.resolve(root),
-            openPopouts: LayoutConfig.resolveOpenPopouts(popoutConfig.openPopouts),
-            dimensions: LayoutConfig.Dimensions.resolve(popoutConfig.dimensions),
-            settings: LayoutConfig.Settings.resolve(popoutConfig.settings),
-            header: LayoutConfig.Header.resolve(popoutConfig.header, popoutConfig.settings, popoutConfig.labels),
-            parentId: (_a = popoutConfig.parentId) !== null && _a !== void 0 ? _a : null,
-            indexInParent: (_b = popoutConfig.indexInParent) !== null && _b !== void 0 ? _b : null,
-            window: PopoutLayoutConfig.Window.resolve(popoutConfig.window, popoutConfig.dimensions),
-            resolved: true
-        };
-        return config;
-    }
-    PopoutLayoutConfig.resolve = resolve;
-    /** @internal */ function fromResolved(resolvedConfig) {
-        const result = {
-            root: RootItemConfig.fromResolvedOrUndefined(resolvedConfig.root),
-            openPopouts: fromResolvedArray(resolvedConfig.openPopouts),
-            dimensions: LayoutConfig.Dimensions.fromResolved(resolvedConfig.dimensions),
-            settings: (0, _resolvedConfig.ResolvedLayoutConfig).Settings.createCopy(resolvedConfig.settings),
-            header: (0, _resolvedConfig.ResolvedLayoutConfig).Header.createCopy(resolvedConfig.header),
-            parentId: resolvedConfig.parentId,
-            indexInParent: resolvedConfig.indexInParent,
-            window: PopoutLayoutConfig.Window.fromResolved(resolvedConfig.window)
-        };
-        return result;
-    }
-    PopoutLayoutConfig.fromResolved = fromResolved;
-    /** @internal */ function fromResolvedArray(resolvedArray) {
-        const resolvedOpenPopoutCount = resolvedArray.length;
-        const result = new Array(resolvedOpenPopoutCount);
-        for(let i = 0; i < resolvedOpenPopoutCount; i++){
-            const resolvedOpenPopout = resolvedArray[i];
-            result[i] = PopoutLayoutConfig.fromResolved(resolvedOpenPopout);
-        }
-        return result;
-    }
-    PopoutLayoutConfig.fromResolvedArray = fromResolvedArray;
-})(PopoutLayoutConfig || (PopoutLayoutConfig = {}));
-function parseSize(sizeString, allowableSizeUnits) {
-    const { numericPart: digitsPart, firstNonNumericCharPart: firstNonDigitPart } = (0, _utils.splitStringAtFirstNonNumericChar)(sizeString);
-    const size = Number.parseInt(digitsPart, 10);
-    if (isNaN(size)) throw new (0, _externalError.ConfigurationError)(`${(0, _i18NStrings.i18nStrings)[7 /* InvalidNumberPartInSizeString */ ]}: ${sizeString}`);
-    else {
-        const sizeUnit = (0, _types.SizeUnitEnum).tryParse(firstNonDigitPart);
-        if (sizeUnit === undefined) throw new (0, _externalError.ConfigurationError)(`${(0, _i18NStrings.i18nStrings)[8 /* UnknownUnitInSizeString */ ]}: ${sizeString}`);
-        else {
-            if (!allowableSizeUnits.includes(sizeUnit)) throw new (0, _externalError.ConfigurationError)(`${(0, _i18NStrings.i18nStrings)[9 /* UnsupportedUnitInSizeString */ ]}: ${sizeString}`);
-            else return {
-                size,
-                sizeUnit
-            };
-        }
-    }
-}
-function formatSize(size, sizeUnit) {
-    return size.toString(10) + (0, _types.SizeUnitEnum).format(sizeUnit);
-}
-function formatUndefinableSize(size, sizeUnit) {
-    if (size === undefined) return undefined;
-    else return size.toString(10) + (0, _types.SizeUnitEnum).format(sizeUnit);
-}
-
-},{"../errors/external-error":"et8gI","../errors/internal-error":"7ms7b","../utils/i18n-strings":"9vain","../utils/types":"dBAL3","../utils/utils":"fArjz","./resolved-config":"gWMkA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"et8gI":[function(require,module,exports) {
-/** @public */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ExternalError", ()=>ExternalError);
-/** @public */ parcelHelpers.export(exports, "ConfigurationError", ()=>ConfigurationError);
-/** @public */ parcelHelpers.export(exports, "PopoutBlockedError", ()=>PopoutBlockedError);
-/** @public */ parcelHelpers.export(exports, "ApiError", ()=>ApiError);
-/** @public */ parcelHelpers.export(exports, "BindError", ()=>BindError);
-class ExternalError extends Error {
-    /** @internal */ constructor(type, message){
-        super(message);
-        this.type = type;
-    }
-}
-class ConfigurationError extends ExternalError {
-    /** @internal */ constructor(message, node){
-        super("Configuration", message);
-        this.node = node;
-    }
-}
-class PopoutBlockedError extends ExternalError {
-    /** @internal */ constructor(message){
-        super("PopoutBlocked", message);
-    }
-}
-class ApiError extends ExternalError {
-    /** @internal */ constructor(message){
-        super("API", message);
-    }
-}
-class BindError extends ExternalError {
-    /** @internal */ constructor(message){
-        super("Bind", message);
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7ms7b":[function(require,module,exports) {
-/** @internal */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/** @internal */ parcelHelpers.export(exports, "AssertError", ()=>AssertError);
-/** @internal */ parcelHelpers.export(exports, "UnreachableCaseError", ()=>UnreachableCaseError);
-/** @internal */ parcelHelpers.export(exports, "UnexpectedNullError", ()=>UnexpectedNullError);
-/** @internal */ parcelHelpers.export(exports, "UnexpectedUndefinedError", ()=>UnexpectedUndefinedError);
-class InternalError extends Error {
-    constructor(type, code, message){
-        super(`${type}: ${code}${message === undefined ? "" : ": " + message}`);
-    }
-}
-class AssertError extends InternalError {
-    constructor(code, message){
-        super("Assert", code, message);
-    }
-}
-class UnreachableCaseError extends InternalError {
-    constructor(code, variableValue, message){
-        super("UnreachableCase", code, `${variableValue}${message === undefined ? "" : ": " + message}`);
-    }
-}
-class UnexpectedNullError extends InternalError {
-    constructor(code, message){
-        super("UnexpectedNull", code, message);
-    }
-}
-class UnexpectedUndefinedError extends InternalError {
-    constructor(code, message){
-        super("UnexpectedUndefined", code, message);
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9vain":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "I18nStrings", ()=>I18nStrings);
-parcelHelpers.export(exports, "i18nStrings", ()=>i18nStrings);
-var _internalError = require("../errors/internal-error");
-var I18nStrings;
-(function(I18nStrings) {
-    /** @internal */ let initialised = false;
-    /** @internal */ const infosObject = {
-        PopoutCannotBeCreatedWithGroundItemConfig: {
-            id: 0 /* PopoutCannotBeCreatedWithGroundItemConfig */ ,
-            default: "Popout cannot be created with ground ItemConfig"
-        },
-        PleaseRegisterAConstructorFunction: {
-            id: 1 /* PleaseRegisterAConstructorFunction */ ,
-            default: "Please register a constructor function"
-        },
-        ComponentTypeNotRegisteredAndBindComponentEventHandlerNotAssigned: {
-            id: 2 /* ComponentTypeNotRegisteredAndBindComponentEventHandlerNotAssigned */ ,
-            default: "Component type not registered and BindComponentEvent handler not assigned"
-        },
-        ComponentIsAlreadyRegistered: {
-            id: 3 /* ComponentIsAlreadyRegistered */ ,
-            default: "Component is already registered"
-        },
-        ComponentIsNotVirtuable: {
-            id: 4 /* ComponentIsNotVirtuable */ ,
-            default: "Component is not virtuable. Requires rootHtmlElement field/getter"
-        },
-        VirtualComponentDoesNotHaveRootHtmlElement: {
-            id: 5 /* VirtualComponentDoesNotHaveRootHtmlElement */ ,
-            default: 'Virtual component does not have getter "rootHtmlElement"'
-        },
-        ItemConfigIsNotTypeComponent: {
-            id: 6 /* ItemConfigIsNotTypeComponent */ ,
-            default: "ItemConfig is not of type component"
-        },
-        InvalidNumberPartInSizeString: {
-            id: 7 /* InvalidNumberPartInSizeString */ ,
-            default: "Invalid number part in size string"
-        },
-        UnknownUnitInSizeString: {
-            id: 8 /* UnknownUnitInSizeString */ ,
-            default: "Unknown unit in size string"
-        },
-        UnsupportedUnitInSizeString: {
-            id: 9 /* UnsupportedUnitInSizeString */ ,
-            default: "Unsupported unit in size string"
-        }
-    };
-    I18nStrings.idCount = Object.keys(infosObject).length;
-    /** @internal */ const infos = Object.values(infosObject);
-    function checkInitialise() {
-        if (!initialised) for(let i = 0; i < I18nStrings.idCount; i++){
-            const info = infos[i];
-            if (info.id !== i) throw new (0, _internalError.AssertError)("INSI00110", `${i}: ${info.id}`);
-            else i18nStrings[i] = info.default;
-        }
-        initialised = true;
-    }
-    I18nStrings.checkInitialise = checkInitialise;
-})(I18nStrings || (I18nStrings = {}));
-const i18nStrings = new Array(I18nStrings.idCount);
-
-},{"../errors/internal-error":"7ms7b","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dBAL3":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "WidthOrHeightPropertyName", ()=>WidthOrHeightPropertyName);
-parcelHelpers.export(exports, "Side", ()=>Side);
-parcelHelpers.export(exports, "LogicalZIndex", ()=>LogicalZIndex);
-parcelHelpers.export(exports, "LogicalZIndexToDefaultMap", ()=>LogicalZIndexToDefaultMap);
-parcelHelpers.export(exports, "JsonValue", ()=>JsonValue);
-parcelHelpers.export(exports, "ItemType", ()=>ItemType);
-parcelHelpers.export(exports, "ResponsiveMode", ()=>ResponsiveMode);
-parcelHelpers.export(exports, "SizeUnitEnum", ()=>SizeUnitEnum);
-var _internalError = require("../errors/internal-error");
-var _styleConstants = require("./style-constants");
-var WidthOrHeightPropertyName;
-(function(WidthOrHeightPropertyName) {
-    WidthOrHeightPropertyName.width = "width";
-    WidthOrHeightPropertyName.height = "height";
-})(WidthOrHeightPropertyName || (WidthOrHeightPropertyName = {}));
-var Side;
-(function(Side) {
-    Side.top = "top";
-    Side.left = "left";
-    Side.right = "right";
-    Side.bottom = "bottom";
-})(Side || (Side = {}));
-var LogicalZIndex;
-(function(LogicalZIndex) {
-    LogicalZIndex.base = "base";
-    LogicalZIndex.drag = "drag";
-    LogicalZIndex.stackMaximised = "stackMaximised";
-})(LogicalZIndex || (LogicalZIndex = {}));
-const LogicalZIndexToDefaultMap = {
-    base: (0, _styleConstants.StyleConstants).defaultComponentBaseZIndex,
-    drag: (0, _styleConstants.StyleConstants).defaultComponentDragZIndex,
-    stackMaximised: (0, _styleConstants.StyleConstants).defaultComponentStackMaximisedZIndex
-};
-var JsonValue;
-(function(JsonValue) {
-    function isJson(value) {
-        return isJsonObject(value);
-    }
-    JsonValue.isJson = isJson;
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    function isJsonObject(value) {
-        return !Array.isArray(value) && value !== null && typeof value === "object";
-    }
-    JsonValue.isJsonObject = isJsonObject;
-})(JsonValue || (JsonValue = {}));
-var ItemType;
-(function(ItemType) {
-    ItemType.ground = "ground";
-    ItemType.row = "row";
-    ItemType.column = "column";
-    ItemType.stack = "stack";
-    ItemType.component = "component";
-})(ItemType || (ItemType = {}));
-var ResponsiveMode;
-(function(ResponsiveMode) {
-    ResponsiveMode.none = "none";
-    ResponsiveMode.always = "always";
-    ResponsiveMode.onload = "onload";
-})(ResponsiveMode || (ResponsiveMode = {}));
-var SizeUnitEnum;
-(function(SizeUnitEnum) {
-    SizeUnitEnum["Pixel"] = "px";
-    SizeUnitEnum["Percent"] = "%";
-    SizeUnitEnum["Fractional"] = "fr";
-    SizeUnitEnum["Em"] = "em";
-})(SizeUnitEnum || (SizeUnitEnum = {}));
-/** @public */ (function(SizeUnitEnum) {
-    function tryParse(value) {
-        switch(value){
-            case SizeUnitEnum.Pixel:
-                return SizeUnitEnum.Pixel;
-            case SizeUnitEnum.Percent:
-                return SizeUnitEnum.Percent;
-            case SizeUnitEnum.Fractional:
-                return SizeUnitEnum.Fractional;
-            case SizeUnitEnum.Em:
-                return SizeUnitEnum.Em;
-            default:
-                return undefined;
-        }
-    }
-    SizeUnitEnum.tryParse = tryParse;
-    function format(value) {
-        switch(value){
-            case SizeUnitEnum.Pixel:
-                return SizeUnitEnum.Pixel;
-            case SizeUnitEnum.Percent:
-                return SizeUnitEnum.Percent;
-            case SizeUnitEnum.Fractional:
-                return SizeUnitEnum.Fractional;
-            case SizeUnitEnum.Em:
-                return SizeUnitEnum.Em;
-            default:
-                throw new (0, _internalError.UnreachableCaseError)("SUEF44998", value);
-        }
-    }
-    SizeUnitEnum.format = format;
-})(SizeUnitEnum || (SizeUnitEnum = {}));
-
-},{"../errors/internal-error":"7ms7b","./style-constants":"39MZU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"39MZU":[function(require,module,exports) {
-/** @public */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "StyleConstants", ()=>StyleConstants);
-var StyleConstants;
-(function(StyleConstants) {
-    StyleConstants.defaultComponentBaseZIndex = "auto";
-    StyleConstants.defaultComponentDragZIndex = "32";
-    StyleConstants.defaultComponentStackMaximisedZIndex = "41";
-})(StyleConstants || (StyleConstants = {}));
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fArjz":[function(require,module,exports) {
-/** @internal */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "numberToPixels", ()=>numberToPixels);
-/** @internal */ parcelHelpers.export(exports, "pixelsToNumber", ()=>pixelsToNumber);
-/** @internal */ parcelHelpers.export(exports, "splitStringAtFirstNonNumericChar", ()=>splitStringAtFirstNonNumericChar);
-/** @internal */ parcelHelpers.export(exports, "isDigit", ()=>isDigit);
-/** @internal */ parcelHelpers.export(exports, "getElementWidth", ()=>getElementWidth);
-/** @internal */ parcelHelpers.export(exports, "setElementWidth", ()=>setElementWidth);
-/** @internal */ parcelHelpers.export(exports, "getElementHeight", ()=>getElementHeight);
-/** @internal */ parcelHelpers.export(exports, "setElementHeight", ()=>setElementHeight);
-/** @internal */ parcelHelpers.export(exports, "getElementWidthAndHeight", ()=>getElementWidthAndHeight);
-/** @internal */ parcelHelpers.export(exports, "setElementDisplayVisibility", ()=>setElementDisplayVisibility);
-/** @internal */ parcelHelpers.export(exports, "ensureElementPositionAbsolute", ()=>ensureElementPositionAbsolute);
-/**
- * Replacement for JQuery $.extend(target, obj)
- * @internal
-*/ parcelHelpers.export(exports, "extend", ()=>extend);
-/**
- * Replacement for JQuery $.extend(true, target, obj)
- * @internal
-*/ parcelHelpers.export(exports, "deepExtend", ()=>deepExtend);
-/** @internal */ parcelHelpers.export(exports, "deepExtendValue", ()=>deepExtendValue);
-/** @internal */ parcelHelpers.export(exports, "removeFromArray", ()=>removeFromArray);
-/** @internal */ parcelHelpers.export(exports, "getUniqueId", ()=>getUniqueId);
-/** @internal */ parcelHelpers.export(exports, "getErrorMessage", ()=>getErrorMessage);
-function numberToPixels(value) {
-    return value.toString(10) + "px";
-}
-function pixelsToNumber(value) {
-    const numberStr = value.replace("px", "");
-    return parseFloat(numberStr);
-}
-function splitStringAtFirstNonNumericChar(value) {
-    value = value.trimStart();
-    const length = value.length;
-    if (length === 0) return {
-        numericPart: "",
-        firstNonNumericCharPart: ""
-    };
-    else {
-        let firstNonDigitPartIndex = length;
-        let gotDecimalPoint = false;
-        for(let i = 0; i < length; i++){
-            const char = value[i];
-            if (!isDigit(char)) {
-                if (char !== ".") {
-                    firstNonDigitPartIndex = i;
-                    break;
-                } else if (gotDecimalPoint) {
-                    firstNonDigitPartIndex = i;
-                    break;
-                } else gotDecimalPoint = true;
-            }
-        }
-        const digitsPart = value.substring(0, firstNonDigitPartIndex);
-        const firstNonDigitPart = value.substring(firstNonDigitPartIndex).trim();
-        return {
-            numericPart: digitsPart,
-            firstNonNumericCharPart: firstNonDigitPart
-        };
-    }
-}
-function isDigit(char) {
-    return char >= "0" && char <= "9";
-}
-function getElementWidth(element) {
-    return element.offsetWidth;
-}
-function setElementWidth(element, width) {
-    const widthAsPixels = numberToPixels(width);
-    element.style.width = widthAsPixels;
-}
-function getElementHeight(element) {
-    return element.offsetHeight;
-}
-function setElementHeight(element, height) {
-    const heightAsPixels = numberToPixels(height);
-    element.style.height = heightAsPixels;
-}
-function getElementWidthAndHeight(element) {
-    return {
-        width: element.offsetWidth,
-        height: element.offsetHeight
-    };
-}
-function setElementDisplayVisibility(element, visible) {
-    if (visible) element.style.display = "";
-    else element.style.display = "none";
-}
-function ensureElementPositionAbsolute(element) {
-    const absolutePosition = "absolute";
-    if (element.style.position !== absolutePosition) element.style.position = absolutePosition;
-}
-function extend(target, obj) {
-    for(const key in obj)if (obj.hasOwnProperty(key)) target[key] = obj[key];
-    return target;
-}
-function deepExtend(target, obj) {
-    if (obj !== undefined) {
-        for(const key in obj)if (obj.hasOwnProperty(key)) {
-            const value = obj[key];
-            const existingTarget = target[key];
-            target[key] = deepExtendValue(existingTarget, value);
-        }
-    }
-    return target;
-}
-function deepExtendValue(existingTarget, value) {
-    if (typeof value !== "object") return value;
-    else if (Array.isArray(value)) {
-        const length = value.length;
-        const targetArray = new Array(length);
-        for(let i = 0; i < length; i++){
-            const element = value[i];
-            targetArray[i] = deepExtendValue({}, element);
-        }
-        return targetArray;
-    } else {
-        if (value === null) return null;
-        else {
-            const valueObj = value;
-            if (existingTarget === undefined) return deepExtend({}, valueObj); // overwrite
-            else {
-                if (typeof existingTarget !== "object") return deepExtend({}, valueObj); // overwrite
-                else {
-                    if (Array.isArray(existingTarget)) return deepExtend({}, valueObj); // overwrite
-                    else {
-                        if (existingTarget === null) return deepExtend({}, valueObj); // overwrite
-                        else {
-                            const existingTargetObj = existingTarget;
-                            return deepExtend(existingTargetObj, valueObj); // merge
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-function removeFromArray(item, array) {
-    const index = array.indexOf(item);
-    if (index === -1) throw new Error("Can't remove item from array. Item is not in the array");
-    array.splice(index, 1);
-}
-function getUniqueId() {
-    return (Math.random() * 1000000000000000).toString(36).replace(".", "");
-}
-function getErrorMessage(e) {
-    if (e instanceof Error) return e.message;
-    else {
-        if (typeof e === "string") return e;
-        else return "Unknown Error";
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gWMkA":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ResolvedItemConfig", ()=>ResolvedItemConfig);
-parcelHelpers.export(exports, "ResolvedHeaderedItemConfig", ()=>ResolvedHeaderedItemConfig);
-parcelHelpers.export(exports, "ResolvedStackItemConfig", ()=>ResolvedStackItemConfig);
-parcelHelpers.export(exports, "ResolvedComponentItemConfig", ()=>ResolvedComponentItemConfig);
-parcelHelpers.export(exports, "ResolvedRowOrColumnItemConfig", ()=>ResolvedRowOrColumnItemConfig);
-parcelHelpers.export(exports, "ResolvedRootItemConfig", ()=>ResolvedRootItemConfig);
-parcelHelpers.export(exports, "ResolvedGroundItemConfig", ()=>ResolvedGroundItemConfig);
-parcelHelpers.export(exports, "ResolvedLayoutConfig", ()=>ResolvedLayoutConfig);
-parcelHelpers.export(exports, "ResolvedPopoutLayoutConfig", ()=>ResolvedPopoutLayoutConfig);
-var _internalError = require("../errors/internal-error");
-var _configMinifier = require("../utils/config-minifier");
-var _types = require("../utils/types");
-var _utils = require("../utils/utils");
-var ResolvedItemConfig;
-(function(ResolvedItemConfig) {
-    ResolvedItemConfig.defaults = {
-        type: (0, _types.ItemType).ground,
-        content: [],
-        size: 1,
-        sizeUnit: (0, _types.SizeUnitEnum).Fractional,
-        minSize: undefined,
-        minSizeUnit: (0, _types.SizeUnitEnum).Pixel,
-        id: "",
-        isClosable: true
-    };
-    /** Creates a copy of the original ResolvedItemConfig using an alternative content if specified */ function createCopy(original, content) {
-        switch(original.type){
-            case (0, _types.ItemType).ground:
-            case (0, _types.ItemType).row:
-            case (0, _types.ItemType).column:
-                return ResolvedRowOrColumnItemConfig.createCopy(original, content);
-            case (0, _types.ItemType).stack:
-                return ResolvedStackItemConfig.createCopy(original, content);
-            case (0, _types.ItemType).component:
-                return ResolvedComponentItemConfig.createCopy(original);
-            default:
-                throw new (0, _internalError.UnreachableCaseError)("CICC91354", original.type, "Invalid Config Item type specified");
-        }
-    }
-    ResolvedItemConfig.createCopy = createCopy;
-    function createDefault(type) {
-        switch(type){
-            case (0, _types.ItemType).ground:
-                throw new (0, _internalError.AssertError)("CICCDR91562"); // Get default root from LayoutConfig
-            case (0, _types.ItemType).row:
-            case (0, _types.ItemType).column:
-                return ResolvedRowOrColumnItemConfig.createDefault(type);
-            case (0, _types.ItemType).stack:
-                return ResolvedStackItemConfig.createDefault();
-            case (0, _types.ItemType).component:
-                return ResolvedComponentItemConfig.createDefault();
-            default:
-                throw new (0, _internalError.UnreachableCaseError)("CICCDD91563", type, "Invalid Config Item type specified");
-        }
-    }
-    ResolvedItemConfig.createDefault = createDefault;
-    function isComponentItem(itemConfig) {
-        return itemConfig.type === (0, _types.ItemType).component;
-    }
-    ResolvedItemConfig.isComponentItem = isComponentItem;
-    function isStackItem(itemConfig) {
-        return itemConfig.type === (0, _types.ItemType).stack;
-    }
-    ResolvedItemConfig.isStackItem = isStackItem;
-    /** @internal */ function isGroundItem(itemConfig) {
-        return itemConfig.type === (0, _types.ItemType).ground;
-    }
-    ResolvedItemConfig.isGroundItem = isGroundItem;
-})(ResolvedItemConfig || (ResolvedItemConfig = {}));
-var ResolvedHeaderedItemConfig;
-(function(ResolvedHeaderedItemConfig) {
-    ResolvedHeaderedItemConfig.defaultMaximised = false;
-    let Header;
-    (function(Header) {
-        function createCopy(original, show) {
-            if (original === undefined) return undefined;
-            else return {
-                show: show !== null && show !== void 0 ? show : original.show,
-                popout: original.popout,
-                close: original.close,
-                maximise: original.maximise,
-                minimise: original.minimise,
-                tabDropdown: original.tabDropdown
-            };
-        }
-        Header.createCopy = createCopy;
-    })(Header = ResolvedHeaderedItemConfig.Header || (ResolvedHeaderedItemConfig.Header = {}));
-})(ResolvedHeaderedItemConfig || (ResolvedHeaderedItemConfig = {}));
-var ResolvedStackItemConfig;
-(function(ResolvedStackItemConfig) {
-    ResolvedStackItemConfig.defaultActiveItemIndex = 0;
-    function createCopy(original, content) {
-        const result = {
-            type: original.type,
-            content: content !== undefined ? copyContent(content) : copyContent(original.content),
-            size: original.size,
-            sizeUnit: original.sizeUnit,
-            minSize: original.minSize,
-            minSizeUnit: original.minSizeUnit,
-            id: original.id,
-            maximised: original.maximised,
-            isClosable: original.isClosable,
-            activeItemIndex: original.activeItemIndex,
-            header: ResolvedHeaderedItemConfig.Header.createCopy(original.header)
-        };
-        return result;
-    }
-    ResolvedStackItemConfig.createCopy = createCopy;
-    function copyContent(original) {
-        const count = original.length;
-        const result = new Array(count);
-        for(let i = 0; i < count; i++)result[i] = ResolvedItemConfig.createCopy(original[i]);
-        return result;
-    }
-    ResolvedStackItemConfig.copyContent = copyContent;
-    function createDefault() {
-        const result = {
-            type: (0, _types.ItemType).stack,
-            content: [],
-            size: ResolvedItemConfig.defaults.size,
-            sizeUnit: ResolvedItemConfig.defaults.sizeUnit,
-            minSize: ResolvedItemConfig.defaults.minSize,
-            minSizeUnit: ResolvedItemConfig.defaults.minSizeUnit,
-            id: ResolvedItemConfig.defaults.id,
-            maximised: ResolvedHeaderedItemConfig.defaultMaximised,
-            isClosable: ResolvedItemConfig.defaults.isClosable,
-            activeItemIndex: ResolvedStackItemConfig.defaultActiveItemIndex,
-            header: undefined
-        };
-        return result;
-    }
-    ResolvedStackItemConfig.createDefault = createDefault;
-})(ResolvedStackItemConfig || (ResolvedStackItemConfig = {}));
-var ResolvedComponentItemConfig;
-(function(ResolvedComponentItemConfig) {
-    ResolvedComponentItemConfig.defaultReorderEnabled = true;
-    function resolveComponentTypeName(itemConfig) {
-        const componentType = itemConfig.componentType;
-        if (typeof componentType === "string") return componentType;
-        else return undefined;
-    }
-    ResolvedComponentItemConfig.resolveComponentTypeName = resolveComponentTypeName;
-    function createCopy(original) {
-        const result = {
-            type: original.type,
-            content: [],
-            size: original.size,
-            sizeUnit: original.sizeUnit,
-            minSize: original.minSize,
-            minSizeUnit: original.minSizeUnit,
-            id: original.id,
-            maximised: original.maximised,
-            isClosable: original.isClosable,
-            reorderEnabled: original.reorderEnabled,
-            title: original.title,
-            header: ResolvedHeaderedItemConfig.Header.createCopy(original.header),
-            componentType: original.componentType,
-            componentState: (0, _utils.deepExtendValue)(undefined, original.componentState)
-        };
-        return result;
-    }
-    ResolvedComponentItemConfig.createCopy = createCopy;
-    function createDefault(componentType = "", componentState, title = "") {
-        const result = {
-            type: (0, _types.ItemType).component,
-            content: [],
-            size: ResolvedItemConfig.defaults.size,
-            sizeUnit: ResolvedItemConfig.defaults.sizeUnit,
-            minSize: ResolvedItemConfig.defaults.minSize,
-            minSizeUnit: ResolvedItemConfig.defaults.minSizeUnit,
-            id: ResolvedItemConfig.defaults.id,
-            maximised: ResolvedHeaderedItemConfig.defaultMaximised,
-            isClosable: ResolvedItemConfig.defaults.isClosable,
-            reorderEnabled: ResolvedComponentItemConfig.defaultReorderEnabled,
-            title,
-            header: undefined,
-            componentType,
-            componentState
-        };
-        return result;
-    }
-    ResolvedComponentItemConfig.createDefault = createDefault;
-    function copyComponentType(componentType) {
-        return (0, _utils.deepExtendValue)({}, componentType);
-    }
-    ResolvedComponentItemConfig.copyComponentType = copyComponentType;
-})(ResolvedComponentItemConfig || (ResolvedComponentItemConfig = {}));
-var ResolvedRowOrColumnItemConfig;
-(function(ResolvedRowOrColumnItemConfig) {
-    function isChildItemConfig(itemConfig) {
-        switch(itemConfig.type){
-            case (0, _types.ItemType).row:
-            case (0, _types.ItemType).column:
-            case (0, _types.ItemType).stack:
-            case (0, _types.ItemType).component:
-                return true;
-            case (0, _types.ItemType).ground:
-                return false;
-            default:
-                throw new (0, _internalError.UnreachableCaseError)("CROCOSPCICIC13687", itemConfig.type);
-        }
-    }
-    ResolvedRowOrColumnItemConfig.isChildItemConfig = isChildItemConfig;
-    function createCopy(original, content) {
-        const result = {
-            type: original.type,
-            content: content !== undefined ? copyContent(content) : copyContent(original.content),
-            size: original.size,
-            sizeUnit: original.sizeUnit,
-            minSize: original.minSize,
-            minSizeUnit: original.minSizeUnit,
-            id: original.id,
-            isClosable: original.isClosable
-        };
-        return result;
-    }
-    ResolvedRowOrColumnItemConfig.createCopy = createCopy;
-    function copyContent(original) {
-        const count = original.length;
-        const result = new Array(count);
-        for(let i = 0; i < count; i++)result[i] = ResolvedItemConfig.createCopy(original[i]);
-        return result;
-    }
-    ResolvedRowOrColumnItemConfig.copyContent = copyContent;
-    function createDefault(type) {
-        const result = {
-            type,
-            content: [],
-            size: ResolvedItemConfig.defaults.size,
-            sizeUnit: ResolvedItemConfig.defaults.sizeUnit,
-            minSize: ResolvedItemConfig.defaults.minSize,
-            minSizeUnit: ResolvedItemConfig.defaults.minSizeUnit,
-            id: ResolvedItemConfig.defaults.id,
-            isClosable: ResolvedItemConfig.defaults.isClosable
-        };
-        return result;
-    }
-    ResolvedRowOrColumnItemConfig.createDefault = createDefault;
-})(ResolvedRowOrColumnItemConfig || (ResolvedRowOrColumnItemConfig = {}));
-var ResolvedRootItemConfig;
-(function(ResolvedRootItemConfig) {
-    function createCopy(config) {
-        return ResolvedItemConfig.createCopy(config);
-    }
-    ResolvedRootItemConfig.createCopy = createCopy;
-    function isRootItemConfig(itemConfig) {
-        switch(itemConfig.type){
-            case (0, _types.ItemType).row:
-            case (0, _types.ItemType).column:
-            case (0, _types.ItemType).stack:
-            case (0, _types.ItemType).component:
-                return true;
-            case (0, _types.ItemType).ground:
-                return false;
-            default:
-                throw new (0, _internalError.UnreachableCaseError)("CROCOSPCICIC13687", itemConfig.type);
-        }
-    }
-    ResolvedRootItemConfig.isRootItemConfig = isRootItemConfig;
-})(ResolvedRootItemConfig || (ResolvedRootItemConfig = {}));
-var ResolvedGroundItemConfig;
-(function(ResolvedGroundItemConfig) {
-    function create(rootItemConfig) {
-        const content = rootItemConfig === undefined ? [] : [
-            rootItemConfig
-        ];
-        return {
-            type: (0, _types.ItemType).ground,
-            content,
-            size: 100,
-            sizeUnit: (0, _types.SizeUnitEnum).Percent,
-            minSize: 0,
-            minSizeUnit: (0, _types.SizeUnitEnum).Pixel,
-            id: "",
-            isClosable: false,
-            title: "",
-            reorderEnabled: false
-        };
-    }
-    ResolvedGroundItemConfig.create = create;
-})(ResolvedGroundItemConfig || (ResolvedGroundItemConfig = {}));
-var ResolvedLayoutConfig;
-(function(ResolvedLayoutConfig) {
-    let Settings;
-    (function(Settings) {
-        Settings.defaults = {
-            constrainDragToContainer: true,
-            reorderEnabled: true,
-            popoutWholeStack: false,
-            blockedPopoutsThrowError: true,
-            closePopoutsOnUnload: true,
-            responsiveMode: (0, _types.ResponsiveMode).none,
-            tabOverlapAllowance: 0,
-            reorderOnTabMenuClick: true,
-            tabControlOffset: 10,
-            popInOnClose: false
-        };
-        function createCopy(original) {
-            return {
-                constrainDragToContainer: original.constrainDragToContainer,
-                reorderEnabled: original.reorderEnabled,
-                popoutWholeStack: original.popoutWholeStack,
-                blockedPopoutsThrowError: original.blockedPopoutsThrowError,
-                closePopoutsOnUnload: original.closePopoutsOnUnload,
-                responsiveMode: original.responsiveMode,
-                tabOverlapAllowance: original.tabOverlapAllowance,
-                reorderOnTabMenuClick: original.reorderOnTabMenuClick,
-                tabControlOffset: original.tabControlOffset,
-                popInOnClose: original.popInOnClose
-            };
-        }
-        Settings.createCopy = createCopy;
-    })(Settings = ResolvedLayoutConfig.Settings || (ResolvedLayoutConfig.Settings = {}));
-    let Dimensions;
-    (function(Dimensions) {
-        function createCopy(original) {
-            return {
-                borderWidth: original.borderWidth,
-                borderGrabWidth: original.borderGrabWidth,
-                defaultMinItemHeight: original.defaultMinItemHeight,
-                defaultMinItemHeightUnit: original.defaultMinItemHeightUnit,
-                defaultMinItemWidth: original.defaultMinItemWidth,
-                defaultMinItemWidthUnit: original.defaultMinItemWidthUnit,
-                headerHeight: original.headerHeight,
-                dragProxyWidth: original.dragProxyWidth,
-                dragProxyHeight: original.dragProxyHeight
-            };
-        }
-        Dimensions.createCopy = createCopy;
-        Dimensions.defaults = {
-            borderWidth: 5,
-            borderGrabWidth: 5,
-            defaultMinItemHeight: 0,
-            defaultMinItemHeightUnit: (0, _types.SizeUnitEnum).Pixel,
-            defaultMinItemWidth: 10,
-            defaultMinItemWidthUnit: (0, _types.SizeUnitEnum).Pixel,
-            headerHeight: 20,
-            dragProxyWidth: 300,
-            dragProxyHeight: 200
-        };
-    })(Dimensions = ResolvedLayoutConfig.Dimensions || (ResolvedLayoutConfig.Dimensions = {}));
-    let Header;
-    (function(Header) {
-        function createCopy(original) {
-            return {
-                show: original.show,
-                popout: original.popout,
-                dock: original.dock,
-                close: original.close,
-                maximise: original.maximise,
-                minimise: original.minimise,
-                tabDropdown: original.tabDropdown
-            };
-        }
-        Header.createCopy = createCopy;
-        Header.defaults = {
-            show: (0, _types.Side).top,
-            popout: "open in new window",
-            dock: "dock",
-            maximise: "maximise",
-            minimise: "minimise",
-            close: "close",
-            tabDropdown: "additional tabs"
-        };
-    })(Header = ResolvedLayoutConfig.Header || (ResolvedLayoutConfig.Header = {}));
-    function isPopout(config) {
-        return "parentId" in config;
-    }
-    ResolvedLayoutConfig.isPopout = isPopout;
-    function createDefault() {
-        const result = {
-            root: undefined,
-            openPopouts: [],
-            dimensions: ResolvedLayoutConfig.Dimensions.defaults,
-            settings: ResolvedLayoutConfig.Settings.defaults,
-            header: ResolvedLayoutConfig.Header.defaults,
-            resolved: true
-        };
-        return result;
-    }
-    ResolvedLayoutConfig.createDefault = createDefault;
-    function createCopy(config) {
-        if (isPopout(config)) return ResolvedPopoutLayoutConfig.createCopy(config);
-        else {
-            const result = {
-                root: config.root === undefined ? undefined : ResolvedRootItemConfig.createCopy(config.root),
-                openPopouts: ResolvedLayoutConfig.copyOpenPopouts(config.openPopouts),
-                settings: ResolvedLayoutConfig.Settings.createCopy(config.settings),
-                dimensions: ResolvedLayoutConfig.Dimensions.createCopy(config.dimensions),
-                header: ResolvedLayoutConfig.Header.createCopy(config.header),
-                resolved: config.resolved
-            };
-            return result;
-        }
-    }
-    ResolvedLayoutConfig.createCopy = createCopy;
-    function copyOpenPopouts(original) {
-        const count = original.length;
-        const result = new Array(count);
-        for(let i = 0; i < count; i++)result[i] = ResolvedPopoutLayoutConfig.createCopy(original[i]);
-        return result;
-    }
-    ResolvedLayoutConfig.copyOpenPopouts = copyOpenPopouts;
-    /**
-     * Takes a GoldenLayout configuration object and
-     * replaces its keys and values recursively with
-     * one letter counterparts
-     */ function minifyConfig(layoutConfig) {
-        return (0, _configMinifier.ConfigMinifier).translateObject(layoutConfig, true);
-    }
-    ResolvedLayoutConfig.minifyConfig = minifyConfig;
-    /**
-     * Takes a configuration Object that was previously minified
-     * using minifyConfig and returns its original version
-     */ function unminifyConfig(minifiedConfig) {
-        return (0, _configMinifier.ConfigMinifier).translateObject(minifiedConfig, false);
-    }
-    ResolvedLayoutConfig.unminifyConfig = unminifyConfig;
-})(ResolvedLayoutConfig || (ResolvedLayoutConfig = {}));
-var ResolvedPopoutLayoutConfig;
-(function(ResolvedPopoutLayoutConfig) {
-    let Window;
-    (function(Window) {
-        function createCopy(original) {
-            return {
-                width: original.width,
-                height: original.height,
-                left: original.left,
-                top: original.top
-            };
-        }
-        Window.createCopy = createCopy;
-        Window.defaults = {
-            width: null,
-            height: null,
-            left: null,
-            top: null
-        };
-    })(Window = ResolvedPopoutLayoutConfig.Window || (ResolvedPopoutLayoutConfig.Window = {}));
-    function createCopy(original) {
-        const result = {
-            root: original.root === undefined ? undefined : ResolvedRootItemConfig.createCopy(original.root),
-            openPopouts: ResolvedLayoutConfig.copyOpenPopouts(original.openPopouts),
-            settings: ResolvedLayoutConfig.Settings.createCopy(original.settings),
-            dimensions: ResolvedLayoutConfig.Dimensions.createCopy(original.dimensions),
-            header: ResolvedLayoutConfig.Header.createCopy(original.header),
-            parentId: original.parentId,
-            indexInParent: original.indexInParent,
-            window: ResolvedPopoutLayoutConfig.Window.createCopy(original.window),
-            resolved: original.resolved
-        };
-        return result;
-    }
-    ResolvedPopoutLayoutConfig.createCopy = createCopy;
-})(ResolvedPopoutLayoutConfig || (ResolvedPopoutLayoutConfig = {}));
-
-},{"../errors/internal-error":"7ms7b","../utils/config-minifier":"1UVGp","../utils/types":"dBAL3","../utils/utils":"fArjz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1UVGp":[function(require,module,exports) {
-/**
- * Minifies and unminifies configs by replacing frequent keys
- * and values with one letter substitutes. Config options must
- * retain array position/index, add new options at the end.
- * @internal
-*/ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ConfigMinifier", ()=>ConfigMinifier);
-var ConfigMinifier;
-(function(ConfigMinifier) {
-    const keys = [
-        "settings",
-        "hasHeaders",
-        "constrainDragToContainer",
-        "selectionEnabled",
-        "dimensions",
-        "borderWidth",
-        "minItemHeight",
-        "minItemWidth",
-        "headerHeight",
-        "dragProxyWidth",
-        "dragProxyHeight",
-        "labels",
-        "close",
-        "maximise",
-        "minimise",
-        "popout",
-        "content",
-        "componentType",
-        "componentState",
-        "id",
-        "width",
-        "type",
-        "height",
-        "isClosable",
-        "title",
-        "popoutWholeStack",
-        "openPopouts",
-        "parentId",
-        "activeItemIndex",
-        "reorderEnabled",
-        "borderGrabWidth"
-    ];
-    const values = [
-        true,
-        false,
-        "row",
-        "column",
-        "stack",
-        "component",
-        "close",
-        "maximise",
-        "minimise",
-        "open in new window"
-    ];
-    function checkInitialise() {
-        if (keys.length > 36) throw new Error("Too many keys in config minifier map");
-    }
-    ConfigMinifier.checkInitialise = checkInitialise;
-    function translateObject(from, minify) {
-        const to = {};
-        for(const key in from)if (from.hasOwnProperty(key)) {
-            let translatedKey;
-            if (minify) translatedKey = minifyKey(key);
-            else translatedKey = unminifyKey(key);
-            const fromValue = from[key];
-            to[translatedKey] = translateValue(fromValue, minify);
-        }
-        return to;
-    }
-    ConfigMinifier.translateObject = translateObject;
-    function translateArray(from, minify) {
-        const length = from.length;
-        const to = new Array(length);
-        for(let i = 0; i < length; i++){
-            // In original code, array indices were numbers and not translated
-            const fromValue = from[i];
-            to[i] = translateValue(fromValue, minify);
-        }
-        return to;
-    }
-    function translateValue(from, minify) {
-        if (typeof from === "object") {
-            if (from === null) return null;
-            else {
-                if (Array.isArray(from)) return translateArray(from, minify);
-                else return translateObject(from, minify);
-            }
-        } else {
-            if (minify) return minifyValue(from);
-            else return unminifyValue(from);
-        }
-    }
-    function minifyKey(value) {
-        /**
-         * If a value actually is a single character, prefix it
-         * with ___ to avoid mistaking it for a minification code
-         */ if (typeof value === "string" && value.length === 1) return "___" + value;
-        const index = indexOfKey(value);
-        /**
-         * value not found in the dictionary, return it unmodified
-         */ if (index === -1) return value;
-        else return index.toString(36);
-    }
-    function unminifyKey(key) {
-        /**
-         * value is a single character. Assume that it's a translation
-         * and return the original value from the dictionary
-         */ if (key.length === 1) return keys[parseInt(key, 36)];
-        /**
-         * value originally was a single character and was prefixed with ___
-         * to avoid mistaking it for a translation. Remove the prefix
-         * and return the original character
-         */ if (key.substr(0, 3) === "___") return key[3];
-        /**
-         * value was not minified
-         */ return key;
-    }
-    function minifyValue(value) {
-        /**
-         * If a value actually is a single character, prefix it
-         * with ___ to avoid mistaking it for a minification code
-         */ if (typeof value === "string" && value.length === 1) return "___" + value;
-        const index = indexOfValue(value);
-        /**
-         * value not found in the dictionary, return it unmodified
-         */ if (index === -1) return value;
-        else return index.toString(36);
-    }
-    function unminifyValue(value) {
-        /**
-         * value is a single character. Assume that it's a translation
-         * and return the original value from the dictionary
-         */ if (typeof value === "string" && value.length === 1) return values[parseInt(value, 36)];
-        /**
-         * value originally was a single character and was prefixed with ___
-         * to avoid mistaking it for a translation. Remove the prefix
-         * and return the original character
-         */ if (typeof value === "string" && value.substr(0, 3) === "___") return value[3];
-        /**
-         * value was not minified
-         */ return value;
-    }
-    function indexOfKey(key) {
-        for(let i = 0; i < keys.length; i++){
-            if (keys[i] === key) return i;
-        }
-        return -1;
-    }
-    function indexOfValue(value) {
-        for(let i = 0; i < values.length; i++){
-            if (values[i] === value) return i;
-        }
-        return -1;
-    }
-})(ConfigMinifier || (ConfigMinifier = {}));
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c8qQp":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/** @public */ parcelHelpers.export(exports, "ComponentContainer", ()=>ComponentContainer);
-var _config = require("../config/config");
-var _internalError = require("../errors/internal-error");
-var _eventEmitter = require("../utils/event-emitter");
-var _types = require("../utils/types");
-var _utils = require("../utils/utils");
-class ComponentContainer extends (0, _eventEmitter.EventEmitter) {
-    /** @internal */ constructor(/** @internal */ _config, /** @internal */ _parent, /** @internal */ _layoutManager, /** @internal */ _element, /** @internal */ _updateItemConfigEvent, /** @internal */ _showEvent, /** @internal */ _hideEvent, /** @internal */ _focusEvent, /** @internal */ _blurEvent){
-        super();
-        this._config = _config;
-        this._parent = _parent;
-        this._layoutManager = _layoutManager;
-        this._element = _element;
-        this._updateItemConfigEvent = _updateItemConfigEvent;
-        this._showEvent = _showEvent;
-        this._hideEvent = _hideEvent;
-        this._focusEvent = _focusEvent;
-        this._blurEvent = _blurEvent;
-        /** @internal */ this._stackMaximised = false;
-        this._width = 0;
-        this._height = 0;
-        this._visible = true;
-        this._isShownWithZeroDimensions = true;
-        this._componentType = _config.componentType;
-        this._isClosable = _config.isClosable;
-        this._initialState = _config.componentState;
-        this._state = this._initialState;
-        this._boundComponent = this.layoutManager.bindComponent(this, _config);
-        this.updateElementPositionPropertyFromBoundComponent();
-    }
-    get width() {
-        return this._width;
-    }
-    get height() {
-        return this._height;
-    }
-    get parent() {
-        return this._parent;
-    }
-    /** @internal @deprecated use {@link (ComponentContainer:class).componentType} */ get componentName() {
-        return this._componentType;
-    }
-    get componentType() {
-        return this._componentType;
-    }
-    get virtual() {
-        return this._boundComponent.virtual;
-    }
-    get component() {
-        return this._boundComponent.component;
-    }
-    get tab() {
-        return this._tab;
-    }
-    get title() {
-        return this._parent.title;
-    }
-    get layoutManager() {
-        return this._layoutManager;
-    }
-    get isHidden() {
-        return !this._visible;
-    }
-    get visible() {
-        return this._visible;
-    }
-    get state() {
-        return this._state;
-    }
-    /** Return the initial component state */ get initialState() {
-        return this._initialState;
-    }
-    /** The inner DOM element where the container's content is intended to live in */ get element() {
-        return this._element;
-    }
-    /** @internal */ destroy() {
-        this.releaseComponent();
-        this.stateRequestEvent = undefined;
-        this.emit("destroy");
-    }
-    /** @deprecated use {@link (ComponentContainer:class).element } */ getElement() {
-        return this._element;
-    }
-    /**
-     * Hides the container's component item (and hence, the container) if not already hidden.
-     * Emits hide event prior to hiding the container.
-     */ hide() {
-        this._hideEvent();
-    }
-    /**
-     * Shows the container's component item (and hence, the container) if not visible.
-     * Emits show event prior to hiding the container.
-     */ show() {
-        this._showEvent();
-    }
-    /**
-     * Focus this component in Layout.
-     */ focus(suppressEvent = false) {
-        this._focusEvent(suppressEvent);
-    }
-    /**
-     * Remove focus from this component in Layout.
-     */ blur(suppressEvent = false) {
-        this._blurEvent(suppressEvent);
-    }
-    /**
-     * Set the size from within the container. Traverses up
-     * the item tree until it finds a row or column element
-     * and resizes its items accordingly.
-     *
-     * If this container isn't a descendant of a row or column
-     * it returns false
-     * @param width - The new width in pixel
-     * @param height - The new height in pixel
-     *
-     * @returns resizeSuccesful
-     *
-     * @internal
-     */ setSize(width, height) {
-        let ancestorItem = this._parent;
-        if (ancestorItem.isColumn || ancestorItem.isRow || ancestorItem.parent === null) throw new (0, _internalError.AssertError)("ICSSPRC", "ComponentContainer cannot have RowColumn Parent");
-        else {
-            let ancestorChildItem;
-            do {
-                ancestorChildItem = ancestorItem;
-                ancestorItem = ancestorItem.parent;
-            }while (ancestorItem !== null && !ancestorItem.isColumn && !ancestorItem.isRow);
-            if (ancestorItem === null) // no Row or Column found
-            return false;
-            else {
-                // ancestorItem is Row or Column
-                const direction = ancestorItem.isColumn ? "height" : "width";
-                const currentSize = this[direction];
-                if (currentSize === null) throw new (0, _internalError.UnexpectedNullError)("ICSSCS11194");
-                else {
-                    const newSize = direction === "height" ? height : width;
-                    const totalPixel = currentSize * (1 / (ancestorChildItem.size / 100));
-                    const percentage = newSize / totalPixel * 100;
-                    const delta = (ancestorChildItem.size - percentage) / (ancestorItem.contentItems.length - 1);
-                    for(let i = 0; i < ancestorItem.contentItems.length; i++){
-                        const ancestorItemContentItem = ancestorItem.contentItems[i];
-                        if (ancestorItemContentItem === ancestorChildItem) ancestorItemContentItem.size = percentage;
-                        else ancestorItemContentItem.size += delta;
-                    }
-                    ancestorItem.updateSize(false);
-                    return true;
-                }
-            }
-        }
-    }
-    /**
-     * Closes the container if it is closable. Can be called by
-     * both the component within at as well as the contentItem containing
-     * it. Emits a close event before the container itself is closed.
-     */ close() {
-        if (this._isClosable) {
-            this.emit("close");
-            this._parent.close();
-        }
-    }
-    /** Replaces component without affecting layout */ replaceComponent(itemConfig) {
-        this.releaseComponent();
-        if (!(0, _config.ItemConfig).isComponent(itemConfig)) throw new Error("ReplaceComponent not passed a component ItemConfig");
-        else {
-            const config = (0, _config.ComponentItemConfig).resolve(itemConfig, false);
-            this._initialState = config.componentState;
-            this._state = this._initialState;
-            this._componentType = config.componentType;
-            this._updateItemConfigEvent(config);
-            this._boundComponent = this.layoutManager.bindComponent(this, config);
-            this.updateElementPositionPropertyFromBoundComponent();
-            if (this._boundComponent.virtual) {
-                if (this.virtualVisibilityChangeRequiredEvent !== undefined) this.virtualVisibilityChangeRequiredEvent(this, this._visible);
-                if (this.virtualRectingRequiredEvent !== undefined) {
-                    this._layoutManager.fireBeforeVirtualRectingEvent(1);
-                    try {
-                        this.virtualRectingRequiredEvent(this, this._width, this._height);
-                    } finally{
-                        this._layoutManager.fireAfterVirtualRectingEvent();
-                    }
-                }
-                this.setBaseLogicalZIndex();
-            }
-            this.emit("stateChanged");
-        }
-    }
-    /**
-     * Returns the initial component state or the latest passed in setState()
-     * @returns state
-     * @deprecated Use {@link (ComponentContainer:class).initialState}
-     */ getState() {
-        return this._state;
-    }
-    /**
-     * Merges the provided state into the current one
-     * @deprecated Use {@link (ComponentContainer:class).stateRequestEvent}
-     */ extendState(state) {
-        const extendedState = (0, _utils.deepExtend)(this._state, state);
-        this.setState(extendedState);
-    }
-    /**
-     * Sets the component state
-     * @deprecated Use {@link (ComponentContainer:class).stateRequestEvent}
-     */ setState(state) {
-        this._state = state;
-        this._parent.emitBaseBubblingEvent("stateChanged");
-    }
-    /**
-     * Set's the components title
-     */ setTitle(title) {
-        this._parent.setTitle(title);
-    }
-    /** @internal */ setTab(tab) {
-        this._tab = tab;
-        this.emit("tab", tab);
-    }
-    /** @internal */ setVisibility(value) {
-        if (this._boundComponent.virtual) {
-            if (this.virtualVisibilityChangeRequiredEvent !== undefined) this.virtualVisibilityChangeRequiredEvent(this, value);
-        }
-        if (value) {
-            if (!this._visible) {
-                this._visible = true;
-                if (this._height === 0 && this._width === 0) this._isShownWithZeroDimensions = true;
-                else {
-                    this._isShownWithZeroDimensions = false;
-                    this.setSizeToNodeSize(this._width, this._height, true);
-                    this.emitShow();
-                }
-            } else if (this._isShownWithZeroDimensions && (this._height !== 0 || this._width !== 0)) {
-                this._isShownWithZeroDimensions = false;
-                this.setSizeToNodeSize(this._width, this._height, true);
-                this.emitShow();
-            }
-        } else if (this._visible) {
-            this._visible = false;
-            this._isShownWithZeroDimensions = false;
-            this.emitHide();
-        }
-    }
-    setBaseLogicalZIndex() {
-        this.setLogicalZIndex((0, _types.LogicalZIndex).base);
-    }
-    setLogicalZIndex(logicalZIndex) {
-        if (logicalZIndex !== this._logicalZIndex) {
-            this._logicalZIndex = logicalZIndex;
-            this.notifyVirtualZIndexChangeRequired();
-        }
-    }
-    /**
-     * Set the container's size, but considered temporary (for dragging)
-     * so don't emit any events.
-     * @internal
-     */ enterDragMode(width, height) {
-        this._width = width;
-        this._height = height;
-        (0, _utils.setElementWidth)(this._element, width);
-        (0, _utils.setElementHeight)(this._element, height);
-        this.setLogicalZIndex((0, _types.LogicalZIndex).drag);
-        this.drag();
-    }
-    /** @internal */ exitDragMode() {
-        this.setBaseLogicalZIndex();
-    }
-    /** @internal */ enterStackMaximised() {
-        this._stackMaximised = true;
-        this.setLogicalZIndex((0, _types.LogicalZIndex).stackMaximised);
-    }
-    /** @internal */ exitStackMaximised() {
-        this.setBaseLogicalZIndex();
-        this._stackMaximised = false;
-    }
-    /** @internal */ drag() {
-        if (this._boundComponent.virtual) {
-            if (this.virtualRectingRequiredEvent !== undefined) {
-                this._layoutManager.fireBeforeVirtualRectingEvent(1);
-                try {
-                    this.virtualRectingRequiredEvent(this, this._width, this._height);
-                } finally{
-                    this._layoutManager.fireAfterVirtualRectingEvent();
-                }
-            }
-        }
-    }
-    /**
-     * Sets the container's size. Called by the container's component item.
-     * To instead set the size programmatically from within the component itself,
-     * use the public setSize method
-     * @param width - in px
-     * @param height - in px
-     * @param force - set even if no change
-     * @internal
-     */ setSizeToNodeSize(width, height, force) {
-        if (width !== this._width || height !== this._height || force) {
-            this._width = width;
-            this._height = height;
-            (0, _utils.setElementWidth)(this._element, width);
-            (0, _utils.setElementHeight)(this._element, height);
-            if (this._boundComponent.virtual) this.addVirtualSizedContainerToLayoutManager();
-            else {
-                this.emit("resize");
-                this.checkShownFromZeroDimensions();
-            }
-        }
-    }
-    /** @internal */ notifyVirtualRectingRequired() {
-        if (this.virtualRectingRequiredEvent !== undefined) {
-            this.virtualRectingRequiredEvent(this, this._width, this._height);
-            this.emit("resize");
-            this.checkShownFromZeroDimensions();
-        }
-    }
-    /** @internal */ notifyVirtualZIndexChangeRequired() {
-        if (this.virtualZIndexChangeRequiredEvent !== undefined) {
-            const logicalZIndex = this._logicalZIndex;
-            const defaultZIndex = (0, _types.LogicalZIndexToDefaultMap)[logicalZIndex];
-            this.virtualZIndexChangeRequiredEvent(this, logicalZIndex, defaultZIndex);
-        }
-    }
-    /** @internal */ updateElementPositionPropertyFromBoundComponent() {
-        if (this._boundComponent.virtual) this._element.style.position = "static";
-        else this._element.style.position = ""; // set it back to attribute value
-    }
-    /** @internal */ addVirtualSizedContainerToLayoutManager() {
-        this._layoutManager.beginVirtualSizedContainerAdding();
-        try {
-            this._layoutManager.addVirtualSizedContainer(this);
-        } finally{
-            this._layoutManager.endVirtualSizedContainerAdding();
-        }
-    }
-    /** @internal */ checkShownFromZeroDimensions() {
-        if (this._isShownWithZeroDimensions && (this._height !== 0 || this._width !== 0)) {
-            this._isShownWithZeroDimensions = false;
-            this.emitShow();
-        }
-    }
-    /** @internal */ emitShow() {
-        this.emit("shown");
-        this.emit("show");
-    }
-    /** @internal */ emitHide() {
-        this.emit("hide");
-    }
-    /** @internal */ releaseComponent() {
-        if (this._stackMaximised) this.exitStackMaximised();
-        this.emit("beforeComponentRelease", this._boundComponent.component);
-        this.layoutManager.unbindComponent(this, this._boundComponent.virtual, this._boundComponent.component);
-    }
-}
-
-},{"../config/config":"3GcjJ","../errors/internal-error":"7ms7b","../utils/event-emitter":"jZSJk","../utils/types":"dBAL3","../utils/utils":"fArjz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jZSJk":[function(require,module,exports) {
-/**
- * A generic and very fast EventEmitter implementation. On top of emitting the actual event it emits an
- * {@link (EventEmitter:namespace).ALL_EVENT} event for every event triggered. This allows to hook into it and proxy events forwards
- * @public
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "EventEmitter", ()=>EventEmitter);
-class EventEmitter {
-    constructor(){
-        /** @internal */ this._allEventSubscriptions = [];
-        /** @internal */ this._subscriptionsMap = new Map();
-        /**
-         * Alias for off
-         */ this.unbind = this.removeEventListener;
-        /**
-         * Alias for emit
-         */ this.trigger = this.emit;
-    }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    tryBubbleEvent(name, args) {
-    // overridden by ContentItem
-    }
-    /**
-     * Emit an event and notify listeners
-     *
-     * @param eventName - The name of the event
-     * @param args - Additional arguments that will be passed to the listener
-     */ emit(eventName, ...args) {
-        let subcriptions = this._subscriptionsMap.get(eventName);
-        if (subcriptions !== undefined) {
-            subcriptions = subcriptions.slice();
-            for(let i = 0; i < subcriptions.length; i++){
-                const subscription = subcriptions[i];
-                subscription(...args);
-            }
-        }
-        this.emitAllEvent(eventName, args);
-        this.tryBubbleEvent(eventName, args);
-    }
-    /** @internal */ emitUnknown(eventName, ...args) {
-        let subs = this._subscriptionsMap.get(eventName);
-        if (subs !== undefined) {
-            subs = subs.slice();
-            for(let i = 0; i < subs.length; i++)subs[i](...args);
-        }
-        this.emitAllEvent(eventName, args);
-        this.tryBubbleEvent(eventName, args);
-    }
-    /* @internal **/ emitBaseBubblingEvent(eventName) {
-        const event = new EventEmitter.BubblingEvent(eventName, this);
-        this.emitUnknown(eventName, event);
-    }
-    /** @internal */ emitUnknownBubblingEvent(eventName) {
-        const event = new EventEmitter.BubblingEvent(eventName, this);
-        this.emitUnknown(eventName, event);
-    }
-    /**
-     * Removes a listener for an event.
-     * @param eventName - The name of the event
-     * @param callback - The previously registered callback method (optional)
-     */ removeEventListener(eventName, callback) {
-        const unknownCallback = callback;
-        this.removeUnknownEventListener(eventName, unknownCallback);
-    }
-    off(eventName, callback) {
-        this.removeEventListener(eventName, callback);
-    }
-    /**
-     * Listen for events
-     *
-     * @param eventName - The name of the event to listen to
-     * @param callback - The callback to execute when the event occurs
-     */ addEventListener(eventName, callback) {
-        const unknownCallback = callback;
-        this.addUnknownEventListener(eventName, unknownCallback);
-    }
-    on(eventName, callback) {
-        this.addEventListener(eventName, callback);
-    }
-    /** @internal */ addUnknownEventListener(eventName, callback) {
-        if (eventName === EventEmitter.ALL_EVENT) this._allEventSubscriptions.push(callback);
-        else {
-            let subscriptions = this._subscriptionsMap.get(eventName);
-            if (subscriptions !== undefined) subscriptions.push(callback);
-            else {
-                subscriptions = [
-                    callback
-                ];
-                this._subscriptionsMap.set(eventName, subscriptions);
-            }
-        }
-    }
-    /** @internal */ removeUnknownEventListener(eventName, callback) {
-        if (eventName === EventEmitter.ALL_EVENT) this.removeSubscription(eventName, this._allEventSubscriptions, callback);
-        else {
-            const subscriptions = this._subscriptionsMap.get(eventName);
-            if (subscriptions === undefined) throw new Error("No subscribtions to unsubscribe for event " + eventName);
-            else this.removeSubscription(eventName, subscriptions, callback);
-        }
-    }
-    /** @internal */ removeSubscription(eventName, subscriptions, callback) {
-        const idx = subscriptions.indexOf(callback);
-        if (idx < 0) throw new Error("Nothing to unbind for " + eventName);
-        else subscriptions.splice(idx, 1);
-    }
-    /** @internal */ emitAllEvent(eventName, args) {
-        const allEventSubscriptionsCount = this._allEventSubscriptions.length;
-        if (allEventSubscriptionsCount > 0) {
-            const unknownArgs = args.slice();
-            unknownArgs.unshift(eventName);
-            const allEventSubcriptions = this._allEventSubscriptions.slice();
-            for(let i = 0; i < allEventSubscriptionsCount; i++)allEventSubcriptions[i](...unknownArgs);
-        }
-    }
-}
-/** @public */ (function(EventEmitter) {
-    /**
-     * The name of the event that's triggered for every event
-     */ EventEmitter.ALL_EVENT = "__all";
-    EventEmitter.headerClickEventName = "stackHeaderClick";
-    EventEmitter.headerTouchStartEventName = "stackHeaderTouchStart";
-    class BubblingEvent {
-        /** @internal */ constructor(/** @internal */ _name, /** @internal */ _target){
-            this._name = _name;
-            this._target = _target;
-            /** @internal */ this._isPropagationStopped = false;
-        }
-        get name() {
-            return this._name;
-        }
-        get target() {
-            return this._target;
-        }
-        /** @deprecated Use {@link (EventEmitter:namespace).(BubblingEvent:class).target} instead */ get origin() {
-            return this._target;
-        }
-        get isPropagationStopped() {
-            return this._isPropagationStopped;
-        }
-        stopPropagation() {
-            this._isPropagationStopped = true;
-        }
-    }
-    EventEmitter.BubblingEvent = BubblingEvent;
-    class ClickBubblingEvent extends BubblingEvent {
-        /** @internal */ constructor(name, target, /** @internal */ _mouseEvent){
-            super(name, target);
-            this._mouseEvent = _mouseEvent;
-        }
-        get mouseEvent() {
-            return this._mouseEvent;
-        }
-    }
-    EventEmitter.ClickBubblingEvent = ClickBubblingEvent;
-    class TouchStartBubblingEvent extends BubblingEvent {
-        /** @internal */ constructor(name, target, /** @internal */ _touchEvent){
-            super(name, target);
-            this._touchEvent = _touchEvent;
-        }
-        get touchEvent() {
-            return this._touchEvent;
-        }
-    }
-    EventEmitter.TouchStartBubblingEvent = TouchStartBubblingEvent;
-})(EventEmitter || (EventEmitter = {}));
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dznG0":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * Pops a content item out into a new browser window.
- * This is achieved by
- *
- *    - Creating a new configuration with the content item as root element
- *    - Serializing and minifying the configuration
- *    - Opening the current window's URL with the configuration as a GET parameter
- *    - GoldenLayout when opened in the new window will look for the GET parameter
- *      and use it instead of the provided configuration
- * @public
- */ parcelHelpers.export(exports, "BrowserPopout", ()=>BrowserPopout);
-var _resolvedConfig = require("../config/resolved-config");
-var _externalError = require("../errors/external-error");
-var _internalError = require("../errors/internal-error");
-var _eventEmitter = require("../utils/event-emitter");
-var _utils = require("../utils/utils");
-class BrowserPopout extends (0, _eventEmitter.EventEmitter) {
-    /**
-     * @param _config - GoldenLayout item config
-     * @param _initialWindowSize - A map with width, height, top and left
-     * @internal
-     */ constructor(/** @internal */ _config, /** @internal */ _initialWindowSize, /** @internal */ _layoutManager){
-        super();
-        this._config = _config;
-        this._initialWindowSize = _initialWindowSize;
-        this._layoutManager = _layoutManager;
-        this._isInitialised = false;
-        this._popoutWindow = null;
-        this.createWindow();
-    }
-    toConfig() {
-        var _a, _b;
-        if (this._isInitialised === false) throw new Error("Can't create config, layout not yet initialised");
-        const glInstance = this.getGlInstance();
-        const glInstanceConfig = glInstance.saveLayout();
-        let left;
-        let top;
-        if (this._popoutWindow === null) {
-            left = null;
-            top = null;
-        } else {
-            left = (_a = this._popoutWindow.screenX) !== null && _a !== void 0 ? _a : this._popoutWindow.screenLeft;
-            top = (_b = this._popoutWindow.screenY) !== null && _b !== void 0 ? _b : this._popoutWindow.screenTop;
-        }
-        const window = {
-            width: this.getGlInstance().width,
-            height: this.getGlInstance().height,
-            left,
-            top
-        };
-        const config = {
-            root: glInstanceConfig.root,
-            openPopouts: glInstanceConfig.openPopouts,
-            settings: glInstanceConfig.settings,
-            dimensions: glInstanceConfig.dimensions,
-            header: glInstanceConfig.header,
-            window,
-            parentId: this._config.parentId,
-            indexInParent: this._config.indexInParent,
-            resolved: true
-        };
-        return config;
-    }
-    getGlInstance() {
-        if (this._popoutWindow === null) throw new (0, _internalError.UnexpectedNullError)("BPGGI24693");
-        return this._popoutWindow.__glInstance;
-    }
-    /**
-     * Retrieves the native BrowserWindow backing this popout.
-     * Might throw an UnexpectedNullError exception when the window is not initialized yet.
-     * @public
-     */ getWindow() {
-        if (this._popoutWindow === null) throw new (0, _internalError.UnexpectedNullError)("BPGW087215");
-        return this._popoutWindow;
-    }
-    close() {
-        if (this.getGlInstance()) this.getGlInstance().closeWindow();
-        else try {
-            this.getWindow().close();
-        } catch (e) {
-        //
-        }
-    }
-    /**
-     * Returns the popped out item to its original position. If the original
-     * parent isn't available anymore it falls back to the layout's topmost element
-     */ popIn() {
-        let parentItem;
-        let index = this._config.indexInParent;
-        if (!this._config.parentId) return;
-        /*
-        * The deepExtend call seems a bit pointless, but it's crucial to
-        * copy the config returned by this.getGlInstance().toConfig()
-        * onto a new object. Internet Explorer keeps the references
-        * to objects on the child window, resulting in the following error
-        * once the child window is closed:
-        *
-        * The callee (server [not server application]) is not available and disappeared
-        */ const glInstanceLayoutConfig = this.getGlInstance().saveLayout();
-        const copiedGlInstanceLayoutConfig = (0, _utils.deepExtend)({}, glInstanceLayoutConfig);
-        const copiedRoot = copiedGlInstanceLayoutConfig.root;
-        if (copiedRoot === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("BPPIR19998");
-        const groundItem = this._layoutManager.groundItem;
-        if (groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("BPPIG34972");
-        parentItem = groundItem.getItemsByPopInParentId(this._config.parentId)[0];
-        /*
-        * Fallback if parentItem is not available. Either add it to the topmost
-        * item or make it the topmost item if the layout is empty
-        */ if (!parentItem) {
-            if (groundItem.contentItems.length > 0) parentItem = groundItem.contentItems[0];
-            else parentItem = groundItem;
-            index = 0;
-        }
-        const newContentItem = this._layoutManager.createAndInitContentItem(copiedRoot, parentItem);
-        parentItem.addChild(newContentItem, index);
-        if (this._layoutManager.layoutConfig.settings.popInOnClose) this._onClose();
-        else this.close();
-    }
-    /**
-     * Creates the URL and window parameter
-     * and opens a new window
-     * @internal
-     */ createWindow() {
-        const url = this.createUrl();
-        /**
-         * Bogus title to prevent re-usage of existing window with the
-         * same title. The actual title will be set by the new window's
-         * GoldenLayout instance if it detects that it is in subWindowMode
-         */ const target = Math.floor(Math.random() * 1000000).toString(36);
-        /**
-         * The options as used in the window.open string
-         */ const features = this.serializeWindowFeatures({
-            width: this._initialWindowSize.width,
-            height: this._initialWindowSize.height,
-            innerWidth: this._initialWindowSize.width,
-            innerHeight: this._initialWindowSize.height,
-            menubar: "no",
-            toolbar: "no",
-            location: "no",
-            personalbar: "no",
-            resizable: "yes",
-            scrollbars: "no",
-            status: "no"
-        });
-        this._popoutWindow = globalThis.open(url, target, features);
-        if (!this._popoutWindow) {
-            if (this._layoutManager.layoutConfig.settings.blockedPopoutsThrowError === true) {
-                const error = new (0, _externalError.PopoutBlockedError)("Popout blocked");
-                throw error;
-            } else return;
-        }
-        this._popoutWindow.addEventListener("load", ()=>this.positionWindow(), {
-            passive: true
-        });
-        this._popoutWindow.addEventListener("beforeunload", ()=>{
-            if (this._layoutManager.layoutConfig.settings.popInOnClose) this.popIn();
-            else this._onClose();
-        }, {
-            passive: true
-        });
-        /**
-         * Polling the childwindow to find out if GoldenLayout has been initialised
-         * doesn't seem optimal, but the alternatives - adding a callback to the parent
-         * window or raising an event on the window object - both would introduce knowledge
-         * about the parent to the child window which we'd rather avoid
-         */ this._checkReadyInterval = setInterval(()=>this.checkReady(), 10);
-    }
-    /** @internal */ checkReady() {
-        if (this._popoutWindow === null) throw new (0, _internalError.UnexpectedNullError)("BPCR01844");
-        else if (this._popoutWindow.__glInstance && this._popoutWindow.__glInstance.isInitialised) {
-            this.onInitialised();
-            if (this._checkReadyInterval !== undefined) {
-                clearInterval(this._checkReadyInterval);
-                this._checkReadyInterval = undefined;
-            }
-        }
-    }
-    /**
-     * Serialises a map of key:values to a window options string
-     *
-     * @param windowOptions -
-     *
-     * @returns serialised window options
-     * @internal
-     */ serializeWindowFeatures(windowOptions) {
-        const windowOptionsString = [];
-        for(const key in windowOptions)windowOptionsString.push(key + "=" + windowOptions[key].toString());
-        return windowOptionsString.join(",");
-    }
-    /**
-     * Creates the URL for the new window, including the
-     * config GET parameter
-     *
-     * @returns URL
-     * @internal
-     */ createUrl() {
-        const storageKey = "gl-window-config-" + (0, _utils.getUniqueId)();
-        const config = (0, _resolvedConfig.ResolvedLayoutConfig).minifyConfig(this._config);
-        try {
-            localStorage.setItem(storageKey, JSON.stringify(config));
-        } catch (e) {
-            throw new Error("Error while writing to localStorage " + (0, _utils.getErrorMessage)(e));
-        }
-        const url = new URL(location.href);
-        url.searchParams.set("gl-window", storageKey);
-        return url.toString();
-    }
-    /**
-     * Move the newly created window roughly to
-     * where the component used to be.
-     * @internal
-     */ positionWindow() {
-        if (this._popoutWindow === null) throw new Error("BrowserPopout.positionWindow: null popoutWindow");
-        else {
-            this._popoutWindow.moveTo(this._initialWindowSize.left, this._initialWindowSize.top);
-            this._popoutWindow.focus();
-        }
-    }
-    /**
-     * Callback when the new window is opened and the GoldenLayout instance
-     * within it is initialised
-     * @internal
-     */ onInitialised() {
-        this._isInitialised = true;
-        this.getGlInstance().on("popIn", ()=>this.popIn());
-        this.emit("initialised");
-    }
-    /**
-     * Invoked 50ms after the window unload event
-     * @internal
-     */ _onClose() {
-        setTimeout(()=>this.emit("closed"), 50);
-    }
-}
-
-},{"../config/resolved-config":"gWMkA","../errors/external-error":"et8gI","../errors/internal-error":"7ms7b","../utils/event-emitter":"jZSJk","../utils/utils":"fArjz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3qG6U":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * Allows for any DOM item to create a component on drag
- * start to be dragged into the Layout
- * @public
- */ parcelHelpers.export(exports, "DragSource", ()=>DragSource);
-var _config = require("../config/config"); // remove alias in version 3
-var _resolvedConfig = require("../config/resolved-config");
-var _internalError = require("../errors/internal-error");
-var _componentItem = require("../items/component-item");
-var _groundItem = require("../items/ground-item");
-var _dragListener = require("../utils/drag-listener");
-var _dragProxy = require("./drag-proxy");
-class DragSource {
-    /** @internal */ constructor(/** @internal */ _layoutManager, /** @internal */ _element, /** @internal */ _extraAllowableChildTargets, /** @internal @deprecated replace with componentItemConfigOrFtn in version 3 */ _componentTypeOrFtn, /** @internal @deprecated remove in version 3 */ _componentState, /** @internal @deprecated remove in version 3 */ _title, /** @internal @deprecated remove in version 3 */ _id){
-        this._layoutManager = _layoutManager;
-        this._element = _element;
-        this._extraAllowableChildTargets = _extraAllowableChildTargets;
-        this._componentTypeOrFtn = _componentTypeOrFtn;
-        this._componentState = _componentState;
-        this._title = _title;
-        this._id = _id;
-        this._dragListener = null;
-        this._dummyGroundContainer = document.createElement("div");
-        const dummyRootItemConfig = (0, _resolvedConfig.ResolvedRowOrColumnItemConfig).createDefault("row");
-        this._dummyGroundContentItem = new (0, _groundItem.GroundItem)(this._layoutManager, dummyRootItemConfig, this._dummyGroundContainer);
-        this.createDragListener();
-    }
-    /**
-     * Disposes of the drag listeners so the drag source is not usable any more.
-     * @internal
-     */ destroy() {
-        this.removeDragListener();
-    }
-    /**
-     * Called initially and after every drag
-     * @internal
-     */ createDragListener() {
-        this.removeDragListener();
-        this._dragListener = new (0, _dragListener.DragListener)(this._element, this._extraAllowableChildTargets);
-        this._dragListener.on("dragStart", (x, y)=>this.onDragStart(x, y));
-        this._dragListener.on("dragStop", ()=>this.onDragStop());
-    }
-    /**
-     * Callback for the DragListener's dragStart event
-     *
-     * @param x - The x position of the mouse on dragStart
-     * @param y - The x position of the mouse on dragStart
-     * @internal
-     */ onDragStart(x, y) {
-        var _a;
-        const type = "component";
-        let dragSourceItemConfig;
-        if (typeof this._componentTypeOrFtn === "function") {
-            const ftnDragSourceItemConfig = this._componentTypeOrFtn();
-            // If the componentType property exists, then it is already a ComponentItemConfig so nothing to do
-            if (DragSource.isDragSourceComponentItemConfig(ftnDragSourceItemConfig)) dragSourceItemConfig = {
-                type,
-                componentState: ftnDragSourceItemConfig.state,
-                componentType: ftnDragSourceItemConfig.type,
-                title: (_a = ftnDragSourceItemConfig.title) !== null && _a !== void 0 ? _a : this._title
-            };
-            else dragSourceItemConfig = ftnDragSourceItemConfig;
-        } else dragSourceItemConfig = {
-            type,
-            componentState: this._componentState,
-            componentType: this._componentTypeOrFtn,
-            title: this._title,
-            id: this._id
-        };
-        // Create a dummy ContentItem only for drag purposes
-        // All ContentItems (except for GroundItem) need a parent.  When dragging, the parent is not used.
-        // Instead of allowing null parents (as Javascript version did), use a temporary dummy GroundItem parent and add ContentItem to that
-        // If this does not work, need to create alternative GroundItem class
-        const resolvedItemConfig = (0, _config.ComponentItemConfig).resolve(dragSourceItemConfig, false);
-        const componentItem = new (0, _componentItem.ComponentItem)(this._layoutManager, resolvedItemConfig, this._dummyGroundContentItem);
-        this._dummyGroundContentItem.contentItems.push(componentItem);
-        if (this._dragListener === null) throw new (0, _internalError.UnexpectedNullError)("DSODSD66746");
-        else {
-            const dragProxy = new (0, _dragProxy.DragProxy)(x, y, this._dragListener, this._layoutManager, componentItem, this._dummyGroundContentItem);
-            const transitionIndicator = this._layoutManager.transitionIndicator;
-            if (transitionIndicator === null) throw new (0, _internalError.UnexpectedNullError)("DSODST66746");
-            else transitionIndicator.transitionElements(this._element, dragProxy.element);
-        }
-    }
-    /** @internal */ onDragStop() {
-        // if (this._dummyGroundContentItem === undefined) {
-        //     throw new UnexpectedUndefinedError('DSODSDRU08116');
-        // } else {
-        //     this._dummyGroundContentItem._$destroy
-        //     this._dummyGroundContentItem = undefined;
-        // }
-        this.createDragListener();
-    }
-    /**
-     * Called after every drag and when the drag source is being disposed of.
-     * @internal
-     */ removeDragListener() {
-        if (this._dragListener !== null) {
-            this._dragListener.destroy();
-            this._dragListener = null;
-        }
-    }
-}
-/** @public */ (function(DragSource) {
-    /** @deprecated remove in version 3 */ function isDragSourceComponentItemConfig(config) {
-        return !("componentType" in config);
-    }
-    DragSource.isDragSourceComponentItemConfig = isDragSourceComponentItemConfig;
-})(DragSource || (DragSource = {}));
-
-},{"../config/config":"3GcjJ","../config/resolved-config":"gWMkA","../errors/internal-error":"7ms7b","../items/component-item":"iMxBy","../items/ground-item":"bda7y","../utils/drag-listener":"b7LEx","./drag-proxy":"01u88","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iMxBy":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/** @public */ parcelHelpers.export(exports, "ComponentItem", ()=>ComponentItem);
-var _resolvedConfig = require("../config/resolved-config");
-var _componentContainer = require("../container/component-container");
-var _internalError = require("../errors/internal-error");
-var _types = require("../utils/types");
-var _utils = require("../utils/utils");
-var _contentItem = require("./content-item");
-class ComponentItem extends (0, _contentItem.ContentItem) {
-    /** @internal */ constructor(layoutManager, config, /** @internal */ _parentItem){
-        super(layoutManager, config, _parentItem, document.createElement("div"));
-        this._parentItem = _parentItem;
-        /** @internal */ this._focused = false;
-        this.isComponent = true;
-        this._reorderEnabled = config.reorderEnabled;
-        this.applyUpdatableConfig(config);
-        this._initialWantMaximise = config.maximised;
-        const containerElement = document.createElement("div");
-        containerElement.classList.add("lm_content" /* Content */ );
-        this.element.appendChild(containerElement);
-        this._container = new (0, _componentContainer.ComponentContainer)(config, this, layoutManager, containerElement, (itemConfig)=>this.handleUpdateItemConfigEvent(itemConfig), ()=>this.show(), ()=>this.hide(), (suppressEvent)=>this.focus(suppressEvent), (suppressEvent)=>this.blur(suppressEvent));
-    }
-    /** @internal @deprecated use {@link (ComponentItem:class).componentType} */ get componentName() {
-        return this._container.componentType;
-    }
-    get componentType() {
-        return this._container.componentType;
-    }
-    get reorderEnabled() {
-        return this._reorderEnabled;
-    }
-    /** @internal */ get initialWantMaximise() {
-        return this._initialWantMaximise;
-    }
-    get component() {
-        return this._container.component;
-    }
-    get container() {
-        return this._container;
-    }
-    get parentItem() {
-        return this._parentItem;
-    }
-    get headerConfig() {
-        return this._headerConfig;
-    }
-    get title() {
-        return this._title;
-    }
-    get tab() {
-        return this._tab;
-    }
-    get focused() {
-        return this._focused;
-    }
-    /** @internal */ destroy() {
-        this._container.destroy();
-        super.destroy();
-    }
-    applyUpdatableConfig(config) {
-        this.setTitle(config.title);
-        this._headerConfig = config.header;
-    }
-    toConfig() {
-        const stateRequestEvent = this._container.stateRequestEvent;
-        const state = stateRequestEvent === undefined ? this._container.state : stateRequestEvent();
-        const result = {
-            type: (0, _types.ItemType).component,
-            content: [],
-            size: this.size,
-            sizeUnit: this.sizeUnit,
-            minSize: this.minSize,
-            minSizeUnit: this.minSizeUnit,
-            id: this.id,
-            maximised: false,
-            isClosable: this.isClosable,
-            reorderEnabled: this._reorderEnabled,
-            title: this._title,
-            header: (0, _resolvedConfig.ResolvedHeaderedItemConfig).Header.createCopy(this._headerConfig),
-            componentType: (0, _resolvedConfig.ResolvedComponentItemConfig).copyComponentType(this.componentType),
-            componentState: state
-        };
-        return result;
-    }
-    close() {
-        if (this.parent === null) throw new (0, _internalError.UnexpectedNullError)("CIC68883");
-        else this.parent.removeChild(this, false);
-    }
-    // Used by Drag Proxy
-    /** @internal */ enterDragMode(width, height) {
-        (0, _utils.setElementWidth)(this.element, width);
-        (0, _utils.setElementHeight)(this.element, height);
-        this._container.enterDragMode(width, height);
-    }
-    /** @internal */ exitDragMode() {
-        this._container.exitDragMode();
-    }
-    /** @internal */ enterStackMaximised() {
-        this._container.enterStackMaximised();
-    }
-    /** @internal */ exitStackMaximised() {
-        this._container.exitStackMaximised();
-    }
-    // Used by Drag Proxy
-    /** @internal */ drag() {
-        this._container.drag();
-    }
-    /** @internal */ updateSize(force) {
-        this.updateNodeSize(force);
-    }
-    /** @internal */ init() {
-        this.updateNodeSize(false);
-        super.init();
-        this._container.emit("open");
-        this.initContentItems();
-    }
-    /**
-     * Set this component's title
-     *
-     * @public
-     * @param title -
-     */ setTitle(title) {
-        this._title = title;
-        this.emit("titleChanged", title);
-        this.emit("stateChanged");
-    }
-    setTab(tab) {
-        this._tab = tab;
-        this.emit("tab", tab);
-        this._container.setTab(tab);
-    }
-    /** @internal */ hide() {
-        super.hide();
-        this._container.setVisibility(false);
-    }
-    /** @internal */ show() {
-        super.show();
-        this._container.setVisibility(true);
-    }
-    /**
-     * Focuses the item if it is not already focused
-     */ focus(suppressEvent = false) {
-        this.parentItem.setActiveComponentItem(this, true, suppressEvent);
-    }
-    /** @internal */ setFocused(suppressEvent) {
-        this._focused = true;
-        this.tab.setFocused();
-        if (!suppressEvent) this.emitBaseBubblingEvent("focus");
-    }
-    /**
-     * Blurs (defocuses) the item if it is focused
-     */ blur(suppressEvent = false) {
-        if (this._focused) this.layoutManager.setFocusedComponentItem(undefined, suppressEvent);
-    }
-    /** @internal */ setBlurred(suppressEvent) {
-        this._focused = false;
-        this.tab.setBlurred();
-        if (!suppressEvent) this.emitBaseBubblingEvent("blur");
-    }
-    /** @internal */ setParent(parent) {
-        this._parentItem = parent;
-        super.setParent(parent);
-    }
-    /** @internal */ handleUpdateItemConfigEvent(itemConfig) {
-        this.applyUpdatableConfig(itemConfig);
-    }
-    /** @internal */ updateNodeSize(force) {
-        if (this.element.style.display !== "none") {
-            // Do not update size of hidden components to prevent unwanted reflows
-            const { width, height } = (0, _utils.getElementWidthAndHeight)(this.element);
-            this._container.setSizeToNodeSize(width, height, force);
-        }
-    }
-}
-
-},{"../config/resolved-config":"gWMkA","../container/component-container":"c8qQp","../errors/internal-error":"7ms7b","../utils/types":"dBAL3","../utils/utils":"fArjz","./content-item":"jpTQx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jpTQx":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * This is the baseclass that all content items inherit from.
- * Most methods provide a subset of what the sub-classes do.
- *
- * It also provides a number of functions for tree traversal
- * @public
- */ parcelHelpers.export(exports, "ContentItem", ()=>ContentItem);
-var _internalError = require("../errors/internal-error");
-var _eventEmitter = require("../utils/event-emitter");
-var _utils = require("../utils/utils");
-class ContentItem extends (0, _eventEmitter.EventEmitter) {
-    /** @internal */ constructor(layoutManager, config, /** @internal */ _parent, /** @internal */ _element){
-        super();
-        this.layoutManager = layoutManager;
-        this._parent = _parent;
-        this._element = _element;
-        /** @internal */ this._popInParentIds = [];
-        this._type = config.type;
-        this._id = config.id;
-        this._isInitialised = false;
-        this.isGround = false;
-        this.isRow = false;
-        this.isColumn = false;
-        this.isStack = false;
-        this.isComponent = false;
-        this.size = config.size;
-        this.sizeUnit = config.sizeUnit;
-        this.minSize = config.minSize;
-        this.minSizeUnit = config.minSizeUnit;
-        this._isClosable = config.isClosable;
-        this._pendingEventPropagations = {};
-        this._throttledEvents = [
-            "stateChanged"
-        ];
-        this._contentItems = this.createContentItems(config.content);
-    }
-    get type() {
-        return this._type;
-    }
-    get id() {
-        return this._id;
-    }
-    set id(value) {
-        this._id = value;
-    }
-    /** @internal */ get popInParentIds() {
-        return this._popInParentIds;
-    }
-    get parent() {
-        return this._parent;
-    }
-    get contentItems() {
-        return this._contentItems;
-    }
-    get isClosable() {
-        return this._isClosable;
-    }
-    get element() {
-        return this._element;
-    }
-    get isInitialised() {
-        return this._isInitialised;
-    }
-    static isStack(item) {
-        return item.isStack;
-    }
-    static isComponentItem(item) {
-        return item.isComponent;
-    }
-    static isComponentParentableItem(item) {
-        return item.isStack || item.isGround;
-    }
-    /**
-     * Removes a child node (and its children) from the tree
-     * @param contentItem - The child item to remove
-     * @param keepChild - Whether to destroy the removed item
-     */ removeChild(contentItem, keepChild = false) {
-        /*
-         * Get the position of the item that's to be removed within all content items this node contains
-         */ const index = this._contentItems.indexOf(contentItem);
-        /*
-         * Make sure the content item to be removed is actually a child of this item
-         */ if (index === -1) throw new Error("Can't remove child item. Unknown content item");
-        /**
-         * Call destroy on the content item.
-         * All children are destroyed as well
-         */ if (!keepChild) this._contentItems[index].destroy();
-        /**
-         * Remove the content item from this nodes array of children
-         */ this._contentItems.splice(index, 1);
-        /**
-         * If this node still contains other content items, adjust their size
-         */ if (this._contentItems.length > 0) this.updateSize(false);
-        else /**
-             * If this was the last content item, remove this node as well
-             */ if (!this.isGround && this._isClosable === true) {
-            if (this._parent === null) throw new (0, _internalError.UnexpectedNullError)("CIUC00874");
-            else this._parent.removeChild(this);
-        }
-    }
-    /**
-     * Sets up the tree structure for the newly added child
-     * The responsibility for the actual DOM manipulations lies
-     * with the concrete item
-     *
-     * @param contentItem -
-     * @param index - If omitted item will be appended
-     * @param suspendResize - Used by descendent implementations
-     */ // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    addChild(contentItem, index, suspendResize) {
-        index !== null && index !== void 0 ? index : index = this._contentItems.length;
-        this._contentItems.splice(index, 0, contentItem);
-        contentItem.setParent(this);
-        if (this._isInitialised === true && contentItem._isInitialised === false) contentItem.init();
-        return index;
-    }
-    /**
-     * Replaces oldChild with newChild
-     * @param oldChild -
-     * @param newChild -
-     * @internal
-     */ replaceChild(oldChild, newChild, destroyOldChild = false) {
-        // Do not try to replace ComponentItem - will not work
-        const index = this._contentItems.indexOf(oldChild);
-        const parentNode = oldChild._element.parentNode;
-        if (index === -1) throw new (0, _internalError.AssertError)("CIRCI23232", "Can't replace child. oldChild is not child of this");
-        if (parentNode === null) throw new (0, _internalError.UnexpectedNullError)("CIRCP23232");
-        else {
-            parentNode.replaceChild(newChild._element, oldChild._element);
-            /*
-            * Optionally destroy the old content item
-            */ if (destroyOldChild === true) {
-                oldChild._parent = null;
-                oldChild.destroy(); // will now also destroy all children of oldChild
-            }
-            /*
-            * Wire the new contentItem into the tree
-            */ this._contentItems[index] = newChild;
-            newChild.setParent(this);
-            // newChild inherits the sizes from the old child:
-            newChild.size = oldChild.size;
-            newChild.sizeUnit = oldChild.sizeUnit;
-            newChild.minSize = oldChild.minSize;
-            newChild.minSizeUnit = oldChild.minSizeUnit;
-            //TODO This doesn't update the config... refactor to leave item nodes untouched after creation
-            if (newChild._parent === null) throw new (0, _internalError.UnexpectedNullError)("CIRCNC45699");
-            else {
-                if (newChild._parent._isInitialised === true && newChild._isInitialised === false) newChild.init();
-                this.updateSize(false);
-            }
-        }
-    }
-    /**
-     * Convenience method.
-     * Shorthand for this.parent.removeChild( this )
-     */ remove() {
-        if (this._parent === null) throw new (0, _internalError.UnexpectedNullError)("CIR11110");
-        else this._parent.removeChild(this);
-    }
-    /**
-     * Removes the component from the layout and creates a new
-     * browser window with the component and its children inside
-     */ popout() {
-        const parentId = (0, _utils.getUniqueId)();
-        const browserPopout = this.layoutManager.createPopoutFromContentItem(this, undefined, parentId, undefined);
-        this.emitBaseBubblingEvent("stateChanged");
-        return browserPopout;
-    }
-    /** @internal */ calculateConfigContent() {
-        const contentItems = this._contentItems;
-        const count = contentItems.length;
-        const result = new Array(count);
-        for(let i = 0; i < count; i++){
-            const item = contentItems[i];
-            result[i] = item.toConfig();
-        }
-        return result;
-    }
-    /** @internal */ highlightDropZone(x, y, area) {
-        const dropTargetIndicator = this.layoutManager.dropTargetIndicator;
-        if (dropTargetIndicator === null) throw new (0, _internalError.UnexpectedNullError)("ACIHDZ5593");
-        else dropTargetIndicator.highlightArea(area, 1);
-    }
-    /** @internal */ // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    onDrop(contentItem, area) {
-        this.addChild(contentItem);
-    }
-    /** @internal */ show() {
-        this.layoutManager.beginSizeInvalidation();
-        try {
-            // Not sure why showAllActiveContentItems() was called. GoldenLayout seems to work fine without it.  Left commented code
-            // in source in case a reason for it becomes apparent.
-            // this.layoutManager.showAllActiveContentItems();
-            (0, _utils.setElementDisplayVisibility)(this._element, true);
-            // this.layoutManager.updateSizeFromContainer();
-            for(let i = 0; i < this._contentItems.length; i++)this._contentItems[i].show();
-        } finally{
-            this.layoutManager.endSizeInvalidation();
-        }
-    }
-    /**
-     * Destroys this item ands its children
-     * @internal
-     */ destroy() {
-        for(let i = 0; i < this._contentItems.length; i++)this._contentItems[i].destroy();
-        this._contentItems = [];
-        this.emitBaseBubblingEvent("beforeItemDestroyed");
-        this._element.remove();
-        this.emitBaseBubblingEvent("itemDestroyed");
-    }
-    /**
-     * Returns the area the component currently occupies
-     * @internal
-     */ getElementArea(element) {
-        element = element !== null && element !== void 0 ? element : this._element;
-        const rect = element.getBoundingClientRect();
-        const top = rect.top + document.body.scrollTop;
-        const left = rect.left + document.body.scrollLeft;
-        const width = rect.width;
-        const height = rect.height;
-        return {
-            x1: left,
-            y1: top,
-            x2: left + width,
-            y2: top + height,
-            surface: width * height,
-            contentItem: this
-        };
-    }
-    /**
-     * The tree of content items is created in two steps: First all content items are instantiated,
-     * then init is called recursively from top to bottem. This is the basic init function,
-     * it can be used, extended or overwritten by the content items
-     *
-     * Its behaviour depends on the content item
-     * @internal
-     */ init() {
-        this._isInitialised = true;
-        this.emitBaseBubblingEvent("itemCreated");
-        this.emitUnknownBubblingEvent(this.type + "Created");
-    }
-    /** @internal */ setParent(parent) {
-        this._parent = parent;
-    }
-    /** @internal */ addPopInParentId(id) {
-        if (!this.popInParentIds.includes(id)) this.popInParentIds.push(id);
-    }
-    /** @internal */ initContentItems() {
-        for(let i = 0; i < this._contentItems.length; i++)this._contentItems[i].init();
-    }
-    /** @internal */ hide() {
-        this.layoutManager.beginSizeInvalidation();
-        try {
-            (0, _utils.setElementDisplayVisibility)(this._element, false);
-        // this.layoutManager.updateSizeFromContainer();
-        } finally{
-            this.layoutManager.endSizeInvalidation();
-        }
-    }
-    /** @internal */ updateContentItemsSize(force) {
-        for(let i = 0; i < this._contentItems.length; i++)this._contentItems[i].updateSize(force);
-    }
-    /**
-     * creates all content items for this node at initialisation time
-     * PLEASE NOTE, please see addChild for adding contentItems at runtime
-     * @internal
-     */ createContentItems(content) {
-        const count = content.length;
-        const result = new Array(count);
-        for(let i = 0; i < content.length; i++)result[i] = this.layoutManager.createContentItem(content[i], this);
-        return result;
-    }
-    /**
-     * Called for every event on the item tree. Decides whether the event is a bubbling
-     * event and propagates it to its parent
-     *
-     * @param name - The name of the event
-     * @param event -
-     * @internal
-     */ propagateEvent(name, args) {
-        if (args.length === 1) {
-            const event = args[0];
-            if (event instanceof (0, _eventEmitter.EventEmitter).BubblingEvent && event.isPropagationStopped === false && this._isInitialised === true) {
-                /**
-                 * In some cases (e.g. if an element is created from a DragSource) it
-                 * doesn't have a parent and is not a child of GroundItem. If that's the case
-                 * propagate the bubbling event from the top level of the substree directly
-                 * to the layoutManager
-                 */ if (this.isGround === false && this._parent) this._parent.emitUnknown(name, event);
-                else this.scheduleEventPropagationToLayoutManager(name, event);
-            }
-        }
-    }
-    tryBubbleEvent(name, args) {
-        if (args.length === 1) {
-            const event = args[0];
-            if (event instanceof (0, _eventEmitter.EventEmitter).BubblingEvent && event.isPropagationStopped === false && this._isInitialised === true) {
-                /**
-                 * In some cases (e.g. if an element is created from a DragSource) it
-                 * doesn't have a parent and is not a child of GroundItem. If that's the case
-                 * propagate the bubbling event from the top level of the substree directly
-                 * to the layoutManager
-                 */ if (this.isGround === false && this._parent) this._parent.emitUnknown(name, event);
-                else this.scheduleEventPropagationToLayoutManager(name, event);
-            }
-        }
-    }
-    /**
-     * All raw events bubble up to the Ground element. Some events that
-     * are propagated to - and emitted by - the layoutManager however are
-     * only string-based, batched and sanitized to make them more usable
-     *
-     * @param name - The name of the event
-     * @internal
-     */ scheduleEventPropagationToLayoutManager(name, event) {
-        if (this._throttledEvents.indexOf(name) === -1) this.layoutManager.emitUnknown(name, event);
-        else if (this._pendingEventPropagations[name] !== true) {
-            this._pendingEventPropagations[name] = true;
-            globalThis.requestAnimationFrame(()=>this.propagateEventToLayoutManager(name, event));
-        }
-    }
-    /**
-     * Callback for events scheduled by _scheduleEventPropagationToLayoutManager
-     *
-     * @param name - The name of the event
-     * @internal
-     */ propagateEventToLayoutManager(name, event) {
-        this._pendingEventPropagations[name] = false;
-        this.layoutManager.emitUnknown(name, event);
-    }
-}
-
-},{"../errors/internal-error":"7ms7b","../utils/event-emitter":"jZSJk","../utils/utils":"fArjz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bda7y":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * GroundItem is the ContentItem whose one child is the root ContentItem (Root is planted in Ground).
- * (Previously it was called root however this was incorrect as its child is the root item)
- * There is only one instance of GroundItem and it is automatically created by the Layout Manager
- * @internal
- */ parcelHelpers.export(exports, "GroundItem", ()=>GroundItem);
-var _config = require("../config/config");
-var _resolvedConfig = require("../config/resolved-config");
-var _internalError = require("../errors/internal-error");
-var _types = require("../utils/types");
-var _utils = require("../utils/utils");
-var _componentItem = require("./component-item");
-var _componentParentableItem = require("./component-parentable-item");
-var _contentItem = require("./content-item");
-var _rowOrColumn = require("./row-or-column");
-class GroundItem extends (0, _componentParentableItem.ComponentParentableItem) {
-    constructor(layoutManager, rootItemConfig, containerElement){
-        super(layoutManager, (0, _resolvedConfig.ResolvedGroundItemConfig).create(rootItemConfig), null, GroundItem.createElement(document));
-        this.isGround = true;
-        this._childElementContainer = this.element;
-        this._containerElement = containerElement;
-        // insert before any pre-existing content elements
-        let before = null;
-        while(true){
-            const prev = before ? before.previousSibling : this._containerElement.lastChild;
-            if (prev instanceof Element && prev.classList.contains("lm_content" /* Content */ )) before = prev;
-            else break;
-        }
-        this._containerElement.insertBefore(this.element, before);
-    }
-    init() {
-        if (this.isInitialised === true) return;
-        this.updateNodeSize();
-        for(let i = 0; i < this.contentItems.length; i++)this._childElementContainer.appendChild(this.contentItems[i].element);
-        super.init();
-        this.initContentItems();
-    }
-    /**
-     * Loads a new Layout
-     * Internal only.  To load a new layout with API, use {@link (LayoutManager:class).loadLayout}
-     */ loadRoot(rootItemConfig) {
-        // Remove existing root if it exists
-        this.clearRoot();
-        if (rootItemConfig !== undefined) {
-            const rootContentItem = this.layoutManager.createAndInitContentItem(rootItemConfig, this);
-            this.addChild(rootContentItem, 0);
-        }
-    }
-    clearRoot() {
-        // Remove existing root if it exists
-        const contentItems = this.contentItems;
-        switch(contentItems.length){
-            case 0:
-                return;
-            case 1:
-                {
-                    const existingRootContentItem = contentItems[0];
-                    existingRootContentItem.remove();
-                    return;
-                }
-            default:
-                throw new (0, _internalError.AssertError)("GILR07721");
-        }
-    }
-    /**
-     * Adds a ContentItem child to root ContentItem.
-     * Internal only.  To load a add with API, use {@link (LayoutManager:class).addItem}
-     * @returns -1 if added as root otherwise index in root ContentItem's content
-     */ addItem(itemConfig, index) {
-        this.layoutManager.checkMinimiseMaximisedStack();
-        const resolvedItemConfig = (0, _config.ItemConfig).resolve(itemConfig, false);
-        let parent;
-        if (this.contentItems.length > 0) parent = this.contentItems[0];
-        else // eslint-disable-next-line @typescript-eslint/no-this-alias
-        parent = this;
-        if (parent.isComponent) throw new Error("Cannot add item as child to ComponentItem");
-        else {
-            const contentItem = this.layoutManager.createAndInitContentItem(resolvedItemConfig, parent);
-            index = parent.addChild(contentItem, index);
-            return parent === this ? -1 : index;
-        }
-    }
-    loadComponentAsRoot(itemConfig) {
-        // Remove existing root if it exists
-        this.clearRoot();
-        const resolvedItemConfig = (0, _config.ItemConfig).resolve(itemConfig, false);
-        if (resolvedItemConfig.maximised) throw new Error("Root Component cannot be maximised");
-        else {
-            const rootContentItem = new (0, _componentItem.ComponentItem)(this.layoutManager, resolvedItemConfig, this);
-            rootContentItem.init();
-            this.addChild(rootContentItem, 0);
-        }
-    }
-    /**
-     * Adds a Root ContentItem.
-     * Internal only.  To replace Root ContentItem with API, use {@link (LayoutManager:class).loadLayout}
-     */ addChild(contentItem, index) {
-        if (this.contentItems.length > 0) throw new Error("Ground node can only have a single child");
-        else {
-            // contentItem = this.layoutManager._$normalizeContentItem(contentItem, this);
-            this._childElementContainer.appendChild(contentItem.element);
-            index = super.addChild(contentItem, index);
-            this.updateSize(false);
-            this.emitBaseBubblingEvent("stateChanged");
-            return index;
-        }
-    }
-    /** @internal */ calculateConfigContent() {
-        const contentItems = this.contentItems;
-        const count = contentItems.length;
-        const result = new Array(count);
-        for(let i = 0; i < count; i++){
-            const item = contentItems[i];
-            const itemConfig = item.toConfig();
-            if ((0, _resolvedConfig.ResolvedRootItemConfig).isRootItemConfig(itemConfig)) result[i] = itemConfig;
-            else throw new (0, _internalError.AssertError)("RCCC66832");
-        }
-        return result;
-    }
-    /** @internal */ setSize(width, height) {
-        if (width === undefined || height === undefined) this.updateSize(false); // For backwards compatibility with v1.x API
-        else {
-            (0, _utils.setElementWidth)(this.element, width);
-            (0, _utils.setElementHeight)(this.element, height);
-            // GroundItem can be empty
-            if (this.contentItems.length > 0) {
-                (0, _utils.setElementWidth)(this.contentItems[0].element, width);
-                (0, _utils.setElementHeight)(this.contentItems[0].element, height);
-            }
-            this.updateContentItemsSize(false);
-        }
-    }
-    /**
-     * Adds a Root ContentItem.
-     * Internal only.  To replace Root ContentItem with API, use {@link (LayoutManager:class).updateRootSize}
-     */ updateSize(force) {
-        this.layoutManager.beginVirtualSizedContainerAdding();
-        try {
-            this.updateNodeSize();
-            this.updateContentItemsSize(force);
-        } finally{
-            this.layoutManager.endVirtualSizedContainerAdding();
-        }
-    }
-    createSideAreas() {
-        const areaSize = 50;
-        const oppositeSides = GroundItem.Area.oppositeSides;
-        const result = new Array(Object.keys(oppositeSides).length);
-        let idx = 0;
-        for(const key in oppositeSides){
-            const side = key;
-            const area = this.getElementArea();
-            if (area === null) throw new (0, _internalError.UnexpectedNullError)("RCSA77553");
-            else {
-                area.side = side;
-                if (oppositeSides[side][1] === "2") area[side] = area[oppositeSides[side]] - areaSize;
-                else area[side] = area[oppositeSides[side]] + areaSize;
-                area.surface = (area.x2 - area.x1) * (area.y2 - area.y1);
-                result[idx++] = area;
-            }
-        }
-        return result;
-    }
-    highlightDropZone(x, y, area) {
-        this.layoutManager.tabDropPlaceholder.remove();
-        super.highlightDropZone(x, y, area);
-    }
-    onDrop(contentItem, area) {
-        if (contentItem.isComponent) {
-            const itemConfig = (0, _resolvedConfig.ResolvedStackItemConfig).createDefault();
-            // since ResolvedItemConfig.contentItems not set up, we need to add header from Component
-            const component = contentItem;
-            itemConfig.header = (0, _resolvedConfig.ResolvedHeaderedItemConfig).Header.createCopy(component.headerConfig);
-            const stack = this.layoutManager.createAndInitContentItem(itemConfig, this);
-            stack.addChild(contentItem);
-            contentItem = stack;
-        }
-        if (this.contentItems.length === 0) this.addChild(contentItem);
-        else {
-            /*
-             * If the contentItem that's being dropped is not dropped on a Stack (cases which just passed above and
-             * which would wrap the contentItem in a Stack) we need to check whether contentItem is a RowOrColumn.
-             * If it is, we need to re-wrap it in a Stack like it was when it was dragged by its Tab (it was dragged!).
-             */ if (contentItem.type === (0, _types.ItemType).row || contentItem.type === (0, _types.ItemType).column) {
-                const itemConfig = (0, _resolvedConfig.ResolvedStackItemConfig).createDefault();
-                const stack = this.layoutManager.createContentItem(itemConfig, this);
-                stack.addChild(contentItem);
-                contentItem = stack;
-            }
-            const type = area.side[0] == "x" ? (0, _types.ItemType).row : (0, _types.ItemType).column;
-            const insertBefore = area.side[1] == "2";
-            const column = this.contentItems[0];
-            if (!(column instanceof (0, _rowOrColumn.RowOrColumn)) || column.type !== type) {
-                const itemConfig = (0, _resolvedConfig.ResolvedItemConfig).createDefault(type);
-                const rowOrColumn = this.layoutManager.createContentItem(itemConfig, this);
-                this.replaceChild(column, rowOrColumn);
-                rowOrColumn.addChild(contentItem, insertBefore ? 0 : undefined, true);
-                rowOrColumn.addChild(column, insertBefore ? undefined : 0, true);
-                column.size = 50;
-                contentItem.size = 50;
-                contentItem.sizeUnit = (0, _types.SizeUnitEnum).Percent;
-                rowOrColumn.updateSize(false);
-            } else {
-                const sibling = column.contentItems[insertBefore ? 0 : column.contentItems.length - 1];
-                column.addChild(contentItem, insertBefore ? 0 : undefined, true);
-                sibling.size *= 0.5;
-                contentItem.size = sibling.size;
-                contentItem.sizeUnit = (0, _types.SizeUnitEnum).Percent;
-                column.updateSize(false);
-            }
-        }
-    }
-    // No ContentItem can dock with groundItem.  However Stack can have a GroundItem parent and Stack requires that
-    // its parent implement dock() function.  Accordingly this function is implemented but throws an exception as it should
-    // never be called
-    dock() {
-        throw new (0, _internalError.AssertError)("GID87731");
-    }
-    // No ContentItem can dock with groundItem.  However Stack can have a GroundItem parent and Stack requires that
-    // its parent implement validateDocking() function.  Accordingly this function is implemented but throws an exception as it should
-    // never be called
-    validateDocking() {
-        throw new (0, _internalError.AssertError)("GIVD87732");
-    }
-    getAllContentItems() {
-        const result = [
-            this
-        ];
-        this.deepGetAllContentItems(this.contentItems, result);
-        return result;
-    }
-    getConfigMaximisedItems() {
-        const result = [];
-        this.deepFilterContentItems(this.contentItems, result, (item)=>{
-            if ((0, _contentItem.ContentItem).isStack(item) && item.initialWantMaximise) return true;
-            else {
-                if ((0, _contentItem.ContentItem).isComponentItem(item) && item.initialWantMaximise) return true;
-                else return false;
-            }
-        });
-        return result;
-    }
-    getItemsByPopInParentId(popInParentId) {
-        const result = [];
-        this.deepFilterContentItems(this.contentItems, result, (item)=>item.popInParentIds.includes(popInParentId));
-        return result;
-    }
-    toConfig() {
-        throw new Error("Cannot generate GroundItem config");
-    }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    setActiveComponentItem(item, focus, suppressFocusEvent) {
-    // only applicable if ComponentItem is root and then it always has focus
-    }
-    updateNodeSize() {
-        const { width, height } = (0, _utils.getElementWidthAndHeight)(this._containerElement);
-        (0, _utils.setElementWidth)(this.element, width);
-        (0, _utils.setElementHeight)(this.element, height);
-        /*
-         * GroundItem can be empty
-         */ if (this.contentItems.length > 0) {
-            (0, _utils.setElementWidth)(this.contentItems[0].element, width);
-            (0, _utils.setElementHeight)(this.contentItems[0].element, height);
-        }
-    }
-    deepGetAllContentItems(content, result) {
-        for(let i = 0; i < content.length; i++){
-            const contentItem = content[i];
-            result.push(contentItem);
-            this.deepGetAllContentItems(contentItem.contentItems, result);
-        }
-    }
-    deepFilterContentItems(content, result, checkAcceptFtn) {
-        for(let i = 0; i < content.length; i++){
-            const contentItem = content[i];
-            if (checkAcceptFtn(contentItem)) result.push(contentItem);
-            this.deepFilterContentItems(contentItem.contentItems, result, checkAcceptFtn);
-        }
-    }
-}
-/** @internal */ (function(GroundItem) {
-    let Area;
-    (function(Area) {
-        Area.oppositeSides = {
-            y2: "y1",
-            x2: "x1",
-            y1: "y2",
-            x1: "x2"
-        };
-    })(Area = GroundItem.Area || (GroundItem.Area = {}));
-    function createElement(document1) {
-        const element = document1.createElement("div");
-        element.classList.add("lm_goldenlayout" /* GoldenLayout */ );
-        element.classList.add("lm_item" /* Item */ );
-        element.classList.add("lm_root" /* Root */ );
-        return element;
-    }
-    GroundItem.createElement = createElement;
-})(GroundItem || (GroundItem = {}));
-
-},{"../config/config":"3GcjJ","../config/resolved-config":"gWMkA","../errors/internal-error":"7ms7b","../utils/types":"dBAL3","../utils/utils":"fArjz","./component-item":"iMxBy","./component-parentable-item":"lTFvm","./content-item":"jpTQx","./row-or-column":"gKQ6l","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lTFvm":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "ComponentParentableItem", ()=>ComponentParentableItem);
-var _contentItem = require("./content-item");
-class ComponentParentableItem extends (0, _contentItem.ContentItem) {
-    constructor(){
-        super(...arguments);
-        /** @internal */ this._focused = false;
-    }
-    get focused() {
-        return this._focused;
-    }
-    /** @internal */ setFocusedValue(value) {
-        this._focused = value;
-    }
-}
-
-},{"./content-item":"jpTQx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gKQ6l":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/** @public */ parcelHelpers.export(exports, "RowOrColumn", ()=>RowOrColumn);
-var _config = require("../config/config");
-var _splitter = require("../controls/splitter");
-var _internalError = require("../errors/internal-error");
-var _types = require("../utils/types");
-var _utils = require("../utils/utils");
-var _contentItem = require("./content-item");
-class RowOrColumn extends (0, _contentItem.ContentItem) {
-    /** @internal */ constructor(isColumn, layoutManager, config, /** @internal */ _rowOrColumnParent){
-        super(layoutManager, config, _rowOrColumnParent, RowOrColumn.createElement(document, isColumn));
-        this._rowOrColumnParent = _rowOrColumnParent;
-        /** @internal */ this._splitter = [];
-        this.isRow = !isColumn;
-        this.isColumn = isColumn;
-        this._childElementContainer = this.element;
-        this._splitterSize = layoutManager.layoutConfig.dimensions.borderWidth;
-        this._splitterGrabSize = layoutManager.layoutConfig.dimensions.borderGrabWidth;
-        this._isColumn = isColumn;
-        this._dimension = isColumn ? "height" : "width";
-        this._splitterPosition = null;
-        this._splitterMinPosition = null;
-        this._splitterMaxPosition = null;
-        switch(config.type){
-            case (0, _types.ItemType).row:
-            case (0, _types.ItemType).column:
-                this._configType = config.type;
-                break;
-            default:
-                throw new (0, _internalError.AssertError)("ROCCCT00925");
-        }
-    }
-    newComponent(componentType, componentState, title, index) {
-        const itemConfig = {
-            type: "component",
-            componentType,
-            componentState,
-            title
-        };
-        return this.newItem(itemConfig, index);
-    }
-    addComponent(componentType, componentState, title, index) {
-        const itemConfig = {
-            type: "component",
-            componentType,
-            componentState,
-            title
-        };
-        return this.addItem(itemConfig, index);
-    }
-    newItem(itemConfig, index) {
-        index = this.addItem(itemConfig, index);
-        const createdItem = this.contentItems[index];
-        if ((0, _contentItem.ContentItem).isStack(createdItem) && (0, _config.ItemConfig).isComponent(itemConfig)) // createdItem is a Stack which was created to hold wanted component.  Return component
-        return createdItem.contentItems[0];
-        else return createdItem;
-    }
-    addItem(itemConfig, index) {
-        this.layoutManager.checkMinimiseMaximisedStack();
-        const resolvedItemConfig = (0, _config.ItemConfig).resolve(itemConfig, false);
-        const contentItem = this.layoutManager.createAndInitContentItem(resolvedItemConfig, this);
-        return this.addChild(contentItem, index, false);
-    }
-    /**
-     * Add a new contentItem to the Row or Column
-     *
-     * @param contentItem -
-     * @param index - The position of the new item within the Row or Column.
-     *                If no index is provided the item will be added to the end
-     * @param suspendResize - If true the items won't be resized. This will leave the item in
-     *                        an inconsistent state and is only intended to be used if multiple
-     *                        children need to be added in one go and resize is called afterwards
-     *
-     * @returns
-     */ addChild(contentItem, index, suspendResize) {
-        // contentItem = this.layoutManager._$normalizeContentItem(contentItem, this);
-        if (index === undefined) index = this.contentItems.length;
-        if (this.contentItems.length > 0) {
-            const splitterElement = this.createSplitter(Math.max(0, index - 1)).element;
-            if (index > 0) {
-                this.contentItems[index - 1].element.insertAdjacentElement("afterend", splitterElement);
-                splitterElement.insertAdjacentElement("afterend", contentItem.element);
-            } else {
-                this.contentItems[0].element.insertAdjacentElement("beforebegin", splitterElement);
-                splitterElement.insertAdjacentElement("beforebegin", contentItem.element);
-            }
-        } else this._childElementContainer.appendChild(contentItem.element);
-        super.addChild(contentItem, index);
-        const newItemSize = 1 / this.contentItems.length * 100;
-        if (suspendResize === true) {
-            this.emitBaseBubblingEvent("stateChanged");
-            return index;
-        }
-        for(let i = 0; i < this.contentItems.length; i++){
-            const indexedContentItem = this.contentItems[i];
-            if (indexedContentItem === contentItem) contentItem.size = newItemSize;
-            else {
-                const itemSize = indexedContentItem.size *= (100 - newItemSize) / 100;
-                indexedContentItem.size = itemSize;
-            }
-        }
-        this.updateSize(false);
-        this.emitBaseBubblingEvent("stateChanged");
-        return index;
-    }
-    /**
-     * Removes a child of this element
-     *
-     * @param contentItem -
-     * @param keepChild - If true the child will be removed, but not destroyed
-     *
-     */ removeChild(contentItem, keepChild) {
-        const index = this.contentItems.indexOf(contentItem);
-        const splitterIndex = Math.max(index - 1, 0);
-        if (index === -1) throw new Error("Can't remove child. ContentItem is not child of this Row or Column");
-        /**
-         * Remove the splitter before the item or after if the item happens
-         * to be the first in the row/column
-         */ if (this._splitter[splitterIndex]) {
-            this._splitter[splitterIndex].destroy();
-            this._splitter.splice(splitterIndex, 1);
-        }
-        super.removeChild(contentItem, keepChild);
-        if (this.contentItems.length === 1 && this.isClosable === true) {
-            const childItem = this.contentItems[0];
-            this.contentItems.length = 0;
-            this._rowOrColumnParent.replaceChild(this, childItem, true);
-        } else {
-            this.updateSize(false);
-            this.emitBaseBubblingEvent("stateChanged");
-        }
-    }
-    /**
-     * Replaces a child of this Row or Column with another contentItem
-     */ replaceChild(oldChild, newChild) {
-        const size = oldChild.size;
-        super.replaceChild(oldChild, newChild);
-        newChild.size = size;
-        this.updateSize(false);
-        this.emitBaseBubblingEvent("stateChanged");
-    }
-    /**
-     * Called whenever the dimensions of this item or one of its parents change
-     */ updateSize(force) {
-        this.layoutManager.beginVirtualSizedContainerAdding();
-        try {
-            this.updateNodeSize();
-            this.updateContentItemsSize(force);
-        } finally{
-            this.layoutManager.endVirtualSizedContainerAdding();
-        }
-    }
-    /**
-     * Invoked recursively by the layout manager. ContentItem.init appends
-     * the contentItem's DOM elements to the container, RowOrColumn init adds splitters
-     * in between them
-     * @internal
-     */ init() {
-        if (this.isInitialised === true) return;
-        this.updateNodeSize();
-        for(let i = 0; i < this.contentItems.length; i++)this._childElementContainer.appendChild(this.contentItems[i].element);
-        super.init();
-        for(let i = 0; i < this.contentItems.length - 1; i++)this.contentItems[i].element.insertAdjacentElement("afterend", this.createSplitter(i).element);
-        this.initContentItems();
-    }
-    toConfig() {
-        const result = {
-            type: this.type,
-            content: this.calculateConfigContent(),
-            size: this.size,
-            sizeUnit: this.sizeUnit,
-            minSize: this.minSize,
-            minSizeUnit: this.minSizeUnit,
-            id: this.id,
-            isClosable: this.isClosable
-        };
-        return result;
-    }
-    /** @internal */ setParent(parent) {
-        this._rowOrColumnParent = parent;
-        super.setParent(parent);
-    }
-    /** @internal */ updateNodeSize() {
-        if (this.contentItems.length > 0) {
-            this.calculateRelativeSizes();
-            this.setAbsoluteSizes();
-        }
-        this.emitBaseBubblingEvent("stateChanged");
-        this.emit("resize");
-    }
-    /**
-     * Turns the relative sizes calculated by calculateRelativeSizes into
-     * absolute pixel values and applies them to the children's DOM elements
-     *
-     * Assigns additional pixels to counteract Math.floor
-     * @internal
-     */ setAbsoluteSizes() {
-        const absoluteSizes = this.calculateAbsoluteSizes();
-        for(let i = 0; i < this.contentItems.length; i++){
-            if (absoluteSizes.additionalPixel - i > 0) absoluteSizes.itemSizes[i]++;
-            if (this._isColumn) {
-                (0, _utils.setElementWidth)(this.contentItems[i].element, absoluteSizes.crossAxisSize);
-                (0, _utils.setElementHeight)(this.contentItems[i].element, absoluteSizes.itemSizes[i]);
-            } else {
-                (0, _utils.setElementWidth)(this.contentItems[i].element, absoluteSizes.itemSizes[i]);
-                (0, _utils.setElementHeight)(this.contentItems[i].element, absoluteSizes.crossAxisSize);
-            }
-        }
-    }
-    /**
-     * Calculates the absolute sizes of all of the children of this Item.
-     * @returns Set with absolute sizes and additional pixels.
-     * @internal
-     */ calculateAbsoluteSizes() {
-        const totalSplitterSize = (this.contentItems.length - 1) * this._splitterSize;
-        const { width: elementWidth, height: elementHeight } = (0, _utils.getElementWidthAndHeight)(this.element);
-        let totalSize;
-        let crossAxisSize;
-        if (this._isColumn) {
-            totalSize = elementHeight - totalSplitterSize;
-            crossAxisSize = elementWidth;
-        } else {
-            totalSize = elementWidth - totalSplitterSize;
-            crossAxisSize = elementHeight;
-        }
-        let totalAssigned = 0;
-        const itemSizes = [];
-        for(let i = 0; i < this.contentItems.length; i++){
-            const contentItem = this.contentItems[i];
-            let itemSize;
-            if (contentItem.sizeUnit === (0, _types.SizeUnitEnum).Percent) itemSize = Math.floor(totalSize * (contentItem.size / 100));
-            else throw new (0, _internalError.AssertError)("ROCCAS6692");
-            totalAssigned += itemSize;
-            itemSizes.push(itemSize);
-        }
-        const additionalPixel = Math.floor(totalSize - totalAssigned);
-        return {
-            itemSizes,
-            additionalPixel,
-            totalSize,
-            crossAxisSize
-        };
-    }
-    /**
-     * Calculates the relative sizes of all children of this Item. The logic
-     * is as follows:
-     *
-     * - Add up the total size of all items that have a configured size
-     *
-     * - If the total == 100 (check for floating point errors)
-     *        Excellent, job done
-     *
-     * - If the total is \> 100,
-     *        set the size of items without set dimensions to 1/3 and add this to the total
-     *        set the size off all items so that the total is hundred relative to their original size
-     *
-     * - If the total is \< 100
-     *        If there are items without set dimensions, distribute the remainder to 100 evenly between them
-     *        If there are no items without set dimensions, increase all items sizes relative to
-     *        their original size so that they add up to 100
-     *
-     * @internal
-     */ calculateRelativeSizes() {
-        let total = 0;
-        const itemsWithFractionalSize = [];
-        let totalFractionalSize = 0;
-        for(let i = 0; i < this.contentItems.length; i++){
-            const contentItem = this.contentItems[i];
-            const sizeUnit = contentItem.sizeUnit;
-            switch(sizeUnit){
-                case (0, _types.SizeUnitEnum).Percent:
-                    total += contentItem.size;
-                    break;
-                case (0, _types.SizeUnitEnum).Fractional:
-                    itemsWithFractionalSize.push(contentItem);
-                    totalFractionalSize += contentItem.size;
-                    break;
-                default:
-                    throw new (0, _internalError.AssertError)("ROCCRS49110", JSON.stringify(contentItem));
-            }
-        }
-        /**
-         * Everything adds up to hundred, all good :-)
-         */ if (Math.round(total) === 100) {
-            this.respectMinItemSize();
-            return;
-        } else /**
-             * Allocate the remaining size to the items with a fractional size
-             */ if (Math.round(total) < 100 && itemsWithFractionalSize.length > 0) {
-            const fractionalAllocatedSize = 100 - total;
-            for(let i = 0; i < itemsWithFractionalSize.length; i++){
-                const contentItem = itemsWithFractionalSize[i];
-                contentItem.size = fractionalAllocatedSize * (contentItem.size / totalFractionalSize);
-                contentItem.sizeUnit = (0, _types.SizeUnitEnum).Percent;
-            }
-            this.respectMinItemSize();
-            return;
-        } else {
-            /**
-                 * If the total is > 100, but there are also items with a fractional size, assign another 50%
-                 * to the fractional items
-                 *
-                 * This will be reset in the next step
-                 */ if (Math.round(total) > 100 && itemsWithFractionalSize.length > 0) {
-                for(let i = 0; i < itemsWithFractionalSize.length; i++){
-                    const contentItem = itemsWithFractionalSize[i];
-                    contentItem.size = 50 * (contentItem.size / totalFractionalSize);
-                    contentItem.sizeUnit = (0, _types.SizeUnitEnum).Percent;
-                }
-                total += 50;
-            }
-            /**
-                 * Set every items size relative to 100 relative to its size to total
-                 */ for(let i = 0; i < this.contentItems.length; i++){
-                const contentItem = this.contentItems[i];
-                contentItem.size = contentItem.size / total * 100;
-            }
-            this.respectMinItemSize();
-        }
-    }
-    /**
-     * Adjusts the column widths to respect the dimensions minItemWidth if set.
-     * @internal
-     */ respectMinItemSize() {
-        const minItemSize = this.calculateContentItemMinSize(this);
-        if (minItemSize <= 0 || this.contentItems.length <= 1) return;
-        else {
-            let totalOverMin = 0;
-            let totalUnderMin = 0;
-            const entriesOverMin = [];
-            const allEntries = [];
-            const absoluteSizes = this.calculateAbsoluteSizes();
-            /**
-             * Figure out how much we are under the min item size total and how much room we have to use.
-             */ for(let i = 0; i < absoluteSizes.itemSizes.length; i++){
-                const itemSize = absoluteSizes.itemSizes[i];
-                let entry;
-                if (itemSize < minItemSize) {
-                    totalUnderMin += minItemSize - itemSize;
-                    entry = {
-                        size: minItemSize
-                    };
-                } else {
-                    totalOverMin += itemSize - minItemSize;
-                    entry = {
-                        size: itemSize
-                    };
-                    entriesOverMin.push(entry);
-                }
-                allEntries.push(entry);
-            }
-            /**
-             * If there is nothing under min, or there is not enough over to make up the difference, do nothing.
-             */ if (totalUnderMin === 0 || totalUnderMin > totalOverMin) return;
-            else {
-                /**
-                 * Evenly reduce all columns that are over the min item width to make up the difference.
-                 */ const reducePercent = totalUnderMin / totalOverMin;
-                let remainingSize = totalUnderMin;
-                for(let i = 0; i < entriesOverMin.length; i++){
-                    const entry = entriesOverMin[i];
-                    const reducedSize = Math.round((entry.size - minItemSize) * reducePercent);
-                    remainingSize -= reducedSize;
-                    entry.size -= reducedSize;
-                }
-                /**
-                 * Take anything remaining from the last item.
-                 */ if (remainingSize !== 0) allEntries[allEntries.length - 1].size -= remainingSize;
-                /**
-                 * Set every items size relative to 100 relative to its size to total
-                 */ for(let i = 0; i < this.contentItems.length; i++){
-                    const contentItem = this.contentItems[i];
-                    contentItem.size = allEntries[i].size / absoluteSizes.totalSize * 100;
-                }
-            }
-        }
-    }
-    /**
-     * Instantiates a new Splitter, binds events to it and adds
-     * it to the array of splitters at the position specified as the index argument
-     *
-     * What it doesn't do though is append the splitter to the DOM
-     *
-     * @param index - The position of the splitter
-     *
-     * @returns
-     * @internal
-     */ createSplitter(index) {
-        const splitter = new (0, _splitter.Splitter)(this._isColumn, this._splitterSize, this._splitterGrabSize);
-        splitter.on("drag", (offsetX, offsetY)=>this.onSplitterDrag(splitter, offsetX, offsetY));
-        splitter.on("dragStop", ()=>this.onSplitterDragStop(splitter));
-        splitter.on("dragStart", ()=>this.onSplitterDragStart(splitter));
-        this._splitter.splice(index, 0, splitter);
-        return splitter;
-    }
-    /**
-     * Locates the instance of Splitter in the array of
-     * registered splitters and returns a map containing the contentItem
-     * before and after the splitters, both of which are affected if the
-     * splitter is moved
-     *
-     * @returns A map of contentItems that the splitter affects
-     * @internal
-     */ getSplitItems(splitter) {
-        const index = this._splitter.indexOf(splitter);
-        return {
-            before: this.contentItems[index],
-            after: this.contentItems[index + 1]
-        };
-    }
-    calculateContentItemMinSize(contentItem) {
-        const minSize = contentItem.minSize;
-        if (minSize !== undefined) {
-            if (contentItem.minSizeUnit === (0, _types.SizeUnitEnum).Pixel) return minSize;
-            else throw new (0, _internalError.AssertError)("ROCGMD98831", JSON.stringify(contentItem));
-        } else {
-            const dimensions = this.layoutManager.layoutConfig.dimensions;
-            return this._isColumn ? dimensions.defaultMinItemHeight : dimensions.defaultMinItemWidth;
-        }
-    }
-    /**
-     * Gets the minimum dimensions for the given item configuration array
-     * @internal
-     */ calculateContentItemsTotalMinSize(contentItems) {
-        let totalMinSize = 0;
-        for (const contentItem of contentItems)totalMinSize += this.calculateContentItemMinSize(contentItem);
-        return totalMinSize;
-    }
-    /**
-     * Invoked when a splitter's dragListener fires dragStart. Calculates the splitters
-     * movement area once (so that it doesn't need calculating on every mousemove event)
-     * @internal
-     */ onSplitterDragStart(splitter) {
-        const items = this.getSplitItems(splitter);
-        const beforeWidth = (0, _utils.pixelsToNumber)(items.before.element.style[this._dimension]);
-        const afterSize = (0, _utils.pixelsToNumber)(items.after.element.style[this._dimension]);
-        const beforeMinSize = this.calculateContentItemsTotalMinSize(items.before.contentItems);
-        const afterMinSize = this.calculateContentItemsTotalMinSize(items.after.contentItems);
-        this._splitterPosition = 0;
-        this._splitterMinPosition = -1 * (beforeWidth - beforeMinSize);
-        this._splitterMaxPosition = afterSize - afterMinSize;
-    }
-    /**
-     * Invoked when a splitter's DragListener fires drag. Updates the splitter's DOM position,
-     * but not the sizes of the elements the splitter controls in order to minimize resize events
-     *
-     * @param splitter -
-     * @param offsetX - Relative pixel values to the splitter's original position. Can be negative
-     * @param offsetY - Relative pixel values to the splitter's original position. Can be negative
-     * @internal
-     */ onSplitterDrag(splitter, offsetX, offsetY) {
-        let offset = this._isColumn ? offsetY : offsetX;
-        if (this._splitterMinPosition === null || this._splitterMaxPosition === null) throw new (0, _internalError.UnexpectedNullError)("ROCOSD59226");
-        offset = Math.max(offset, this._splitterMinPosition);
-        offset = Math.min(offset, this._splitterMaxPosition);
-        this._splitterPosition = offset;
-        const offsetPixels = (0, _utils.numberToPixels)(offset);
-        if (this._isColumn) splitter.element.style.top = offsetPixels;
-        else splitter.element.style.left = offsetPixels;
-    }
-    /**
-     * Invoked when a splitter's DragListener fires dragStop. Resets the splitters DOM position,
-     * and applies the new sizes to the elements before and after the splitter and their children
-     * on the next animation frame
-     * @internal
-     */ onSplitterDragStop(splitter) {
-        if (this._splitterPosition === null) throw new (0, _internalError.UnexpectedNullError)("ROCOSDS66932");
-        else {
-            const items = this.getSplitItems(splitter);
-            const sizeBefore = (0, _utils.pixelsToNumber)(items.before.element.style[this._dimension]);
-            const sizeAfter = (0, _utils.pixelsToNumber)(items.after.element.style[this._dimension]);
-            const splitterPositionInRange = (this._splitterPosition + sizeBefore) / (sizeBefore + sizeAfter);
-            const totalRelativeSize = items.before.size + items.after.size;
-            items.before.size = splitterPositionInRange * totalRelativeSize;
-            items.after.size = (1 - splitterPositionInRange) * totalRelativeSize;
-            splitter.element.style.top = (0, _utils.numberToPixels)(0);
-            splitter.element.style.left = (0, _utils.numberToPixels)(0);
-            globalThis.requestAnimationFrame(()=>this.updateSize(false));
-        }
-    }
-}
-/** @public */ (function(RowOrColumn) {
-    /** @internal */ function getElementDimensionSize(element, dimension) {
-        if (dimension === "width") return (0, _utils.getElementWidth)(element);
-        else return (0, _utils.getElementHeight)(element);
-    }
-    RowOrColumn.getElementDimensionSize = getElementDimensionSize;
-    /** @internal */ function setElementDimensionSize(element, dimension, value) {
-        if (dimension === "width") return (0, _utils.setElementWidth)(element, value);
-        else return (0, _utils.setElementHeight)(element, value);
-    }
-    RowOrColumn.setElementDimensionSize = setElementDimensionSize;
-    /** @internal */ function createElement(document1, isColumn) {
-        const element = document1.createElement("div");
-        element.classList.add("lm_item" /* Item */ );
-        if (isColumn) element.classList.add("lm_column" /* Column */ );
-        else element.classList.add("lm_row" /* Row */ );
-        return element;
-    }
-    RowOrColumn.createElement = createElement;
-})(RowOrColumn || (RowOrColumn = {}));
-
-},{"../config/config":"3GcjJ","../controls/splitter":"joNxQ","../errors/internal-error":"7ms7b","../utils/types":"dBAL3","../utils/utils":"fArjz","./content-item":"jpTQx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"joNxQ":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/** @internal */ parcelHelpers.export(exports, "Splitter", ()=>Splitter);
-var _dragListener = require("../utils/drag-listener");
-var _utils = require("../utils/utils");
-class Splitter {
-    constructor(_isVertical, _size, grabSize){
-        this._isVertical = _isVertical;
-        this._size = _size;
-        this._grabSize = grabSize < this._size ? this._size : grabSize;
-        this._element = document.createElement("div");
-        this._element.classList.add("lm_splitter" /* Splitter */ );
-        const dragHandleElement = document.createElement("div");
-        dragHandleElement.classList.add("lm_drag_handle" /* DragHandle */ );
-        const handleExcessSize = this._grabSize - this._size;
-        const handleExcessPos = handleExcessSize / 2;
-        if (this._isVertical) {
-            dragHandleElement.style.top = (0, _utils.numberToPixels)(-handleExcessPos);
-            dragHandleElement.style.height = (0, _utils.numberToPixels)(this._size + handleExcessSize);
-            this._element.classList.add("lm_vertical" /* Vertical */ );
-            this._element.style.height = (0, _utils.numberToPixels)(this._size);
-        } else {
-            dragHandleElement.style.left = (0, _utils.numberToPixels)(-handleExcessPos);
-            dragHandleElement.style.width = (0, _utils.numberToPixels)(this._size + handleExcessSize);
-            this._element.classList.add("lm_horizontal" /* Horizontal */ );
-            this._element.style.width = (0, _utils.numberToPixels)(this._size);
-        }
-        this._element.appendChild(dragHandleElement);
-        this._dragListener = new (0, _dragListener.DragListener)(this._element, [
-            dragHandleElement
-        ]);
-    }
-    get element() {
-        return this._element;
-    }
-    destroy() {
-        this._element.remove();
-    }
-    on(eventName, callback) {
-        this._dragListener.on(eventName, callback);
-    }
-}
-
-},{"../utils/drag-listener":"b7LEx","../utils/utils":"fArjz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"b7LEx":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/** @internal */ parcelHelpers.export(exports, "DragListener", ()=>DragListener);
-var _eventEmitter = require("./event-emitter");
-class DragListener extends (0, _eventEmitter.EventEmitter) {
-    constructor(_eElement, extraAllowableChildTargets){
-        super();
-        this._eElement = _eElement;
-        this._pointerTracking = false;
-        this._pointerDownEventListener = (ev)=>this.onPointerDown(ev);
-        this._pointerMoveEventListener = (ev)=>this.onPointerMove(ev);
-        this._pointerUpEventListener = (ev)=>this.onPointerUp(ev);
-        this._timeout = undefined;
-        this._allowableTargets = [
-            _eElement,
-            ...extraAllowableChildTargets
-        ];
-        this._oDocument = document;
-        this._eBody = document.body;
-        /**
-         * The delay after which to start the drag in milliseconds
-         * Do NOT make too short (previous value of 200 was not long enough for my touchpad)
-         * Should generally rely on the mouse move to start drag.  Not this delay.
-         */ this._nDelay = 1800;
-        /**
-         * The distance the mouse needs to be moved to qualify as a drag
-         * Previous comment: works better with delay only
-         * ???
-         * Probably somehow needs tuning for different devices
-         */ this._nDistance = 10;
-        this._nX = 0;
-        this._nY = 0;
-        this._nOriginalX = 0;
-        this._nOriginalY = 0;
-        this._dragging = false;
-        this._eElement.addEventListener("pointerdown", this._pointerDownEventListener, {
-            passive: true
-        });
-    }
-    destroy() {
-        this.checkRemovePointerTrackingEventListeners();
-        this._eElement.removeEventListener("pointerdown", this._pointerDownEventListener);
-    }
-    cancelDrag() {
-        this.processDragStop(undefined);
-    }
-    onPointerDown(oEvent) {
-        if (this._allowableTargets.includes(oEvent.target) && oEvent.isPrimary) {
-            const coordinates = this.getPointerCoordinates(oEvent);
-            this.processPointerDown(coordinates);
-        }
-    }
-    processPointerDown(coordinates) {
-        this._nOriginalX = coordinates.x;
-        this._nOriginalY = coordinates.y;
-        this._oDocument.addEventListener("pointermove", this._pointerMoveEventListener);
-        this._oDocument.addEventListener("pointerup", this._pointerUpEventListener, {
-            passive: true
-        });
-        this._pointerTracking = true;
-        this._timeout = setTimeout(()=>{
-            try {
-                this.startDrag();
-            } catch (err) {
-                console.error(err);
-                throw err;
-            }
-        }, this._nDelay);
-    }
-    onPointerMove(oEvent) {
-        if (this._pointerTracking) {
-            this.processDragMove(oEvent);
-            oEvent.preventDefault();
-        }
-    }
-    processDragMove(dragEvent) {
-        this._nX = dragEvent.pageX - this._nOriginalX;
-        this._nY = dragEvent.pageY - this._nOriginalY;
-        if (this._dragging === false) {
-            if (Math.abs(this._nX) > this._nDistance || Math.abs(this._nY) > this._nDistance) this.startDrag();
-        }
-        if (this._dragging) this.emit("drag", this._nX, this._nY, dragEvent);
-    }
-    onPointerUp(oEvent) {
-        this.processDragStop(oEvent);
-    }
-    processDragStop(dragEvent) {
-        var _a;
-        if (this._timeout !== undefined) {
-            clearTimeout(this._timeout);
-            this._timeout = undefined;
-        }
-        this.checkRemovePointerTrackingEventListeners();
-        if (this._dragging === true) {
-            this._eBody.classList.remove("lm_dragging" /* Dragging */ );
-            this._eElement.classList.remove("lm_dragging" /* Dragging */ );
-            (_a = this._oDocument.querySelector("iframe")) === null || _a === void 0 || _a.style.setProperty("pointer-events", "");
-            this._dragging = false;
-            this.emit("dragStop", dragEvent);
-        }
-    }
-    checkRemovePointerTrackingEventListeners() {
-        if (this._pointerTracking) {
-            this._oDocument.removeEventListener("pointermove", this._pointerMoveEventListener);
-            this._oDocument.removeEventListener("pointerup", this._pointerUpEventListener);
-            this._pointerTracking = false;
-        }
-    }
-    startDrag() {
-        var _a;
-        if (this._timeout !== undefined) {
-            clearTimeout(this._timeout);
-            this._timeout = undefined;
-        }
-        this._dragging = true;
-        this._eBody.classList.add("lm_dragging" /* Dragging */ );
-        this._eElement.classList.add("lm_dragging" /* Dragging */ );
-        (_a = this._oDocument.querySelector("iframe")) === null || _a === void 0 || _a.style.setProperty("pointer-events", "none");
-        this.emit("dragStart", this._nOriginalX, this._nOriginalY);
-    }
-    getPointerCoordinates(event) {
-        const result = {
-            x: event.pageX,
-            y: event.pageY
-        };
-        return result;
-    }
-}
-
-},{"./event-emitter":"jZSJk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"01u88":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * This class creates a temporary container
- * for the component whilst it is being dragged
- * and handles drag events
- * @internal
- */ parcelHelpers.export(exports, "DragProxy", ()=>DragProxy);
-var _internalError = require("../errors/internal-error");
-var _stack = require("../items/stack");
-var _eventEmitter = require("../utils/event-emitter");
-var _types = require("../utils/types");
-var _utils = require("../utils/utils");
-class DragProxy extends (0, _eventEmitter.EventEmitter) {
-    /**
-     * @param x - The initial x position
-     * @param y - The initial y position
-     * @internal
-     */ constructor(x, y, _dragListener, _layoutManager, _componentItem, _originalParent){
-        super();
-        this._dragListener = _dragListener;
-        this._layoutManager = _layoutManager;
-        this._componentItem = _componentItem;
-        this._originalParent = _originalParent;
-        this._area = null;
-        this._lastValidArea = null;
-        this._dragListener.on("drag", (offsetX, offsetY, event)=>this.onDrag(offsetX, offsetY, event));
-        this._dragListener.on("dragStop", ()=>this.onDrop());
-        this.createDragProxyElements(x, y);
-        if (this._componentItem.parent === null) // Note that _contentItem will have dummy GroundItem as parent if initiated by a external drag source
-        throw new (0, _internalError.UnexpectedNullError)("DPC10097");
-        this._componentItemFocused = this._componentItem.focused;
-        if (this._componentItemFocused) this._componentItem.blur();
-        this._componentItem.parent.removeChild(this._componentItem, true);
-        this.setDimensions();
-        document.body.appendChild(this._element);
-        this.determineMinMaxXY();
-        this._layoutManager.calculateItemAreas();
-        this.setDropPosition(x, y);
-    }
-    get element() {
-        return this._element;
-    }
-    /** Create Stack-like structure to contain the dragged component */ createDragProxyElements(initialX, initialY) {
-        this._element = document.createElement("div");
-        this._element.classList.add("lm_dragProxy" /* DragProxy */ );
-        const headerElement = document.createElement("div");
-        headerElement.classList.add("lm_header" /* Header */ );
-        const tabsElement = document.createElement("div");
-        tabsElement.classList.add("lm_tabs" /* Tabs */ );
-        const tabElement = document.createElement("div");
-        tabElement.classList.add("lm_tab" /* Tab */ );
-        const titleElement = document.createElement("span");
-        titleElement.classList.add("lm_title" /* Title */ );
-        tabElement.appendChild(titleElement);
-        tabsElement.appendChild(tabElement);
-        headerElement.appendChild(tabsElement);
-        this._proxyContainerElement = document.createElement("div");
-        this._proxyContainerElement.classList.add("lm_content" /* Content */ );
-        this._element.appendChild(headerElement);
-        this._element.appendChild(this._proxyContainerElement);
-        if (this._originalParent instanceof (0, _stack.Stack) && this._originalParent.headerShow) {
-            this._sided = this._originalParent.headerLeftRightSided;
-            this._element.classList.add("lm_" + this._originalParent.headerSide);
-            if ([
-                (0, _types.Side).right,
-                (0, _types.Side).bottom
-            ].indexOf(this._originalParent.headerSide) >= 0) this._proxyContainerElement.insertAdjacentElement("afterend", headerElement);
-        }
-        this._element.style.left = (0, _utils.numberToPixels)(initialX);
-        this._element.style.top = (0, _utils.numberToPixels)(initialY);
-        tabElement.setAttribute("title", this._componentItem.title);
-        titleElement.insertAdjacentText("afterbegin", this._componentItem.title);
-        this._proxyContainerElement.appendChild(this._componentItem.element);
-    }
-    determineMinMaxXY() {
-        const groundItem = this._layoutManager.groundItem;
-        if (groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("DPDMMXY73109");
-        else {
-            const groundElement = groundItem.element;
-            const rect = groundElement.getBoundingClientRect();
-            this._minX = rect.left + document.body.scrollLeft;
-            this._minY = rect.top + document.body.scrollTop;
-            this._maxX = this._minX + rect.width;
-            this._maxY = this._minY + rect.height;
-        }
-    }
-    /**
-     * Callback on every mouseMove event during a drag. Determines if the drag is
-     * still within the valid drag area and calls the layoutManager to highlight the
-     * current drop area
-     *
-     * @param offsetX - The difference from the original x position in px
-     * @param offsetY - The difference from the original y position in px
-     * @param event -
-     * @internal
-     */ onDrag(offsetX, offsetY, event) {
-        const x = event.pageX;
-        const y = event.pageY;
-        this.setDropPosition(x, y);
-        this._componentItem.drag();
-    }
-    /**
-     * Sets the target position, highlighting the appropriate area
-     *
-     * @param x - The x position in px
-     * @param y - The y position in px
-     *
-     * @internal
-     */ setDropPosition(x, y) {
-        if (this._layoutManager.layoutConfig.settings.constrainDragToContainer) {
-            if (x <= this._minX) x = Math.ceil(this._minX);
-            else if (x >= this._maxX) x = Math.floor(this._maxX);
-            if (y <= this._minY) y = Math.ceil(this._minY);
-            else if (y >= this._maxY) y = Math.floor(this._maxY);
-        }
-        this._element.style.left = (0, _utils.numberToPixels)(x);
-        this._element.style.top = (0, _utils.numberToPixels)(y);
-        this._area = this._layoutManager.getArea(x, y);
-        if (this._area !== null) {
-            this._lastValidArea = this._area;
-            this._area.contentItem.highlightDropZone(x, y, this._area);
-        }
-    }
-    /**
-     * Callback when the drag has finished. Determines the drop area
-     * and adds the child to it
-     * @internal
-     */ onDrop() {
-        const dropTargetIndicator = this._layoutManager.dropTargetIndicator;
-        if (dropTargetIndicator === null) throw new (0, _internalError.UnexpectedNullError)("DPOD30011");
-        else dropTargetIndicator.hide();
-        this._componentItem.exitDragMode();
-        /*
-         * Valid drop area found
-         */ let droppedComponentItem;
-        if (this._area !== null) {
-            droppedComponentItem = this._componentItem;
-            this._area.contentItem.onDrop(droppedComponentItem, this._area);
-        /**
-             * No valid drop area available at present, but one has been found before.
-             * Use it
-             */ } else if (this._lastValidArea !== null) {
-            droppedComponentItem = this._componentItem;
-            const newParentContentItem = this._lastValidArea.contentItem;
-            newParentContentItem.onDrop(droppedComponentItem, this._lastValidArea);
-        /**
-             * No valid drop area found during the duration of the drag. Return
-             * content item to its original position if a original parent is provided.
-             * (Which is not the case if the drag had been initiated by createDragSource)
-             */ } else if (this._originalParent) {
-            droppedComponentItem = this._componentItem;
-            this._originalParent.addChild(droppedComponentItem);
-        /**
-             * The drag didn't ultimately end up with adding the content item to
-             * any container. In order to ensure clean up happens, destroy the
-             * content item.
-             */ } else this._componentItem.destroy(); // contentItem children are now destroyed as well
-        this._element.remove();
-        this._layoutManager.emit("itemDropped", this._componentItem);
-        if (this._componentItemFocused && droppedComponentItem !== undefined) droppedComponentItem.focus();
-    }
-    /**
-     * Updates the Drag Proxy's dimensions
-     * @internal
-     */ setDimensions() {
-        const dimensions = this._layoutManager.layoutConfig.dimensions;
-        if (dimensions === undefined) throw new Error("DragProxy.setDimensions: dimensions undefined");
-        let width = dimensions.dragProxyWidth;
-        let height = dimensions.dragProxyHeight;
-        if (width === undefined || height === undefined) throw new Error("DragProxy.setDimensions: width and/or height undefined");
-        const headerHeight = this._layoutManager.layoutConfig.header.show === false ? 0 : dimensions.headerHeight;
-        this._element.style.width = (0, _utils.numberToPixels)(width);
-        this._element.style.height = (0, _utils.numberToPixels)(height);
-        width -= this._sided ? headerHeight : 0;
-        height -= !this._sided ? headerHeight : 0;
-        this._proxyContainerElement.style.width = (0, _utils.numberToPixels)(width);
-        this._proxyContainerElement.style.height = (0, _utils.numberToPixels)(height);
-        this._componentItem.enterDragMode(width, height);
-        this._componentItem.show();
-    }
-}
-
-},{"../errors/internal-error":"7ms7b","../items/stack":"jrccF","../utils/event-emitter":"jZSJk","../utils/types":"dBAL3","../utils/utils":"fArjz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jrccF":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/** @public */ parcelHelpers.export(exports, "Stack", ()=>Stack);
-var _config = require("../config/config");
-var _resolvedConfig = require("../config/resolved-config");
-var _header = require("../controls/header");
-var _internalError = require("../errors/internal-error");
-var _eventEmitter = require("../utils/event-emitter");
-var _types = require("../utils/types");
-var _utils = require("../utils/utils");
-var _componentItem = require("./component-item");
-var _componentParentableItem = require("./component-parentable-item");
-var _contentItem = require("./content-item");
-class Stack extends (0, _componentParentableItem.ComponentParentableItem) {
-    /** @internal */ constructor(layoutManager, config, parent){
-        var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u;
-        super(layoutManager, config, parent, Stack.createElement(document));
-        /** @internal */ this._headerSideChanged = false;
-        /** @internal */ this._resizeListener = ()=>this.handleResize();
-        /** @internal */ this._maximisedListener = ()=>this.handleMaximised();
-        /** @internal */ this._minimisedListener = ()=>this.handleMinimised();
-        this._headerConfig = config.header;
-        const layoutHeaderConfig = layoutManager.layoutConfig.header;
-        const configContent = config.content;
-        // If stack has only one component, then we can also check this for header settings
-        let componentHeaderConfig;
-        if (configContent.length !== 1) componentHeaderConfig = undefined;
-        else {
-            const firstChildItemConfig = configContent[0];
-            componentHeaderConfig = firstChildItemConfig.header; // will be undefined if not component (and wont be stack)
-        }
-        this._initialWantMaximise = config.maximised;
-        this._initialActiveItemIndex = (_a = config.activeItemIndex) !== null && _a !== void 0 ? _a : 0; // make sure defined
-        // check for defined value for each item in order of Stack (this Item), Component (first child), Manager.
-        const show = (_d = (_c = (_b = this._headerConfig) === null || _b === void 0 ? void 0 : _b.show) !== null && _c !== void 0 ? _c : componentHeaderConfig === null || componentHeaderConfig === void 0 ? void 0 : componentHeaderConfig.show) !== null && _d !== void 0 ? _d : layoutHeaderConfig.show;
-        const popout = (_g = (_f = (_e = this._headerConfig) === null || _e === void 0 ? void 0 : _e.popout) !== null && _f !== void 0 ? _f : componentHeaderConfig === null || componentHeaderConfig === void 0 ? void 0 : componentHeaderConfig.popout) !== null && _g !== void 0 ? _g : layoutHeaderConfig.popout;
-        const maximise = (_k = (_j = (_h = this._headerConfig) === null || _h === void 0 ? void 0 : _h.maximise) !== null && _j !== void 0 ? _j : componentHeaderConfig === null || componentHeaderConfig === void 0 ? void 0 : componentHeaderConfig.maximise) !== null && _k !== void 0 ? _k : layoutHeaderConfig.maximise;
-        const close = (_o = (_m = (_l = this._headerConfig) === null || _l === void 0 ? void 0 : _l.close) !== null && _m !== void 0 ? _m : componentHeaderConfig === null || componentHeaderConfig === void 0 ? void 0 : componentHeaderConfig.close) !== null && _o !== void 0 ? _o : layoutHeaderConfig.close;
-        const minimise = (_r = (_q = (_p = this._headerConfig) === null || _p === void 0 ? void 0 : _p.minimise) !== null && _q !== void 0 ? _q : componentHeaderConfig === null || componentHeaderConfig === void 0 ? void 0 : componentHeaderConfig.minimise) !== null && _r !== void 0 ? _r : layoutHeaderConfig.minimise;
-        const tabDropdown = (_u = (_t = (_s = this._headerConfig) === null || _s === void 0 ? void 0 : _s.tabDropdown) !== null && _t !== void 0 ? _t : componentHeaderConfig === null || componentHeaderConfig === void 0 ? void 0 : componentHeaderConfig.tabDropdown) !== null && _u !== void 0 ? _u : layoutHeaderConfig.tabDropdown;
-        this._maximisedEnabled = maximise !== false;
-        const headerSettings = {
-            show: show !== false,
-            side: show === false ? (0, _types.Side).top : show,
-            popoutEnabled: popout !== false,
-            popoutLabel: popout === false ? "" : popout,
-            maximiseEnabled: this._maximisedEnabled,
-            maximiseLabel: maximise === false ? "" : maximise,
-            closeEnabled: close !== false,
-            closeLabel: close === false ? "" : close,
-            minimiseEnabled: true,
-            minimiseLabel: minimise,
-            tabDropdownEnabled: tabDropdown !== false,
-            tabDropdownLabel: tabDropdown === false ? "" : tabDropdown
-        };
-        this._header = new (0, _header.Header)(layoutManager, this, headerSettings, config.isClosable && close !== false, ()=>this.getActiveComponentItem(), ()=>this.remove(), ()=>this.handlePopoutEvent(), ()=>this.toggleMaximise(), (ev)=>this.handleHeaderClickEvent(ev), (ev)=>this.handleHeaderTouchStartEvent(ev), (item)=>this.handleHeaderComponentRemoveEvent(item), (item)=>this.handleHeaderComponentFocusEvent(item), (x, y, dragListener, item)=>this.handleHeaderComponentStartDragEvent(x, y, dragListener, item));
-        // this._dropZones = {};
-        this.isStack = true;
-        this._childElementContainer = document.createElement("section");
-        this._childElementContainer.classList.add("lm_items" /* Items */ );
-        this.on("resize", this._resizeListener);
-        if (this._maximisedEnabled) {
-            this.on("maximised", this._maximisedListener);
-            this.on("minimised", this._minimisedListener);
-        }
-        this.element.appendChild(this._header.element);
-        this.element.appendChild(this._childElementContainer);
-        this.setupHeaderPosition();
-        this._header.updateClosability();
-    }
-    get childElementContainer() {
-        return this._childElementContainer;
-    }
-    get header() {
-        return this._header;
-    }
-    get headerShow() {
-        return this._header.show;
-    }
-    get headerSide() {
-        return this._header.side;
-    }
-    get headerLeftRightSided() {
-        return this._header.leftRightSided;
-    }
-    /** @internal */ get contentAreaDimensions() {
-        return this._contentAreaDimensions;
-    }
-    /** @internal */ get initialWantMaximise() {
-        return this._initialWantMaximise;
-    }
-    get isMaximised() {
-        return this === this.layoutManager.maximisedStack;
-    }
-    get stackParent() {
-        if (!this.parent) throw new Error("Stack should always have a parent");
-        return this.parent;
-    }
-    /** @internal */ updateSize(force) {
-        this.layoutManager.beginVirtualSizedContainerAdding();
-        try {
-            this.updateNodeSize();
-            this.updateContentItemsSize(force);
-        } finally{
-            this.layoutManager.endVirtualSizedContainerAdding();
-        }
-    }
-    /** @internal */ init() {
-        if (this.isInitialised === true) return;
-        this.updateNodeSize();
-        for(let i = 0; i < this.contentItems.length; i++)this._childElementContainer.appendChild(this.contentItems[i].element);
-        super.init();
-        const contentItems = this.contentItems;
-        const contentItemCount = contentItems.length;
-        if (contentItemCount > 0) {
-            if (this._initialActiveItemIndex < 0 || this._initialActiveItemIndex >= contentItemCount) throw new Error(`ActiveItemIndex out of range: ${this._initialActiveItemIndex} id: ${this.id}`);
-            else {
-                for(let i = 0; i < contentItemCount; i++){
-                    const contentItem = contentItems[i];
-                    if (!(contentItem instanceof (0, _componentItem.ComponentItem))) throw new Error(`Stack Content Item is not of type ComponentItem: ${i} id: ${this.id}`);
-                    else {
-                        this._header.createTab(contentItem, i);
-                        contentItem.hide();
-                        contentItem.container.setBaseLogicalZIndex();
-                    }
-                }
-                this.setActiveComponentItem(contentItems[this._initialActiveItemIndex], false);
-                this._header.updateTabSizes();
-            }
-        }
-        this._header.updateClosability();
-        this.initContentItems();
-    }
-    /** @deprecated Use {@link (Stack:class).setActiveComponentItem} */ setActiveContentItem(item) {
-        if (!(0, _contentItem.ContentItem).isComponentItem(item)) throw new Error("Stack.setActiveContentItem: item is not a ComponentItem");
-        else this.setActiveComponentItem(item, false);
-    }
-    setActiveComponentItem(componentItem, focus, suppressFocusEvent = false) {
-        if (this._activeComponentItem !== componentItem) {
-            if (this.contentItems.indexOf(componentItem) === -1) throw new Error("componentItem is not a child of this stack");
-            else {
-                this.layoutManager.beginSizeInvalidation();
-                try {
-                    if (this._activeComponentItem !== undefined) this._activeComponentItem.hide();
-                    this._activeComponentItem = componentItem;
-                    this._header.processActiveComponentChanged(componentItem);
-                    componentItem.show();
-                } finally{
-                    this.layoutManager.endSizeInvalidation();
-                }
-                this.emit("activeContentItemChanged", componentItem);
-                this.layoutManager.emit("activeContentItemChanged", componentItem);
-                this.emitStateChangedEvent();
-            }
-        }
-        if (this.focused || focus) this.layoutManager.setFocusedComponentItem(componentItem, suppressFocusEvent);
-    }
-    /** @deprecated Use {@link (Stack:class).getActiveComponentItem} */ getActiveContentItem() {
-        var _a;
-        return (_a = this.getActiveComponentItem()) !== null && _a !== void 0 ? _a : null;
-    }
-    getActiveComponentItem() {
-        return this._activeComponentItem;
-    }
-    /** @internal */ focusActiveContentItem() {
-        var _a;
-        (_a = this._activeComponentItem) === null || _a === void 0 || _a.focus();
-    }
-    /** @internal */ setFocusedValue(value) {
-        this._header.applyFocusedValue(value);
-        super.setFocusedValue(value);
-    }
-    /** @internal */ setRowColumnClosable(value) {
-        this._header.setRowColumnClosable(value);
-    }
-    newComponent(componentType, componentState, title, index) {
-        const itemConfig = {
-            type: "component",
-            componentType,
-            componentState,
-            title
-        };
-        return this.newItem(itemConfig, index);
-    }
-    addComponent(componentType, componentState, title, index) {
-        const itemConfig = {
-            type: "component",
-            componentType,
-            componentState,
-            title
-        };
-        return this.addItem(itemConfig, index);
-    }
-    newItem(itemConfig, index) {
-        index = this.addItem(itemConfig, index);
-        return this.contentItems[index];
-    }
-    addItem(itemConfig, index) {
-        this.layoutManager.checkMinimiseMaximisedStack();
-        const resolvedItemConfig = (0, _config.ItemConfig).resolve(itemConfig, false);
-        const contentItem = this.layoutManager.createAndInitContentItem(resolvedItemConfig, this);
-        return this.addChild(contentItem, index);
-    }
-    addChild(contentItem, index, focus = false) {
-        if (index !== undefined && index > this.contentItems.length) {
-            index -= 1;
-            throw new (0, _internalError.AssertError)("SAC99728"); // undisplayChild() removed so this condition should no longer occur
-        }
-        if (!(contentItem instanceof (0, _componentItem.ComponentItem))) throw new (0, _internalError.AssertError)("SACC88532"); // Stacks can only have Component children
-        else {
-            index = super.addChild(contentItem, index);
-            this._childElementContainer.appendChild(contentItem.element);
-            this._header.createTab(contentItem, index);
-            this.setActiveComponentItem(contentItem, focus);
-            this._header.updateTabSizes();
-            this.updateSize(false);
-            contentItem.container.setBaseLogicalZIndex();
-            this._header.updateClosability();
-            this.emitStateChangedEvent();
-            return index;
-        }
-    }
-    removeChild(contentItem, keepChild) {
-        const componentItem = contentItem;
-        const index = this.contentItems.indexOf(componentItem);
-        const stackWillBeDeleted = this.contentItems.length === 1;
-        if (this._activeComponentItem === componentItem) {
-            if (componentItem.focused) componentItem.blur();
-            if (!stackWillBeDeleted) {
-                // At this point we're already sure we have at least one content item left *after*
-                // removing contentItem, so we can safely assume index 1 is a valid one if
-                // the index of contentItem is 0, otherwise we just use the previous content item.
-                const newActiveComponentIdx = index === 0 ? 1 : index - 1;
-                this.setActiveComponentItem(this.contentItems[newActiveComponentIdx], false);
-            }
-        }
-        this._header.removeTab(componentItem);
-        super.removeChild(componentItem, keepChild);
-        if (!stackWillBeDeleted) this._header.updateClosability();
-        this.emitStateChangedEvent();
-    }
-    /**
-     * Maximises the Item or minimises it if it is already maximised
-     */ toggleMaximise() {
-        if (this.isMaximised) this.minimise();
-        else this.maximise();
-    }
-    maximise() {
-        if (!this.isMaximised) {
-            this.layoutManager.setMaximisedStack(this);
-            const contentItems = this.contentItems;
-            const contentItemCount = contentItems.length;
-            for(let i = 0; i < contentItemCount; i++){
-                const contentItem = contentItems[i];
-                if (contentItem instanceof (0, _componentItem.ComponentItem)) contentItem.enterStackMaximised();
-                else throw new (0, _internalError.AssertError)("SMAXI87773");
-            }
-            this.emitStateChangedEvent();
-        }
-    }
-    minimise() {
-        if (this.isMaximised) {
-            this.layoutManager.setMaximisedStack(undefined);
-            const contentItems = this.contentItems;
-            const contentItemCount = contentItems.length;
-            for(let i = 0; i < contentItemCount; i++){
-                const contentItem = contentItems[i];
-                if (contentItem instanceof (0, _componentItem.ComponentItem)) contentItem.exitStackMaximised();
-                else throw new (0, _internalError.AssertError)("SMINI87773");
-            }
-            this.emitStateChangedEvent();
-        }
-    }
-    /** @internal */ destroy() {
-        var _a;
-        if ((_a = this._activeComponentItem) === null || _a === void 0 ? void 0 : _a.focused) this._activeComponentItem.blur();
-        super.destroy();
-        this.off("resize", this._resizeListener);
-        if (this._maximisedEnabled) {
-            this.off("maximised", this._maximisedListener);
-            this.off("minimised", this._minimisedListener);
-        }
-        this._header.destroy();
-    }
-    toConfig() {
-        let activeItemIndex;
-        if (this._activeComponentItem) {
-            activeItemIndex = this.contentItems.indexOf(this._activeComponentItem);
-            if (activeItemIndex < 0) throw new Error("active component item not found in stack");
-        }
-        if (this.contentItems.length > 0 && activeItemIndex === undefined) throw new Error("expected non-empty stack to have an active component item");
-        else {
-            const result = {
-                type: "stack",
-                content: this.calculateConfigContent(),
-                size: this.size,
-                sizeUnit: this.sizeUnit,
-                minSize: this.minSize,
-                minSizeUnit: this.minSizeUnit,
-                id: this.id,
-                isClosable: this.isClosable,
-                maximised: this.isMaximised,
-                header: this.createHeaderConfig(),
-                activeItemIndex
-            };
-            return result;
-        }
-    }
-    /**
-     * Ok, this one is going to be the tricky one: The user has dropped a {@link (ContentItem:class)} onto this stack.
-     *
-     * It was dropped on either the stacks header or the top, right, bottom or left bit of the content area
-     * (which one of those is stored in this._dropSegment). Now, if the user has dropped on the header the case
-     * is relatively clear: We add the item to the existing stack... job done (might be good to have
-     * tab reordering at some point, but lets not sweat it right now)
-     *
-     * If the item was dropped on the content part things are a bit more complicated. If it was dropped on either the
-     * top or bottom region we need to create a new column and place the items accordingly.
-     * Unless, of course if the stack is already within a column... in which case we want
-     * to add the newly created item to the existing column...
-     * either prepend or append it, depending on wether its top or bottom.
-     *
-     * Same thing for rows and left / right drop segments... so in total there are 9 things that can potentially happen
-     * (left, top, right, bottom) * is child of the right parent (row, column) + header drop
-     *
-     * @internal
-     */ // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    onDrop(contentItem, area) {
-        /*
-         * The item was dropped on the header area. Just add it as a child of this stack and
-         * get the hell out of this logic
-         */ if (this._dropSegment === "header" /* Header */ ) {
-            this.resetHeaderDropZone();
-            if (this._dropIndex === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("SODDI68990");
-            else {
-                this.addChild(contentItem, this._dropIndex);
-                return;
-            }
-        }
-        /*
-         * The stack is empty. Let's just add the element.
-         */ if (this._dropSegment === "body" /* Body */ ) {
-            this.addChild(contentItem, 0, true);
-            return;
-        }
-        /*
-         * The item was dropped on the top-, left-, bottom- or right- part of the content. Let's
-         * aggregate some conditions to make the if statements later on more readable
-         */ const isVertical = this._dropSegment === "top" /* Top */  || this._dropSegment === "bottom" /* Bottom */ ;
-        const isHorizontal = this._dropSegment === "left" /* Left */  || this._dropSegment === "right" /* Right */ ;
-        const insertBefore = this._dropSegment === "top" /* Top */  || this._dropSegment === "left" /* Left */ ;
-        const hasCorrectParent = isVertical && this.stackParent.isColumn || isHorizontal && this.stackParent.isRow;
-        /*
-         * The content item can be either a component or a stack. If it is a component, wrap it into a stack
-         */ if (contentItem.isComponent) {
-            const itemConfig = (0, _resolvedConfig.ResolvedStackItemConfig).createDefault();
-            itemConfig.header = this.createHeaderConfig();
-            const stack = this.layoutManager.createAndInitContentItem(itemConfig, this);
-            stack.addChild(contentItem);
-            contentItem = stack;
-        }
-        /*
-         * If the contentItem that's being dropped is not dropped on a Stack (cases which just passed above and
-         * which would wrap the contentItem in a Stack) we need to check whether contentItem is a RowOrColumn.
-         * If it is, we need to re-wrap it in a Stack like it was when it was dragged by its Tab (it was dragged!).
-         */ if (contentItem.type === (0, _types.ItemType).row || contentItem.type === (0, _types.ItemType).column) {
-            const itemConfig = (0, _resolvedConfig.ResolvedStackItemConfig).createDefault();
-            itemConfig.header = this.createHeaderConfig();
-            const stack = this.layoutManager.createContentItem(itemConfig, this);
-            stack.addChild(contentItem);
-            contentItem = stack;
-        }
-        /*
-         * If the item is dropped on top or bottom of a column or left and right of a row, it's already
-         * layd out in the correct way. Just add it as a child
-         */ if (hasCorrectParent) {
-            const index = this.stackParent.contentItems.indexOf(this);
-            this.stackParent.addChild(contentItem, insertBefore ? index : index + 1, true);
-            this.size *= 0.5;
-            contentItem.size = this.size;
-            contentItem.sizeUnit = this.sizeUnit;
-            this.stackParent.updateSize(false);
-        /*
-             * This handles items that are dropped on top or bottom of a row or left / right of a column. We need
-             * to create the appropriate contentItem for them to live in
-             */ } else {
-            const type = isVertical ? (0, _types.ItemType).column : (0, _types.ItemType).row;
-            const itemConfig = (0, _resolvedConfig.ResolvedItemConfig).createDefault(type);
-            const rowOrColumn = this.layoutManager.createContentItem(itemConfig, this);
-            this.stackParent.replaceChild(this, rowOrColumn);
-            rowOrColumn.addChild(contentItem, insertBefore ? 0 : undefined, true);
-            rowOrColumn.addChild(this, insertBefore ? undefined : 0, true);
-            this.size = 50;
-            contentItem.size = 50;
-            contentItem.sizeUnit = (0, _types.SizeUnitEnum).Percent;
-            rowOrColumn.updateSize(false);
-        }
-    }
-    /**
-     * If the user hovers above the header part of the stack, indicate drop positions for tabs.
-     * otherwise indicate which segment of the body the dragged item would be dropped on
-     *
-     * @param x - Absolute Screen X
-     * @param y - Absolute Screen Y
-     * @internal
-     */ highlightDropZone(x, y) {
-        for(const key in this._contentAreaDimensions){
-            const segment = key;
-            const area = this._contentAreaDimensions[segment].hoverArea;
-            if (area.x1 < x && area.x2 > x && area.y1 < y && area.y2 > y) {
-                if (segment === "header" /* Header */ ) {
-                    this._dropSegment = "header" /* Header */ ;
-                    this.highlightHeaderDropZone(this._header.leftRightSided ? y : x);
-                } else {
-                    this.resetHeaderDropZone();
-                    this.highlightBodyDropZone(segment);
-                }
-                return;
-            }
-        }
-    }
-    /** @internal */ getArea() {
-        if (this.element.style.display === "none") return null;
-        const headerArea = super.getElementArea(this._header.element);
-        const contentArea = super.getElementArea(this._childElementContainer);
-        if (headerArea === null || contentArea === null) throw new (0, _internalError.UnexpectedNullError)("SGAHC13086");
-        const contentWidth = contentArea.x2 - contentArea.x1;
-        const contentHeight = contentArea.y2 - contentArea.y1;
-        this._contentAreaDimensions = {
-            header: {
-                hoverArea: {
-                    x1: headerArea.x1,
-                    y1: headerArea.y1,
-                    x2: headerArea.x2,
-                    y2: headerArea.y2
-                },
-                highlightArea: {
-                    x1: headerArea.x1,
-                    y1: headerArea.y1,
-                    x2: headerArea.x2,
-                    y2: headerArea.y2
-                }
-            }
-        };
-        /**
-         * Highlight the entire body if the stack is empty
-         */ if (this.contentItems.length === 0) {
-            this._contentAreaDimensions.body = {
-                hoverArea: {
-                    x1: contentArea.x1,
-                    y1: contentArea.y1,
-                    x2: contentArea.x2,
-                    y2: contentArea.y2
-                },
-                highlightArea: {
-                    x1: contentArea.x1,
-                    y1: contentArea.y1,
-                    x2: contentArea.x2,
-                    y2: contentArea.y2
-                }
-            };
-            return super.getElementArea(this.element);
-        } else {
-            this._contentAreaDimensions.left = {
-                hoverArea: {
-                    x1: contentArea.x1,
-                    y1: contentArea.y1,
-                    x2: contentArea.x1 + contentWidth * 0.25,
-                    y2: contentArea.y2
-                },
-                highlightArea: {
-                    x1: contentArea.x1,
-                    y1: contentArea.y1,
-                    x2: contentArea.x1 + contentWidth * 0.5,
-                    y2: contentArea.y2
-                }
-            };
-            this._contentAreaDimensions.top = {
-                hoverArea: {
-                    x1: contentArea.x1 + contentWidth * 0.25,
-                    y1: contentArea.y1,
-                    x2: contentArea.x1 + contentWidth * 0.75,
-                    y2: contentArea.y1 + contentHeight * 0.5
-                },
-                highlightArea: {
-                    x1: contentArea.x1,
-                    y1: contentArea.y1,
-                    x2: contentArea.x2,
-                    y2: contentArea.y1 + contentHeight * 0.5
-                }
-            };
-            this._contentAreaDimensions.right = {
-                hoverArea: {
-                    x1: contentArea.x1 + contentWidth * 0.75,
-                    y1: contentArea.y1,
-                    x2: contentArea.x2,
-                    y2: contentArea.y2
-                },
-                highlightArea: {
-                    x1: contentArea.x1 + contentWidth * 0.5,
-                    y1: contentArea.y1,
-                    x2: contentArea.x2,
-                    y2: contentArea.y2
-                }
-            };
-            this._contentAreaDimensions.bottom = {
-                hoverArea: {
-                    x1: contentArea.x1 + contentWidth * 0.25,
-                    y1: contentArea.y1 + contentHeight * 0.5,
-                    x2: contentArea.x1 + contentWidth * 0.75,
-                    y2: contentArea.y2
-                },
-                highlightArea: {
-                    x1: contentArea.x1,
-                    y1: contentArea.y1 + contentHeight * 0.5,
-                    x2: contentArea.x2,
-                    y2: contentArea.y2
-                }
-            };
-            return super.getElementArea(this.element);
-        }
-    }
-    /**
-     * Programmatically operate with header position.
-     *
-     * @param position -
-     *
-     * @returns previous header position
-     * @internal
-     */ positionHeader(position) {
-        if (this._header.side !== position) {
-            this._header.setSide(position);
-            this._headerSideChanged = true;
-            this.setupHeaderPosition();
-        }
-    }
-    /** @internal */ updateNodeSize() {
-        if (this.element.style.display !== "none") {
-            const content = (0, _utils.getElementWidthAndHeight)(this.element);
-            if (this._header.show) {
-                const dimension = this._header.leftRightSided ? (0, _types.WidthOrHeightPropertyName).width : (0, _types.WidthOrHeightPropertyName).height;
-                content[dimension] -= this.layoutManager.layoutConfig.dimensions.headerHeight;
-            }
-            this._childElementContainer.style.width = (0, _utils.numberToPixels)(content.width);
-            this._childElementContainer.style.height = (0, _utils.numberToPixels)(content.height);
-            for(let i = 0; i < this.contentItems.length; i++){
-                this.contentItems[i].element.style.width = (0, _utils.numberToPixels)(content.width);
-                this.contentItems[i].element.style.height = (0, _utils.numberToPixels)(content.height);
-            }
-            this.emit("resize");
-            this.emitStateChangedEvent();
-        }
-    }
-    /** @internal */ highlightHeaderDropZone(x) {
-        const visibleTabsLength = this._header.lastVisibleTabIndex + 1;
-        const tabsContainerElement = this._header.tabsContainerElement;
-        const tabsContainerElementChildNodes = tabsContainerElement.childNodes;
-        // Create shallow copy of childNodes list, excluding DropPlaceHolder, as we will be modifying the childNodes list
-        const visibleTabElements = new Array(visibleTabsLength);
-        let tabIndex = 0;
-        let tabCount = 0;
-        while(tabCount < visibleTabsLength){
-            const visibleTabElement = tabsContainerElementChildNodes[tabIndex++];
-            if (visibleTabElement !== this.layoutManager.tabDropPlaceholder) visibleTabElements[tabCount++] = visibleTabElement;
-        }
-        const dropTargetIndicator = this.layoutManager.dropTargetIndicator;
-        if (dropTargetIndicator === null) throw new (0, _internalError.UnexpectedNullError)("SHHDZDTI97110");
-        let area;
-        // Empty stack
-        if (visibleTabsLength === 0) {
-            const headerRect = this._header.element.getBoundingClientRect();
-            const headerTop = headerRect.top + document.body.scrollTop;
-            const headerLeft = headerRect.left + document.body.scrollLeft;
-            area = {
-                x1: headerLeft,
-                x2: headerLeft + 100,
-                y1: headerTop + headerRect.height - 20,
-                y2: headerTop + headerRect.height
-            };
-            this._dropIndex = 0;
-        } else {
-            let tabIndex = 0;
-            // This indicates whether our cursor is exactly over a tab
-            let isAboveTab = false;
-            let tabTop;
-            let tabLeft;
-            let tabWidth;
-            let tabElement;
-            do {
-                tabElement = visibleTabElements[tabIndex];
-                const tabRect = tabElement.getBoundingClientRect();
-                const tabRectTop = tabRect.top + document.body.scrollTop;
-                const tabRectLeft = tabRect.left + document.body.scrollLeft;
-                if (this._header.leftRightSided) {
-                    tabLeft = tabRectTop;
-                    tabTop = tabRectLeft;
-                    tabWidth = tabRect.height;
-                } else {
-                    tabLeft = tabRectLeft;
-                    tabTop = tabRectTop;
-                    tabWidth = tabRect.width;
-                }
-                if (x >= tabLeft && x < tabLeft + tabWidth) isAboveTab = true;
-                else tabIndex++;
-            }while (tabIndex < visibleTabsLength && !isAboveTab);
-            // If we're not above any tabs, or to the right of any tab, we are out of the area, so give up
-            if (isAboveTab === false && x < tabLeft) return;
-            const halfX = tabLeft + tabWidth / 2;
-            if (x < halfX) {
-                this._dropIndex = tabIndex;
-                tabElement.insertAdjacentElement("beforebegin", this.layoutManager.tabDropPlaceholder);
-            } else {
-                this._dropIndex = Math.min(tabIndex + 1, visibleTabsLength);
-                tabElement.insertAdjacentElement("afterend", this.layoutManager.tabDropPlaceholder);
-            }
-            const tabDropPlaceholderRect = this.layoutManager.tabDropPlaceholder.getBoundingClientRect();
-            const tabDropPlaceholderRectTop = tabDropPlaceholderRect.top + document.body.scrollTop;
-            const tabDropPlaceholderRectLeft = tabDropPlaceholderRect.left + document.body.scrollLeft;
-            const tabDropPlaceholderRectWidth = tabDropPlaceholderRect.width;
-            if (this._header.leftRightSided) {
-                const placeHolderTop = tabDropPlaceholderRectTop;
-                area = {
-                    x1: tabTop,
-                    x2: tabTop + tabElement.clientHeight,
-                    y1: placeHolderTop,
-                    y2: placeHolderTop + tabDropPlaceholderRectWidth
-                };
-            } else {
-                const placeHolderLeft = tabDropPlaceholderRectLeft;
-                area = {
-                    x1: placeHolderLeft,
-                    x2: placeHolderLeft + tabDropPlaceholderRectWidth,
-                    y1: tabTop,
-                    y2: tabTop + tabElement.clientHeight
-                };
-            }
-        }
-        dropTargetIndicator.highlightArea(area, 0);
-        return;
-    }
-    /** @internal */ resetHeaderDropZone() {
-        this.layoutManager.tabDropPlaceholder.remove();
-    }
-    /** @internal */ setupHeaderPosition() {
-        (0, _utils.setElementDisplayVisibility)(this._header.element, this._header.show);
-        this.element.classList.remove("lm_left" /* Left */ , "lm_right" /* Right */ , "lm_bottom" /* Bottom */ );
-        if (this._header.leftRightSided) this.element.classList.add("lm_" + this._header.side);
-        //if ([Side.right, Side.bottom].includes(this._header.side)) {
-        //    // move the header behind the content.
-        //    this.element.appendChild(this._header.element);
-        //}
-        this.updateSize(false);
-    }
-    /** @internal */ highlightBodyDropZone(segment) {
-        if (this._contentAreaDimensions === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("SHBDZC82265");
-        else {
-            const highlightArea = this._contentAreaDimensions[segment].highlightArea;
-            const dropTargetIndicator = this.layoutManager.dropTargetIndicator;
-            if (dropTargetIndicator === null) throw new (0, _internalError.UnexpectedNullError)("SHBDZD96110");
-            else {
-                dropTargetIndicator.highlightArea(highlightArea, 1);
-                this._dropSegment = segment;
-            }
-        }
-    }
-    /** @internal */ handleResize() {
-        this._header.updateTabSizes();
-    }
-    /** @internal */ handleMaximised() {
-        this._header.processMaximised();
-    }
-    /** @internal */ handleMinimised() {
-        this._header.processMinimised();
-    }
-    /** @internal */ handlePopoutEvent() {
-        this.popout();
-    }
-    /** @internal */ handleHeaderClickEvent(ev) {
-        const eventName = (0, _eventEmitter.EventEmitter).headerClickEventName;
-        const bubblingEvent = new (0, _eventEmitter.EventEmitter).ClickBubblingEvent(eventName, this, ev);
-        this.emit(eventName, bubblingEvent);
-    }
-    /** @internal */ handleHeaderTouchStartEvent(ev) {
-        const eventName = (0, _eventEmitter.EventEmitter).headerTouchStartEventName;
-        const bubblingEvent = new (0, _eventEmitter.EventEmitter).TouchStartBubblingEvent(eventName, this, ev);
-        this.emit(eventName, bubblingEvent);
-    }
-    /** @internal */ handleHeaderComponentRemoveEvent(item) {
-        this.removeChild(item, false);
-    }
-    /** @internal */ handleHeaderComponentFocusEvent(item) {
-        this.setActiveComponentItem(item, true);
-    }
-    /** @internal */ handleHeaderComponentStartDragEvent(x, y, dragListener, componentItem) {
-        if (this.isMaximised === true) this.toggleMaximise();
-        this.layoutManager.startComponentDrag(x, y, dragListener, componentItem, this);
-    }
-    /** @internal */ createHeaderConfig() {
-        if (!this._headerSideChanged) return (0, _resolvedConfig.ResolvedHeaderedItemConfig).Header.createCopy(this._headerConfig);
-        else {
-            const show = this._header.show ? this._header.side : false;
-            let result = (0, _resolvedConfig.ResolvedHeaderedItemConfig).Header.createCopy(this._headerConfig, show);
-            if (result === undefined) result = {
-                show,
-                popout: undefined,
-                maximise: undefined,
-                close: undefined,
-                minimise: undefined,
-                tabDropdown: undefined
-            };
-            return result;
-        }
-    }
-    /** @internal */ emitStateChangedEvent() {
-        this.emitBaseBubblingEvent("stateChanged");
-    }
-}
-/** @public */ (function(Stack) {
-    /** @internal */ function createElement(document1) {
-        const element = document1.createElement("div");
-        element.classList.add("lm_item" /* Item */ );
-        element.classList.add("lm_stack" /* Stack */ );
-        return element;
-    }
-    Stack.createElement = createElement;
-})(Stack || (Stack = {}));
-
-},{"../config/config":"3GcjJ","../config/resolved-config":"gWMkA","../controls/header":"iTrvi","../errors/internal-error":"7ms7b","../utils/event-emitter":"jZSJk","../utils/types":"dBAL3","../utils/utils":"fArjz","./component-item":"iMxBy","./component-parentable-item":"lTFvm","./content-item":"jpTQx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iTrvi":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * This class represents a header above a Stack ContentItem.
- * @public
- */ parcelHelpers.export(exports, "Header", ()=>Header);
-var _internalError = require("../errors/internal-error");
-var _eventEmitter = require("../utils/event-emitter");
-var _types = require("../utils/types");
-var _utils = require("../utils/utils");
-var _headerButton = require("./header-button");
-var _tabsContainer = require("./tabs-container");
-class Header extends (0, _eventEmitter.EventEmitter) {
-    /** @internal */ constructor(/** @internal */ _layoutManager, /** @internal */ _parent, settings, /** @internal */ _configClosable, /** @internal */ _getActiveComponentItemEvent, closeEvent, /** @internal */ _popoutEvent, /** @internal */ _maximiseToggleEvent, /** @internal */ _clickEvent, /** @internal */ _touchStartEvent, /** @internal */ _componentRemoveEvent, /** @internal */ _componentFocusEvent, /** @internal */ _componentDragStartEvent){
-        super();
-        this._layoutManager = _layoutManager;
-        this._parent = _parent;
-        this._configClosable = _configClosable;
-        this._getActiveComponentItemEvent = _getActiveComponentItemEvent;
-        this._popoutEvent = _popoutEvent;
-        this._maximiseToggleEvent = _maximiseToggleEvent;
-        this._clickEvent = _clickEvent;
-        this._touchStartEvent = _touchStartEvent;
-        this._componentRemoveEvent = _componentRemoveEvent;
-        this._componentFocusEvent = _componentFocusEvent;
-        this._componentDragStartEvent = _componentDragStartEvent;
-        /** @internal */ this._clickListener = (ev)=>this.onClick(ev);
-        /** @internal */ this._touchStartListener = (ev)=>this.onTouchStart(ev);
-        /** @internal */ this._rowColumnClosable = true;
-        /** @internal */ this._closeButton = null;
-        /** @internal */ this._popoutButton = null;
-        this._tabsContainer = new (0, _tabsContainer.TabsContainer)(this._layoutManager, (item)=>this.handleTabInitiatedComponentRemoveEvent(item), (item)=>this.handleTabInitiatedComponentFocusEvent(item), (x, y, dragListener, item)=>this.handleTabInitiatedDragStartEvent(x, y, dragListener, item), ()=>this.processTabDropdownActiveChanged());
-        this._show = settings.show;
-        this._popoutEnabled = settings.popoutEnabled;
-        this._popoutLabel = settings.popoutLabel;
-        this._maximiseEnabled = settings.maximiseEnabled;
-        this._maximiseLabel = settings.maximiseLabel;
-        this._minimiseEnabled = settings.minimiseEnabled;
-        this._minimiseLabel = settings.minimiseLabel;
-        this._closeEnabled = settings.closeEnabled;
-        this._closeLabel = settings.closeLabel;
-        this._tabDropdownEnabled = settings.tabDropdownEnabled;
-        this._tabDropdownLabel = settings.tabDropdownLabel;
-        this.setSide(settings.side);
-        this._canRemoveComponent = this._configClosable;
-        this._element = document.createElement("section");
-        this._element.classList.add("lm_header" /* Header */ );
-        this._controlsContainerElement = document.createElement("section");
-        this._controlsContainerElement.classList.add("lm_controls" /* Controls */ );
-        this._element.appendChild(this._tabsContainer.element);
-        this._element.appendChild(this._controlsContainerElement);
-        this._element.appendChild(this._tabsContainer.dropdownElement);
-        this._element.addEventListener("click", this._clickListener, {
-            passive: true
-        });
-        this._element.addEventListener("touchstart", this._touchStartListener, {
-            passive: true
-        });
-        this._documentMouseUpListener = ()=>this._tabsContainer.hideAdditionalTabsDropdown();
-        globalThis.document.addEventListener("mouseup", this._documentMouseUpListener, {
-            passive: true
-        });
-        this._tabControlOffset = this._layoutManager.layoutConfig.settings.tabControlOffset;
-        if (this._tabDropdownEnabled) this._tabDropdownButton = new (0, _headerButton.HeaderButton)(this, this._tabDropdownLabel, "lm_tabdropdown" /* TabDropdown */ , ()=>this._tabsContainer.showAdditionalTabsDropdown());
-        if (this._popoutEnabled) this._popoutButton = new (0, _headerButton.HeaderButton)(this, this._popoutLabel, "lm_popout" /* Popout */ , ()=>this.handleButtonPopoutEvent());
-        /**
-         * Maximise control - set the component to the full size of the layout
-         */ if (this._maximiseEnabled) this._maximiseButton = new (0, _headerButton.HeaderButton)(this, this._maximiseLabel, "lm_maximise" /* Maximise */ , (ev)=>this.handleButtonMaximiseToggleEvent(ev));
-        /**
-         * Close button
-         */ if (this._configClosable) this._closeButton = new (0, _headerButton.HeaderButton)(this, this._closeLabel, "lm_close" /* Close */ , ()=>closeEvent());
-        this.processTabDropdownActiveChanged();
-    }
-    // /** @internal */
-    // private _activeComponentItem: ComponentItem | null = null; // only used to identify active tab
-    get show() {
-        return this._show;
-    }
-    get side() {
-        return this._side;
-    }
-    get leftRightSided() {
-        return this._leftRightSided;
-    }
-    get layoutManager() {
-        return this._layoutManager;
-    }
-    get parent() {
-        return this._parent;
-    }
-    get tabs() {
-        return this._tabsContainer.tabs;
-    }
-    get lastVisibleTabIndex() {
-        return this._tabsContainer.lastVisibleTabIndex;
-    }
-    get element() {
-        return this._element;
-    }
-    get tabsContainerElement() {
-        return this._tabsContainer.element;
-    }
-    get controlsContainerElement() {
-        return this._controlsContainerElement;
-    }
-    /**
-     * Destroys the entire header
-     * @internal
-     */ destroy() {
-        this.emit("destroy");
-        this._popoutEvent = undefined;
-        this._maximiseToggleEvent = undefined;
-        this._clickEvent = undefined;
-        this._touchStartEvent = undefined;
-        this._componentRemoveEvent = undefined;
-        this._componentFocusEvent = undefined;
-        this._componentDragStartEvent = undefined;
-        this._tabsContainer.destroy();
-        globalThis.document.removeEventListener("mouseup", this._documentMouseUpListener);
-        this._element.remove();
-    }
-    /**
-     * Creates a new tab and associates it with a contentItem
-     * @param index - The position of the tab
-     * @internal
-     */ createTab(componentItem, index) {
-        this._tabsContainer.createTab(componentItem, index);
-    }
-    /**
-     * Finds a tab based on the contentItem its associated with and removes it.
-     * Cannot remove tab if it has the active ComponentItem
-     * @internal
-     */ removeTab(componentItem) {
-        this._tabsContainer.removeTab(componentItem);
-    }
-    /** @internal */ processActiveComponentChanged(newActiveComponentItem) {
-        this._tabsContainer.processActiveComponentChanged(newActiveComponentItem);
-        this.updateTabSizes();
-    }
-    /** @internal */ setSide(value) {
-        this._side = value;
-        this._leftRightSided = [
-            (0, _types.Side).right,
-            (0, _types.Side).left
-        ].includes(this._side);
-    }
-    /**
-     * Programmatically set closability.
-     * @param value - Whether to enable/disable closability.
-     * @returns Whether the action was successful
-     * @internal
-     */ setRowColumnClosable(value) {
-        this._rowColumnClosable = value;
-        this.updateClosability();
-    }
-    /**
-     * Updates the header's closability. If a stack/header is able
-     * to close, but has a non closable component added to it, the stack is no
-     * longer closable until all components are closable.
-     * @internal
-     */ updateClosability() {
-        let isClosable;
-        if (!this._configClosable) isClosable = false;
-        else if (!this._rowColumnClosable) isClosable = false;
-        else {
-            isClosable = true;
-            const len = this.tabs.length;
-            for(let i = 0; i < len; i++){
-                const tab = this._tabsContainer.tabs[i];
-                const item = tab.componentItem;
-                if (!item.isClosable) {
-                    isClosable = false;
-                    break;
-                }
-            }
-        }
-        if (this._closeButton !== null) (0, _utils.setElementDisplayVisibility)(this._closeButton.element, isClosable);
-        if (this._popoutButton !== null) (0, _utils.setElementDisplayVisibility)(this._popoutButton.element, isClosable);
-        this._canRemoveComponent = isClosable || this._tabsContainer.tabCount > 1;
-    }
-    /** @internal */ applyFocusedValue(value) {
-        if (value) this._element.classList.add("lm_focused" /* Focused */ );
-        else this._element.classList.remove("lm_focused" /* Focused */ );
-    }
-    /** @internal */ processMaximised() {
-        if (this._maximiseButton === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("HPMAX16997");
-        else this._maximiseButton.element.setAttribute("title", this._minimiseLabel);
-    }
-    /** @internal */ processMinimised() {
-        if (this._maximiseButton === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("HPMIN16997");
-        else this._maximiseButton.element.setAttribute("title", this._maximiseLabel);
-    }
-    /**
-     * Pushes the tabs to the tab dropdown if the available space is not sufficient
-     * @internal
-     */ updateTabSizes() {
-        if (this._tabsContainer.tabCount > 0) {
-            const headerHeight = this._show ? this._layoutManager.layoutConfig.dimensions.headerHeight : 0;
-            if (this._leftRightSided) {
-                this._element.style.height = "";
-                this._element.style.width = (0, _utils.numberToPixels)(headerHeight);
-            } else {
-                this._element.style.width = "";
-                this._element.style.height = (0, _utils.numberToPixels)(headerHeight);
-            }
-            let availableWidth;
-            if (this._leftRightSided) availableWidth = this._element.offsetHeight - this._controlsContainerElement.offsetHeight - this._tabControlOffset;
-            else availableWidth = this._element.offsetWidth - this._controlsContainerElement.offsetWidth - this._tabControlOffset;
-            this._tabsContainer.updateTabSizes(availableWidth, this._getActiveComponentItemEvent());
-        }
-    }
-    /** @internal */ handleTabInitiatedComponentRemoveEvent(componentItem) {
-        if (this._canRemoveComponent) {
-            if (this._componentRemoveEvent === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("HHTCE22294");
-            else this._componentRemoveEvent(componentItem);
-        }
-    }
-    /** @internal */ handleTabInitiatedComponentFocusEvent(componentItem) {
-        if (this._componentFocusEvent === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("HHTAE22294");
-        else this._componentFocusEvent(componentItem);
-    }
-    /** @internal */ handleTabInitiatedDragStartEvent(x, y, dragListener, componentItem) {
-        if (!this._canRemoveComponent) dragListener.cancelDrag();
-        else {
-            if (this._componentDragStartEvent === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("HHTDSE22294");
-            else this._componentDragStartEvent(x, y, dragListener, componentItem);
-        }
-    }
-    /** @internal */ processTabDropdownActiveChanged() {
-        if (this._tabDropdownButton !== undefined) (0, _utils.setElementDisplayVisibility)(this._tabDropdownButton.element, this._tabsContainer.dropdownActive);
-    }
-    /** @internal */ handleButtonPopoutEvent() {
-        if (this._layoutManager.layoutConfig.settings.popoutWholeStack) {
-            if (this._popoutEvent === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("HHBPOE17834");
-            else this._popoutEvent();
-        } else {
-            const activeComponentItem = this._getActiveComponentItemEvent();
-            if (activeComponentItem) activeComponentItem.popout();
-        // else: if the stack is empty there won't be an active item (and nothing to popout)
-        }
-    }
-    /** @internal */ // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    handleButtonMaximiseToggleEvent(ev) {
-        if (this._maximiseToggleEvent === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("HHBMTE16834");
-        else this._maximiseToggleEvent();
-    }
-    /**
-     * Invoked when the header's background is clicked (not it's tabs or controls)
-     * @internal
-     */ onClick(event) {
-        if (event.target === this._element) this.notifyClick(event);
-    }
-    /**
-     * Invoked when the header's background is touched (not it's tabs or controls)
-     * @internal
-     */ onTouchStart(event) {
-        if (event.target === this._element) this.notifyTouchStart(event);
-    }
-    /** @internal */ notifyClick(ev) {
-        if (this._clickEvent === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("HNHC46834");
-        else this._clickEvent(ev);
-    }
-    /** @internal */ notifyTouchStart(ev) {
-        if (this._touchStartEvent === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("HNHTS46834");
-        else this._touchStartEvent(ev);
-    }
-}
-
-},{"../errors/internal-error":"7ms7b","../utils/event-emitter":"jZSJk","../utils/types":"dBAL3","../utils/utils":"fArjz","./header-button":"hWG64","./tabs-container":"7D5V8","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hWG64":[function(require,module,exports) {
-/** @internal */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "HeaderButton", ()=>HeaderButton);
-class HeaderButton {
-    constructor(_header, label, cssClass, _pushEvent){
-        this._header = _header;
-        this._pushEvent = _pushEvent;
-        this._clickEventListener = (ev)=>this.onClick(ev);
-        this._touchStartEventListener = (ev)=>this.onTouchStart(ev);
-        this._element = document.createElement("div");
-        this._element.classList.add(cssClass);
-        this._element.title = label;
-        this._header.on("destroy", ()=>this.destroy());
-        this._element.addEventListener("click", this._clickEventListener, {
-            passive: true
-        });
-        this._element.addEventListener("touchstart", this._touchStartEventListener, {
-            passive: true
-        });
-        this._header.controlsContainerElement.appendChild(this._element);
-    }
-    get element() {
-        return this._element;
-    }
-    destroy() {
-        var _a;
-        this._element.removeEventListener("click", this._clickEventListener);
-        this._element.removeEventListener("touchstart", this._touchStartEventListener);
-        (_a = this._element.parentNode) === null || _a === void 0 || _a.removeChild(this._element);
-    }
-    onClick(ev) {
-        this._pushEvent(ev);
-    }
-    onTouchStart(ev) {
-        this._pushEvent(ev);
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7D5V8":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/** @internal */ parcelHelpers.export(exports, "TabsContainer", ()=>TabsContainer);
-var _internalError = require("../errors/internal-error");
-var _utils = require("../utils/utils");
-var _tab = require("./tab");
-class TabsContainer {
-    constructor(_layoutManager, _componentRemoveEvent, _componentFocusEvent, _componentDragStartEvent, _dropdownActiveChangedEvent){
-        this._layoutManager = _layoutManager;
-        this._componentRemoveEvent = _componentRemoveEvent;
-        this._componentFocusEvent = _componentFocusEvent;
-        this._componentDragStartEvent = _componentDragStartEvent;
-        this._dropdownActiveChangedEvent = _dropdownActiveChangedEvent;
-        // There is one tab per ComponentItem in stack.  However they may not be ordered the same
-        this._tabs = [];
-        this._lastVisibleTabIndex = -1;
-        this._dropdownActive = false;
-        this._element = document.createElement("section");
-        this._element.classList.add("lm_tabs" /* Tabs */ );
-        this._dropdownElement = document.createElement("section");
-        this._dropdownElement.classList.add("lm_tabdropdown_list" /* TabDropdownList */ );
-        this._dropdownElement.style.display = "none";
-    }
-    get tabs() {
-        return this._tabs;
-    }
-    get tabCount() {
-        return this._tabs.length;
-    }
-    get lastVisibleTabIndex() {
-        return this._lastVisibleTabIndex;
-    }
-    get element() {
-        return this._element;
-    }
-    get dropdownElement() {
-        return this._dropdownElement;
-    }
-    get dropdownActive() {
-        return this._dropdownActive;
-    }
-    destroy() {
-        for(let i = 0; i < this._tabs.length; i++)this._tabs[i].destroy();
-    }
-    /**
-     * Creates a new tab and associates it with a contentItem
-     * @param index - The position of the tab
-     */ createTab(componentItem, index) {
-        //If there's already a tab relating to the
-        //content item, don't do anything
-        for(let i = 0; i < this._tabs.length; i++){
-            if (this._tabs[i].componentItem === componentItem) return;
-        }
-        const tab = new (0, _tab.Tab)(this._layoutManager, componentItem, (item)=>this.handleTabCloseEvent(item), (item)=>this.handleTabFocusEvent(item), (x, y, dragListener, item)=>this.handleTabDragStartEvent(x, y, dragListener, item));
-        if (index === undefined) index = this._tabs.length;
-        this._tabs.splice(index, 0, tab);
-        if (index < this._element.childNodes.length) this._element.insertBefore(tab.element, this._element.childNodes[index]);
-        else this._element.appendChild(tab.element);
-    }
-    removeTab(componentItem) {
-        // componentItem cannot be ActiveComponentItem
-        for(let i = 0; i < this._tabs.length; i++)if (this._tabs[i].componentItem === componentItem) {
-            const tab = this._tabs[i];
-            tab.destroy();
-            this._tabs.splice(i, 1);
-            return;
-        }
-        throw new Error("contentItem is not controlled by this header");
-    }
-    processActiveComponentChanged(newActiveComponentItem) {
-        let activeIndex = -1;
-        for(let i = 0; i < this._tabs.length; i++){
-            const isActive = this._tabs[i].componentItem === newActiveComponentItem;
-            this._tabs[i].setActive(isActive);
-            if (isActive) activeIndex = i;
-        }
-        if (activeIndex < 0) throw new (0, _internalError.AssertError)("HSACI56632");
-        else {
-            if (this._layoutManager.layoutConfig.settings.reorderOnTabMenuClick) /**
-                 * If the tab selected was in the dropdown, move everything down one to make way for this one to be the first.
-                 * This will make sure the most used tabs stay visible.
-                 */ {
-                if (this._lastVisibleTabIndex !== -1 && activeIndex > this._lastVisibleTabIndex) {
-                    const activeTab = this._tabs[activeIndex];
-                    for(let j = activeIndex; j > 0; j--)this._tabs[j] = this._tabs[j - 1];
-                    this._tabs[0] = activeTab;
-                // updateTabSizes will always be called after this and it will reposition tab elements
-                }
-            }
-        }
-    }
-    /**
-     * Pushes the tabs to the tab dropdown if the available space is not sufficient
-     */ updateTabSizes(availableWidth, activeComponentItem) {
-        let dropDownActive = false;
-        const success = this.tryUpdateTabSizes(dropDownActive, availableWidth, activeComponentItem);
-        if (!success) {
-            dropDownActive = true;
-            // this will always succeed
-            this.tryUpdateTabSizes(dropDownActive, availableWidth, activeComponentItem);
-        }
-        if (dropDownActive !== this._dropdownActive) {
-            this._dropdownActive = dropDownActive;
-            this._dropdownActiveChangedEvent();
-        }
-    }
-    tryUpdateTabSizes(dropdownActive, availableWidth, activeComponentItem) {
-        if (this._tabs.length > 0) {
-            if (activeComponentItem === undefined) throw new Error("non-empty tabs must have active component item");
-            let cumulativeTabWidth = 0;
-            let tabOverlapAllowanceExceeded = false;
-            const tabOverlapAllowance = this._layoutManager.layoutConfig.settings.tabOverlapAllowance;
-            const activeIndex = this._tabs.indexOf(activeComponentItem.tab);
-            const activeTab = this._tabs[activeIndex];
-            this._lastVisibleTabIndex = -1;
-            for(let i = 0; i < this._tabs.length; i++){
-                const tabElement = this._tabs[i].element;
-                //Put the tab in the tabContainer so its true width can be checked
-                if (tabElement.parentElement !== this._element) this._element.appendChild(tabElement);
-                const tabMarginRightPixels = getComputedStyle(activeTab.element).marginRight;
-                const tabMarginRight = (0, _utils.pixelsToNumber)(tabMarginRightPixels);
-                const tabWidth = tabElement.offsetWidth + tabMarginRight;
-                cumulativeTabWidth += tabWidth;
-                //Include the active tab's width if it isn't already
-                //This is to ensure there is room to show the active tab
-                let visibleTabWidth = 0;
-                if (activeIndex <= i) visibleTabWidth = cumulativeTabWidth;
-                else {
-                    const activeTabMarginRightPixels = getComputedStyle(activeTab.element).marginRight;
-                    const activeTabMarginRight = (0, _utils.pixelsToNumber)(activeTabMarginRightPixels);
-                    visibleTabWidth = cumulativeTabWidth + activeTab.element.offsetWidth + activeTabMarginRight;
-                }
-                // If the tabs won't fit, check the overlap allowance.
-                if (visibleTabWidth > availableWidth) {
-                    //Once allowance is exceeded, all remaining tabs go to menu.
-                    if (!tabOverlapAllowanceExceeded) {
-                        //No overlap for first tab or active tab
-                        //Overlap spreads among non-active, non-first tabs
-                        let overlap;
-                        if (activeIndex > 0 && activeIndex <= i) overlap = (visibleTabWidth - availableWidth) / (i - 1);
-                        else overlap = (visibleTabWidth - availableWidth) / i;
-                        //Check overlap against allowance.
-                        if (overlap < tabOverlapAllowance) {
-                            for(let j = 0; j <= i; j++){
-                                const marginLeft = j !== activeIndex && j !== 0 ? "-" + (0, _utils.numberToPixels)(overlap) : "";
-                                this._tabs[j].element.style.zIndex = (0, _utils.numberToPixels)(i - j);
-                                this._tabs[j].element.style.marginLeft = marginLeft;
-                            }
-                            this._lastVisibleTabIndex = i;
-                            if (tabElement.parentElement !== this._element) this._element.appendChild(tabElement);
-                        } else tabOverlapAllowanceExceeded = true;
-                    } else if (i === activeIndex) {
-                        //Active tab should show even if allowance exceeded. (We left room.)
-                        tabElement.style.zIndex = "auto";
-                        tabElement.style.marginLeft = "";
-                        if (tabElement.parentElement !== this._element) this._element.appendChild(tabElement);
-                    }
-                    if (tabOverlapAllowanceExceeded && i !== activeIndex) {
-                        if (dropdownActive) {
-                            //Tab menu already shown, so we just add to it.
-                            tabElement.style.zIndex = "auto";
-                            tabElement.style.marginLeft = "";
-                            if (tabElement.parentElement !== this._dropdownElement) this._dropdownElement.appendChild(tabElement);
-                        } else //We now know the tab menu must be shown, so we have to recalculate everything.
-                        return false;
-                    }
-                } else {
-                    this._lastVisibleTabIndex = i;
-                    tabElement.style.zIndex = "auto";
-                    tabElement.style.marginLeft = "";
-                    if (tabElement.parentElement !== this._element) this._element.appendChild(tabElement);
-                }
-            }
-        }
-        return true;
-    }
-    /**
-     * Shows drop down for additional tabs when there are too many to display.
-     */ showAdditionalTabsDropdown() {
-        this._dropdownElement.style.display = "";
-    }
-    /**
-     * Hides drop down for additional tabs when there are too many to display.
-     */ hideAdditionalTabsDropdown() {
-        this._dropdownElement.style.display = "none";
-    }
-    handleTabCloseEvent(componentItem) {
-        this._componentRemoveEvent(componentItem);
-    }
-    handleTabFocusEvent(componentItem) {
-        this._componentFocusEvent(componentItem);
-    }
-    handleTabDragStartEvent(x, y, dragListener, componentItem) {
-        this._componentDragStartEvent(x, y, dragListener, componentItem);
-    }
-}
-
-},{"../errors/internal-error":"7ms7b","../utils/utils":"fArjz","./tab":"lupDw","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lupDw":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * Represents an individual tab within a Stack's header
- * @public
- */ parcelHelpers.export(exports, "Tab", ()=>Tab);
-var _internalError = require("../errors/internal-error");
-var _dragListener = require("../utils/drag-listener");
-class Tab {
-    /** @internal */ constructor(/** @internal */ _layoutManager, /** @internal */ _componentItem, /** @internal */ _closeEvent, /** @internal */ _focusEvent, /** @internal */ _dragStartEvent){
-        var _a;
-        this._layoutManager = _layoutManager;
-        this._componentItem = _componentItem;
-        this._closeEvent = _closeEvent;
-        this._focusEvent = _focusEvent;
-        this._dragStartEvent = _dragStartEvent;
-        /** @internal */ this._isActive = false;
-        /** @internal */ this._tabClickListener = (ev)=>this.onTabClickDown(ev);
-        /** @internal */ this._tabTouchStartListener = (ev)=>this.onTabTouchStart(ev);
-        /** @internal */ this._closeClickListener = ()=>this.onCloseClick();
-        /** @internal */ this._closeTouchStartListener = ()=>this.onCloseTouchStart();
-        // /** @internal */
-        // private readonly _closeMouseDownListener = () => this.onCloseMousedown();
-        /** @internal */ this._dragStartListener = (x, y)=>this.onDragStart(x, y);
-        /** @internal */ this._contentItemDestroyListener = ()=>this.onContentItemDestroy();
-        /** @internal */ this._tabTitleChangedListener = (title)=>this.setTitle(title);
-        this._element = document.createElement("div");
-        this._element.classList.add("lm_tab" /* Tab */ );
-        this._titleElement = document.createElement("span");
-        this._titleElement.classList.add("lm_title" /* Title */ );
-        this._closeElement = document.createElement("div");
-        this._closeElement.classList.add("lm_close_tab" /* CloseTab */ );
-        this._element.appendChild(this._titleElement);
-        this._element.appendChild(this._closeElement);
-        if (_componentItem.isClosable) this._closeElement.style.display = "";
-        else this._closeElement.style.display = "none";
-        this.setTitle(_componentItem.title);
-        this._componentItem.on("titleChanged", this._tabTitleChangedListener);
-        const reorderEnabled = (_a = _componentItem.reorderEnabled) !== null && _a !== void 0 ? _a : this._layoutManager.layoutConfig.settings.reorderEnabled;
-        if (reorderEnabled) this.enableReorder();
-        this._element.addEventListener("click", this._tabClickListener, {
-            passive: true
-        });
-        this._element.addEventListener("touchstart", this._tabTouchStartListener, {
-            passive: true
-        });
-        if (this._componentItem.isClosable) {
-            this._closeElement.addEventListener("click", this._closeClickListener, {
-                passive: true
-            });
-            this._closeElement.addEventListener("touchstart", this._closeTouchStartListener, {
-                passive: true
-            });
-        // this._closeElement.addEventListener('mousedown', this._closeMouseDownListener, { passive: true });
-        } else {
-            this._closeElement.remove();
-            this._closeElement = undefined;
-        }
-        this._componentItem.setTab(this);
-        this._layoutManager.emit("tabCreated", this);
-    }
-    get isActive() {
-        return this._isActive;
-    }
-    // get header(): Header { return this._header; }
-    get componentItem() {
-        return this._componentItem;
-    }
-    /** @deprecated use {@link (Tab:class).componentItem} */ get contentItem() {
-        return this._componentItem;
-    }
-    get element() {
-        return this._element;
-    }
-    get titleElement() {
-        return this._titleElement;
-    }
-    get closeElement() {
-        return this._closeElement;
-    }
-    get reorderEnabled() {
-        return this._dragListener !== undefined;
-    }
-    set reorderEnabled(value) {
-        if (value !== this.reorderEnabled) {
-            if (value) this.enableReorder();
-            else this.disableReorder();
-        }
-    }
-    /**
-     * Sets the tab's title to the provided string and sets
-     * its title attribute to a pure text representation (without
-     * html tags) of the same string.
-     */ setTitle(title) {
-        this._titleElement.innerText = title;
-        this._element.title = title;
-    }
-    /**
-     * Sets this tab's active state. To programmatically
-     * switch tabs, use Stack.setActiveComponentItem( item ) instead.
-     */ setActive(isActive) {
-        if (isActive === this._isActive) return;
-        this._isActive = isActive;
-        if (isActive) this._element.classList.add("lm_active" /* Active */ );
-        else this._element.classList.remove("lm_active" /* Active */ );
-    }
-    /**
-     * Destroys the tab
-     * @internal
-     */ destroy() {
-        var _a, _b;
-        this._closeEvent = undefined;
-        this._focusEvent = undefined;
-        this._dragStartEvent = undefined;
-        this._element.removeEventListener("click", this._tabClickListener);
-        this._element.removeEventListener("touchstart", this._tabTouchStartListener);
-        (_a = this._closeElement) === null || _a === void 0 || _a.removeEventListener("click", this._closeClickListener);
-        (_b = this._closeElement) === null || _b === void 0 || _b.removeEventListener("touchstart", this._closeTouchStartListener);
-        // this._closeElement?.removeEventListener('mousedown', this._closeMouseDownListener);
-        this._componentItem.off("titleChanged", this._tabTitleChangedListener);
-        if (this.reorderEnabled) this.disableReorder();
-        this._element.remove();
-    }
-    /** @internal */ setBlurred() {
-        this._element.classList.remove("lm_focused" /* Focused */ );
-        this._titleElement.classList.remove("lm_focused" /* Focused */ );
-    }
-    /** @internal */ setFocused() {
-        this._element.classList.add("lm_focused" /* Focused */ );
-        this._titleElement.classList.add("lm_focused" /* Focused */ );
-    }
-    /**
-     * Callback for the DragListener
-     * @param x - The tabs absolute x position
-     * @param y - The tabs absolute y position
-     * @internal
-     */ onDragStart(x, y) {
-        if (this._dragListener === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("TODSDLU10093");
-        else {
-            if (this._dragStartEvent === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("TODS23309");
-            else this._dragStartEvent(x, y, this._dragListener, this.componentItem);
-        }
-    }
-    /** @internal */ onContentItemDestroy() {
-        if (this._dragListener !== undefined) {
-            this._dragListener.destroy();
-            this._dragListener = undefined;
-        }
-    }
-    /**
-     * Callback when the tab is clicked
-     * @internal
-     */ onTabClickDown(event) {
-        const target = event.target;
-        if (target === this._element || target === this._titleElement) {
-            // left mouse button
-            if (event.button === 0) // event.stopPropagation();
-            this.notifyFocus();
-            else if (event.button === 1 && this._componentItem.isClosable) // event.stopPropagation();
-            this.notifyClose();
-        }
-    }
-    /** @internal */ onTabTouchStart(event) {
-        if (event.target === this._element) this.notifyFocus();
-    }
-    /**
-     * Callback when the tab's close button is clicked
-     * @internal
-     */ onCloseClick() {
-        this.notifyClose();
-    }
-    /** @internal */ onCloseTouchStart() {
-        this.notifyClose();
-    }
-    /**
-     * Callback to capture tab close button mousedown
-     * to prevent tab from activating.
-     * @internal
-     */ // private onCloseMousedown(): void {
-    //     // event.stopPropagation();
-    // }
-    /** @internal */ notifyClose() {
-        if (this._closeEvent === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("TNC15007");
-        else this._closeEvent(this._componentItem);
-    }
-    /** @internal */ notifyFocus() {
-        if (this._focusEvent === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("TNA15007");
-        else this._focusEvent(this._componentItem);
-    }
-    /** @internal */ enableReorder() {
-        this._dragListener = new (0, _dragListener.DragListener)(this._element, [
-            this._titleElement
-        ]);
-        this._dragListener.on("dragStart", this._dragStartListener);
-        this._componentItem.on("destroy", this._contentItemDestroyListener);
-    }
-    /** @internal */ disableReorder() {
-        if (this._dragListener === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("TDR87745");
-        else {
-            this._componentItem.off("destroy", this._contentItemDestroyListener);
-            this._dragListener.off("dragStart", this._dragStartListener);
-            this._dragListener = undefined;
-        }
-    }
-}
-
-},{"../errors/internal-error":"7ms7b","../utils/drag-listener":"b7LEx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"c2tqk":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * The main class that will be exposed as GoldenLayout.
- */ /** @public */ parcelHelpers.export(exports, "LayoutManager", ()=>LayoutManager);
-var _config = require("./config/config");
-var _resolvedConfig = require("./config/resolved-config");
-var _browserPopout = require("./controls/browser-popout");
-var _dragProxy = require("./controls/drag-proxy");
-var _dragSource = require("./controls/drag-source");
-var _dropTargetIndicator = require("./controls/drop-target-indicator");
-var _transitionIndicator = require("./controls/transition-indicator");
-var _externalError = require("./errors/external-error");
-var _internalError = require("./errors/internal-error");
-var _componentItem = require("./items/component-item");
-var _contentItem = require("./items/content-item");
-var _groundItem = require("./items/ground-item");
-var _rowOrColumn = require("./items/row-or-column");
-var _stack = require("./items/stack");
-var _configMinifier = require("./utils/config-minifier");
-var _eventEmitter = require("./utils/event-emitter");
-var _eventHub = require("./utils/event-hub");
-var _i18NStrings = require("./utils/i18n-strings");
-var _types = require("./utils/types");
-var _utils = require("./utils/utils");
-class LayoutManager extends (0, _eventEmitter.EventEmitter) {
-    /**
-    * @param container - A Dom HTML element. Defaults to body
-    * @internal
-    */ constructor(parameters){
-        super();
-        /** Whether the layout will be automatically be resized to container whenever the container's size is changed
-         * Default is true if <body> is the container otherwise false
-         * Default will be changed to true for any container in the future
-         */ this.resizeWithContainerAutomatically = false;
-        /** The debounce interval (in milliseconds) used whenever a layout is automatically resized.  0 means next tick */ this.resizeDebounceInterval = 100;
-        /** Extend the current debounce delay time period if it is triggered during the delay.
-         * If this is true, the layout will only resize when its container has stopped being resized.
-         * If it is false, the layout will resize at intervals while its container is being resized.
-         */ this.resizeDebounceExtendedWhenPossible = true;
-        /** @internal */ this._isInitialised = false;
-        /** @internal */ this._groundItem = undefined;
-        /** @internal */ this._openPopouts = [];
-        /** @internal */ this._dropTargetIndicator = null;
-        /** @internal */ this._transitionIndicator = null;
-        /** @internal */ this._itemAreas = [];
-        /** @internal */ this._maximisePlaceholder = LayoutManager.createMaximisePlaceElement(document);
-        /** @internal */ this._tabDropPlaceholder = LayoutManager.createTabDropPlaceholderElement(document);
-        /** @internal */ this._dragSources = [];
-        /** @internal */ this._updatingColumnsResponsive = false;
-        /** @internal */ this._firstLoad = true;
-        /** @internal */ this._eventHub = new (0, _eventHub.EventHub)(this);
-        /** @internal */ this._width = null;
-        /** @internal */ this._height = null;
-        /** @internal */ this._virtualSizedContainers = [];
-        /** @internal */ this._virtualSizedContainerAddingBeginCount = 0;
-        /** @internal */ this._sizeInvalidationBeginCount = 0;
-        /** @internal */ this._resizeObserver = new ResizeObserver(()=>this.handleContainerResize());
-        /** @internal @deprecated to be removed in version 3 */ this._windowBeforeUnloadListener = ()=>this.onBeforeUnload();
-        /** @internal @deprecated to be removed in version 3 */ this._windowBeforeUnloadListening = false;
-        /** @internal */ this._maximisedStackBeforeDestroyedListener = (ev)=>this.cleanupBeforeMaximisedStackDestroyed(ev);
-        this.isSubWindow = parameters.isSubWindow;
-        this._constructorOrSubWindowLayoutConfig = parameters.constructorOrSubWindowLayoutConfig;
-        (0, _i18NStrings.I18nStrings).checkInitialise();
-        (0, _configMinifier.ConfigMinifier).checkInitialise();
-        if (parameters.containerElement !== undefined) this._containerElement = parameters.containerElement;
-    }
-    get container() {
-        return this._containerElement;
-    }
-    get isInitialised() {
-        return this._isInitialised;
-    }
-    /** @internal */ get groundItem() {
-        return this._groundItem;
-    }
-    /** @internal @deprecated use {@link (LayoutManager:class).groundItem} instead */ get root() {
-        return this._groundItem;
-    }
-    get openPopouts() {
-        return this._openPopouts;
-    }
-    /** @internal */ get dropTargetIndicator() {
-        return this._dropTargetIndicator;
-    }
-    /** @internal @deprecated To be removed */ get transitionIndicator() {
-        return this._transitionIndicator;
-    }
-    get width() {
-        return this._width;
-    }
-    get height() {
-        return this._height;
-    }
-    /**
-     * Retrieves the {@link (EventHub:class)} instance associated with this layout manager.
-     * This can be used to propagate events between the windows
-     * @public
-     */ get eventHub() {
-        return this._eventHub;
-    }
-    get rootItem() {
-        if (this._groundItem === undefined) throw new Error("Cannot access rootItem before init");
-        else {
-            const groundContentItems = this._groundItem.contentItems;
-            if (groundContentItems.length === 0) return undefined;
-            else return this._groundItem.contentItems[0];
-        }
-    }
-    get focusedComponentItem() {
-        return this._focusedComponentItem;
-    }
-    /** @internal */ get tabDropPlaceholder() {
-        return this._tabDropPlaceholder;
-    }
-    get maximisedStack() {
-        return this._maximisedStack;
-    }
-    /** @deprecated indicates deprecated constructor use */ get deprecatedConstructor() {
-        return !this.isSubWindow && this._constructorOrSubWindowLayoutConfig !== undefined;
-    }
-    /**
-     * Destroys the LayoutManager instance itself as well as every ContentItem
-     * within it. After this is called nothing should be left of the LayoutManager.
-     *
-     * This function only needs to be called if an application wishes to destroy the Golden Layout object while
-     * a page remains loaded. When a page is unloaded, all resources claimed by Golden Layout will automatically
-     * be released.
-     */ destroy() {
-        if (this._isInitialised) {
-            if (this._windowBeforeUnloadListening) {
-                globalThis.removeEventListener("beforeunload", this._windowBeforeUnloadListener);
-                this._windowBeforeUnloadListening = false;
-            }
-            if (this.layoutConfig.settings.closePopoutsOnUnload === true) this.closeAllOpenPopouts();
-            this._resizeObserver.disconnect();
-            this.checkClearResizeTimeout();
-            if (this._groundItem !== undefined) this._groundItem.destroy();
-            this._tabDropPlaceholder.remove();
-            if (this._dropTargetIndicator !== null) this._dropTargetIndicator.destroy();
-            if (this._transitionIndicator !== null) this._transitionIndicator.destroy();
-            this._eventHub.destroy();
-            for (const dragSource of this._dragSources)dragSource.destroy();
-            this._dragSources = [];
-            this._isInitialised = false;
-        }
-    }
-    /**
-     * Takes a GoldenLayout configuration object and
-     * replaces its keys and values recursively with
-     * one letter codes
-     * @deprecated use {@link (ResolvedLayoutConfig:namespace).minifyConfig} instead
-     */ minifyConfig(config) {
-        return (0, _resolvedConfig.ResolvedLayoutConfig).minifyConfig(config);
-    }
-    /**
-     * Takes a configuration Object that was previously minified
-     * using minifyConfig and returns its original version
-     * @deprecated use {@link (ResolvedLayoutConfig:namespace).unminifyConfig} instead
-     */ unminifyConfig(config) {
-        return (0, _resolvedConfig.ResolvedLayoutConfig).unminifyConfig(config);
-    }
-    /**
-     * Called from GoldenLayout class. Finishes of init
-     * @internal
-     */ init() {
-        this.setContainer();
-        this._dropTargetIndicator = new (0, _dropTargetIndicator.DropTargetIndicator)();
-        this._transitionIndicator = new (0, _transitionIndicator.TransitionIndicator)();
-        this.updateSizeFromContainer();
-        let subWindowRootConfig;
-        if (this.isSubWindow) {
-            if (this._constructorOrSubWindowLayoutConfig === undefined) // SubWindow LayoutConfig should have been generated by constructor
-            throw new (0, _internalError.UnexpectedUndefinedError)("LMIU07155");
-            else {
-                const root = this._constructorOrSubWindowLayoutConfig.root;
-                if (root === undefined) // SubWindow LayoutConfig must not be empty
-                throw new (0, _internalError.AssertError)("LMIC07156");
-                else {
-                    if ((0, _config.ItemConfig).isComponent(root)) subWindowRootConfig = root;
-                    else // SubWindow LayoutConfig must have Component as Root
-                    throw new (0, _internalError.AssertError)("LMIC07157");
-                }
-                const resolvedLayoutConfig = (0, _config.LayoutConfig).resolve(this._constructorOrSubWindowLayoutConfig);
-                // remove root from layoutConfig
-                this.layoutConfig = Object.assign(Object.assign({}, resolvedLayoutConfig), {
-                    root: undefined
-                });
-            }
-        } else if (this._constructorOrSubWindowLayoutConfig === undefined) this.layoutConfig = (0, _resolvedConfig.ResolvedLayoutConfig).createDefault(); // will overwritten be loaded via loadLayout
-        else // backwards compatibility
-        this.layoutConfig = (0, _config.LayoutConfig).resolve(this._constructorOrSubWindowLayoutConfig);
-        const layoutConfig = this.layoutConfig;
-        this._groundItem = new (0, _groundItem.GroundItem)(this, layoutConfig.root, this._containerElement);
-        this._groundItem.init();
-        this.checkLoadedLayoutMaximiseItem();
-        this._resizeObserver.observe(this._containerElement);
-        this._isInitialised = true;
-        this.adjustColumnsResponsive();
-        this.emit("initialised");
-        if (subWindowRootConfig !== undefined) // must be SubWindow
-        this.loadComponentAsRoot(subWindowRootConfig);
-    }
-    /**
-     * Loads a new layout
-     * @param layoutConfig - New layout to be loaded
-     */ loadLayout(layoutConfig) {
-        if (!this.isInitialised) // In case application not correctly using legacy constructor
-        throw new Error("GoldenLayout: Need to call init() if LayoutConfig with defined root passed to constructor");
-        else {
-            if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMLL11119");
-            else {
-                this.createSubWindows(); // still needs to be tested
-                this.layoutConfig = (0, _config.LayoutConfig).resolve(layoutConfig);
-                this._groundItem.loadRoot(this.layoutConfig.root);
-                this.checkLoadedLayoutMaximiseItem();
-                this.adjustColumnsResponsive();
-            }
-        }
-    }
-    /**
-     * Creates a layout configuration object based on the the current state
-     *
-     * @public
-     * @returns GoldenLayout configuration
-     */ saveLayout() {
-        if (this._isInitialised === false) throw new Error("Can't create config, layout not yet initialised");
-        else {
-            // if (root !== undefined && !(root instanceof ContentItem)) {
-            //     throw new Error('Root must be a ContentItem');
-            // }
-            /*
-            * Content
-            */ if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMTC18244");
-            else {
-                const groundContent = this._groundItem.calculateConfigContent();
-                let rootItemConfig;
-                if (groundContent.length !== 1) rootItemConfig = undefined;
-                else rootItemConfig = groundContent[0];
-                /*
-                * Retrieve config for subwindows
-                */ this.reconcilePopoutWindows();
-                const openPopouts = [];
-                for(let i = 0; i < this._openPopouts.length; i++)openPopouts.push(this._openPopouts[i].toConfig());
-                const config = {
-                    root: rootItemConfig,
-                    openPopouts,
-                    settings: (0, _resolvedConfig.ResolvedLayoutConfig).Settings.createCopy(this.layoutConfig.settings),
-                    dimensions: (0, _resolvedConfig.ResolvedLayoutConfig).Dimensions.createCopy(this.layoutConfig.dimensions),
-                    header: (0, _resolvedConfig.ResolvedLayoutConfig).Header.createCopy(this.layoutConfig.header),
-                    resolved: true
-                };
-                return config;
-            }
-        }
-    }
-    /**
-     * Removes any existing layout. Effectively, an empty layout will be loaded.
-     */ clear() {
-        if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMCL11129");
-        else this._groundItem.clearRoot();
-    }
-    /**
-     * @deprecated Use {@link (LayoutManager:class).saveLayout}
-     */ toConfig() {
-        return this.saveLayout();
-    }
-    /**
-     * Adds a new ComponentItem.  Will use default location selectors to ensure a location is found and
-     * component is successfully added
-     * @param componentTypeName - Name of component type to be created.
-     * @param state - Optional initial state to be assigned to component
-     * @returns New ComponentItem created.
-     */ newComponent(componentType, componentState, title) {
-        const componentItem = this.newComponentAtLocation(componentType, componentState, title);
-        if (componentItem === undefined) throw new (0, _internalError.AssertError)("LMNC65588");
-        else return componentItem;
-    }
-    /**
-     * Adds a ComponentItem at the first valid selector location.
-     * @param componentTypeName - Name of component type to be created.
-     * @param state - Optional initial state to be assigned to component
-     * @param locationSelectors - Array of location selectors used to find location in layout where component
-     * will be added. First location in array which is valid will be used. If locationSelectors is undefined,
-     * {@link (LayoutManager:namespace).defaultLocationSelectors} will be used
-     * @returns New ComponentItem created or undefined if no valid location selector was in array.
-     */ newComponentAtLocation(componentType, componentState, title, locationSelectors) {
-        if (this._groundItem === undefined) throw new Error("Cannot add component before init");
-        else {
-            const location = this.addComponentAtLocation(componentType, componentState, title, locationSelectors);
-            if (location === undefined) return undefined;
-            else {
-                const createdItem = location.parentItem.contentItems[location.index];
-                if (!(0, _contentItem.ContentItem).isComponentItem(createdItem)) throw new (0, _internalError.AssertError)("LMNC992877533");
-                else return createdItem;
-            }
-        }
-    }
-    /**
-     * Adds a new ComponentItem.  Will use default location selectors to ensure a location is found and
-     * component is successfully added
-     * @param componentType - Type of component to be created.
-     * @param state - Optional initial state to be assigned to component
-     * @returns Location of new ComponentItem created.
-     */ addComponent(componentType, componentState, title) {
-        const location = this.addComponentAtLocation(componentType, componentState, title);
-        if (location === undefined) throw new (0, _internalError.AssertError)("LMAC99943");
-        else return location;
-    }
-    /**
-     * Adds a ComponentItem at the first valid selector location.
-     * @param componentType - Type of component to be created.
-     * @param state - Optional initial state to be assigned to component
-     * @param locationSelectors - Array of location selectors used to find determine location in layout where component
-     * will be added. First location in array which is valid will be used. If undefined,
-     * {@link (LayoutManager:namespace).defaultLocationSelectors} will be used.
-     * @returns Location of new ComponentItem created or undefined if no valid location selector was in array.
-     */ addComponentAtLocation(componentType, componentState, title, locationSelectors) {
-        const itemConfig = {
-            type: "component",
-            componentType,
-            componentState,
-            title
-        };
-        return this.addItemAtLocation(itemConfig, locationSelectors);
-    }
-    /**
-     * Adds a new ContentItem.  Will use default location selectors to ensure a location is found and
-     * component is successfully added
-     * @param itemConfig - ResolvedItemConfig of child to be added.
-     * @returns New ContentItem created.
-    */ newItem(itemConfig) {
-        const contentItem = this.newItemAtLocation(itemConfig);
-        if (contentItem === undefined) throw new (0, _internalError.AssertError)("LMNC65588");
-        else return contentItem;
-    }
-    /**
-     * Adds a new child ContentItem under the root ContentItem.  If a root does not exist, then create root ContentItem instead
-     * @param itemConfig - ResolvedItemConfig of child to be added.
-     * @param locationSelectors - Array of location selectors used to find determine location in layout where ContentItem
-     * will be added. First location in array which is valid will be used. If undefined,
-     * {@link (LayoutManager:namespace).defaultLocationSelectors} will be used.
-     * @returns New ContentItem created or undefined if no valid location selector was in array. */ newItemAtLocation(itemConfig, locationSelectors) {
-        if (this._groundItem === undefined) throw new Error("Cannot add component before init");
-        else {
-            const location = this.addItemAtLocation(itemConfig, locationSelectors);
-            if (location === undefined) return undefined;
-            else {
-                const createdItem = location.parentItem.contentItems[location.index];
-                return createdItem;
-            }
-        }
-    }
-    /**
-     * Adds a new ContentItem.  Will use default location selectors to ensure a location is found and
-     * component is successfully added.
-     * @param itemConfig - ResolvedItemConfig of child to be added.
-     * @returns Location of new ContentItem created. */ addItem(itemConfig) {
-        const location = this.addItemAtLocation(itemConfig);
-        if (location === undefined) throw new (0, _internalError.AssertError)("LMAI99943");
-        else return location;
-    }
-    /**
-     * Adds a ContentItem at the first valid selector location.
-     * @param itemConfig - ResolvedItemConfig of child to be added.
-     * @param locationSelectors - Array of location selectors used to find determine location in layout where ContentItem
-     * will be added. First location in array which is valid will be used. If undefined,
-     * {@link (LayoutManager:namespace).defaultLocationSelectors} will be used.
-     * @returns Location of new ContentItem created or undefined if no valid location selector was in array. */ addItemAtLocation(itemConfig, locationSelectors) {
-        if (this._groundItem === undefined) throw new Error("Cannot add component before init");
-        else {
-            if (locationSelectors === undefined) // defaultLocationSelectors should always find a location
-            locationSelectors = LayoutManager.defaultLocationSelectors;
-            const location = this.findFirstLocation(locationSelectors);
-            if (location === undefined) return undefined;
-            else {
-                let parentItem = location.parentItem;
-                let addIdx;
-                switch(parentItem.type){
-                    case (0, _types.ItemType).ground:
-                        {
-                            const groundItem = parentItem;
-                            addIdx = groundItem.addItem(itemConfig, location.index);
-                            if (addIdx >= 0) parentItem = this._groundItem.contentItems[0]; // was added to rootItem
-                            else addIdx = 0; // was added as rootItem (which is the first and only ContentItem in GroundItem)
-                            break;
-                        }
-                    case (0, _types.ItemType).row:
-                    case (0, _types.ItemType).column:
-                        {
-                            const rowOrColumn = parentItem;
-                            addIdx = rowOrColumn.addItem(itemConfig, location.index);
-                            break;
-                        }
-                    case (0, _types.ItemType).stack:
-                        if (!(0, _config.ItemConfig).isComponent(itemConfig)) throw Error((0, _i18NStrings.i18nStrings)[6 /* ItemConfigIsNotTypeComponent */ ]);
-                        else {
-                            const stack = parentItem;
-                            addIdx = stack.addItem(itemConfig, location.index);
-                            break;
-                        }
-                    case (0, _types.ItemType).component:
-                        throw new (0, _internalError.AssertError)("LMAIALC87444602");
-                    default:
-                        throw new (0, _internalError.UnreachableCaseError)("LMAIALU98881733", parentItem.type);
-                }
-                if ((0, _config.ItemConfig).isComponent(itemConfig)) {
-                    // see if stack was inserted
-                    const item = parentItem.contentItems[addIdx];
-                    if ((0, _contentItem.ContentItem).isStack(item)) {
-                        parentItem = item;
-                        addIdx = 0;
-                    }
-                }
-                location.parentItem = parentItem;
-                location.index = addIdx;
-                return location;
-            }
-        }
-    }
-    /** Loads the specified component ResolvedItemConfig as root.
-     * This can be used to display a Component all by itself.  The layout cannot be changed other than having another new layout loaded.
-     * Note that, if this layout is saved and reloaded, it will reload with the Component as a child of a Stack.
-    */ loadComponentAsRoot(itemConfig) {
-        if (this._groundItem === undefined) throw new Error("Cannot add item before init");
-        else this._groundItem.loadComponentAsRoot(itemConfig);
-    }
-    /** @deprecated Use {@link (LayoutManager:class).setSize} */ updateSize(width, height) {
-        this.setSize(width, height);
-    }
-    /**
-     * Updates the layout managers size
-     *
-     * @param width - Width in pixels
-     * @param height - Height in pixels
-     */ setSize(width, height) {
-        this._width = width;
-        this._height = height;
-        if (this._isInitialised === true) {
-            if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMUS18881");
-            else {
-                this._groundItem.setSize(this._width, this._height);
-                if (this._maximisedStack) {
-                    const { width, height } = (0, _utils.getElementWidthAndHeight)(this._containerElement);
-                    (0, _utils.setElementWidth)(this._maximisedStack.element, width);
-                    (0, _utils.setElementHeight)(this._maximisedStack.element, height);
-                    this._maximisedStack.updateSize(false);
-                }
-                this.adjustColumnsResponsive();
-            }
-        }
-    }
-    /** @internal */ beginSizeInvalidation() {
-        this._sizeInvalidationBeginCount++;
-    }
-    /** @internal */ endSizeInvalidation() {
-        if (--this._sizeInvalidationBeginCount === 0) this.updateSizeFromContainer();
-    }
-    /** @internal */ updateSizeFromContainer() {
-        const { width, height } = (0, _utils.getElementWidthAndHeight)(this._containerElement);
-        this.setSize(width, height);
-    }
-    /**
-     * Update the size of the root ContentItem.  This will update the size of all contentItems in the tree
-     * @param force - In some cases the size is not updated if it has not changed. In this case, events
-     * (such as ComponentContainer.virtualRectingRequiredEvent) are not fired. Setting force to true, ensures the size is updated regardless, and
-     * the respective events are fired. This is sometimes necessary when a component's size has not changed but it has become visible, and the
-     * relevant events need to be fired.
-     */ updateRootSize(force = false) {
-        if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMURS28881");
-        else this._groundItem.updateSize(force);
-    }
-    /** @public */ createAndInitContentItem(config, parent) {
-        const newItem = this.createContentItem(config, parent);
-        newItem.init();
-        return newItem;
-    }
-    /**
-     * Recursively creates new item tree structures based on a provided
-     * ItemConfiguration object
-     *
-     * @param config - ResolvedItemConfig
-     * @param parent - The item the newly created item should be a child of
-     * @internal
-     */ createContentItem(config, parent) {
-        if (typeof config.type !== "string") throw new (0, _externalError.ConfigurationError)("Missing parameter 'type'", JSON.stringify(config));
-        /**
-         * We add an additional stack around every component that's not within a stack anyways.
-         */ if (// If this is a component
-        (0, _resolvedConfig.ResolvedItemConfig).isComponentItem(config) && // and it's not already within a stack
-        !(parent instanceof (0, _stack.Stack)) && // and we have a parent
-        !!parent && // and it's not the topmost item in a new window
-        !(this.isSubWindow === true && parent instanceof (0, _groundItem.GroundItem))) {
-            const stackConfig = {
-                type: (0, _types.ItemType).stack,
-                content: [
-                    config
-                ],
-                size: config.size,
-                sizeUnit: config.sizeUnit,
-                minSize: config.minSize,
-                minSizeUnit: config.minSizeUnit,
-                id: config.id,
-                maximised: config.maximised,
-                isClosable: config.isClosable,
-                activeItemIndex: 0,
-                header: undefined
-            };
-            config = stackConfig;
-        }
-        const contentItem = this.createContentItemFromConfig(config, parent);
-        return contentItem;
-    }
-    findFirstComponentItemById(id) {
-        if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMFFCIBI82446");
-        else return this.findFirstContentItemTypeByIdRecursive((0, _types.ItemType).component, id, this._groundItem);
-    }
-    /**
-     * Creates a popout window with the specified content at the specified position
-     *
-     * @param itemConfigOrContentItem - The content of the popout window's layout manager derived from either
-     * a {@link (ContentItem:class)} or {@link (ItemConfig:interface)} or ResolvedItemConfig content (array of {@link (ItemConfig:interface)})
-     * @param positionAndSize - The width, height, left and top of Popout window
-     * @param parentId -The id of the element this item will be appended to when popIn is called
-     * @param indexInParent - The position of this item within its parent element
-     */ createPopout(itemConfigOrContentItem, positionAndSize, parentId, indexInParent) {
-        if (itemConfigOrContentItem instanceof (0, _contentItem.ContentItem)) return this.createPopoutFromContentItem(itemConfigOrContentItem, positionAndSize, parentId, indexInParent);
-        else return this.createPopoutFromItemConfig(itemConfigOrContentItem, positionAndSize, parentId, indexInParent);
-    }
-    /** @internal */ createPopoutFromContentItem(item, window, parentId, indexInParent) {
-        /**
-         * If the item is the only component within a stack or for some
-         * other reason the only child of its parent the parent will be destroyed
-         * when the child is removed.
-         *
-         * In order to support this we move up the tree until we find something
-         * that will remain after the item is being popped out
-         */ let parent = item.parent;
-        let child = item;
-        while(parent !== null && parent.contentItems.length === 1 && !parent.isGround){
-            child = parent;
-            parent = parent.parent;
-        }
-        if (parent === null) throw new (0, _internalError.UnexpectedNullError)("LMCPFCI00834");
-        else {
-            if (indexInParent === undefined) indexInParent = parent.contentItems.indexOf(child);
-            if (parentId !== null) parent.addPopInParentId(parentId);
-            if (window === undefined) {
-                const windowLeft = globalThis.screenX || globalThis.screenLeft;
-                const windowTop = globalThis.screenY || globalThis.screenTop;
-                const offsetLeft = item.element.offsetLeft;
-                const offsetTop = item.element.offsetTop;
-                // const { left: offsetLeft, top: offsetTop } = getJQueryLeftAndTop(item.element);
-                const { width, height } = (0, _utils.getElementWidthAndHeight)(item.element);
-                window = {
-                    left: windowLeft + offsetLeft,
-                    top: windowTop + offsetTop,
-                    width,
-                    height
-                };
-            }
-            const itemConfig = item.toConfig();
-            item.remove();
-            if (!(0, _resolvedConfig.ResolvedRootItemConfig).isRootItemConfig(itemConfig)) throw new Error(`${(0, _i18NStrings.i18nStrings)[0 /* PopoutCannotBeCreatedWithGroundItemConfig */ ]}`);
-            else return this.createPopoutFromItemConfig(itemConfig, window, parentId, indexInParent);
-        }
-    }
-    /** @internal */ beginVirtualSizedContainerAdding() {
-        if (++this._virtualSizedContainerAddingBeginCount === 0) this._virtualSizedContainers.length = 0;
-    }
-    /** @internal */ addVirtualSizedContainer(container) {
-        this._virtualSizedContainers.push(container);
-    }
-    /** @internal */ endVirtualSizedContainerAdding() {
-        if (--this._virtualSizedContainerAddingBeginCount === 0) {
-            const count = this._virtualSizedContainers.length;
-            if (count > 0) {
-                this.fireBeforeVirtualRectingEvent(count);
-                for(let i = 0; i < count; i++){
-                    const container = this._virtualSizedContainers[i];
-                    container.notifyVirtualRectingRequired();
-                }
-                this.fireAfterVirtualRectingEvent();
-                this._virtualSizedContainers.length = 0;
-            }
-        }
-    }
-    /** @internal */ fireBeforeVirtualRectingEvent(count) {
-        if (this.beforeVirtualRectingEvent !== undefined) this.beforeVirtualRectingEvent(count);
-    }
-    /** @internal */ fireAfterVirtualRectingEvent() {
-        if (this.afterVirtualRectingEvent !== undefined) this.afterVirtualRectingEvent();
-    }
-    /** @internal */ createPopoutFromItemConfig(rootItemConfig, window, parentId, indexInParent) {
-        const layoutConfig = this.toConfig();
-        const popoutLayoutConfig = {
-            root: rootItemConfig,
-            openPopouts: [],
-            settings: layoutConfig.settings,
-            dimensions: layoutConfig.dimensions,
-            header: layoutConfig.header,
-            window,
-            parentId,
-            indexInParent,
-            resolved: true
-        };
-        return this.createPopoutFromPopoutLayoutConfig(popoutLayoutConfig);
-    }
-    /** @internal */ createPopoutFromPopoutLayoutConfig(config) {
-        var _a, _b, _c, _d;
-        const configWindow = config.window;
-        const initialWindow = {
-            left: (_a = configWindow.left) !== null && _a !== void 0 ? _a : globalThis.screenX || globalThis.screenLeft + 20,
-            top: (_b = configWindow.top) !== null && _b !== void 0 ? _b : globalThis.screenY || globalThis.screenTop + 20,
-            width: (_c = configWindow.width) !== null && _c !== void 0 ? _c : 500,
-            height: (_d = configWindow.height) !== null && _d !== void 0 ? _d : 309
-        };
-        const browserPopout = new (0, _browserPopout.BrowserPopout)(config, initialWindow, this);
-        browserPopout.on("initialised", ()=>this.emit("windowOpened", browserPopout));
-        browserPopout.on("closed", ()=>this.reconcilePopoutWindows());
-        this._openPopouts.push(browserPopout);
-        if (this.layoutConfig.settings.closePopoutsOnUnload && !this._windowBeforeUnloadListening) {
-            globalThis.addEventListener("beforeunload", this._windowBeforeUnloadListener, {
-                passive: true
-            });
-            this._windowBeforeUnloadListening = true;
-        }
-        return browserPopout;
-    }
-    /**
-     * Closes all Open Popouts
-     * Applications can call this method when a page is unloaded to remove its open popouts
-     */ closeAllOpenPopouts() {
-        for(let i = 0; i < this._openPopouts.length; i++)this._openPopouts[i].close();
-        this._openPopouts.length = 0;
-        if (this._windowBeforeUnloadListening) {
-            globalThis.removeEventListener("beforeunload", this._windowBeforeUnloadListener);
-            this._windowBeforeUnloadListening = false;
-        }
-    }
-    newDragSource(element, componentTypeOrItemConfigCallback, componentState, title, id) {
-        const dragSource = new (0, _dragSource.DragSource)(this, element, [], componentTypeOrItemConfigCallback, componentState, title, id);
-        this._dragSources.push(dragSource);
-        return dragSource;
-    }
-    /**
-     * Removes a DragListener added by createDragSource() so the corresponding
-     * DOM element is not a drag source any more.
-     */ removeDragSource(dragSource) {
-        (0, _utils.removeFromArray)(dragSource, this._dragSources);
-        dragSource.destroy();
-    }
-    /** @internal */ startComponentDrag(x, y, dragListener, componentItem, stack) {
-        new (0, _dragProxy.DragProxy)(x, y, dragListener, this, componentItem, stack);
-    }
-    /**
-     * Programmatically focuses an item. This focuses the specified component item
-     * and the item emits a focus event
-     *
-     * @param item - The component item to be focused
-     * @param suppressEvent - Whether to emit focus event
-     */ focusComponent(item, suppressEvent = false) {
-        item.focus(suppressEvent);
-    }
-    /**
-     * Programmatically blurs (defocuses) the currently focused component.
-     * If a component item is focused, then it is blurred and and the item emits a blur event
-     *
-     * @param item - The component item to be blurred
-     * @param suppressEvent - Whether to emit blur event
-     */ clearComponentFocus(suppressEvent = false) {
-        this.setFocusedComponentItem(undefined, suppressEvent);
-    }
-    /**
-     * Programmatically focuses a component item or removes focus (blurs) from an existing focused component item.
-     *
-     * @param item - If defined, specifies the component item to be given focus.  If undefined, clear component focus.
-     * @param suppressEvents - Whether to emit focus and blur events
-     * @internal
-     */ setFocusedComponentItem(item, suppressEvents = false) {
-        if (item !== this._focusedComponentItem) {
-            let newFocusedParentItem;
-            if (item === undefined) ;
-            else newFocusedParentItem = item.parentItem;
-            if (this._focusedComponentItem !== undefined) {
-                const oldFocusedItem = this._focusedComponentItem;
-                this._focusedComponentItem = undefined;
-                oldFocusedItem.setBlurred(suppressEvents);
-                const oldFocusedParentItem = oldFocusedItem.parentItem;
-                if (newFocusedParentItem === oldFocusedParentItem) newFocusedParentItem = undefined;
-                else oldFocusedParentItem.setFocusedValue(false);
-            }
-            if (item !== undefined) {
-                this._focusedComponentItem = item;
-                item.setFocused(suppressEvents);
-                if (newFocusedParentItem !== undefined) newFocusedParentItem.setFocusedValue(true);
-            }
-        }
-    }
-    /** @internal */ createContentItemFromConfig(config, parent) {
-        switch(config.type){
-            case (0, _types.ItemType).ground:
-                throw new (0, _internalError.AssertError)("LMCCIFC68871");
-            case (0, _types.ItemType).row:
-                return new (0, _rowOrColumn.RowOrColumn)(false, this, config, parent);
-            case (0, _types.ItemType).column:
-                return new (0, _rowOrColumn.RowOrColumn)(true, this, config, parent);
-            case (0, _types.ItemType).stack:
-                return new (0, _stack.Stack)(this, config, parent);
-            case (0, _types.ItemType).component:
-                return new (0, _componentItem.ComponentItem)(this, config, parent);
-            default:
-                throw new (0, _internalError.UnreachableCaseError)("CCC913564", config.type, "Invalid Config Item type specified");
-        }
-    }
-    /**
-     * This should only be called from stack component.
-     * Stack will look after docking processing associated with maximise/minimise
-     * @internal
-     **/ setMaximisedStack(stack) {
-        if (stack === undefined) {
-            if (this._maximisedStack !== undefined) this.processMinimiseMaximisedStack();
-        } else if (stack !== this._maximisedStack) {
-            if (this._maximisedStack !== undefined) this.processMinimiseMaximisedStack();
-            this.processMaximiseStack(stack);
-        }
-    }
-    checkMinimiseMaximisedStack() {
-        if (this._maximisedStack !== undefined) this._maximisedStack.minimise();
-    }
-    // showAllActiveContentItems() was called from ContentItem.show().  Not sure what its purpose was so have commented out
-    // Everything seems to work ok without this.  Have left commented code just in case there was a reason for it becomes
-    // apparent
-    // /** @internal */
-    // showAllActiveContentItems(): void {
-    //     const allStacks = this.getAllStacks();
-    //     for (let i = 0; i < allStacks.length; i++) {
-    //         const stack = allStacks[i];
-    //         const activeContentItem = stack.getActiveComponentItem();
-    //         if (activeContentItem !== undefined) {
-    //             if (!(activeContentItem instanceof ComponentItem)) {
-    //                 throw new AssertError('LMSAACIS22298');
-    //             } else {
-    //                 activeContentItem.container.show();
-    //             }
-    //         }
-    //     }
-    // }
-    // hideAllActiveContentItems() was called from ContentItem.hide().  Not sure what its purpose was so have commented out
-    // Everything seems to work ok without this.  Have left commented code just in case there was a reason for it becomes
-    // apparent
-    // /** @internal */
-    // hideAllActiveContentItems(): void {
-    //     const allStacks = this.getAllStacks();
-    //     for (let i = 0; i < allStacks.length; i++) {
-    //         const stack = allStacks[i];
-    //         const activeContentItem = stack.getActiveComponentItem();
-    //         if (activeContentItem !== undefined) {
-    //             if (!(activeContentItem instanceof ComponentItem)) {
-    //                 throw new AssertError('LMSAACIH22298');
-    //             } else {
-    //                 activeContentItem.container.hide();
-    //             }
-    //         }
-    //     }
-    // }
-    /** @internal */ cleanupBeforeMaximisedStackDestroyed(event) {
-        if (this._maximisedStack !== null && this._maximisedStack === event.target) {
-            this._maximisedStack.off("beforeItemDestroyed", this._maximisedStackBeforeDestroyedListener);
-            this._maximisedStack = undefined;
-        }
-    }
-    /**
-     * This method is used to get around sandboxed iframe restrictions.
-     * If 'allow-top-navigation' is not specified in the iframe's 'sandbox' attribute
-     * (as is the case with codepens) the parent window is forbidden from calling certain
-     * methods on the child, such as window.close() or setting document.location.href.
-     *
-     * This prevented GoldenLayout popouts from popping in in codepens. The fix is to call
-     * _$closeWindow on the child window's gl instance which (after a timeout to disconnect
-     * the invoking method from the close call) closes itself.
-     *
-     * @internal
-     */ closeWindow() {
-        globalThis.setTimeout(()=>globalThis.close(), 1);
-    }
-    /** @internal */ getArea(x, y) {
-        let matchingArea = null;
-        let smallestSurface = Infinity;
-        for(let i = 0; i < this._itemAreas.length; i++){
-            const area = this._itemAreas[i];
-            if (x >= area.x1 && x < area.x2 && // x2 is not included in area
-            y >= area.y1 && y < area.y2 && // y2 is not included in area
-            smallestSurface > area.surface) {
-                smallestSurface = area.surface;
-                matchingArea = area;
-            }
-        }
-        return matchingArea;
-    }
-    /** @internal */ calculateItemAreas() {
-        const allContentItems = this.getAllContentItems();
-        /**
-         * If the last item is dragged out, highlight the entire container size to
-         * allow to re-drop it. this.ground.contentiItems.length === 0 at this point
-         *
-         * Don't include ground into the possible drop areas though otherwise since it
-         * will used for every gap in the layout, e.g. splitters
-         */ const groundItem = this._groundItem;
-        if (groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMCIAR44365");
-        else if (allContentItems.length === 1) {
-            // No root ContentItem (just Ground ContentItem)
-            const groundArea = groundItem.getElementArea();
-            if (groundArea === null) throw new (0, _internalError.UnexpectedNullError)("LMCIARA44365");
-            else this._itemAreas = [
-                groundArea
-            ];
-            return;
-        } else {
-            if (groundItem.contentItems[0].isStack) // if root is Stack, then split stack and sides of Layout are same, so skip sides
-            this._itemAreas = [];
-            else // sides of layout
-            this._itemAreas = groundItem.createSideAreas();
-            for(let i = 0; i < allContentItems.length; i++){
-                const stack = allContentItems[i];
-                if ((0, _contentItem.ContentItem).isStack(stack)) {
-                    const area = stack.getArea();
-                    if (area === null) continue;
-                    else {
-                        this._itemAreas.push(area);
-                        const stackContentAreaDimensions = stack.contentAreaDimensions;
-                        if (stackContentAreaDimensions === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMCIASC45599");
-                        else {
-                            const highlightArea = stackContentAreaDimensions.header.highlightArea;
-                            const surface = (highlightArea.x2 - highlightArea.x1) * (highlightArea.y2 - highlightArea.y1);
-                            const header = {
-                                x1: highlightArea.x1,
-                                x2: highlightArea.x2,
-                                y1: highlightArea.y1,
-                                y2: highlightArea.y2,
-                                contentItem: stack,
-                                surface
-                            };
-                            this._itemAreas.push(header);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    /**
-     * Called as part of loading a new layout (including initial init()).
-     * Checks to see layout has a maximised item. If so, it maximises that item.
-     * @internal
-     */ checkLoadedLayoutMaximiseItem() {
-        if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMCLLMI43432");
-        else {
-            const configMaximisedItems = this._groundItem.getConfigMaximisedItems();
-            if (configMaximisedItems.length > 0) {
-                let item = configMaximisedItems[0];
-                if ((0, _contentItem.ContentItem).isComponentItem(item)) {
-                    const stack = item.parent;
-                    if (stack === null) throw new (0, _internalError.UnexpectedNullError)("LMXLLMI69999");
-                    else item = stack;
-                }
-                if (!(0, _contentItem.ContentItem).isStack(item)) throw new (0, _internalError.AssertError)("LMCLLMI19993");
-                else item.maximise();
-            }
-        }
-    }
-    /** @internal */ processMaximiseStack(stack) {
-        this._maximisedStack = stack;
-        stack.on("beforeItemDestroyed", this._maximisedStackBeforeDestroyedListener);
-        stack.element.classList.add("lm_maximised" /* Maximised */ );
-        stack.element.insertAdjacentElement("afterend", this._maximisePlaceholder);
-        if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMMXI19993");
-        else {
-            this._groundItem.element.prepend(stack.element);
-            const { width, height } = (0, _utils.getElementWidthAndHeight)(this._containerElement);
-            (0, _utils.setElementWidth)(stack.element, width);
-            (0, _utils.setElementHeight)(stack.element, height);
-            stack.updateSize(true);
-            stack.focusActiveContentItem();
-            this._maximisedStack.emit("maximised");
-            this.emit("stateChanged");
-        }
-    }
-    /** @internal */ processMinimiseMaximisedStack() {
-        if (this._maximisedStack === undefined) throw new (0, _internalError.AssertError)("LMMMS74422");
-        else {
-            const stack = this._maximisedStack;
-            if (stack.parent === null) throw new (0, _internalError.UnexpectedNullError)("LMMI13668");
-            else {
-                stack.element.classList.remove("lm_maximised" /* Maximised */ );
-                this._maximisePlaceholder.insertAdjacentElement("afterend", stack.element);
-                this._maximisePlaceholder.remove();
-                this.updateRootSize(true);
-                this._maximisedStack = undefined;
-                stack.off("beforeItemDestroyed", this._maximisedStackBeforeDestroyedListener);
-                stack.emit("minimised");
-                this.emit("stateChanged");
-            }
-        }
-    }
-    /**
-     * Iterates through the array of open popout windows and removes the ones
-     * that are effectively closed. This is necessary due to the lack of reliably
-     * listening for window.close / unload events in a cross browser compatible fashion.
-     * @internal
-     */ reconcilePopoutWindows() {
-        const openPopouts = [];
-        for(let i = 0; i < this._openPopouts.length; i++)if (this._openPopouts[i].getWindow().closed === false) openPopouts.push(this._openPopouts[i]);
-        else this.emit("windowClosed", this._openPopouts[i]);
-        if (this._openPopouts.length !== openPopouts.length) {
-            this._openPopouts = openPopouts;
-            this.emit("stateChanged");
-        }
-    }
-    /**
-     * Returns a flattened array of all content items,
-     * regardles of level or type
-     * @internal
-     */ getAllContentItems() {
-        if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMGACI13130");
-        else return this._groundItem.getAllContentItems();
-    }
-    /**
-     * Creates Subwindows (if there are any). Throws an error
-     * if popouts are blocked.
-     * @internal
-     */ createSubWindows() {
-        for(let i = 0; i < this.layoutConfig.openPopouts.length; i++){
-            const popoutConfig = this.layoutConfig.openPopouts[i];
-            this.createPopoutFromPopoutLayoutConfig(popoutConfig);
-        }
-    }
-    /**
-     * Debounces resize events
-     * @internal
-     */ handleContainerResize() {
-        if (this.resizeWithContainerAutomatically) this.processResizeWithDebounce();
-    }
-    /**
-     * Debounces resize events
-     * @internal
-     */ processResizeWithDebounce() {
-        if (this.resizeDebounceExtendedWhenPossible) this.checkClearResizeTimeout();
-        if (this._resizeTimeoutId === undefined) this._resizeTimeoutId = setTimeout(()=>{
-            this._resizeTimeoutId = undefined;
-            this.beginSizeInvalidation();
-            this.endSizeInvalidation();
-        }, this.resizeDebounceInterval);
-    }
-    checkClearResizeTimeout() {
-        if (this._resizeTimeoutId !== undefined) {
-            clearTimeout(this._resizeTimeoutId);
-            this._resizeTimeoutId = undefined;
-        }
-    }
-    /**
-     * Determines what element the layout will be created in
-     * @internal
-     */ setContainer() {
-        var _a;
-        const bodyElement = document.body;
-        const containerElement = (_a = this._containerElement) !== null && _a !== void 0 ? _a : bodyElement;
-        if (containerElement === bodyElement) {
-            this.resizeWithContainerAutomatically = true;
-            const documentElement = document.documentElement;
-            documentElement.style.height = "100%";
-            documentElement.style.margin = "0";
-            documentElement.style.padding = "0";
-            documentElement.style.overflow = "clip";
-            bodyElement.style.height = "100%";
-            bodyElement.style.margin = "0";
-            bodyElement.style.padding = "0";
-            bodyElement.style.overflow = "clip";
-        }
-        this._containerElement = containerElement;
-    }
-    /**
-     * Called when the window is closed or the user navigates away
-     * from the page
-     * @internal
-     * @deprecated to be removed in version 3
-     */ onBeforeUnload() {
-        this.destroy();
-    }
-    /**
-     * Adjusts the number of columns to be lower to fit the screen and still maintain minItemWidth.
-     * @internal
-     */ adjustColumnsResponsive() {
-        if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMACR20883");
-        else {
-            this._firstLoad = false;
-            // If there is no min width set, or not content items, do nothing.
-            if (this.useResponsiveLayout() && !this._updatingColumnsResponsive && this._groundItem.contentItems.length > 0 && this._groundItem.contentItems[0].isRow) {
-                if (this._groundItem === undefined || this._width === null) throw new (0, _internalError.UnexpectedUndefinedError)("LMACR77412");
-                else {
-                    // If there is only one column, do nothing.
-                    const columnCount = this._groundItem.contentItems[0].contentItems.length;
-                    if (columnCount <= 1) return;
-                    else {
-                        // If they all still fit, do nothing.
-                        const minItemWidth = this.layoutConfig.dimensions.defaultMinItemWidth;
-                        const totalMinWidth = columnCount * minItemWidth;
-                        if (totalMinWidth <= this._width) return;
-                        else {
-                            // Prevent updates while it is already happening.
-                            this._updatingColumnsResponsive = true;
-                            // Figure out how many columns to stack, and put them all in the first stack container.
-                            const finalColumnCount = Math.max(Math.floor(this._width / minItemWidth), 1);
-                            const stackColumnCount = columnCount - finalColumnCount;
-                            const rootContentItem = this._groundItem.contentItems[0];
-                            const allStacks = this.getAllStacks();
-                            if (allStacks.length === 0) throw new (0, _internalError.AssertError)("LMACRS77413");
-                            else {
-                                const firstStackContainer = allStacks[0];
-                                for(let i = 0; i < stackColumnCount; i++){
-                                    // Stack from right.
-                                    const column = rootContentItem.contentItems[rootContentItem.contentItems.length - 1];
-                                    this.addChildContentItemsToContainer(firstStackContainer, column);
-                                }
-                                this._updatingColumnsResponsive = false;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    /**
-     * Determines if responsive layout should be used.
-     *
-     * @returns True if responsive layout should be used; otherwise false.
-     * @internal
-     */ useResponsiveLayout() {
-        const settings = this.layoutConfig.settings;
-        const alwaysResponsiveMode = settings.responsiveMode === (0, _types.ResponsiveMode).always;
-        const onLoadResponsiveModeAndFirst = settings.responsiveMode === (0, _types.ResponsiveMode).onload && this._firstLoad;
-        return alwaysResponsiveMode || onLoadResponsiveModeAndFirst;
-    }
-    /**
-     * Adds all children of a node to another container recursively.
-     * @param container - Container to add child content items to.
-     * @param node - Node to search for content items.
-     * @internal
-     */ addChildContentItemsToContainer(container, node) {
-        const contentItems = node.contentItems;
-        if (node instanceof (0, _stack.Stack)) for(let i = 0; i < contentItems.length; i++){
-            const item = contentItems[i];
-            node.removeChild(item, true);
-            container.addChild(item);
-        }
-        else for(let i = 0; i < contentItems.length; i++){
-            const item = contentItems[i];
-            this.addChildContentItemsToContainer(container, item);
-        }
-    }
-    /**
-     * Finds all the stacks.
-     * @returns The found stack containers.
-     * @internal
-     */ getAllStacks() {
-        if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMFASC52778");
-        else {
-            const stacks = [];
-            this.findAllStacksRecursive(stacks, this._groundItem);
-            return stacks;
-        }
-    }
-    /** @internal */ findFirstContentItemType(type) {
-        if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMFFCIT82446");
-        else return this.findFirstContentItemTypeRecursive(type, this._groundItem);
-    }
-    /** @internal */ findFirstContentItemTypeRecursive(type, node) {
-        const contentItems = node.contentItems;
-        const contentItemCount = contentItems.length;
-        if (contentItemCount === 0) return undefined;
-        else {
-            for(let i = 0; i < contentItemCount; i++){
-                const contentItem = contentItems[i];
-                if (contentItem.type === type) return contentItem;
-            }
-            for(let i = 0; i < contentItemCount; i++){
-                const contentItem = contentItems[i];
-                const foundContentItem = this.findFirstContentItemTypeRecursive(type, contentItem);
-                if (foundContentItem !== undefined) return foundContentItem;
-            }
-            return undefined;
-        }
-    }
-    /** @internal */ findFirstContentItemTypeByIdRecursive(type, id, node) {
-        const contentItems = node.contentItems;
-        const contentItemCount = contentItems.length;
-        if (contentItemCount === 0) return undefined;
-        else {
-            for(let i = 0; i < contentItemCount; i++){
-                const contentItem = contentItems[i];
-                if (contentItem.type === type && contentItem.id === id) return contentItem;
-            }
-            for(let i = 0; i < contentItemCount; i++){
-                const contentItem = contentItems[i];
-                const foundContentItem = this.findFirstContentItemTypeByIdRecursive(type, id, contentItem);
-                if (foundContentItem !== undefined) return foundContentItem;
-            }
-            return undefined;
-        }
-    }
-    /**
-     * Finds all the stack containers.
-     *
-     * @param stacks - Set of containers to populate.
-     * @param node - Current node to process.
-     * @internal
-     */ findAllStacksRecursive(stacks, node) {
-        const contentItems = node.contentItems;
-        for(let i = 0; i < contentItems.length; i++){
-            const item = contentItems[i];
-            if (item instanceof (0, _stack.Stack)) stacks.push(item);
-            else if (!item.isComponent) this.findAllStacksRecursive(stacks, item);
-        }
-    }
-    /** @internal */ findFirstLocation(selectors) {
-        const count = selectors.length;
-        for(let i = 0; i < count; i++){
-            const selector = selectors[i];
-            const location = this.findLocation(selector);
-            if (location !== undefined) return location;
-        }
-        return undefined;
-    }
-    /** @internal */ findLocation(selector) {
-        const selectorIndex = selector.index;
-        switch(selector.typeId){
-            case 0 /* FocusedItem */ :
-                if (this._focusedComponentItem === undefined) return undefined;
-                else {
-                    const parentItem = this._focusedComponentItem.parentItem;
-                    const parentContentItems = parentItem.contentItems;
-                    const parentContentItemCount = parentContentItems.length;
-                    if (selectorIndex === undefined) return {
-                        parentItem,
-                        index: parentContentItemCount
-                    };
-                    else {
-                        const focusedIndex = parentContentItems.indexOf(this._focusedComponentItem);
-                        const index = focusedIndex + selectorIndex;
-                        if (index < 0 || index > parentContentItemCount) return undefined;
-                        else return {
-                            parentItem,
-                            index
-                        };
-                    }
-                }
-            case 1 /* FocusedStack */ :
-                if (this._focusedComponentItem === undefined) return undefined;
-                else {
-                    const parentItem = this._focusedComponentItem.parentItem;
-                    return this.tryCreateLocationFromParentItem(parentItem, selectorIndex);
-                }
-            case 2 /* FirstStack */ :
-                {
-                    const parentItem = this.findFirstContentItemType((0, _types.ItemType).stack);
-                    if (parentItem === undefined) return undefined;
-                    else return this.tryCreateLocationFromParentItem(parentItem, selectorIndex);
-                }
-            case 3 /* FirstRowOrColumn */ :
-                {
-                    let parentItem = this.findFirstContentItemType((0, _types.ItemType).row);
-                    if (parentItem !== undefined) return this.tryCreateLocationFromParentItem(parentItem, selectorIndex);
-                    else {
-                        parentItem = this.findFirstContentItemType((0, _types.ItemType).column);
-                        if (parentItem !== undefined) return this.tryCreateLocationFromParentItem(parentItem, selectorIndex);
-                        else return undefined;
-                    }
-                }
-            case 4 /* FirstRow */ :
-                {
-                    const parentItem = this.findFirstContentItemType((0, _types.ItemType).row);
-                    if (parentItem === undefined) return undefined;
-                    else return this.tryCreateLocationFromParentItem(parentItem, selectorIndex);
-                }
-            case 5 /* FirstColumn */ :
-                {
-                    const parentItem = this.findFirstContentItemType((0, _types.ItemType).column);
-                    if (parentItem === undefined) return undefined;
-                    else return this.tryCreateLocationFromParentItem(parentItem, selectorIndex);
-                }
-            case 6 /* Empty */ :
-                if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMFLRIF18244");
-                else {
-                    if (this.rootItem !== undefined) return undefined;
-                    else {
-                        if (selectorIndex === undefined || selectorIndex === 0) return {
-                            parentItem: this._groundItem,
-                            index: 0
-                        };
-                        else return undefined;
-                    }
-                }
-            case 7 /* Root */ :
-                if (this._groundItem === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("LMFLF18244");
-                else {
-                    const groundContentItems = this._groundItem.contentItems;
-                    if (groundContentItems.length === 0) {
-                        if (selectorIndex === undefined || selectorIndex === 0) return {
-                            parentItem: this._groundItem,
-                            index: 0
-                        };
-                        else return undefined;
-                    } else {
-                        const parentItem = groundContentItems[0];
-                        return this.tryCreateLocationFromParentItem(parentItem, selectorIndex);
-                    }
-                }
-        }
-    }
-    /** @internal */ tryCreateLocationFromParentItem(parentItem, selectorIndex) {
-        const parentContentItems = parentItem.contentItems;
-        const parentContentItemCount = parentContentItems.length;
-        if (selectorIndex === undefined) return {
-            parentItem,
-            index: parentContentItemCount
-        };
-        else {
-            if (selectorIndex < 0 || selectorIndex > parentContentItemCount) return undefined;
-            else return {
-                parentItem,
-                index: selectorIndex
-            };
-        }
-    }
-}
-/** @public */ (function(LayoutManager) {
-    /** @internal */ function createMaximisePlaceElement(document1) {
-        const element = document1.createElement("div");
-        element.classList.add("lm_maximise_place" /* MaximisePlace */ );
-        return element;
-    }
-    LayoutManager.createMaximisePlaceElement = createMaximisePlaceElement;
-    /** @internal */ function createTabDropPlaceholderElement(document1) {
-        const element = document1.createElement("div");
-        element.classList.add("lm_drop_tab_placeholder" /* DropTabPlaceholder */ );
-        return element;
-    }
-    LayoutManager.createTabDropPlaceholderElement = createTabDropPlaceholderElement;
-    /**
-     * Default LocationSelectors array used if none is specified.  Will always find a location.
-     * @public
-     */ LayoutManager.defaultLocationSelectors = [
-        {
-            typeId: 1 /* FocusedStack */ ,
-            index: undefined
-        },
-        {
-            typeId: 2 /* FirstStack */ ,
-            index: undefined
-        },
-        {
-            typeId: 3 /* FirstRowOrColumn */ ,
-            index: undefined
-        },
-        {
-            typeId: 7 /* Root */ ,
-            index: undefined
-        }
-    ];
-    /**
-     * LocationSelectors to try to get location next to existing focused item
-     * @public
-     */ LayoutManager.afterFocusedItemIfPossibleLocationSelectors = [
-        {
-            typeId: 0 /* FocusedItem */ ,
-            index: 1
-        },
-        {
-            typeId: 2 /* FirstStack */ ,
-            index: undefined
-        },
-        {
-            typeId: 3 /* FirstRowOrColumn */ ,
-            index: undefined
-        },
-        {
-            typeId: 7 /* Root */ ,
-            index: undefined
-        }
-    ];
-})(LayoutManager || (LayoutManager = {}));
-
-},{"./config/config":"3GcjJ","./config/resolved-config":"gWMkA","./controls/browser-popout":"dznG0","./controls/drag-proxy":"01u88","./controls/drag-source":"3qG6U","./controls/drop-target-indicator":"2SeF2","./controls/transition-indicator":"ay5RL","./errors/external-error":"et8gI","./errors/internal-error":"7ms7b","./items/component-item":"iMxBy","./items/content-item":"jpTQx","./items/ground-item":"bda7y","./items/row-or-column":"gKQ6l","./items/stack":"jrccF","./utils/config-minifier":"1UVGp","./utils/event-emitter":"jZSJk","./utils/event-hub":"iARE4","./utils/i18n-strings":"9vain","./utils/types":"dBAL3","./utils/utils":"fArjz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2SeF2":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/** @internal */ parcelHelpers.export(exports, "DropTargetIndicator", ()=>DropTargetIndicator);
-var _utils = require("../utils/utils");
-class DropTargetIndicator {
-    constructor(){
-        // Maybe use container instead of Document Body?
-        this._element = document.createElement("div");
-        this._element.classList.add("lm_dropTargetIndicator" /* DropTargetIndicator */ );
-        const innerElement = document.createElement("div");
-        innerElement.classList.add("lm_inner" /* Inner */ );
-        this._element.appendChild(innerElement);
-        document.body.appendChild(this._element);
-    }
-    destroy() {
-        this._element.remove();
-    }
-    highlightArea(area, margin) {
-        this._element.style.left = (0, _utils.numberToPixels)(area.x1 + margin);
-        this._element.style.top = (0, _utils.numberToPixels)(area.y1 + margin);
-        this._element.style.width = (0, _utils.numberToPixels)(area.x2 - area.x1 - margin);
-        this._element.style.height = (0, _utils.numberToPixels)(area.y2 - area.y1 - margin);
-        this._element.style.display = "block";
-    }
-    hide() {
-        (0, _utils.setElementDisplayVisibility)(this._element, false);
-    }
-}
-
-},{"../utils/utils":"fArjz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ay5RL":[function(require,module,exports) {
-/** @internal @deprecated To be removed */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "TransitionIndicator", ()=>TransitionIndicator);
-class TransitionIndicator {
-    constructor(){
-        this._element = document.createElement("div");
-        this._element.classList.add("lm_transition_indicator" /* TransitionIndicator */ );
-        document.body.appendChild(this._element);
-        this._toElement = null;
-        this._fromDimensions = null;
-        this._totalAnimationDuration = 200;
-        this._animationStartTime = null;
-    }
-    destroy() {
-        this._element.remove();
-    }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    transitionElements(fromElement, toElement) {
-        /**
-         * TODO - This is not quite as cool as expected. Review.
-         */ return;
-    // this._toElement = toElement;
-    // this._animationStartTime = now();
-    // this._fromDimensions = this._measure(fromElement);
-    // this._fromDimensions.opacity = 0.8;
-    // this._element.show().css(this._fromDimensions);
-    // animFrame(fnBind(this._nextAnimationFrame, this));
-    }
-    nextAnimationFrame() {
-    // if (this._toElement === null || this._fromDimensions === null || this._animationStartTime === null) {
-    //     throw new UnexpectedNullError('TINAFTD97115');
-    // } else {
-    //     const toDimensions = this.measure(this._toElement);
-    //     const animationProgress = (now() - this._animationStartTime) / this._totalAnimationDuration;
-    //     const currentFrameStyles = {};
-    //     const cssProperty;
-    //     if (animationProgress >= 1) {
-    //         this._element.style.display = 'none';
-    //         return;
-    //     }
-    //     toDimensions.opacity = 0;
-    //     for (const cssProperty in this._fromDimensions) {
-    //         currentFrameStyles[cssProperty] = this._fromDimensions[cssProperty] +
-    //             (toDimensions[cssProperty] - this._fromDimensions[cssProperty]) *
-    //             animationProgress;
-    //     }
-    //     this._element.css(currentFrameStyles);
-    //     animFrame(fnBind(this._nextAnimationFrame, this));
-    // }
-    }
-    measure(element) {
-        const rect = element.getBoundingClientRect();
-        return {
-            left: rect.left,
-            top: rect.top,
-            width: element.offsetWidth,
-            height: element.offsetHeight
-        };
-    }
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iARE4":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/**
- * An EventEmitter singleton that propagates events
- * across multiple windows. This is a little bit trickier since
- * windows are allowed to open childWindows in their own right.
- *
- * This means that we deal with a tree of windows. Therefore, we do the event propagation in two phases:
- *
- * - Propagate events from this layout to the parent layout
- *   - Repeat until the event arrived at the root layout
- * - Propagate events to this layout and to all children
- *   - Repeat until all layouts got the event
- *
- * **WARNING**: Only userBroadcast events are propagated between windows.
- * This means the you have to take care of propagating state changes between windows yourself.
- *
- * @public
- */ parcelHelpers.export(exports, "EventHub", ()=>EventHub);
-var _internalError = require("../errors/internal-error");
-var _eventEmitter = require("./event-emitter");
-class EventHub extends (0, _eventEmitter.EventEmitter) {
-    /**
-     * Creates a new EventHub instance
-     * @param _layoutManager - the layout manager to synchronize between the windows
-     * @internal
-     */ constructor(/** @internal */ _layoutManager){
-        super();
-        this._layoutManager = _layoutManager;
-        /** @internal */ this._childEventListener = (childEvent)=>this.onEventFromChild(childEvent);
-        globalThis.addEventListener(EventHub.ChildEventName, this._childEventListener, {
-            passive: true
-        });
-    }
-    /**
-     * Emit an event and notify listeners
-     *
-     * @param eventName - The name of the event
-     * @param args - Additional arguments that will be passed to the listener
-     * @public
-     */ emit(eventName, ...args) {
-        if (eventName === "userBroadcast") // Explicitly redirect the user broadcast to our overridden method.
-        this.emitUserBroadcast(...args);
-        else super.emit(eventName, ...args);
-    }
-    /**
-     * Broadcasts a message to all other currently opened windows.
-     * @public
-     */ emitUserBroadcast(...args) {
-        // Step 1: Bubble up the event
-        this.handleUserBroadcastEvent("userBroadcast", args);
-    }
-    /**
-     * Destroys the EventHub
-     * @internal
-     */ destroy() {
-        globalThis.removeEventListener(EventHub.ChildEventName, this._childEventListener);
-    }
-    /**
-     * Internal processor to process local events.
-     * @internal
-     */ handleUserBroadcastEvent(eventName, args) {
-        if (this._layoutManager.isSubWindow) // We are a sub window and received an event from one of our children.
-        // So propagate it to the Root.
-        this.propagateToParent(eventName, args);
-        else // We are the root window, propagate it to the subtree below us.
-        this.propagateToThisAndSubtree(eventName, args);
-    }
-    /**
-     * Callback for child events raised on the window
-     * @internal
-     */ onEventFromChild(event) {
-        const detail = event.detail;
-        this.handleUserBroadcastEvent(detail.eventName, detail.args);
-    }
-    /**
-     * Propagates the event to the parent by emitting
-     * it on the parent's DOM window
-     * @internal
-     */ propagateToParent(eventName, args) {
-        const detail = {
-            layoutManager: this._layoutManager,
-            eventName,
-            args: args
-        };
-        const eventInit = {
-            bubbles: true,
-            cancelable: true,
-            detail
-        };
-        const event = new CustomEvent(EventHub.ChildEventName, eventInit);
-        const opener = globalThis.opener;
-        if (opener === null) throw new (0, _internalError.UnexpectedNullError)("EHPTP15778");
-        opener.dispatchEvent(event);
-    }
-    /**
-     * Propagate events to the whole subtree under this event hub.
-     * @internal
-     */ propagateToThisAndSubtree(eventName, args) {
-        this.emitUnknown(eventName, ...args);
-        for(let i = 0; i < this._layoutManager.openPopouts.length; i++){
-            const childGl = this._layoutManager.openPopouts[i].getGlInstance();
-            if (childGl) childGl.eventHub.propagateToThisAndSubtree(eventName, args);
-        }
-    }
-}
-/** @public */ (function(EventHub) {
-    /** @internal */ EventHub.ChildEventName = "gl_child_event";
-})(EventHub || (EventHub = {}));
-
-},{"../errors/internal-error":"7ms7b","./event-emitter":"jZSJk","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9NAhe":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-/** @public */ parcelHelpers.export(exports, "VirtualLayout", ()=>VirtualLayout);
-var _config = require("./config/config");
-var _resolvedConfig = require("./config/resolved-config");
-var _externalError = require("./errors/external-error");
-var _internalError = require("./errors/internal-error");
-var _layoutManager = require("./layout-manager");
-var _i18NStrings = require("./utils/i18n-strings");
-class VirtualLayout extends (0, _layoutManager.LayoutManager) {
-    /** @internal */ constructor(configOrOptionalContainer, containerOrBindComponentEventHandler, unbindComponentEventHandler, skipInit){
-        super(VirtualLayout.createLayoutManagerConstructorParameters(configOrOptionalContainer, containerOrBindComponentEventHandler));
-        /** @internal @deprecated use while constructor is not determinate */ this._bindComponentEventHanlderPassedInConstructor = false; // remove when constructor is determinate
-        /** @internal  @deprecated use while constructor is not determinate */ this._creationTimeoutPassed = false; // remove when constructor is determinate
-        if (containerOrBindComponentEventHandler !== undefined) {
-            if (typeof containerOrBindComponentEventHandler === "function") {
-                this.bindComponentEvent = containerOrBindComponentEventHandler;
-                this._bindComponentEventHanlderPassedInConstructor = true;
-                if (unbindComponentEventHandler !== undefined) this.unbindComponentEvent = unbindComponentEventHandler;
-            }
-        }
-        if (!this._bindComponentEventHanlderPassedInConstructor) // backward compatibility
-        {
-            if (this.isSubWindow) {
-                // document.body.style.visibility = 'hidden';
-                // Set up layoutConfig since constructor is not determinate and may exit early. Other functions may need
-                // this.layoutConfig. this.layoutConfig is again calculated in the same way when init() completes.
-                // Remove this when constructor is determinate.
-                if (this._constructorOrSubWindowLayoutConfig === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("VLC98823");
-                else {
-                    const resolvedLayoutConfig = (0, _config.LayoutConfig).resolve(this._constructorOrSubWindowLayoutConfig);
-                    // remove root from layoutConfig
-                    this.layoutConfig = Object.assign(Object.assign({}, resolvedLayoutConfig), {
-                        root: undefined
-                    });
-                }
-            }
-        }
-        if (skipInit !== true) {
-            if (!this.deprecatedConstructor) this.init();
-        }
-    }
-    destroy() {
-        this.bindComponentEvent = undefined;
-        this.unbindComponentEvent = undefined;
-        super.destroy();
-    }
-    /**
-     * Creates the actual layout. Must be called after all initial components
-     * are registered. Recurses through the configuration and sets up
-     * the item tree.
-     *
-     * If called before the document is ready it adds itself as a listener
-     * to the document.ready event
-     * @deprecated LayoutConfig should not be loaded in {@link (LayoutManager:class)} constructor, but rather in a
-     * {@link (LayoutManager:class).loadLayout} call.  If LayoutConfig is not specified in {@link (LayoutManager:class)} constructor,
-     * then init() will be automatically called internally and should not be called externally.
-     */ init() {
-        /**
-         * If the document isn't ready yet, wait for it.
-         */ if (!this._bindComponentEventHanlderPassedInConstructor && (document.readyState === "loading" || document.body === null)) {
-            document.addEventListener("DOMContentLoaded", ()=>this.init(), {
-                passive: true
-            });
-            return;
-        }
-        /**
-         * If this is a subwindow, wait a few milliseconds for the original
-         * page's js calls to be executed, then replace the bodies content
-         * with GoldenLayout
-         */ if (!this._bindComponentEventHanlderPassedInConstructor && this.isSubWindow === true && !this._creationTimeoutPassed) {
-            setTimeout(()=>this.init(), 7);
-            this._creationTimeoutPassed = true;
-            return;
-        }
-        if (this.isSubWindow === true) {
-            if (!this._bindComponentEventHanlderPassedInConstructor) this.clearHtmlAndAdjustStylesForSubWindow();
-            // Expose this instance on the window object to allow the opening window to interact with it
-            window.__glInstance = this;
-        }
-        super.init();
-    }
-    /**
-     * Clears existing HTML and adjusts style to make window suitable to be a popout sub window
-     * Curently is automatically called when window is a subWindow and bindComponentEvent is not passed in the constructor
-     * If bindComponentEvent is not passed in the constructor, the application must either call this function explicitly or
-     * (preferably) make the window suitable as a subwindow.
-     * In the future, it is planned that this function is NOT automatically called in any circumstances.  Applications will
-     * need to determine whether a window is a Golden Layout popout window and either call this function explicitly or
-     * hide HTML not relevant to the popout.
-     * See apitest for an example of how HTML is hidden when popout windows are displayed
-     */ clearHtmlAndAdjustStylesForSubWindow() {
-        const headElement = document.head;
-        const appendNodeLists = new Array(4);
-        appendNodeLists[0] = document.querySelectorAll("body link");
-        appendNodeLists[1] = document.querySelectorAll("body style");
-        appendNodeLists[2] = document.querySelectorAll("template");
-        appendNodeLists[3] = document.querySelectorAll(".gl_keep");
-        for(let listIdx = 0; listIdx < appendNodeLists.length; listIdx++){
-            const appendNodeList = appendNodeLists[listIdx];
-            for(let nodeIdx = 0; nodeIdx < appendNodeList.length; nodeIdx++){
-                const node = appendNodeList[nodeIdx];
-                headElement.appendChild(node);
-            }
-        }
-        const bodyElement = document.body;
-        bodyElement.innerHTML = "";
-        bodyElement.style.visibility = "visible";
-        this.checkAddDefaultPopinButton();
-        /*
-        * This seems a bit pointless, but actually causes a reflow/re-evaluation getting around
-        * slickgrid's "Cannot find stylesheet." bug in chrome
-        */ // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const x = document.body.offsetHeight;
-    }
-    /**
-     * Will add button if not popinOnClose specified in settings
-     * @returns true if added otherwise false
-     */ checkAddDefaultPopinButton() {
-        if (this.layoutConfig.settings.popInOnClose) return false;
-        else {
-            const popInButtonElement = document.createElement("div");
-            popInButtonElement.classList.add("lm_popin" /* Popin */ );
-            popInButtonElement.setAttribute("title", this.layoutConfig.header.dock);
-            const iconElement = document.createElement("div");
-            iconElement.classList.add("lm_icon" /* Icon */ );
-            const bgElement = document.createElement("div");
-            bgElement.classList.add("lm_bg" /* Bg */ );
-            popInButtonElement.appendChild(iconElement);
-            popInButtonElement.appendChild(bgElement);
-            popInButtonElement.addEventListener("click", ()=>this.emit("popIn"));
-            document.body.appendChild(popInButtonElement);
-            return true;
-        }
-    }
-    /** @internal */ bindComponent(container, itemConfig) {
-        if (this.bindComponentEvent !== undefined) {
-            const bindableComponent = this.bindComponentEvent(container, itemConfig);
-            return bindableComponent;
-        } else {
-            if (this.getComponentEvent !== undefined) return {
-                virtual: false,
-                component: this.getComponentEvent(container, itemConfig)
-            };
-            else {
-                // There is no component registered for this type, and we don't have a getComponentEvent defined.
-                // This might happen when the user pops out a dialog and the component types are not registered upfront.
-                const text = (0, _i18NStrings.i18nStrings)[2 /* ComponentTypeNotRegisteredAndBindComponentEventHandlerNotAssigned */ ];
-                const message = `${text}: ${JSON.stringify(itemConfig)}`;
-                throw new (0, _externalError.BindError)(message);
-            }
-        }
-    }
-    /** @internal */ unbindComponent(container, virtual, component) {
-        if (this.unbindComponentEvent !== undefined) this.unbindComponentEvent(container);
-        else if (!virtual && this.releaseComponentEvent !== undefined) {
-            if (component === undefined) throw new (0, _internalError.UnexpectedUndefinedError)("VCUCRCU333998");
-            else this.releaseComponentEvent(container, component);
-        }
-    }
-}
-/** @public */ (function(VirtualLayout) {
-    /** @internal
-     * Veriable to hold the state whether we already checked if we are running in a sub window.
-     * Fixes popout and creation of nested golden-layouts.
-     */ let subWindowChecked = false;
-    /** @internal */ function createLayoutManagerConstructorParameters(configOrOptionalContainer, containerOrBindComponentEventHandler) {
-        const windowConfigKey = subWindowChecked ? null : new URL(document.location.href).searchParams.get("gl-window");
-        subWindowChecked = true;
-        const isSubWindow = windowConfigKey !== null;
-        let containerElement;
-        let config;
-        if (windowConfigKey !== null) {
-            const windowConfigStr = localStorage.getItem(windowConfigKey);
-            if (windowConfigStr === null) throw new Error("Null gl-window Config");
-            localStorage.removeItem(windowConfigKey);
-            const minifiedWindowConfig = JSON.parse(windowConfigStr);
-            const resolvedConfig = (0, _resolvedConfig.ResolvedLayoutConfig).unminifyConfig(minifiedWindowConfig);
-            config = (0, _config.LayoutConfig).fromResolved(resolvedConfig);
-            if (configOrOptionalContainer instanceof HTMLElement) containerElement = configOrOptionalContainer;
-        } else {
-            if (configOrOptionalContainer === undefined) config = undefined;
-            else if (configOrOptionalContainer instanceof HTMLElement) {
-                config = undefined;
-                containerElement = configOrOptionalContainer;
-            } else // backwards compatibility
-            config = configOrOptionalContainer;
-            if (containerElement === undefined) {
-                if (containerOrBindComponentEventHandler instanceof HTMLElement) containerElement = containerOrBindComponentEventHandler;
-            }
-        }
-        return {
-            constructorOrSubWindowLayoutConfig: config,
-            isSubWindow,
-            containerElement
-        };
-    }
-    VirtualLayout.createLayoutManagerConstructorParameters = createLayoutManagerConstructorParameters;
-})(VirtualLayout || (VirtualLayout = {}));
-
-},{"./config/config":"3GcjJ","./config/resolved-config":"gWMkA","./errors/external-error":"et8gI","./errors/internal-error":"7ms7b","./layout-manager":"c2tqk","./utils/i18n-strings":"9vain","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Owrft":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let script;
-let initialize = ()=>{
-    script = require("15db0d1cef29532a");
-    if (script.__esModule) script = script.default;
-    script.render = require("77ba900bb3e9f89e").render;
-    require("32ddcd51f23e8597").default(script);
-    script.__scopeId = "data-v-7df8d5";
-    script.__file = "GlTemplate.vue";
-};
-initialize();
-exports.default = script;
-
-},{"15db0d1cef29532a":"fZpop","77ba900bb3e9f89e":"7LTnQ","32ddcd51f23e8597":"g5NWy","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fZpop":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _vue = require("vue");
-exports.default = /*@__PURE__*/ (0, _vue.defineComponent)({
-    __name: "GlTemplate",
-    setup (__props, { expose: __expose }) {
-        const GlTemplate = (0, _vue.ref)(null);
-        const numberToPixels = (value)=>{
-            return value.toString(10) + "px";
-        };
-        const setPosAndSize = (left, top, width, height)=>{
-            if (GlTemplate.value) {
-                const el = GlTemplate.value;
-                el.style.left = numberToPixels(left);
-                el.style.top = numberToPixels(top);
-                el.style.width = numberToPixels(width);
-                el.style.height = numberToPixels(height);
-            }
-        };
-        const setVisibility = (visible)=>{
-            if (GlTemplate.value) {
-                const el = GlTemplate.value;
-                if (visible) el.style.display = "";
-                else el.style.display = "none";
-            }
-        };
-        const setZIndex = (value)=>{
-            if (GlTemplate.value) {
-                const el = GlTemplate.value;
-                el.style.zIndex = value;
-            }
-        };
-        __expose({
-            setPosAndSize,
-            setVisibility,
-            setZIndex
-        });
-        const __returned__ = {
-            GlTemplate,
-            numberToPixels,
-            setPosAndSize,
-            setVisibility,
-            setZIndex
-        };
-        Object.defineProperty(__returned__, "__isScriptSetup", {
-            enumerable: false,
-            value: true
-        });
-        return __returned__;
-    }
-});
-
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7LTnQ":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "render", ()=>render);
-var _vue = require("vue");
-const _hoisted_1 = {
-    ref: "GlTemplate",
-    style: {
-        "position": "absolute",
-        "overflow": "hidden"
-    }
-};
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
-        (0, _vue.renderSlot)(_ctx.$slots, "default")
-    ], 512);
-}
-
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"g5NWy":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let NOOP = ()=>{};
-exports.default = (script)=>{};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"itWm8":[function(require,module,exports) {
-/*
- * Copyright 2024 SpinalCom - www.spinalcom.com
- *
- * This file is part of SpinalCore.
- *
- * Please read all of the following terms and conditions
- * of the Software license Agreement ("Agreement")
- * carefully.
- *
- * This Agreement is a legally binding contract between
- * the Licensee (as defined below) and SpinalCom that
- * sets forth the terms and conditions that govern your
- * use of the Program. By installing and/or using the
- * Program, you agree to abide by all the terms and
- * conditions stated or referenced herein.
- *
- * If you do not agree to abide by these terms and
- * conditions, do not demonstrate your acceptance and do
- * not install or use the Program.
- * You should have received a copy of the license along
- * with this file. If not, see
- * <http://resources.spinalcom.com/licenses.pdf>.
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "layoutKey", ()=>layoutKey);
-const layoutKey = Symbol("layout");
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5F7Fe":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let script;
-let initialize = ()=>{
-    script = require("4a2757f6087c1906");
-    if (script.__esModule) script = script.default;
-    script.render = require("64d8d3f9509b9218").render;
-    require("264710041f2458e4").default(script);
-    script.__scopeId = "data-v-41d0bc";
-    script.__file = "SlotExtr.vue";
-};
-initialize();
-exports.default = script;
-
-},{"4a2757f6087c1906":"3TJtq","64d8d3f9509b9218":"l6Bmm","264710041f2458e4":"bJbjD","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3TJtq":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _vue = require("vue");
-exports.default = /*@__PURE__*/ (0, _vue.defineComponent)({
-    __name: "SlotExtr",
-    setup (__props, { expose: __expose }) {
-        var _a;
-        __expose({
-            slots: (_a = (0, _vue.getCurrentInstance)()) === null || _a === void 0 ? void 0 : _a.slots
-        });
-        const __returned__ = {};
-        Object.defineProperty(__returned__, "__isScriptSetup", {
-            enumerable: false,
-            value: true
-        });
-        return __returned__;
-    }
-});
-
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l6Bmm":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "render", ()=>render);
-var _vue = require("vue");
-const _hoisted_1 = {
-    style: {
-        "display": "none"
-    }
-};
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("i", _hoisted_1, "Slots extraction");
-}
-
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bJbjD":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let NOOP = ()=>{};
-exports.default = (script)=>{};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"Vw8Qb":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "render", ()=>render);
-var _vue = require("vue");
-const _hoisted_1 = {
-    style: {
-        "position": "relative"
-    }
-};
-const _hoisted_2 = {
-    ref: "GLRoot",
-    style: {
-        "position": "absolute",
-        "width": "100%",
-        "height": "100%"
-    }
-};
-const _hoisted_3 = {
-    style: {
-        "position": "absolute",
-        "width": "100%",
-        "height": "100%"
-    }
-};
-function render(_ctx, _cache, $props, $setup, $data, $options) {
-    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
-        (0, _vue.createVNode)($setup["SlotExtr"], {
-            ref: "predef"
-        }, null, 512),
-        (0, _vue.createElementVNode)("div", _hoisted_2, null, 512),
-        (0, _vue.createElementVNode)("div", _hoisted_3, [
-            ((0, _vue.openBlock)(true), (0, _vue.createElementBlock)((0, _vue.Fragment), null, (0, _vue.renderList)($setup.AllComponents, (pair)=>{
-                return (0, _vue.openBlock)(), (0, _vue.createBlock)($setup["GlTemplate"], {
-                    key: pair[0],
-                    ref_for: true,
-                    ref: $setup.GlcKeyPrefix + pair[0]
-                }, {
-                    default: (0, _vue.withCtx)(()=>[
-                            ((0, _vue.openBlock)(), (0, _vue.createBlock)((0, _vue.resolveDynamicComponent)(pair[1])))
-                        ]),
-                    _: 2
-                }, 1024);
-            }), 128))
-        ])
-    ]);
-}
-
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gAVAn":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let NOOP = ()=>{};
-exports.default = (script)=>{};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gI0mP":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-let script;
-let initialize = ()=>{
-    script = require("bce146caad8e6906");
-    if (script.__esModule) script = script.default;
-    script.render = require("1acfbd1bbcbf482e").render;
-    script.__cssModules = require("1a028366bf399ff9").default;
-    require("ad251a7c70ee37a9").default(script);
-    script.__scopeId = "data-v-35497d";
-    script.__file = "AppGraph.vue";
-};
-initialize();
-exports.default = script;
-
-},{"bce146caad8e6906":"g5EvY","1acfbd1bbcbf482e":"i7Av3","1a028366bf399ff9":"knMve","ad251a7c70ee37a9":"c7jNT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"g5EvY":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _viewer = require("../viewer");
-var _viewerDefault = parcelHelpers.interopDefault(_viewer);
-var _spinal = require("../spinal");
-var _spinalDefault = parcelHelpers.interopDefault(_spinal);
-var _legendVueGraph = require("./legendVueGraph");
-var _legendVueGraphDefault = parcelHelpers.interopDefault(_legendVueGraph);
-exports.default = {
-    name: "AppGraph",
-    data () {
-        return {
-            state: false,
-            legend: false,
-            courseType: "Children Course"
-        };
-    },
-    components: {
-        legendVueGraph: (0, _legendVueGraphDefault.default)
-    },
-    mounted () {
-        const spinal = (0, _spinalDefault.default).getInstance();
-        this.viewer = new (0, _viewerDefault.default)(spinal);
-        this.viewer.init(this.$refs.appGraph, this.server_id);
-    },
-    methods: {
-        setCourse () {
-            this.state = !this.state;
-            this.viewer.stateCourse = this.state;
-            if (this.courseType === "Children Course") this.courseType = "Parent Course";
-            else this.courseType = "Children Course";
-        }
-    },
-    props: {
-        server_id: {
-            require: true,
-            type: Number
-        }
-    }
-};
-
-},{"../viewer":"f3FDR","../spinal":"2Kgs7","./legendVueGraph":"lWT06","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"f3FDR":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
+},{"vue":"gzxs9","./spinal":"2Kgs7","./components/AppGraph.vue":"gI0mP","./components/AppElement.vue":"2WQLE","./components/AppDbInspector.vue":"lr4tq","./components/AppForceGraph.vue":"iQEDJ","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2Kgs7":[function(require,module,exports) {
 /*
  * Copyright 2020 SpinalCom - www.spinalcom.com
  *
@@ -50234,16 +42215,12 @@ parcelHelpers.defineInteropFlag(exports);
  * You should have received a copy of the license along
  * with this file. If not, see
  * <http://resources.spinalcom.com/licenses.pdf>.
- */ //load the libraries
-var _spinalModelGraph = require("spinal-model-graph");
-var _spinalJs = require("./spinal.js"); //graph connection and recovery
-var _spinalJsDefault = parcelHelpers.interopDefault(_spinalJs);
-var _d3 = require("d3"); // lib d3js
-var _anode = require("./nodeModel/ANode"); //interface Node
-var _nodeFactory = require("./nodeModel/NodeFactory");
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "SpinalIO", ()=>SpinalIO);
 var _spinalCoreConnectorjs = require("spinal-core-connectorjs");
-var _eventBusJs = require("./components/event-bus.js");
-var _eventBusJsDefault = parcelHelpers.interopDefault(_eventBusJs);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var __awaiter = undefined && undefined.__awaiter || function(thisArg, _arguments, P, generator) {
     function adopt(value) {
         return value instanceof P ? value : new P(function(resolve) {
@@ -50271,620 +42248,84 @@ var __awaiter = undefined && undefined.__awaiter || function(thisArg, _arguments
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-class Viewer {
-    constructor(spinal){
-        Object.defineProperty(this, "graph", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "width", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "height", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "margin", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: {
-                top: 20,
-                right: 90,
-                bottom: 30,
-                left: 90
-            }
-        });
-        Object.defineProperty(this, "element", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "svg", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "simulation", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "visualisation", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: false
-        });
-        Object.defineProperty(this, "nodeFactory", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "stateCourse", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: false
-        });
-        this.graph = spinal;
-        this.nodeFactory = new (0, _nodeFactory.NodeFactory)();
+class SpinalIO {
+    static getInstance() {
+        if (SpinalIO.instance === null) SpinalIO.instance = new SpinalIO();
+        return SpinalIO.instance;
     }
-    //resize function
-    resize() {
-        const element = this.element;
-        let width1 = element.clientWidth - this.margin.left - this.margin.right;
-        let height1 = this.element.clientHeight - this.margin.top - this.margin.bottom;
-        if (width1 != this.width || height1 != this.height) {
-            this.width = width1;
-            this.height = height1;
-            this.draw();
-        }
+    constructor(){
+        Object.defineProperty(this, "connectPromise", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: null
+        });
+        Object.defineProperty(this, "conn", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        this.connect();
     }
-    //draw function
-    draw() {
-        if (typeof this.svg !== "undefined") {
-            this.svg.attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom);
-            this.simulation.force("center", _d3.forceCenter(this.width / 2, this.height / 2)); //center — pulls all nodes to the center
-        }
+    getauth() {
+        const encryptedHex = window.localStorage.getItem("spinalhome_cfg");
+        if (!encryptedHex) throw new Error("No authentication data found in localStorage");
+        return JSON.parse(atob(encryptedHex));
     }
-    // initialisation function
-    init(element, server_id) {
+    disconnect() {
+        window.localStorage.removeItem("spinalhome_cfg");
+        // @ts-ignore
+        window.location = "/html/drive/";
+    }
+    connect() {
+        if (this.connectPromise !== null) return this.connectPromise;
+        const serverHost = window.location.origin;
+        (0, _spinalCoreConnectorjs.FileSystem).CONNECTOR_TYPE = "Browser";
+        const user = this.getauth();
+        this.connectPromise = new Promise((resolve, reject)=>__awaiter(this, void 0, void 0, function*() {
+                try {
+                    const response = yield (0, _axiosDefault.default).get(`${serverHost}/get_user_id`, {
+                        params: {
+                            u: user.username,
+                            p: user.password
+                        }
+                    });
+                    let id = parseInt(response.data);
+                    const host = serverHost.replace(/https?:\/\//, "");
+                    this.conn = (0, _spinalCoreConnectorjs.spinalCore).connect(`http://${id}:${user.password}@${host}/`);
+                    resolve(this.conn);
+                } catch (error) {
+                    reject("Authentication Connection Error");
+                }
+            }));
+        return this.connectPromise;
+    }
+    load(server_id) {
         return __awaiter(this, void 0, void 0, function*() {
-            this.element = element;
-            this.element = element; //initialisation of DOMElement
-            const data = yield this.graph.load(server_id); //load graph
-            this.width = element.clientWidth - this.margin.left - this.margin.right; //width of element
-            this.height = element.clientHeight - this.margin.top - this.margin.bottom; //height of element
-            this.width = element.clientWidth - this.margin.left - this.margin.right;
-            this.height = element.clientHeight - this.margin.top - this.margin.bottom;
-            let i = 0;
-            let node, link, edgepath, arrowhead;
-            //build hierarchy d3 graph from entry point
-            const root = this.nodeFactory.createNode(data);
-            //create the svg
-            this.svg = _d3.select(element).append("svg").call(_d3.zoom().scaleExtent([
-                0.01,
-                8
-            ]).on("zoom", zoomed)).on("dblclick.zoom", null).attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom);
-            //create svg groupe
-            const svg = this.svg.append("g").attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
-            //create links group
-            const mylink = svg.append("g");
-            const myedgepath = svg.append("g");
-            const myarrowhead = svg.append("g");
-            //create the simulation force
-            var simulation = _d3.forceSimulation()// .alphaDecay(-0.01)
-            .force("charge", _d3.forceManyBody().strength(-1000)) //charge — nodes repel from each other which prevents overlap
-            .force("link", _d3.forceLink().id((d)=>{
-                //link — specifies that id is the link variable
-                let res = d.id + 10;
-                return res.toString();
-            }).distance(function(d) {
-                if (d.target.data.category === "node") return 100;
-                else return 70;
-            }).strength(2)).force("center", _d3.forceCenter(this.width / 2, this.height / 2)) //center — pulls all nodes to the center
-            .force("collide ", _d3.forceCollide(5).strength(10)) //collide-specify a ‘repel radius’ of 10 x node radius — to prevent overlap and leave space for label
-            .on("tick", ticked);
-            this.simulation = simulation;
-            //node clicked function children course
-            const ChildrenCourse = (d)=>__awaiter(this, void 0, void 0, function*() {
-                    const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
-                    if ((0, _anode.ANode).collapseOrOpen(d)) yield (0, _anode.ANode).updateChildren(d, this.nodeFactory);
-                    (0, _eventBusJsDefault.default).$emit("realNode", realNode);
-                    (0, _eventBusJsDefault.default).$emit("realNodeElement", realNode);
-                    update();
+            yield this.connect();
+            return new Promise((resolve, reject)=>{
+                this.conn.load_ptr(server_id, (model)=>{
+                    if (!model) {
+                        // on error
+                        alert("error model not found.");
+                        reject();
+                    } else // on success
+                    resolve(model);
                 });
-            //node clicked function parent course
-            const parentCourse = (d)=>__awaiter(this, void 0, void 0, function*() {
-                    const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
-                    if ((0, _anode.ANode).collapseOrOpenParent(d)) yield (0, _anode.ANode).updateParent(d, this.nodeFactory);
-                    (0, _eventBusJsDefault.default).$emit("realNode", realNode);
-                    (0, _eventBusJsDefault.default).$emit("realNodeElement", realNode);
-                    update();
-                });
-            //node clicked function strating node in new tab
-            const newpage = (d)=>__awaiter(this, void 0, void 0, function*() {
-                    if (d.data.category === "node") {
-                        const server_id = d.data._serverId;
-                        (0, _eventBusJsDefault.default).$emit("server_id", server_id);
-                    }
-                    update();
-                });
-            const openNodeInDbInspector = (d)=>__awaiter(this, void 0, void 0, function*() {
-                    _d3.event.preventDefault();
-                    const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
-                    (0, _eventBusJsDefault.default).$emit("realNode", realNode);
-                    (0, _eventBusJsDefault.default).$emit("realNodeElement", realNode);
-                    update();
-                });
-            const click = (d)=>__awaiter(this, void 0, void 0, function*() {
-                    if (this.stateCourse === false) ChildrenCourse(d);
-                    else parentCourse(d);
-                });
-            function update() {
-                const nodes = flatten(root); // recover ids nodes
-                const links = createLinks(nodes); //recover links
-                //build the d3 links
-                link = mylink.selectAll(".link").data(links, function(d) {
-                    return d.target.id;
-                });
-                link.exit().remove();
-                const linkEnter = link.enter().append("line").attr("class", "link").attr("marker-end", "url(#arrowhead)").style("stroke", "#f8f8f8").style("opacity", "0.5").style("stroke-width", 2);
-                link = linkEnter.merge(link);
-                edgepath = myedgepath.selectAll(".edgepath").data(links).enter().append("path").attr("class", "edgepath").attr("fill-opacity", 0).attr("stroke-opacity", 0).attr("id", function(d, i) {
-                    return "edgepath" + i;
-                }).style("pointer-events", "none");
-                edgepath = edgepath.merge(edgepath);
-                //create arrow head svg
-                arrowhead = svg.append("defs").append("svg:marker").attr("class", "arrowhead").attr("id", "arrowhead").attr("viewBox", "-0 -5 10 10").attr("refX", 16).attr("refY", 0).attr("orient", "auto").attr("markerWidth", 8).attr("markerHeight", 8).attr("xoverflow", "visible").append("svg:path").attr("d", "M 0,-5 L 10 ,0 L 0,5").attr("fill", "#f8f8f8").style("stroke", "none");
-                arrowhead = arrowhead.merge(arrowhead);
-                //build the d3 nodes
-                node = svg.selectAll(".node").data(nodes, function(d) {
-                    return d.id.toString();
-                });
-                node.exit().remove();
-                const nodeEnter = node.enter().append("g").attr("class", "node").attr("id", "test").attr("stroke-width", 1.2).style("fill", color).style("opacity", 1).on("click", click).on("contextmenu", openNodeInDbInspector).on("auxclick", function(d) {
-                    var evnt = window.event;
-                    if (evnt.which === 2) newpage(d);
-                }).call(_d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended));
-                nodeEnter.append(function(d) {
-                    //create nodes Node
-                    if (d.data.category === "node") {
-                        const doc = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-                        doc.setAttribute("r", "10");
-                        doc.setAttribute("stroke", "#f8f8f8");
-                        doc.style.textAnchor = d.children ? "end" : "start";
-                        return doc;
-                    }
-                    //create nodes Relation
-                    const svg1 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-                    svg1.setAttribute("width", "20");
-                    svg1.setAttribute("height", "20");
-                    svg1.setAttribute("stroke", "#f8f8f8");
-                    svg1.setAttribute("transform", `translate(-10, -10)`);
-                    svg1.style.textAnchor = d.children ? "end" : "start";
-                    return svg1;
-                });
-                //add node labels
-                nodeEnter.append("text").text(function(d) {
-                    const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
-                    if (realNode instanceof (0, _spinalModelGraph.SpinalGraph)) d.data.name = "SpinalGraph";
-                    else if (d.data.name === "undefined" || d.data.name === undefined) d.data.name = "undefined name";
-                    if (d.data.category === "node") return d.data.name;
-                    else return d.data.name + "{" + realNode.getNbChildren() + "}";
-                }).attr("transform", `translate(-17,-15)`).style("fill", "#fff").style("font-family", "sans-serif").style("font-style", function(d) {
-                    if (d.data.name === "undefined") return "italic";
-                    return "normal";
-                });
-                node = nodeEnter.merge(node);
-                //append the data to the simulation
-                simulation.force("link").links(links);
-                simulation.nodes(nodes);
-            }
-            //color palette of nodes and relations
-            let style = {
-                nodefill: {
-                    empty: "#fff",
-                    enterpoint: "#F3FF00",
-                    ptrlst: "#F40911",
-                    lstptr: "#E47579",
-                    ref: "09bf3b",
-                    objClosed: "#320ff2"
-                }
-            };
-            //node color function
-            function color(d) {
-                if (d.data.hasChildren === false) return style.nodefill.empty;
-                if (d.data._serverId === root.data._serverId) return style.nodefill.enterpoint;
-                if (d.data.category === "node") return style.nodefill.objClosed;
-                if (d.data.category === "relation") {
-                    if (d.data.type === "PtrLst") return style.nodefill.ptrlst;
-                    else if (d.data.type === "LstPtr") return style.nodefill.lstptr;
-                    else if (d.data.type === "Ref") return style.nodefill.ref;
-                }
-            }
-            //node ticked function
-            function ticked() {
-                link.attr("x1", function(d) {
-                    return d.source.x;
-                }).attr("y1", function(d) {
-                    return d.source.y;
-                }).attr("x2", function(d) {
-                    return d.target.x;
-                }).attr("y2", function(d) {
-                    return d.target.y;
-                });
-                node.attr("transform", function(d) {
-                    return `translate(${d.x}, ${d.y})`;
-                });
-                edgepath.attr("d", function(d) {
-                    return "M " + d.source.x + " " + d.source.y + " L " + d.target.x + " " + d.target.y;
-                });
-            }
-            // dragstarted function
-            function dragstarted(d) {
-                if (!_d3.event.active) simulation.alphaTarget(0.1).restart();
-                d.fx = d.x;
-                d.fy = d.y;
-            }
-            // dragged function
-            function dragged(d) {
-                d.fx = _d3.event.x;
-                d.fy = _d3.event.y;
-            }
-            // dragended function
-            function dragended(d) {
-                if (!_d3.event.active) simulation.alphaTarget(0);
-                d.fx = null;
-                d.fy = null;
-            }
-            // flatten function
-            function flatten(root) {
-                const nodes = new Set();
-                function recurse(node) {
-                    if (nodes.has(node)) return;
-                    if (!node.id) node.id = ++i;
-                    else ++i;
-                    nodes.add(node);
-                    if (node.children) node.children.forEach(recurse);
-                    if (node.parent) node.parent.forEach(recurse);
-                }
-                recurse(root);
-                return Array.from(nodes);
-            }
-            //chek link exist
-            function chekLink(source, target, links) {
-                for(let index = 0; index < links.length; index++){
-                    if (source.data === links[index].source.data && target.data === links[index].target.data) return true;
-                }
-                return false;
-            }
-            //create links
-            function createLinks(nodes) {
-                const links = [];
-                let id = 0;
-                for (const node of nodes){
-                    if (Array.isArray(node.parent)) {
-                        for (const parent of node.parent)if (!chekLink(parent, node, links)) links.push({
-                            source: parent,
-                            target: node,
-                            index: id++
-                        });
-                    }
-                    if (Array.isArray(node.children)) {
-                        for (const child of node.children)if (!chekLink(node, child, links)) links.push({
-                            source: node,
-                            target: child,
-                            index: id++
-                        });
-                    }
-                }
-                return links;
-            }
-            // Zoom function
-            function zoomed() {
-                svg.attr("transform", _d3.event.transform);
-            }
-            update();
+            });
         });
     }
 }
-exports.default = Viewer;
+Object.defineProperty(SpinalIO, "instance", {
+    enumerable: true,
+    configurable: true,
+    writable: true,
+    value: null
+});
+exports.default = SpinalIO;
 
-},{"spinal-model-graph":"fkEXw","./spinal.js":"2Kgs7","d3":"iUtZE","./nodeModel/ANode":"JtlvT","./nodeModel/NodeFactory":"kQpGh","spinal-core-connectorjs":"2uyD7","./components/event-bus.js":"dOIGs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fkEXw":[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.SpinalSet = exports.SpinalNodePointer = exports.SpinalMap = exports.SpinalRelationRef = exports.SpinalRelationPtrLst = exports.SpinalRelationLstPtr = exports.SPINAL_RELATION_TYPE = exports.SPINAL_RELATION_PTR_LST_TYPE = exports.SPINAL_RELATION_LST_PTR_TYPE = exports.SpinalRelationFactory = exports.SpinalNode = exports.DEFAULT_FIND_PREDICATE = exports.SpinalGraph = exports.SpinalContext = exports.REMOVE_CHILD_EVENT = exports.REMOVE_CHILDREN_EVENT = exports.ADD_CHILD_IN_CONTEXT_EVENT = exports.ADD_CHILD_EVENT = void 0;
-/*
- * Copyright 2018 SpinalCom - www.spinalcom.com
- *
- * This file is part of SpinalCore.
- *
- * Please read all of the following terms and conditions
- * of the Free Software license Agreement ("Agreement")
- * carefully.
- *
- * This Agreement is a legally binding contract between
- * the Licensee (as defined below) and SpinalCom that
- * sets forth the terms and conditions that govern your
- * use of the Program. By installing and/or using the
- * Program, you agree to abide by all the terms and
- * conditions stated or referenced herein.
- *
- * If you do not agree to abide by these terms and
- * conditions, do not demonstrate your acceptance and do
- * not install or use the Program.
- * You should have received a copy of the license along
- * with this file. If not, see
- * <http://resources.spinalcom.com/licenses.pdf>.
- */ var constants_1 = require("81a1513369954693");
-Object.defineProperty(exports, "ADD_CHILD_EVENT", {
-    enumerable: true,
-    get: function() {
-        return constants_1.ADD_CHILD_EVENT;
-    }
-});
-Object.defineProperty(exports, "ADD_CHILD_IN_CONTEXT_EVENT", {
-    enumerable: true,
-    get: function() {
-        return constants_1.ADD_CHILD_IN_CONTEXT_EVENT;
-    }
-});
-Object.defineProperty(exports, "REMOVE_CHILDREN_EVENT", {
-    enumerable: true,
-    get: function() {
-        return constants_1.REMOVE_CHILDREN_EVENT;
-    }
-});
-Object.defineProperty(exports, "REMOVE_CHILD_EVENT", {
-    enumerable: true,
-    get: function() {
-        return constants_1.REMOVE_CHILD_EVENT;
-    }
-});
-var SpinalContext_1 = require("7b5f58dd47d24366");
-Object.defineProperty(exports, "SpinalContext", {
-    enumerable: true,
-    get: function() {
-        return SpinalContext_1.SpinalContext;
-    }
-});
-var SpinalGraph_1 = require("72215d756520a9cf");
-Object.defineProperty(exports, "SpinalGraph", {
-    enumerable: true,
-    get: function() {
-        return SpinalGraph_1.SpinalGraph;
-    }
-});
-var SpinalNode_1 = require("73bd51e3e0fb372b");
-Object.defineProperty(exports, "DEFAULT_FIND_PREDICATE", {
-    enumerable: true,
-    get: function() {
-        return SpinalNode_1.DEFAULT_FIND_PREDICATE;
-    }
-});
-Object.defineProperty(exports, "SpinalNode", {
-    enumerable: true,
-    get: function() {
-        return SpinalNode_1.SpinalNode;
-    }
-});
-var SpinalRelationFactory_1 = require("24e6d89734dfb402");
-Object.defineProperty(exports, "SpinalRelationFactory", {
-    enumerable: true,
-    get: function() {
-        return SpinalRelationFactory_1.SpinalRelationFactory;
-    }
-});
-Object.defineProperty(exports, "SPINAL_RELATION_LST_PTR_TYPE", {
-    enumerable: true,
-    get: function() {
-        return SpinalRelationFactory_1.SPINAL_RELATION_LST_PTR_TYPE;
-    }
-});
-Object.defineProperty(exports, "SPINAL_RELATION_PTR_LST_TYPE", {
-    enumerable: true,
-    get: function() {
-        return SpinalRelationFactory_1.SPINAL_RELATION_PTR_LST_TYPE;
-    }
-});
-Object.defineProperty(exports, "SPINAL_RELATION_TYPE", {
-    enumerable: true,
-    get: function() {
-        return SpinalRelationFactory_1.SPINAL_RELATION_TYPE;
-    }
-});
-var SpinalRelationLstPtr_1 = require("58811fb239ed5ab");
-Object.defineProperty(exports, "SpinalRelationLstPtr", {
-    enumerable: true,
-    get: function() {
-        return SpinalRelationLstPtr_1.SpinalRelationLstPtr;
-    }
-});
-var SpinalRelationPtrLst_1 = require("f7308e2c3aa6fbe3");
-Object.defineProperty(exports, "SpinalRelationPtrLst", {
-    enumerable: true,
-    get: function() {
-        return SpinalRelationPtrLst_1.SpinalRelationPtrLst;
-    }
-});
-var SpinalRelationRef_1 = require("a69d7c18b99038af");
-Object.defineProperty(exports, "SpinalRelationRef", {
-    enumerable: true,
-    get: function() {
-        return SpinalRelationRef_1.SpinalRelationRef;
-    }
-});
-var SpinalMap_1 = require("ddd96daa908ae9eb");
-Object.defineProperty(exports, "SpinalMap", {
-    enumerable: true,
-    get: function() {
-        return SpinalMap_1.SpinalMap;
-    }
-});
-var SpinalNodePointer_1 = require("555cd87c950f612f");
-Object.defineProperty(exports, "SpinalNodePointer", {
-    enumerable: true,
-    get: function() {
-        return SpinalNodePointer_1.SpinalNodePointer;
-    }
-});
-var SpinalSet_1 = require("d5ca9496575fa30e");
-Object.defineProperty(exports, "SpinalSet", {
-    enumerable: true,
-    get: function() {
-        return SpinalSet_1.SpinalSet;
-    }
-});
-
-},{"81a1513369954693":"1xL0x","7b5f58dd47d24366":"hYNJZ","72215d756520a9cf":"2cWMv","73bd51e3e0fb372b":"9OpaE","24e6d89734dfb402":"807YT","58811fb239ed5ab":"khXQw","f7308e2c3aa6fbe3":"3IJc8","a69d7c18b99038af":"5Kui1","ddd96daa908ae9eb":"2UckQ","555cd87c950f612f":"ku59G","d5ca9496575fa30e":"3G46t"}],"1xL0x":[function(require,module,exports) {
-"use strict";
-/*
- * Copyright 2021 SpinalCom - www.spinalcom.com
- *
- * This file is part of SpinalCore.
- *
- * Please read all of the following terms and conditions
- * of the Free Software license Agreement ("Agreement")
- * carefully.
- *
- * This Agreement is a legally binding contract between
- * the Licensee (as defined below) and SpinalCom that
- * sets forth the terms and conditions that govern your
- * use of the Program. By installing and/or using the
- * Program, you agree to abide by all the terms and
- * conditions stated or referenced herein.
- *
- * If you do not agree to abide by these terms and
- * conditions, do not demonstrate your acceptance and do
- * not install or use the Program.
- * You should have received a copy of the license along
- * with this file. If not, see
- * <http://resources.spinalcom.com/licenses.pdf>.
- */ Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.REMOVE_CHILDREN_EVENT = exports.REMOVE_CHILD_EVENT = exports.ADD_CHILD_IN_CONTEXT_EVENT = exports.ADD_CHILD_EVENT = exports.HAS_CONTEXT_RELATION_NAME = exports.RELATION_TYPE_LIST = exports.SPINAL_RELATION_PTR_LST_TYPE = exports.SPINAL_RELATION_LST_PTR_TYPE = exports.SPINAL_RELATION_TYPE = void 0;
-exports.SPINAL_RELATION_TYPE = "Ref";
-exports.SPINAL_RELATION_LST_PTR_TYPE = "LstPtr";
-exports.SPINAL_RELATION_PTR_LST_TYPE = "PtrLst";
-exports.RELATION_TYPE_LIST = [
-    exports.SPINAL_RELATION_TYPE,
-    exports.SPINAL_RELATION_LST_PTR_TYPE,
-    exports.SPINAL_RELATION_PTR_LST_TYPE
-];
-exports.HAS_CONTEXT_RELATION_NAME = "hasContext";
-// EVENT RELATION
-exports.ADD_CHILD_EVENT = "addChild";
-exports.ADD_CHILD_IN_CONTEXT_EVENT = "addChildInContext";
-exports.REMOVE_CHILD_EVENT = "removeChild";
-exports.REMOVE_CHILDREN_EVENT = "removeChildren";
-
-},{}],"hYNJZ":[function(require,module,exports) {
-"use strict";
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.SpinalContext = void 0;
-/*
- * Copyright 2018 SpinalCom - www.spinalcom.com
- *
- * This file is part of SpinalCore.
- *
- * Please read all of the following terms and conditions
- * of the Free Software license Agreement ("Agreement")
- * carefully.
- *
- * This Agreement is a legally binding contract between
- * the Licensee (as defined below) and SpinalCom that
- * sets forth the terms and conditions that govern your
- * use of the Program. By installing and/or using the
- * Program, you agree to abide by all the terms and
- * conditions stated or referenced herein.
- *
- * If you do not agree to abide by these terms and
- * conditions, do not demonstrate your acceptance and do
- * not install or use the Program.
- * You should have received a copy of the license along
- * with this file. If not, see
- * <http://resources.spinalcom.com/licenses.pdf>.
- */ const spinal_core_connectorjs_1 = require("a5601b3dd29ca2d9");
-const SpinalRelationFactory_1 = require("160a526f3655db02");
-const Utilities_1 = require("86fb04af319ea43f");
-const SpinalNode_1 = require("afcc7089e763b94b");
-/**
- * A SpinalContext is the statring node of a part of the graph.
- * @class SpinalContext
- * @extends {SpinalNode<T>}
- * @template T
- */ class SpinalContext extends SpinalNode_1.SpinalNode {
-    /**
-     * Constructor for the SpinalContext class.
-     * @param {String} [name="undefined"] Name of the context
-     * @param {String} [type="SpinalContext"] Type of the context, usually unused
-     * @param {SpinalNode | Model} [element] Element of the context
-     * @throws {TypeError} If the element is not a Model
-     */ constructor(name = "undefined", type = "SpinalContext", element){
-        super(name, type, element);
-        if (spinal_core_connectorjs_1.FileSystem._sig_server === false) return;
-        this.info.id.set((0, Utilities_1.guid)());
-    }
-    /**
-     * Adds a child with a SpinalRelationLstPtrType.
-     * @override
-     * @param {SpinalNode | Model} child Node to add as child
-     * @param {String} relationName Name of the relation
-     * @param {String} [_relationType=SPINAL_RELATION_PTR_LST_TYPE]
-     * This parameter is here only to properly override the parent method
-     * @returns {Promise<SpinalNode>} The child node in a promise
-     * @throws {TypeError} If the child is not a model
-     * @throws {TypeError} If the relation name is not a string
-     */ addChild(child, relationName, _relationType = SpinalRelationFactory_1.SPINAL_RELATION_PTR_LST_TYPE) {
-        return super.addChild(child, relationName, SpinalRelationFactory_1.SPINAL_RELATION_PTR_LST_TYPE);
-    }
-    /**
-     * Adds a child with a SpinalRelationLstPtrType and notices
-     * the context if a new relation was created.
-     * @override
-     * @param {SpinalNode | Model} child Node to add as child
-     * @param {String} relationName Name of the relation
-     * @param {String} [relationType=SPINAL_RELATION_PTR_LST_TYPE]
-     * This parameter is here only to properly override the parent method
-     * @param {SpinalContext} context Context to update, usually unused
-     * @returns {Promise<SpinalNode>} The child node in a promise
-     */ addChildInContext(child, relationName, _relationType = SpinalRelationFactory_1.SPINAL_RELATION_PTR_LST_TYPE, context = this) {
-        return super.addChildInContext(child, relationName, SpinalRelationFactory_1.SPINAL_RELATION_PTR_LST_TYPE, context);
-    }
-    /**
-     * Return the children of the node that are registered in the context
-     * @override
-     * @param {SpinalContext} [context=this] Context to use for the search, this by default
-     * @returns {Promise<Array<SpinalNode>>} The children that were found
-     */ getChildrenInContext(context = this) {
-        return super.getChildrenInContext(context);
-    }
-}
-exports.SpinalContext = SpinalContext;
-spinal_core_connectorjs_1.spinalCore.register_models([
-    SpinalContext
-]);
-exports.default = SpinalContext;
-
-},{"a5601b3dd29ca2d9":"2uyD7","160a526f3655db02":"807YT","86fb04af319ea43f":"laUA9","afcc7089e763b94b":"9OpaE"}],"2uyD7":[function(require,module,exports) {
+},{"spinal-core-connectorjs":"2uyD7","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"2uyD7":[function(require,module,exports) {
 "use strict";
 /*
  * Copyright 2022 SpinalCom - www.spinalcom.com
@@ -50910,12 +42351,14 @@ exports.default = SpinalContext;
  * <http://resources.spinalcom.com/licenses.pdf>.
  */ var __createBinding = this && this.__createBinding || (Object.create ? function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, {
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) desc = {
         enumerable: true,
         get: function() {
             return m[k];
         }
-    });
+    };
+    Object.defineProperty(o, k2, desc);
 } : function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -50991,6 +42434,8 @@ __exportStar(require("94ce7fc9eb206d61"), exports);
 __exportStar(require("9d84bde37eb190a7"), exports);
 __exportStar(require("4c48e1d64e4a89fe"), exports);
 __exportStar(require("2706cc19109c01e1"), exports);
+__exportStar(require("3fa43e67274022a"), exports);
+__exportStar(require("ac2676bf5e53fddd"), exports);
 var _loop_1 = function(key) {
     Object.defineProperty(exports, key, {
         enumerable: true,
@@ -51039,7 +42484,7 @@ try {
     }
 }
 
-},{"69a05bf85fead622":"d1qkn","eb36d2584efb35cd":"Fv1fa","3668e2cca4c03db2":"fQPmu","9f4bf6d54b4e7ddf":"8wLgA","ff2a32cc04663254":"aXT5I","1d0469ef3b207782":"4dvRr","82ab631e5d44d23b":"iaVAj","ccca5e334b14be65":"9HaWK","538b89400a3b3c9a":"fUpfc","54c9928526a1bc6a":"93BK1","7f4388a80bbf5e73":"8amoe","155fb077cfb3a329":"2Maiz","17040a36c1943954":"eqn5x","7e3d61c67e445b7e":"bzmlq","4ae7dea222bf971f":"4RFDb","885cc2abb299c4e1":"cP3F1","5ec741358eef1f6b":"5BJr6","26a5f08bbf171030":"kqjk5","62e47c4716d1f543":"7VO5V","dff3c80f2c5efc48":"jNwEQ","7cc52b2bfc073a82":"7MzYz","2cd877ada1ce276a":"dcL07","16a407b9d63b3548":"fCcN3","b31c9879bb0f39b2":"5kSdo","349804bb199207da":"320Qx","3f7f916473348e61":"4mvFR","b4141e321d911711":"iVrvN","22d8922c8ceda9cb":"ifE1M","ef83b278460f88f3":"lVIiB","e2f5546ca8e679eb":"7wHqu","1fd465424b68e651":"9cSHF","7d9b2897888cf59e":"2htv5","173d575203d95a6c":"hVaeu","854940f92e1adc6d":"lOk5J","7d4f25aab0e8e45b":"8GVPJ","f986ebb0e57ca9b1":"kYQsi","c52fd7fc5310daa":"lF5di","a33b3f9cafba222f":"h1wsm","d97eefe3935acb50":"4GdWd","d28a2030070a4e69":"kZ2bL","6c04910d3e0b7b24":"hVm7W","d359f4642fb74a1c":"e8gPp","7eef1d884dae5191":"jO33o","cc81310dd6de5404":"jSDym","e59159715bbe20b":"8Sc7r","2f04a1a85fdbf75e":"9dyjr","a09be4dc50038993":"iXPSD","94ce7fc9eb206d61":"ERYly","9d84bde37eb190a7":"fJXyq","4c48e1d64e4a89fe":"fB7Nk","2706cc19109c01e1":"aFtJx"}],"d1qkn":[function(require,module,exports) {
+},{"69a05bf85fead622":"d1qkn","eb36d2584efb35cd":"Fv1fa","3668e2cca4c03db2":"fQPmu","9f4bf6d54b4e7ddf":"8wLgA","ff2a32cc04663254":"aXT5I","1d0469ef3b207782":"4dvRr","82ab631e5d44d23b":"iaVAj","ccca5e334b14be65":"9HaWK","538b89400a3b3c9a":"fUpfc","54c9928526a1bc6a":"93BK1","7f4388a80bbf5e73":"8amoe","155fb077cfb3a329":"2Maiz","17040a36c1943954":"eqn5x","7e3d61c67e445b7e":"bzmlq","4ae7dea222bf971f":"4RFDb","885cc2abb299c4e1":"cP3F1","5ec741358eef1f6b":"5BJr6","26a5f08bbf171030":"kqjk5","62e47c4716d1f543":"7VO5V","dff3c80f2c5efc48":"jNwEQ","7cc52b2bfc073a82":"7MzYz","2cd877ada1ce276a":"dcL07","16a407b9d63b3548":"fCcN3","b31c9879bb0f39b2":"5kSdo","349804bb199207da":"320Qx","3f7f916473348e61":"4mvFR","b4141e321d911711":"iVrvN","22d8922c8ceda9cb":"ifE1M","ef83b278460f88f3":"lVIiB","e2f5546ca8e679eb":"7wHqu","1fd465424b68e651":"9cSHF","7d9b2897888cf59e":"2htv5","173d575203d95a6c":"hVaeu","854940f92e1adc6d":"lOk5J","7d4f25aab0e8e45b":"8GVPJ","f986ebb0e57ca9b1":"kYQsi","c52fd7fc5310daa":"lF5di","a33b3f9cafba222f":"h1wsm","d97eefe3935acb50":"4GdWd","d28a2030070a4e69":"kZ2bL","6c04910d3e0b7b24":"hVm7W","d359f4642fb74a1c":"e8gPp","7eef1d884dae5191":"jO33o","cc81310dd6de5404":"jSDym","e59159715bbe20b":"8Sc7r","2f04a1a85fdbf75e":"9dyjr","a09be4dc50038993":"iXPSD","94ce7fc9eb206d61":"ERYly","9d84bde37eb190a7":"fJXyq","4c48e1d64e4a89fe":"fB7Nk","2706cc19109c01e1":"aFtJx","3fa43e67274022a":"dRVra","ac2676bf5e53fddd":"gwDxu"}],"d1qkn":[function(require,module,exports) {
 "use strict";
 /*
  * Copyright 2022 SpinalCom - www.spinalcom.com
@@ -51523,7 +42968,6 @@ var spinalCore = /** @class */ function() {
 exports.spinalCore = spinalCore;
 
 },{"61bc97f0fb58c3e1":"Fv1fa","9c4e9eeb47de930c":"9cSHF","4ac6c5e3f5433ed4":"aFtJx"}],"Fv1fa":[function(require,module,exports) {
-var global = arguments[3];
 var process = require("2f8db4aa671c7bed");
 "use strict";
 /*
@@ -51708,7 +43152,16 @@ exports.FileSystem = void 0;
 var ModelProcessManager_1 = require("671fce544aa49b19");
 var NewAlertMsg_1 = require("8f71ad1af3f41435");
 var getUrlPath_1 = require("d4eae3a18f2a5011");
+var waitTimeout_1 = require("50a38cdf92a3a6fb");
 var Directory_1 = require("32ce6675f9c6729d");
+var axios_1 = require("72d5d6a18650333b");
+var SpinalEventEmitter_1 = require("920f1c330a16c90d");
+var debounce = require("e0605bcedba4cde3");
+var EventConnectorJS;
+(function(EventConnectorJS) {
+    EventConnectorJS["SEND_RESPONSE_END"] = "spinalhub:send:response:end";
+    EventConnectorJS["SUBCRIBE_RESPONSE_END"] = "spinalhub:subscribe:response:end";
+})(EventConnectorJS || (EventConnectorJS = {}));
 /**
  * intance of the connection to an server
  * @export
@@ -51734,8 +43187,6 @@ var Directory_1 = require("32ce6675f9c6729d");
         // default values
         this._data_to_send = "";
         this._session_num = -2;
-        this._num_inst = FileSystem._nb_insts++;
-        this.make_channel_error_timer = 0;
         this._protocol = protocol ? protocol : "http:";
         this._url = url;
         this._port = port;
@@ -51744,22 +43195,22 @@ var Directory_1 = require("32ce6675f9c6729d");
             var _accessToken = accessToken.startsWith("Bearer ") ? accessToken : "Bearer ".concat(accessToken);
             this._accessToken = _accessToken;
         }
-        if (typeof global !== "undefined") {
-            var XMLHttpRequest_node = require("bed202fa9186b4fb");
-            FileSystem._XMLHttpRequest = XMLHttpRequest_node;
-        }
         this._num_inst = FileSystem._nb_insts++;
-        this.make_channel_error_timer = 0;
         // register this in FileSystem instances
         FileSystem._insts[this._num_inst] = this;
         // first, we need a session id fom the server
         if (!sessionId) {
             if (userid != null) this.send("U ".concat(userid, " ").concat(password, " "));
             this.send("S ".concat(this._num_inst, " "));
-        } else {
-            FileSystem._insts[this._num_inst]._session_num = sessionId;
-            FileSystem._insts[this._num_inst].make_channel();
-        }
+        } else FileSystem._insts[this._num_inst]._session_num = sessionId;
+        this._axiosInst = axios_1["default"].create({
+            headers: {
+                authorization: this._accessToken
+            },
+            maxBodyLength: Infinity,
+            maxContentLength: Infinity
+        });
+        this.make_channel_loop();
     }
     FileSystem.prototype.load = function(path, callback) {
         var _this = this;
@@ -51944,14 +43395,212 @@ var Directory_1 = require("32ce6675f9c6729d");
      * @memberof FileSystem
      */ FileSystem.prototype.send = function(data) {
         this._data_to_send += data;
-        if (FileSystem._timer_send == null) FileSystem._timer_send = setTimeout(FileSystem._timeout_send_func, 1);
+        FileSystem._send_data_to_hub_debounced();
+    };
+    /**
+     * debounced function to send data to the server
+     * @private
+     * @static
+     * @return {*}
+     * @memberof FileSystem
+     */ FileSystem._send_data_to_hub_func = function() {
+        return __awaiter(this, void 0, void 0, function() {
+            var map_prom, k, error_3;
+            return __generator(this, function(_a) {
+                switch(_a.label){
+                    case 0:
+                        if (FileSystem._sending_data === true) {
+                            FileSystem._send_data_to_hub_debounced();
+                            return [
+                                2 /*return*/ 
+                            ];
+                        }
+                        map_prom = [];
+                        for(k in FileSystem._insts)map_prom.push(FileSystem._insts[k]._send_data_to_hub_instance());
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([
+                            1,
+                            3,
+                            ,
+                            4
+                        ]);
+                        return [
+                            4 /*yield*/ ,
+                            Promise.all(map_prom)
+                        ];
+                    case 2:
+                        _a.sent();
+                        return [
+                            3 /*break*/ ,
+                            4
+                        ];
+                    case 3:
+                        error_3 = _a.sent();
+                        console.log(error_3);
+                        return [
+                            2 /*return*/ ,
+                            FileSystem.onConnectionError(4)
+                        ];
+                    case 4:
+                        FileSystem._sending_data = false;
+                        if (FileSystem._objects_to_send.size !== 0) this._send_chan();
+                        else SpinalEventEmitter_1.SpinalEventEmitter.getInstance().emit(EventConnectorJS.SEND_RESPONSE_END);
+                        return [
+                            2 /*return*/ 
+                        ];
+                }
+            });
+        });
+    };
+    /**
+     * send the data to the server
+     * @private
+     * @return {*}
+     * @memberof FileSystem
+     */ FileSystem.prototype._send_data_to_hub_instance = function() {
+        var _a, _b;
+        return __awaiter(this, void 0, void 0, function() {
+            var tmp_data, path, response, error_4;
+            return __generator(this, function(_d) {
+                switch(_d.label){
+                    case 0:
+                        if (this._data_to_send.length === 0 || this._session_num === -1) return [
+                            2 /*return*/ 
+                        ];
+                        FileSystem._sending_data = true;
+                        if (this._session_num === -2) this._session_num = -1;
+                        else this._data_to_send = "s ".concat(this._session_num, " ").concat(this._data_to_send);
+                        tmp_data = this._data_to_send + "E ";
+                        this._data_to_send = "";
+                        path = (0, getUrlPath_1.getUrlPath)(this._protocol, this._url, this._port);
+                        if (FileSystem._disp) console.log("sent ->", tmp_data);
+                        _d.label = 1;
+                    case 1:
+                        _d.trys.push([
+                            1,
+                            3,
+                            ,
+                            4
+                        ]);
+                        return [
+                            4 /*yield*/ ,
+                            this._axiosInst.post(path, tmp_data, {
+                                headers: {
+                                    "Content-Type": "text/plain",
+                                    authorization: this._accessToken
+                                }
+                            })
+                        ];
+                    case 2:
+                        response = _d.sent();
+                        this.send_data_eval(response.data);
+                        return [
+                            3 /*break*/ ,
+                            4
+                        ];
+                    case 3:
+                        error_4 = _d.sent();
+                        if (error_4.response && (error_4.response.status === 0 || error_4.response.status >= 400 && error_4.response.status < 600)) {
+                            console.error("Error sending data to the server, status=", (_a = error_4.response) === null || _a === void 0 ? void 0 : _a.status, "data=", (_b = error_4.response) === null || _b === void 0 ? void 0 : _b.data);
+                            FileSystem.onConnectionError(4);
+                        } else console.error("Error sending data to the server", error_4);
+                        return [
+                            3 /*break*/ ,
+                            4
+                        ];
+                    case 4:
+                        return [
+                            2 /*return*/ 
+                        ];
+                }
+            });
+        });
+    };
+    FileSystem.prototype.send_data_eval = function(responseText) {
+        var e_1, _a, e_2, _b;
+        if (FileSystem._disp) console.log("resp ->", responseText);
+        var _c = []; // callbacks
+        var created = [];
+        var _w = function(sid, className) {
+            var e_3, _a;
+            var _obj = FileSystem._create_model_by_name(className);
+            if (sid != null && _obj != null) {
+                _obj._server_id = sid;
+                FileSystem._objects[sid] = _obj;
+                try {
+                    for(var _b = __values(FileSystem._type_callbacks), _d = _b.next(); !_d.done; _d = _b.next()){
+                        var _e = __read(_d.value, 2), type = _e[0], cb = _e[1];
+                        var mod_R = ModelProcessManager_1.ModelProcessManager.spinal[type] || ModelProcessManager_1.ModelProcessManager._def[type];
+                        if (_obj instanceof mod_R) created.push({
+                            cb: cb,
+                            _obj: _obj
+                        });
+                    }
+                } catch (e_3_1) {
+                    e_3 = {
+                        error: e_3_1
+                    };
+                } finally{
+                    try {
+                        if (_d && !_d.done && (_a = _b["return"])) _a.call(_b);
+                    } finally{
+                        if (e_3) throw e_3.error;
+                    }
+                }
+            }
+        };
+        FileSystem._sig_server = false;
+        eval(responseText);
+        FileSystem._sig_server = true;
+        try {
+            for(var created_1 = __values(created), created_1_1 = created_1.next(); !created_1_1.done; created_1_1 = created_1.next()){
+                var _d = created_1_1.value, cb = _d.cb, _obj = _d._obj;
+                cb(_obj);
+            }
+        } catch (e_1_1) {
+            e_1 = {
+                error: e_1_1
+            };
+        } finally{
+            try {
+                if (created_1_1 && !created_1_1.done && (_a = created_1["return"])) _a.call(created_1);
+            } finally{
+                if (e_1) throw e_1.error;
+            }
+        }
+        var _loop_1 = function(nbCb, servId, error) {
+            if (servId != 0 && typeof FileSystem._objects[servId] === "undefined") var interval_1 = setInterval(function() {
+                if (typeof FileSystem._objects[servId] !== "undefined") {
+                    clearInterval(interval_1);
+                    FileSystem._callbacks[nbCb](FileSystem._objects[servId], error);
+                }
+            }, 200);
+            else FileSystem._callbacks[nbCb](FileSystem._objects[servId], error);
+        };
+        try {
+            for(var _c_1 = __values(_c), _c_1_1 = _c_1.next(); !_c_1_1.done; _c_1_1 = _c_1.next()){
+                var _e = __read(_c_1_1.value, 3), nbCb = _e[0], servId = _e[1], error = _e[2];
+                _loop_1(nbCb, servId, error);
+            }
+        } catch (e_2_1) {
+            e_2 = {
+                error: e_2_1
+            };
+        } finally{
+            try {
+                if (_c_1_1 && !_c_1_1.done && (_b = _c_1["return"])) _b.call(_c_1);
+            } finally{
+                if (e_2) throw e_2.error;
+            }
+        }
     };
     FileSystem.prototype.make_channel_eval = function(responseText) {
-        var e_1, _a;
+        var e_4, _a;
         if (FileSystem._disp) console.log("chan ->", responseText);
         var created = [];
         var _w = function(sid, obj) {
-            var e_2, _a;
+            var e_5, _a;
             var _obj = FileSystem._create_model_by_name(obj);
             if (sid != null && _obj != null) {
                 _obj._server_id = sid;
@@ -51966,15 +43615,15 @@ var Directory_1 = require("32ce6675f9c6729d");
                             _obj: _obj
                         });
                     }
-                } catch (e_2_1) {
-                    e_2 = {
-                        error: e_2_1
+                } catch (e_5_1) {
+                    e_5 = {
+                        error: e_5_1
                     };
                 } finally{
                     try {
                         if (_d && !_d.done && (_a = _b["return"])) _a.call(_b);
                     } finally{
-                        if (e_2) throw e_2.error;
+                        if (e_5) throw e_5.error;
                     }
                 }
             }
@@ -51983,58 +43632,172 @@ var Directory_1 = require("32ce6675f9c6729d");
         eval(responseText);
         FileSystem._sig_server = true;
         try {
-            for(var created_1 = __values(created), created_1_1 = created_1.next(); !created_1_1.done; created_1_1 = created_1.next()){
-                var _b = created_1_1.value, cb = _b.cb, _obj = _b._obj;
+            for(var created_2 = __values(created), created_2_1 = created_2.next(); !created_2_1.done; created_2_1 = created_2.next()){
+                var _b = created_2_1.value, cb = _b.cb, _obj = _b._obj;
                 cb(_obj);
             }
-        } catch (e_1_1) {
-            e_1 = {
-                error: e_1_1
+        } catch (e_4_1) {
+            e_4 = {
+                error: e_4_1
             };
         } finally{
             try {
-                if (created_1_1 && !created_1_1.done && (_a = created_1["return"])) _a.call(created_1);
+                if (created_2_1 && !created_2_1.done && (_a = created_2["return"])) _a.call(created_2);
             } finally{
-                if (e_1) throw e_1.error;
+                if (e_4) throw e_4.error;
             }
         }
     };
+    FileSystem.prototype.make_channel_loop = function() {
+        return __awaiter(this, void 0, void 0, function() {
+            var data;
+            return __generator(this, function(_a) {
+                switch(_a.label){
+                    case 0:
+                        if (!(this._session_num <= 0)) return [
+                            3 /*break*/ ,
+                            2
+                        ];
+                        // wait for the end of the 1st response from the server
+                        return [
+                            4 /*yield*/ ,
+                            SpinalEventEmitter_1.SpinalEventEmitter.getInstance().waitEvt(EventConnectorJS.SEND_RESPONSE_END)
+                        ];
+                    case 1:
+                        // wait for the end of the 1st response from the server
+                        _a.sent();
+                        _a.label = 2;
+                    case 2:
+                        return [
+                            4 /*yield*/ ,
+                            this._send_make_channel()
+                        ];
+                    case 3:
+                        data = _a.sent();
+                        FileSystem._in_mk_chan_eval = true;
+                        if (!(FileSystem._sending_data === true)) return [
+                            3 /*break*/ ,
+                            5
+                        ];
+                        return [
+                            4 /*yield*/ ,
+                            SpinalEventEmitter_1.SpinalEventEmitter.getInstance().waitEvt(EventConnectorJS.SEND_RESPONSE_END)
+                        ];
+                    case 4:
+                        _a.sent();
+                        _a.label = 5;
+                    case 5:
+                        this.make_channel_eval(data);
+                        FileSystem._in_mk_chan_eval = false;
+                        SpinalEventEmitter_1.SpinalEventEmitter.getInstance().emit(EventConnectorJS.SUBCRIBE_RESPONSE_END);
+                        return [
+                            3 /*break*/ ,
+                            2
+                        ];
+                    case 6:
+                        return [
+                            2 /*return*/ 
+                        ];
+                }
+            });
+        });
+    };
+    FileSystem.prototype._send_make_channel = function() {
+        return __awaiter(this, void 0, void 0, function() {
+            var startDate, res, error_5;
+            return __generator(this, function(_a) {
+                switch(_a.label){
+                    case 0:
+                        startDate = Date.now();
+                        _a.label = 1;
+                    case 1:
+                        if (Date.now() - startDate > FileSystem._timeout_reconnect) {
+                            FileSystem.onConnectionError(2);
+                            return [
+                                2 /*return*/ 
+                            ];
+                        }
+                        _a.label = 2;
+                    case 2:
+                        _a.trys.push([
+                            2,
+                            4,
+                            ,
+                            6
+                        ]);
+                        return [
+                            4 /*yield*/ ,
+                            this._axiosInst.get((0, getUrlPath_1.getUrlPath)(this._protocol, this._url, this._port, "?s=" + this._session_num))
+                        ];
+                    case 3:
+                        res = _a.sent();
+                        return [
+                            2 /*return*/ ,
+                            res.data
+                        ];
+                    case 4:
+                        error_5 = _a.sent();
+                        if (!error_5.response) console.error("Error sending data to the server", error_5);
+                        else if (error_5.response.status === 401 || error_5.response.status >= 500 && error_5.response.status < 600) throw FileSystem.onConnectionError(3);
+                        console.log("Trying to reconnect.");
+                        FileSystem.onConnectionError(1);
+                        return [
+                            4 /*yield*/ ,
+                            (0, waitTimeout_1.waitTimeout)(1000)
+                        ];
+                    case 5:
+                        _a.sent();
+                        return [
+                            3 /*break*/ ,
+                            6
+                        ];
+                    case 6:
+                        return [
+                            3 /*break*/ ,
+                            1
+                        ];
+                    case 7:
+                        return [
+                            2 /*return*/ 
+                        ];
+                }
+            });
+        });
+    };
+    FileSystem._model_changed_func = function() {
+        return __awaiter(this, void 0, void 0, function() {
+            return __generator(this, function(_a) {
+                switch(_a.label){
+                    case 0:
+                        if (!(FileSystem._in_mk_chan_eval === true)) return [
+                            3 /*break*/ ,
+                            2
+                        ];
+                        return [
+                            4 /*yield*/ ,
+                            SpinalEventEmitter_1.SpinalEventEmitter.getInstance().waitEvt(EventConnectorJS.SUBCRIBE_RESPONSE_END)
+                        ];
+                    case 1:
+                        _a.sent();
+                        _a.label = 2;
+                    case 2:
+                        FileSystem._send_chan();
+                        return [
+                            2 /*return*/ 
+                        ];
+                }
+            });
+        });
+    };
     /**
-     * send a request for a "push" channel
+     * send a request for a "push" channel.
+     * Called in the server response
      * @private
      * @memberof FileSystem
+     * @deprecated
      */ FileSystem.prototype.make_channel = function() {
-        var fs = FileSystem.get_inst();
-        var path = (0, getUrlPath_1.getUrlPath)(fs._protocol, fs._url, fs._port, "?s=".concat(this._session_num));
-        var xhr_object = FileSystem._my_xml_http_request();
-        xhr_object.open("GET", path, true);
-        if (fs._accessToken) xhr_object.setRequestHeader("authorization", fs._accessToken);
-        xhr_object.onreadystatechange = function() {
-            var _this = this;
-            if (this.readyState === 4 && this.status === 200) {
-                if (fs.make_channel_error_timer !== 0) FileSystem.onConnectionError(0);
-                fs.make_channel_error_timer = 0;
-                if (FileSystem._counter_sending === 0) fs.make_channel_eval(this.responseText);
-                else var inter_1 = setInterval(function() {
-                    if (FileSystem._counter_sending === 0) {
-                        clearInterval(inter_1);
-                        fs.make_channel_eval(_this.responseText);
-                    }
-                }, 50);
-            } else if (this.readyState === 4 && this.status === 0) {
-                console.error("Disconnected from the server with request : ".concat(path, "."));
-                if (fs.make_channel_error_timer === 0) {
-                    //first disconnect
-                    console.log("Trying to reconnect.");
-                    fs.make_channel_error_timer = Date.now();
-                    setTimeout(fs.make_channel.bind(fs), 1000);
-                    return FileSystem.onConnectionError(1);
-                } else if (Date.now() - fs.make_channel_error_timer < FileSystem._timeout_reconnect) // under timeout
-                setTimeout(fs.make_channel.bind(fs), 1000); // timeout reached
-                else return FileSystem.onConnectionError(2);
-            } else if (this.readyState === 4 && this.status >= 500 && this.status < 600) FileSystem.onConnectionError(3);
-        };
-        xhr_object.send();
+    // Called in the server response
+    // leave empty
     };
     /**
      * default callback on make_channel error after the timeout disconnected reached
@@ -52127,9 +43890,8 @@ var Directory_1 = require("32ce6675f9c6729d");
      * @memberof FileSystem
      */ FileSystem.signal_change = function(m) {
         if (FileSystem._sig_server) {
-            FileSystem._objects_to_send[m.model_id] = m;
-            if (FileSystem._timer_chan != null) clearTimeout(FileSystem._timer_chan);
-            FileSystem._timer_chan = setTimeout(FileSystem._timeout_chan_func, 250);
+            FileSystem._objects_to_send.set(m.model_id, m);
+            this._have_model_changed_debounced();
         }
     };
     /**
@@ -52139,50 +43901,78 @@ var Directory_1 = require("32ce6675f9c6729d");
      * @return {*}  {void}
      * @memberof FileSystem
      */ FileSystem._tmp_id_to_real = function(tmp_id, res) {
-        var tmp = FileSystem._tmp_objects[tmp_id];
-        if (tmp == null) console.log(tmp_id);
-        FileSystem._objects[res] = tmp;
-        tmp._server_id = res;
-        delete FileSystem._tmp_objects[tmp_id];
-        var ptr = FileSystem._ptr_to_update[tmp_id];
-        if (ptr != null) {
-            delete FileSystem._ptr_to_update[tmp_id];
-            ptr.data.value = res;
-        }
-        if (FileSystem._files_to_upload[tmp_id] != null && tmp.file != null) {
-            delete FileSystem._files_to_upload[tmp_id];
-            // send the file
-            var fs = FileSystem.get_inst();
-            var path = (0, getUrlPath_1.getUrlPath)(fs._protocol, fs._url, fs._port, "?s=".concat(fs._session_num, "&p=").concat(tmp._server_id));
-            var xhr_object = FileSystem._my_xml_http_request();
-            xhr_object.open("PUT", path, true);
-            if (fs._accessToken) xhr_object.setRequestHeader("authorization", fs._accessToken);
-            xhr_object.onreadystatechange = function() {
-                var _w;
-                if (this.readyState === 4 && this.status === 200) {
-                    _w = function(sid, obj) {
-                        var _obj = FileSystem._create_model_by_name(obj);
-                        if (sid != null && _obj != null) {
-                            _obj._server_id = sid;
-                            return FileSystem._objects[sid] = _obj;
+        return __awaiter(this, void 0, void 0, function() {
+            var tmp, ptr, p, fs, path, contentType, error_6;
+            return __generator(this, function(_a) {
+                switch(_a.label){
+                    case 0:
+                        tmp = FileSystem._tmp_objects[tmp_id];
+                        FileSystem._objects[res] = tmp;
+                        tmp._server_id = res;
+                        delete FileSystem._tmp_objects[tmp_id];
+                        ptr = FileSystem._ptr_to_update[tmp_id];
+                        if (ptr != null) {
+                            delete FileSystem._ptr_to_update[tmp_id];
+                            ptr.data.value = res;
                         }
-                    };
-                    return eval(this.responseText);
+                        FileSystem.signal_change(FileSystem._objects[res]);
+                        if (!(FileSystem._files_to_upload[tmp_id] != null && tmp.file != null)) return [
+                            3 /*break*/ ,
+                            4
+                        ];
+                        p = FileSystem._files_to_upload[tmp_id];
+                        delete FileSystem._files_to_upload[tmp_id];
+                        fs = FileSystem.get_inst();
+                        path = (0, getUrlPath_1.getUrlPath)(fs._protocol, fs._url, fs._port, "?s=".concat(fs._session_num, "&p=").concat(p._server_id));
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([
+                            1,
+                            3,
+                            ,
+                            4
+                        ]);
+                        contentType = p.mimeType ? p.mimeType : "application/octet-stream";
+                        return [
+                            4 /*yield*/ ,
+                            fs._axiosInst.put(path, tmp.file, {
+                                headers: {
+                                    "X-Content-Type": contentType
+                                }
+                            })
+                        ];
+                    case 2:
+                        _a.sent();
+                        delete tmp.file;
+                        tmp.remaining.set(0);
+                        return [
+                            3 /*break*/ ,
+                            4
+                        ];
+                    case 3:
+                        error_6 = _a.sent();
+                        console.error("Error sending file", error_6.response);
+                        return [
+                            3 /*break*/ ,
+                            4
+                        ];
+                    case 4:
+                        return [
+                            2 /*return*/ 
+                        ];
                 }
-            };
-            xhr_object.send(tmp.file);
-            delete tmp.file;
-        }
-        return FileSystem.signal_change(FileSystem._objects[res]);
+            });
+        });
     };
     FileSystem._create_model_by_name = function(name) {
         if (typeof name !== "string") return name; // for old spinalcore version
         if (typeof ModelProcessManager_1.ModelProcessManager._def[name] !== "undefined") return new ModelProcessManager_1.ModelProcessManager._def[name]();
         if (typeof ModelProcessManager_1.ModelProcessManager.spinal[name] === "undefined") {
             if (FileSystem.debug === true) console.warn('Got Model type "'.concat(name, '" from hub but not registered.'));
-            ModelProcessManager_1.ModelProcessManager._def[name] = new Function("return class ".concat(name, ' extends ModelProcessManager._def["Model"] {}'))();
-            return new ModelProcessManager_1.ModelProcessManager._def[name]();
+            ModelProcessManager_1.ModelProcessManager.spinal[name] = new Function("return class ".concat(name, ' extends ModelProcessManager._def["Model"] {}'))();
+            return new ModelProcessManager_1.ModelProcessManager.spinal[name]();
         }
+        return new ModelProcessManager_1.ModelProcessManager.spinal[name]();
     };
     /**
      * @deprecated
@@ -52214,140 +44004,46 @@ var Directory_1 = require("32ce6675f9c6729d");
         for(var f in FileSystem._insts)FileSystem._insts[f].send(out);
     };
     /**
-     * timeout for at least one changed object
-     * @private
-     * @static
-     * @memberof FileSystem
-     */ FileSystem._timeout_chan_func = function() {
-        FileSystem._send_chan();
-        delete FileSystem._timer_chan;
-    };
-    /**
      * get data of objects to send
      * @private
      * @static
      * @return {*}  {string}
      * @memberof FileSystem
      */ FileSystem._get_chan_data = function() {
+        var e_6, _a;
         var out = {
             cre: "",
             mod: ""
         };
-        for(var n in FileSystem._objects_to_send)FileSystem._objects_to_send[n]._get_fs_data(out);
-        FileSystem._objects_to_send = {};
+        var nb_model = 0;
+        try {
+            for(var _b = __values(FileSystem._objects_to_send), _d = _b.next(); !_d.done; _d = _b.next()){
+                var _e = __read(_d.value, 2), id = _e[0], model = _e[1];
+                nb_model++;
+                if (nb_model > FileSystem.send_model_limit) break;
+                model._get_fs_data(out);
+                FileSystem._objects_to_send["delete"](id);
+            }
+        } catch (e_6_1) {
+            e_6 = {
+                error: e_6_1
+            };
+        } finally{
+            try {
+                if (_d && !_d.done && (_a = _b["return"])) _a.call(_b);
+            } finally{
+                if (e_6) throw e_6.error;
+            }
+        }
         return out.cre + out.mod;
     };
     /**
      * @private
      * @static
      * @memberof FileSystem
-     */ FileSystem._timeout_send_func = function() {
-        // if some model have changed, we have to send the changes now
-        var out = FileSystem._get_chan_data();
-        for(var k in FileSystem._insts)FileSystem._insts[k]._data_to_send += out;
-        // send data
-        for(var k in FileSystem._insts){
-            var fs = FileSystem._insts[k];
-            if (!fs._data_to_send.length || fs._session_num === -1) continue;
-            // (@responseText will contain another call to @_timeout_send with the session id)
-            // for first call, do not add the session id (but say that we are waiting for one)
-            if (fs._session_num === -2) fs._session_num = -1;
-            else fs._data_to_send = "s ".concat(fs._session_num, " ").concat(fs._data_to_send);
-            // request
-            var path = (0, getUrlPath_1.getUrlPath)(fs._protocol, fs._url, fs._port);
-            var xhr_object = FileSystem._my_xml_http_request();
-            xhr_object.open("POST", path, true);
-            if (fs._accessToken) xhr_object.setRequestHeader("authorization", fs._accessToken);
-            xhr_object.onreadystatechange = function() {
-                var e_3, _a, e_4, _b;
-                if (this.readyState === 4) FileSystem._counter_sending -= 1;
-                if (this.readyState === 4 && this.status === 200) {
-                    if (FileSystem._disp) console.log("resp ->", this.responseText);
-                    var _c = []; // callbacks
-                    var created_3 = [];
-                    var _w = function(sid, obj) {
-                        var e_5, _a;
-                        var _obj = FileSystem._create_model_by_name(obj);
-                        if (sid != null && _obj != null) {
-                            _obj._server_id = sid;
-                            FileSystem._objects[sid] = _obj;
-                            try {
-                                for(var _b = __values(FileSystem._type_callbacks), _d = _b.next(); !_d.done; _d = _b.next()){
-                                    var _e = __read(_d.value, 2), type = _e[0], cb = _e[1];
-                                    var mod_R = ModelProcessManager_1.ModelProcessManager.spinal[type] || ModelProcessManager_1.ModelProcessManager._def[type];
-                                    if (_obj instanceof mod_R) created_3.push({
-                                        cb: cb,
-                                        _obj: _obj
-                                    });
-                                }
-                            } catch (e_5_1) {
-                                e_5 = {
-                                    error: e_5_1
-                                };
-                            } finally{
-                                try {
-                                    if (_d && !_d.done && (_a = _b["return"])) _a.call(_b);
-                                } finally{
-                                    if (e_5) throw e_5.error;
-                                }
-                            }
-                        }
-                    };
-                    FileSystem._sig_server = false;
-                    eval(this.responseText);
-                    FileSystem._sig_server = true;
-                    try {
-                        for(var created_2 = __values(created_3), created_2_1 = created_2.next(); !created_2_1.done; created_2_1 = created_2.next()){
-                            var _d = created_2_1.value, cb = _d.cb, _obj = _d._obj;
-                            cb(_obj);
-                        }
-                    } catch (e_3_1) {
-                        e_3 = {
-                            error: e_3_1
-                        };
-                    } finally{
-                        try {
-                            if (created_2_1 && !created_2_1.done && (_a = created_2["return"])) _a.call(created_2);
-                        } finally{
-                            if (e_3) throw e_3.error;
-                        }
-                    }
-                    var _loop_1 = function(nbCb, servId, error) {
-                        if (servId != 0 && typeof FileSystem._objects[servId] === "undefined") var interval_1 = setInterval(function() {
-                            if (typeof FileSystem._objects[servId] !== "undefined") {
-                                clearInterval(interval_1);
-                                FileSystem._callbacks[nbCb](FileSystem._objects[servId], error);
-                            }
-                        }, 200);
-                        else FileSystem._callbacks[nbCb](FileSystem._objects[servId], error);
-                    };
-                    try {
-                        for(var _c_1 = __values(_c), _c_1_1 = _c_1.next(); !_c_1_1.done; _c_1_1 = _c_1.next()){
-                            var _e = __read(_c_1_1.value, 3), nbCb = _e[0], servId = _e[1], error = _e[2];
-                            _loop_1(nbCb, servId, error);
-                        }
-                    } catch (e_4_1) {
-                        e_4 = {
-                            error: e_4_1
-                        };
-                    } finally{
-                        try {
-                            if (_c_1_1 && !_c_1_1.done && (_b = _c_1["return"])) _b.call(_c_1);
-                        } finally{
-                            if (e_4) throw e_4.error;
-                        }
-                    }
-                } else if (this.readyState === 4 && (this.status === 0 || this.status >= 500 && this.status < 600)) return FileSystem.onConnectionError(4);
-            };
-            if (FileSystem._disp) console.log("sent ->", fs._data_to_send + "E ");
-            xhr_object.setRequestHeader("Content-Type", "text/plain");
-            FileSystem._counter_sending += 1;
-            xhr_object.send(fs._data_to_send + "E ");
-            fs._data_to_send = "";
-        }
-        FileSystem._objects_to_send = {};
-        delete FileSystem._timer_send;
-    };
+     * @deprecated
+     * do not remove used in eval
+     */ FileSystem._timeout_send_func = function() {};
     /**
      * @static
      * @return {*}  {*}
@@ -52357,8 +44053,13 @@ var Directory_1 = require("32ce6675f9c6729d");
             if (window.XMLHttpRequest) return new XMLHttpRequest();
             if (window.ActiveXObject) return new ActiveXObject("Microsoft.XMLHTTP");
             return alert("Your browser does not seem to support XMLHTTPRequest objects...");
-        } else if (FileSystem.CONNECTOR_TYPE === "Node") return new FileSystem._XMLHttpRequest();
-        else console.error("you must define CONNECTOR_TYPE");
+        } else if (FileSystem.CONNECTOR_TYPE === "Node") {
+            if (!FileSystem._XMLHttpRequest) {
+                var XMLHttpRequest_node = require("bed202fa9186b4fb");
+                FileSystem._XMLHttpRequest = XMLHttpRequest_node;
+            }
+            return new FileSystem._XMLHttpRequest();
+        } else console.error("you must define CONNECTOR_TYPE");
     };
     FileSystem._constructorName = "FileSystem";
     // when object are saved, their _server_id is assigned to a tmp value
@@ -52402,6 +44103,7 @@ var Directory_1 = require("32ce6675f9c6729d");
     /**
      * @static
      * @type {number}
+     * @default 30000
      * @memberof FileSystem
      */ FileSystem._timeout_reconnect = 30000;
     /**
@@ -52412,19 +44114,9 @@ var Directory_1 = require("32ce6675f9c6729d");
     /**
      * data are sent after a timeout (and are concatened before)
      * @static
-     * @type {{ [serverId: number]: Model }}
+     * @type Map<number, Model>
      * @memberof FileSystem
-     */ FileSystem._objects_to_send = {};
-    /**
-     * @static
-     * @type {ReturnType<typeof setTimeout>}
-     * @memberof FileSystem
-     */ FileSystem._timer_send = undefined;
-    /**
-     * @static
-     * @type {ReturnType<typeof setTimeout>}
-     * @memberof FileSystem
-     */ FileSystem._timer_chan = undefined;
+     */ FileSystem._objects_to_send = new Map();
     /**
      * functions to be called after an answer
      * @static
@@ -52494,7 +44186,23 @@ var Directory_1 = require("32ce6675f9c6729d");
      * @type {('Node' | 'Browser')}
      * @memberof FileSystem
      */ FileSystem.CONNECTOR_TYPE = typeof globalThis.global != "undefined" ? "Node" : "Browser";
-    FileSystem._counter_sending = 0;
+    FileSystem._in_mk_chan_eval = false;
+    FileSystem._sending_data = false;
+    /**
+     * debounce from set
+     * @static
+     * @memberof FileSystem
+     */ FileSystem._have_model_changed_debounced = debounce(FileSystem._model_changed_func, 250, {
+        leading: false
+    });
+    /**
+     * debounce from send
+     * @static
+     * @memberof FileSystem
+     */ FileSystem._send_data_to_hub_debounced = debounce(FileSystem._send_data_to_hub_func, 20, {
+        leading: false
+    });
+    FileSystem.send_model_limit = 250;
     /**
      * to be refedifined to change the handleing for connections error
      * @static
@@ -52504,7 +44212,7 @@ var Directory_1 = require("32ce6675f9c6729d");
 }();
 exports.FileSystem = FileSystem;
 
-},{"2f8db4aa671c7bed":"d5jf4","671fce544aa49b19":"9cSHF","8f71ad1af3f41435":"5REF3","d4eae3a18f2a5011":"fJXyq","32ce6675f9c6729d":"fQPmu","bed202fa9186b4fb":"2zkNx"}],"d5jf4":[function(require,module,exports) {
+},{"2f8db4aa671c7bed":"d5jf4","671fce544aa49b19":"9cSHF","8f71ad1af3f41435":"5REF3","d4eae3a18f2a5011":"fJXyq","50a38cdf92a3a6fb":"dRVra","32ce6675f9c6729d":"fQPmu","72d5d6a18650333b":"jo6P5","920f1c330a16c90d":"gwDxu","e0605bcedba4cde3":"3JP5n","bed202fa9186b4fb":"2zkNx"}],"d5jf4":[function(require,module,exports) {
 // shim for using process in browser
 var process = module.exports = {};
 // cached from whatever global is present so that test runners that stub it
@@ -52924,7 +44632,7 @@ var ModelProcessManager = /** @class */ function() {
     ModelProcessManager._force_m = false;
     ModelProcessManager._def = {};
     ModelProcessManager.spinal = {
-        version: "2.5.17"
+        version: "2.5.22"
     };
     return ModelProcessManager;
 }();
@@ -55358,7 +47066,45 @@ function getUrlPath(protocol, url, port, searchQuery) {
 }
 exports.getUrlPath = getUrlPath;
 
-},{"824ae9a4f6ebb8d7":"Fv1fa"}],"fQPmu":[function(require,module,exports) {
+},{"824ae9a4f6ebb8d7":"Fv1fa"}],"dRVra":[function(require,module,exports) {
+"use strict";
+/*
+ * Copyright 2024 SpinalCom - www.spinalcom.com
+ *
+ * This file is part of SpinalCore.
+ *
+ * Please read all of the following terms and conditions
+ * of the Software license Agreement ("Agreement")
+ * carefully.
+ *
+ * This Agreement is a legally binding contract between
+ * the Licensee (as defined below) and SpinalCom that
+ * sets forth the terms and conditions that govern your
+ * use of the Program. By installing and/or using the
+ * Program, you agree to abide by all the terms and
+ * conditions stated or referenced herein.
+ *
+ * If you do not agree to abide by these terms and
+ * conditions, do not demonstrate your acceptance and do
+ * not install or use the Program.
+ * You should have received a copy of the license along
+ * with this file. If not, see
+ * <http://resources.spinalcom.com/licenses.pdf>.
+ */ exports.__esModule = true;
+exports.waitTimeout = void 0;
+/**
+ * Wait for a timeout
+ * @export
+ * @param {number} ms
+ * @return {*}  {Promise<void>}
+ */ function waitTimeout(ms) {
+    return new Promise(function(resolve) {
+        setTimeout(resolve, ms);
+    });
+}
+exports.waitTimeout = waitTimeout;
+
+},{}],"fQPmu":[function(require,module,exports) {
 "use strict";
 /*
  * Copyright 2022 SpinalCom - www.spinalcom.com
@@ -55587,8 +47333,9 @@ var Ptr_1 = require("2fee3a23688f4786");
      */ function File(name, ptr_or_model, info) {
         if (name === void 0) name = "";
         if (ptr_or_model === void 0) ptr_or_model = 0;
+        var _this = this;
         var _a;
-        var _this = _super.call(this) || this;
+        _this = _super.call(this) || this;
         var cp_info = {};
         if (!info) info = {};
         for(var key in info)cp_info[key] = info[key];
@@ -55845,156 +47592,1408 @@ var Ptr_1 = require("a8bc85c5cd5ccd1b");
 }(File_1.File);
 exports.TiffFile = TiffFile;
 
-},{"ded87fd745be2804":"8wLgA","a8bc85c5cd5ccd1b":"iaVAj"}],"2zkNx":[function(require,module,exports) {
-module.exports = XMLHttpRequest;
+},{"ded87fd745be2804":"8wLgA","a8bc85c5cd5ccd1b":"iaVAj"}],"jo6P5":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _axiosJsDefault.default));
+parcelHelpers.export(exports, "create", ()=>create);
+parcelHelpers.export(exports, "Axios", ()=>Axios);
+parcelHelpers.export(exports, "AxiosError", ()=>AxiosError);
+parcelHelpers.export(exports, "CanceledError", ()=>CanceledError);
+parcelHelpers.export(exports, "isCancel", ()=>isCancel);
+parcelHelpers.export(exports, "CancelToken", ()=>CancelToken);
+parcelHelpers.export(exports, "VERSION", ()=>VERSION);
+parcelHelpers.export(exports, "all", ()=>all);
+parcelHelpers.export(exports, "Cancel", ()=>Cancel);
+parcelHelpers.export(exports, "isAxiosError", ()=>isAxiosError);
+parcelHelpers.export(exports, "spread", ()=>spread);
+parcelHelpers.export(exports, "toFormData", ()=>toFormData);
+parcelHelpers.export(exports, "AxiosHeaders", ()=>AxiosHeaders);
+parcelHelpers.export(exports, "HttpStatusCode", ()=>HttpStatusCode);
+parcelHelpers.export(exports, "formToJSON", ()=>formToJSON);
+parcelHelpers.export(exports, "getAdapter", ()=>getAdapter);
+parcelHelpers.export(exports, "mergeConfig", ()=>mergeConfig);
+var _axiosJs = require("./lib/axios.js");
+var _axiosJsDefault = parcelHelpers.interopDefault(_axiosJs);
+// This module is intended to unwrap Axios default export as named.
+// Keep top-level export same with static properties
+// so that it can keep same with es module or cjs
+const { Axios, AxiosError, CanceledError, isCancel, CancelToken, VERSION, all, Cancel, isAxiosError, spread, toFormData, AxiosHeaders, HttpStatusCode, formToJSON, getAdapter, mergeConfig, create } = (0, _axiosJsDefault.default);
 
-},{}],"aFtJx":[function(require,module,exports) {
+},{"./lib/axios.js":"63MyY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"63MyY":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _utilsJs = require("./utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _bindJs = require("./helpers/bind.js");
+var _bindJsDefault = parcelHelpers.interopDefault(_bindJs);
+var _axiosJs = require("./core/Axios.js");
+var _axiosJsDefault = parcelHelpers.interopDefault(_axiosJs);
+var _mergeConfigJs = require("./core/mergeConfig.js");
+var _mergeConfigJsDefault = parcelHelpers.interopDefault(_mergeConfigJs);
+var _indexJs = require("./defaults/index.js");
+var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
+var _formDataToJSONJs = require("./helpers/formDataToJSON.js");
+var _formDataToJSONJsDefault = parcelHelpers.interopDefault(_formDataToJSONJs);
+var _canceledErrorJs = require("./cancel/CanceledError.js");
+var _canceledErrorJsDefault = parcelHelpers.interopDefault(_canceledErrorJs);
+var _cancelTokenJs = require("./cancel/CancelToken.js");
+var _cancelTokenJsDefault = parcelHelpers.interopDefault(_cancelTokenJs);
+var _isCancelJs = require("./cancel/isCancel.js");
+var _isCancelJsDefault = parcelHelpers.interopDefault(_isCancelJs);
+var _dataJs = require("./env/data.js");
+var _toFormDataJs = require("./helpers/toFormData.js");
+var _toFormDataJsDefault = parcelHelpers.interopDefault(_toFormDataJs);
+var _axiosErrorJs = require("./core/AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+var _spreadJs = require("./helpers/spread.js");
+var _spreadJsDefault = parcelHelpers.interopDefault(_spreadJs);
+var _isAxiosErrorJs = require("./helpers/isAxiosError.js");
+var _isAxiosErrorJsDefault = parcelHelpers.interopDefault(_isAxiosErrorJs);
+var _axiosHeadersJs = require("./core/AxiosHeaders.js");
+var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
+var _adaptersJs = require("./adapters/adapters.js");
+var _adaptersJsDefault = parcelHelpers.interopDefault(_adaptersJs);
+var _httpStatusCodeJs = require("./helpers/HttpStatusCode.js");
+var _httpStatusCodeJsDefault = parcelHelpers.interopDefault(_httpStatusCodeJs);
 "use strict";
-/*
- * Copyright 2022 SpinalCom - www.spinalcom.com
- *
- * This file is part of SpinalCore.
- *
- * Please read all of the following terms and conditions
- * of the Free Software license Agreement ("Agreement")
- * carefully.
- *
- * This Agreement is a legally binding contract between
- * the Licensee (as defined below) and SpinalCom that
- * sets forth the terms and conditions that govern your
- * use of the Program. By installing and/or using the
- * Program, you agree to abide by all the terms and
- * conditions stated or referenced herein.
- *
- * If you do not agree to abide by these terms and
- * conditions, do not demonstrate your acceptance and do
- * not install or use the Program.
- * You should have received a copy of the license along
- * with this file. If not, see
- * <http://resources.spinalcom.com/licenses.pdf>.
- */ exports.__esModule = true;
-exports.sendXhr = void 0;
-var FileSystem_1 = require("1ce2c9b5ae40fe5");
-function sendXhr(options, command, httpMethod, header, body) {
-    var path = "";
-    var parsedOpt = typeof options === "string" ? new URL(options) : options;
-    var url = parsedOpt.hostname;
-    var port = parsedOpt.port;
-    if (FileSystem_1.FileSystem.CONNECTOR_TYPE === "Node" || FileSystem_1.FileSystem.is_cordova) path = "".concat(parsedOpt.protocol, "//").concat(url).concat(port) ? ":" + port : "" + command;
-    else if (FileSystem_1.FileSystem.CONNECTOR_TYPE === "Browser") path = command;
-    return new Promise(function(resolve, reject) {
-        var xhr_object = FileSystem_1.FileSystem._my_xml_http_request();
-        xhr_object.open(httpMethod, path, true);
-        xhr_object.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) return resolve(this.responseText);
-            else if (this.readyState === 4) return reject(this.status);
-        };
-        if (header) {
-            for(var key in header)if (Object.prototype.hasOwnProperty.call(header, key)) xhr_object.setRequestHeader(key, header[key]);
-        }
-        xhr_object.send(body);
-    });
-}
-exports.sendXhr = sendXhr;
-
-},{"1ce2c9b5ae40fe5":"Fv1fa"}],"aXT5I":[function(require,module,exports) {
-var Buffer = require("9acb87e006e14e8a").Buffer;
-"use strict";
-/*
- * Copyright 2022 SpinalCom - www.spinalcom.com
- *
- * This file is part of SpinalCore.
- *
- * Please read all of the following terms and conditions
- * of the Free Software license Agreement ("Agreement")
- * carefully.
- *
- * This Agreement is a legally binding contract between
- * the Licensee (as defined below) and SpinalCom that
- * sets forth the terms and conditions that govern your
- * use of the Program. By installing and/or using the
- * Program, you agree to abide by all the terms and
- * conditions stated or referenced herein.
- *
- * If you do not agree to abide by these terms and
- * conditions, do not demonstrate your acceptance and do
- * not install or use the Program.
- * You should have received a copy of the license along
- * with this file. If not, see
- * <http://resources.spinalcom.com/licenses.pdf>.
- */ var __extends = this && this.__extends || function() {
-    var extendStatics = function(d, b) {
-        extendStatics = Object.setPrototypeOf || ({
-            __proto__: []
-        }) instanceof Array && function(d, b) {
-            d.__proto__ = b;
-        } || function(d, b) {
-            for(var p in b)if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
-        };
-        return extendStatics(d, b);
-    };
-    return function(d, b) {
-        if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
-        extendStatics(d, b);
-        function __() {
-            this.constructor = d;
-        }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-}();
-exports.__esModule = true;
-exports.Path = void 0;
-var Model_1 = require("da4ef2d0126e9be3");
-var FileSystem_1 = require("f066dd94f216682d");
 /**
- * representation of a file to upload
- * @export
- * @class Path
- * @extends {Model}
- */ var Path = /** @class */ function(_super) {
-    __extends(Path, _super);
-    /**
-     * Creates an instance of Path.
-     * @param {(File | Buffer)} [file]
-     * @memberof Path
-     */ function Path(file) {
-        var _this = _super.call(this) || this;
-        _this.file = file;
-        // @ts-ignore
-        var size = file === null || file === void 0 ? void 0 : file.fileSize;
-        if (file && typeof Buffer !== "undefined" && file instanceof Buffer) size = file.length;
-        size = size || 0;
-        _this.add_attr({
-            remaining: size,
-            to_upload: size
+ * Create an instance of Axios
+ *
+ * @param {Object} defaultConfig The default config for the instance
+ *
+ * @returns {Axios} A new instance of Axios
+ */ function createInstance(defaultConfig) {
+    const context = new (0, _axiosJsDefault.default)(defaultConfig);
+    const instance = (0, _bindJsDefault.default)((0, _axiosJsDefault.default).prototype.request, context);
+    // Copy axios.prototype to instance
+    (0, _utilsJsDefault.default).extend(instance, (0, _axiosJsDefault.default).prototype, context, {
+        allOwnKeys: true
+    });
+    // Copy context to instance
+    (0, _utilsJsDefault.default).extend(instance, context, null, {
+        allOwnKeys: true
+    });
+    // Factory for creating new instances
+    instance.create = function create(instanceConfig) {
+        return createInstance((0, _mergeConfigJsDefault.default)(defaultConfig, instanceConfig));
+    };
+    return instance;
+}
+// Create the default instance to be exported
+const axios = createInstance((0, _indexJsDefault.default));
+// Expose Axios class to allow class inheritance
+axios.Axios = (0, _axiosJsDefault.default);
+// Expose Cancel & CancelToken
+axios.CanceledError = (0, _canceledErrorJsDefault.default);
+axios.CancelToken = (0, _cancelTokenJsDefault.default);
+axios.isCancel = (0, _isCancelJsDefault.default);
+axios.VERSION = (0, _dataJs.VERSION);
+axios.toFormData = (0, _toFormDataJsDefault.default);
+// Expose AxiosError class
+axios.AxiosError = (0, _axiosErrorJsDefault.default);
+// alias for CanceledError for backward compatibility
+axios.Cancel = axios.CanceledError;
+// Expose all/spread
+axios.all = function all(promises) {
+    return Promise.all(promises);
+};
+axios.spread = (0, _spreadJsDefault.default);
+// Expose isAxiosError
+axios.isAxiosError = (0, _isAxiosErrorJsDefault.default);
+// Expose mergeConfig
+axios.mergeConfig = (0, _mergeConfigJsDefault.default);
+axios.AxiosHeaders = (0, _axiosHeadersJsDefault.default);
+axios.formToJSON = (thing)=>(0, _formDataToJSONJsDefault.default)((0, _utilsJsDefault.default).isHTMLForm(thing) ? new FormData(thing) : thing);
+axios.getAdapter = (0, _adaptersJsDefault.default).getAdapter;
+axios.HttpStatusCode = (0, _httpStatusCodeJsDefault.default);
+axios.default = axios;
+// this module should only have a default export
+exports.default = axios;
+
+},{"./utils.js":"5By4s","./helpers/bind.js":"haRQb","./core/Axios.js":"cpqD8","./core/mergeConfig.js":"b85oP","./defaults/index.js":"hXfHM","./helpers/formDataToJSON.js":"01RfH","./cancel/CanceledError.js":"9PwCG","./cancel/CancelToken.js":"45wzn","./cancel/isCancel.js":"a0VmF","./env/data.js":"h29L9","./helpers/toFormData.js":"ajoez","./core/AxiosError.js":"3u8Tl","./helpers/spread.js":"dyQ8N","./helpers/isAxiosError.js":"eyiLq","./core/AxiosHeaders.js":"cgSSx","./adapters/adapters.js":"d7JxI","./helpers/HttpStatusCode.js":"fdR61","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5By4s":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _bindJs = require("./helpers/bind.js");
+var _bindJsDefault = parcelHelpers.interopDefault(_bindJs);
+var global = arguments[3];
+var process = require("a8d2c3349c87a903");
+"use strict";
+// utils is a library of generic helper functions non-specific to axios
+const { toString } = Object.prototype;
+const { getPrototypeOf } = Object;
+const { iterator, toStringTag } = Symbol;
+/* Creating a function that will check if an object has a property. */ const hasOwnProperty = (({ hasOwnProperty })=>(obj, prop)=>hasOwnProperty.call(obj, prop))(Object.prototype);
+/**
+ * Walk the prototype chain (excluding the shared Object.prototype) looking for
+ * an own `prop`. This distinguishes genuine own/inherited members — including
+ * class accessors and template prototypes — from members injected via
+ * Object.prototype pollution (e.g. `Object.prototype.username = '...'`), which
+ * live on Object.prototype itself and are therefore never matched.
+ *
+ * @param {*} thing The value whose chain to inspect
+ * @param {string|symbol} prop The property key to look for
+ *
+ * @returns {boolean} True when `prop` is owned below Object.prototype
+ */ const hasOwnInPrototypeChain = (thing, prop)=>{
+    let obj = thing;
+    const seen = [];
+    while(obj != null && obj !== Object.prototype){
+        if (seen.indexOf(obj) !== -1) return false;
+        seen.push(obj);
+        if (hasOwnProperty(obj, prop)) return true;
+        obj = getPrototypeOf(obj);
+    }
+    return false;
+};
+/**
+ * Read `obj[prop]` only when it is safe from Object.prototype pollution. Own
+ * properties and members inherited from a non-Object.prototype source (a class
+ * instance or template object) are honored; a value reachable only through a
+ * polluted Object.prototype is ignored and `undefined` is returned.
+ *
+ * @param {*} obj The source object
+ * @param {string|symbol} prop The property key to read
+ *
+ * @returns {*} The resolved value, or undefined when unsafe/absent
+ */ const getSafeProp = (obj, prop)=>obj != null && hasOwnInPrototypeChain(obj, prop) ? obj[prop] : undefined;
+const kindOf = ((cache)=>(thing)=>{
+        const str = toString.call(thing);
+        return cache[str] || (cache[str] = str.slice(8, -1).toLowerCase());
+    })(Object.create(null));
+const kindOfTest = (type)=>{
+    type = type.toLowerCase();
+    return (thing)=>kindOf(thing) === type;
+};
+const typeOfTest = (type)=>(thing)=>typeof thing === type;
+/**
+ * Determine if a value is a non-null object
+ *
+ * @param {Object} val The value to test
+ *
+ * @returns {boolean} True if value is an Array, otherwise false
+ */ const { isArray } = Array;
+/**
+ * Determine if a value is undefined
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if the value is undefined, otherwise false
+ */ const isUndefined = typeOfTest("undefined");
+/**
+ * Determine if a value is a Buffer
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is a Buffer, otherwise false
+ */ function isBuffer(val) {
+    return val !== null && !isUndefined(val) && val.constructor !== null && !isUndefined(val.constructor) && isFunction(val.constructor.isBuffer) && val.constructor.isBuffer(val);
+}
+/**
+ * Determine if a value is an ArrayBuffer
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is an ArrayBuffer, otherwise false
+ */ const isArrayBuffer = kindOfTest("ArrayBuffer");
+/**
+ * Determine if a value is a view on an ArrayBuffer
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
+ */ function isArrayBufferView(val) {
+    let result;
+    if (typeof ArrayBuffer !== "undefined" && ArrayBuffer.isView) result = ArrayBuffer.isView(val);
+    else result = val && val.buffer && isArrayBuffer(val.buffer);
+    return result;
+}
+/**
+ * Determine if a value is a String
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is a String, otherwise false
+ */ const isString = typeOfTest("string");
+/**
+ * Determine if a value is a Function
+ *
+ * @param {*} val The value to test
+ * @returns {boolean} True if value is a Function, otherwise false
+ */ const isFunction = typeOfTest("function");
+/**
+ * Determine if a value is a Number
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is a Number, otherwise false
+ */ const isNumber = typeOfTest("number");
+/**
+ * Determine if a value is an Object
+ *
+ * @param {*} thing The value to test
+ *
+ * @returns {boolean} True if value is an Object, otherwise false
+ */ const isObject = (thing)=>thing !== null && typeof thing === "object";
+/**
+ * Determine if a value is a Boolean
+ *
+ * @param {*} thing The value to test
+ * @returns {boolean} True if value is a Boolean, otherwise false
+ */ const isBoolean = (thing)=>thing === true || thing === false;
+/**
+ * Determine if a value is a plain Object
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is a plain Object, otherwise false
+ */ const isPlainObject = (val)=>{
+    if (!isObject(val)) return false;
+    const prototype = getPrototypeOf(val);
+    return (prototype === null || prototype === Object.prototype || getPrototypeOf(prototype) === null) && // Treat any genuine (non-Object.prototype-polluted) Symbol.toStringTag or
+    // Symbol.iterator as evidence the value is a tagged/iterable type rather
+    // than a plain object, while ignoring keys injected onto Object.prototype.
+    !hasOwnInPrototypeChain(val, toStringTag) && !hasOwnInPrototypeChain(val, iterator);
+};
+/**
+ * Determine if a value is an empty object (safely handles Buffers)
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is an empty object, otherwise false
+ */ const isEmptyObject = (val)=>{
+    // Early return for non-objects or Buffers to prevent RangeError
+    if (!isObject(val) || isBuffer(val)) return false;
+    try {
+        return Object.keys(val).length === 0 && Object.getPrototypeOf(val) === Object.prototype;
+    } catch (e) {
+        // Fallback for any other objects that might cause RangeError with Object.keys()
+        return false;
+    }
+};
+/**
+ * Determine if a value is a Date
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is a Date, otherwise false
+ */ const isDate = kindOfTest("Date");
+/**
+ * Determine if a value is a File
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is a File, otherwise false
+ */ const isFile = kindOfTest("File");
+/**
+ * Determine if a value is a React Native Blob
+ * React Native "blob": an object with a `uri` attribute. Optionally, it can
+ * also have a `name` and `type` attribute to specify filename and content type
+ *
+ * @see https://github.com/facebook/react-native/blob/26684cf3adf4094eb6c405d345a75bf8c7c0bf88/Libraries/Network/FormData.js#L68-L71
+ *
+ * @param {*} value The value to test
+ *
+ * @returns {boolean} True if value is a React Native Blob, otherwise false
+ */ const isReactNativeBlob = (value)=>{
+    return !!(value && typeof value.uri !== "undefined");
+};
+/**
+ * Determine if environment is React Native
+ * ReactNative `FormData` has a non-standard `getParts()` method
+ *
+ * @param {*} formData The formData to test
+ *
+ * @returns {boolean} True if environment is React Native, otherwise false
+ */ const isReactNative = (formData)=>formData && typeof formData.getParts !== "undefined";
+/**
+ * Determine if a value is a Blob
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is a Blob, otherwise false
+ */ const isBlob = kindOfTest("Blob");
+/**
+ * Determine if a value is a FileList
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is a FileList, otherwise false
+ */ const isFileList = kindOfTest("FileList");
+/**
+ * Determine if a value is a Stream
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is a Stream, otherwise false
+ */ const isStream = (val)=>isObject(val) && isFunction(val.pipe);
+/**
+ * Determine if a value is a FormData
+ *
+ * @param {*} thing The value to test
+ *
+ * @returns {boolean} True if value is an FormData, otherwise false
+ */ function getGlobal() {
+    if (typeof globalThis !== "undefined") return globalThis;
+    if (typeof self !== "undefined") return self;
+    if (typeof window !== "undefined") return window;
+    if (typeof global !== "undefined") return global;
+    return {};
+}
+const G = getGlobal();
+const FormDataCtor = typeof G.FormData !== "undefined" ? G.FormData : undefined;
+const isFormData = (thing)=>{
+    if (!thing) return false;
+    if (FormDataCtor && thing instanceof FormDataCtor) return true;
+    // Reject plain objects inheriting directly from Object.prototype so prototype-pollution gadgets can't spoof FormData.
+    const proto = getPrototypeOf(thing);
+    if (!proto || proto === Object.prototype) return false;
+    if (!isFunction(thing.append)) return false;
+    const kind = kindOf(thing);
+    return kind === "formdata" || // detect form-data instance
+    kind === "object" && isFunction(thing.toString) && thing.toString() === "[object FormData]";
+};
+/**
+ * Determine if a value is a URLSearchParams object
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is a URLSearchParams object, otherwise false
+ */ const isURLSearchParams = kindOfTest("URLSearchParams");
+const [isReadableStream, isRequest, isResponse, isHeaders] = [
+    "ReadableStream",
+    "Request",
+    "Response",
+    "Headers"
+].map(kindOfTest);
+/**
+ * Trim excess whitespace off the beginning and end of a string
+ *
+ * @param {String} str The String to trim
+ *
+ * @returns {String} The String freed of excess whitespace
+ */ const trim = (str)=>{
+    return str.trim ? str.trim() : str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "");
+};
+/**
+ * Iterate over an Array or an Object invoking a function for each item.
+ *
+ * If `obj` is an Array callback will be called passing
+ * the value, index, and complete array for each item.
+ *
+ * If 'obj' is an Object callback will be called passing
+ * the value, key, and complete object for each property.
+ *
+ * @param {Object|Array<unknown>} obj The object to iterate
+ * @param {Function} fn The callback to invoke for each item
+ *
+ * @param {Object} [options]
+ * @param {Boolean} [options.allOwnKeys = false]
+ * @returns {any}
+ */ function forEach(obj, fn, { allOwnKeys = false } = {}) {
+    // Don't bother if no value provided
+    if (obj === null || typeof obj === "undefined") return;
+    let i;
+    let l;
+    // Force an array if not already something iterable
+    if (typeof obj !== "object") /*eslint no-param-reassign:0*/ obj = [
+        obj
+    ];
+    if (isArray(obj)) // Iterate over array values
+    for(i = 0, l = obj.length; i < l; i++)fn.call(null, obj[i], i, obj);
+    else {
+        // Buffer check
+        if (isBuffer(obj)) return;
+        // Iterate over object keys
+        const keys = allOwnKeys ? Object.getOwnPropertyNames(obj) : Object.keys(obj);
+        const len = keys.length;
+        let key;
+        for(i = 0; i < len; i++){
+            key = keys[i];
+            fn.call(null, obj[key], key, obj);
+        }
+    }
+}
+/**
+ * Finds a key in an object, case-insensitive, returning the actual key name.
+ * Returns null if the object is a Buffer or if no match is found.
+ *
+ * @param {Object} obj - The object to search.
+ * @param {string} key - The key to find (case-insensitive).
+ * @returns {?string} The actual key name if found, otherwise null.
+ */ function findKey(obj, key) {
+    if (isBuffer(obj)) return null;
+    key = key.toLowerCase();
+    const keys = Object.keys(obj);
+    let i = keys.length;
+    let _key;
+    while(i-- > 0){
+        _key = keys[i];
+        if (key === _key.toLowerCase()) return _key;
+    }
+    return null;
+}
+const _global = (()=>{
+    /*eslint no-undef:0*/ if (typeof globalThis !== "undefined") return globalThis;
+    return typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : global;
+})();
+const isContextDefined = (context)=>!isUndefined(context) && context !== _global;
+/**
+ * Accepts varargs expecting each argument to be an object, then
+ * immutably merges the properties of each object and returns result.
+ *
+ * When multiple objects contain the same key the later object in
+ * the arguments list will take precedence.
+ *
+ * Example:
+ *
+ * ```js
+ * const result = merge({foo: 123}, {foo: 456});
+ * console.log(result.foo); // outputs 456
+ * ```
+ *
+ * @param {Object} obj1 Object to merge
+ *
+ * @returns {Object} Result of all merge properties
+ */ function merge(...objs) {
+    const { caseless, skipUndefined } = isContextDefined(this) && this || {};
+    const result = {};
+    const assignValue = (val, key)=>{
+        // Skip dangerous property names to prevent prototype pollution
+        if (key === "__proto__" || key === "constructor" || key === "prototype") return;
+        // findKey lowercases the key, so caseless lookup only applies to strings —
+        // symbol keys are identity-matched.
+        const targetKey = caseless && typeof key === "string" && findKey(result, key) || key;
+        // Read via own-prop only — a bare `result[targetKey]` walks the prototype
+        // chain, so a polluted Object.prototype value could surface here and get
+        // copied into the merged result.
+        const existing = hasOwnProperty(result, targetKey) ? result[targetKey] : undefined;
+        if (isPlainObject(existing) && isPlainObject(val)) result[targetKey] = merge(existing, val);
+        else if (isPlainObject(val)) result[targetKey] = merge({}, val);
+        else if (isArray(val)) result[targetKey] = val.slice();
+        else if (!skipUndefined || !isUndefined(val)) result[targetKey] = val;
+    };
+    for(let i = 0, l = objs.length; i < l; i++){
+        const source = objs[i];
+        if (!source || isBuffer(source)) continue;
+        forEach(source, assignValue);
+        if (typeof source !== "object" || isArray(source)) continue;
+        const symbols = Object.getOwnPropertySymbols(source);
+        for(let j = 0; j < symbols.length; j++){
+            const symbol = symbols[j];
+            if (propertyIsEnumerable.call(source, symbol)) assignValue(source[symbol], symbol);
+        }
+    }
+    return result;
+}
+/**
+ * Extends object a by mutably adding to it the properties of object b.
+ *
+ * @param {Object} a The object to be extended
+ * @param {Object} b The object to copy properties from
+ * @param {Object} thisArg The object to bind function to
+ *
+ * @param {Object} [options]
+ * @param {Boolean} [options.allOwnKeys]
+ * @returns {Object} The resulting value of object a
+ */ const extend = (a, b, thisArg, { allOwnKeys } = {})=>{
+    forEach(b, (val, key)=>{
+        if (thisArg && isFunction(val)) Object.defineProperty(a, key, {
+            // Null-proto descriptor so a polluted Object.prototype.get cannot
+            // hijack defineProperty's accessor-vs-data resolution.
+            __proto__: null,
+            value: (0, _bindJsDefault.default)(val, thisArg),
+            writable: true,
+            enumerable: true,
+            configurable: true
         });
-        return _this;
+        else Object.defineProperty(a, key, {
+            __proto__: null,
+            value: val,
+            writable: true,
+            enumerable: true,
+            configurable: true
+        });
+    }, {
+        allOwnKeys
+    });
+    return a;
+};
+/**
+ * Remove byte order marker. This catches EF BB BF (the UTF-8 BOM)
+ *
+ * @param {string} content with BOM
+ *
+ * @returns {string} content value without BOM
+ */ const stripBOM = (content)=>{
+    if (content.charCodeAt(0) === 0xfeff) content = content.slice(1);
+    return content;
+};
+/**
+ * Inherit the prototype methods from one constructor into another
+ * @param {function} constructor
+ * @param {function} superConstructor
+ * @param {object} [props]
+ * @param {object} [descriptors]
+ *
+ * @returns {void}
+ */ const inherits = (constructor, superConstructor, props, descriptors)=>{
+    constructor.prototype = Object.create(superConstructor.prototype, descriptors);
+    Object.defineProperty(constructor.prototype, "constructor", {
+        __proto__: null,
+        value: constructor,
+        writable: true,
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(constructor, "super", {
+        __proto__: null,
+        value: superConstructor.prototype
+    });
+    props && Object.assign(constructor.prototype, props);
+};
+/**
+ * Resolve object with deep prototype chain to a flat object
+ * @param {Object} sourceObj source object
+ * @param {Object} [destObj]
+ * @param {Function|Boolean} [filter]
+ * @param {Function} [propFilter]
+ *
+ * @returns {Object}
+ */ const toFlatObject = (sourceObj, destObj, filter, propFilter)=>{
+    let props;
+    let i;
+    let prop;
+    const merged = {};
+    destObj = destObj || {};
+    // eslint-disable-next-line no-eq-null,eqeqeq
+    if (sourceObj == null) return destObj;
+    do {
+        props = Object.getOwnPropertyNames(sourceObj);
+        i = props.length;
+        while(i-- > 0){
+            prop = props[i];
+            if ((!propFilter || propFilter(prop, sourceObj, destObj)) && !merged[prop]) {
+                destObj[prop] = sourceObj[prop];
+                merged[prop] = true;
+            }
+        }
+        sourceObj = filter !== false && getPrototypeOf(sourceObj);
+    }while (sourceObj && (!filter || filter(sourceObj, destObj)) && sourceObj !== Object.prototype);
+    return destObj;
+};
+/**
+ * Determines whether a string ends with the characters of a specified string
+ *
+ * @param {String} str
+ * @param {String} searchString
+ * @param {Number} [position= 0]
+ *
+ * @returns {boolean}
+ */ const endsWith = (str, searchString, position)=>{
+    str = String(str);
+    if (position === undefined || position > str.length) position = str.length;
+    position -= searchString.length;
+    const lastIndex = str.indexOf(searchString, position);
+    return lastIndex !== -1 && lastIndex === position;
+};
+/**
+ * Returns new array from array like object or null if failed
+ *
+ * @param {*} [thing]
+ *
+ * @returns {?Array}
+ */ const toArray = (thing)=>{
+    if (!thing) return null;
+    if (isArray(thing)) return thing;
+    let i = thing.length;
+    if (!isNumber(i)) return null;
+    const arr = new Array(i);
+    while(i-- > 0)arr[i] = thing[i];
+    return arr;
+};
+/**
+ * Checking if the Uint8Array exists and if it does, it returns a function that checks if the
+ * thing passed in is an instance of Uint8Array
+ *
+ * @param {TypedArray}
+ *
+ * @returns {Array}
+ */ // eslint-disable-next-line func-names
+const isTypedArray = ((TypedArray)=>{
+    // eslint-disable-next-line func-names
+    return (thing)=>{
+        return TypedArray && thing instanceof TypedArray;
+    };
+})(typeof Uint8Array !== "undefined" && getPrototypeOf(Uint8Array));
+/**
+ * For each entry in the object, call the function with the key and value.
+ *
+ * @param {Object<any, any>} obj - The object to iterate over.
+ * @param {Function} fn - The function to call for each entry.
+ *
+ * @returns {void}
+ */ const forEachEntry = (obj, fn)=>{
+    const generator = obj && obj[iterator];
+    const _iterator = generator.call(obj);
+    let result;
+    while((result = _iterator.next()) && !result.done){
+        const pair = result.value;
+        fn.call(obj, pair[0], pair[1]);
+    }
+};
+/**
+ * It takes a regular expression and a string, and returns an array of all the matches
+ *
+ * @param {string} regExp - The regular expression to match against.
+ * @param {string} str - The string to search.
+ *
+ * @returns {Array<boolean>}
+ */ const matchAll = (regExp, str)=>{
+    let matches;
+    const arr = [];
+    while((matches = regExp.exec(str)) !== null)arr.push(matches);
+    return arr;
+};
+/* Checking if the kindOfTest function returns true when passed an HTMLFormElement. */ const isHTMLForm = kindOfTest("HTMLFormElement");
+const toCamelCase = (str)=>{
+    return str.toLowerCase().replace(/[-_\s]([a-z\d])(\w*)/g, function replacer(m, p1, p2) {
+        return p1.toUpperCase() + p2;
+    });
+};
+const { propertyIsEnumerable } = Object.prototype;
+/**
+ * Determine if a value is a RegExp object
+ *
+ * @param {*} val The value to test
+ *
+ * @returns {boolean} True if value is a RegExp object, otherwise false
+ */ const isRegExp = kindOfTest("RegExp");
+const reduceDescriptors = (obj, reducer)=>{
+    const descriptors = Object.getOwnPropertyDescriptors(obj);
+    const reducedDescriptors = {};
+    forEach(descriptors, (descriptor, name)=>{
+        let ret;
+        if ((ret = reducer(descriptor, name, obj)) !== false) reducedDescriptors[name] = ret || descriptor;
+    });
+    Object.defineProperties(obj, reducedDescriptors);
+};
+/**
+ * Makes all methods read-only
+ * @param {Object} obj
+ */ const freezeMethods = (obj)=>{
+    reduceDescriptors(obj, (descriptor, name)=>{
+        // skip restricted props in strict mode
+        if (isFunction(obj) && [
+            "arguments",
+            "caller",
+            "callee"
+        ].includes(name)) return false;
+        const value = obj[name];
+        if (!isFunction(value)) return;
+        descriptor.enumerable = false;
+        if ("writable" in descriptor) {
+            descriptor.writable = false;
+            return;
+        }
+        if (!descriptor.set) descriptor.set = ()=>{
+            throw Error("Can not rewrite read-only method '" + name + "'");
+        };
+    });
+};
+/**
+ * Converts an array or a delimited string into an object set with values as keys and true as values.
+ * Useful for fast membership checks.
+ *
+ * @param {Array|string} arrayOrString - The array or string to convert.
+ * @param {string} delimiter - The delimiter to use if input is a string.
+ * @returns {Object} An object with keys from the array or string, values set to true.
+ */ const toObjectSet = (arrayOrString, delimiter)=>{
+    const obj = {};
+    const define = (arr)=>{
+        arr.forEach((value)=>{
+            obj[value] = true;
+        });
+    };
+    isArray(arrayOrString) ? define(arrayOrString) : define(String(arrayOrString).split(delimiter));
+    return obj;
+};
+const noop = ()=>{};
+const toFiniteNumber = (value, defaultValue)=>{
+    return value != null && Number.isFinite(value = +value) ? value : defaultValue;
+};
+/**
+ * If the thing is a FormData object, return true, otherwise return false.
+ *
+ * @param {unknown} thing - The thing to check.
+ *
+ * @returns {boolean}
+ */ function isSpecCompliantForm(thing) {
+    return !!(thing && isFunction(thing.append) && thing[toStringTag] === "FormData" && thing[iterator]);
+}
+/**
+ * Recursively converts an object to a JSON-compatible object, handling circular references and Buffers.
+ *
+ * @param {Object} obj - The object to convert.
+ * @returns {Object} The JSON-compatible object.
+ */ const toJSONObject = (obj)=>{
+    const visited = new WeakSet();
+    const visit = (source)=>{
+        if (isObject(source)) {
+            if (visited.has(source)) return;
+            //Buffer check
+            if (isBuffer(source)) return source;
+            if (!("toJSON" in source)) {
+                // add-on descent / delete-on-ascent: preserves path semantics, so DAG nodes serialise at every occurrence (see #7230).
+                visited.add(source);
+                const target = isArray(source) ? [] : {};
+                forEach(source, (value, key)=>{
+                    const reducedValue = visit(value);
+                    !isUndefined(reducedValue) && (target[key] = reducedValue);
+                });
+                visited.delete(source);
+                return target;
+            }
+        }
+        return source;
+    };
+    return visit(obj);
+};
+/**
+ * Determines if a value is an async function.
+ *
+ * @param {*} thing - The value to test.
+ * @returns {boolean} True if value is an async function, otherwise false.
+ */ const isAsyncFn = kindOfTest("AsyncFunction");
+/**
+ * Determines if a value is thenable (has then and catch methods).
+ *
+ * @param {*} thing - The value to test.
+ * @returns {boolean} True if value is thenable, otherwise false.
+ */ const isThenable = (thing)=>thing && (isObject(thing) || isFunction(thing)) && isFunction(thing.then) && isFunction(thing.catch);
+// original code
+// https://github.com/DigitalBrainJS/AxiosPromise/blob/16deab13710ec09779922131f3fa5954320f83ab/lib/utils.js#L11-L34
+/**
+ * Provides a cross-platform setImmediate implementation.
+ * Uses native setImmediate if available, otherwise falls back to postMessage or setTimeout.
+ *
+ * @param {boolean} setImmediateSupported - Whether setImmediate is supported.
+ * @param {boolean} postMessageSupported - Whether postMessage is supported.
+ * @returns {Function} A function to schedule a callback asynchronously.
+ */ const _setImmediate = ((setImmediateSupported, postMessageSupported)=>{
+    if (setImmediateSupported) return setImmediate;
+    return postMessageSupported ? ((token, callbacks)=>{
+        _global.addEventListener("message", ({ source, data })=>{
+            if (source === _global && data === token) callbacks.length && callbacks.shift()();
+        }, false);
+        return (cb)=>{
+            callbacks.push(cb);
+            _global.postMessage(token, "*");
+        };
+    })(`axios@${Math.random()}`, []) : (cb)=>setTimeout(cb);
+})(typeof setImmediate === "function", isFunction(_global.postMessage));
+/**
+ * Schedules a microtask or asynchronous callback as soon as possible.
+ * Uses queueMicrotask if available, otherwise falls back to process.nextTick or _setImmediate.
+ *
+ * @type {Function}
+ */ const asap = typeof queueMicrotask !== "undefined" ? queueMicrotask.bind(_global) : typeof process !== "undefined" && process.nextTick || _setImmediate;
+// *********************
+const isIterable = (thing)=>thing != null && isFunction(thing[iterator]);
+/**
+ * Determine if a value is iterable via an iterator that is NOT sourced solely
+ * from a polluted Object.prototype. Use this instead of `isIterable` whenever
+ * the iterable comes from untrusted input (e.g. user-supplied header sources),
+ * so `Object.prototype[Symbol.iterator] = ...` cannot turn an ordinary object
+ * into an attacker-controlled entries iterator.
+ *
+ * @param {*} thing The value to test
+ *
+ * @returns {boolean} True if value has a non-polluted iterator
+ */ const isSafeIterable = (thing)=>thing != null && hasOwnInPrototypeChain(thing, iterator) && isIterable(thing);
+exports.default = {
+    isArray,
+    isArrayBuffer,
+    isBuffer,
+    isFormData,
+    isArrayBufferView,
+    isString,
+    isNumber,
+    isBoolean,
+    isObject,
+    isPlainObject,
+    isEmptyObject,
+    isReadableStream,
+    isRequest,
+    isResponse,
+    isHeaders,
+    isUndefined,
+    isDate,
+    isFile,
+    isReactNativeBlob,
+    isReactNative,
+    isBlob,
+    isRegExp,
+    isFunction,
+    isStream,
+    isURLSearchParams,
+    isTypedArray,
+    isFileList,
+    forEach,
+    merge,
+    extend,
+    trim,
+    stripBOM,
+    inherits,
+    toFlatObject,
+    kindOf,
+    kindOfTest,
+    endsWith,
+    toArray,
+    forEachEntry,
+    matchAll,
+    isHTMLForm,
+    hasOwnProperty,
+    hasOwnProp: hasOwnProperty,
+    hasOwnInPrototypeChain,
+    getSafeProp,
+    reduceDescriptors,
+    freezeMethods,
+    toObjectSet,
+    toCamelCase,
+    noop,
+    toFiniteNumber,
+    findKey,
+    global: _global,
+    isContextDefined,
+    isSpecCompliantForm,
+    toJSONObject,
+    isAsyncFn,
+    isThenable,
+    setImmediate: _setImmediate,
+    asap,
+    isIterable,
+    isSafeIterable
+};
+
+},{"a8d2c3349c87a903":"d5jf4","./helpers/bind.js":"haRQb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"haRQb":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>bind);
+"use strict";
+function bind(fn, thisArg) {
+    return function wrap() {
+        return fn.apply(thisArg, arguments);
+    };
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cpqD8":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _buildURLJs = require("../helpers/buildURL.js");
+var _buildURLJsDefault = parcelHelpers.interopDefault(_buildURLJs);
+var _interceptorManagerJs = require("./InterceptorManager.js");
+var _interceptorManagerJsDefault = parcelHelpers.interopDefault(_interceptorManagerJs);
+var _dispatchRequestJs = require("./dispatchRequest.js");
+var _dispatchRequestJsDefault = parcelHelpers.interopDefault(_dispatchRequestJs);
+var _mergeConfigJs = require("./mergeConfig.js");
+var _mergeConfigJsDefault = parcelHelpers.interopDefault(_mergeConfigJs);
+var _buildFullPathJs = require("./buildFullPath.js");
+var _buildFullPathJsDefault = parcelHelpers.interopDefault(_buildFullPathJs);
+var _validatorJs = require("../helpers/validator.js");
+var _validatorJsDefault = parcelHelpers.interopDefault(_validatorJs);
+var _axiosHeadersJs = require("./AxiosHeaders.js");
+var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
+var _transitionalJs = require("../defaults/transitional.js");
+var _transitionalJsDefault = parcelHelpers.interopDefault(_transitionalJs);
+"use strict";
+const validators = (0, _validatorJsDefault.default).validators;
+/**
+ * Create a new instance of Axios
+ *
+ * @param {Object} instanceConfig The default config for the instance
+ *
+ * @return {Axios} A new instance of Axios
+ */ class Axios {
+    constructor(instanceConfig){
+        this.defaults = instanceConfig || {};
+        this.interceptors = {
+            request: new (0, _interceptorManagerJsDefault.default)(),
+            response: new (0, _interceptorManagerJsDefault.default)()
+        };
     }
     /**
-     * @param {{ remaining: Val; to_upload: Val }} info
-     * @memberof Path
-     */ Path.prototype.get_file_info = function(info) {
-        info.remaining = this.remaining;
-        info.to_upload = this.to_upload;
+   * Dispatch a request
+   *
+   * @param {String|Object} configOrUrl The config specific for this request (merged with this.defaults)
+   * @param {?Object} config
+   *
+   * @returns {Promise} The Promise to be fulfilled
+   */ async request(configOrUrl, config) {
+        try {
+            return await this._request(configOrUrl, config);
+        } catch (err) {
+            if (err instanceof Error) {
+                let dummy = {};
+                Error.captureStackTrace ? Error.captureStackTrace(dummy) : dummy = new Error();
+                // slice off the Error: ... line
+                const stack = (()=>{
+                    if (!dummy.stack) return "";
+                    const firstNewlineIndex = dummy.stack.indexOf("\n");
+                    return firstNewlineIndex === -1 ? "" : dummy.stack.slice(firstNewlineIndex + 1);
+                })();
+                try {
+                    if (!err.stack) err.stack = stack;
+                    else if (stack) {
+                        const firstNewlineIndex = stack.indexOf("\n");
+                        const secondNewlineIndex = firstNewlineIndex === -1 ? -1 : stack.indexOf("\n", firstNewlineIndex + 1);
+                        const stackWithoutTwoTopLines = secondNewlineIndex === -1 ? "" : stack.slice(secondNewlineIndex + 1);
+                        if (!String(err.stack).endsWith(stackWithoutTwoTopLines)) err.stack += "\n" + stack;
+                    }
+                } catch (e) {
+                // ignore the case where "stack" is an un-writable property
+                }
+            }
+            throw err;
+        }
+    }
+    _request(configOrUrl, config) {
+        /*eslint no-param-reassign:0*/ // Allow for axios('example/url'[, config]) a la fetch API
+        if (typeof configOrUrl === "string") {
+            config = config || {};
+            config.url = configOrUrl;
+        } else config = configOrUrl || {};
+        config = (0, _mergeConfigJsDefault.default)(this.defaults, config);
+        const { transitional, paramsSerializer, headers } = config;
+        if (transitional !== undefined) (0, _validatorJsDefault.default).assertOptions(transitional, {
+            silentJSONParsing: validators.transitional(validators.boolean),
+            forcedJSONParsing: validators.transitional(validators.boolean),
+            clarifyTimeoutError: validators.transitional(validators.boolean),
+            legacyInterceptorReqResOrdering: validators.transitional(validators.boolean),
+            advertiseZstdAcceptEncoding: validators.transitional(validators.boolean),
+            validateStatusUndefinedResolves: validators.transitional(validators.boolean)
+        }, false);
+        if (paramsSerializer != null) {
+            if ((0, _utilsJsDefault.default).isFunction(paramsSerializer)) config.paramsSerializer = {
+                serialize: paramsSerializer
+            };
+            else (0, _validatorJsDefault.default).assertOptions(paramsSerializer, {
+                encode: validators.function,
+                serialize: validators.function
+            }, true);
+        }
+        // Set config.allowAbsoluteUrls
+        if (config.allowAbsoluteUrls !== undefined) ;
+        else if (this.defaults.allowAbsoluteUrls !== undefined) config.allowAbsoluteUrls = this.defaults.allowAbsoluteUrls;
+        else config.allowAbsoluteUrls = true;
+        (0, _validatorJsDefault.default).assertOptions(config, {
+            baseUrl: validators.spelling("baseURL"),
+            withXsrfToken: validators.spelling("withXSRFToken")
+        }, true);
+        // Set config.method
+        config.method = (config.method || this.defaults.method || "get").toLowerCase();
+        // Flatten headers
+        let contextHeaders = headers && (0, _utilsJsDefault.default).merge(headers.common, headers[config.method]);
+        headers && (0, _utilsJsDefault.default).forEach([
+            "delete",
+            "get",
+            "head",
+            "post",
+            "put",
+            "patch",
+            "query",
+            "common"
+        ], (method)=>{
+            delete headers[method];
+        });
+        config.headers = (0, _axiosHeadersJsDefault.default).concat(contextHeaders, headers);
+        // filter out skipped interceptors
+        const requestInterceptorChain = [];
+        let synchronousRequestInterceptors = true;
+        this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
+            if (typeof interceptor.runWhen === "function" && interceptor.runWhen(config) === false) return;
+            synchronousRequestInterceptors = synchronousRequestInterceptors && interceptor.synchronous;
+            const transitional = config.transitional || (0, _transitionalJsDefault.default);
+            const legacyInterceptorReqResOrdering = transitional && transitional.legacyInterceptorReqResOrdering;
+            if (legacyInterceptorReqResOrdering) requestInterceptorChain.unshift(interceptor.fulfilled, interceptor.rejected);
+            else requestInterceptorChain.push(interceptor.fulfilled, interceptor.rejected);
+        });
+        const responseInterceptorChain = [];
+        this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
+            responseInterceptorChain.push(interceptor.fulfilled, interceptor.rejected);
+        });
+        let promise;
+        let i = 0;
+        let len;
+        if (!synchronousRequestInterceptors) {
+            const chain = [
+                (0, _dispatchRequestJsDefault.default).bind(this),
+                undefined
+            ];
+            chain.unshift(...requestInterceptorChain);
+            chain.push(...responseInterceptorChain);
+            len = chain.length;
+            promise = Promise.resolve(config);
+            while(i < len)promise = promise.then(chain[i++], chain[i++]);
+            return promise;
+        }
+        len = requestInterceptorChain.length;
+        let newConfig = config;
+        while(i < len){
+            const onFulfilled = requestInterceptorChain[i++];
+            const onRejected = requestInterceptorChain[i++];
+            try {
+                newConfig = onFulfilled(newConfig);
+            } catch (error) {
+                onRejected.call(this, error);
+                break;
+            }
+        }
+        try {
+            promise = (0, _dispatchRequestJsDefault.default).call(this, newConfig);
+        } catch (error) {
+            return Promise.reject(error);
+        }
+        i = 0;
+        len = responseInterceptorChain.length;
+        while(i < len)promise = promise.then(responseInterceptorChain[i++], responseInterceptorChain[i++]);
+        return promise;
+    }
+    getUri(config) {
+        config = (0, _mergeConfigJsDefault.default)(this.defaults, config);
+        const fullPath = (0, _buildFullPathJsDefault.default)(config.baseURL, config.url, config.allowAbsoluteUrls, config);
+        return (0, _buildURLJsDefault.default)(fullPath, config.params, config.paramsSerializer);
+    }
+}
+// Provide aliases for supported request methods
+(0, _utilsJsDefault.default).forEach([
+    "delete",
+    "get",
+    "head",
+    "options"
+], function forEachMethodNoData(method) {
+    /*eslint func-names:0*/ Axios.prototype[method] = function(url, config) {
+        return this.request((0, _mergeConfigJsDefault.default)(config || {}, {
+            method,
+            url,
+            data: config && (0, _utilsJsDefault.default).hasOwnProp(config, "data") ? config.data : undefined
+        }));
     };
-    /**
-     * @param {IFsData} out
-     * @memberof Path
-     */ Path.prototype._get_fs_data = function(out) {
-        _super.prototype._get_fs_data.call(this, out);
-        // permit to send the data after the server's answer
-        if (this.file != null && this._server_id & 3) FileSystem_1.FileSystem._files_to_upload[this._server_id] = this;
-    };
-    /**
-     * @static
-     * @type {string}
-     * @memberof Path
-     */ Path._constructorName = "Path";
-    return Path;
-}(Model_1.Model);
-exports.Path = Path;
+});
+(0, _utilsJsDefault.default).forEach([
+    "post",
+    "put",
+    "patch",
+    "query"
+], function forEachMethodWithData(method) {
+    function generateHTTPMethod(isForm) {
+        return function httpMethod(url, data, config) {
+            return this.request((0, _mergeConfigJsDefault.default)(config || {}, {
+                method,
+                headers: isForm ? {
+                    "Content-Type": "multipart/form-data"
+                } : {},
+                url,
+                data
+            }));
+        };
+    }
+    Axios.prototype[method] = generateHTTPMethod();
+    // QUERY is a safe/idempotent read method; multipart form bodies don't fit
+    // its semantics, so no queryForm shorthand is generated.
+    if (method !== "query") Axios.prototype[method + "Form"] = generateHTTPMethod(true);
+});
+exports.default = Axios;
 
-},{"9acb87e006e14e8a":"fCgem","da4ef2d0126e9be3":"8GVPJ","f066dd94f216682d":"Fv1fa"}],"fCgem":[function(require,module,exports) {
+},{"../utils.js":"5By4s","../helpers/buildURL.js":"3bwC2","./InterceptorManager.js":"1VRIM","./dispatchRequest.js":"6sjJ6","./mergeConfig.js":"b85oP","./buildFullPath.js":"1I5TW","../helpers/validator.js":"9vgkY","./AxiosHeaders.js":"cgSSx","../defaults/transitional.js":"lM32f","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3bwC2":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+/**
+ * It replaces URL-encoded forms of `:`, `$`, `,`, and spaces with
+ * their plain counterparts (`:`, `$`, `,`, `+`).
+ *
+ * @param {string} val The value to be encoded.
+ *
+ * @returns {string} The encoded value.
+ */ parcelHelpers.export(exports, "encode", ()=>encode);
+parcelHelpers.export(exports, "default", ()=>buildURL);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _axiosURLSearchParamsJs = require("./AxiosURLSearchParams.js");
+var _axiosURLSearchParamsJsDefault = parcelHelpers.interopDefault(_axiosURLSearchParamsJs);
+"use strict";
+function encode(val) {
+    return encodeURIComponent(val).replace(/%3A/gi, ":").replace(/%24/g, "$").replace(/%2C/gi, ",").replace(/%20/g, "+");
+}
+function buildURL(url, params, options) {
+    if (!params) return url;
+    url = url || "";
+    const _options = (0, _utilsJsDefault.default).isFunction(options) ? {
+        serialize: options
+    } : options;
+    // Read serializer options pollution-safely: own properties and methods on a
+    // class/template prototype are honored, but values injected onto a polluted
+    // Object.prototype are ignored.
+    const _encode = (0, _utilsJsDefault.default).getSafeProp(_options, "encode") || encode;
+    const serializeFn = (0, _utilsJsDefault.default).getSafeProp(_options, "serialize");
+    let serializedParams;
+    if (serializeFn) serializedParams = serializeFn(params, _options);
+    else serializedParams = (0, _utilsJsDefault.default).isURLSearchParams(params) ? params.toString() : new (0, _axiosURLSearchParamsJsDefault.default)(params, _options).toString(_encode);
+    if (serializedParams) {
+        const hashmarkIndex = url.indexOf("#");
+        if (hashmarkIndex !== -1) url = url.slice(0, hashmarkIndex);
+        url += (url.indexOf("?") === -1 ? "?" : "&") + serializedParams;
+    }
+    return url;
+}
+
+},{"../utils.js":"5By4s","./AxiosURLSearchParams.js":"hz84m","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hz84m":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _toFormDataJs = require("./toFormData.js");
+var _toFormDataJsDefault = parcelHelpers.interopDefault(_toFormDataJs);
+"use strict";
+/**
+ * It encodes a string by replacing all characters that are not in the unreserved set with
+ * their percent-encoded equivalents
+ *
+ * @param {string} str - The string to encode.
+ *
+ * @returns {string} The encoded string.
+ */ function encode(str) {
+    const charMap = {
+        "!": "%21",
+        "'": "%27",
+        "(": "%28",
+        ")": "%29",
+        "~": "%7E",
+        "%20": "+"
+    };
+    return encodeURIComponent(str).replace(/[!'()~]|%20/g, function replacer(match) {
+        return charMap[match];
+    });
+}
+/**
+ * It takes a params object and converts it to a FormData object
+ *
+ * @param {Object<string, any>} params - The parameters to be converted to a FormData object.
+ * @param {Object<string, any>} options - The options object passed to the Axios constructor.
+ *
+ * @returns {void}
+ */ function AxiosURLSearchParams(params, options) {
+    this._pairs = [];
+    params && (0, _toFormDataJsDefault.default)(params, this, options);
+}
+const prototype = AxiosURLSearchParams.prototype;
+prototype.append = function append(name, value) {
+    this._pairs.push([
+        name,
+        value
+    ]);
+};
+prototype.toString = function toString(encoder) {
+    const _encode = encoder ? (value)=>encoder.call(this, value, encode) : encode;
+    return this._pairs.map(function each(pair) {
+        return _encode(pair[0]) + "=" + _encode(pair[1]);
+    }, "").join("&");
+};
+exports.default = AxiosURLSearchParams;
+
+},{"./toFormData.js":"ajoez","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ajoez":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "DEFAULT_FORM_DATA_MAX_DEPTH", ()=>DEFAULT_FORM_DATA_MAX_DEPTH);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _axiosErrorJs = require("../core/AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+// temporary hotfix to avoid circular references until AxiosURLSearchParams is refactored
+var _formDataJs = require("../platform/node/classes/FormData.js");
+var _formDataJsDefault = parcelHelpers.interopDefault(_formDataJs);
+var Buffer = require("adfd9b103875c2dd").Buffer;
+"use strict";
+const DEFAULT_FORM_DATA_MAX_DEPTH = 100;
+/**
+ * Determines if the given thing is a array or js object.
+ *
+ * @param {string} thing - The object or array to be visited.
+ *
+ * @returns {boolean}
+ */ function isVisitable(thing) {
+    return (0, _utilsJsDefault.default).isPlainObject(thing) || (0, _utilsJsDefault.default).isArray(thing);
+}
+/**
+ * It removes the brackets from the end of a string
+ *
+ * @param {string} key - The key of the parameter.
+ *
+ * @returns {string} the key without the brackets.
+ */ function removeBrackets(key) {
+    return (0, _utilsJsDefault.default).endsWith(key, "[]") ? key.slice(0, -2) : key;
+}
+/**
+ * It takes a path, a key, and a boolean, and returns a string
+ *
+ * @param {string} path - The path to the current key.
+ * @param {string} key - The key of the current object being iterated over.
+ * @param {string} dots - If true, the key will be rendered with dots instead of brackets.
+ *
+ * @returns {string} The path to the current key.
+ */ function renderKey(path, key, dots) {
+    if (!path) return key;
+    return path.concat(key).map(function each(token, i) {
+        // eslint-disable-next-line no-param-reassign
+        token = removeBrackets(token);
+        return !dots && i ? "[" + token + "]" : token;
+    }).join(dots ? "." : "");
+}
+/**
+ * If the array is an array and none of its elements are visitable, then it's a flat array.
+ *
+ * @param {Array<any>} arr - The array to check
+ *
+ * @returns {boolean}
+ */ function isFlatArray(arr) {
+    return (0, _utilsJsDefault.default).isArray(arr) && !arr.some(isVisitable);
+}
+const predicates = (0, _utilsJsDefault.default).toFlatObject((0, _utilsJsDefault.default), {}, null, function filter(prop) {
+    return /^is[A-Z]/.test(prop);
+});
+/**
+ * Convert a data object to FormData
+ *
+ * @param {Object} obj
+ * @param {?Object} [formData]
+ * @param {?Object} [options]
+ * @param {Function} [options.visitor]
+ * @param {Boolean} [options.metaTokens = true]
+ * @param {Boolean} [options.dots = false]
+ * @param {?Boolean} [options.indexes = false]
+ *
+ * @returns {Object}
+ **/ /**
+ * It converts an object into a FormData object
+ *
+ * @param {Object<any, any>} obj - The object to convert to form data.
+ * @param {string} formData - The FormData object to append to.
+ * @param {Object<string, any>} options
+ *
+ * @returns
+ */ function toFormData(obj, formData, options) {
+    if (!(0, _utilsJsDefault.default).isObject(obj)) throw new TypeError("target must be an object");
+    // eslint-disable-next-line no-param-reassign
+    formData = formData || new ((0, _formDataJsDefault.default) || FormData)();
+    // eslint-disable-next-line no-param-reassign
+    options = (0, _utilsJsDefault.default).toFlatObject(options, {
+        metaTokens: true,
+        dots: false,
+        indexes: false
+    }, false, function defined(option, source) {
+        // eslint-disable-next-line no-eq-null,eqeqeq
+        return !(0, _utilsJsDefault.default).isUndefined(source[option]);
+    });
+    const metaTokens = options.metaTokens;
+    // eslint-disable-next-line no-use-before-define
+    const visitor = options.visitor || defaultVisitor;
+    const dots = options.dots;
+    const indexes = options.indexes;
+    const _Blob = options.Blob || typeof Blob !== "undefined" && Blob;
+    const maxDepth = options.maxDepth === undefined ? DEFAULT_FORM_DATA_MAX_DEPTH : options.maxDepth;
+    const useBlob = _Blob && (0, _utilsJsDefault.default).isSpecCompliantForm(formData);
+    const stack = [];
+    if (!(0, _utilsJsDefault.default).isFunction(visitor)) throw new TypeError("visitor must be a function");
+    function convertValue(value) {
+        if (value === null) return "";
+        if ((0, _utilsJsDefault.default).isDate(value)) return value.toISOString();
+        if ((0, _utilsJsDefault.default).isBoolean(value)) return value.toString();
+        if (!useBlob && (0, _utilsJsDefault.default).isBlob(value)) throw new (0, _axiosErrorJsDefault.default)("Blob is not supported. Use a Buffer instead.");
+        if ((0, _utilsJsDefault.default).isArrayBuffer(value) || (0, _utilsJsDefault.default).isTypedArray(value)) {
+            if (useBlob && typeof _Blob === "function") return new _Blob([
+                value
+            ]);
+            if (typeof Buffer !== "undefined") return Buffer.from(value);
+            throw new (0, _axiosErrorJsDefault.default)("Blob is not supported. Use a Buffer instead.", (0, _axiosErrorJsDefault.default).ERR_NOT_SUPPORT);
+        }
+        return value;
+    }
+    function throwIfMaxDepthExceeded(depth) {
+        if (depth > maxDepth) throw new (0, _axiosErrorJsDefault.default)("Object is too deeply nested (" + depth + " levels). Max depth: " + maxDepth, (0, _axiosErrorJsDefault.default).ERR_FORM_DATA_DEPTH_EXCEEDED);
+    }
+    function stringifyWithDepthLimit(value, depth) {
+        if (maxDepth === Infinity) return JSON.stringify(value);
+        const ancestors = [];
+        return JSON.stringify(value, function limitDepth(_key, currentValue) {
+            if (!(0, _utilsJsDefault.default).isObject(currentValue)) return currentValue;
+            while(ancestors.length && ancestors[ancestors.length - 1] !== this)ancestors.pop();
+            ancestors.push(currentValue);
+            throwIfMaxDepthExceeded(depth + ancestors.length - 1);
+            return currentValue;
+        });
+    }
+    /**
+   * Default visitor.
+   *
+   * @param {*} value
+   * @param {String|Number} key
+   * @param {Array<String|Number>} path
+   * @this {FormData}
+   *
+   * @returns {boolean} return true to visit the each prop of the value recursively
+   */ function defaultVisitor(value, key, path) {
+        let arr = value;
+        if ((0, _utilsJsDefault.default).isReactNative(formData) && (0, _utilsJsDefault.default).isReactNativeBlob(value)) {
+            formData.append(renderKey(path, key, dots), convertValue(value));
+            return false;
+        }
+        if (value && !path && typeof value === "object") {
+            if ((0, _utilsJsDefault.default).endsWith(key, "{}")) {
+                // eslint-disable-next-line no-param-reassign
+                key = metaTokens ? key : key.slice(0, -2);
+                // eslint-disable-next-line no-param-reassign
+                value = stringifyWithDepthLimit(value, 1);
+            } else if ((0, _utilsJsDefault.default).isArray(value) && isFlatArray(value) || ((0, _utilsJsDefault.default).isFileList(value) || (0, _utilsJsDefault.default).endsWith(key, "[]")) && (arr = (0, _utilsJsDefault.default).toArray(value))) {
+                // eslint-disable-next-line no-param-reassign
+                key = removeBrackets(key);
+                arr.forEach(function each(el, index) {
+                    !((0, _utilsJsDefault.default).isUndefined(el) || el === null) && formData.append(// eslint-disable-next-line no-nested-ternary
+                    indexes === true ? renderKey([
+                        key
+                    ], index, dots) : indexes === null ? key : key + "[]", convertValue(el));
+                });
+                return false;
+            }
+        }
+        if (isVisitable(value)) return true;
+        formData.append(renderKey(path, key, dots), convertValue(value));
+        return false;
+    }
+    const exposedHelpers = Object.assign(predicates, {
+        defaultVisitor,
+        convertValue,
+        isVisitable
+    });
+    function build(value, path, depth = 0) {
+        if ((0, _utilsJsDefault.default).isUndefined(value)) return;
+        throwIfMaxDepthExceeded(depth);
+        if (stack.indexOf(value) !== -1) throw new Error("Circular reference detected in " + path.join("."));
+        stack.push(value);
+        (0, _utilsJsDefault.default).forEach(value, function each(el, key) {
+            const result = !((0, _utilsJsDefault.default).isUndefined(el) || el === null) && visitor.call(formData, el, (0, _utilsJsDefault.default).isString(key) ? key.trim() : key, path, exposedHelpers);
+            if (result === true) build(el, path ? path.concat(key) : [
+                key
+            ], depth + 1);
+        });
+        stack.pop();
+    }
+    if (!(0, _utilsJsDefault.default).isObject(obj)) throw new TypeError("data must be an object");
+    build(obj);
+    return formData;
+}
+exports.default = toFormData;
+
+},{"adfd9b103875c2dd":"fCgem","../utils.js":"5By4s","../core/AxiosError.js":"3u8Tl","../platform/node/classes/FormData.js":"aFlee","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fCgem":[function(require,module,exports) {
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -57590,7 +50589,3193 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
     buffer[offset + i - d] |= s * 128;
 };
 
-},{}],"4dvRr":[function(require,module,exports) {
+},{}],"3u8Tl":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _axiosHeadersJs = require("./AxiosHeaders.js");
+var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
+"use strict";
+const REDACTED = "[REDACTED ****]";
+function hasOwnOrPrototypeToJSON(source) {
+    if ((0, _utilsJsDefault.default).hasOwnProp(source, "toJSON")) return true;
+    let prototype = Object.getPrototypeOf(source);
+    while(prototype && prototype !== Object.prototype){
+        if ((0, _utilsJsDefault.default).hasOwnProp(prototype, "toJSON")) return true;
+        prototype = Object.getPrototypeOf(prototype);
+    }
+    return false;
+}
+// Build a plain-object snapshot of `config` and replace the value of any key
+// (case-insensitive) listed in `redactKeys` with REDACTED. Walks through arrays
+// and AxiosHeaders, and short-circuits on circular references.
+function redactConfig(config, redactKeys) {
+    const lowerKeys = new Set(redactKeys.map((k)=>String(k).toLowerCase()));
+    const seen = [];
+    const visit = (source)=>{
+        if (source === null || typeof source !== "object") return source;
+        if ((0, _utilsJsDefault.default).isBuffer(source)) return source;
+        if (seen.indexOf(source) !== -1) return undefined;
+        if (source instanceof (0, _axiosHeadersJsDefault.default)) source = source.toJSON();
+        seen.push(source);
+        let result;
+        if ((0, _utilsJsDefault.default).isArray(source)) {
+            result = [];
+            source.forEach((v, i)=>{
+                const reducedValue = visit(v);
+                if (!(0, _utilsJsDefault.default).isUndefined(reducedValue)) result[i] = reducedValue;
+            });
+        } else {
+            if (!(0, _utilsJsDefault.default).isPlainObject(source) && hasOwnOrPrototypeToJSON(source)) {
+                seen.pop();
+                return source;
+            }
+            result = Object.create(null);
+            for (const [key, value] of Object.entries(source)){
+                const reducedValue = lowerKeys.has(key.toLowerCase()) ? REDACTED : visit(value);
+                if (!(0, _utilsJsDefault.default).isUndefined(reducedValue)) result[key] = reducedValue;
+            }
+        }
+        seen.pop();
+        return result;
+    };
+    return visit(config);
+}
+class AxiosError extends Error {
+    static from(error, code, config, request, response, customProps) {
+        const axiosError = new AxiosError(error.message, code || error.code, config, request, response);
+        // Match native `Error` `cause` semantics: non-enumerable. The wrapped
+        // error often carries circular internals (sockets, requests, agents), so
+        // an enumerable `cause` makes structured loggers (pino/winston) and any
+        // own-property walk throw "Converting circular structure to JSON".
+        // Regression from #6982; see #7205. `__proto__: null` mirrors the
+        // `message` descriptor below (prototype-pollution-safe descriptor).
+        Object.defineProperty(axiosError, "cause", {
+            __proto__: null,
+            value: error,
+            writable: true,
+            enumerable: false,
+            configurable: true
+        });
+        axiosError.name = error.name;
+        // Preserve status from the original error if not already set from response
+        if (error.status != null && axiosError.status == null) axiosError.status = error.status;
+        customProps && Object.assign(axiosError, customProps);
+        return axiosError;
+    }
+    /**
+   * Create an Error with the specified message, config, error code, request and response.
+   *
+   * @param {string} message The error message.
+   * @param {string} [code] The error code (for example, 'ECONNABORTED').
+   * @param {Object} [config] The config.
+   * @param {Object} [request] The request.
+   * @param {Object} [response] The response.
+   *
+   * @returns {Error} The created error.
+   */ constructor(message, code, config, request, response){
+        super(message);
+        // Make message enumerable to maintain backward compatibility
+        // The native Error constructor sets message as non-enumerable,
+        // but axios < v1.13.3 had it as enumerable
+        Object.defineProperty(this, "message", {
+            // Null-proto descriptor so a polluted Object.prototype.get cannot turn
+            // this data descriptor into an accessor descriptor on the way in.
+            __proto__: null,
+            value: message,
+            enumerable: true,
+            writable: true,
+            configurable: true
+        });
+        this.name = "AxiosError";
+        this.isAxiosError = true;
+        code && (this.code = code);
+        config && (this.config = config);
+        request && (this.request = request);
+        if (response) {
+            this.response = response;
+            this.status = response.status;
+        }
+    }
+    toJSON() {
+        // Opt-in redaction: when the request config carries a `redact` array, the
+        // value of any matching key (case-insensitive, at any depth) is replaced
+        // with REDACTED in the serialized snapshot. Undefined or empty leaves the
+        // existing serialization behavior unchanged.
+        const config = this.config;
+        const redactKeys = config && (0, _utilsJsDefault.default).hasOwnProp(config, "redact") ? config.redact : undefined;
+        const serializedConfig = (0, _utilsJsDefault.default).isArray(redactKeys) && redactKeys.length > 0 ? redactConfig(config, redactKeys) : (0, _utilsJsDefault.default).toJSONObject(config);
+        return {
+            // Standard
+            message: this.message,
+            name: this.name,
+            // Microsoft
+            description: this.description,
+            number: this.number,
+            // Mozilla
+            fileName: this.fileName,
+            lineNumber: this.lineNumber,
+            columnNumber: this.columnNumber,
+            stack: this.stack,
+            // Axios
+            config: serializedConfig,
+            code: this.code,
+            status: this.status
+        };
+    }
+}
+// This can be changed to static properties as soon as the parser options in .eslint.cjs are updated.
+AxiosError.ERR_BAD_OPTION_VALUE = "ERR_BAD_OPTION_VALUE";
+AxiosError.ERR_BAD_OPTION = "ERR_BAD_OPTION";
+AxiosError.ECONNABORTED = "ECONNABORTED";
+AxiosError.ETIMEDOUT = "ETIMEDOUT";
+AxiosError.ECONNREFUSED = "ECONNREFUSED";
+AxiosError.ERR_NETWORK = "ERR_NETWORK";
+AxiosError.ERR_FR_TOO_MANY_REDIRECTS = "ERR_FR_TOO_MANY_REDIRECTS";
+AxiosError.ERR_DEPRECATED = "ERR_DEPRECATED";
+AxiosError.ERR_BAD_RESPONSE = "ERR_BAD_RESPONSE";
+AxiosError.ERR_BAD_REQUEST = "ERR_BAD_REQUEST";
+AxiosError.ERR_CANCELED = "ERR_CANCELED";
+AxiosError.ERR_NOT_SUPPORT = "ERR_NOT_SUPPORT";
+AxiosError.ERR_INVALID_URL = "ERR_INVALID_URL";
+AxiosError.ERR_FORM_DATA_DEPTH_EXCEEDED = "ERR_FORM_DATA_DEPTH_EXCEEDED";
+exports.default = AxiosError;
+
+},{"../utils.js":"5By4s","./AxiosHeaders.js":"cgSSx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cgSSx":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _parseHeadersJs = require("../helpers/parseHeaders.js");
+var _parseHeadersJsDefault = parcelHelpers.interopDefault(_parseHeadersJs);
+var _sanitizeHeaderValueJs = require("../helpers/sanitizeHeaderValue.js");
+"use strict";
+const $internals = Symbol("internals");
+function normalizeHeader(header) {
+    return header && String(header).trim().toLowerCase();
+}
+function normalizeValue(value) {
+    if (value === false || value == null) return value;
+    return (0, _utilsJsDefault.default).isArray(value) ? value.map(normalizeValue) : (0, _sanitizeHeaderValueJs.sanitizeHeaderValue)(String(value));
+}
+function parseTokens(str) {
+    const tokens = Object.create(null);
+    const tokensRE = /([^\s,;=]+)\s*(?:=\s*([^,;]+))?/g;
+    let match;
+    while(match = tokensRE.exec(str))tokens[match[1]] = match[2];
+    return tokens;
+}
+const isValidHeaderName = (str)=>/^[-_a-zA-Z0-9^`|~,!#$%&'*+.]+$/.test(str.trim());
+function matchHeaderValue(context, value, header, filter, isHeaderNameFilter) {
+    if ((0, _utilsJsDefault.default).isFunction(filter)) return filter.call(this, value, header);
+    if (isHeaderNameFilter) value = header;
+    if (!(0, _utilsJsDefault.default).isString(value)) return;
+    if ((0, _utilsJsDefault.default).isString(filter)) return value.indexOf(filter) !== -1;
+    if ((0, _utilsJsDefault.default).isRegExp(filter)) return filter.test(value);
+}
+function formatHeader(header) {
+    return header.trim().toLowerCase().replace(/([a-z\d])(\w*)/g, (w, char, str)=>{
+        return char.toUpperCase() + str;
+    });
+}
+function buildAccessors(obj, header) {
+    const accessorName = (0, _utilsJsDefault.default).toCamelCase(" " + header);
+    [
+        "get",
+        "set",
+        "has"
+    ].forEach((methodName)=>{
+        Object.defineProperty(obj, methodName + accessorName, {
+            // Null-proto descriptor so a polluted Object.prototype.get cannot turn
+            // this data descriptor into an accessor descriptor on the way in.
+            __proto__: null,
+            value: function(arg1, arg2, arg3) {
+                return this[methodName].call(this, header, arg1, arg2, arg3);
+            },
+            configurable: true
+        });
+    });
+}
+class AxiosHeaders {
+    constructor(headers){
+        headers && this.set(headers);
+    }
+    set(header, valueOrRewrite, rewrite) {
+        const self = this;
+        function setHeader(_value, _header, _rewrite) {
+            const lHeader = normalizeHeader(_header);
+            if (!lHeader) return;
+            const key = (0, _utilsJsDefault.default).findKey(self, lHeader);
+            if (!key || self[key] === undefined || _rewrite === true || _rewrite === undefined && self[key] !== false) self[key || _header] = normalizeValue(_value);
+        }
+        const setHeaders = (headers, _rewrite)=>(0, _utilsJsDefault.default).forEach(headers, (_value, _header)=>setHeader(_value, _header, _rewrite));
+        if ((0, _utilsJsDefault.default).isPlainObject(header) || header instanceof this.constructor) setHeaders(header, valueOrRewrite);
+        else if ((0, _utilsJsDefault.default).isString(header) && (header = header.trim()) && !isValidHeaderName(header)) setHeaders((0, _parseHeadersJsDefault.default)(header), valueOrRewrite);
+        else if ((0, _utilsJsDefault.default).isObject(header) && (0, _utilsJsDefault.default).isSafeIterable(header)) {
+            let obj = Object.create(null), dest, key;
+            for (const entry of header){
+                if (!(0, _utilsJsDefault.default).isArray(entry)) throw new TypeError("Object iterator must return a key-value pair");
+                key = entry[0];
+                if ((0, _utilsJsDefault.default).hasOwnProp(obj, key)) {
+                    dest = obj[key];
+                    obj[key] = (0, _utilsJsDefault.default).isArray(dest) ? [
+                        ...dest,
+                        entry[1]
+                    ] : [
+                        dest,
+                        entry[1]
+                    ];
+                } else obj[key] = entry[1];
+            }
+            setHeaders(obj, valueOrRewrite);
+        } else header != null && setHeader(valueOrRewrite, header, rewrite);
+        return this;
+    }
+    get(header, parser) {
+        header = normalizeHeader(header);
+        if (header) {
+            const key = (0, _utilsJsDefault.default).findKey(this, header);
+            if (key) {
+                const value = this[key];
+                if (!parser) return value;
+                if (parser === true) return parseTokens(value);
+                if ((0, _utilsJsDefault.default).isFunction(parser)) return parser.call(this, value, key);
+                if ((0, _utilsJsDefault.default).isRegExp(parser)) return parser.exec(value);
+                throw new TypeError("parser must be boolean|regexp|function");
+            }
+        }
+    }
+    has(header, matcher) {
+        header = normalizeHeader(header);
+        if (header) {
+            const key = (0, _utilsJsDefault.default).findKey(this, header);
+            return !!(key && this[key] !== undefined && (!matcher || matchHeaderValue(this, this[key], key, matcher)));
+        }
+        return false;
+    }
+    delete(header, matcher) {
+        const self = this;
+        let deleted = false;
+        function deleteHeader(_header) {
+            _header = normalizeHeader(_header);
+            if (_header) {
+                const key = (0, _utilsJsDefault.default).findKey(self, _header);
+                if (key && (!matcher || matchHeaderValue(self, self[key], key, matcher))) {
+                    delete self[key];
+                    deleted = true;
+                }
+            }
+        }
+        if ((0, _utilsJsDefault.default).isArray(header)) header.forEach(deleteHeader);
+        else deleteHeader(header);
+        return deleted;
+    }
+    clear(matcher) {
+        const keys = Object.keys(this);
+        let i = keys.length;
+        let deleted = false;
+        while(i--){
+            const key = keys[i];
+            if (!matcher || matchHeaderValue(this, this[key], key, matcher, true)) {
+                delete this[key];
+                deleted = true;
+            }
+        }
+        return deleted;
+    }
+    normalize(format) {
+        const self = this;
+        const headers = {};
+        (0, _utilsJsDefault.default).forEach(this, (value, header)=>{
+            const key = (0, _utilsJsDefault.default).findKey(headers, header);
+            if (key) {
+                self[key] = normalizeValue(value);
+                delete self[header];
+                return;
+            }
+            const normalized = format ? formatHeader(header) : String(header).trim();
+            if (normalized !== header) delete self[header];
+            self[normalized] = normalizeValue(value);
+            headers[normalized] = true;
+        });
+        return this;
+    }
+    concat(...targets) {
+        return this.constructor.concat(this, ...targets);
+    }
+    toJSON(asStrings) {
+        const obj = Object.create(null);
+        (0, _utilsJsDefault.default).forEach(this, (value, header)=>{
+            value != null && value !== false && (obj[header] = asStrings && (0, _utilsJsDefault.default).isArray(value) ? value.join(", ") : value);
+        });
+        return obj;
+    }
+    [Symbol.iterator]() {
+        return Object.entries(this.toJSON())[Symbol.iterator]();
+    }
+    toString() {
+        return Object.entries(this.toJSON()).map(([header, value])=>header + ": " + value).join("\n");
+    }
+    getSetCookie() {
+        return this.get("set-cookie") || [];
+    }
+    get [Symbol.toStringTag]() {
+        return "AxiosHeaders";
+    }
+    static from(thing) {
+        return thing instanceof this ? thing : new this(thing);
+    }
+    static concat(first, ...targets) {
+        const computed = new this(first);
+        targets.forEach((target)=>computed.set(target));
+        return computed;
+    }
+    static accessor(header) {
+        const internals = this[$internals] = this[$internals] = {
+            accessors: {}
+        };
+        const accessors = internals.accessors;
+        const prototype = this.prototype;
+        function defineAccessor(_header) {
+            const lHeader = normalizeHeader(_header);
+            if (!accessors[lHeader]) {
+                buildAccessors(prototype, _header);
+                accessors[lHeader] = true;
+            }
+        }
+        (0, _utilsJsDefault.default).isArray(header) ? header.forEach(defineAccessor) : defineAccessor(header);
+        return this;
+    }
+}
+AxiosHeaders.accessor([
+    "Content-Type",
+    "Content-Length",
+    "Accept",
+    "Accept-Encoding",
+    "User-Agent",
+    "Authorization"
+]);
+// reserved names hotfix
+(0, _utilsJsDefault.default).reduceDescriptors(AxiosHeaders.prototype, ({ value }, key)=>{
+    let mapped = key[0].toUpperCase() + key.slice(1); // map `set` => `Set`
+    return {
+        get: ()=>value,
+        set (headerValue) {
+            this[mapped] = headerValue;
+        }
+    };
+});
+(0, _utilsJsDefault.default).freezeMethods(AxiosHeaders);
+exports.default = AxiosHeaders;
+
+},{"../utils.js":"5By4s","../helpers/parseHeaders.js":"kqDd5","../helpers/sanitizeHeaderValue.js":"fSESK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kqDd5":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+"use strict";
+// RawAxiosHeaders whose duplicates are ignored by node
+// c.f. https://nodejs.org/api/http.html#http_message_headers
+const ignoreDuplicateOf = (0, _utilsJsDefault.default).toObjectSet([
+    "age",
+    "authorization",
+    "content-length",
+    "content-type",
+    "etag",
+    "expires",
+    "from",
+    "host",
+    "if-modified-since",
+    "if-unmodified-since",
+    "last-modified",
+    "location",
+    "max-forwards",
+    "proxy-authorization",
+    "referer",
+    "retry-after",
+    "user-agent"
+]);
+/**
+ * Parse headers into an object
+ *
+ * ```
+ * Date: Wed, 27 Aug 2014 08:58:49 GMT
+ * Content-Type: application/json
+ * Connection: keep-alive
+ * Transfer-Encoding: chunked
+ * ```
+ *
+ * @param {String} rawHeaders Headers needing to be parsed
+ *
+ * @returns {Object} Headers parsed into an object
+ */ exports.default = (rawHeaders)=>{
+    const parsed = {};
+    let key;
+    let val;
+    let i;
+    rawHeaders && rawHeaders.split("\n").forEach(function parser(line) {
+        i = line.indexOf(":");
+        key = line.substring(0, i).trim().toLowerCase();
+        val = line.substring(i + 1).trim();
+        if (!key || parsed[key] && ignoreDuplicateOf[key]) return;
+        if (key === "set-cookie") {
+            if (parsed[key]) parsed[key].push(val);
+            else parsed[key] = [
+                val
+            ];
+        } else parsed[key] = parsed[key] ? parsed[key] + ", " + val : val;
+    });
+    return parsed;
+};
+
+},{"../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fSESK":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "sanitizeHeaderValue", ()=>sanitizeHeaderValue);
+parcelHelpers.export(exports, "sanitizeByteStringHeaderValue", ()=>sanitizeByteStringHeaderValue);
+parcelHelpers.export(exports, "toByteStringHeaderObject", ()=>toByteStringHeaderObject);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+"use strict";
+function trimSPorHTAB(str) {
+    let start = 0;
+    let end = str.length;
+    while(start < end){
+        const code = str.charCodeAt(start);
+        if (code !== 0x09 && code !== 0x20) break;
+        start += 1;
+    }
+    while(end > start){
+        const code = str.charCodeAt(end - 1);
+        if (code !== 0x09 && code !== 0x20) break;
+        end -= 1;
+    }
+    return start === 0 && end === str.length ? str : str.slice(start, end);
+}
+// The control-code ranges are intentional: header sanitization strips C0/DEL bytes.
+// eslint-disable-next-line no-control-regex
+const INVALID_UNICODE_HEADER_VALUE_CHARS = new RegExp("[\\u0000-\\u0008\\u000a-\\u001f\\u007f]+", "g");
+// eslint-disable-next-line no-control-regex
+const INVALID_BYTE_STRING_HEADER_VALUE_CHARS = new RegExp("[^\\u0009\\u0020-\\u007e\\u0080-\\u00ff]+", "g");
+function sanitizeValue(value, invalidChars) {
+    if ((0, _utilsJsDefault.default).isArray(value)) return value.map((item)=>sanitizeValue(item, invalidChars));
+    return trimSPorHTAB(String(value).replace(invalidChars, ""));
+}
+const sanitizeHeaderValue = (value)=>sanitizeValue(value, INVALID_UNICODE_HEADER_VALUE_CHARS);
+const sanitizeByteStringHeaderValue = (value)=>sanitizeValue(value, INVALID_BYTE_STRING_HEADER_VALUE_CHARS);
+function toByteStringHeaderObject(headers) {
+    const byteStringHeaders = Object.create(null);
+    (0, _utilsJsDefault.default).forEach(headers.toJSON(), (value, header)=>{
+        byteStringHeaders[header] = sanitizeByteStringHeaderValue(value);
+    });
+    return byteStringHeaders;
+}
+
+},{"../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aFlee":[function(require,module,exports) {
+// eslint-disable-next-line strict
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+exports.default = null;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1VRIM":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+"use strict";
+class InterceptorManager {
+    constructor(){
+        this.handlers = [];
+    }
+    /**
+   * Add a new interceptor to the stack
+   *
+   * @param {Function} fulfilled The function to handle `then` for a `Promise`
+   * @param {Function} rejected The function to handle `reject` for a `Promise`
+   * @param {Object} options The options for the interceptor, synchronous and runWhen
+   *
+   * @return {Number} An ID used to remove interceptor later
+   */ use(fulfilled, rejected, options) {
+        this.handlers.push({
+            fulfilled,
+            rejected,
+            synchronous: options ? options.synchronous : false,
+            runWhen: options ? options.runWhen : null
+        });
+        return this.handlers.length - 1;
+    }
+    /**
+   * Remove an interceptor from the stack
+   *
+   * @param {Number} id The ID that was returned by `use`
+   *
+   * @returns {void}
+   */ eject(id) {
+        if (this.handlers[id]) this.handlers[id] = null;
+    }
+    /**
+   * Clear all interceptors from the stack
+   *
+   * @returns {void}
+   */ clear() {
+        if (this.handlers) this.handlers = [];
+    }
+    /**
+   * Iterate over all the registered interceptors
+   *
+   * This method is particularly useful for skipping over any
+   * interceptors that may have become `null` calling `eject`.
+   *
+   * @param {Function} fn The function to call for each interceptor
+   *
+   * @returns {void}
+   */ forEach(fn) {
+        (0, _utilsJsDefault.default).forEach(this.handlers, function forEachHandler(h) {
+            if (h !== null) fn(h);
+        });
+    }
+}
+exports.default = InterceptorManager;
+
+},{"../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6sjJ6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>dispatchRequest);
+var _transformDataJs = require("./transformData.js");
+var _transformDataJsDefault = parcelHelpers.interopDefault(_transformDataJs);
+var _isCancelJs = require("../cancel/isCancel.js");
+var _isCancelJsDefault = parcelHelpers.interopDefault(_isCancelJs);
+var _indexJs = require("../defaults/index.js");
+var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
+var _canceledErrorJs = require("../cancel/CanceledError.js");
+var _canceledErrorJsDefault = parcelHelpers.interopDefault(_canceledErrorJs);
+var _axiosHeadersJs = require("../core/AxiosHeaders.js");
+var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
+var _adaptersJs = require("../adapters/adapters.js");
+var _adaptersJsDefault = parcelHelpers.interopDefault(_adaptersJs);
+"use strict";
+/**
+ * Throws a `CanceledError` if cancellation has been requested.
+ *
+ * @param {Object} config The config that is to be used for the request
+ *
+ * @returns {void}
+ */ function throwIfCancellationRequested(config) {
+    if (config.cancelToken) config.cancelToken.throwIfRequested();
+    if (config.signal && config.signal.aborted) throw new (0, _canceledErrorJsDefault.default)(null, config);
+}
+function dispatchRequest(config) {
+    throwIfCancellationRequested(config);
+    config.headers = (0, _axiosHeadersJsDefault.default).from(config.headers);
+    // Transform request data
+    config.data = (0, _transformDataJsDefault.default).call(config, config.transformRequest);
+    if ([
+        "post",
+        "put",
+        "patch"
+    ].indexOf(config.method) !== -1) config.headers.setContentType("application/x-www-form-urlencoded", false);
+    const adapter = (0, _adaptersJsDefault.default).getAdapter(config.adapter || (0, _indexJsDefault.default).adapter, config);
+    return adapter(config).then(function onAdapterResolution(response) {
+        throwIfCancellationRequested(config);
+        // Expose the current response on config so that transformResponse can
+        // attach it to any AxiosError it throws (e.g. on JSON parse failure).
+        // We clean it up afterwards to avoid polluting the config object.
+        config.response = response;
+        try {
+            response.data = (0, _transformDataJsDefault.default).call(config, config.transformResponse, response);
+        } finally{
+            delete config.response;
+        }
+        response.headers = (0, _axiosHeadersJsDefault.default).from(response.headers);
+        return response;
+    }, function onAdapterRejection(reason) {
+        if (!(0, _isCancelJsDefault.default)(reason)) {
+            throwIfCancellationRequested(config);
+            // Transform response data
+            if (reason && reason.response) {
+                config.response = reason.response;
+                try {
+                    reason.response.data = (0, _transformDataJsDefault.default).call(config, config.transformResponse, reason.response);
+                } finally{
+                    delete config.response;
+                }
+                reason.response.headers = (0, _axiosHeadersJsDefault.default).from(reason.response.headers);
+            }
+        }
+        return Promise.reject(reason);
+    });
+}
+
+},{"./transformData.js":"eRqJY","../cancel/isCancel.js":"a0VmF","../defaults/index.js":"hXfHM","../cancel/CanceledError.js":"9PwCG","../core/AxiosHeaders.js":"cgSSx","../adapters/adapters.js":"d7JxI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eRqJY":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>transformData);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _indexJs = require("../defaults/index.js");
+var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
+var _axiosHeadersJs = require("../core/AxiosHeaders.js");
+var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
+"use strict";
+function transformData(fns, response) {
+    const config = this || (0, _indexJsDefault.default);
+    const context = response || config;
+    const headers = (0, _axiosHeadersJsDefault.default).from(context.headers);
+    let data = context.data;
+    (0, _utilsJsDefault.default).forEach(fns, function transform(fn) {
+        data = fn.call(config, data, headers.normalize(), response ? response.status : undefined);
+    });
+    headers.normalize();
+    return data;
+}
+
+},{"../utils.js":"5By4s","../defaults/index.js":"hXfHM","../core/AxiosHeaders.js":"cgSSx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hXfHM":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _axiosErrorJs = require("../core/AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+var _transitionalJs = require("./transitional.js");
+var _transitionalJsDefault = parcelHelpers.interopDefault(_transitionalJs);
+var _toFormDataJs = require("../helpers/toFormData.js");
+var _toFormDataJsDefault = parcelHelpers.interopDefault(_toFormDataJs);
+var _toURLEncodedFormJs = require("../helpers/toURLEncodedForm.js");
+var _toURLEncodedFormJsDefault = parcelHelpers.interopDefault(_toURLEncodedFormJs);
+var _indexJs = require("../platform/index.js");
+var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
+var _formDataToJSONJs = require("../helpers/formDataToJSON.js");
+var _formDataToJSONJsDefault = parcelHelpers.interopDefault(_formDataToJSONJs);
+"use strict";
+const own = (obj, key)=>obj != null && (0, _utilsJsDefault.default).hasOwnProp(obj, key) ? obj[key] : undefined;
+/**
+ * It takes a string, tries to parse it, and if it fails, it returns the stringified version
+ * of the input
+ *
+ * @param {any} rawValue - The value to be stringified.
+ * @param {Function} parser - A function that parses a string into a JavaScript object.
+ * @param {Function} encoder - A function that takes a value and returns a string.
+ *
+ * @returns {string} A stringified version of the rawValue.
+ */ function stringifySafely(rawValue, parser, encoder) {
+    if ((0, _utilsJsDefault.default).isString(rawValue)) try {
+        (parser || JSON.parse)(rawValue);
+        return (0, _utilsJsDefault.default).trim(rawValue);
+    } catch (e) {
+        if (e.name !== "SyntaxError") throw e;
+    }
+    return (encoder || JSON.stringify)(rawValue);
+}
+const defaults = {
+    transitional: (0, _transitionalJsDefault.default),
+    adapter: [
+        "xhr",
+        "http",
+        "fetch"
+    ],
+    transformRequest: [
+        function transformRequest(data, headers) {
+            const contentType = headers.getContentType() || "";
+            const hasJSONContentType = contentType.indexOf("application/json") > -1;
+            const isObjectPayload = (0, _utilsJsDefault.default).isObject(data);
+            if (isObjectPayload && (0, _utilsJsDefault.default).isHTMLForm(data)) data = new FormData(data);
+            const isFormData = (0, _utilsJsDefault.default).isFormData(data);
+            if (isFormData) return hasJSONContentType ? JSON.stringify((0, _formDataToJSONJsDefault.default)(data)) : data;
+            if ((0, _utilsJsDefault.default).isArrayBuffer(data) || (0, _utilsJsDefault.default).isBuffer(data) || (0, _utilsJsDefault.default).isStream(data) || (0, _utilsJsDefault.default).isFile(data) || (0, _utilsJsDefault.default).isBlob(data) || (0, _utilsJsDefault.default).isReadableStream(data)) return data;
+            if ((0, _utilsJsDefault.default).isArrayBufferView(data)) return data.buffer;
+            if ((0, _utilsJsDefault.default).isURLSearchParams(data)) {
+                headers.setContentType("application/x-www-form-urlencoded;charset=utf-8", false);
+                return data.toString();
+            }
+            let isFileList;
+            if (isObjectPayload) {
+                const formSerializer = own(this, "formSerializer");
+                if (contentType.indexOf("application/x-www-form-urlencoded") > -1) return (0, _toURLEncodedFormJsDefault.default)(data, formSerializer).toString();
+                if ((isFileList = (0, _utilsJsDefault.default).isFileList(data)) || contentType.indexOf("multipart/form-data") > -1) {
+                    const env = own(this, "env");
+                    const _FormData = env && env.FormData;
+                    return (0, _toFormDataJsDefault.default)(isFileList ? {
+                        "files[]": data
+                    } : data, _FormData && new _FormData(), formSerializer);
+                }
+            }
+            if (isObjectPayload || hasJSONContentType) {
+                headers.setContentType("application/json", false);
+                return stringifySafely(data);
+            }
+            return data;
+        }
+    ],
+    transformResponse: [
+        function transformResponse(data) {
+            const transitional = own(this, "transitional") || defaults.transitional;
+            const forcedJSONParsing = transitional && transitional.forcedJSONParsing;
+            const responseType = own(this, "responseType");
+            const JSONRequested = responseType === "json";
+            if ((0, _utilsJsDefault.default).isResponse(data) || (0, _utilsJsDefault.default).isReadableStream(data)) return data;
+            if (data && (0, _utilsJsDefault.default).isString(data) && (forcedJSONParsing && !responseType || JSONRequested)) {
+                const silentJSONParsing = transitional && transitional.silentJSONParsing;
+                const strictJSONParsing = !silentJSONParsing && JSONRequested;
+                try {
+                    return JSON.parse(data, own(this, "parseReviver"));
+                } catch (e) {
+                    if (strictJSONParsing) {
+                        if (e.name === "SyntaxError") throw (0, _axiosErrorJsDefault.default).from(e, (0, _axiosErrorJsDefault.default).ERR_BAD_RESPONSE, this, null, own(this, "response"));
+                        throw e;
+                    }
+                }
+            }
+            return data;
+        }
+    ],
+    /**
+   * A timeout in milliseconds to abort a request. If set to 0 (default) a
+   * timeout is not created.
+   */ timeout: 0,
+    xsrfCookieName: "XSRF-TOKEN",
+    xsrfHeaderName: "X-XSRF-TOKEN",
+    maxContentLength: -1,
+    maxBodyLength: -1,
+    env: {
+        FormData: (0, _indexJsDefault.default).classes.FormData,
+        Blob: (0, _indexJsDefault.default).classes.Blob
+    },
+    validateStatus: function validateStatus(status) {
+        return status >= 200 && status < 300;
+    },
+    headers: {
+        common: {
+            Accept: "application/json, text/plain, */*",
+            "Content-Type": undefined
+        }
+    }
+};
+(0, _utilsJsDefault.default).forEach([
+    "delete",
+    "get",
+    "head",
+    "post",
+    "put",
+    "patch",
+    "query"
+], (method)=>{
+    defaults.headers[method] = {};
+});
+exports.default = defaults;
+
+},{"../utils.js":"5By4s","../core/AxiosError.js":"3u8Tl","./transitional.js":"lM32f","../helpers/toFormData.js":"ajoez","../helpers/toURLEncodedForm.js":"9hjry","../platform/index.js":"7tDev","../helpers/formDataToJSON.js":"01RfH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lM32f":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+"use strict";
+exports.default = {
+    silentJSONParsing: true,
+    forcedJSONParsing: true,
+    clarifyTimeoutError: false,
+    legacyInterceptorReqResOrdering: true,
+    advertiseZstdAcceptEncoding: false,
+    validateStatusUndefinedResolves: true
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9hjry":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>toURLEncodedForm);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _toFormDataJs = require("./toFormData.js");
+var _toFormDataJsDefault = parcelHelpers.interopDefault(_toFormDataJs);
+var _indexJs = require("../platform/index.js");
+var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
+"use strict";
+function toURLEncodedForm(data, options) {
+    return (0, _toFormDataJsDefault.default)(data, new (0, _indexJsDefault.default).classes.URLSearchParams(), {
+        visitor: function(value, key, path, helpers) {
+            if ((0, _indexJsDefault.default).isNode && (0, _utilsJsDefault.default).isBuffer(value)) {
+                this.append(key, value.toString("base64"));
+                return false;
+            }
+            return helpers.defaultVisitor.apply(this, arguments);
+        },
+        ...options
+    });
+}
+
+},{"../utils.js":"5By4s","./toFormData.js":"ajoez","../platform/index.js":"7tDev","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7tDev":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _indexJs = require("./node/index.js");
+var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
+var _utilsJs = require("./common/utils.js");
+exports.default = {
+    ..._utilsJs,
+    ...(0, _indexJsDefault.default)
+};
+
+},{"./node/index.js":"cVeqE","./common/utils.js":"iIwkL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cVeqE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _urlsearchParamsJs = require("./classes/URLSearchParams.js");
+var _urlsearchParamsJsDefault = parcelHelpers.interopDefault(_urlsearchParamsJs);
+var _formDataJs = require("./classes/FormData.js");
+var _formDataJsDefault = parcelHelpers.interopDefault(_formDataJs);
+var _blobJs = require("./classes/Blob.js");
+var _blobJsDefault = parcelHelpers.interopDefault(_blobJs);
+exports.default = {
+    isBrowser: true,
+    classes: {
+        URLSearchParams: (0, _urlsearchParamsJsDefault.default),
+        FormData: (0, _formDataJsDefault.default),
+        Blob: (0, _blobJsDefault.default)
+    },
+    protocols: [
+        "http",
+        "https",
+        "file",
+        "blob",
+        "url",
+        "data"
+    ]
+};
+
+},{"./classes/URLSearchParams.js":"5cIHE","./classes/FormData.js":"7i1jd","./classes/Blob.js":"8chF6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5cIHE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _axiosURLSearchParamsJs = require("../../../helpers/AxiosURLSearchParams.js");
+var _axiosURLSearchParamsJsDefault = parcelHelpers.interopDefault(_axiosURLSearchParamsJs);
+"use strict";
+exports.default = typeof URLSearchParams !== "undefined" ? URLSearchParams : (0, _axiosURLSearchParamsJsDefault.default);
+
+},{"../../../helpers/AxiosURLSearchParams.js":"hz84m","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7i1jd":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+"use strict";
+exports.default = typeof FormData !== "undefined" ? FormData : null;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8chF6":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+"use strict";
+exports.default = typeof Blob !== "undefined" ? Blob : null;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iIwkL":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "hasBrowserEnv", ()=>hasBrowserEnv);
+parcelHelpers.export(exports, "hasStandardBrowserWebWorkerEnv", ()=>hasStandardBrowserWebWorkerEnv);
+parcelHelpers.export(exports, "hasStandardBrowserEnv", ()=>hasStandardBrowserEnv);
+parcelHelpers.export(exports, "navigator", ()=>_navigator);
+parcelHelpers.export(exports, "origin", ()=>origin);
+const hasBrowserEnv = typeof window !== "undefined" && typeof document !== "undefined";
+const _navigator = typeof navigator === "object" && navigator || undefined;
+/**
+ * Determine if we're running in a standard browser environment
+ *
+ * This allows axios to run in a web worker, and react-native.
+ * Both environments support XMLHttpRequest, but not fully standard globals.
+ *
+ * web workers:
+ *  typeof window -> undefined
+ *  typeof document -> undefined
+ *
+ * react-native:
+ *  navigator.product -> 'ReactNative'
+ * nativescript
+ *  navigator.product -> 'NativeScript' or 'NS'
+ *
+ * @returns {boolean}
+ */ const hasStandardBrowserEnv = hasBrowserEnv && (!_navigator || [
+    "ReactNative",
+    "NativeScript",
+    "NS"
+].indexOf(_navigator.product) < 0);
+/**
+ * Determine if we're running in a standard browser webWorker environment
+ *
+ * Although the `isStandardBrowserEnv` method indicates that
+ * `allows axios to run in a web worker`, the WebWorker will still be
+ * filtered out due to its judgment standard
+ * `typeof window !== 'undefined' && typeof document !== 'undefined'`.
+ * This leads to a problem when axios post `FormData` in webWorker
+ */ const hasStandardBrowserWebWorkerEnv = (()=>{
+    return typeof WorkerGlobalScope !== "undefined" && // eslint-disable-next-line no-undef
+    self instanceof WorkerGlobalScope && typeof self.importScripts === "function";
+})();
+const origin = hasBrowserEnv && window.location.href || "http://localhost";
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"01RfH":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _axiosErrorJs = require("../core/AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+var _toFormDataJs = require("./toFormData.js");
+"use strict";
+const MAX_DEPTH = (0, _toFormDataJs.DEFAULT_FORM_DATA_MAX_DEPTH);
+function throwIfDepthExceeded(index) {
+    if (index > MAX_DEPTH) throw new (0, _axiosErrorJsDefault.default)("FormData field is too deeply nested (" + index + " levels). Max depth: " + MAX_DEPTH, (0, _axiosErrorJsDefault.default).ERR_FORM_DATA_DEPTH_EXCEEDED);
+}
+/**
+ * It takes a string like `foo[x][y][z]` and returns an array like `['foo', 'x', 'y', 'z']
+ *
+ * @param {string} name - The name of the property to get.
+ *
+ * @returns An array of strings.
+ */ function parsePropPath(name) {
+    // foo[x][y][z]
+    // foo.x.y.z
+    // foo-x-y-z
+    // foo x y z
+    const path = [];
+    const pattern = /\w+|\[(\w*)]/g;
+    let match;
+    while((match = pattern.exec(name)) !== null){
+        throwIfDepthExceeded(path.length);
+        path.push(match[0] === "[]" ? "" : match[1] || match[0]);
+    }
+    return path;
+}
+/**
+ * Convert an array to an object.
+ *
+ * @param {Array<any>} arr - The array to convert to an object.
+ *
+ * @returns An object with the same keys and values as the array.
+ */ function arrayToObject(arr) {
+    const obj = {};
+    const keys = Object.keys(arr);
+    let i;
+    const len = keys.length;
+    let key;
+    for(i = 0; i < len; i++){
+        key = keys[i];
+        obj[key] = arr[key];
+    }
+    return obj;
+}
+/**
+ * It takes a FormData object and returns a JavaScript object
+ *
+ * @param {string} formData The FormData object to convert to JSON.
+ *
+ * @returns {Object<string, any> | null} The converted object.
+ */ function formDataToJSON(formData) {
+    function buildPath(path, value, target, index) {
+        throwIfDepthExceeded(index);
+        let name = path[index++];
+        if (name === "__proto__") return true;
+        const isNumericKey = Number.isFinite(+name);
+        const isLast = index >= path.length;
+        name = !name && (0, _utilsJsDefault.default).isArray(target) ? target.length : name;
+        if (isLast) {
+            if ((0, _utilsJsDefault.default).hasOwnProp(target, name)) target[name] = (0, _utilsJsDefault.default).isArray(target[name]) ? target[name].concat(value) : [
+                target[name],
+                value
+            ];
+            else target[name] = value;
+            return !isNumericKey;
+        }
+        if (!(0, _utilsJsDefault.default).hasOwnProp(target, name) || !(0, _utilsJsDefault.default).isObject(target[name])) target[name] = [];
+        const result = buildPath(path, value, target[name], index);
+        if (result && (0, _utilsJsDefault.default).isArray(target[name])) target[name] = arrayToObject(target[name]);
+        return !isNumericKey;
+    }
+    if ((0, _utilsJsDefault.default).isFormData(formData) && (0, _utilsJsDefault.default).isFunction(formData.entries)) {
+        const obj = {};
+        (0, _utilsJsDefault.default).forEachEntry(formData, (name, value)=>{
+            buildPath(parsePropPath(name), value, obj, 0);
+        });
+        return obj;
+    }
+    return null;
+}
+exports.default = formDataToJSON;
+
+},{"../utils.js":"5By4s","../core/AxiosError.js":"3u8Tl","./toFormData.js":"ajoez","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"a0VmF":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>isCancel);
+"use strict";
+function isCancel(value) {
+    return !!(value && value.__CANCEL__);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9PwCG":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _axiosErrorJs = require("../core/AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+"use strict";
+class CanceledError extends (0, _axiosErrorJsDefault.default) {
+    /**
+   * A `CanceledError` is an object that is thrown when an operation is canceled.
+   *
+   * @param {string=} message The message.
+   * @param {Object=} config The config.
+   * @param {Object=} request The request.
+   *
+   * @returns {CanceledError} The created error.
+   */ constructor(message, config, request){
+        super(message == null ? "canceled" : message, (0, _axiosErrorJsDefault.default).ERR_CANCELED, config, request);
+        this.name = "CanceledError";
+        this.__CANCEL__ = true;
+    }
+}
+exports.default = CanceledError;
+
+},{"../core/AxiosError.js":"3u8Tl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d7JxI":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _httpJs = require("./http.js");
+var _httpJsDefault = parcelHelpers.interopDefault(_httpJs);
+var _xhrJs = require("./xhr.js");
+var _xhrJsDefault = parcelHelpers.interopDefault(_xhrJs);
+var _fetchJs = require("./fetch.js");
+var _axiosErrorJs = require("../core/AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+/**
+ * Known adapters mapping.
+ * Provides environment-specific adapters for Axios:
+ * - `http` for Node.js
+ * - `xhr` for browsers
+ * - `fetch` for fetch API-based requests
+ *
+ * @type {Object<string, Function|Object>}
+ */ const knownAdapters = {
+    http: (0, _httpJsDefault.default),
+    xhr: (0, _xhrJsDefault.default),
+    fetch: {
+        get: _fetchJs.getFetch
+    }
+};
+// Assign adapter names for easier debugging and identification
+(0, _utilsJsDefault.default).forEach(knownAdapters, (fn, value)=>{
+    if (fn) {
+        try {
+            // Null-proto descriptors so a polluted Object.prototype.get cannot turn
+            // these data descriptors into accessor descriptors on the way in.
+            Object.defineProperty(fn, "name", {
+                __proto__: null,
+                value
+            });
+        } catch (e) {
+        // eslint-disable-next-line no-empty
+        }
+        Object.defineProperty(fn, "adapterName", {
+            __proto__: null,
+            value
+        });
+    }
+});
+/**
+ * Render a rejection reason string for unknown or unsupported adapters
+ *
+ * @param {string} reason
+ * @returns {string}
+ */ const renderReason = (reason)=>`- ${reason}`;
+/**
+ * Check if the adapter is resolved (function, null, or false)
+ *
+ * @param {Function|null|false} adapter
+ * @returns {boolean}
+ */ const isResolvedHandle = (adapter)=>(0, _utilsJsDefault.default).isFunction(adapter) || adapter === null || adapter === false;
+/**
+ * Get the first suitable adapter from the provided list.
+ * Tries each adapter in order until a supported one is found.
+ * Throws an AxiosError if no adapter is suitable.
+ *
+ * @param {Array<string|Function>|string|Function} adapters - Adapter(s) by name or function.
+ * @param {Object} config - Axios request configuration
+ * @throws {AxiosError} If no suitable adapter is available
+ * @returns {Function} The resolved adapter function
+ */ function getAdapter(adapters, config) {
+    adapters = (0, _utilsJsDefault.default).isArray(adapters) ? adapters : [
+        adapters
+    ];
+    const { length } = adapters;
+    let nameOrAdapter;
+    let adapter;
+    const rejectedReasons = {};
+    for(let i = 0; i < length; i++){
+        nameOrAdapter = adapters[i];
+        let id;
+        adapter = nameOrAdapter;
+        if (!isResolvedHandle(nameOrAdapter)) {
+            adapter = knownAdapters[(id = String(nameOrAdapter)).toLowerCase()];
+            if (adapter === undefined) throw new (0, _axiosErrorJsDefault.default)(`Unknown adapter '${id}'`);
+        }
+        if (adapter && ((0, _utilsJsDefault.default).isFunction(adapter) || (adapter = adapter.get(config)))) break;
+        rejectedReasons[id || "#" + i] = adapter;
+    }
+    if (!adapter) {
+        const reasons = Object.entries(rejectedReasons).map(([id, state])=>`adapter ${id} ` + (state === false ? "is not supported by the environment" : "is not available in the build"));
+        let s = length ? reasons.length > 1 ? "since :\n" + reasons.map(renderReason).join("\n") : " " + renderReason(reasons[0]) : "as no adapter specified";
+        throw new (0, _axiosErrorJsDefault.default)(`There is no suitable adapter to dispatch the request ` + s, (0, _axiosErrorJsDefault.default).ERR_NOT_SUPPORT);
+    }
+    return adapter;
+}
+/**
+ * Exports Axios adapters and utility to resolve an adapter
+ */ exports.default = {
+    /**
+   * Resolve an adapter from a list of adapter names or functions.
+   * @type {Function}
+   */ getAdapter,
+    /**
+   * Exposes all known adapters
+   * @type {Object<string, Function|Object>}
+   */ adapters: knownAdapters
+};
+
+},{"../utils.js":"5By4s","./http.js":"aFlee","./xhr.js":"ldm57","./fetch.js":"lVBFV","../core/AxiosError.js":"3u8Tl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ldm57":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _settleJs = require("../core/settle.js");
+var _settleJsDefault = parcelHelpers.interopDefault(_settleJs);
+var _transitionalJs = require("../defaults/transitional.js");
+var _transitionalJsDefault = parcelHelpers.interopDefault(_transitionalJs);
+var _axiosErrorJs = require("../core/AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+var _canceledErrorJs = require("../cancel/CanceledError.js");
+var _canceledErrorJsDefault = parcelHelpers.interopDefault(_canceledErrorJs);
+var _parseProtocolJs = require("../helpers/parseProtocol.js");
+var _parseProtocolJsDefault = parcelHelpers.interopDefault(_parseProtocolJs);
+var _indexJs = require("../platform/index.js");
+var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
+var _axiosHeadersJs = require("../core/AxiosHeaders.js");
+var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
+var _progressEventReducerJs = require("../helpers/progressEventReducer.js");
+var _resolveConfigJs = require("../helpers/resolveConfig.js");
+var _resolveConfigJsDefault = parcelHelpers.interopDefault(_resolveConfigJs);
+var _sanitizeHeaderValueJs = require("../helpers/sanitizeHeaderValue.js");
+const isXHRAdapterSupported = typeof XMLHttpRequest !== "undefined";
+exports.default = isXHRAdapterSupported && function(config) {
+    return new Promise(function dispatchXhrRequest(resolve, reject) {
+        const _config = (0, _resolveConfigJsDefault.default)(config);
+        let requestData = _config.data;
+        const requestHeaders = (0, _axiosHeadersJsDefault.default).from(_config.headers).normalize();
+        let { responseType, onUploadProgress, onDownloadProgress } = _config;
+        let onCanceled;
+        let uploadThrottled, downloadThrottled;
+        let flushUpload, flushDownload;
+        function done() {
+            flushUpload && flushUpload(); // flush events
+            flushDownload && flushDownload(); // flush events
+            _config.cancelToken && _config.cancelToken.unsubscribe(onCanceled);
+            _config.signal && _config.signal.removeEventListener("abort", onCanceled);
+        }
+        let request = new XMLHttpRequest();
+        request.open(_config.method.toUpperCase(), _config.url, true);
+        // Set the request timeout in MS
+        request.timeout = _config.timeout;
+        function onloadend() {
+            if (!request) return;
+            // Prepare the response
+            const responseHeaders = (0, _axiosHeadersJsDefault.default).from("getAllResponseHeaders" in request && request.getAllResponseHeaders());
+            const responseData = !responseType || responseType === "text" || responseType === "json" ? request.responseText : request.response;
+            const response = {
+                data: responseData,
+                status: request.status,
+                statusText: request.statusText,
+                headers: responseHeaders,
+                config,
+                request
+            };
+            (0, _settleJsDefault.default)(function _resolve(value) {
+                resolve(value);
+                done();
+            }, function _reject(err) {
+                reject(err);
+                done();
+            }, response);
+            // Clean up request
+            request = null;
+        }
+        if ("onloadend" in request) // Use onloadend if available
+        request.onloadend = onloadend;
+        else // Listen for ready state to emulate onloadend
+        request.onreadystatechange = function handleLoad() {
+            if (!request || request.readyState !== 4) return;
+            // The request errored out and we didn't get a response, this will be
+            // handled by onerror instead
+            // With one exception: request that using file: protocol, most browsers
+            // will return status as 0 even though it's a successful request
+            if (request.status === 0 && !(request.responseURL && request.responseURL.startsWith("file:"))) return;
+            // readystate handler is calling before onerror or ontimeout handlers,
+            // so we should call onloadend on the next 'tick'
+            setTimeout(onloadend);
+        };
+        // Handle browser request cancellation (as opposed to a manual cancellation)
+        request.onabort = function handleAbort() {
+            if (!request) return;
+            reject(new (0, _axiosErrorJsDefault.default)("Request aborted", (0, _axiosErrorJsDefault.default).ECONNABORTED, config, request));
+            done();
+            // Clean up request
+            request = null;
+        };
+        // Handle low level network errors
+        request.onerror = function handleError(event) {
+            // Browsers deliver a ProgressEvent in XHR onerror
+            // (message may be empty; when present, surface it)
+            // See https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/error_event
+            const msg = event && event.message ? event.message : "Network Error";
+            const err = new (0, _axiosErrorJsDefault.default)(msg, (0, _axiosErrorJsDefault.default).ERR_NETWORK, config, request);
+            // attach the underlying event for consumers who want details
+            err.event = event || null;
+            reject(err);
+            done();
+            request = null;
+        };
+        // Handle timeout
+        request.ontimeout = function handleTimeout() {
+            let timeoutErrorMessage = _config.timeout ? "timeout of " + _config.timeout + "ms exceeded" : "timeout exceeded";
+            const transitional = _config.transitional || (0, _transitionalJsDefault.default);
+            if (_config.timeoutErrorMessage) timeoutErrorMessage = _config.timeoutErrorMessage;
+            reject(new (0, _axiosErrorJsDefault.default)(timeoutErrorMessage, transitional.clarifyTimeoutError ? (0, _axiosErrorJsDefault.default).ETIMEDOUT : (0, _axiosErrorJsDefault.default).ECONNABORTED, config, request));
+            done();
+            // Clean up request
+            request = null;
+        };
+        // Remove Content-Type if data is undefined
+        requestData === undefined && requestHeaders.setContentType(null);
+        // Add headers to the request
+        if ("setRequestHeader" in request) (0, _utilsJsDefault.default).forEach((0, _sanitizeHeaderValueJs.toByteStringHeaderObject)(requestHeaders), function setRequestHeader(val, key) {
+            request.setRequestHeader(key, val);
+        });
+        // Add withCredentials to request if needed
+        if (!(0, _utilsJsDefault.default).isUndefined(_config.withCredentials)) request.withCredentials = !!_config.withCredentials;
+        // Add responseType to request if needed
+        if (responseType && responseType !== "json") request.responseType = _config.responseType;
+        // Handle progress if needed
+        if (onDownloadProgress) {
+            [downloadThrottled, flushDownload] = (0, _progressEventReducerJs.progressEventReducer)(onDownloadProgress, true);
+            request.addEventListener("progress", downloadThrottled);
+        }
+        // Not all browsers support upload events
+        if (onUploadProgress && request.upload) {
+            [uploadThrottled, flushUpload] = (0, _progressEventReducerJs.progressEventReducer)(onUploadProgress);
+            request.upload.addEventListener("progress", uploadThrottled);
+            request.upload.addEventListener("loadend", flushUpload);
+        }
+        if (_config.cancelToken || _config.signal) {
+            // Handle cancellation
+            // eslint-disable-next-line func-names
+            onCanceled = (cancel)=>{
+                if (!request) return;
+                reject(!cancel || cancel.type ? new (0, _canceledErrorJsDefault.default)(null, config, request) : cancel);
+                request.abort();
+                done();
+                request = null;
+            };
+            _config.cancelToken && _config.cancelToken.subscribe(onCanceled);
+            if (_config.signal) _config.signal.aborted ? onCanceled() : _config.signal.addEventListener("abort", onCanceled);
+        }
+        const protocol = (0, _parseProtocolJsDefault.default)(_config.url);
+        if (protocol && !(0, _indexJsDefault.default).protocols.includes(protocol)) {
+            reject(new (0, _axiosErrorJsDefault.default)("Unsupported protocol " + protocol + ":", (0, _axiosErrorJsDefault.default).ERR_BAD_REQUEST, config));
+            done();
+            return;
+        }
+        // Send the request
+        request.send(requestData || null);
+    });
+};
+
+},{"../utils.js":"5By4s","../core/settle.js":"dD9aC","../defaults/transitional.js":"lM32f","../core/AxiosError.js":"3u8Tl","../cancel/CanceledError.js":"9PwCG","../helpers/parseProtocol.js":"7NfWU","../platform/index.js":"7tDev","../core/AxiosHeaders.js":"cgSSx","../helpers/progressEventReducer.js":"bN9Fp","../helpers/resolveConfig.js":"l0e6d","../helpers/sanitizeHeaderValue.js":"fSESK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dD9aC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>settle);
+var _axiosErrorJs = require("./AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+"use strict";
+function settle(resolve, reject, response) {
+    const validateStatus = response.config.validateStatus;
+    if (!response.status || !validateStatus || validateStatus(response.status)) resolve(response);
+    else reject(new (0, _axiosErrorJsDefault.default)("Request failed with status code " + response.status, response.status >= 400 && response.status < 500 ? (0, _axiosErrorJsDefault.default).ERR_BAD_REQUEST : (0, _axiosErrorJsDefault.default).ERR_BAD_RESPONSE, response.config, response.request, response));
+}
+
+},{"./AxiosError.js":"3u8Tl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7NfWU":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>parseProtocol);
+"use strict";
+function parseProtocol(url) {
+    const match = /^([-+\w]{1,25}):(?:\/\/)?/.exec(url);
+    return match && match[1] || "";
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bN9Fp":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "progressEventReducer", ()=>progressEventReducer);
+parcelHelpers.export(exports, "progressEventDecorator", ()=>progressEventDecorator);
+parcelHelpers.export(exports, "asyncDecorator", ()=>asyncDecorator);
+var _speedometerJs = require("./speedometer.js");
+var _speedometerJsDefault = parcelHelpers.interopDefault(_speedometerJs);
+var _throttleJs = require("./throttle.js");
+var _throttleJsDefault = parcelHelpers.interopDefault(_throttleJs);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+const progressEventReducer = (listener, isDownloadStream, freq = 3)=>{
+    let bytesNotified = 0;
+    const _speedometer = (0, _speedometerJsDefault.default)(50, 250);
+    return (0, _throttleJsDefault.default)((e)=>{
+        if (!e || typeof e.loaded !== "number") return;
+        const rawLoaded = e.loaded;
+        const total = e.lengthComputable ? e.total : undefined;
+        const loaded = total != null ? Math.min(rawLoaded, total) : rawLoaded;
+        const progressBytes = Math.max(0, loaded - bytesNotified);
+        const rate = _speedometer(progressBytes);
+        bytesNotified = Math.max(bytesNotified, loaded);
+        const data = {
+            loaded,
+            total,
+            progress: total ? loaded / total : undefined,
+            bytes: progressBytes,
+            rate: rate ? rate : undefined,
+            estimated: rate && total ? (total - loaded) / rate : undefined,
+            event: e,
+            lengthComputable: total != null,
+            [isDownloadStream ? "download" : "upload"]: true
+        };
+        listener(data);
+    }, freq);
+};
+const progressEventDecorator = (total, throttled)=>{
+    const lengthComputable = total != null;
+    return [
+        (loaded)=>throttled[0]({
+                lengthComputable,
+                total,
+                loaded
+            }),
+        throttled[1]
+    ];
+};
+const asyncDecorator = (fn)=>(...args)=>(0, _utilsJsDefault.default).asap(()=>fn(...args));
+
+},{"./speedometer.js":"gQeo1","./throttle.js":"6fmRS","../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gQeo1":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+"use strict";
+/**
+ * Calculate data maxRate
+ * @param {Number} [samplesCount= 10]
+ * @param {Number} [min= 1000]
+ * @returns {Function}
+ */ function speedometer(samplesCount, min) {
+    samplesCount = samplesCount || 10;
+    const bytes = new Array(samplesCount);
+    const timestamps = new Array(samplesCount);
+    let head = 0;
+    let tail = 0;
+    let firstSampleTS;
+    min = min !== undefined ? min : 1000;
+    return function push(chunkLength) {
+        const now = Date.now();
+        const startedAt = timestamps[tail];
+        if (!firstSampleTS) firstSampleTS = now;
+        bytes[head] = chunkLength;
+        timestamps[head] = now;
+        let i = tail;
+        let bytesCount = 0;
+        while(i !== head){
+            bytesCount += bytes[i++];
+            i = i % samplesCount;
+        }
+        head = (head + 1) % samplesCount;
+        if (head === tail) tail = (tail + 1) % samplesCount;
+        if (now - firstSampleTS < min) return;
+        const passed = startedAt && now - startedAt;
+        return passed ? Math.round(bytesCount * 1000 / passed) : undefined;
+    };
+}
+exports.default = speedometer;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6fmRS":[function(require,module,exports) {
+/**
+ * Throttle decorator
+ * @param {Function} fn
+ * @param {Number} freq
+ * @return {Function}
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+function throttle(fn, freq) {
+    let timestamp = 0;
+    let threshold = 1000 / freq;
+    let lastArgs;
+    let timer;
+    const invoke = (args, now = Date.now())=>{
+        timestamp = now;
+        lastArgs = null;
+        if (timer) {
+            clearTimeout(timer);
+            timer = null;
+        }
+        fn(...args);
+    };
+    const throttled = (...args)=>{
+        const now = Date.now();
+        const passed = now - timestamp;
+        if (passed >= threshold) invoke(args, now);
+        else {
+            lastArgs = args;
+            if (!timer) timer = setTimeout(()=>{
+                timer = null;
+                invoke(lastArgs);
+            }, threshold - passed);
+        }
+    };
+    const flush = ()=>lastArgs && invoke(lastArgs);
+    return [
+        throttled,
+        flush
+    ];
+}
+exports.default = throttle;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l0e6d":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _indexJs = require("../platform/index.js");
+var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _axiosErrorJs = require("../core/AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+var _isURLSameOriginJs = require("./isURLSameOrigin.js");
+var _isURLSameOriginJsDefault = parcelHelpers.interopDefault(_isURLSameOriginJs);
+var _cookiesJs = require("./cookies.js");
+var _cookiesJsDefault = parcelHelpers.interopDefault(_cookiesJs);
+var _buildFullPathJs = require("../core/buildFullPath.js");
+var _buildFullPathJsDefault = parcelHelpers.interopDefault(_buildFullPathJs);
+var _mergeConfigJs = require("../core/mergeConfig.js");
+var _mergeConfigJsDefault = parcelHelpers.interopDefault(_mergeConfigJs);
+var _axiosHeadersJs = require("../core/AxiosHeaders.js");
+var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
+var _buildURLJs = require("./buildURL.js");
+var _buildURLJsDefault = parcelHelpers.interopDefault(_buildURLJs);
+const FORM_DATA_CONTENT_HEADERS = [
+    "content-type",
+    "content-length"
+];
+function setFormDataHeaders(headers, formHeaders, policy) {
+    if (policy !== "content-only") {
+        headers.set(formHeaders);
+        return;
+    }
+    Object.entries(formHeaders || {}).forEach(([key, val])=>{
+        if (FORM_DATA_CONTENT_HEADERS.includes(key.toLowerCase())) headers.set(key, val);
+    });
+}
+/**
+ * Encode a UTF-8 string to a Latin-1 byte string for use with btoa().
+ * This is a modern replacement for the deprecated unescape(encodeURIComponent(str)) pattern.
+ *
+ * @param {string} str The string to encode
+ *
+ * @returns {string} UTF-8 bytes as a Latin-1 string
+ */ const encodeUTF8 = (str)=>encodeURIComponent(str).replace(/%([0-9A-F]{2})/gi, (_, hex)=>String.fromCharCode(parseInt(hex, 16)));
+function resolveConfig(config) {
+    const newConfig = (0, _mergeConfigJsDefault.default)({}, config);
+    // Read only own properties to prevent prototype pollution gadgets
+    // (e.g. Object.prototype.baseURL = 'https://evil.com').
+    const own = (key)=>(0, _utilsJsDefault.default).hasOwnProp(newConfig, key) ? newConfig[key] : undefined;
+    const data = own("data");
+    let withXSRFToken = own("withXSRFToken");
+    const xsrfHeaderName = own("xsrfHeaderName");
+    const xsrfCookieName = own("xsrfCookieName");
+    let headers = own("headers");
+    const auth = own("auth");
+    const baseURL = own("baseURL");
+    const allowAbsoluteUrls = own("allowAbsoluteUrls");
+    const url = own("url");
+    newConfig.headers = headers = (0, _axiosHeadersJsDefault.default).from(headers);
+    newConfig.url = (0, _buildURLJsDefault.default)((0, _buildFullPathJsDefault.default)(baseURL, url, allowAbsoluteUrls, newConfig), own("params"), own("paramsSerializer"));
+    // HTTP basic authentication
+    if (auth) {
+        const username = (0, _utilsJsDefault.default).getSafeProp(auth, "username") || "";
+        const password = (0, _utilsJsDefault.default).getSafeProp(auth, "password") || "";
+        try {
+            headers.set("Authorization", "Basic " + btoa(username + ":" + (password ? encodeUTF8(password) : "")));
+        } catch (e) {
+            throw (0, _axiosErrorJsDefault.default).from(e, (0, _axiosErrorJsDefault.default).ERR_BAD_OPTION_VALUE, config);
+        }
+    }
+    if ((0, _utilsJsDefault.default).isFormData(data)) {
+        if ((0, _indexJsDefault.default).hasStandardBrowserEnv || (0, _indexJsDefault.default).hasStandardBrowserWebWorkerEnv || (0, _utilsJsDefault.default).isReactNative(data)) headers.setContentType(undefined); // browser/web worker/RN handles it
+        else if ((0, _utilsJsDefault.default).isFunction(data.getHeaders)) // Node.js FormData (like form-data package)
+        setFormDataHeaders(headers, data.getHeaders(), own("formDataHeaderPolicy"));
+    }
+    // Add xsrf header
+    // This is only done if running in a standard browser environment.
+    // Specifically not if we're in a web worker, or react-native.
+    if ((0, _indexJsDefault.default).hasStandardBrowserEnv) {
+        if ((0, _utilsJsDefault.default).isFunction(withXSRFToken)) withXSRFToken = withXSRFToken(newConfig);
+        // Strict boolean check — prevents proto-pollution gadgets (e.g. Object.prototype.withXSRFToken = 1)
+        // and misconfigurations (e.g. "false") from short-circuiting the same-origin check and leaking
+        // the XSRF token cross-origin.
+        const shouldSendXSRF = withXSRFToken === true || withXSRFToken == null && (0, _isURLSameOriginJsDefault.default)(newConfig.url);
+        if (shouldSendXSRF) {
+            const xsrfValue = xsrfHeaderName && xsrfCookieName && (0, _cookiesJsDefault.default).read(xsrfCookieName);
+            if (xsrfValue) headers.set(xsrfHeaderName, xsrfValue);
+        }
+    }
+    return newConfig;
+}
+exports.default = resolveConfig;
+
+},{"../platform/index.js":"7tDev","../utils.js":"5By4s","../core/AxiosError.js":"3u8Tl","./isURLSameOrigin.js":"lxXtv","./cookies.js":"4WJjt","../core/buildFullPath.js":"1I5TW","../core/mergeConfig.js":"b85oP","../core/AxiosHeaders.js":"cgSSx","./buildURL.js":"3bwC2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lxXtv":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _indexJs = require("../platform/index.js");
+var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
+exports.default = (0, _indexJsDefault.default).hasStandardBrowserEnv ? ((origin, isMSIE)=>(url)=>{
+        url = new URL(url, (0, _indexJsDefault.default).origin);
+        return origin.protocol === url.protocol && origin.host === url.host && (isMSIE || origin.port === url.port);
+    })(new URL((0, _indexJsDefault.default).origin), (0, _indexJsDefault.default).navigator && /(msie|trident)/i.test((0, _indexJsDefault.default).navigator.userAgent)) : ()=>true;
+
+},{"../platform/index.js":"7tDev","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4WJjt":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _indexJs = require("../platform/index.js");
+var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
+exports.default = (0, _indexJsDefault.default).hasStandardBrowserEnv ? {
+    write (name, value, expires, path, domain, secure, sameSite) {
+        if (typeof document === "undefined") return;
+        const cookie = [
+            `${name}=${encodeURIComponent(value)}`
+        ];
+        if ((0, _utilsJsDefault.default).isNumber(expires)) cookie.push(`expires=${new Date(expires).toUTCString()}`);
+        if ((0, _utilsJsDefault.default).isString(path)) cookie.push(`path=${path}`);
+        if ((0, _utilsJsDefault.default).isString(domain)) cookie.push(`domain=${domain}`);
+        if (secure === true) cookie.push("secure");
+        if ((0, _utilsJsDefault.default).isString(sameSite)) cookie.push(`SameSite=${sameSite}`);
+        document.cookie = cookie.join("; ");
+    },
+    read (name) {
+        if (typeof document === "undefined") return null;
+        // Match name=value by splitting on the semicolon separator instead of building a
+        // RegExp from `name` — interpolating an unescaped string into a RegExp would let
+        // metacharacters (e.g. `.+?` in an attacker-influenced cookie name) cause ReDoS or
+        // match the wrong cookie. Browsers may serialize cookie pairs as either ";" or
+        // "; ", so ignore optional whitespace before each cookie name.
+        const cookies = document.cookie.split(";");
+        for(let i = 0; i < cookies.length; i++){
+            const cookie = cookies[i].replace(/^\s+/, "");
+            const eq = cookie.indexOf("=");
+            if (eq !== -1 && cookie.slice(0, eq) === name) try {
+                return decodeURIComponent(cookie.slice(eq + 1));
+            } catch (e) {
+                return cookie.slice(eq + 1);
+            }
+        }
+        return null;
+    },
+    remove (name) {
+        this.write(name, "", Date.now() - 86400000, "/");
+    }
+} : {
+    write () {},
+    read () {
+        return null;
+    },
+    remove () {}
+};
+
+},{"../utils.js":"5By4s","../platform/index.js":"7tDev","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1I5TW":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>buildFullPath);
+var _axiosErrorJs = require("./AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+var _isAbsoluteURLJs = require("../helpers/isAbsoluteURL.js");
+var _isAbsoluteURLJsDefault = parcelHelpers.interopDefault(_isAbsoluteURLJs);
+var _combineURLsJs = require("../helpers/combineURLs.js");
+var _combineURLsJsDefault = parcelHelpers.interopDefault(_combineURLsJs);
+"use strict";
+const malformedHttpProtocol = /^https?:(?!\/\/)/i;
+const httpProtocolControlCharacters = /[\t\n\r]/g;
+function stripLeadingC0ControlOrSpace(url) {
+    let i = 0;
+    while(i < url.length && url.charCodeAt(i) <= 0x20)i++;
+    return url.slice(i);
+}
+function normalizeURLForProtocolCheck(url) {
+    return stripLeadingC0ControlOrSpace(url).replace(httpProtocolControlCharacters, "");
+}
+function assertValidHttpProtocolURL(url, config) {
+    if (typeof url === "string" && malformedHttpProtocol.test(normalizeURLForProtocolCheck(url))) throw new (0, _axiosErrorJsDefault.default)('Invalid URL: missing "//" after protocol', (0, _axiosErrorJsDefault.default).ERR_INVALID_URL, config);
+}
+function buildFullPath(baseURL, requestedURL, allowAbsoluteUrls, config) {
+    assertValidHttpProtocolURL(requestedURL, config);
+    let isRelativeUrl = !(0, _isAbsoluteURLJsDefault.default)(requestedURL);
+    if (baseURL && (isRelativeUrl || allowAbsoluteUrls === false)) {
+        assertValidHttpProtocolURL(baseURL, config);
+        return (0, _combineURLsJsDefault.default)(baseURL, requestedURL);
+    }
+    return requestedURL;
+}
+
+},{"./AxiosError.js":"3u8Tl","../helpers/isAbsoluteURL.js":"jD6NM","../helpers/combineURLs.js":"brOWK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jD6NM":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>isAbsoluteURL);
+"use strict";
+function isAbsoluteURL(url) {
+    // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
+    // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
+    // by any combination of letters, digits, plus, period, or hyphen.
+    if (typeof url !== "string") return false;
+    return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url);
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"brOWK":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>combineURLs);
+"use strict";
+function combineURLs(baseURL, relativeURL) {
+    return relativeURL ? baseURL.replace(/\/?\/$/, "") + "/" + relativeURL.replace(/^\/+/, "") : baseURL;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"b85oP":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>mergeConfig);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _axiosHeadersJs = require("./AxiosHeaders.js");
+var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
+"use strict";
+const headersToObject = (thing)=>thing instanceof (0, _axiosHeadersJsDefault.default) ? {
+        ...thing
+    } : thing;
+function mergeConfig(config1, config2) {
+    // eslint-disable-next-line no-param-reassign
+    config1 = config1 || {};
+    config2 = config2 || {};
+    // Use a null-prototype object so that downstream reads such as `config.auth`
+    // or `config.baseURL` cannot inherit polluted values from Object.prototype.
+    // `hasOwnProperty` is restored as a non-enumerable own slot to preserve
+    // ergonomics for user code that relies on it.
+    const config = Object.create(null);
+    Object.defineProperty(config, "hasOwnProperty", {
+        // Null-proto descriptor so a polluted Object.prototype.get cannot turn
+        // this data descriptor into an accessor descriptor on the way in.
+        __proto__: null,
+        value: Object.prototype.hasOwnProperty,
+        enumerable: false,
+        writable: true,
+        configurable: true
+    });
+    function getMergedValue(target, source, prop, caseless) {
+        if ((0, _utilsJsDefault.default).isPlainObject(target) && (0, _utilsJsDefault.default).isPlainObject(source)) return (0, _utilsJsDefault.default).merge.call({
+            caseless
+        }, target, source);
+        else if ((0, _utilsJsDefault.default).isPlainObject(source)) return (0, _utilsJsDefault.default).merge({}, source);
+        else if ((0, _utilsJsDefault.default).isArray(source)) return source.slice();
+        return source;
+    }
+    function mergeDeepProperties(a, b, prop, caseless) {
+        if (!(0, _utilsJsDefault.default).isUndefined(b)) return getMergedValue(a, b, prop, caseless);
+        else if (!(0, _utilsJsDefault.default).isUndefined(a)) return getMergedValue(undefined, a, prop, caseless);
+    }
+    // eslint-disable-next-line consistent-return
+    function valueFromConfig2(a, b) {
+        if (!(0, _utilsJsDefault.default).isUndefined(b)) return getMergedValue(undefined, b);
+    }
+    // eslint-disable-next-line consistent-return
+    function defaultToConfig2(a, b) {
+        if (!(0, _utilsJsDefault.default).isUndefined(b)) return getMergedValue(undefined, b);
+        else if (!(0, _utilsJsDefault.default).isUndefined(a)) return getMergedValue(undefined, a);
+    }
+    function getMergedTransitionalOption(prop) {
+        const transitional2 = (0, _utilsJsDefault.default).hasOwnProp(config2, "transitional") ? config2.transitional : undefined;
+        if (!(0, _utilsJsDefault.default).isUndefined(transitional2)) {
+            if ((0, _utilsJsDefault.default).isPlainObject(transitional2)) {
+                if ((0, _utilsJsDefault.default).hasOwnProp(transitional2, prop)) return transitional2[prop];
+            } else return undefined;
+        }
+        const transitional1 = (0, _utilsJsDefault.default).hasOwnProp(config1, "transitional") ? config1.transitional : undefined;
+        if ((0, _utilsJsDefault.default).isPlainObject(transitional1) && (0, _utilsJsDefault.default).hasOwnProp(transitional1, prop)) return transitional1[prop];
+        return undefined;
+    }
+    // eslint-disable-next-line consistent-return
+    function mergeDirectKeys(a, b, prop) {
+        if ((0, _utilsJsDefault.default).hasOwnProp(config2, prop)) return getMergedValue(a, b);
+        else if ((0, _utilsJsDefault.default).hasOwnProp(config1, prop)) return getMergedValue(undefined, a);
+    }
+    const mergeMap = {
+        url: valueFromConfig2,
+        method: valueFromConfig2,
+        data: valueFromConfig2,
+        baseURL: defaultToConfig2,
+        transformRequest: defaultToConfig2,
+        transformResponse: defaultToConfig2,
+        paramsSerializer: defaultToConfig2,
+        timeout: defaultToConfig2,
+        timeoutMessage: defaultToConfig2,
+        withCredentials: defaultToConfig2,
+        withXSRFToken: defaultToConfig2,
+        adapter: defaultToConfig2,
+        responseType: defaultToConfig2,
+        xsrfCookieName: defaultToConfig2,
+        xsrfHeaderName: defaultToConfig2,
+        onUploadProgress: defaultToConfig2,
+        onDownloadProgress: defaultToConfig2,
+        decompress: defaultToConfig2,
+        maxContentLength: defaultToConfig2,
+        maxBodyLength: defaultToConfig2,
+        beforeRedirect: defaultToConfig2,
+        transport: defaultToConfig2,
+        httpAgent: defaultToConfig2,
+        httpsAgent: defaultToConfig2,
+        cancelToken: defaultToConfig2,
+        socketPath: defaultToConfig2,
+        allowedSocketPaths: defaultToConfig2,
+        responseEncoding: defaultToConfig2,
+        validateStatus: mergeDirectKeys,
+        headers: (a, b, prop)=>mergeDeepProperties(headersToObject(a), headersToObject(b), prop, true)
+    };
+    (0, _utilsJsDefault.default).forEach(Object.keys({
+        ...config1,
+        ...config2
+    }), function computeConfigValue(prop) {
+        if (prop === "__proto__" || prop === "constructor" || prop === "prototype") return;
+        const merge = (0, _utilsJsDefault.default).hasOwnProp(mergeMap, prop) ? mergeMap[prop] : mergeDeepProperties;
+        const a = (0, _utilsJsDefault.default).hasOwnProp(config1, prop) ? config1[prop] : undefined;
+        const b = (0, _utilsJsDefault.default).hasOwnProp(config2, prop) ? config2[prop] : undefined;
+        const configValue = merge(a, b, prop);
+        (0, _utilsJsDefault.default).isUndefined(configValue) && merge !== mergeDirectKeys || (config[prop] = configValue);
+    });
+    if ((0, _utilsJsDefault.default).hasOwnProp(config2, "validateStatus") && (0, _utilsJsDefault.default).isUndefined(config2.validateStatus) && getMergedTransitionalOption("validateStatusUndefinedResolves") === false) {
+        if ((0, _utilsJsDefault.default).hasOwnProp(config1, "validateStatus")) config.validateStatus = getMergedValue(undefined, config1.validateStatus);
+        else delete config.validateStatus;
+    }
+    return config;
+}
+
+},{"../utils.js":"5By4s","./AxiosHeaders.js":"cgSSx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lVBFV":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getFetch", ()=>getFetch);
+var _indexJs = require("../platform/index.js");
+var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+var _axiosErrorJs = require("../core/AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+var _composeSignalsJs = require("../helpers/composeSignals.js");
+var _composeSignalsJsDefault = parcelHelpers.interopDefault(_composeSignalsJs);
+var _trackStreamJs = require("../helpers/trackStream.js");
+var _axiosHeadersJs = require("../core/AxiosHeaders.js");
+var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
+var _progressEventReducerJs = require("../helpers/progressEventReducer.js");
+var _resolveConfigJs = require("../helpers/resolveConfig.js");
+var _resolveConfigJsDefault = parcelHelpers.interopDefault(_resolveConfigJs);
+var _settleJs = require("../core/settle.js");
+var _settleJsDefault = parcelHelpers.interopDefault(_settleJs);
+var _estimateDataURLDecodedBytesJs = require("../helpers/estimateDataURLDecodedBytes.js");
+var _estimateDataURLDecodedBytesJsDefault = parcelHelpers.interopDefault(_estimateDataURLDecodedBytesJs);
+var _dataJs = require("../env/data.js");
+var _sanitizeHeaderValueJs = require("../helpers/sanitizeHeaderValue.js");
+const DEFAULT_CHUNK_SIZE = 65536;
+const { isFunction } = (0, _utilsJsDefault.default);
+/**
+ * Encode a UTF-8 string to a Latin-1 byte string for use with btoa().
+ * This is a modern replacement for the deprecated unescape(encodeURIComponent(str)) pattern.
+ *
+ * @param {string} str The string to encode
+ *
+ * @returns {string} UTF-8 bytes as a Latin-1 string
+ */ const encodeUTF8 = (str)=>encodeURIComponent(str).replace(/%([0-9A-F]{2})/gi, (_, hex)=>String.fromCharCode(parseInt(hex, 16)));
+// Node's WHATWG URL parser returns `username` and `password` percent-encoded.
+// Decode before composing the `auth` option so credentials such as
+// `my%40email.com:pass` are sent as `my@email.com:pass`. Falls back to the
+// original value for malformed input so a bad encoding never throws.
+const decodeURIComponentSafe = (value)=>{
+    if (!(0, _utilsJsDefault.default).isString(value)) return value;
+    try {
+        return decodeURIComponent(value);
+    } catch (error) {
+        return value;
+    }
+};
+const test = (fn, ...args)=>{
+    try {
+        return !!fn(...args);
+    } catch (e) {
+        return false;
+    }
+};
+const maybeWithAuthCredentials = (url)=>{
+    const protocolIndex = url.indexOf("://");
+    let urlToCheck = url;
+    if (protocolIndex !== -1) urlToCheck = urlToCheck.slice(protocolIndex + 3);
+    return urlToCheck.includes("@") || urlToCheck.includes(":");
+};
+const factory = (env)=>{
+    const globalObject = (0, _utilsJsDefault.default).global !== undefined && (0, _utilsJsDefault.default).global !== null ? (0, _utilsJsDefault.default).global : globalThis;
+    const { ReadableStream, TextEncoder } = globalObject;
+    env = (0, _utilsJsDefault.default).merge.call({
+        skipUndefined: true
+    }, {
+        Request: globalObject.Request,
+        Response: globalObject.Response
+    }, env);
+    const { fetch: envFetch, Request, Response } = env;
+    const isFetchSupported = envFetch ? isFunction(envFetch) : typeof fetch === "function";
+    const isRequestSupported = isFunction(Request);
+    const isResponseSupported = isFunction(Response);
+    if (!isFetchSupported) return false;
+    const isReadableStreamSupported = isFetchSupported && isFunction(ReadableStream);
+    const encodeText = isFetchSupported && (typeof TextEncoder === "function" ? ((encoder)=>(str)=>encoder.encode(str))(new TextEncoder()) : async (str)=>new Uint8Array(await new Request(str).arrayBuffer()));
+    const supportsRequestStream = isRequestSupported && isReadableStreamSupported && test(()=>{
+        let duplexAccessed = false;
+        const request = new Request((0, _indexJsDefault.default).origin, {
+            body: new ReadableStream(),
+            method: "POST",
+            get duplex () {
+                duplexAccessed = true;
+                return "half";
+            }
+        });
+        const hasContentType = request.headers.has("Content-Type");
+        if (request.body != null) request.body.cancel();
+        return duplexAccessed && !hasContentType;
+    });
+    const supportsResponseStream = isResponseSupported && isReadableStreamSupported && test(()=>(0, _utilsJsDefault.default).isReadableStream(new Response("").body));
+    const resolvers = {
+        stream: supportsResponseStream && ((res)=>res.body)
+    };
+    isFetchSupported && (()=>{
+        [
+            "text",
+            "arrayBuffer",
+            "blob",
+            "formData",
+            "stream"
+        ].forEach((type)=>{
+            !resolvers[type] && (resolvers[type] = (res, config)=>{
+                let method = res && res[type];
+                if (method) return method.call(res);
+                throw new (0, _axiosErrorJsDefault.default)(`Response type '${type}' is not supported`, (0, _axiosErrorJsDefault.default).ERR_NOT_SUPPORT, config);
+            });
+        });
+    })();
+    const getBodyLength = async (body)=>{
+        if (body == null) return 0;
+        if ((0, _utilsJsDefault.default).isBlob(body)) return body.size;
+        if ((0, _utilsJsDefault.default).isSpecCompliantForm(body)) {
+            const _request = new Request((0, _indexJsDefault.default).origin, {
+                method: "POST",
+                body
+            });
+            return (await _request.arrayBuffer()).byteLength;
+        }
+        if ((0, _utilsJsDefault.default).isArrayBufferView(body) || (0, _utilsJsDefault.default).isArrayBuffer(body)) return body.byteLength;
+        if ((0, _utilsJsDefault.default).isURLSearchParams(body)) body = body + "";
+        if ((0, _utilsJsDefault.default).isString(body)) return (await encodeText(body)).byteLength;
+    };
+    const resolveBodyLength = async (headers, body)=>{
+        const length = (0, _utilsJsDefault.default).toFiniteNumber(headers.getContentLength());
+        return length == null ? getBodyLength(body) : length;
+    };
+    return async (config)=>{
+        let { url, method, data, signal, cancelToken, timeout, onDownloadProgress, onUploadProgress, responseType, headers, withCredentials = "same-origin", fetchOptions, maxContentLength, maxBodyLength } = (0, _resolveConfigJsDefault.default)(config);
+        const hasMaxContentLength = (0, _utilsJsDefault.default).isNumber(maxContentLength) && maxContentLength > -1;
+        const hasMaxBodyLength = (0, _utilsJsDefault.default).isNumber(maxBodyLength) && maxBodyLength > -1;
+        const own = (key)=>(0, _utilsJsDefault.default).hasOwnProp(config, key) ? config[key] : undefined;
+        let _fetch = envFetch || fetch;
+        responseType = responseType ? (responseType + "").toLowerCase() : "text";
+        let composedSignal = (0, _composeSignalsJsDefault.default)([
+            signal,
+            cancelToken && cancelToken.toAbortSignal()
+        ], timeout);
+        let request = null;
+        const unsubscribe = composedSignal && composedSignal.unsubscribe && (()=>{
+            composedSignal.unsubscribe();
+        });
+        let requestContentLength;
+        // AxiosError we raise while the request body is being streamed. Captured
+        // by identity so the catch block can surface it directly, regardless of
+        // how the runtime wraps the resulting fetch rejection (undici exposes it
+        // as `err.cause`; some browsers drop the original error entirely).
+        let pendingBodyError = null;
+        const maxBodyLengthError = ()=>new (0, _axiosErrorJsDefault.default)("Request body larger than maxBodyLength limit", (0, _axiosErrorJsDefault.default).ERR_BAD_REQUEST, config, request);
+        try {
+            // HTTP basic authentication
+            let auth = undefined;
+            const configAuth = own("auth");
+            if (configAuth) {
+                const username = (0, _utilsJsDefault.default).getSafeProp(configAuth, "username") || "";
+                const password = (0, _utilsJsDefault.default).getSafeProp(configAuth, "password") || "";
+                auth = {
+                    username,
+                    password
+                };
+            }
+            if (maybeWithAuthCredentials(url)) {
+                const parsedURL = new URL(url, (0, _indexJsDefault.default).origin);
+                if (!auth && (parsedURL.username || parsedURL.password)) {
+                    const urlUsername = decodeURIComponentSafe(parsedURL.username);
+                    const urlPassword = decodeURIComponentSafe(parsedURL.password);
+                    auth = {
+                        username: urlUsername,
+                        password: urlPassword
+                    };
+                }
+                if (parsedURL.username || parsedURL.password) {
+                    parsedURL.username = "";
+                    parsedURL.password = "";
+                    url = parsedURL.href;
+                }
+            }
+            if (auth) {
+                headers.delete("authorization");
+                headers.set("Authorization", "Basic " + btoa(encodeUTF8((auth.username || "") + ":" + (auth.password || ""))));
+            }
+            // Enforce maxContentLength for data: URLs up-front so we never materialize
+            // an oversized payload. The HTTP adapter applies the same check (see http.js
+            // "if (protocol === 'data:')" branch).
+            if (hasMaxContentLength && typeof url === "string" && url.startsWith("data:")) {
+                const estimated = (0, _estimateDataURLDecodedBytesJsDefault.default)(url);
+                if (estimated > maxContentLength) throw new (0, _axiosErrorJsDefault.default)("maxContentLength size of " + maxContentLength + " exceeded", (0, _axiosErrorJsDefault.default).ERR_BAD_RESPONSE, config, request);
+            }
+            // Enforce maxBodyLength against known-size bodies before dispatch using
+            // the body's *actual* size — never a caller-declared Content-Length,
+            // which could under-report to slip an oversized body past the check.
+            // Unknown-size streams return undefined here and are counted per-chunk
+            // below as fetch consumes them.
+            if (hasMaxBodyLength && method !== "get" && method !== "head") {
+                const outboundLength = await getBodyLength(data);
+                if (typeof outboundLength === "number" && isFinite(outboundLength)) {
+                    requestContentLength = outboundLength;
+                    if (outboundLength > maxBodyLength) throw maxBodyLengthError();
+                }
+            }
+            // A streamed body under maxBodyLength must be counted as fetch consumes
+            // it; its size is never trusted from a caller-declared Content-Length.
+            const mustEnforceStreamBody = hasMaxBodyLength && ((0, _utilsJsDefault.default).isReadableStream(data) || (0, _utilsJsDefault.default).isStream(data));
+            const trackRequestStream = (stream, onProgress, flush)=>(0, _trackStreamJs.trackStream)(stream, DEFAULT_CHUNK_SIZE, (loadedBytes)=>{
+                    if (hasMaxBodyLength && loadedBytes > maxBodyLength) throw pendingBodyError = maxBodyLengthError();
+                    onProgress && onProgress(loadedBytes);
+                }, flush);
+            if (supportsRequestStream && method !== "get" && method !== "head" && (onUploadProgress || mustEnforceStreamBody)) {
+                requestContentLength = requestContentLength == null ? await resolveBodyLength(headers, data) : requestContentLength;
+                // A declared length of 0 is only trusted to skip the wrap when we are
+                // not enforcing a stream limit (which must not rely on that header).
+                if (requestContentLength !== 0 || mustEnforceStreamBody) {
+                    let _request = new Request(url, {
+                        method: "POST",
+                        body: data,
+                        duplex: "half"
+                    });
+                    let contentTypeHeader;
+                    if ((0, _utilsJsDefault.default).isFormData(data) && (contentTypeHeader = _request.headers.get("content-type"))) headers.setContentType(contentTypeHeader);
+                    if (_request.body) {
+                        const [onProgress, flush] = onUploadProgress && (0, _progressEventReducerJs.progressEventDecorator)(requestContentLength, (0, _progressEventReducerJs.progressEventReducer)((0, _progressEventReducerJs.asyncDecorator)(onUploadProgress))) || [];
+                        data = trackRequestStream(_request.body, onProgress, flush);
+                    }
+                }
+            } else if (mustEnforceStreamBody && !isRequestSupported && isReadableStreamSupported && method !== "get" && method !== "head") data = trackRequestStream(data);
+            else if (mustEnforceStreamBody && isRequestSupported && !supportsRequestStream && method !== "get" && method !== "head") throw new (0, _axiosErrorJsDefault.default)("Stream request bodies are not supported by the current fetch implementation", (0, _axiosErrorJsDefault.default).ERR_NOT_SUPPORT, config, request);
+            if (!(0, _utilsJsDefault.default).isString(withCredentials)) withCredentials = withCredentials ? "include" : "omit";
+            // Cloudflare Workers throws when credentials are defined
+            // see https://github.com/cloudflare/workerd/issues/902
+            const isCredentialsSupported = isRequestSupported && "credentials" in Request.prototype;
+            // If data is FormData and Content-Type is multipart/form-data without boundary,
+            // delete it so fetch can set it correctly with the boundary
+            if ((0, _utilsJsDefault.default).isFormData(data)) {
+                const contentType = headers.getContentType();
+                if (contentType && /^multipart\/form-data/i.test(contentType) && !/boundary=/i.test(contentType)) headers.delete("content-type");
+            }
+            // Set User-Agent header if not already set (fetch defaults to 'node' in Node.js)
+            headers.set("User-Agent", "axios/" + (0, _dataJs.VERSION), false);
+            const resolvedOptions = {
+                ...fetchOptions,
+                signal: composedSignal,
+                method: method.toUpperCase(),
+                headers: (0, _sanitizeHeaderValueJs.toByteStringHeaderObject)(headers.normalize()),
+                body: data,
+                duplex: "half",
+                credentials: isCredentialsSupported ? withCredentials : undefined
+            };
+            request = isRequestSupported && new Request(url, resolvedOptions);
+            let response = await (isRequestSupported ? _fetch(request, fetchOptions) : _fetch(url, resolvedOptions));
+            const responseHeaders = (0, _axiosHeadersJsDefault.default).from(response.headers);
+            // Cheap pre-check: if the server honestly declares a content-length that
+            // already exceeds the cap, reject before we start streaming.
+            if (hasMaxContentLength) {
+                const declaredLength = (0, _utilsJsDefault.default).toFiniteNumber(responseHeaders.getContentLength());
+                if (declaredLength != null && declaredLength > maxContentLength) throw new (0, _axiosErrorJsDefault.default)("maxContentLength size of " + maxContentLength + " exceeded", (0, _axiosErrorJsDefault.default).ERR_BAD_RESPONSE, config, request);
+            }
+            const isStreamResponse = supportsResponseStream && (responseType === "stream" || responseType === "response");
+            if (supportsResponseStream && response.body && (onDownloadProgress || hasMaxContentLength || isStreamResponse && unsubscribe)) {
+                const options = {};
+                [
+                    "status",
+                    "statusText",
+                    "headers"
+                ].forEach((prop)=>{
+                    options[prop] = response[prop];
+                });
+                const responseContentLength = (0, _utilsJsDefault.default).toFiniteNumber(responseHeaders.getContentLength());
+                const [onProgress, flush] = onDownloadProgress && (0, _progressEventReducerJs.progressEventDecorator)(responseContentLength, (0, _progressEventReducerJs.progressEventReducer)((0, _progressEventReducerJs.asyncDecorator)(onDownloadProgress), true)) || [];
+                let bytesRead = 0;
+                const onChunkProgress = (loadedBytes)=>{
+                    if (hasMaxContentLength) {
+                        bytesRead = loadedBytes;
+                        if (bytesRead > maxContentLength) throw new (0, _axiosErrorJsDefault.default)("maxContentLength size of " + maxContentLength + " exceeded", (0, _axiosErrorJsDefault.default).ERR_BAD_RESPONSE, config, request);
+                    }
+                    onProgress && onProgress(loadedBytes);
+                };
+                response = new Response((0, _trackStreamJs.trackStream)(response.body, DEFAULT_CHUNK_SIZE, onChunkProgress, ()=>{
+                    flush && flush();
+                    unsubscribe && unsubscribe();
+                }), options);
+            }
+            responseType = responseType || "text";
+            let responseData = await resolvers[(0, _utilsJsDefault.default).findKey(resolvers, responseType) || "text"](response, config);
+            // Fallback enforcement for environments without ReadableStream support
+            // (legacy runtimes). Detect materialized size from typed output; skip
+            // streams/Response passthrough since the user will read those themselves.
+            if (hasMaxContentLength && !supportsResponseStream && !isStreamResponse) {
+                let materializedSize;
+                if (responseData != null) {
+                    if (typeof responseData.byteLength === "number") materializedSize = responseData.byteLength;
+                    else if (typeof responseData.size === "number") materializedSize = responseData.size;
+                    else if (typeof responseData === "string") materializedSize = typeof TextEncoder === "function" ? new TextEncoder().encode(responseData).byteLength : responseData.length;
+                }
+                if (typeof materializedSize === "number" && materializedSize > maxContentLength) throw new (0, _axiosErrorJsDefault.default)("maxContentLength size of " + maxContentLength + " exceeded", (0, _axiosErrorJsDefault.default).ERR_BAD_RESPONSE, config, request);
+            }
+            !isStreamResponse && unsubscribe && unsubscribe();
+            return await new Promise((resolve, reject)=>{
+                (0, _settleJsDefault.default)(resolve, reject, {
+                    data: responseData,
+                    headers: (0, _axiosHeadersJsDefault.default).from(response.headers),
+                    status: response.status,
+                    statusText: response.statusText,
+                    config,
+                    request
+                });
+            });
+        } catch (err) {
+            unsubscribe && unsubscribe();
+            // Safari can surface fetch aborts as a DOMException-like object whose
+            // branded getters throw. Prefer our composed signal reason before reading
+            // the caught error, preserving timeout vs cancellation semantics.
+            if (composedSignal && composedSignal.aborted && composedSignal.reason instanceof (0, _axiosErrorJsDefault.default)) {
+                const canceledError = composedSignal.reason;
+                canceledError.config = config;
+                request && (canceledError.request = request);
+                if (err !== canceledError) // Non-enumerable to match native Error `cause` semantics so loggers
+                // don't recurse into circular fetch internals (see #7205).
+                Object.defineProperty(canceledError, "cause", {
+                    __proto__: null,
+                    value: err,
+                    writable: true,
+                    enumerable: false,
+                    configurable: true
+                });
+                throw canceledError;
+            }
+            // Surface a maxBodyLength violation we raised while the request body was
+            // being streamed. Matching by identity (rather than reading
+            // `err.cause.isAxiosError`) keeps the error deterministic across runtimes
+            // and avoids both prototype-pollution reads and mis-attributing a foreign
+            // AxiosError that merely happened to land in `err.cause`.
+            if (pendingBodyError) {
+                request && !pendingBodyError.request && (pendingBodyError.request = request);
+                throw pendingBodyError;
+            }
+            // Re-throw AxiosErrors we raised synchronously (data: URL / content-length
+            // pre-checks, response size enforcement) without re-wrapping them.
+            if (err instanceof (0, _axiosErrorJsDefault.default)) {
+                request && !err.request && (err.request = request);
+                throw err;
+            }
+            if (err && err.name === "TypeError" && /Load failed|fetch/i.test(err.message)) {
+                const networkError = new (0, _axiosErrorJsDefault.default)("Network Error", (0, _axiosErrorJsDefault.default).ERR_NETWORK, config, request, err && err.response);
+                // Non-enumerable to match native Error `cause` semantics so loggers
+                // don't recurse into circular fetch internals (see #7205).
+                Object.defineProperty(networkError, "cause", {
+                    __proto__: null,
+                    value: err.cause || err,
+                    writable: true,
+                    enumerable: false,
+                    configurable: true
+                });
+                throw networkError;
+            }
+            throw (0, _axiosErrorJsDefault.default).from(err, err && err.code, config, request, err && err.response);
+        }
+    };
+};
+const seedCache = new Map();
+const getFetch = (config)=>{
+    let env = config && config.env || {};
+    const { fetch: fetch1, Request, Response } = env;
+    const seeds = [
+        Request,
+        Response,
+        fetch1
+    ];
+    let len = seeds.length, i = len, seed, target, map = seedCache;
+    while(i--){
+        seed = seeds[i];
+        target = map.get(seed);
+        target === undefined && map.set(seed, target = i ? new Map() : factory(env));
+        map = target;
+    }
+    return target;
+};
+const adapter = getFetch();
+exports.default = adapter;
+
+},{"../platform/index.js":"7tDev","../utils.js":"5By4s","../core/AxiosError.js":"3u8Tl","../helpers/composeSignals.js":"3xrUR","../helpers/trackStream.js":"kIZVF","../core/AxiosHeaders.js":"cgSSx","../helpers/progressEventReducer.js":"bN9Fp","../helpers/resolveConfig.js":"l0e6d","../core/settle.js":"dD9aC","../helpers/estimateDataURLDecodedBytes.js":"dzlhN","../env/data.js":"h29L9","../helpers/sanitizeHeaderValue.js":"fSESK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3xrUR":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _canceledErrorJs = require("../cancel/CanceledError.js");
+var _canceledErrorJsDefault = parcelHelpers.interopDefault(_canceledErrorJs);
+var _axiosErrorJs = require("../core/AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+const composeSignals = (signals, timeout)=>{
+    signals = signals ? signals.filter(Boolean) : [];
+    if (!timeout && !signals.length) return;
+    const controller = new AbortController();
+    let aborted = false;
+    const onabort = function(reason) {
+        if (!aborted) {
+            aborted = true;
+            unsubscribe();
+            const err = reason instanceof Error ? reason : this.reason;
+            controller.abort(err instanceof (0, _axiosErrorJsDefault.default) ? err : new (0, _canceledErrorJsDefault.default)(err instanceof Error ? err.message : err));
+        }
+    };
+    let timer = timeout && setTimeout(()=>{
+        timer = null;
+        onabort(new (0, _axiosErrorJsDefault.default)(`timeout of ${timeout}ms exceeded`, (0, _axiosErrorJsDefault.default).ETIMEDOUT));
+    }, timeout);
+    const unsubscribe = ()=>{
+        if (!signals) return;
+        timer && clearTimeout(timer);
+        timer = null;
+        signals.forEach((signal)=>{
+            signal.unsubscribe ? signal.unsubscribe(onabort) : signal.removeEventListener("abort", onabort);
+        });
+        signals = null;
+    };
+    signals.forEach((signal)=>signal.addEventListener("abort", onabort, {
+            once: true
+        }));
+    const { signal } = controller;
+    signal.unsubscribe = ()=>(0, _utilsJsDefault.default).asap(unsubscribe);
+    return signal;
+};
+exports.default = composeSignals;
+
+},{"../cancel/CanceledError.js":"9PwCG","../core/AxiosError.js":"3u8Tl","../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kIZVF":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "streamChunk", ()=>streamChunk);
+parcelHelpers.export(exports, "readBytes", ()=>readBytes);
+parcelHelpers.export(exports, "trackStream", ()=>trackStream);
+const streamChunk = function*(chunk, chunkSize) {
+    let len = chunk.byteLength;
+    if (!chunkSize || len < chunkSize) {
+        yield chunk;
+        return;
+    }
+    let pos = 0;
+    let end;
+    while(pos < len){
+        end = pos + chunkSize;
+        yield chunk.slice(pos, end);
+        pos = end;
+    }
+};
+const readBytes = async function*(iterable, chunkSize) {
+    for await (const chunk of readStream(iterable))yield* streamChunk(chunk, chunkSize);
+};
+const readStream = async function*(stream) {
+    if (stream[Symbol.asyncIterator]) {
+        yield* stream;
+        return;
+    }
+    const reader = stream.getReader();
+    try {
+        for(;;){
+            const { done, value } = await reader.read();
+            if (done) break;
+            yield value;
+        }
+    } finally{
+        await reader.cancel();
+    }
+};
+const trackStream = (stream, chunkSize, onProgress, onFinish)=>{
+    const iterator = readBytes(stream, chunkSize);
+    let bytes = 0;
+    let done;
+    let _onFinish = (e)=>{
+        if (!done) {
+            done = true;
+            onFinish && onFinish(e);
+        }
+    };
+    return new ReadableStream({
+        async pull (controller) {
+            try {
+                const { done, value } = await iterator.next();
+                if (done) {
+                    _onFinish();
+                    controller.close();
+                    return;
+                }
+                let len = value.byteLength;
+                if (onProgress) {
+                    let loadedBytes = bytes += len;
+                    onProgress(loadedBytes);
+                }
+                controller.enqueue(new Uint8Array(value));
+            } catch (err) {
+                _onFinish(err);
+                throw err;
+            }
+        },
+        cancel (reason) {
+            _onFinish(reason);
+            return iterator.return();
+        }
+    }, {
+        highWaterMark: 2
+    });
+};
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dzlhN":[function(require,module,exports) {
+/**
+ * Estimate decoded byte length of a data:// URL *without* allocating large buffers.
+ * - For base64: compute exact decoded size using length and padding;
+ *               handle %XX at the character-count level (no string allocation).
+ * - For non-base64: compute the exact percent-decoded UTF-8 byte length.
+ *
+ * @param {string} url
+ * @returns {number}
+ */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>estimateDataURLDecodedBytes);
+const isHexDigit = (charCode)=>charCode >= 48 && charCode <= 57 || charCode >= 65 && charCode <= 70 || charCode >= 97 && charCode <= 102;
+const isPercentEncodedByte = (str, i, len)=>i + 2 < len && isHexDigit(str.charCodeAt(i + 1)) && isHexDigit(str.charCodeAt(i + 2));
+function estimateDataURLDecodedBytes(url) {
+    if (!url || typeof url !== "string") return 0;
+    if (!url.startsWith("data:")) return 0;
+    const comma = url.indexOf(",");
+    if (comma < 0) return 0;
+    const meta = url.slice(5, comma);
+    const body = url.slice(comma + 1);
+    const isBase64 = /;base64/i.test(meta);
+    if (isBase64) {
+        let effectiveLen = body.length;
+        const len = body.length; // cache length
+        for(let i = 0; i < len; i++)if (body.charCodeAt(i) === 37 /* '%' */  && i + 2 < len) {
+            const a = body.charCodeAt(i + 1);
+            const b = body.charCodeAt(i + 2);
+            const isHex = isHexDigit(a) && isHexDigit(b);
+            if (isHex) {
+                effectiveLen -= 2;
+                i += 2;
+            }
+        }
+        let pad = 0;
+        let idx = len - 1;
+        const tailIsPct3D = (j)=>j >= 2 && body.charCodeAt(j - 2) === 37 && // '%'
+            body.charCodeAt(j - 1) === 51 && // '3'
+            (body.charCodeAt(j) === 68 || body.charCodeAt(j) === 100); // 'D' or 'd'
+        if (idx >= 0) {
+            if (body.charCodeAt(idx) === 61 /* '=' */ ) {
+                pad++;
+                idx--;
+            } else if (tailIsPct3D(idx)) {
+                pad++;
+                idx -= 3;
+            }
+        }
+        if (pad === 1 && idx >= 0) {
+            if (body.charCodeAt(idx) === 61 /* '=' */ ) pad++;
+            else if (tailIsPct3D(idx)) pad++;
+        }
+        const groups = Math.floor(effectiveLen / 4);
+        const bytes = groups * 3 - (pad || 0);
+        return bytes > 0 ? bytes : 0;
+    }
+    // Compute UTF-8 byte length directly from UTF-16 code units without allocating
+    // a byte buffer (TextEncoder.encode would defeat the DoS guard on large bodies).
+    // Valid %XX triplets count as one decoded byte; this matches the bytes that
+    // decodeURIComponent(body) would produce before Buffer re-encodes the string.
+    let bytes = 0;
+    for(let i = 0, len = body.length; i < len; i++){
+        const c = body.charCodeAt(i);
+        if (c === 37 /* '%' */  && isPercentEncodedByte(body, i, len)) {
+            bytes += 1;
+            i += 2;
+        } else if (c < 0x80) bytes += 1;
+        else if (c < 0x800) bytes += 2;
+        else if (c >= 0xd800 && c <= 0xdbff && i + 1 < len) {
+            const next = body.charCodeAt(i + 1);
+            if (next >= 0xdc00 && next <= 0xdfff) {
+                bytes += 4;
+                i++;
+            } else bytes += 3;
+        } else bytes += 3;
+    }
+    return bytes;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h29L9":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "VERSION", ()=>VERSION);
+const VERSION = "1.18.1";
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9vgkY":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _dataJs = require("../env/data.js");
+var _axiosErrorJs = require("../core/AxiosError.js");
+var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
+"use strict";
+const validators = {};
+// eslint-disable-next-line func-names
+[
+    "object",
+    "boolean",
+    "number",
+    "function",
+    "string",
+    "symbol"
+].forEach((type, i)=>{
+    validators[type] = function validator(thing) {
+        return typeof thing === type || "a" + (i < 1 ? "n " : " ") + type;
+    };
+});
+const deprecatedWarnings = {};
+/**
+ * Transitional option validator
+ *
+ * @param {function|boolean?} validator - set to false if the transitional option has been removed
+ * @param {string?} version - deprecated version / removed since version
+ * @param {string?} message - some message with additional info
+ *
+ * @returns {function}
+ */ validators.transitional = function transitional(validator, version, message) {
+    function formatMessage(opt, desc) {
+        return "[Axios v" + (0, _dataJs.VERSION) + "] Transitional option '" + opt + "'" + desc + (message ? ". " + message : "");
+    }
+    // eslint-disable-next-line func-names
+    return (value, opt, opts)=>{
+        if (validator === false) throw new (0, _axiosErrorJsDefault.default)(formatMessage(opt, " has been removed" + (version ? " in " + version : "")), (0, _axiosErrorJsDefault.default).ERR_DEPRECATED);
+        if (version && !deprecatedWarnings[opt]) {
+            deprecatedWarnings[opt] = true;
+            // eslint-disable-next-line no-console
+            console.warn(formatMessage(opt, " has been deprecated since v" + version + " and will be removed in the near future"));
+        }
+        return validator ? validator(value, opt, opts) : true;
+    };
+};
+validators.spelling = function spelling(correctSpelling) {
+    return (value, opt)=>{
+        // eslint-disable-next-line no-console
+        console.warn(`${opt} is likely a misspelling of ${correctSpelling}`);
+        return true;
+    };
+};
+/**
+ * Assert object's properties type
+ *
+ * @param {object} options
+ * @param {object} schema
+ * @param {boolean?} allowUnknown
+ *
+ * @returns {object}
+ */ function assertOptions(options, schema, allowUnknown) {
+    if (typeof options !== "object" || options === null) throw new (0, _axiosErrorJsDefault.default)("options must be an object", (0, _axiosErrorJsDefault.default).ERR_BAD_OPTION_VALUE);
+    const keys = Object.keys(options);
+    let i = keys.length;
+    while(i-- > 0){
+        const opt = keys[i];
+        // Use hasOwnProperty so a polluted Object.prototype.<opt> cannot supply
+        // a non-function validator and cause a TypeError.
+        const validator = Object.prototype.hasOwnProperty.call(schema, opt) ? schema[opt] : undefined;
+        if (validator) {
+            const value = options[opt];
+            const result = value === undefined || validator(value, opt, options);
+            if (result !== true) throw new (0, _axiosErrorJsDefault.default)("option " + opt + " must be " + result, (0, _axiosErrorJsDefault.default).ERR_BAD_OPTION_VALUE);
+            continue;
+        }
+        if (allowUnknown !== true) throw new (0, _axiosErrorJsDefault.default)("Unknown option " + opt, (0, _axiosErrorJsDefault.default).ERR_BAD_OPTION);
+    }
+}
+exports.default = {
+    assertOptions,
+    validators
+};
+
+},{"../env/data.js":"h29L9","../core/AxiosError.js":"3u8Tl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"45wzn":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _canceledErrorJs = require("./CanceledError.js");
+var _canceledErrorJsDefault = parcelHelpers.interopDefault(_canceledErrorJs);
+"use strict";
+/**
+ * A `CancelToken` is an object that can be used to request cancellation of an operation.
+ *
+ * @param {Function} executor The executor function.
+ *
+ * @returns {CancelToken}
+ */ class CancelToken {
+    constructor(executor){
+        if (typeof executor !== "function") throw new TypeError("executor must be a function.");
+        let resolvePromise;
+        this.promise = new Promise(function promiseExecutor(resolve) {
+            resolvePromise = resolve;
+        });
+        const token = this;
+        // eslint-disable-next-line func-names
+        this.promise.then((cancel)=>{
+            if (!token._listeners) return;
+            let i = token._listeners.length;
+            while(i-- > 0)token._listeners[i](cancel);
+            token._listeners = null;
+        });
+        // eslint-disable-next-line func-names
+        this.promise.then = (onfulfilled)=>{
+            let _resolve;
+            // eslint-disable-next-line func-names
+            const promise = new Promise((resolve)=>{
+                token.subscribe(resolve);
+                _resolve = resolve;
+            }).then(onfulfilled);
+            promise.cancel = function reject() {
+                token.unsubscribe(_resolve);
+            };
+            return promise;
+        };
+        executor(function cancel(message, config, request) {
+            if (token.reason) // Cancellation has already been requested
+            return;
+            token.reason = new (0, _canceledErrorJsDefault.default)(message, config, request);
+            resolvePromise(token.reason);
+        });
+    }
+    /**
+   * Throws a `CanceledError` if cancellation has been requested.
+   */ throwIfRequested() {
+        if (this.reason) throw this.reason;
+    }
+    /**
+   * Subscribe to the cancel signal
+   */ subscribe(listener) {
+        if (this.reason) {
+            listener(this.reason);
+            return;
+        }
+        if (this._listeners) this._listeners.push(listener);
+        else this._listeners = [
+            listener
+        ];
+    }
+    /**
+   * Unsubscribe from the cancel signal
+   */ unsubscribe(listener) {
+        if (!this._listeners) return;
+        const index = this._listeners.indexOf(listener);
+        if (index !== -1) this._listeners.splice(index, 1);
+    }
+    toAbortSignal() {
+        const controller = new AbortController();
+        const abort = (err)=>{
+            controller.abort(err);
+        };
+        this.subscribe(abort);
+        controller.signal.unsubscribe = ()=>this.unsubscribe(abort);
+        return controller.signal;
+    }
+    /**
+   * Returns an object that contains a new `CancelToken` and a function that, when called,
+   * cancels the `CancelToken`.
+   */ static source() {
+        let cancel;
+        const token = new CancelToken(function executor(c) {
+            cancel = c;
+        });
+        return {
+            token,
+            cancel
+        };
+    }
+}
+exports.default = CancelToken;
+
+},{"./CanceledError.js":"9PwCG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dyQ8N":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>spread);
+"use strict";
+function spread(callback) {
+    return function wrap(arr) {
+        return callback.apply(null, arr);
+    };
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eyiLq":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>isAxiosError);
+var _utilsJs = require("../utils.js");
+var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
+"use strict";
+function isAxiosError(payload) {
+    return (0, _utilsJsDefault.default).isObject(payload) && payload.isAxiosError === true;
+}
+
+},{"../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fdR61":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const HttpStatusCode = {
+    Continue: 100,
+    SwitchingProtocols: 101,
+    Processing: 102,
+    EarlyHints: 103,
+    Ok: 200,
+    Created: 201,
+    Accepted: 202,
+    NonAuthoritativeInformation: 203,
+    NoContent: 204,
+    ResetContent: 205,
+    PartialContent: 206,
+    MultiStatus: 207,
+    AlreadyReported: 208,
+    ImUsed: 226,
+    MultipleChoices: 300,
+    MovedPermanently: 301,
+    Found: 302,
+    SeeOther: 303,
+    NotModified: 304,
+    UseProxy: 305,
+    Unused: 306,
+    TemporaryRedirect: 307,
+    PermanentRedirect: 308,
+    BadRequest: 400,
+    Unauthorized: 401,
+    PaymentRequired: 402,
+    Forbidden: 403,
+    NotFound: 404,
+    MethodNotAllowed: 405,
+    NotAcceptable: 406,
+    ProxyAuthenticationRequired: 407,
+    RequestTimeout: 408,
+    Conflict: 409,
+    Gone: 410,
+    LengthRequired: 411,
+    PreconditionFailed: 412,
+    PayloadTooLarge: 413,
+    UriTooLong: 414,
+    UnsupportedMediaType: 415,
+    RangeNotSatisfiable: 416,
+    ExpectationFailed: 417,
+    ImATeapot: 418,
+    MisdirectedRequest: 421,
+    UnprocessableEntity: 422,
+    Locked: 423,
+    FailedDependency: 424,
+    TooEarly: 425,
+    UpgradeRequired: 426,
+    PreconditionRequired: 428,
+    TooManyRequests: 429,
+    RequestHeaderFieldsTooLarge: 431,
+    UnavailableForLegalReasons: 451,
+    InternalServerError: 500,
+    NotImplemented: 501,
+    BadGateway: 502,
+    ServiceUnavailable: 503,
+    GatewayTimeout: 504,
+    HttpVersionNotSupported: 505,
+    VariantAlsoNegotiates: 506,
+    InsufficientStorage: 507,
+    LoopDetected: 508,
+    NotExtended: 510,
+    NetworkAuthenticationRequired: 511,
+    WebServerIsDown: 521,
+    ConnectionTimedOut: 522,
+    OriginIsUnreachable: 523,
+    TimeoutOccurred: 524,
+    SslHandshakeFailed: 525,
+    InvalidSslCertificate: 526
+};
+Object.entries(HttpStatusCode).forEach(([key, value])=>{
+    HttpStatusCode[value] = key;
+});
+exports.default = HttpStatusCode;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gwDxu":[function(require,module,exports) {
+"use strict";
+/*
+ * Copyright 2024 SpinalCom - www.spinalcom.com
+ *
+ * This file is part of SpinalCore.
+ *
+ * Please read all of the following terms and conditions
+ * of the Software license Agreement ("Agreement")
+ * carefully.
+ *
+ * This Agreement is a legally binding contract between
+ * the Licensee (as defined below) and SpinalCom that
+ * sets forth the terms and conditions that govern your
+ * use of the Program. By installing and/or using the
+ * Program, you agree to abide by all the terms and
+ * conditions stated or referenced herein.
+ *
+ * If you do not agree to abide by these terms and
+ * conditions, do not demonstrate your acceptance and do
+ * not install or use the Program.
+ * You should have received a copy of the license along
+ * with this file. If not, see
+ * <http://resources.spinalcom.com/licenses.pdf>.
+ */ exports.__esModule = true;
+exports.SpinalEventEmitter = void 0;
+/**
+ * SpinalEventEmitter is a singleton class that allows to emit and listen to events
+ * @export
+ * @class SpinalEventEmitter
+ */ var SpinalEventEmitter = /** @class */ function() {
+    function SpinalEventEmitter() {
+        this.emitter = mitt();
+        this.on = this.emitter.on;
+        this.off = this.emitter.off;
+        this.emit = this.emitter.emit;
+    }
+    SpinalEventEmitter.getInstance = function() {
+        if (!SpinalEventEmitter.instance) SpinalEventEmitter.instance = new SpinalEventEmitter();
+        return SpinalEventEmitter.instance;
+    };
+    SpinalEventEmitter.prototype.waitEvt = function(evt) {
+        var _this = this;
+        var ev = this.emitter;
+        return new Promise(function(resolve) {
+            function listener() {
+                ev.off(evt, listener);
+                resolve(arguments);
+            }
+            _this.emitter.on(evt, listener);
+        });
+    };
+    return SpinalEventEmitter;
+}();
+exports.SpinalEventEmitter = SpinalEventEmitter;
+/**
+ * Mitt: Tiny (~200b) functional event emitter / pubsub.
+ * @name mitt
+ * @returns {Mitt}
+ */ function mitt(all) {
+    all = all || new Map();
+    return {
+        /**
+         * A Map of event names to registered handler functions.
+         */ all: all,
+        /**
+         * Register an event handler for the given type.
+         * @param {string|symbol} type Type of event to listen for, or `'*'` for all events
+         * @param {Function} handler Function to call in response to given event
+         * @memberOf mitt
+         */ on: function(type, handler) {
+            var handlers = all.get(type);
+            if (handlers) handlers.push(handler);
+            else all.set(type, [
+                handler
+            ]);
+        },
+        /**
+         * Remove an event handler for the given type.
+         * If `handler` is omitted, all handlers of the given type are removed.
+         * @param {string|symbol} type Type of event to unregister `handler` from (`'*'` to remove a wildcard handler)
+         * @param {Function} [handler] Handler function to remove
+         * @memberOf mitt
+         */ off: function(type, handler) {
+            var handlers = all.get(type);
+            if (handlers) {
+                if (handler) handlers.splice(handlers.indexOf(handler) >>> 0, 1);
+                else all.set(type, []);
+            }
+        },
+        /**
+         * Invoke all handlers for the given type.
+         * If present, `'*'` handlers are invoked after type-matched handlers.
+         *
+         * Note: Manually firing '*' handlers is not supported.
+         *
+         * @param {string|symbol} type The event type to invoke
+         * @param {Any} [evt] Any value (object is recommended and powerful), passed to each handler
+         * @memberOf mitt
+         */ emit: function(type, evt) {
+            var handlers = all.get(type);
+            if (handlers) handlers.slice().map(function(handler) {
+                handler(evt);
+            });
+            handlers = all.get("*");
+            if (handlers) handlers.slice().map(function(handler) {
+                handler(type, evt);
+            });
+        }
+    };
+}
+
+},{}],"3JP5n":[function(require,module,exports) {
+/**
+ * lodash (Custom Build) <https://lodash.com/>
+ * Build: `lodash modularize exports="npm" -o ./`
+ * Copyright jQuery Foundation and other contributors <https://jquery.org/>
+ * Released under MIT license <https://lodash.com/license>
+ * Based on Underscore.js 1.8.3 <http://underscorejs.org/LICENSE>
+ * Copyright Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
+ */ /** Used as the `TypeError` message for "Functions" methods. */ var global = arguments[3];
+var FUNC_ERROR_TEXT = "Expected a function";
+/** Used as references for various `Number` constants. */ var NAN = 0 / 0;
+/** `Object#toString` result references. */ var symbolTag = "[object Symbol]";
+/** Used to match leading and trailing whitespace. */ var reTrim = /^\s+|\s+$/g;
+/** Used to detect bad signed hexadecimal string values. */ var reIsBadHex = /^[-+]0x[0-9a-f]+$/i;
+/** Used to detect binary string values. */ var reIsBinary = /^0b[01]+$/i;
+/** Used to detect octal string values. */ var reIsOctal = /^0o[0-7]+$/i;
+/** Built-in method references without a dependency on `root`. */ var freeParseInt = parseInt;
+/** Detect free variable `global` from Node.js. */ var freeGlobal = typeof global == "object" && global && global.Object === Object && global;
+/** Detect free variable `self`. */ var freeSelf = typeof self == "object" && self && self.Object === Object && self;
+/** Used as a reference to the global object. */ var root = freeGlobal || freeSelf || Function("return this")();
+/** Used for built-in method references. */ var objectProto = Object.prototype;
+/**
+ * Used to resolve the
+ * [`toStringTag`](http://ecma-international.org/ecma-262/7.0/#sec-object.prototype.tostring)
+ * of values.
+ */ var objectToString = objectProto.toString;
+/* Built-in method references for those with the same name as other `lodash` methods. */ var nativeMax = Math.max, nativeMin = Math.min;
+/**
+ * Gets the timestamp of the number of milliseconds that have elapsed since
+ * the Unix epoch (1 January 1970 00:00:00 UTC).
+ *
+ * @static
+ * @memberOf _
+ * @since 2.4.0
+ * @category Date
+ * @returns {number} Returns the timestamp.
+ * @example
+ *
+ * _.defer(function(stamp) {
+ *   console.log(_.now() - stamp);
+ * }, _.now());
+ * // => Logs the number of milliseconds it took for the deferred invocation.
+ */ var now = function() {
+    return root.Date.now();
+};
+/**
+ * Creates a debounced function that delays invoking `func` until after `wait`
+ * milliseconds have elapsed since the last time the debounced function was
+ * invoked. The debounced function comes with a `cancel` method to cancel
+ * delayed `func` invocations and a `flush` method to immediately invoke them.
+ * Provide `options` to indicate whether `func` should be invoked on the
+ * leading and/or trailing edge of the `wait` timeout. The `func` is invoked
+ * with the last arguments provided to the debounced function. Subsequent
+ * calls to the debounced function return the result of the last `func`
+ * invocation.
+ *
+ * **Note:** If `leading` and `trailing` options are `true`, `func` is
+ * invoked on the trailing edge of the timeout only if the debounced function
+ * is invoked more than once during the `wait` timeout.
+ *
+ * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
+ * until to the next tick, similar to `setTimeout` with a timeout of `0`.
+ *
+ * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+ * for details over the differences between `_.debounce` and `_.throttle`.
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Function
+ * @param {Function} func The function to debounce.
+ * @param {number} [wait=0] The number of milliseconds to delay.
+ * @param {Object} [options={}] The options object.
+ * @param {boolean} [options.leading=false]
+ *  Specify invoking on the leading edge of the timeout.
+ * @param {number} [options.maxWait]
+ *  The maximum time `func` is allowed to be delayed before it's invoked.
+ * @param {boolean} [options.trailing=true]
+ *  Specify invoking on the trailing edge of the timeout.
+ * @returns {Function} Returns the new debounced function.
+ * @example
+ *
+ * // Avoid costly calculations while the window size is in flux.
+ * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
+ *
+ * // Invoke `sendMail` when clicked, debouncing subsequent calls.
+ * jQuery(element).on('click', _.debounce(sendMail, 300, {
+ *   'leading': true,
+ *   'trailing': false
+ * }));
+ *
+ * // Ensure `batchLog` is invoked once after 1 second of debounced calls.
+ * var debounced = _.debounce(batchLog, 250, { 'maxWait': 1000 });
+ * var source = new EventSource('/stream');
+ * jQuery(source).on('message', debounced);
+ *
+ * // Cancel the trailing debounced invocation.
+ * jQuery(window).on('popstate', debounced.cancel);
+ */ function debounce(func, wait, options) {
+    var lastArgs, lastThis, maxWait, result, timerId, lastCallTime, lastInvokeTime = 0, leading = false, maxing = false, trailing = true;
+    if (typeof func != "function") throw new TypeError(FUNC_ERROR_TEXT);
+    wait = toNumber(wait) || 0;
+    if (isObject(options)) {
+        leading = !!options.leading;
+        maxing = "maxWait" in options;
+        maxWait = maxing ? nativeMax(toNumber(options.maxWait) || 0, wait) : maxWait;
+        trailing = "trailing" in options ? !!options.trailing : trailing;
+    }
+    function invokeFunc(time) {
+        var args = lastArgs, thisArg = lastThis;
+        lastArgs = lastThis = undefined;
+        lastInvokeTime = time;
+        result = func.apply(thisArg, args);
+        return result;
+    }
+    function leadingEdge(time) {
+        // Reset any `maxWait` timer.
+        lastInvokeTime = time;
+        // Start the timer for the trailing edge.
+        timerId = setTimeout(timerExpired, wait);
+        // Invoke the leading edge.
+        return leading ? invokeFunc(time) : result;
+    }
+    function remainingWait(time) {
+        var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime, result = wait - timeSinceLastCall;
+        return maxing ? nativeMin(result, maxWait - timeSinceLastInvoke) : result;
+    }
+    function shouldInvoke(time) {
+        var timeSinceLastCall = time - lastCallTime, timeSinceLastInvoke = time - lastInvokeTime;
+        // Either this is the first call, activity has stopped and we're at the
+        // trailing edge, the system time has gone backwards and we're treating
+        // it as the trailing edge, or we've hit the `maxWait` limit.
+        return lastCallTime === undefined || timeSinceLastCall >= wait || timeSinceLastCall < 0 || maxing && timeSinceLastInvoke >= maxWait;
+    }
+    function timerExpired() {
+        var time = now();
+        if (shouldInvoke(time)) return trailingEdge(time);
+        // Restart the timer.
+        timerId = setTimeout(timerExpired, remainingWait(time));
+    }
+    function trailingEdge(time) {
+        timerId = undefined;
+        // Only invoke if we have `lastArgs` which means `func` has been
+        // debounced at least once.
+        if (trailing && lastArgs) return invokeFunc(time);
+        lastArgs = lastThis = undefined;
+        return result;
+    }
+    function cancel() {
+        if (timerId !== undefined) clearTimeout(timerId);
+        lastInvokeTime = 0;
+        lastArgs = lastCallTime = lastThis = timerId = undefined;
+    }
+    function flush() {
+        return timerId === undefined ? result : trailingEdge(now());
+    }
+    function debounced() {
+        var time = now(), isInvoking = shouldInvoke(time);
+        lastArgs = arguments;
+        lastThis = this;
+        lastCallTime = time;
+        if (isInvoking) {
+            if (timerId === undefined) return leadingEdge(lastCallTime);
+            if (maxing) {
+                // Handle invocations in a tight loop.
+                timerId = setTimeout(timerExpired, wait);
+                return invokeFunc(lastCallTime);
+            }
+        }
+        if (timerId === undefined) timerId = setTimeout(timerExpired, wait);
+        return result;
+    }
+    debounced.cancel = cancel;
+    debounced.flush = flush;
+    return debounced;
+}
+/**
+ * Checks if `value` is the
+ * [language type](http://www.ecma-international.org/ecma-262/7.0/#sec-ecmascript-language-types)
+ * of `Object`. (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ *
+ * @static
+ * @memberOf _
+ * @since 0.1.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @example
+ *
+ * _.isObject({});
+ * // => true
+ *
+ * _.isObject([1, 2, 3]);
+ * // => true
+ *
+ * _.isObject(_.noop);
+ * // => true
+ *
+ * _.isObject(null);
+ * // => false
+ */ function isObject(value) {
+    var type = typeof value;
+    return !!value && (type == "object" || type == "function");
+}
+/**
+ * Checks if `value` is object-like. A value is object-like if it's not `null`
+ * and has a `typeof` result of "object".
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @example
+ *
+ * _.isObjectLike({});
+ * // => true
+ *
+ * _.isObjectLike([1, 2, 3]);
+ * // => true
+ *
+ * _.isObjectLike(_.noop);
+ * // => false
+ *
+ * _.isObjectLike(null);
+ * // => false
+ */ function isObjectLike(value) {
+    return !!value && typeof value == "object";
+}
+/**
+ * Checks if `value` is classified as a `Symbol` primitive or object.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to check.
+ * @returns {boolean} Returns `true` if `value` is a symbol, else `false`.
+ * @example
+ *
+ * _.isSymbol(Symbol.iterator);
+ * // => true
+ *
+ * _.isSymbol('abc');
+ * // => false
+ */ function isSymbol(value) {
+    return typeof value == "symbol" || isObjectLike(value) && objectToString.call(value) == symbolTag;
+}
+/**
+ * Converts `value` to a number.
+ *
+ * @static
+ * @memberOf _
+ * @since 4.0.0
+ * @category Lang
+ * @param {*} value The value to process.
+ * @returns {number} Returns the number.
+ * @example
+ *
+ * _.toNumber(3.2);
+ * // => 3.2
+ *
+ * _.toNumber(Number.MIN_VALUE);
+ * // => 5e-324
+ *
+ * _.toNumber(Infinity);
+ * // => Infinity
+ *
+ * _.toNumber('3.2');
+ * // => 3.2
+ */ function toNumber(value) {
+    if (typeof value == "number") return value;
+    if (isSymbol(value)) return NAN;
+    if (isObject(value)) {
+        var other = typeof value.valueOf == "function" ? value.valueOf() : value;
+        value = isObject(other) ? other + "" : other;
+    }
+    if (typeof value != "string") return value === 0 ? value : +value;
+    value = value.replace(reTrim, "");
+    var isBinary = reIsBinary.test(value);
+    return isBinary || reIsOctal.test(value) ? freeParseInt(value.slice(2), isBinary ? 2 : 8) : reIsBadHex.test(value) ? NAN : +value;
+}
+module.exports = debounce;
+
+},{}],"2zkNx":[function(require,module,exports) {
+module.exports = XMLHttpRequest;
+
+},{}],"aFtJx":[function(require,module,exports) {
+"use strict";
+/*
+ * Copyright 2022 SpinalCom - www.spinalcom.com
+ *
+ * This file is part of SpinalCore.
+ *
+ * Please read all of the following terms and conditions
+ * of the Free Software license Agreement ("Agreement")
+ * carefully.
+ *
+ * This Agreement is a legally binding contract between
+ * the Licensee (as defined below) and SpinalCom that
+ * sets forth the terms and conditions that govern your
+ * use of the Program. By installing and/or using the
+ * Program, you agree to abide by all the terms and
+ * conditions stated or referenced herein.
+ *
+ * If you do not agree to abide by these terms and
+ * conditions, do not demonstrate your acceptance and do
+ * not install or use the Program.
+ * You should have received a copy of the license along
+ * with this file. If not, see
+ * <http://resources.spinalcom.com/licenses.pdf>.
+ */ exports.__esModule = true;
+exports.sendXhr = void 0;
+var FileSystem_1 = require("1ce2c9b5ae40fe5");
+function sendXhr(options, command, httpMethod, header, body) {
+    var path = "";
+    var parsedOpt = typeof options === "string" ? new URL(options) : options;
+    var url = parsedOpt.hostname;
+    var port = parsedOpt.port;
+    if (FileSystem_1.FileSystem.CONNECTOR_TYPE === "Node" || FileSystem_1.FileSystem.is_cordova) path = "".concat(parsedOpt.protocol, "//").concat(url).concat(port) ? ":" + port : "" + command;
+    else if (FileSystem_1.FileSystem.CONNECTOR_TYPE === "Browser") path = command;
+    return new Promise(function(resolve, reject) {
+        var xhr_object = FileSystem_1.FileSystem._my_xml_http_request();
+        xhr_object.open(httpMethod, path, true);
+        xhr_object.onreadystatechange = function() {
+            if (this.readyState === 4 && this.status === 200) return resolve(this.responseText);
+            else if (this.readyState === 4) return reject(this.status);
+        };
+        if (header) {
+            for(var key in header)if (Object.prototype.hasOwnProperty.call(header, key)) xhr_object.setRequestHeader(key, header[key]);
+        }
+        xhr_object.send(body);
+    });
+}
+exports.sendXhr = sendXhr;
+
+},{"1ce2c9b5ae40fe5":"Fv1fa"}],"aXT5I":[function(require,module,exports) {
+var Buffer = require("9acb87e006e14e8a").Buffer;
+"use strict";
+/*
+ * Copyright 2022 SpinalCom - www.spinalcom.com
+ *
+ * This file is part of SpinalCore.
+ *
+ * Please read all of the following terms and conditions
+ * of the Free Software license Agreement ("Agreement")
+ * carefully.
+ *
+ * This Agreement is a legally binding contract between
+ * the Licensee (as defined below) and SpinalCom that
+ * sets forth the terms and conditions that govern your
+ * use of the Program. By installing and/or using the
+ * Program, you agree to abide by all the terms and
+ * conditions stated or referenced herein.
+ *
+ * If you do not agree to abide by these terms and
+ * conditions, do not demonstrate your acceptance and do
+ * not install or use the Program.
+ * You should have received a copy of the license along
+ * with this file. If not, see
+ * <http://resources.spinalcom.com/licenses.pdf>.
+ */ var __extends = this && this.__extends || function() {
+    var extendStatics = function(d, b) {
+        extendStatics = Object.setPrototypeOf || ({
+            __proto__: []
+        }) instanceof Array && function(d, b) {
+            d.__proto__ = b;
+        } || function(d, b) {
+            for(var p in b)if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+        };
+        return extendStatics(d, b);
+    };
+    return function(d, b) {
+        if (typeof b !== "function" && b !== null) throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+            this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+}();
+exports.__esModule = true;
+exports.Path = void 0;
+var Model_1 = require("da4ef2d0126e9be3");
+var FileSystem_1 = require("f066dd94f216682d");
+/**
+ * representation of a file to upload
+ * @export
+ * @class Path
+ * @extends {Model}
+ */ var Path = /** @class */ function(_super) {
+    __extends(Path, _super);
+    /**
+     * Creates an instance of Path.
+     * @param {(File | Buffer)} [file]
+     * @memberof Path
+     */ function Path(file, mimeType) {
+        var _this = _super.call(this) || this;
+        _this.file = file;
+        _this.mimeType = mimeType;
+        // @ts-ignore
+        var size = file === null || file === void 0 ? void 0 : file.fileSize;
+        if (file && typeof Buffer !== "undefined" && file instanceof Buffer) size = file.length;
+        size = size || 0;
+        _this.add_attr({
+            remaining: size,
+            to_upload: size
+        });
+        return _this;
+    }
+    /**
+     * @param {{ remaining: Val; to_upload: Val }} info
+     * @memberof Path
+     */ Path.prototype.get_file_info = function(info) {
+        info.remaining = this.remaining;
+        info.to_upload = this.to_upload;
+    };
+    /**
+     * @param {IFsData} out
+     * @memberof Path
+     */ Path.prototype._get_fs_data = function(out) {
+        _super.prototype._get_fs_data.call(this, out);
+        // permit to send the data after the server's answer
+        if (this.file != null && this._server_id & 3) FileSystem_1.FileSystem._files_to_upload[this._server_id] = this;
+    };
+    /**
+     * @static
+     * @type {string}
+     * @memberof Path
+     */ Path._constructorName = "Path";
+    return Path;
+}(Model_1.Model);
+exports.Path = Path;
+
+},{"9acb87e006e14e8a":"fCgem","da4ef2d0126e9be3":"8GVPJ","f066dd94f216682d":"Fv1fa"}],"4dvRr":[function(require,module,exports) {
 "use strict";
 /*
  * Copyright 2022 SpinalCom - www.spinalcom.com
@@ -59724,12 +55909,14 @@ exports.SpinalUserManager = SpinalUserManager;
  * <http://resources.spinalcom.com/licenses.pdf>.
  */ var __createBinding = this && this.__createBinding || (Object.create ? function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    Object.defineProperty(o, k2, {
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) desc = {
         enumerable: true,
         get: function() {
             return m[k];
         }
-    });
+    };
+    Object.defineProperty(o, k2, desc);
 } : function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -60099,7 +56286,849 @@ exports.spinalNewPopup = spinalNewPopup;
 globalThis.spinal_new_popup = spinalNewPopup;
 globalThis.spinalNewPopup = spinalNewPopup;
 
-},{"3e77025a84562de5":"3fYk0"}],"807YT":[function(require,module,exports) {
+},{"3e77025a84562de5":"3fYk0"}],"gI0mP":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let script;
+let initialize = ()=>{
+    script = require("bce146caad8e6906");
+    if (script.__esModule) script = script.default;
+    script.render = require("1acfbd1bbcbf482e").render;
+    script.__cssModules = require("1a028366bf399ff9").default;
+    require("ad251a7c70ee37a9").default(script);
+    script.__scopeId = "data-v-556211";
+    script.__file = "AppGraph.vue";
+};
+initialize();
+exports.default = script;
+
+},{"bce146caad8e6906":"g5EvY","1acfbd1bbcbf482e":"i7Av3","1a028366bf399ff9":"knMve","ad251a7c70ee37a9":"c7jNT","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"g5EvY":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _viewerDag = require("../viewerDag");
+var _viewerDagDefault = parcelHelpers.interopDefault(_viewerDag);
+var _spinal = require("../spinal");
+var _spinalDefault = parcelHelpers.interopDefault(_spinal);
+var _legendVueGraph = require("./legendVueGraph");
+var _legendVueGraphDefault = parcelHelpers.interopDefault(_legendVueGraph);
+exports.default = {
+    name: "AppGraph",
+    data () {
+        return {
+            state: false,
+            legend: false,
+            courseType: "Children Course",
+            searchQuery: "",
+            matchCount: 0,
+            searchPosition: 0
+        };
+    },
+    components: {
+        legendVueGraph: (0, _legendVueGraphDefault.default)
+    },
+    mounted () {
+        const spinal = (0, _spinalDefault.default).getInstance();
+        this.viewer = new (0, _viewerDagDefault.default)(spinal);
+        this.viewer.init(this.$refs.appGraph, this.server_id);
+    },
+    methods: {
+        setCourse () {
+            this.state = !this.state;
+            this.viewer.stateCourse = this.state;
+            if (this.courseType === "Children Course") this.courseType = "Parent Course";
+            else this.courseType = "Children Course";
+        },
+        onSearchInput () {
+            const state = this.viewer.setSearchQuery(this.searchQuery);
+            this.matchCount = state.count;
+            this.searchPosition = state.current;
+        },
+        nextSearchResult () {
+            const state = this.viewer.selectNextSearchMatch();
+            this.matchCount = state.count;
+            this.searchPosition = state.current;
+        },
+        prevSearchResult () {
+            const state = this.viewer.selectPreviousSearchMatch();
+            this.matchCount = state.count;
+            this.searchPosition = state.current;
+        }
+    },
+    props: {
+        server_id: {
+            require: true,
+            type: Number
+        }
+    }
+};
+
+},{"../viewerDag":"aJu6i","../spinal":"2Kgs7","./legendVueGraph":"lWT06","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aJu6i":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+/*
+ * Copyright 2020 SpinalCom - www.spinalcom.com
+ *
+ * This file is part of SpinalCore.
+ *
+ * Please read all of the following terms and conditions
+ * of the Free Software license Agreement ("Agreement")
+ * carefully.
+ *
+ * This Agreement is a legally binding contract between
+ * the Licensee (as defined below) and SpinalCom that
+ * sets forth the terms and conditions that govern your
+ * use of the Program. By installing and/or using the
+ * Program, you agree to abide by all the terms and
+ * conditions stated or referenced herein.
+ *
+ * If you do not agree to abide by these terms and
+ * conditions, do not demonstrate your acceptance and do
+ * not install or use the Program.
+ * You should have received a copy of the license along
+ * with this file. If not, see
+ * <http://resources.spinalcom.com/licenses.pdf>.
+ */ var _spinalModelGraph = require("spinal-model-graph");
+var _spinalJs = require("./spinal.js");
+var _spinalJsDefault = parcelHelpers.interopDefault(_spinalJs);
+var _d3 = require("d3");
+var _anode = require("./nodeModel/ANode");
+var _nodeFactory = require("./nodeModel/NodeFactory");
+var _spinalCoreConnectorjs = require("spinal-core-connectorjs");
+var _eventBusJs = require("./components/event-bus.js");
+var _eventBusJsDefault = parcelHelpers.interopDefault(_eventBusJs);
+var __awaiter = undefined && undefined.__awaiter || function(thisArg, _arguments, P, generator) {
+    function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+            resolve(value);
+        });
+    }
+    return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+            try {
+                step(generator.next(value));
+            } catch (e) {
+                reject(e);
+            }
+        }
+        function rejected(value) {
+            try {
+                step(generator["throw"](value));
+            } catch (e) {
+                reject(e);
+            }
+        }
+        function step(result) {
+            result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+const HORIZONTAL_SPACING = 200;
+const VERTICAL_SPACING = 60;
+class ViewerDag {
+    constructor(spinal){
+        Object.defineProperty(this, "graph", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "width", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "height", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "margin", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: {
+                top: 20,
+                right: 90,
+                bottom: 30,
+                left: 90
+            }
+        });
+        Object.defineProperty(this, "element", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "svg", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "nodeFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "stateCourse", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: false
+        });
+        Object.defineProperty(this, "searchActions", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: null
+        });
+        this.graph = spinal;
+        this.nodeFactory = new (0, _nodeFactory.NodeFactory)();
+    }
+    resize() {
+        const element = this.element;
+        const width1 = element.clientWidth - this.margin.left - this.margin.right;
+        const height1 = element.clientHeight - this.margin.top - this.margin.bottom;
+        if (width1 !== this.width || height1 !== this.height) {
+            this.width = width1;
+            this.height = height1;
+            this.draw();
+        }
+    }
+    draw() {
+        if (typeof this.svg !== "undefined") this.svg.attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom);
+    }
+    setSearchQuery(query) {
+        if (!this.searchActions) return {
+            count: 0,
+            current: 0
+        };
+        return this.searchActions.updateSearch(query);
+    }
+    selectNextSearchMatch() {
+        if (!this.searchActions) return {
+            count: 0,
+            current: 0
+        };
+        return this.searchActions.moveSearch(1);
+    }
+    selectPreviousSearchMatch() {
+        if (!this.searchActions) return {
+            count: 0,
+            current: 0
+        };
+        return this.searchActions.moveSearch(-1);
+    }
+    init(element, server_id) {
+        return __awaiter(this, void 0, void 0, function*() {
+            this.element = element;
+            const data = yield this.graph.load(server_id);
+            this.width = element.clientWidth - this.margin.left - this.margin.right;
+            this.height = element.clientHeight - this.margin.top - this.margin.bottom;
+            const self = this;
+            let i = 0;
+            let node, link, edgepath;
+            let selectedNode = null;
+            let searchQuery = "";
+            let searchMatches = [];
+            let searchMatchIndex = -1;
+            let currentTransform = _d3.zoomIdentity;
+            const SELECTION_COLOR = "#ff8c00";
+            const root = this.nodeFactory.createNode(data);
+            root.x = this.width / 2;
+            root.y = this.height / 2;
+            const zoomBehavior = _d3.zoom().scaleExtent([
+                0.01,
+                8
+            ]).on("zoom", zoomed);
+            this.svg = _d3.select(element).append("svg").call(zoomBehavior).on("dblclick.zoom", null).attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom);
+            const defs = this.svg.append("defs");
+            for (const [id, fill] of [
+                [
+                    "arrowhead",
+                    "#f8f8f8"
+                ],
+                [
+                    "arrowhead-selected",
+                    "#ff8c00"
+                ]
+            ])defs.append("svg:marker").attr("id", id).attr("viewBox", "-0 -5 10 10").attr("refX", 16).attr("refY", 0).attr("orient", "auto").attr("markerWidth", 8).attr("markerHeight", 8).attr("xoverflow", "visible").append("svg:path").attr("d", "M 0,-5 L 10 ,0 L 0,5").attr("fill", fill).style("stroke", "none");
+            const svg = this.svg.append("g").attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+            const mylink = svg.append("g");
+            const myedgepath = svg.append("g");
+            const getSearchableName = (d)=>{
+                const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                if (realNode instanceof (0, _spinalModelGraph.SpinalGraph)) return "spinalgraph";
+                if (d.data.name === "undefined" || d.data.name === undefined) return "undefined name";
+                return String(d.data.name).toLowerCase();
+            };
+            const getSearchState = ()=>({
+                    count: searchMatches.length,
+                    current: searchMatches.length > 0 && searchMatchIndex >= 0 ? searchMatchIndex + 1 : 0
+                });
+            const centerOnNode = (d)=>{
+                if (!d || d.x === undefined || d.y === undefined) return;
+                const scale = currentTransform && currentTransform.k ? currentTransform.k : 1;
+                const tx = this.width / 2 - d.x * scale;
+                const ty = this.height / 2 - d.y * scale;
+                const transform = _d3.zoomIdentity.translate(tx, ty).scale(scale);
+                this.svg.transition().duration(250).call(zoomBehavior.transform, transform);
+            };
+            const syncSearchMatches = (nodes)=>{
+                if (!searchQuery) {
+                    searchMatches = [];
+                    searchMatchIndex = -1;
+                    return;
+                }
+                searchMatches = nodes.filter((n)=>getSearchableName(n).includes(searchQuery));
+                if (searchMatches.length === 0) {
+                    searchMatchIndex = -1;
+                    return;
+                }
+                const indexFromCurrent = selectedNode ? searchMatches.indexOf(selectedNode) : -1;
+                if (indexFromCurrent !== -1) searchMatchIndex = indexFromCurrent;
+                else if (searchMatchIndex < 0 || searchMatchIndex >= searchMatches.length) searchMatchIndex = 0;
+            };
+            const selectCurrentSearchMatch = (centerSelection)=>{
+                if (searchMatches.length === 0 || searchMatchIndex < 0) return getSearchState();
+                selectedNode = searchMatches[searchMatchIndex];
+                applySelection();
+                if (centerSelection) centerOnNode(selectedNode);
+                return getSearchState();
+            };
+            const updateSearch = (query)=>{
+                searchQuery = (query || "").trim().toLowerCase();
+                const nodes = flatten(root);
+                syncSearchMatches(nodes);
+                if (searchMatches.length > 0) return selectCurrentSearchMatch(true);
+                applySelection();
+                return getSearchState();
+            };
+            const moveSearch = (direction)=>{
+                if (searchMatches.length === 0) return getSearchState();
+                searchMatchIndex = (searchMatchIndex + direction + searchMatches.length) % searchMatches.length;
+                return selectCurrentSearchMatch(true);
+            };
+            this.searchActions = {
+                updateSearch,
+                moveSearch
+            };
+            // Position new nodes relative to an anchor, avoiding column overlap
+            const positionNewNodes = (anchor, newNodes, direction)=>{
+                var _a, _b;
+                const ax = (_a = anchor.x) !== null && _a !== void 0 ? _a : this.width / 2;
+                const ay = (_b = anchor.y) !== null && _b !== void 0 ? _b : this.height / 2;
+                const targetX = ax + (direction === "right" ? HORIZONTAL_SPACING : -HORIZONTAL_SPACING);
+                const count = newNodes.length;
+                const totalHeight = (count - 1) * VERTICAL_SPACING;
+                const colTolerance = HORIZONTAL_SPACING * 0.4;
+                const occupiedYs = [];
+                for (const n of this.nodeFactory.nodeMap.values())if (n.x !== undefined && n.y !== undefined && Math.abs(n.x - targetX) < colTolerance && !newNodes.includes(n)) occupiedYs.push(n.y);
+                occupiedYs.sort((a, b)=>a - b);
+                let startY = ay - totalHeight / 2;
+                if (occupiedYs.length > 0) {
+                    const proposedYs = Array.from({
+                        length: count
+                    }, (_, idx)=>startY + idx * VERTICAL_SPACING);
+                    const hasOverlap = proposedYs.some((py)=>occupiedYs.some((oy)=>Math.abs(oy - py) < VERTICAL_SPACING * 0.9));
+                    if (hasOverlap) startY = occupiedYs[occupiedYs.length - 1] + VERTICAL_SPACING;
+                }
+                newNodes.forEach((n, idx)=>{
+                    n.x = targetX;
+                    n.y = startY + idx * VERTICAL_SPACING;
+                });
+            };
+            const ChildrenCourse = (d)=>__awaiter(this, void 0, void 0, function*() {
+                    selectedNode = d;
+                    const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                    if ((0, _anode.ANode).collapseOrOpen(d)) {
+                        yield (0, _anode.ANode).updateChildren(d, this.nodeFactory);
+                        const newChildren = (d.children || []).filter((c)=>c.x === undefined);
+                        positionNewNodes(d, newChildren, "right");
+                    }
+                    (0, _eventBusJsDefault.default).$emit("realNode", realNode);
+                    (0, _eventBusJsDefault.default).$emit("realNodeElement", realNode);
+                    update();
+                });
+            const parentCourse = (d)=>__awaiter(this, void 0, void 0, function*() {
+                    selectedNode = d;
+                    const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                    if ((0, _anode.ANode).collapseOrOpenParent(d)) {
+                        yield (0, _anode.ANode).updateParent(d, this.nodeFactory);
+                        const newParents = (d.parent || []).filter((p)=>p.x === undefined);
+                        positionNewNodes(d, newParents, "left");
+                    }
+                    (0, _eventBusJsDefault.default).$emit("realNode", realNode);
+                    (0, _eventBusJsDefault.default).$emit("realNodeElement", realNode);
+                    update();
+                });
+            const newpage = (d)=>__awaiter(this, void 0, void 0, function*() {
+                    if (d.data.category === "node") {
+                        const server_id = d.data._serverId;
+                        (0, _eventBusJsDefault.default).$emit("server_id", server_id);
+                    }
+                    update();
+                });
+            const openNodeInDbInspector = (d)=>__awaiter(this, void 0, void 0, function*() {
+                    _d3.event.preventDefault();
+                    selectedNode = d;
+                    const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                    (0, _eventBusJsDefault.default).$emit("realNode", realNode);
+                    (0, _eventBusJsDefault.default).$emit("realNodeElement", realNode);
+                    update();
+                    updateName(d);
+                });
+            const click = (d)=>__awaiter(this, void 0, void 0, function*() {
+                    if (this.stateCourse === false) ChildrenCourse(d);
+                    else parentCourse(d);
+                    updateName(d);
+                });
+            function updateName(d) {
+                var _a, _b, _c;
+                const realModel = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                if (!realModel) return;
+                let newName = "";
+                if (d.data.category === "node") {
+                    const spinalNode = realModel;
+                    newName = (_b = (_a = spinalNode.info) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.get();
+                } else {
+                    const relation = realModel;
+                    newName = ((_c = relation.name) === null || _c === void 0 ? void 0 : _c.get()) + "{" + relation.getNbChildren() + "}";
+                }
+                if (newName && newName !== d.data.name) {
+                    d.data.name = newName;
+                    node.filter((nodeData)=>nodeData === d).select("text").text(newName);
+                }
+            }
+            function update() {
+                const nodes = flatten(root);
+                const links = createLinks(nodes);
+                syncSearchMatches(nodes);
+                link = mylink.selectAll(".link").data(links, function(d) {
+                    return d.target.id;
+                });
+                link.exit().transition().duration(200).style("opacity", 0).remove();
+                const linkEnter = link.enter().append("line").attr("class", "link").attr("marker-end", "url(#arrowhead)").style("stroke", "#f8f8f8").style("opacity", 0).style("stroke-width", 2);
+                linkEnter.transition().duration(200).style("opacity", "1");
+                link = linkEnter.merge(link);
+                edgepath = myedgepath.selectAll(".edgepath").data(links).enter().append("path").attr("class", "edgepath").attr("fill-opacity", 0).attr("stroke-opacity", 0).attr("id", function(_d, idx) {
+                    return "edgepath" + idx;
+                }).style("pointer-events", "none");
+                edgepath = edgepath.merge(edgepath);
+                node = svg.selectAll(".node").data(nodes, function(d) {
+                    return d.id.toString();
+                });
+                node.exit().transition().duration(200).style("opacity", 0).remove();
+                const nodeEnter = node.enter().append("g").attr("class", "node").attr("id", "test").attr("stroke-width", 1.2).style("fill", color).style("opacity", 0).on("click", click).on("contextmenu", openNodeInDbInspector).on("auxclick", function(d) {
+                    const evnt = window.event;
+                    if (evnt.which === 2) newpage(d);
+                });
+                nodeEnter.transition().duration(200).style("opacity", 1);
+                nodeEnter.append(function(d) {
+                    if (d.data.category === "node") {
+                        const doc = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                        doc.setAttribute("r", "10");
+                        doc.setAttribute("stroke", "#f8f8f8");
+                        doc.style.textAnchor = d.children ? "end" : "start";
+                        return doc;
+                    }
+                    const svg1 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                    svg1.setAttribute("width", "20");
+                    svg1.setAttribute("height", "20");
+                    svg1.setAttribute("stroke", "#f8f8f8");
+                    svg1.setAttribute("transform", `translate(-10, -10)`);
+                    svg1.style.textAnchor = d.children ? "end" : "start";
+                    return svg1;
+                });
+                nodeEnter.append("text").text(function(d) {
+                    const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                    if (realNode instanceof (0, _spinalModelGraph.SpinalGraph)) d.data.name = "SpinalGraph";
+                    else if (d.data.name === "undefined" || d.data.name === undefined) d.data.name = "undefined name";
+                    if (d.data.category === "node") return d.data.name;
+                    else return d.data.name + "{" + realNode.getNbChildren() + "}";
+                }).attr("transform", `translate(-17,-15)`).style("fill", "#fff").style("font-family", "sans-serif").attr("stroke", "#000").attr("stroke-width", "3px").attr("stroke-linejoin", "round").style("paint-order", "stroke fill").style("font-style", function(d) {
+                    if (d.data.name === "undefined") return "italic";
+                    return "normal";
+                });
+                node = nodeEnter.merge(node);
+                render();
+                applySelection();
+            }
+            const style = {
+                nodefill: {
+                    empty: "#fff",
+                    enterpoint: "#F3FF00",
+                    ptrlst: "#F40911",
+                    lstptr: "#E47579",
+                    lstptrLst: "#f1ba02",
+                    ref: "#09bf3b",
+                    objClosed: "#320ff2"
+                }
+            };
+            function color(d) {
+                if (d.data.hasChildren === false) return style.nodefill.empty;
+                if (d.data._serverId === root.data._serverId) return style.nodefill.enterpoint;
+                if (d.data.category === "node") return style.nodefill.objClosed;
+                if (d.data.category === "relation") {
+                    if (d.data.type === "PtrLst") return style.nodefill.ptrlst;
+                    else if (d.data.type === "LstPtr") return style.nodefill.lstptr;
+                    else if (d.data.type === "LstPtrLst") return style.nodefill.lstptrLst;
+                    else if (d.data.type === "Ref") return style.nodefill.ref;
+                }
+            }
+            function applySelection() {
+                if (!node || !link) return;
+                node.selectAll("circle, rect").attr("stroke", "#f8f8f8").attr("stroke-width", 1.2);
+                node.selectAll("text").style("fill", "#fff").attr("stroke", "#000").attr("stroke-width", "3px");
+                link.style("stroke", "#f8f8f8").style("opacity", "1").style("stroke-width", 2).attr("marker-end", "url(#arrowhead)");
+                if (!selectedNode) return;
+                node.filter((d)=>d === selectedNode).selectAll("circle, rect").attr("stroke", SELECTION_COLOR).attr("stroke-width", 3);
+                node.filter((d)=>d === selectedNode).selectAll("text").style("fill", SELECTION_COLOR).attr("stroke", "#000").attr("stroke-width", "3px");
+                node.filter((d)=>d === selectedNode).raise();
+                link.filter((d)=>d.source === selectedNode || d.target === selectedNode).style("stroke", SELECTION_COLOR).style("opacity", "1").style("stroke-width", 2).attr("marker-end", "url(#arrowhead-selected)");
+            }
+            function render() {
+                if (!link || !node || !edgepath) return;
+                link.attr("x1", (d)=>d.source.x).attr("y1", (d)=>d.source.y).attr("x2", (d)=>d.target.x).attr("y2", (d)=>d.target.y);
+                node.attr("transform", (d)=>`translate(${d.x}, ${d.y})`);
+                edgepath.attr("d", (d)=>`M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`);
+            }
+            function flatten(root) {
+                const nodes = new Set();
+                function recurse(n) {
+                    if (nodes.has(n)) return;
+                    if (!n.id) n.id = ++i;
+                    else ++i;
+                    nodes.add(n);
+                    if (n.children) n.children.forEach(recurse);
+                    if (n.parent) n.parent.forEach(recurse);
+                }
+                recurse(root);
+                return Array.from(nodes);
+            }
+            function chekLink(source, target, links) {
+                for (const l of links){
+                    if (source.data === l.source.data && target.data === l.target.data) return true;
+                }
+                return false;
+            }
+            function createLinks(nodes) {
+                const links = [];
+                let id = 0;
+                for (const n of nodes){
+                    if (Array.isArray(n.parent)) {
+                        for (const parent of n.parent)if (!chekLink(parent, n, links)) links.push({
+                            source: parent,
+                            target: n,
+                            index: id++
+                        });
+                    }
+                    if (Array.isArray(n.children)) {
+                        for (const child of n.children)if (!chekLink(n, child, links)) links.push({
+                            source: n,
+                            target: child,
+                            index: id++
+                        });
+                    }
+                }
+                return links;
+            }
+            function zoomed() {
+                currentTransform = _d3.event.transform;
+                svg.attr("transform", _d3.event.transform);
+            }
+            update();
+        });
+    }
+}
+exports.default = ViewerDag;
+
+},{"spinal-model-graph":"fkEXw","./spinal.js":"2Kgs7","d3":"iUtZE","./nodeModel/ANode":"JtlvT","./nodeModel/NodeFactory":"kQpGh","spinal-core-connectorjs":"2uyD7","./components/event-bus.js":"dOIGs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fkEXw":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.SpinalSet = exports.SpinalNodePointer = exports.SpinalMap = exports.SpinalRelationRef = exports.SpinalRelationPtrLst = exports.SpinalRelationLstPtr = exports.SPINAL_RELATION_TYPE = exports.SPINAL_RELATION_PTR_LST_TYPE = exports.SPINAL_RELATION_LST_PTR_TYPE = exports.SpinalRelationFactory = exports.SpinalNode = exports.DEFAULT_FIND_PREDICATE = exports.SpinalGraph = exports.SpinalContext = exports.REMOVE_CHILD_EVENT = exports.REMOVE_CHILDREN_EVENT = exports.ADD_CHILD_IN_CONTEXT_EVENT = exports.ADD_CHILD_EVENT = void 0;
+/*
+ * Copyright 2018 SpinalCom - www.spinalcom.com
+ *
+ * This file is part of SpinalCore.
+ *
+ * Please read all of the following terms and conditions
+ * of the Free Software license Agreement ("Agreement")
+ * carefully.
+ *
+ * This Agreement is a legally binding contract between
+ * the Licensee (as defined below) and SpinalCom that
+ * sets forth the terms and conditions that govern your
+ * use of the Program. By installing and/or using the
+ * Program, you agree to abide by all the terms and
+ * conditions stated or referenced herein.
+ *
+ * If you do not agree to abide by these terms and
+ * conditions, do not demonstrate your acceptance and do
+ * not install or use the Program.
+ * You should have received a copy of the license along
+ * with this file. If not, see
+ * <http://resources.spinalcom.com/licenses.pdf>.
+ */ var constants_1 = require("81a1513369954693");
+Object.defineProperty(exports, "ADD_CHILD_EVENT", {
+    enumerable: true,
+    get: function() {
+        return constants_1.ADD_CHILD_EVENT;
+    }
+});
+Object.defineProperty(exports, "ADD_CHILD_IN_CONTEXT_EVENT", {
+    enumerable: true,
+    get: function() {
+        return constants_1.ADD_CHILD_IN_CONTEXT_EVENT;
+    }
+});
+Object.defineProperty(exports, "REMOVE_CHILDREN_EVENT", {
+    enumerable: true,
+    get: function() {
+        return constants_1.REMOVE_CHILDREN_EVENT;
+    }
+});
+Object.defineProperty(exports, "REMOVE_CHILD_EVENT", {
+    enumerable: true,
+    get: function() {
+        return constants_1.REMOVE_CHILD_EVENT;
+    }
+});
+var SpinalContext_1 = require("7b5f58dd47d24366");
+Object.defineProperty(exports, "SpinalContext", {
+    enumerable: true,
+    get: function() {
+        return SpinalContext_1.SpinalContext;
+    }
+});
+var SpinalGraph_1 = require("72215d756520a9cf");
+Object.defineProperty(exports, "SpinalGraph", {
+    enumerable: true,
+    get: function() {
+        return SpinalGraph_1.SpinalGraph;
+    }
+});
+var SpinalNode_1 = require("73bd51e3e0fb372b");
+Object.defineProperty(exports, "DEFAULT_FIND_PREDICATE", {
+    enumerable: true,
+    get: function() {
+        return SpinalNode_1.DEFAULT_FIND_PREDICATE;
+    }
+});
+Object.defineProperty(exports, "SpinalNode", {
+    enumerable: true,
+    get: function() {
+        return SpinalNode_1.SpinalNode;
+    }
+});
+var SpinalRelationFactory_1 = require("24e6d89734dfb402");
+Object.defineProperty(exports, "SpinalRelationFactory", {
+    enumerable: true,
+    get: function() {
+        return SpinalRelationFactory_1.SpinalRelationFactory;
+    }
+});
+Object.defineProperty(exports, "SPINAL_RELATION_LST_PTR_TYPE", {
+    enumerable: true,
+    get: function() {
+        return SpinalRelationFactory_1.SPINAL_RELATION_LST_PTR_TYPE;
+    }
+});
+Object.defineProperty(exports, "SPINAL_RELATION_PTR_LST_TYPE", {
+    enumerable: true,
+    get: function() {
+        return SpinalRelationFactory_1.SPINAL_RELATION_PTR_LST_TYPE;
+    }
+});
+Object.defineProperty(exports, "SPINAL_RELATION_TYPE", {
+    enumerable: true,
+    get: function() {
+        return SpinalRelationFactory_1.SPINAL_RELATION_TYPE;
+    }
+});
+var SpinalRelationLstPtr_1 = require("58811fb239ed5ab");
+Object.defineProperty(exports, "SpinalRelationLstPtr", {
+    enumerable: true,
+    get: function() {
+        return SpinalRelationLstPtr_1.SpinalRelationLstPtr;
+    }
+});
+var SpinalRelationPtrLst_1 = require("f7308e2c3aa6fbe3");
+Object.defineProperty(exports, "SpinalRelationPtrLst", {
+    enumerable: true,
+    get: function() {
+        return SpinalRelationPtrLst_1.SpinalRelationPtrLst;
+    }
+});
+var SpinalRelationRef_1 = require("a69d7c18b99038af");
+Object.defineProperty(exports, "SpinalRelationRef", {
+    enumerable: true,
+    get: function() {
+        return SpinalRelationRef_1.SpinalRelationRef;
+    }
+});
+var SpinalMap_1 = require("ddd96daa908ae9eb");
+Object.defineProperty(exports, "SpinalMap", {
+    enumerable: true,
+    get: function() {
+        return SpinalMap_1.SpinalMap;
+    }
+});
+var SpinalNodePointer_1 = require("555cd87c950f612f");
+Object.defineProperty(exports, "SpinalNodePointer", {
+    enumerable: true,
+    get: function() {
+        return SpinalNodePointer_1.SpinalNodePointer;
+    }
+});
+var SpinalSet_1 = require("d5ca9496575fa30e");
+Object.defineProperty(exports, "SpinalSet", {
+    enumerable: true,
+    get: function() {
+        return SpinalSet_1.SpinalSet;
+    }
+});
+
+},{"81a1513369954693":"1xL0x","7b5f58dd47d24366":"hYNJZ","72215d756520a9cf":"2cWMv","73bd51e3e0fb372b":"9OpaE","24e6d89734dfb402":"807YT","58811fb239ed5ab":"khXQw","f7308e2c3aa6fbe3":"3IJc8","a69d7c18b99038af":"5Kui1","ddd96daa908ae9eb":"2UckQ","555cd87c950f612f":"ku59G","d5ca9496575fa30e":"3G46t"}],"1xL0x":[function(require,module,exports) {
+"use strict";
+/*
+ * Copyright 2021 SpinalCom - www.spinalcom.com
+ *
+ * This file is part of SpinalCore.
+ *
+ * Please read all of the following terms and conditions
+ * of the Free Software license Agreement ("Agreement")
+ * carefully.
+ *
+ * This Agreement is a legally binding contract between
+ * the Licensee (as defined below) and SpinalCom that
+ * sets forth the terms and conditions that govern your
+ * use of the Program. By installing and/or using the
+ * Program, you agree to abide by all the terms and
+ * conditions stated or referenced herein.
+ *
+ * If you do not agree to abide by these terms and
+ * conditions, do not demonstrate your acceptance and do
+ * not install or use the Program.
+ * You should have received a copy of the license along
+ * with this file. If not, see
+ * <http://resources.spinalcom.com/licenses.pdf>.
+ */ Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.REMOVE_CHILDREN_EVENT = exports.REMOVE_CHILD_EVENT = exports.ADD_CHILD_IN_CONTEXT_EVENT = exports.ADD_CHILD_EVENT = exports.HAS_CONTEXT_RELATION_NAME = exports.RELATION_TYPE_LIST = exports.SPINAL_RELATION_PTR_LST_TYPE = exports.SPINAL_RELATION_LST_PTR_TYPE = exports.SPINAL_RELATION_TYPE = void 0;
+exports.SPINAL_RELATION_TYPE = "Ref";
+exports.SPINAL_RELATION_LST_PTR_TYPE = "LstPtr";
+exports.SPINAL_RELATION_PTR_LST_TYPE = "PtrLst";
+exports.RELATION_TYPE_LIST = [
+    exports.SPINAL_RELATION_TYPE,
+    exports.SPINAL_RELATION_LST_PTR_TYPE,
+    exports.SPINAL_RELATION_PTR_LST_TYPE
+];
+exports.HAS_CONTEXT_RELATION_NAME = "hasContext";
+// EVENT RELATION
+exports.ADD_CHILD_EVENT = "addChild";
+exports.ADD_CHILD_IN_CONTEXT_EVENT = "addChildInContext";
+exports.REMOVE_CHILD_EVENT = "removeChild";
+exports.REMOVE_CHILDREN_EVENT = "removeChildren";
+
+},{}],"hYNJZ":[function(require,module,exports) {
+"use strict";
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.SpinalContext = void 0;
+/*
+ * Copyright 2018 SpinalCom - www.spinalcom.com
+ *
+ * This file is part of SpinalCore.
+ *
+ * Please read all of the following terms and conditions
+ * of the Free Software license Agreement ("Agreement")
+ * carefully.
+ *
+ * This Agreement is a legally binding contract between
+ * the Licensee (as defined below) and SpinalCom that
+ * sets forth the terms and conditions that govern your
+ * use of the Program. By installing and/or using the
+ * Program, you agree to abide by all the terms and
+ * conditions stated or referenced herein.
+ *
+ * If you do not agree to abide by these terms and
+ * conditions, do not demonstrate your acceptance and do
+ * not install or use the Program.
+ * You should have received a copy of the license along
+ * with this file. If not, see
+ * <http://resources.spinalcom.com/licenses.pdf>.
+ */ const spinal_core_connectorjs_1 = require("a5601b3dd29ca2d9");
+const SpinalRelationFactory_1 = require("160a526f3655db02");
+const Utilities_1 = require("86fb04af319ea43f");
+const SpinalNode_1 = require("afcc7089e763b94b");
+/**
+ * A SpinalContext is the statring node of a part of the graph.
+ * @class SpinalContext
+ * @extends {SpinalNode<T>}
+ * @template T
+ */ class SpinalContext extends SpinalNode_1.SpinalNode {
+    /**
+     * Constructor for the SpinalContext class.
+     * @param {String} [name="undefined"] Name of the context
+     * @param {String} [type="SpinalContext"] Type of the context, usually unused
+     * @param {SpinalNode | Model} [element] Element of the context
+     * @throws {TypeError} If the element is not a Model
+     */ constructor(name = "undefined", type = "SpinalContext", element){
+        super(name, type, element);
+        if (spinal_core_connectorjs_1.FileSystem._sig_server === false) return;
+        this.info.id.set((0, Utilities_1.guid)());
+    }
+    /**
+     * Adds a child with a SpinalRelationLstPtrType.
+     * @override
+     * @param {SpinalNode | Model} child Node to add as child
+     * @param {String} relationName Name of the relation
+     * @param {String} [_relationType=SPINAL_RELATION_PTR_LST_TYPE]
+     * This parameter is here only to properly override the parent method
+     * @returns {Promise<SpinalNode>} The child node in a promise
+     * @throws {TypeError} If the child is not a model
+     * @throws {TypeError} If the relation name is not a string
+     */ addChild(child, relationName, _relationType = SpinalRelationFactory_1.SPINAL_RELATION_PTR_LST_TYPE) {
+        return super.addChild(child, relationName, SpinalRelationFactory_1.SPINAL_RELATION_PTR_LST_TYPE);
+    }
+    /**
+     * Adds a child with a SpinalRelationLstPtrType and notices
+     * the context if a new relation was created.
+     * @override
+     * @param {SpinalNode | Model} child Node to add as child
+     * @param {String} relationName Name of the relation
+     * @param {String} [relationType=SPINAL_RELATION_PTR_LST_TYPE]
+     * This parameter is here only to properly override the parent method
+     * @param {SpinalContext} context Context to update, usually unused
+     * @returns {Promise<SpinalNode>} The child node in a promise
+     */ addChildInContext(child, relationName, _relationType = SpinalRelationFactory_1.SPINAL_RELATION_PTR_LST_TYPE, context = this) {
+        return super.addChildInContext(child, relationName, SpinalRelationFactory_1.SPINAL_RELATION_PTR_LST_TYPE, context);
+    }
+    /**
+     * Return the children of the node that are registered in the context
+     * @override
+     * @param {SpinalContext} [context=this] Context to use for the search, this by default
+     * @returns {Promise<Array<SpinalNode>>} The children that were found
+     */ getChildrenInContext(context = this) {
+        return super.getChildrenInContext(context);
+    }
+}
+exports.SpinalContext = SpinalContext;
+spinal_core_connectorjs_1.spinalCore.register_models([
+    SpinalContext
+]);
+exports.default = SpinalContext;
+
+},{"a5601b3dd29ca2d9":"2uyD7","160a526f3655db02":"807YT","86fb04af319ea43f":"laUA9","afcc7089e763b94b":"9OpaE"}],"807YT":[function(require,module,exports) {
 "use strict";
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -60843,14 +57872,21 @@ exports.DEFAULT_FIND_PREDICATE = DEFAULT_FIND_PREDICATE;
     /**
      * Return the children of the node that are registered in the context
      * @param {SpinalContext} context Context to use for the search
+     * @param {(string | RegExp | (string | RegExp)[])} [relationNames=[new RegExp('.*')]] Relation names to filter the children. If empty or undefined all the relations will be used
      * @returns {Promise<SpinalNode[]>} The children that were found
      * @throws {TypeError} If the context is not a SpinalContext
-     */ getChildrenInContext(context) {
+     */ getChildrenInContext(context, relationNames = [
+        new RegExp(".*")
+    ]) {
         return __awaiter(this, void 0, void 0, function*() {
             if (!(context instanceof SpinalContext_1.SpinalContext)) throw TypeError("context must be a SpinalContext");
+            if (Array.isArray(relationNames) && relationNames.length === 0) relationNames = [
+                new RegExp(".*")
+            ];
+            const regex = (0, Utilities_1.toRegex)(relationNames);
             const promises = [];
             for (const [, relationMap] of this.children){
-                for (const [, relation] of relationMap)if (relation.belongsToContext(context)) promises.push(relation.getChildrenInContext(context));
+                for (const [name, relation] of relationMap)if (relation.belongsToContext(context) && regex.test(name)) promises.push(relation.getChildrenInContext(context));
             }
             const childrenLst = yield Promise.all(promises);
             const res = [];
@@ -60876,10 +57912,20 @@ exports.DEFAULT_FIND_PREDICATE = DEFAULT_FIND_PREDICATE;
             return res.filter((e)=>e !== undefined);
         });
     }
-    getParentsInContext(context) {
+    getParentsInContext(context, relationNames = [
+        new RegExp(".*")
+    ]) {
         return __awaiter(this, void 0, void 0, function*() {
+            if (!(context instanceof SpinalContext_1.SpinalContext)) throw TypeError("context must be a SpinalContext");
+            if (Array.isArray(relationNames) && relationNames.length === 0) relationNames = [
+                new RegExp(".*")
+            ];
+            const regex = (0, Utilities_1.toRegex)(relationNames);
             const prom = [];
-            for (const [, nodeRelationLst] of this.parents)for(let idx = 0; idx < nodeRelationLst.length; idx++)prom.push((0, Utilities_1.loadParentRelation)(nodeRelationLst[idx], context));
+            for (const [name, nodeRelationLst] of this.parents){
+                if (!regex.test(name)) continue;
+                for(let idx = 0; idx < nodeRelationLst.length; idx++)prom.push((0, Utilities_1.loadParentRelation)(nodeRelationLst[idx], context));
+            }
             const res = yield Promise.all(prom);
             return res.filter((e)=>e !== undefined);
         });
@@ -61174,6 +58220,41 @@ exports.DEFAULT_FIND_PREDICATE = DEFAULT_FIND_PREDICATE;
         });
     }
     /**
+     * Recursively finds the first child node in the context for which the predicate is true.
+     * @param {SpinalContext} context Context to use for the search
+     * @param {findPredicate} predicate Function returning true if the node needs to be returned
+     * @returns {Promise<SpinalNode | undefined>} The node that was found or undefined if no node was found
+     * @throws {TypeError} If context is not a SpinalContext
+     * @throws {TypeError} If the predicate is not a function
+     */ findOneInContext(context, predicate = exports.DEFAULT_FIND_PREDICATE) {
+        var e_5, _a;
+        return __awaiter(this, void 0, void 0, function*() {
+            if (typeof predicate !== "function") throw new Error("The predicate function must be a function");
+            let stop = false;
+            function stopFct() {
+                stop = true;
+            }
+            try {
+                for(var _b = __asyncValues(this.visitChildrenInContext(context)), _c; _c = yield _b.next(), !_c.done;){
+                    const node = _c.value;
+                    if (predicate(node, stopFct)) return node;
+                    if (stop) break;
+                }
+            } catch (e_5_1) {
+                e_5 = {
+                    error: e_5_1
+                };
+            } finally{
+                try {
+                    if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
+                } finally{
+                    if (e_5) throw e_5.error;
+                }
+            }
+            return undefined;
+        });
+    }
+    /**
      * Recursively finds all the children nodes in the context for which the predicate is true..
      * @param {SpinalContext} context Context to use for the search
      * @param {string} nodeType Type of node to find in children
@@ -61310,7 +58391,9 @@ exports.DEFAULT_FIND_PREDICATE = DEFAULT_FIND_PREDICATE;
      * @param {SpinalContext<any>} context
      * @return {*}  {AsyncGenerator<SpinalNode<any>, void, void>}
      * @memberof SpinalNode
-     */ visitParentsInContext(context) {
+     */ visitParentsInContext(context, relationNames = [
+        new RegExp(".*")
+    ]) {
         return __asyncGenerator(this, arguments, function* visitParentsInContext_1() {
             const seen = new Set([
                 this
@@ -61326,7 +58409,7 @@ exports.DEFAULT_FIND_PREDICATE = DEFAULT_FIND_PREDICATE;
                 nextGen = [];
                 for (const node of currentGen){
                     yield yield __await(node);
-                    promises.push(node.getParentsInContext(context));
+                    promises.push(node.getParentsInContext(context, relationNames));
                 }
                 // eslint-disable-next-line no-await-in-loop
                 const childrenArrays = yield __await(Promise.all(promises));
@@ -61375,7 +58458,9 @@ exports.DEFAULT_FIND_PREDICATE = DEFAULT_FIND_PREDICATE;
      * @param {SpinalContext<any>} context
      * @return {*}  {AsyncGenerator<SpinalNode<any>, void, void>}
      * @memberof SpinalNode
-     */ visitChildrenInContext(context) {
+     */ visitChildrenInContext(context, relationNames = [
+        new RegExp(".*")
+    ]) {
         return __asyncGenerator(this, arguments, function* visitChildrenInContext_1() {
             const seen = new Set([
                 this
@@ -61391,7 +58476,7 @@ exports.DEFAULT_FIND_PREDICATE = DEFAULT_FIND_PREDICATE;
                 nextGen = [];
                 for (const node of currentGen){
                     yield yield __await(node);
-                    promises.push(()=>node.getChildrenInContext(context));
+                    promises.push(()=>node.getChildrenInContext(context, relationNames));
                 }
                 const childrenArrays = yield __await((0, Utilities_1.consumeBatch)(promises, 30));
                 for (const children of childrenArrays){
@@ -62489,7 +59574,7 @@ exports.default = BaseSpinalRelation;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.consumeBatch = exports.loadParentRelation = exports.guid = void 0;
+exports.toRegex = exports.consumeBatch = exports.loadParentRelation = exports.guid = void 0;
 /**
  * Generates a random number and returns in a string.
  * @returns {String} Random number in a string
@@ -62538,7 +59623,25 @@ function consumeBatch(promises, batchSize = 10) {
         return result;
     });
 }
-exports.consumeBatch = consumeBatch; // export function sendEventFunc(eventName: string, parentNode: SpinalNode<any>, childNode: SpinalNode<any>, contextNode: SpinalContext<any>) {
+exports.consumeBatch = consumeBatch;
+/**
+ * Converts a string, regex or an array of strings/regex to a single regex ( big Regex joining array elements with OR ).
+ *
+ * @param {(string | RegExp | (string | RegExp)[])} relationNames
+ * @return {*}  {RegExp}
+ */ function toRegex(relationNames) {
+    const arr = Array.isArray(relationNames) ? relationNames : [
+        relationNames
+    ];
+    const sources = arr.map((item)=>{
+        if (item instanceof RegExp) return item.source;
+        // Escape regex special characters in strings
+        return item.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    });
+    // Combine into one big regex
+    return new RegExp(`^(?:${sources.join("|")})$`);
+}
+exports.toRegex = toRegex; // export function sendEventFunc(eventName: string, parentNode: SpinalNode<any>, childNode: SpinalNode<any>, contextNode: SpinalContext<any>) {
  //   spinalEventEmitter.emit(eventName,);
  // }
 
@@ -62863,21 +59966,6 @@ const SpinalRelationFactory_1 = require("6a2c3391e12fab10");
                 this.children.info.ids.remove(node.getId());
                 node._removeParent(this);
             }
-            // if (nodes.length === 0) {
-            // childrenLst.clear();
-            // this.children.info.ids.clear();
-            // return;
-            // }
-            // for (const node of nodes) {
-            //   const index: number = childrenLst.indexOf(node);
-            //   if (index !== -1) {
-            //     childrenLst.remove(node);
-            //     this.children.info.ids.remove(node.getId());
-            //     node._removeParent(this);
-            //   } else {
-            //     error = true;
-            //   }
-            // }
             if (error) throw Error("Could not remove all nodes");
         });
     }
@@ -63172,3345 +60260,7 @@ spinal_core_connectorjs_1.spinalCore.register_models([
 ]);
 exports.default = SpinalGraph;
 
-},{"888d3c156f4bc211":"2uyD7","2730b4878e4489a1":"1xL0x","b2c4e13abbd0948c":"807YT","6cd7e9dd0f11c9d2":"laUA9","d2c0c37ddc004229":"hYNJZ","545cdfe91f81de62":"9OpaE"}],"2Kgs7":[function(require,module,exports) {
-/*
- * Copyright 2020 SpinalCom - www.spinalcom.com
- *
- * This file is part of SpinalCore.
- *
- * Please read all of the following terms and conditions
- * of the Free Software license Agreement ("Agreement")
- * carefully.
- *
- * This Agreement is a legally binding contract between
- * the Licensee (as defined below) and SpinalCom that
- * sets forth the terms and conditions that govern your
- * use of the Program. By installing and/or using the
- * Program, you agree to abide by all the terms and
- * conditions stated or referenced herein.
- *
- * If you do not agree to abide by these terms and
- * conditions, do not demonstrate your acceptance and do
- * not install or use the Program.
- * You should have received a copy of the license along
- * with this file. If not, see
- * <http://resources.spinalcom.com/licenses.pdf>.
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Spinal", ()=>Spinal);
-var _spinalCoreConnectorjs = require("spinal-core-connectorjs");
-var _axios = require("axios");
-var _axiosDefault = parcelHelpers.interopDefault(_axios);
-var __awaiter = undefined && undefined.__awaiter || function(thisArg, _arguments, P, generator) {
-    function adopt(value) {
-        return value instanceof P ? value : new P(function(resolve) {
-            resolve(value);
-        });
-    }
-    return new (P || (P = Promise))(function(resolve, reject) {
-        function fulfilled(value) {
-            try {
-                step(generator.next(value));
-            } catch (e) {
-                reject(e);
-            }
-        }
-        function rejected(value) {
-            try {
-                step(generator["throw"](value));
-            } catch (e) {
-                reject(e);
-            }
-        }
-        function step(result) {
-            result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-        }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-class Spinal {
-    static getInstance() {
-        if (Spinal.instance === null) Spinal.instance = new Spinal();
-        return Spinal.instance;
-    }
-    constructor(){
-        Object.defineProperty(this, "connectPromise", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: null
-        });
-        Object.defineProperty(this, "conn", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        this.connectPromise = null;
-        this.connect();
-    }
-    getauth() {
-        const encryptedHex = window.localStorage.getItem("spinalhome_cfg");
-        return JSON.parse(atob(encryptedHex));
-    }
-    disconnect() {
-        window.localStorage.removeItem("spinalhome_cfg");
-        // @ts-ignore
-        window.location = "/html/drive/";
-    }
-    connect() {
-        if (this.connectPromise !== null) return this.connectPromise;
-        const serverHost = window.location.origin;
-        (0, _spinalCoreConnectorjs.FileSystem).CONNECTOR_TYPE = "Browser";
-        const user = this.getauth();
-        this.connectPromise = new Promise((resolve, reject)=>{
-            return (0, _axiosDefault.default).get(`${serverHost}/get_user_id`, {
-                params: {
-                    u: user.username,
-                    p: user.password
-                }
-            }).then((response)=>{
-                let id = parseInt(response.data);
-                const host = serverHost.replace(/https?:\/\//, "");
-                this.conn = (0, _spinalCoreConnectorjs.spinalCore).connect(`http://${id}:${user.password}@${host}/`);
-                resolve(this.conn);
-            }, ()=>{
-                reject("Authentication Connection Error");
-            });
-        });
-        return this.connectPromise;
-    }
-    load(serve_id) {
-        return __awaiter(this, void 0, void 0, function*() {
-            yield this.connect();
-            return new Promise((resolve, reject)=>{
-                this.conn.load_ptr(serve_id, (model)=>{
-                    if (!model) {
-                        // on error
-                        alert("error model not found.");
-                        reject();
-                    } else // on success
-                    resolve(model);
-                });
-            });
-        });
-    }
-}
-Object.defineProperty(Spinal, "instance", {
-    enumerable: true,
-    configurable: true,
-    writable: true,
-    value: null
-});
-exports.default = Spinal;
-
-},{"spinal-core-connectorjs":"2uyD7","axios":"jo6P5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jo6P5":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _axiosJsDefault.default));
-parcelHelpers.export(exports, "Axios", ()=>Axios);
-parcelHelpers.export(exports, "AxiosError", ()=>AxiosError);
-parcelHelpers.export(exports, "CanceledError", ()=>CanceledError);
-parcelHelpers.export(exports, "isCancel", ()=>isCancel);
-parcelHelpers.export(exports, "CancelToken", ()=>CancelToken);
-parcelHelpers.export(exports, "VERSION", ()=>VERSION);
-parcelHelpers.export(exports, "all", ()=>all);
-parcelHelpers.export(exports, "Cancel", ()=>Cancel);
-parcelHelpers.export(exports, "isAxiosError", ()=>isAxiosError);
-parcelHelpers.export(exports, "spread", ()=>spread);
-parcelHelpers.export(exports, "toFormData", ()=>toFormData);
-parcelHelpers.export(exports, "AxiosHeaders", ()=>AxiosHeaders);
-parcelHelpers.export(exports, "HttpStatusCode", ()=>HttpStatusCode);
-parcelHelpers.export(exports, "formToJSON", ()=>formToJSON);
-parcelHelpers.export(exports, "getAdapter", ()=>getAdapter);
-parcelHelpers.export(exports, "mergeConfig", ()=>mergeConfig);
-var _axiosJs = require("./lib/axios.js");
-var _axiosJsDefault = parcelHelpers.interopDefault(_axiosJs);
-// This module is intended to unwrap Axios default export as named.
-// Keep top-level export same with static properties
-// so that it can keep same with es module or cjs
-const { Axios, AxiosError, CanceledError, isCancel, CancelToken, VERSION, all, Cancel, isAxiosError, spread, toFormData, AxiosHeaders, HttpStatusCode, formToJSON, getAdapter, mergeConfig } = (0, _axiosJsDefault.default);
-
-},{"./lib/axios.js":"63MyY","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"63MyY":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("./utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _bindJs = require("./helpers/bind.js");
-var _bindJsDefault = parcelHelpers.interopDefault(_bindJs);
-var _axiosJs = require("./core/Axios.js");
-var _axiosJsDefault = parcelHelpers.interopDefault(_axiosJs);
-var _mergeConfigJs = require("./core/mergeConfig.js");
-var _mergeConfigJsDefault = parcelHelpers.interopDefault(_mergeConfigJs);
-var _indexJs = require("./defaults/index.js");
-var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
-var _formDataToJSONJs = require("./helpers/formDataToJSON.js");
-var _formDataToJSONJsDefault = parcelHelpers.interopDefault(_formDataToJSONJs);
-var _canceledErrorJs = require("./cancel/CanceledError.js");
-var _canceledErrorJsDefault = parcelHelpers.interopDefault(_canceledErrorJs);
-var _cancelTokenJs = require("./cancel/CancelToken.js");
-var _cancelTokenJsDefault = parcelHelpers.interopDefault(_cancelTokenJs);
-var _isCancelJs = require("./cancel/isCancel.js");
-var _isCancelJsDefault = parcelHelpers.interopDefault(_isCancelJs);
-var _dataJs = require("./env/data.js");
-var _toFormDataJs = require("./helpers/toFormData.js");
-var _toFormDataJsDefault = parcelHelpers.interopDefault(_toFormDataJs);
-var _axiosErrorJs = require("./core/AxiosError.js");
-var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
-var _spreadJs = require("./helpers/spread.js");
-var _spreadJsDefault = parcelHelpers.interopDefault(_spreadJs);
-var _isAxiosErrorJs = require("./helpers/isAxiosError.js");
-var _isAxiosErrorJsDefault = parcelHelpers.interopDefault(_isAxiosErrorJs);
-var _axiosHeadersJs = require("./core/AxiosHeaders.js");
-var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
-var _adaptersJs = require("./adapters/adapters.js");
-var _adaptersJsDefault = parcelHelpers.interopDefault(_adaptersJs);
-var _httpStatusCodeJs = require("./helpers/HttpStatusCode.js");
-var _httpStatusCodeJsDefault = parcelHelpers.interopDefault(_httpStatusCodeJs);
-"use strict";
-/**
- * Create an instance of Axios
- *
- * @param {Object} defaultConfig The default config for the instance
- *
- * @returns {Axios} A new instance of Axios
- */ function createInstance(defaultConfig) {
-    const context = new (0, _axiosJsDefault.default)(defaultConfig);
-    const instance = (0, _bindJsDefault.default)((0, _axiosJsDefault.default).prototype.request, context);
-    // Copy axios.prototype to instance
-    (0, _utilsJsDefault.default).extend(instance, (0, _axiosJsDefault.default).prototype, context, {
-        allOwnKeys: true
-    });
-    // Copy context to instance
-    (0, _utilsJsDefault.default).extend(instance, context, null, {
-        allOwnKeys: true
-    });
-    // Factory for creating new instances
-    instance.create = function create(instanceConfig) {
-        return createInstance((0, _mergeConfigJsDefault.default)(defaultConfig, instanceConfig));
-    };
-    return instance;
-}
-// Create the default instance to be exported
-const axios = createInstance((0, _indexJsDefault.default));
-// Expose Axios class to allow class inheritance
-axios.Axios = (0, _axiosJsDefault.default);
-// Expose Cancel & CancelToken
-axios.CanceledError = (0, _canceledErrorJsDefault.default);
-axios.CancelToken = (0, _cancelTokenJsDefault.default);
-axios.isCancel = (0, _isCancelJsDefault.default);
-axios.VERSION = (0, _dataJs.VERSION);
-axios.toFormData = (0, _toFormDataJsDefault.default);
-// Expose AxiosError class
-axios.AxiosError = (0, _axiosErrorJsDefault.default);
-// alias for CanceledError for backward compatibility
-axios.Cancel = axios.CanceledError;
-// Expose all/spread
-axios.all = function all(promises) {
-    return Promise.all(promises);
-};
-axios.spread = (0, _spreadJsDefault.default);
-// Expose isAxiosError
-axios.isAxiosError = (0, _isAxiosErrorJsDefault.default);
-// Expose mergeConfig
-axios.mergeConfig = (0, _mergeConfigJsDefault.default);
-axios.AxiosHeaders = (0, _axiosHeadersJsDefault.default);
-axios.formToJSON = (thing)=>(0, _formDataToJSONJsDefault.default)((0, _utilsJsDefault.default).isHTMLForm(thing) ? new FormData(thing) : thing);
-axios.getAdapter = (0, _adaptersJsDefault.default).getAdapter;
-axios.HttpStatusCode = (0, _httpStatusCodeJsDefault.default);
-axios.default = axios;
-// this module should only have a default export
-exports.default = axios;
-
-},{"./utils.js":"5By4s","./helpers/bind.js":"haRQb","./core/Axios.js":"cpqD8","./core/mergeConfig.js":"b85oP","./defaults/index.js":"hXfHM","./helpers/formDataToJSON.js":"01RfH","./cancel/CanceledError.js":"9PwCG","./cancel/CancelToken.js":"45wzn","./cancel/isCancel.js":"a0VmF","./env/data.js":"h29L9","./helpers/toFormData.js":"ajoez","./core/AxiosError.js":"3u8Tl","./helpers/spread.js":"dyQ8N","./helpers/isAxiosError.js":"eyiLq","./core/AxiosHeaders.js":"cgSSx","./adapters/adapters.js":"d7JxI","./helpers/HttpStatusCode.js":"fdR61","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5By4s":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _bindJs = require("./helpers/bind.js");
-var _bindJsDefault = parcelHelpers.interopDefault(_bindJs);
-var global = arguments[3];
-var process = require("a8d2c3349c87a903");
-"use strict";
-// utils is a library of generic helper functions non-specific to axios
-const { toString } = Object.prototype;
-const { getPrototypeOf } = Object;
-const kindOf = ((cache)=>(thing)=>{
-        const str = toString.call(thing);
-        return cache[str] || (cache[str] = str.slice(8, -1).toLowerCase());
-    })(Object.create(null));
-const kindOfTest = (type)=>{
-    type = type.toLowerCase();
-    return (thing)=>kindOf(thing) === type;
-};
-const typeOfTest = (type)=>(thing)=>typeof thing === type;
-/**
- * Determine if a value is an Array
- *
- * @param {Object} val The value to test
- *
- * @returns {boolean} True if value is an Array, otherwise false
- */ const { isArray } = Array;
-/**
- * Determine if a value is undefined
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if the value is undefined, otherwise false
- */ const isUndefined = typeOfTest("undefined");
-/**
- * Determine if a value is a Buffer
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is a Buffer, otherwise false
- */ function isBuffer(val) {
-    return val !== null && !isUndefined(val) && val.constructor !== null && !isUndefined(val.constructor) && isFunction(val.constructor.isBuffer) && val.constructor.isBuffer(val);
-}
-/**
- * Determine if a value is an ArrayBuffer
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is an ArrayBuffer, otherwise false
- */ const isArrayBuffer = kindOfTest("ArrayBuffer");
-/**
- * Determine if a value is a view on an ArrayBuffer
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is a view on an ArrayBuffer, otherwise false
- */ function isArrayBufferView(val) {
-    let result;
-    if (typeof ArrayBuffer !== "undefined" && ArrayBuffer.isView) result = ArrayBuffer.isView(val);
-    else result = val && val.buffer && isArrayBuffer(val.buffer);
-    return result;
-}
-/**
- * Determine if a value is a String
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is a String, otherwise false
- */ const isString = typeOfTest("string");
-/**
- * Determine if a value is a Function
- *
- * @param {*} val The value to test
- * @returns {boolean} True if value is a Function, otherwise false
- */ const isFunction = typeOfTest("function");
-/**
- * Determine if a value is a Number
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is a Number, otherwise false
- */ const isNumber = typeOfTest("number");
-/**
- * Determine if a value is an Object
- *
- * @param {*} thing The value to test
- *
- * @returns {boolean} True if value is an Object, otherwise false
- */ const isObject = (thing)=>thing !== null && typeof thing === "object";
-/**
- * Determine if a value is a Boolean
- *
- * @param {*} thing The value to test
- * @returns {boolean} True if value is a Boolean, otherwise false
- */ const isBoolean = (thing)=>thing === true || thing === false;
-/**
- * Determine if a value is a plain Object
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is a plain Object, otherwise false
- */ const isPlainObject = (val)=>{
-    if (kindOf(val) !== "object") return false;
-    const prototype = getPrototypeOf(val);
-    return (prototype === null || prototype === Object.prototype || Object.getPrototypeOf(prototype) === null) && !(Symbol.toStringTag in val) && !(Symbol.iterator in val);
-};
-/**
- * Determine if a value is a Date
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is a Date, otherwise false
- */ const isDate = kindOfTest("Date");
-/**
- * Determine if a value is a File
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is a File, otherwise false
- */ const isFile = kindOfTest("File");
-/**
- * Determine if a value is a Blob
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is a Blob, otherwise false
- */ const isBlob = kindOfTest("Blob");
-/**
- * Determine if a value is a FileList
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is a File, otherwise false
- */ const isFileList = kindOfTest("FileList");
-/**
- * Determine if a value is a Stream
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is a Stream, otherwise false
- */ const isStream = (val)=>isObject(val) && isFunction(val.pipe);
-/**
- * Determine if a value is a FormData
- *
- * @param {*} thing The value to test
- *
- * @returns {boolean} True if value is an FormData, otherwise false
- */ const isFormData = (thing)=>{
-    let kind;
-    return thing && (typeof FormData === "function" && thing instanceof FormData || isFunction(thing.append) && ((kind = kindOf(thing)) === "formdata" || // detect form-data instance
-    kind === "object" && isFunction(thing.toString) && thing.toString() === "[object FormData]"));
-};
-/**
- * Determine if a value is a URLSearchParams object
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is a URLSearchParams object, otherwise false
- */ const isURLSearchParams = kindOfTest("URLSearchParams");
-const [isReadableStream, isRequest, isResponse, isHeaders] = [
-    "ReadableStream",
-    "Request",
-    "Response",
-    "Headers"
-].map(kindOfTest);
-/**
- * Trim excess whitespace off the beginning and end of a string
- *
- * @param {String} str The String to trim
- *
- * @returns {String} The String freed of excess whitespace
- */ const trim = (str)=>str.trim ? str.trim() : str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "");
-/**
- * Iterate over an Array or an Object invoking a function for each item.
- *
- * If `obj` is an Array callback will be called passing
- * the value, index, and complete array for each item.
- *
- * If 'obj' is an Object callback will be called passing
- * the value, key, and complete object for each property.
- *
- * @param {Object|Array} obj The object to iterate
- * @param {Function} fn The callback to invoke for each item
- *
- * @param {Boolean} [allOwnKeys = false]
- * @returns {any}
- */ function forEach(obj, fn, { allOwnKeys = false } = {}) {
-    // Don't bother if no value provided
-    if (obj === null || typeof obj === "undefined") return;
-    let i;
-    let l;
-    // Force an array if not already something iterable
-    if (typeof obj !== "object") /*eslint no-param-reassign:0*/ obj = [
-        obj
-    ];
-    if (isArray(obj)) // Iterate over array values
-    for(i = 0, l = obj.length; i < l; i++)fn.call(null, obj[i], i, obj);
-    else {
-        // Iterate over object keys
-        const keys = allOwnKeys ? Object.getOwnPropertyNames(obj) : Object.keys(obj);
-        const len = keys.length;
-        let key;
-        for(i = 0; i < len; i++){
-            key = keys[i];
-            fn.call(null, obj[key], key, obj);
-        }
-    }
-}
-function findKey(obj, key) {
-    key = key.toLowerCase();
-    const keys = Object.keys(obj);
-    let i = keys.length;
-    let _key;
-    while(i-- > 0){
-        _key = keys[i];
-        if (key === _key.toLowerCase()) return _key;
-    }
-    return null;
-}
-const _global = (()=>{
-    /*eslint no-undef:0*/ if (typeof globalThis !== "undefined") return globalThis;
-    return typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : global;
-})();
-const isContextDefined = (context)=>!isUndefined(context) && context !== _global;
-/**
- * Accepts varargs expecting each argument to be an object, then
- * immutably merges the properties of each object and returns result.
- *
- * When multiple objects contain the same key the later object in
- * the arguments list will take precedence.
- *
- * Example:
- *
- * ```js
- * var result = merge({foo: 123}, {foo: 456});
- * console.log(result.foo); // outputs 456
- * ```
- *
- * @param {Object} obj1 Object to merge
- *
- * @returns {Object} Result of all merge properties
- */ function merge() {
-    const { caseless } = isContextDefined(this) && this || {};
-    const result = {};
-    const assignValue = (val, key)=>{
-        const targetKey = caseless && findKey(result, key) || key;
-        if (isPlainObject(result[targetKey]) && isPlainObject(val)) result[targetKey] = merge(result[targetKey], val);
-        else if (isPlainObject(val)) result[targetKey] = merge({}, val);
-        else if (isArray(val)) result[targetKey] = val.slice();
-        else result[targetKey] = val;
-    };
-    for(let i = 0, l = arguments.length; i < l; i++)arguments[i] && forEach(arguments[i], assignValue);
-    return result;
-}
-/**
- * Extends object a by mutably adding to it the properties of object b.
- *
- * @param {Object} a The object to be extended
- * @param {Object} b The object to copy properties from
- * @param {Object} thisArg The object to bind function to
- *
- * @param {Boolean} [allOwnKeys]
- * @returns {Object} The resulting value of object a
- */ const extend = (a, b, thisArg, { allOwnKeys } = {})=>{
-    forEach(b, (val, key)=>{
-        if (thisArg && isFunction(val)) a[key] = (0, _bindJsDefault.default)(val, thisArg);
-        else a[key] = val;
-    }, {
-        allOwnKeys
-    });
-    return a;
-};
-/**
- * Remove byte order marker. This catches EF BB BF (the UTF-8 BOM)
- *
- * @param {string} content with BOM
- *
- * @returns {string} content value without BOM
- */ const stripBOM = (content)=>{
-    if (content.charCodeAt(0) === 0xFEFF) content = content.slice(1);
-    return content;
-};
-/**
- * Inherit the prototype methods from one constructor into another
- * @param {function} constructor
- * @param {function} superConstructor
- * @param {object} [props]
- * @param {object} [descriptors]
- *
- * @returns {void}
- */ const inherits = (constructor, superConstructor, props, descriptors)=>{
-    constructor.prototype = Object.create(superConstructor.prototype, descriptors);
-    constructor.prototype.constructor = constructor;
-    Object.defineProperty(constructor, "super", {
-        value: superConstructor.prototype
-    });
-    props && Object.assign(constructor.prototype, props);
-};
-/**
- * Resolve object with deep prototype chain to a flat object
- * @param {Object} sourceObj source object
- * @param {Object} [destObj]
- * @param {Function|Boolean} [filter]
- * @param {Function} [propFilter]
- *
- * @returns {Object}
- */ const toFlatObject = (sourceObj, destObj, filter, propFilter)=>{
-    let props;
-    let i;
-    let prop;
-    const merged = {};
-    destObj = destObj || {};
-    // eslint-disable-next-line no-eq-null,eqeqeq
-    if (sourceObj == null) return destObj;
-    do {
-        props = Object.getOwnPropertyNames(sourceObj);
-        i = props.length;
-        while(i-- > 0){
-            prop = props[i];
-            if ((!propFilter || propFilter(prop, sourceObj, destObj)) && !merged[prop]) {
-                destObj[prop] = sourceObj[prop];
-                merged[prop] = true;
-            }
-        }
-        sourceObj = filter !== false && getPrototypeOf(sourceObj);
-    }while (sourceObj && (!filter || filter(sourceObj, destObj)) && sourceObj !== Object.prototype);
-    return destObj;
-};
-/**
- * Determines whether a string ends with the characters of a specified string
- *
- * @param {String} str
- * @param {String} searchString
- * @param {Number} [position= 0]
- *
- * @returns {boolean}
- */ const endsWith = (str, searchString, position)=>{
-    str = String(str);
-    if (position === undefined || position > str.length) position = str.length;
-    position -= searchString.length;
-    const lastIndex = str.indexOf(searchString, position);
-    return lastIndex !== -1 && lastIndex === position;
-};
-/**
- * Returns new array from array like object or null if failed
- *
- * @param {*} [thing]
- *
- * @returns {?Array}
- */ const toArray = (thing)=>{
-    if (!thing) return null;
-    if (isArray(thing)) return thing;
-    let i = thing.length;
-    if (!isNumber(i)) return null;
-    const arr = new Array(i);
-    while(i-- > 0)arr[i] = thing[i];
-    return arr;
-};
-/**
- * Checking if the Uint8Array exists and if it does, it returns a function that checks if the
- * thing passed in is an instance of Uint8Array
- *
- * @param {TypedArray}
- *
- * @returns {Array}
- */ // eslint-disable-next-line func-names
-const isTypedArray = ((TypedArray)=>{
-    // eslint-disable-next-line func-names
-    return (thing)=>{
-        return TypedArray && thing instanceof TypedArray;
-    };
-})(typeof Uint8Array !== "undefined" && getPrototypeOf(Uint8Array));
-/**
- * For each entry in the object, call the function with the key and value.
- *
- * @param {Object<any, any>} obj - The object to iterate over.
- * @param {Function} fn - The function to call for each entry.
- *
- * @returns {void}
- */ const forEachEntry = (obj, fn)=>{
-    const generator = obj && obj[Symbol.iterator];
-    const iterator = generator.call(obj);
-    let result;
-    while((result = iterator.next()) && !result.done){
-        const pair = result.value;
-        fn.call(obj, pair[0], pair[1]);
-    }
-};
-/**
- * It takes a regular expression and a string, and returns an array of all the matches
- *
- * @param {string} regExp - The regular expression to match against.
- * @param {string} str - The string to search.
- *
- * @returns {Array<boolean>}
- */ const matchAll = (regExp, str)=>{
-    let matches;
-    const arr = [];
-    while((matches = regExp.exec(str)) !== null)arr.push(matches);
-    return arr;
-};
-/* Checking if the kindOfTest function returns true when passed an HTMLFormElement. */ const isHTMLForm = kindOfTest("HTMLFormElement");
-const toCamelCase = (str)=>{
-    return str.toLowerCase().replace(/[-_\s]([a-z\d])(\w*)/g, function replacer(m, p1, p2) {
-        return p1.toUpperCase() + p2;
-    });
-};
-/* Creating a function that will check if an object has a property. */ const hasOwnProperty = (({ hasOwnProperty })=>(obj, prop)=>hasOwnProperty.call(obj, prop))(Object.prototype);
-/**
- * Determine if a value is a RegExp object
- *
- * @param {*} val The value to test
- *
- * @returns {boolean} True if value is a RegExp object, otherwise false
- */ const isRegExp = kindOfTest("RegExp");
-const reduceDescriptors = (obj, reducer)=>{
-    const descriptors = Object.getOwnPropertyDescriptors(obj);
-    const reducedDescriptors = {};
-    forEach(descriptors, (descriptor, name)=>{
-        let ret;
-        if ((ret = reducer(descriptor, name, obj)) !== false) reducedDescriptors[name] = ret || descriptor;
-    });
-    Object.defineProperties(obj, reducedDescriptors);
-};
-/**
- * Makes all methods read-only
- * @param {Object} obj
- */ const freezeMethods = (obj)=>{
-    reduceDescriptors(obj, (descriptor, name)=>{
-        // skip restricted props in strict mode
-        if (isFunction(obj) && [
-            "arguments",
-            "caller",
-            "callee"
-        ].indexOf(name) !== -1) return false;
-        const value = obj[name];
-        if (!isFunction(value)) return;
-        descriptor.enumerable = false;
-        if ("writable" in descriptor) {
-            descriptor.writable = false;
-            return;
-        }
-        if (!descriptor.set) descriptor.set = ()=>{
-            throw Error("Can not rewrite read-only method '" + name + "'");
-        };
-    });
-};
-const toObjectSet = (arrayOrString, delimiter)=>{
-    const obj = {};
-    const define = (arr)=>{
-        arr.forEach((value)=>{
-            obj[value] = true;
-        });
-    };
-    isArray(arrayOrString) ? define(arrayOrString) : define(String(arrayOrString).split(delimiter));
-    return obj;
-};
-const noop = ()=>{};
-const toFiniteNumber = (value, defaultValue)=>{
-    return value != null && Number.isFinite(value = +value) ? value : defaultValue;
-};
-const ALPHA = "abcdefghijklmnopqrstuvwxyz";
-const DIGIT = "0123456789";
-const ALPHABET = {
-    DIGIT,
-    ALPHA,
-    ALPHA_DIGIT: ALPHA + ALPHA.toUpperCase() + DIGIT
-};
-const generateString = (size = 16, alphabet = ALPHABET.ALPHA_DIGIT)=>{
-    let str = "";
-    const { length } = alphabet;
-    while(size--)str += alphabet[Math.random() * length | 0];
-    return str;
-};
-/**
- * If the thing is a FormData object, return true, otherwise return false.
- *
- * @param {unknown} thing - The thing to check.
- *
- * @returns {boolean}
- */ function isSpecCompliantForm(thing) {
-    return !!(thing && isFunction(thing.append) && thing[Symbol.toStringTag] === "FormData" && thing[Symbol.iterator]);
-}
-const toJSONObject = (obj)=>{
-    const stack = new Array(10);
-    const visit = (source, i)=>{
-        if (isObject(source)) {
-            if (stack.indexOf(source) >= 0) return;
-            if (!("toJSON" in source)) {
-                stack[i] = source;
-                const target = isArray(source) ? [] : {};
-                forEach(source, (value, key)=>{
-                    const reducedValue = visit(value, i + 1);
-                    !isUndefined(reducedValue) && (target[key] = reducedValue);
-                });
-                stack[i] = undefined;
-                return target;
-            }
-        }
-        return source;
-    };
-    return visit(obj, 0);
-};
-const isAsyncFn = kindOfTest("AsyncFunction");
-const isThenable = (thing)=>thing && (isObject(thing) || isFunction(thing)) && isFunction(thing.then) && isFunction(thing.catch);
-// original code
-// https://github.com/DigitalBrainJS/AxiosPromise/blob/16deab13710ec09779922131f3fa5954320f83ab/lib/utils.js#L11-L34
-const _setImmediate = ((setImmediateSupported, postMessageSupported)=>{
-    if (setImmediateSupported) return setImmediate;
-    return postMessageSupported ? ((token, callbacks)=>{
-        _global.addEventListener("message", ({ source, data })=>{
-            if (source === _global && data === token) callbacks.length && callbacks.shift()();
-        }, false);
-        return (cb)=>{
-            callbacks.push(cb);
-            _global.postMessage(token, "*");
-        };
-    })(`axios@${Math.random()}`, []) : (cb)=>setTimeout(cb);
-})(typeof setImmediate === "function", isFunction(_global.postMessage));
-const asap = typeof queueMicrotask !== "undefined" ? queueMicrotask.bind(_global) : typeof process !== "undefined" && process.nextTick || _setImmediate;
-// *********************
-exports.default = {
-    isArray,
-    isArrayBuffer,
-    isBuffer,
-    isFormData,
-    isArrayBufferView,
-    isString,
-    isNumber,
-    isBoolean,
-    isObject,
-    isPlainObject,
-    isReadableStream,
-    isRequest,
-    isResponse,
-    isHeaders,
-    isUndefined,
-    isDate,
-    isFile,
-    isBlob,
-    isRegExp,
-    isFunction,
-    isStream,
-    isURLSearchParams,
-    isTypedArray,
-    isFileList,
-    forEach,
-    merge,
-    extend,
-    trim,
-    stripBOM,
-    inherits,
-    toFlatObject,
-    kindOf,
-    kindOfTest,
-    endsWith,
-    toArray,
-    forEachEntry,
-    matchAll,
-    isHTMLForm,
-    hasOwnProperty,
-    hasOwnProp: hasOwnProperty,
-    reduceDescriptors,
-    freezeMethods,
-    toObjectSet,
-    toCamelCase,
-    noop,
-    toFiniteNumber,
-    findKey,
-    global: _global,
-    isContextDefined,
-    ALPHABET,
-    generateString,
-    isSpecCompliantForm,
-    toJSONObject,
-    isAsyncFn,
-    isThenable,
-    setImmediate: _setImmediate,
-    asap
-};
-
-},{"a8d2c3349c87a903":"d5jf4","./helpers/bind.js":"haRQb","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"haRQb":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>bind);
-"use strict";
-function bind(fn, thisArg) {
-    return function wrap() {
-        return fn.apply(thisArg, arguments);
-    };
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cpqD8":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("./../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _buildURLJs = require("../helpers/buildURL.js");
-var _buildURLJsDefault = parcelHelpers.interopDefault(_buildURLJs);
-var _interceptorManagerJs = require("./InterceptorManager.js");
-var _interceptorManagerJsDefault = parcelHelpers.interopDefault(_interceptorManagerJs);
-var _dispatchRequestJs = require("./dispatchRequest.js");
-var _dispatchRequestJsDefault = parcelHelpers.interopDefault(_dispatchRequestJs);
-var _mergeConfigJs = require("./mergeConfig.js");
-var _mergeConfigJsDefault = parcelHelpers.interopDefault(_mergeConfigJs);
-var _buildFullPathJs = require("./buildFullPath.js");
-var _buildFullPathJsDefault = parcelHelpers.interopDefault(_buildFullPathJs);
-var _validatorJs = require("../helpers/validator.js");
-var _validatorJsDefault = parcelHelpers.interopDefault(_validatorJs);
-var _axiosHeadersJs = require("./AxiosHeaders.js");
-var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
-"use strict";
-const validators = (0, _validatorJsDefault.default).validators;
-/**
- * Create a new instance of Axios
- *
- * @param {Object} instanceConfig The default config for the instance
- *
- * @return {Axios} A new instance of Axios
- */ class Axios {
-    constructor(instanceConfig){
-        this.defaults = instanceConfig;
-        this.interceptors = {
-            request: new (0, _interceptorManagerJsDefault.default)(),
-            response: new (0, _interceptorManagerJsDefault.default)()
-        };
-    }
-    /**
-   * Dispatch a request
-   *
-   * @param {String|Object} configOrUrl The config specific for this request (merged with this.defaults)
-   * @param {?Object} config
-   *
-   * @returns {Promise} The Promise to be fulfilled
-   */ async request(configOrUrl, config) {
-        try {
-            return await this._request(configOrUrl, config);
-        } catch (err) {
-            if (err instanceof Error) {
-                let dummy;
-                Error.captureStackTrace ? Error.captureStackTrace(dummy = {}) : dummy = new Error();
-                // slice off the Error: ... line
-                const stack = dummy.stack ? dummy.stack.replace(/^.+\n/, "") : "";
-                try {
-                    if (!err.stack) err.stack = stack;
-                    else if (stack && !String(err.stack).endsWith(stack.replace(/^.+\n.+\n/, ""))) err.stack += "\n" + stack;
-                } catch (e) {
-                // ignore the case where "stack" is an un-writable property
-                }
-            }
-            throw err;
-        }
-    }
-    _request(configOrUrl, config) {
-        /*eslint no-param-reassign:0*/ // Allow for axios('example/url'[, config]) a la fetch API
-        if (typeof configOrUrl === "string") {
-            config = config || {};
-            config.url = configOrUrl;
-        } else config = configOrUrl || {};
-        config = (0, _mergeConfigJsDefault.default)(this.defaults, config);
-        const { transitional, paramsSerializer, headers } = config;
-        if (transitional !== undefined) (0, _validatorJsDefault.default).assertOptions(transitional, {
-            silentJSONParsing: validators.transitional(validators.boolean),
-            forcedJSONParsing: validators.transitional(validators.boolean),
-            clarifyTimeoutError: validators.transitional(validators.boolean)
-        }, false);
-        if (paramsSerializer != null) {
-            if ((0, _utilsJsDefault.default).isFunction(paramsSerializer)) config.paramsSerializer = {
-                serialize: paramsSerializer
-            };
-            else (0, _validatorJsDefault.default).assertOptions(paramsSerializer, {
-                encode: validators.function,
-                serialize: validators.function
-            }, true);
-        }
-        // Set config.method
-        config.method = (config.method || this.defaults.method || "get").toLowerCase();
-        // Flatten headers
-        let contextHeaders = headers && (0, _utilsJsDefault.default).merge(headers.common, headers[config.method]);
-        headers && (0, _utilsJsDefault.default).forEach([
-            "delete",
-            "get",
-            "head",
-            "post",
-            "put",
-            "patch",
-            "common"
-        ], (method)=>{
-            delete headers[method];
-        });
-        config.headers = (0, _axiosHeadersJsDefault.default).concat(contextHeaders, headers);
-        // filter out skipped interceptors
-        const requestInterceptorChain = [];
-        let synchronousRequestInterceptors = true;
-        this.interceptors.request.forEach(function unshiftRequestInterceptors(interceptor) {
-            if (typeof interceptor.runWhen === "function" && interceptor.runWhen(config) === false) return;
-            synchronousRequestInterceptors = synchronousRequestInterceptors && interceptor.synchronous;
-            requestInterceptorChain.unshift(interceptor.fulfilled, interceptor.rejected);
-        });
-        const responseInterceptorChain = [];
-        this.interceptors.response.forEach(function pushResponseInterceptors(interceptor) {
-            responseInterceptorChain.push(interceptor.fulfilled, interceptor.rejected);
-        });
-        let promise;
-        let i = 0;
-        let len;
-        if (!synchronousRequestInterceptors) {
-            const chain = [
-                (0, _dispatchRequestJsDefault.default).bind(this),
-                undefined
-            ];
-            chain.unshift.apply(chain, requestInterceptorChain);
-            chain.push.apply(chain, responseInterceptorChain);
-            len = chain.length;
-            promise = Promise.resolve(config);
-            while(i < len)promise = promise.then(chain[i++], chain[i++]);
-            return promise;
-        }
-        len = requestInterceptorChain.length;
-        let newConfig = config;
-        i = 0;
-        while(i < len){
-            const onFulfilled = requestInterceptorChain[i++];
-            const onRejected = requestInterceptorChain[i++];
-            try {
-                newConfig = onFulfilled(newConfig);
-            } catch (error) {
-                onRejected.call(this, error);
-                break;
-            }
-        }
-        try {
-            promise = (0, _dispatchRequestJsDefault.default).call(this, newConfig);
-        } catch (error) {
-            return Promise.reject(error);
-        }
-        i = 0;
-        len = responseInterceptorChain.length;
-        while(i < len)promise = promise.then(responseInterceptorChain[i++], responseInterceptorChain[i++]);
-        return promise;
-    }
-    getUri(config) {
-        config = (0, _mergeConfigJsDefault.default)(this.defaults, config);
-        const fullPath = (0, _buildFullPathJsDefault.default)(config.baseURL, config.url);
-        return (0, _buildURLJsDefault.default)(fullPath, config.params, config.paramsSerializer);
-    }
-}
-// Provide aliases for supported request methods
-(0, _utilsJsDefault.default).forEach([
-    "delete",
-    "get",
-    "head",
-    "options"
-], function forEachMethodNoData(method) {
-    /*eslint func-names:0*/ Axios.prototype[method] = function(url, config) {
-        return this.request((0, _mergeConfigJsDefault.default)(config || {}, {
-            method,
-            url,
-            data: (config || {}).data
-        }));
-    };
-});
-(0, _utilsJsDefault.default).forEach([
-    "post",
-    "put",
-    "patch"
-], function forEachMethodWithData(method) {
-    /*eslint func-names:0*/ function generateHTTPMethod(isForm) {
-        return function httpMethod(url, data, config) {
-            return this.request((0, _mergeConfigJsDefault.default)(config || {}, {
-                method,
-                headers: isForm ? {
-                    "Content-Type": "multipart/form-data"
-                } : {},
-                url,
-                data
-            }));
-        };
-    }
-    Axios.prototype[method] = generateHTTPMethod();
-    Axios.prototype[method + "Form"] = generateHTTPMethod(true);
-});
-exports.default = Axios;
-
-},{"./../utils.js":"5By4s","../helpers/buildURL.js":"3bwC2","./InterceptorManager.js":"1VRIM","./dispatchRequest.js":"6sjJ6","./mergeConfig.js":"b85oP","./buildFullPath.js":"1I5TW","../helpers/validator.js":"9vgkY","./AxiosHeaders.js":"cgSSx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3bwC2":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>buildURL);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _axiosURLSearchParamsJs = require("../helpers/AxiosURLSearchParams.js");
-var _axiosURLSearchParamsJsDefault = parcelHelpers.interopDefault(_axiosURLSearchParamsJs);
-"use strict";
-/**
- * It replaces all instances of the characters `:`, `$`, `,`, `+`, `[`, and `]` with their
- * URI encoded counterparts
- *
- * @param {string} val The value to be encoded.
- *
- * @returns {string} The encoded value.
- */ function encode(val) {
-    return encodeURIComponent(val).replace(/%3A/gi, ":").replace(/%24/g, "$").replace(/%2C/gi, ",").replace(/%20/g, "+").replace(/%5B/gi, "[").replace(/%5D/gi, "]");
-}
-function buildURL(url, params, options) {
-    /*eslint no-param-reassign:0*/ if (!params) return url;
-    const _encode = options && options.encode || encode;
-    const serializeFn = options && options.serialize;
-    let serializedParams;
-    if (serializeFn) serializedParams = serializeFn(params, options);
-    else serializedParams = (0, _utilsJsDefault.default).isURLSearchParams(params) ? params.toString() : new (0, _axiosURLSearchParamsJsDefault.default)(params, options).toString(_encode);
-    if (serializedParams) {
-        const hashmarkIndex = url.indexOf("#");
-        if (hashmarkIndex !== -1) url = url.slice(0, hashmarkIndex);
-        url += (url.indexOf("?") === -1 ? "?" : "&") + serializedParams;
-    }
-    return url;
-}
-
-},{"../utils.js":"5By4s","../helpers/AxiosURLSearchParams.js":"hz84m","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hz84m":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _toFormDataJs = require("./toFormData.js");
-var _toFormDataJsDefault = parcelHelpers.interopDefault(_toFormDataJs);
-"use strict";
-/**
- * It encodes a string by replacing all characters that are not in the unreserved set with
- * their percent-encoded equivalents
- *
- * @param {string} str - The string to encode.
- *
- * @returns {string} The encoded string.
- */ function encode(str) {
-    const charMap = {
-        "!": "%21",
-        "'": "%27",
-        "(": "%28",
-        ")": "%29",
-        "~": "%7E",
-        "%20": "+",
-        "%00": "\0"
-    };
-    return encodeURIComponent(str).replace(/[!'()~]|%20|%00/g, function replacer(match) {
-        return charMap[match];
-    });
-}
-/**
- * It takes a params object and converts it to a FormData object
- *
- * @param {Object<string, any>} params - The parameters to be converted to a FormData object.
- * @param {Object<string, any>} options - The options object passed to the Axios constructor.
- *
- * @returns {void}
- */ function AxiosURLSearchParams(params, options) {
-    this._pairs = [];
-    params && (0, _toFormDataJsDefault.default)(params, this, options);
-}
-const prototype = AxiosURLSearchParams.prototype;
-prototype.append = function append(name, value) {
-    this._pairs.push([
-        name,
-        value
-    ]);
-};
-prototype.toString = function toString(encoder) {
-    const _encode = encoder ? function(value) {
-        return encoder.call(this, value, encode);
-    } : encode;
-    return this._pairs.map(function each(pair) {
-        return _encode(pair[0]) + "=" + _encode(pair[1]);
-    }, "").join("&");
-};
-exports.default = AxiosURLSearchParams;
-
-},{"./toFormData.js":"ajoez","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ajoez":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _axiosErrorJs = require("../core/AxiosError.js");
-var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
-// temporary hotfix to avoid circular references until AxiosURLSearchParams is refactored
-var _formDataJs = require("../platform/node/classes/FormData.js");
-var _formDataJsDefault = parcelHelpers.interopDefault(_formDataJs);
-var Buffer = require("adfd9b103875c2dd").Buffer;
-"use strict";
-/**
- * Determines if the given thing is a array or js object.
- *
- * @param {string} thing - The object or array to be visited.
- *
- * @returns {boolean}
- */ function isVisitable(thing) {
-    return (0, _utilsJsDefault.default).isPlainObject(thing) || (0, _utilsJsDefault.default).isArray(thing);
-}
-/**
- * It removes the brackets from the end of a string
- *
- * @param {string} key - The key of the parameter.
- *
- * @returns {string} the key without the brackets.
- */ function removeBrackets(key) {
-    return (0, _utilsJsDefault.default).endsWith(key, "[]") ? key.slice(0, -2) : key;
-}
-/**
- * It takes a path, a key, and a boolean, and returns a string
- *
- * @param {string} path - The path to the current key.
- * @param {string} key - The key of the current object being iterated over.
- * @param {string} dots - If true, the key will be rendered with dots instead of brackets.
- *
- * @returns {string} The path to the current key.
- */ function renderKey(path, key, dots) {
-    if (!path) return key;
-    return path.concat(key).map(function each(token, i) {
-        // eslint-disable-next-line no-param-reassign
-        token = removeBrackets(token);
-        return !dots && i ? "[" + token + "]" : token;
-    }).join(dots ? "." : "");
-}
-/**
- * If the array is an array and none of its elements are visitable, then it's a flat array.
- *
- * @param {Array<any>} arr - The array to check
- *
- * @returns {boolean}
- */ function isFlatArray(arr) {
-    return (0, _utilsJsDefault.default).isArray(arr) && !arr.some(isVisitable);
-}
-const predicates = (0, _utilsJsDefault.default).toFlatObject((0, _utilsJsDefault.default), {}, null, function filter(prop) {
-    return /^is[A-Z]/.test(prop);
-});
-/**
- * Convert a data object to FormData
- *
- * @param {Object} obj
- * @param {?Object} [formData]
- * @param {?Object} [options]
- * @param {Function} [options.visitor]
- * @param {Boolean} [options.metaTokens = true]
- * @param {Boolean} [options.dots = false]
- * @param {?Boolean} [options.indexes = false]
- *
- * @returns {Object}
- **/ /**
- * It converts an object into a FormData object
- *
- * @param {Object<any, any>} obj - The object to convert to form data.
- * @param {string} formData - The FormData object to append to.
- * @param {Object<string, any>} options
- *
- * @returns
- */ function toFormData(obj, formData, options) {
-    if (!(0, _utilsJsDefault.default).isObject(obj)) throw new TypeError("target must be an object");
-    // eslint-disable-next-line no-param-reassign
-    formData = formData || new ((0, _formDataJsDefault.default) || FormData)();
-    // eslint-disable-next-line no-param-reassign
-    options = (0, _utilsJsDefault.default).toFlatObject(options, {
-        metaTokens: true,
-        dots: false,
-        indexes: false
-    }, false, function defined(option, source) {
-        // eslint-disable-next-line no-eq-null,eqeqeq
-        return !(0, _utilsJsDefault.default).isUndefined(source[option]);
-    });
-    const metaTokens = options.metaTokens;
-    // eslint-disable-next-line no-use-before-define
-    const visitor = options.visitor || defaultVisitor;
-    const dots = options.dots;
-    const indexes = options.indexes;
-    const _Blob = options.Blob || typeof Blob !== "undefined" && Blob;
-    const useBlob = _Blob && (0, _utilsJsDefault.default).isSpecCompliantForm(formData);
-    if (!(0, _utilsJsDefault.default).isFunction(visitor)) throw new TypeError("visitor must be a function");
-    function convertValue(value) {
-        if (value === null) return "";
-        if ((0, _utilsJsDefault.default).isDate(value)) return value.toISOString();
-        if (!useBlob && (0, _utilsJsDefault.default).isBlob(value)) throw new (0, _axiosErrorJsDefault.default)("Blob is not supported. Use a Buffer instead.");
-        if ((0, _utilsJsDefault.default).isArrayBuffer(value) || (0, _utilsJsDefault.default).isTypedArray(value)) return useBlob && typeof Blob === "function" ? new Blob([
-            value
-        ]) : Buffer.from(value);
-        return value;
-    }
-    /**
-   * Default visitor.
-   *
-   * @param {*} value
-   * @param {String|Number} key
-   * @param {Array<String|Number>} path
-   * @this {FormData}
-   *
-   * @returns {boolean} return true to visit the each prop of the value recursively
-   */ function defaultVisitor(value, key, path) {
-        let arr = value;
-        if (value && !path && typeof value === "object") {
-            if ((0, _utilsJsDefault.default).endsWith(key, "{}")) {
-                // eslint-disable-next-line no-param-reassign
-                key = metaTokens ? key : key.slice(0, -2);
-                // eslint-disable-next-line no-param-reassign
-                value = JSON.stringify(value);
-            } else if ((0, _utilsJsDefault.default).isArray(value) && isFlatArray(value) || ((0, _utilsJsDefault.default).isFileList(value) || (0, _utilsJsDefault.default).endsWith(key, "[]")) && (arr = (0, _utilsJsDefault.default).toArray(value))) {
-                // eslint-disable-next-line no-param-reassign
-                key = removeBrackets(key);
-                arr.forEach(function each(el, index) {
-                    !((0, _utilsJsDefault.default).isUndefined(el) || el === null) && formData.append(// eslint-disable-next-line no-nested-ternary
-                    indexes === true ? renderKey([
-                        key
-                    ], index, dots) : indexes === null ? key : key + "[]", convertValue(el));
-                });
-                return false;
-            }
-        }
-        if (isVisitable(value)) return true;
-        formData.append(renderKey(path, key, dots), convertValue(value));
-        return false;
-    }
-    const stack = [];
-    const exposedHelpers = Object.assign(predicates, {
-        defaultVisitor,
-        convertValue,
-        isVisitable
-    });
-    function build(value, path) {
-        if ((0, _utilsJsDefault.default).isUndefined(value)) return;
-        if (stack.indexOf(value) !== -1) throw Error("Circular reference detected in " + path.join("."));
-        stack.push(value);
-        (0, _utilsJsDefault.default).forEach(value, function each(el, key) {
-            const result = !((0, _utilsJsDefault.default).isUndefined(el) || el === null) && visitor.call(formData, el, (0, _utilsJsDefault.default).isString(key) ? key.trim() : key, path, exposedHelpers);
-            if (result === true) build(el, path ? path.concat(key) : [
-                key
-            ]);
-        });
-        stack.pop();
-    }
-    if (!(0, _utilsJsDefault.default).isObject(obj)) throw new TypeError("data must be an object");
-    build(obj);
-    return formData;
-}
-exports.default = toFormData;
-
-},{"adfd9b103875c2dd":"fCgem","../utils.js":"5By4s","../core/AxiosError.js":"3u8Tl","../platform/node/classes/FormData.js":"aFlee","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3u8Tl":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-"use strict";
-/**
- * Create an Error with the specified message, config, error code, request and response.
- *
- * @param {string} message The error message.
- * @param {string} [code] The error code (for example, 'ECONNABORTED').
- * @param {Object} [config] The config.
- * @param {Object} [request] The request.
- * @param {Object} [response] The response.
- *
- * @returns {Error} The created error.
- */ function AxiosError(message, code, config, request, response) {
-    Error.call(this);
-    if (Error.captureStackTrace) Error.captureStackTrace(this, this.constructor);
-    else this.stack = new Error().stack;
-    this.message = message;
-    this.name = "AxiosError";
-    code && (this.code = code);
-    config && (this.config = config);
-    request && (this.request = request);
-    if (response) {
-        this.response = response;
-        this.status = response.status ? response.status : null;
-    }
-}
-(0, _utilsJsDefault.default).inherits(AxiosError, Error, {
-    toJSON: function toJSON() {
-        return {
-            // Standard
-            message: this.message,
-            name: this.name,
-            // Microsoft
-            description: this.description,
-            number: this.number,
-            // Mozilla
-            fileName: this.fileName,
-            lineNumber: this.lineNumber,
-            columnNumber: this.columnNumber,
-            stack: this.stack,
-            // Axios
-            config: (0, _utilsJsDefault.default).toJSONObject(this.config),
-            code: this.code,
-            status: this.status
-        };
-    }
-});
-const prototype = AxiosError.prototype;
-const descriptors = {};
-[
-    "ERR_BAD_OPTION_VALUE",
-    "ERR_BAD_OPTION",
-    "ECONNABORTED",
-    "ETIMEDOUT",
-    "ERR_NETWORK",
-    "ERR_FR_TOO_MANY_REDIRECTS",
-    "ERR_DEPRECATED",
-    "ERR_BAD_RESPONSE",
-    "ERR_BAD_REQUEST",
-    "ERR_CANCELED",
-    "ERR_NOT_SUPPORT",
-    "ERR_INVALID_URL"
-].forEach((code)=>{
-    descriptors[code] = {
-        value: code
-    };
-});
-Object.defineProperties(AxiosError, descriptors);
-Object.defineProperty(prototype, "isAxiosError", {
-    value: true
-});
-// eslint-disable-next-line func-names
-AxiosError.from = (error, code, config, request, response, customProps)=>{
-    const axiosError = Object.create(prototype);
-    (0, _utilsJsDefault.default).toFlatObject(error, axiosError, function filter(obj) {
-        return obj !== Error.prototype;
-    }, (prop)=>{
-        return prop !== "isAxiosError";
-    });
-    AxiosError.call(axiosError, error.message, code, config, request, response);
-    axiosError.cause = error;
-    axiosError.name = error.name;
-    customProps && Object.assign(axiosError, customProps);
-    return axiosError;
-};
-exports.default = AxiosError;
-
-},{"../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"aFlee":[function(require,module,exports) {
-// eslint-disable-next-line strict
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-exports.default = null;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1VRIM":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("./../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-"use strict";
-class InterceptorManager {
-    constructor(){
-        this.handlers = [];
-    }
-    /**
-   * Add a new interceptor to the stack
-   *
-   * @param {Function} fulfilled The function to handle `then` for a `Promise`
-   * @param {Function} rejected The function to handle `reject` for a `Promise`
-   *
-   * @return {Number} An ID used to remove interceptor later
-   */ use(fulfilled, rejected, options) {
-        this.handlers.push({
-            fulfilled,
-            rejected,
-            synchronous: options ? options.synchronous : false,
-            runWhen: options ? options.runWhen : null
-        });
-        return this.handlers.length - 1;
-    }
-    /**
-   * Remove an interceptor from the stack
-   *
-   * @param {Number} id The ID that was returned by `use`
-   *
-   * @returns {Boolean} `true` if the interceptor was removed, `false` otherwise
-   */ eject(id) {
-        if (this.handlers[id]) this.handlers[id] = null;
-    }
-    /**
-   * Clear all interceptors from the stack
-   *
-   * @returns {void}
-   */ clear() {
-        if (this.handlers) this.handlers = [];
-    }
-    /**
-   * Iterate over all the registered interceptors
-   *
-   * This method is particularly useful for skipping over any
-   * interceptors that may have become `null` calling `eject`.
-   *
-   * @param {Function} fn The function to call for each interceptor
-   *
-   * @returns {void}
-   */ forEach(fn) {
-        (0, _utilsJsDefault.default).forEach(this.handlers, function forEachHandler(h) {
-            if (h !== null) fn(h);
-        });
-    }
-}
-exports.default = InterceptorManager;
-
-},{"./../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6sjJ6":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>dispatchRequest);
-var _transformDataJs = require("./transformData.js");
-var _transformDataJsDefault = parcelHelpers.interopDefault(_transformDataJs);
-var _isCancelJs = require("../cancel/isCancel.js");
-var _isCancelJsDefault = parcelHelpers.interopDefault(_isCancelJs);
-var _indexJs = require("../defaults/index.js");
-var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
-var _canceledErrorJs = require("../cancel/CanceledError.js");
-var _canceledErrorJsDefault = parcelHelpers.interopDefault(_canceledErrorJs);
-var _axiosHeadersJs = require("../core/AxiosHeaders.js");
-var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
-var _adaptersJs = require("../adapters/adapters.js");
-var _adaptersJsDefault = parcelHelpers.interopDefault(_adaptersJs);
-"use strict";
-/**
- * Throws a `CanceledError` if cancellation has been requested.
- *
- * @param {Object} config The config that is to be used for the request
- *
- * @returns {void}
- */ function throwIfCancellationRequested(config) {
-    if (config.cancelToken) config.cancelToken.throwIfRequested();
-    if (config.signal && config.signal.aborted) throw new (0, _canceledErrorJsDefault.default)(null, config);
-}
-function dispatchRequest(config) {
-    throwIfCancellationRequested(config);
-    config.headers = (0, _axiosHeadersJsDefault.default).from(config.headers);
-    // Transform request data
-    config.data = (0, _transformDataJsDefault.default).call(config, config.transformRequest);
-    if ([
-        "post",
-        "put",
-        "patch"
-    ].indexOf(config.method) !== -1) config.headers.setContentType("application/x-www-form-urlencoded", false);
-    const adapter = (0, _adaptersJsDefault.default).getAdapter(config.adapter || (0, _indexJsDefault.default).adapter);
-    return adapter(config).then(function onAdapterResolution(response) {
-        throwIfCancellationRequested(config);
-        // Transform response data
-        response.data = (0, _transformDataJsDefault.default).call(config, config.transformResponse, response);
-        response.headers = (0, _axiosHeadersJsDefault.default).from(response.headers);
-        return response;
-    }, function onAdapterRejection(reason) {
-        if (!(0, _isCancelJsDefault.default)(reason)) {
-            throwIfCancellationRequested(config);
-            // Transform response data
-            if (reason && reason.response) {
-                reason.response.data = (0, _transformDataJsDefault.default).call(config, config.transformResponse, reason.response);
-                reason.response.headers = (0, _axiosHeadersJsDefault.default).from(reason.response.headers);
-            }
-        }
-        return Promise.reject(reason);
-    });
-}
-
-},{"./transformData.js":"eRqJY","../cancel/isCancel.js":"a0VmF","../defaults/index.js":"hXfHM","../cancel/CanceledError.js":"9PwCG","../core/AxiosHeaders.js":"cgSSx","../adapters/adapters.js":"d7JxI","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eRqJY":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>transformData);
-var _utilsJs = require("./../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _indexJs = require("../defaults/index.js");
-var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
-var _axiosHeadersJs = require("../core/AxiosHeaders.js");
-var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
-"use strict";
-function transformData(fns, response) {
-    const config = this || (0, _indexJsDefault.default);
-    const context = response || config;
-    const headers = (0, _axiosHeadersJsDefault.default).from(context.headers);
-    let data = context.data;
-    (0, _utilsJsDefault.default).forEach(fns, function transform(fn) {
-        data = fn.call(config, data, headers.normalize(), response ? response.status : undefined);
-    });
-    headers.normalize();
-    return data;
-}
-
-},{"./../utils.js":"5By4s","../defaults/index.js":"hXfHM","../core/AxiosHeaders.js":"cgSSx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"hXfHM":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _axiosErrorJs = require("../core/AxiosError.js");
-var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
-var _transitionalJs = require("./transitional.js");
-var _transitionalJsDefault = parcelHelpers.interopDefault(_transitionalJs);
-var _toFormDataJs = require("../helpers/toFormData.js");
-var _toFormDataJsDefault = parcelHelpers.interopDefault(_toFormDataJs);
-var _toURLEncodedFormJs = require("../helpers/toURLEncodedForm.js");
-var _toURLEncodedFormJsDefault = parcelHelpers.interopDefault(_toURLEncodedFormJs);
-var _indexJs = require("../platform/index.js");
-var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
-var _formDataToJSONJs = require("../helpers/formDataToJSON.js");
-var _formDataToJSONJsDefault = parcelHelpers.interopDefault(_formDataToJSONJs);
-"use strict";
-/**
- * It takes a string, tries to parse it, and if it fails, it returns the stringified version
- * of the input
- *
- * @param {any} rawValue - The value to be stringified.
- * @param {Function} parser - A function that parses a string into a JavaScript object.
- * @param {Function} encoder - A function that takes a value and returns a string.
- *
- * @returns {string} A stringified version of the rawValue.
- */ function stringifySafely(rawValue, parser, encoder) {
-    if ((0, _utilsJsDefault.default).isString(rawValue)) try {
-        (parser || JSON.parse)(rawValue);
-        return (0, _utilsJsDefault.default).trim(rawValue);
-    } catch (e) {
-        if (e.name !== "SyntaxError") throw e;
-    }
-    return (encoder || JSON.stringify)(rawValue);
-}
-const defaults = {
-    transitional: (0, _transitionalJsDefault.default),
-    adapter: [
-        "xhr",
-        "http",
-        "fetch"
-    ],
-    transformRequest: [
-        function transformRequest(data, headers) {
-            const contentType = headers.getContentType() || "";
-            const hasJSONContentType = contentType.indexOf("application/json") > -1;
-            const isObjectPayload = (0, _utilsJsDefault.default).isObject(data);
-            if (isObjectPayload && (0, _utilsJsDefault.default).isHTMLForm(data)) data = new FormData(data);
-            const isFormData = (0, _utilsJsDefault.default).isFormData(data);
-            if (isFormData) return hasJSONContentType ? JSON.stringify((0, _formDataToJSONJsDefault.default)(data)) : data;
-            if ((0, _utilsJsDefault.default).isArrayBuffer(data) || (0, _utilsJsDefault.default).isBuffer(data) || (0, _utilsJsDefault.default).isStream(data) || (0, _utilsJsDefault.default).isFile(data) || (0, _utilsJsDefault.default).isBlob(data) || (0, _utilsJsDefault.default).isReadableStream(data)) return data;
-            if ((0, _utilsJsDefault.default).isArrayBufferView(data)) return data.buffer;
-            if ((0, _utilsJsDefault.default).isURLSearchParams(data)) {
-                headers.setContentType("application/x-www-form-urlencoded;charset=utf-8", false);
-                return data.toString();
-            }
-            let isFileList;
-            if (isObjectPayload) {
-                if (contentType.indexOf("application/x-www-form-urlencoded") > -1) return (0, _toURLEncodedFormJsDefault.default)(data, this.formSerializer).toString();
-                if ((isFileList = (0, _utilsJsDefault.default).isFileList(data)) || contentType.indexOf("multipart/form-data") > -1) {
-                    const _FormData = this.env && this.env.FormData;
-                    return (0, _toFormDataJsDefault.default)(isFileList ? {
-                        "files[]": data
-                    } : data, _FormData && new _FormData(), this.formSerializer);
-                }
-            }
-            if (isObjectPayload || hasJSONContentType) {
-                headers.setContentType("application/json", false);
-                return stringifySafely(data);
-            }
-            return data;
-        }
-    ],
-    transformResponse: [
-        function transformResponse(data) {
-            const transitional = this.transitional || defaults.transitional;
-            const forcedJSONParsing = transitional && transitional.forcedJSONParsing;
-            const JSONRequested = this.responseType === "json";
-            if ((0, _utilsJsDefault.default).isResponse(data) || (0, _utilsJsDefault.default).isReadableStream(data)) return data;
-            if (data && (0, _utilsJsDefault.default).isString(data) && (forcedJSONParsing && !this.responseType || JSONRequested)) {
-                const silentJSONParsing = transitional && transitional.silentJSONParsing;
-                const strictJSONParsing = !silentJSONParsing && JSONRequested;
-                try {
-                    return JSON.parse(data);
-                } catch (e) {
-                    if (strictJSONParsing) {
-                        if (e.name === "SyntaxError") throw (0, _axiosErrorJsDefault.default).from(e, (0, _axiosErrorJsDefault.default).ERR_BAD_RESPONSE, this, null, this.response);
-                        throw e;
-                    }
-                }
-            }
-            return data;
-        }
-    ],
-    /**
-   * A timeout in milliseconds to abort a request. If set to 0 (default) a
-   * timeout is not created.
-   */ timeout: 0,
-    xsrfCookieName: "XSRF-TOKEN",
-    xsrfHeaderName: "X-XSRF-TOKEN",
-    maxContentLength: -1,
-    maxBodyLength: -1,
-    env: {
-        FormData: (0, _indexJsDefault.default).classes.FormData,
-        Blob: (0, _indexJsDefault.default).classes.Blob
-    },
-    validateStatus: function validateStatus(status) {
-        return status >= 200 && status < 300;
-    },
-    headers: {
-        common: {
-            "Accept": "application/json, text/plain, */*",
-            "Content-Type": undefined
-        }
-    }
-};
-(0, _utilsJsDefault.default).forEach([
-    "delete",
-    "get",
-    "head",
-    "post",
-    "put",
-    "patch"
-], (method)=>{
-    defaults.headers[method] = {};
-});
-exports.default = defaults;
-
-},{"../utils.js":"5By4s","../core/AxiosError.js":"3u8Tl","./transitional.js":"lM32f","../helpers/toFormData.js":"ajoez","../helpers/toURLEncodedForm.js":"9hjry","../platform/index.js":"7tDev","../helpers/formDataToJSON.js":"01RfH","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lM32f":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-"use strict";
-exports.default = {
-    silentJSONParsing: true,
-    forcedJSONParsing: true,
-    clarifyTimeoutError: false
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9hjry":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>toURLEncodedForm);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _toFormDataJs = require("./toFormData.js");
-var _toFormDataJsDefault = parcelHelpers.interopDefault(_toFormDataJs);
-var _indexJs = require("../platform/index.js");
-var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
-"use strict";
-function toURLEncodedForm(data, options) {
-    return (0, _toFormDataJsDefault.default)(data, new (0, _indexJsDefault.default).classes.URLSearchParams(), Object.assign({
-        visitor: function(value, key, path, helpers) {
-            if ((0, _indexJsDefault.default).isNode && (0, _utilsJsDefault.default).isBuffer(value)) {
-                this.append(key, value.toString("base64"));
-                return false;
-            }
-            return helpers.defaultVisitor.apply(this, arguments);
-        }
-    }, options));
-}
-
-},{"../utils.js":"5By4s","./toFormData.js":"ajoez","../platform/index.js":"7tDev","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7tDev":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _indexJs = require("./node/index.js");
-var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
-var _utilsJs = require("./common/utils.js");
-exports.default = {
-    ..._utilsJs,
-    ...(0, _indexJsDefault.default)
-};
-
-},{"./node/index.js":"cVeqE","./common/utils.js":"iIwkL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cVeqE":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _urlsearchParamsJs = require("./classes/URLSearchParams.js");
-var _urlsearchParamsJsDefault = parcelHelpers.interopDefault(_urlsearchParamsJs);
-var _formDataJs = require("./classes/FormData.js");
-var _formDataJsDefault = parcelHelpers.interopDefault(_formDataJs);
-var _blobJs = require("./classes/Blob.js");
-var _blobJsDefault = parcelHelpers.interopDefault(_blobJs);
-exports.default = {
-    isBrowser: true,
-    classes: {
-        URLSearchParams: (0, _urlsearchParamsJsDefault.default),
-        FormData: (0, _formDataJsDefault.default),
-        Blob: (0, _blobJsDefault.default)
-    },
-    protocols: [
-        "http",
-        "https",
-        "file",
-        "blob",
-        "url",
-        "data"
-    ]
-};
-
-},{"./classes/URLSearchParams.js":"5cIHE","./classes/FormData.js":"7i1jd","./classes/Blob.js":"8chF6","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"5cIHE":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _axiosURLSearchParamsJs = require("../../../helpers/AxiosURLSearchParams.js");
-var _axiosURLSearchParamsJsDefault = parcelHelpers.interopDefault(_axiosURLSearchParamsJs);
-"use strict";
-exports.default = typeof URLSearchParams !== "undefined" ? URLSearchParams : (0, _axiosURLSearchParamsJsDefault.default);
-
-},{"../../../helpers/AxiosURLSearchParams.js":"hz84m","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7i1jd":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-"use strict";
-exports.default = typeof FormData !== "undefined" ? FormData : null;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"8chF6":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-"use strict";
-exports.default = typeof Blob !== "undefined" ? Blob : null;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iIwkL":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "hasBrowserEnv", ()=>hasBrowserEnv);
-parcelHelpers.export(exports, "hasStandardBrowserWebWorkerEnv", ()=>hasStandardBrowserWebWorkerEnv);
-parcelHelpers.export(exports, "hasStandardBrowserEnv", ()=>hasStandardBrowserEnv);
-parcelHelpers.export(exports, "navigator", ()=>_navigator);
-parcelHelpers.export(exports, "origin", ()=>origin);
-const hasBrowserEnv = typeof window !== "undefined" && typeof document !== "undefined";
-const _navigator = typeof navigator === "object" && navigator || undefined;
-/**
- * Determine if we're running in a standard browser environment
- *
- * This allows axios to run in a web worker, and react-native.
- * Both environments support XMLHttpRequest, but not fully standard globals.
- *
- * web workers:
- *  typeof window -> undefined
- *  typeof document -> undefined
- *
- * react-native:
- *  navigator.product -> 'ReactNative'
- * nativescript
- *  navigator.product -> 'NativeScript' or 'NS'
- *
- * @returns {boolean}
- */ const hasStandardBrowserEnv = hasBrowserEnv && (!_navigator || [
-    "ReactNative",
-    "NativeScript",
-    "NS"
-].indexOf(_navigator.product) < 0);
-/**
- * Determine if we're running in a standard browser webWorker environment
- *
- * Although the `isStandardBrowserEnv` method indicates that
- * `allows axios to run in a web worker`, the WebWorker will still be
- * filtered out due to its judgment standard
- * `typeof window !== 'undefined' && typeof document !== 'undefined'`.
- * This leads to a problem when axios post `FormData` in webWorker
- */ const hasStandardBrowserWebWorkerEnv = (()=>{
-    return typeof WorkerGlobalScope !== "undefined" && // eslint-disable-next-line no-undef
-    self instanceof WorkerGlobalScope && typeof self.importScripts === "function";
-})();
-const origin = hasBrowserEnv && window.location.href || "http://localhost";
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"01RfH":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-"use strict";
-/**
- * It takes a string like `foo[x][y][z]` and returns an array like `['foo', 'x', 'y', 'z']
- *
- * @param {string} name - The name of the property to get.
- *
- * @returns An array of strings.
- */ function parsePropPath(name) {
-    // foo[x][y][z]
-    // foo.x.y.z
-    // foo-x-y-z
-    // foo x y z
-    return (0, _utilsJsDefault.default).matchAll(/\w+|\[(\w*)]/g, name).map((match)=>{
-        return match[0] === "[]" ? "" : match[1] || match[0];
-    });
-}
-/**
- * Convert an array to an object.
- *
- * @param {Array<any>} arr - The array to convert to an object.
- *
- * @returns An object with the same keys and values as the array.
- */ function arrayToObject(arr) {
-    const obj = {};
-    const keys = Object.keys(arr);
-    let i;
-    const len = keys.length;
-    let key;
-    for(i = 0; i < len; i++){
-        key = keys[i];
-        obj[key] = arr[key];
-    }
-    return obj;
-}
-/**
- * It takes a FormData object and returns a JavaScript object
- *
- * @param {string} formData The FormData object to convert to JSON.
- *
- * @returns {Object<string, any> | null} The converted object.
- */ function formDataToJSON(formData) {
-    function buildPath(path, value, target, index) {
-        let name = path[index++];
-        if (name === "__proto__") return true;
-        const isNumericKey = Number.isFinite(+name);
-        const isLast = index >= path.length;
-        name = !name && (0, _utilsJsDefault.default).isArray(target) ? target.length : name;
-        if (isLast) {
-            if ((0, _utilsJsDefault.default).hasOwnProp(target, name)) target[name] = [
-                target[name],
-                value
-            ];
-            else target[name] = value;
-            return !isNumericKey;
-        }
-        if (!target[name] || !(0, _utilsJsDefault.default).isObject(target[name])) target[name] = [];
-        const result = buildPath(path, value, target[name], index);
-        if (result && (0, _utilsJsDefault.default).isArray(target[name])) target[name] = arrayToObject(target[name]);
-        return !isNumericKey;
-    }
-    if ((0, _utilsJsDefault.default).isFormData(formData) && (0, _utilsJsDefault.default).isFunction(formData.entries)) {
-        const obj = {};
-        (0, _utilsJsDefault.default).forEachEntry(formData, (name, value)=>{
-            buildPath(parsePropPath(name), value, obj, 0);
-        });
-        return obj;
-    }
-    return null;
-}
-exports.default = formDataToJSON;
-
-},{"../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"cgSSx":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _parseHeadersJs = require("../helpers/parseHeaders.js");
-var _parseHeadersJsDefault = parcelHelpers.interopDefault(_parseHeadersJs);
-"use strict";
-const $internals = Symbol("internals");
-function normalizeHeader(header) {
-    return header && String(header).trim().toLowerCase();
-}
-function normalizeValue(value) {
-    if (value === false || value == null) return value;
-    return (0, _utilsJsDefault.default).isArray(value) ? value.map(normalizeValue) : String(value);
-}
-function parseTokens(str) {
-    const tokens = Object.create(null);
-    const tokensRE = /([^\s,;=]+)\s*(?:=\s*([^,;]+))?/g;
-    let match;
-    while(match = tokensRE.exec(str))tokens[match[1]] = match[2];
-    return tokens;
-}
-const isValidHeaderName = (str)=>/^[-_a-zA-Z0-9^`|~,!#$%&'*+.]+$/.test(str.trim());
-function matchHeaderValue(context, value, header, filter, isHeaderNameFilter) {
-    if ((0, _utilsJsDefault.default).isFunction(filter)) return filter.call(this, value, header);
-    if (isHeaderNameFilter) value = header;
-    if (!(0, _utilsJsDefault.default).isString(value)) return;
-    if ((0, _utilsJsDefault.default).isString(filter)) return value.indexOf(filter) !== -1;
-    if ((0, _utilsJsDefault.default).isRegExp(filter)) return filter.test(value);
-}
-function formatHeader(header) {
-    return header.trim().toLowerCase().replace(/([a-z\d])(\w*)/g, (w, char, str)=>{
-        return char.toUpperCase() + str;
-    });
-}
-function buildAccessors(obj, header) {
-    const accessorName = (0, _utilsJsDefault.default).toCamelCase(" " + header);
-    [
-        "get",
-        "set",
-        "has"
-    ].forEach((methodName)=>{
-        Object.defineProperty(obj, methodName + accessorName, {
-            value: function(arg1, arg2, arg3) {
-                return this[methodName].call(this, header, arg1, arg2, arg3);
-            },
-            configurable: true
-        });
-    });
-}
-class AxiosHeaders {
-    constructor(headers){
-        headers && this.set(headers);
-    }
-    set(header, valueOrRewrite, rewrite) {
-        const self = this;
-        function setHeader(_value, _header, _rewrite) {
-            const lHeader = normalizeHeader(_header);
-            if (!lHeader) throw new Error("header name must be a non-empty string");
-            const key = (0, _utilsJsDefault.default).findKey(self, lHeader);
-            if (!key || self[key] === undefined || _rewrite === true || _rewrite === undefined && self[key] !== false) self[key || _header] = normalizeValue(_value);
-        }
-        const setHeaders = (headers, _rewrite)=>(0, _utilsJsDefault.default).forEach(headers, (_value, _header)=>setHeader(_value, _header, _rewrite));
-        if ((0, _utilsJsDefault.default).isPlainObject(header) || header instanceof this.constructor) setHeaders(header, valueOrRewrite);
-        else if ((0, _utilsJsDefault.default).isString(header) && (header = header.trim()) && !isValidHeaderName(header)) setHeaders((0, _parseHeadersJsDefault.default)(header), valueOrRewrite);
-        else if ((0, _utilsJsDefault.default).isHeaders(header)) for (const [key, value] of header.entries())setHeader(value, key, rewrite);
-        else header != null && setHeader(valueOrRewrite, header, rewrite);
-        return this;
-    }
-    get(header, parser) {
-        header = normalizeHeader(header);
-        if (header) {
-            const key = (0, _utilsJsDefault.default).findKey(this, header);
-            if (key) {
-                const value = this[key];
-                if (!parser) return value;
-                if (parser === true) return parseTokens(value);
-                if ((0, _utilsJsDefault.default).isFunction(parser)) return parser.call(this, value, key);
-                if ((0, _utilsJsDefault.default).isRegExp(parser)) return parser.exec(value);
-                throw new TypeError("parser must be boolean|regexp|function");
-            }
-        }
-    }
-    has(header, matcher) {
-        header = normalizeHeader(header);
-        if (header) {
-            const key = (0, _utilsJsDefault.default).findKey(this, header);
-            return !!(key && this[key] !== undefined && (!matcher || matchHeaderValue(this, this[key], key, matcher)));
-        }
-        return false;
-    }
-    delete(header, matcher) {
-        const self = this;
-        let deleted = false;
-        function deleteHeader(_header) {
-            _header = normalizeHeader(_header);
-            if (_header) {
-                const key = (0, _utilsJsDefault.default).findKey(self, _header);
-                if (key && (!matcher || matchHeaderValue(self, self[key], key, matcher))) {
-                    delete self[key];
-                    deleted = true;
-                }
-            }
-        }
-        if ((0, _utilsJsDefault.default).isArray(header)) header.forEach(deleteHeader);
-        else deleteHeader(header);
-        return deleted;
-    }
-    clear(matcher) {
-        const keys = Object.keys(this);
-        let i = keys.length;
-        let deleted = false;
-        while(i--){
-            const key = keys[i];
-            if (!matcher || matchHeaderValue(this, this[key], key, matcher, true)) {
-                delete this[key];
-                deleted = true;
-            }
-        }
-        return deleted;
-    }
-    normalize(format) {
-        const self = this;
-        const headers = {};
-        (0, _utilsJsDefault.default).forEach(this, (value, header)=>{
-            const key = (0, _utilsJsDefault.default).findKey(headers, header);
-            if (key) {
-                self[key] = normalizeValue(value);
-                delete self[header];
-                return;
-            }
-            const normalized = format ? formatHeader(header) : String(header).trim();
-            if (normalized !== header) delete self[header];
-            self[normalized] = normalizeValue(value);
-            headers[normalized] = true;
-        });
-        return this;
-    }
-    concat(...targets) {
-        return this.constructor.concat(this, ...targets);
-    }
-    toJSON(asStrings) {
-        const obj = Object.create(null);
-        (0, _utilsJsDefault.default).forEach(this, (value, header)=>{
-            value != null && value !== false && (obj[header] = asStrings && (0, _utilsJsDefault.default).isArray(value) ? value.join(", ") : value);
-        });
-        return obj;
-    }
-    [Symbol.iterator]() {
-        return Object.entries(this.toJSON())[Symbol.iterator]();
-    }
-    toString() {
-        return Object.entries(this.toJSON()).map(([header, value])=>header + ": " + value).join("\n");
-    }
-    get [Symbol.toStringTag]() {
-        return "AxiosHeaders";
-    }
-    static from(thing) {
-        return thing instanceof this ? thing : new this(thing);
-    }
-    static concat(first, ...targets) {
-        const computed = new this(first);
-        targets.forEach((target)=>computed.set(target));
-        return computed;
-    }
-    static accessor(header) {
-        const internals = this[$internals] = this[$internals] = {
-            accessors: {}
-        };
-        const accessors = internals.accessors;
-        const prototype = this.prototype;
-        function defineAccessor(_header) {
-            const lHeader = normalizeHeader(_header);
-            if (!accessors[lHeader]) {
-                buildAccessors(prototype, _header);
-                accessors[lHeader] = true;
-            }
-        }
-        (0, _utilsJsDefault.default).isArray(header) ? header.forEach(defineAccessor) : defineAccessor(header);
-        return this;
-    }
-}
-AxiosHeaders.accessor([
-    "Content-Type",
-    "Content-Length",
-    "Accept",
-    "Accept-Encoding",
-    "User-Agent",
-    "Authorization"
-]);
-// reserved names hotfix
-(0, _utilsJsDefault.default).reduceDescriptors(AxiosHeaders.prototype, ({ value }, key)=>{
-    let mapped = key[0].toUpperCase() + key.slice(1); // map `set` => `Set`
-    return {
-        get: ()=>value,
-        set (headerValue) {
-            this[mapped] = headerValue;
-        }
-    };
-});
-(0, _utilsJsDefault.default).freezeMethods(AxiosHeaders);
-exports.default = AxiosHeaders;
-
-},{"../utils.js":"5By4s","../helpers/parseHeaders.js":"kqDd5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kqDd5":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("./../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-"use strict";
-// RawAxiosHeaders whose duplicates are ignored by node
-// c.f. https://nodejs.org/api/http.html#http_message_headers
-const ignoreDuplicateOf = (0, _utilsJsDefault.default).toObjectSet([
-    "age",
-    "authorization",
-    "content-length",
-    "content-type",
-    "etag",
-    "expires",
-    "from",
-    "host",
-    "if-modified-since",
-    "if-unmodified-since",
-    "last-modified",
-    "location",
-    "max-forwards",
-    "proxy-authorization",
-    "referer",
-    "retry-after",
-    "user-agent"
-]);
-/**
- * Parse headers into an object
- *
- * ```
- * Date: Wed, 27 Aug 2014 08:58:49 GMT
- * Content-Type: application/json
- * Connection: keep-alive
- * Transfer-Encoding: chunked
- * ```
- *
- * @param {String} rawHeaders Headers needing to be parsed
- *
- * @returns {Object} Headers parsed into an object
- */ exports.default = (rawHeaders)=>{
-    const parsed = {};
-    let key;
-    let val;
-    let i;
-    rawHeaders && rawHeaders.split("\n").forEach(function parser(line) {
-        i = line.indexOf(":");
-        key = line.substring(0, i).trim().toLowerCase();
-        val = line.substring(i + 1).trim();
-        if (!key || parsed[key] && ignoreDuplicateOf[key]) return;
-        if (key === "set-cookie") {
-            if (parsed[key]) parsed[key].push(val);
-            else parsed[key] = [
-                val
-            ];
-        } else parsed[key] = parsed[key] ? parsed[key] + ", " + val : val;
-    });
-    return parsed;
-};
-
-},{"./../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"a0VmF":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>isCancel);
-"use strict";
-function isCancel(value) {
-    return !!(value && value.__CANCEL__);
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9PwCG":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _axiosErrorJs = require("../core/AxiosError.js");
-var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-"use strict";
-/**
- * A `CanceledError` is an object that is thrown when an operation is canceled.
- *
- * @param {string=} message The message.
- * @param {Object=} config The config.
- * @param {Object=} request The request.
- *
- * @returns {CanceledError} The created error.
- */ function CanceledError(message, config, request) {
-    // eslint-disable-next-line no-eq-null,eqeqeq
-    (0, _axiosErrorJsDefault.default).call(this, message == null ? "canceled" : message, (0, _axiosErrorJsDefault.default).ERR_CANCELED, config, request);
-    this.name = "CanceledError";
-}
-(0, _utilsJsDefault.default).inherits(CanceledError, (0, _axiosErrorJsDefault.default), {
-    __CANCEL__: true
-});
-exports.default = CanceledError;
-
-},{"../core/AxiosError.js":"3u8Tl","../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"d7JxI":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _httpJs = require("./http.js");
-var _httpJsDefault = parcelHelpers.interopDefault(_httpJs);
-var _xhrJs = require("./xhr.js");
-var _xhrJsDefault = parcelHelpers.interopDefault(_xhrJs);
-var _fetchJs = require("./fetch.js");
-var _fetchJsDefault = parcelHelpers.interopDefault(_fetchJs);
-var _axiosErrorJs = require("../core/AxiosError.js");
-var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
-const knownAdapters = {
-    http: (0, _httpJsDefault.default),
-    xhr: (0, _xhrJsDefault.default),
-    fetch: (0, _fetchJsDefault.default)
-};
-(0, _utilsJsDefault.default).forEach(knownAdapters, (fn, value)=>{
-    if (fn) {
-        try {
-            Object.defineProperty(fn, "name", {
-                value
-            });
-        } catch (e) {
-        // eslint-disable-next-line no-empty
-        }
-        Object.defineProperty(fn, "adapterName", {
-            value
-        });
-    }
-});
-const renderReason = (reason)=>`- ${reason}`;
-const isResolvedHandle = (adapter)=>(0, _utilsJsDefault.default).isFunction(adapter) || adapter === null || adapter === false;
-exports.default = {
-    getAdapter: (adapters)=>{
-        adapters = (0, _utilsJsDefault.default).isArray(adapters) ? adapters : [
-            adapters
-        ];
-        const { length } = adapters;
-        let nameOrAdapter;
-        let adapter;
-        const rejectedReasons = {};
-        for(let i = 0; i < length; i++){
-            nameOrAdapter = adapters[i];
-            let id;
-            adapter = nameOrAdapter;
-            if (!isResolvedHandle(nameOrAdapter)) {
-                adapter = knownAdapters[(id = String(nameOrAdapter)).toLowerCase()];
-                if (adapter === undefined) throw new (0, _axiosErrorJsDefault.default)(`Unknown adapter '${id}'`);
-            }
-            if (adapter) break;
-            rejectedReasons[id || "#" + i] = adapter;
-        }
-        if (!adapter) {
-            const reasons = Object.entries(rejectedReasons).map(([id, state])=>`adapter ${id} ` + (state === false ? "is not supported by the environment" : "is not available in the build"));
-            let s = length ? reasons.length > 1 ? "since :\n" + reasons.map(renderReason).join("\n") : " " + renderReason(reasons[0]) : "as no adapter specified";
-            throw new (0, _axiosErrorJsDefault.default)(`There is no suitable adapter to dispatch the request ` + s, "ERR_NOT_SUPPORT");
-        }
-        return adapter;
-    },
-    adapters: knownAdapters
-};
-
-},{"../utils.js":"5By4s","./http.js":"aFlee","./xhr.js":"ldm57","./fetch.js":"lVBFV","../core/AxiosError.js":"3u8Tl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ldm57":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("./../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _settleJs = require("./../core/settle.js");
-var _settleJsDefault = parcelHelpers.interopDefault(_settleJs);
-var _transitionalJs = require("../defaults/transitional.js");
-var _transitionalJsDefault = parcelHelpers.interopDefault(_transitionalJs);
-var _axiosErrorJs = require("../core/AxiosError.js");
-var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
-var _canceledErrorJs = require("../cancel/CanceledError.js");
-var _canceledErrorJsDefault = parcelHelpers.interopDefault(_canceledErrorJs);
-var _parseProtocolJs = require("../helpers/parseProtocol.js");
-var _parseProtocolJsDefault = parcelHelpers.interopDefault(_parseProtocolJs);
-var _indexJs = require("../platform/index.js");
-var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
-var _axiosHeadersJs = require("../core/AxiosHeaders.js");
-var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
-var _progressEventReducerJs = require("../helpers/progressEventReducer.js");
-var _resolveConfigJs = require("../helpers/resolveConfig.js");
-var _resolveConfigJsDefault = parcelHelpers.interopDefault(_resolveConfigJs);
-const isXHRAdapterSupported = typeof XMLHttpRequest !== "undefined";
-exports.default = isXHRAdapterSupported && function(config) {
-    return new Promise(function dispatchXhrRequest(resolve, reject) {
-        const _config = (0, _resolveConfigJsDefault.default)(config);
-        let requestData = _config.data;
-        const requestHeaders = (0, _axiosHeadersJsDefault.default).from(_config.headers).normalize();
-        let { responseType, onUploadProgress, onDownloadProgress } = _config;
-        let onCanceled;
-        let uploadThrottled, downloadThrottled;
-        let flushUpload, flushDownload;
-        function done() {
-            flushUpload && flushUpload(); // flush events
-            flushDownload && flushDownload(); // flush events
-            _config.cancelToken && _config.cancelToken.unsubscribe(onCanceled);
-            _config.signal && _config.signal.removeEventListener("abort", onCanceled);
-        }
-        let request = new XMLHttpRequest();
-        request.open(_config.method.toUpperCase(), _config.url, true);
-        // Set the request timeout in MS
-        request.timeout = _config.timeout;
-        function onloadend() {
-            if (!request) return;
-            // Prepare the response
-            const responseHeaders = (0, _axiosHeadersJsDefault.default).from("getAllResponseHeaders" in request && request.getAllResponseHeaders());
-            const responseData = !responseType || responseType === "text" || responseType === "json" ? request.responseText : request.response;
-            const response = {
-                data: responseData,
-                status: request.status,
-                statusText: request.statusText,
-                headers: responseHeaders,
-                config,
-                request
-            };
-            (0, _settleJsDefault.default)(function _resolve(value) {
-                resolve(value);
-                done();
-            }, function _reject(err) {
-                reject(err);
-                done();
-            }, response);
-            // Clean up request
-            request = null;
-        }
-        if ("onloadend" in request) // Use onloadend if available
-        request.onloadend = onloadend;
-        else // Listen for ready state to emulate onloadend
-        request.onreadystatechange = function handleLoad() {
-            if (!request || request.readyState !== 4) return;
-            // The request errored out and we didn't get a response, this will be
-            // handled by onerror instead
-            // With one exception: request that using file: protocol, most browsers
-            // will return status as 0 even though it's a successful request
-            if (request.status === 0 && !(request.responseURL && request.responseURL.indexOf("file:") === 0)) return;
-            // readystate handler is calling before onerror or ontimeout handlers,
-            // so we should call onloadend on the next 'tick'
-            setTimeout(onloadend);
-        };
-        // Handle browser request cancellation (as opposed to a manual cancellation)
-        request.onabort = function handleAbort() {
-            if (!request) return;
-            reject(new (0, _axiosErrorJsDefault.default)("Request aborted", (0, _axiosErrorJsDefault.default).ECONNABORTED, config, request));
-            // Clean up request
-            request = null;
-        };
-        // Handle low level network errors
-        request.onerror = function handleError() {
-            // Real errors are hidden from us by the browser
-            // onerror should only fire if it's a network error
-            reject(new (0, _axiosErrorJsDefault.default)("Network Error", (0, _axiosErrorJsDefault.default).ERR_NETWORK, config, request));
-            // Clean up request
-            request = null;
-        };
-        // Handle timeout
-        request.ontimeout = function handleTimeout() {
-            let timeoutErrorMessage = _config.timeout ? "timeout of " + _config.timeout + "ms exceeded" : "timeout exceeded";
-            const transitional = _config.transitional || (0, _transitionalJsDefault.default);
-            if (_config.timeoutErrorMessage) timeoutErrorMessage = _config.timeoutErrorMessage;
-            reject(new (0, _axiosErrorJsDefault.default)(timeoutErrorMessage, transitional.clarifyTimeoutError ? (0, _axiosErrorJsDefault.default).ETIMEDOUT : (0, _axiosErrorJsDefault.default).ECONNABORTED, config, request));
-            // Clean up request
-            request = null;
-        };
-        // Remove Content-Type if data is undefined
-        requestData === undefined && requestHeaders.setContentType(null);
-        // Add headers to the request
-        if ("setRequestHeader" in request) (0, _utilsJsDefault.default).forEach(requestHeaders.toJSON(), function setRequestHeader(val, key) {
-            request.setRequestHeader(key, val);
-        });
-        // Add withCredentials to request if needed
-        if (!(0, _utilsJsDefault.default).isUndefined(_config.withCredentials)) request.withCredentials = !!_config.withCredentials;
-        // Add responseType to request if needed
-        if (responseType && responseType !== "json") request.responseType = _config.responseType;
-        // Handle progress if needed
-        if (onDownloadProgress) {
-            [downloadThrottled, flushDownload] = (0, _progressEventReducerJs.progressEventReducer)(onDownloadProgress, true);
-            request.addEventListener("progress", downloadThrottled);
-        }
-        // Not all browsers support upload events
-        if (onUploadProgress && request.upload) {
-            [uploadThrottled, flushUpload] = (0, _progressEventReducerJs.progressEventReducer)(onUploadProgress);
-            request.upload.addEventListener("progress", uploadThrottled);
-            request.upload.addEventListener("loadend", flushUpload);
-        }
-        if (_config.cancelToken || _config.signal) {
-            // Handle cancellation
-            // eslint-disable-next-line func-names
-            onCanceled = (cancel)=>{
-                if (!request) return;
-                reject(!cancel || cancel.type ? new (0, _canceledErrorJsDefault.default)(null, config, request) : cancel);
-                request.abort();
-                request = null;
-            };
-            _config.cancelToken && _config.cancelToken.subscribe(onCanceled);
-            if (_config.signal) _config.signal.aborted ? onCanceled() : _config.signal.addEventListener("abort", onCanceled);
-        }
-        const protocol = (0, _parseProtocolJsDefault.default)(_config.url);
-        if (protocol && (0, _indexJsDefault.default).protocols.indexOf(protocol) === -1) {
-            reject(new (0, _axiosErrorJsDefault.default)("Unsupported protocol " + protocol + ":", (0, _axiosErrorJsDefault.default).ERR_BAD_REQUEST, config));
-            return;
-        }
-        // Send the request
-        request.send(requestData || null);
-    });
-};
-
-},{"./../utils.js":"5By4s","./../core/settle.js":"dD9aC","../defaults/transitional.js":"lM32f","../core/AxiosError.js":"3u8Tl","../cancel/CanceledError.js":"9PwCG","../helpers/parseProtocol.js":"7NfWU","../platform/index.js":"7tDev","../core/AxiosHeaders.js":"cgSSx","../helpers/progressEventReducer.js":"bN9Fp","../helpers/resolveConfig.js":"l0e6d","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dD9aC":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>settle);
-var _axiosErrorJs = require("./AxiosError.js");
-var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
-"use strict";
-function settle(resolve, reject, response) {
-    const validateStatus = response.config.validateStatus;
-    if (!response.status || !validateStatus || validateStatus(response.status)) resolve(response);
-    else reject(new (0, _axiosErrorJsDefault.default)("Request failed with status code " + response.status, [
-        (0, _axiosErrorJsDefault.default).ERR_BAD_REQUEST,
-        (0, _axiosErrorJsDefault.default).ERR_BAD_RESPONSE
-    ][Math.floor(response.status / 100) - 4], response.config, response.request, response));
-}
-
-},{"./AxiosError.js":"3u8Tl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"7NfWU":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>parseProtocol);
-"use strict";
-function parseProtocol(url) {
-    const match = /^([-+\w]{1,25})(:?\/\/|:)/.exec(url);
-    return match && match[1] || "";
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bN9Fp":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "progressEventReducer", ()=>progressEventReducer);
-parcelHelpers.export(exports, "progressEventDecorator", ()=>progressEventDecorator);
-parcelHelpers.export(exports, "asyncDecorator", ()=>asyncDecorator);
-var _speedometerJs = require("./speedometer.js");
-var _speedometerJsDefault = parcelHelpers.interopDefault(_speedometerJs);
-var _throttleJs = require("./throttle.js");
-var _throttleJsDefault = parcelHelpers.interopDefault(_throttleJs);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-const progressEventReducer = (listener, isDownloadStream, freq = 3)=>{
-    let bytesNotified = 0;
-    const _speedometer = (0, _speedometerJsDefault.default)(50, 250);
-    return (0, _throttleJsDefault.default)((e)=>{
-        const loaded = e.loaded;
-        const total = e.lengthComputable ? e.total : undefined;
-        const progressBytes = loaded - bytesNotified;
-        const rate = _speedometer(progressBytes);
-        const inRange = loaded <= total;
-        bytesNotified = loaded;
-        const data = {
-            loaded,
-            total,
-            progress: total ? loaded / total : undefined,
-            bytes: progressBytes,
-            rate: rate ? rate : undefined,
-            estimated: rate && total && inRange ? (total - loaded) / rate : undefined,
-            event: e,
-            lengthComputable: total != null,
-            [isDownloadStream ? "download" : "upload"]: true
-        };
-        listener(data);
-    }, freq);
-};
-const progressEventDecorator = (total, throttled)=>{
-    const lengthComputable = total != null;
-    return [
-        (loaded)=>throttled[0]({
-                lengthComputable,
-                total,
-                loaded
-            }),
-        throttled[1]
-    ];
-};
-const asyncDecorator = (fn)=>(...args)=>(0, _utilsJsDefault.default).asap(()=>fn(...args));
-
-},{"./speedometer.js":"gQeo1","./throttle.js":"6fmRS","../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gQeo1":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-"use strict";
-/**
- * Calculate data maxRate
- * @param {Number} [samplesCount= 10]
- * @param {Number} [min= 1000]
- * @returns {Function}
- */ function speedometer(samplesCount, min) {
-    samplesCount = samplesCount || 10;
-    const bytes = new Array(samplesCount);
-    const timestamps = new Array(samplesCount);
-    let head = 0;
-    let tail = 0;
-    let firstSampleTS;
-    min = min !== undefined ? min : 1000;
-    return function push(chunkLength) {
-        const now = Date.now();
-        const startedAt = timestamps[tail];
-        if (!firstSampleTS) firstSampleTS = now;
-        bytes[head] = chunkLength;
-        timestamps[head] = now;
-        let i = tail;
-        let bytesCount = 0;
-        while(i !== head){
-            bytesCount += bytes[i++];
-            i = i % samplesCount;
-        }
-        head = (head + 1) % samplesCount;
-        if (head === tail) tail = (tail + 1) % samplesCount;
-        if (now - firstSampleTS < min) return;
-        const passed = startedAt && now - startedAt;
-        return passed ? Math.round(bytesCount * 1000 / passed) : undefined;
-    };
-}
-exports.default = speedometer;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6fmRS":[function(require,module,exports) {
-/**
- * Throttle decorator
- * @param {Function} fn
- * @param {Number} freq
- * @return {Function}
- */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-function throttle(fn, freq) {
-    let timestamp = 0;
-    let threshold = 1000 / freq;
-    let lastArgs;
-    let timer;
-    const invoke = (args, now = Date.now())=>{
-        timestamp = now;
-        lastArgs = null;
-        if (timer) {
-            clearTimeout(timer);
-            timer = null;
-        }
-        fn.apply(null, args);
-    };
-    const throttled = (...args)=>{
-        const now = Date.now();
-        const passed = now - timestamp;
-        if (passed >= threshold) invoke(args, now);
-        else {
-            lastArgs = args;
-            if (!timer) timer = setTimeout(()=>{
-                timer = null;
-                invoke(lastArgs);
-            }, threshold - passed);
-        }
-    };
-    const flush = ()=>lastArgs && invoke(lastArgs);
-    return [
-        throttled,
-        flush
-    ];
-}
-exports.default = throttle;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"l0e6d":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _indexJs = require("../platform/index.js");
-var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _isURLSameOriginJs = require("./isURLSameOrigin.js");
-var _isURLSameOriginJsDefault = parcelHelpers.interopDefault(_isURLSameOriginJs);
-var _cookiesJs = require("./cookies.js");
-var _cookiesJsDefault = parcelHelpers.interopDefault(_cookiesJs);
-var _buildFullPathJs = require("../core/buildFullPath.js");
-var _buildFullPathJsDefault = parcelHelpers.interopDefault(_buildFullPathJs);
-var _mergeConfigJs = require("../core/mergeConfig.js");
-var _mergeConfigJsDefault = parcelHelpers.interopDefault(_mergeConfigJs);
-var _axiosHeadersJs = require("../core/AxiosHeaders.js");
-var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
-var _buildURLJs = require("./buildURL.js");
-var _buildURLJsDefault = parcelHelpers.interopDefault(_buildURLJs);
-exports.default = (config)=>{
-    const newConfig = (0, _mergeConfigJsDefault.default)({}, config);
-    let { data, withXSRFToken, xsrfHeaderName, xsrfCookieName, headers, auth } = newConfig;
-    newConfig.headers = headers = (0, _axiosHeadersJsDefault.default).from(headers);
-    newConfig.url = (0, _buildURLJsDefault.default)((0, _buildFullPathJsDefault.default)(newConfig.baseURL, newConfig.url), config.params, config.paramsSerializer);
-    // HTTP basic authentication
-    if (auth) headers.set("Authorization", "Basic " + btoa((auth.username || "") + ":" + (auth.password ? unescape(encodeURIComponent(auth.password)) : "")));
-    let contentType;
-    if ((0, _utilsJsDefault.default).isFormData(data)) {
-        if ((0, _indexJsDefault.default).hasStandardBrowserEnv || (0, _indexJsDefault.default).hasStandardBrowserWebWorkerEnv) headers.setContentType(undefined); // Let the browser set it
-        else if ((contentType = headers.getContentType()) !== false) {
-            // fix semicolon duplication issue for ReactNative FormData implementation
-            const [type, ...tokens] = contentType ? contentType.split(";").map((token)=>token.trim()).filter(Boolean) : [];
-            headers.setContentType([
-                type || "multipart/form-data",
-                ...tokens
-            ].join("; "));
-        }
-    }
-    // Add xsrf header
-    // This is only done if running in a standard browser environment.
-    // Specifically not if we're in a web worker, or react-native.
-    if ((0, _indexJsDefault.default).hasStandardBrowserEnv) {
-        withXSRFToken && (0, _utilsJsDefault.default).isFunction(withXSRFToken) && (withXSRFToken = withXSRFToken(newConfig));
-        if (withXSRFToken || withXSRFToken !== false && (0, _isURLSameOriginJsDefault.default)(newConfig.url)) {
-            // Add xsrf header
-            const xsrfValue = xsrfHeaderName && xsrfCookieName && (0, _cookiesJsDefault.default).read(xsrfCookieName);
-            if (xsrfValue) headers.set(xsrfHeaderName, xsrfValue);
-        }
-    }
-    return newConfig;
-};
-
-},{"../platform/index.js":"7tDev","../utils.js":"5By4s","./isURLSameOrigin.js":"lxXtv","./cookies.js":"4WJjt","../core/buildFullPath.js":"1I5TW","../core/mergeConfig.js":"b85oP","../core/AxiosHeaders.js":"cgSSx","./buildURL.js":"3bwC2","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lxXtv":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("./../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _indexJs = require("../platform/index.js");
-var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
-"use strict";
-exports.default = (0, _indexJsDefault.default).hasStandardBrowserEnv ? // Standard browser envs have full support of the APIs needed to test
-// whether the request URL is of the same origin as current location.
-function standardBrowserEnv() {
-    const msie = (0, _indexJsDefault.default).navigator && /(msie|trident)/i.test((0, _indexJsDefault.default).navigator.userAgent);
-    const urlParsingNode = document.createElement("a");
-    let originURL;
-    /**
-    * Parse a URL to discover its components
-    *
-    * @param {String} url The URL to be parsed
-    * @returns {Object}
-    */ function resolveURL(url) {
-        let href = url;
-        if (msie) {
-            // IE needs attribute set twice to normalize properties
-            urlParsingNode.setAttribute("href", href);
-            href = urlParsingNode.href;
-        }
-        urlParsingNode.setAttribute("href", href);
-        // urlParsingNode provides the UrlUtils interface - http://url.spec.whatwg.org/#urlutils
-        return {
-            href: urlParsingNode.href,
-            protocol: urlParsingNode.protocol ? urlParsingNode.protocol.replace(/:$/, "") : "",
-            host: urlParsingNode.host,
-            search: urlParsingNode.search ? urlParsingNode.search.replace(/^\?/, "") : "",
-            hash: urlParsingNode.hash ? urlParsingNode.hash.replace(/^#/, "") : "",
-            hostname: urlParsingNode.hostname,
-            port: urlParsingNode.port,
-            pathname: urlParsingNode.pathname.charAt(0) === "/" ? urlParsingNode.pathname : "/" + urlParsingNode.pathname
-        };
-    }
-    originURL = resolveURL(window.location.href);
-    /**
-    * Determine if a URL shares the same origin as the current location
-    *
-    * @param {String} requestURL The URL to test
-    * @returns {boolean} True if URL shares the same origin, otherwise false
-    */ return function isURLSameOrigin(requestURL) {
-        const parsed = (0, _utilsJsDefault.default).isString(requestURL) ? resolveURL(requestURL) : requestURL;
-        return parsed.protocol === originURL.protocol && parsed.host === originURL.host;
-    };
-}() : // Non standard browser envs (web workers, react-native) lack needed support.
-function nonStandardBrowserEnv() {
-    return function isURLSameOrigin() {
-        return true;
-    };
-}();
-
-},{"./../utils.js":"5By4s","../platform/index.js":"7tDev","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4WJjt":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _utilsJs = require("./../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _indexJs = require("../platform/index.js");
-var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
-exports.default = (0, _indexJsDefault.default).hasStandardBrowserEnv ? // Standard browser envs support document.cookie
-{
-    write (name, value, expires, path, domain, secure) {
-        const cookie = [
-            name + "=" + encodeURIComponent(value)
-        ];
-        (0, _utilsJsDefault.default).isNumber(expires) && cookie.push("expires=" + new Date(expires).toGMTString());
-        (0, _utilsJsDefault.default).isString(path) && cookie.push("path=" + path);
-        (0, _utilsJsDefault.default).isString(domain) && cookie.push("domain=" + domain);
-        secure === true && cookie.push("secure");
-        document.cookie = cookie.join("; ");
-    },
-    read (name) {
-        const match = document.cookie.match(new RegExp("(^|;\\s*)(" + name + ")=([^;]*)"));
-        return match ? decodeURIComponent(match[3]) : null;
-    },
-    remove (name) {
-        this.write(name, "", Date.now() - 86400000);
-    }
-} : // Non-standard browser env (web workers, react-native) lack needed support.
-{
-    write () {},
-    read () {
-        return null;
-    },
-    remove () {}
-};
-
-},{"./../utils.js":"5By4s","../platform/index.js":"7tDev","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1I5TW":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>buildFullPath);
-var _isAbsoluteURLJs = require("../helpers/isAbsoluteURL.js");
-var _isAbsoluteURLJsDefault = parcelHelpers.interopDefault(_isAbsoluteURLJs);
-var _combineURLsJs = require("../helpers/combineURLs.js");
-var _combineURLsJsDefault = parcelHelpers.interopDefault(_combineURLsJs);
-"use strict";
-function buildFullPath(baseURL, requestedURL) {
-    if (baseURL && !(0, _isAbsoluteURLJsDefault.default)(requestedURL)) return (0, _combineURLsJsDefault.default)(baseURL, requestedURL);
-    return requestedURL;
-}
-
-},{"../helpers/isAbsoluteURL.js":"jD6NM","../helpers/combineURLs.js":"brOWK","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"jD6NM":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>isAbsoluteURL);
-"use strict";
-function isAbsoluteURL(url) {
-    // A URL is considered absolute if it begins with "<scheme>://" or "//" (protocol-relative URL).
-    // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
-    // by any combination of letters, digits, plus, period, or hyphen.
-    return /^([a-z][a-z\d+\-.]*:)?\/\//i.test(url);
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"brOWK":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>combineURLs);
-"use strict";
-function combineURLs(baseURL, relativeURL) {
-    return relativeURL ? baseURL.replace(/\/?\/$/, "") + "/" + relativeURL.replace(/^\/+/, "") : baseURL;
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"b85oP":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>mergeConfig);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _axiosHeadersJs = require("./AxiosHeaders.js");
-var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
-"use strict";
-const headersToObject = (thing)=>thing instanceof (0, _axiosHeadersJsDefault.default) ? {
-        ...thing
-    } : thing;
-function mergeConfig(config1, config2) {
-    // eslint-disable-next-line no-param-reassign
-    config2 = config2 || {};
-    const config = {};
-    function getMergedValue(target, source, caseless) {
-        if ((0, _utilsJsDefault.default).isPlainObject(target) && (0, _utilsJsDefault.default).isPlainObject(source)) return (0, _utilsJsDefault.default).merge.call({
-            caseless
-        }, target, source);
-        else if ((0, _utilsJsDefault.default).isPlainObject(source)) return (0, _utilsJsDefault.default).merge({}, source);
-        else if ((0, _utilsJsDefault.default).isArray(source)) return source.slice();
-        return source;
-    }
-    // eslint-disable-next-line consistent-return
-    function mergeDeepProperties(a, b, caseless) {
-        if (!(0, _utilsJsDefault.default).isUndefined(b)) return getMergedValue(a, b, caseless);
-        else if (!(0, _utilsJsDefault.default).isUndefined(a)) return getMergedValue(undefined, a, caseless);
-    }
-    // eslint-disable-next-line consistent-return
-    function valueFromConfig2(a, b) {
-        if (!(0, _utilsJsDefault.default).isUndefined(b)) return getMergedValue(undefined, b);
-    }
-    // eslint-disable-next-line consistent-return
-    function defaultToConfig2(a, b) {
-        if (!(0, _utilsJsDefault.default).isUndefined(b)) return getMergedValue(undefined, b);
-        else if (!(0, _utilsJsDefault.default).isUndefined(a)) return getMergedValue(undefined, a);
-    }
-    // eslint-disable-next-line consistent-return
-    function mergeDirectKeys(a, b, prop) {
-        if (prop in config2) return getMergedValue(a, b);
-        else if (prop in config1) return getMergedValue(undefined, a);
-    }
-    const mergeMap = {
-        url: valueFromConfig2,
-        method: valueFromConfig2,
-        data: valueFromConfig2,
-        baseURL: defaultToConfig2,
-        transformRequest: defaultToConfig2,
-        transformResponse: defaultToConfig2,
-        paramsSerializer: defaultToConfig2,
-        timeout: defaultToConfig2,
-        timeoutMessage: defaultToConfig2,
-        withCredentials: defaultToConfig2,
-        withXSRFToken: defaultToConfig2,
-        adapter: defaultToConfig2,
-        responseType: defaultToConfig2,
-        xsrfCookieName: defaultToConfig2,
-        xsrfHeaderName: defaultToConfig2,
-        onUploadProgress: defaultToConfig2,
-        onDownloadProgress: defaultToConfig2,
-        decompress: defaultToConfig2,
-        maxContentLength: defaultToConfig2,
-        maxBodyLength: defaultToConfig2,
-        beforeRedirect: defaultToConfig2,
-        transport: defaultToConfig2,
-        httpAgent: defaultToConfig2,
-        httpsAgent: defaultToConfig2,
-        cancelToken: defaultToConfig2,
-        socketPath: defaultToConfig2,
-        responseEncoding: defaultToConfig2,
-        validateStatus: mergeDirectKeys,
-        headers: (a, b)=>mergeDeepProperties(headersToObject(a), headersToObject(b), true)
-    };
-    (0, _utilsJsDefault.default).forEach(Object.keys(Object.assign({}, config1, config2)), function computeConfigValue(prop) {
-        const merge = mergeMap[prop] || mergeDeepProperties;
-        const configValue = merge(config1[prop], config2[prop], prop);
-        (0, _utilsJsDefault.default).isUndefined(configValue) && merge !== mergeDirectKeys || (config[prop] = configValue);
-    });
-    return config;
-}
-
-},{"../utils.js":"5By4s","./AxiosHeaders.js":"cgSSx","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"lVBFV":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _indexJs = require("../platform/index.js");
-var _indexJsDefault = parcelHelpers.interopDefault(_indexJs);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-var _axiosErrorJs = require("../core/AxiosError.js");
-var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
-var _composeSignalsJs = require("../helpers/composeSignals.js");
-var _composeSignalsJsDefault = parcelHelpers.interopDefault(_composeSignalsJs);
-var _trackStreamJs = require("../helpers/trackStream.js");
-var _axiosHeadersJs = require("../core/AxiosHeaders.js");
-var _axiosHeadersJsDefault = parcelHelpers.interopDefault(_axiosHeadersJs);
-var _progressEventReducerJs = require("../helpers/progressEventReducer.js");
-var _resolveConfigJs = require("../helpers/resolveConfig.js");
-var _resolveConfigJsDefault = parcelHelpers.interopDefault(_resolveConfigJs);
-var _settleJs = require("../core/settle.js");
-var _settleJsDefault = parcelHelpers.interopDefault(_settleJs);
-const isFetchSupported = typeof fetch === "function" && typeof Request === "function" && typeof Response === "function";
-const isReadableStreamSupported = isFetchSupported && typeof ReadableStream === "function";
-// used only inside the fetch adapter
-const encodeText = isFetchSupported && (typeof TextEncoder === "function" ? ((encoder)=>(str)=>encoder.encode(str))(new TextEncoder()) : async (str)=>new Uint8Array(await new Response(str).arrayBuffer()));
-const test = (fn, ...args)=>{
-    try {
-        return !!fn(...args);
-    } catch (e) {
-        return false;
-    }
-};
-const supportsRequestStream = isReadableStreamSupported && test(()=>{
-    let duplexAccessed = false;
-    const hasContentType = new Request((0, _indexJsDefault.default).origin, {
-        body: new ReadableStream(),
-        method: "POST",
-        get duplex () {
-            duplexAccessed = true;
-            return "half";
-        }
-    }).headers.has("Content-Type");
-    return duplexAccessed && !hasContentType;
-});
-const DEFAULT_CHUNK_SIZE = 65536;
-const supportsResponseStream = isReadableStreamSupported && test(()=>(0, _utilsJsDefault.default).isReadableStream(new Response("").body));
-const resolvers = {
-    stream: supportsResponseStream && ((res)=>res.body)
-};
-isFetchSupported && ((res)=>{
-    [
-        "text",
-        "arrayBuffer",
-        "blob",
-        "formData",
-        "stream"
-    ].forEach((type)=>{
-        !resolvers[type] && (resolvers[type] = (0, _utilsJsDefault.default).isFunction(res[type]) ? (res)=>res[type]() : (_, config)=>{
-            throw new (0, _axiosErrorJsDefault.default)(`Response type '${type}' is not supported`, (0, _axiosErrorJsDefault.default).ERR_NOT_SUPPORT, config);
-        });
-    });
-})(new Response);
-const getBodyLength = async (body)=>{
-    if (body == null) return 0;
-    if ((0, _utilsJsDefault.default).isBlob(body)) return body.size;
-    if ((0, _utilsJsDefault.default).isSpecCompliantForm(body)) {
-        const _request = new Request((0, _indexJsDefault.default).origin, {
-            method: "POST",
-            body
-        });
-        return (await _request.arrayBuffer()).byteLength;
-    }
-    if ((0, _utilsJsDefault.default).isArrayBufferView(body) || (0, _utilsJsDefault.default).isArrayBuffer(body)) return body.byteLength;
-    if ((0, _utilsJsDefault.default).isURLSearchParams(body)) body = body + "";
-    if ((0, _utilsJsDefault.default).isString(body)) return (await encodeText(body)).byteLength;
-};
-const resolveBodyLength = async (headers, body)=>{
-    const length = (0, _utilsJsDefault.default).toFiniteNumber(headers.getContentLength());
-    return length == null ? getBodyLength(body) : length;
-};
-exports.default = isFetchSupported && (async (config)=>{
-    let { url, method, data, signal, cancelToken, timeout, onDownloadProgress, onUploadProgress, responseType, headers, withCredentials = "same-origin", fetchOptions } = (0, _resolveConfigJsDefault.default)(config);
-    responseType = responseType ? (responseType + "").toLowerCase() : "text";
-    let composedSignal = (0, _composeSignalsJsDefault.default)([
-        signal,
-        cancelToken && cancelToken.toAbortSignal()
-    ], timeout);
-    let request;
-    const unsubscribe = composedSignal && composedSignal.unsubscribe && (()=>{
-        composedSignal.unsubscribe();
-    });
-    let requestContentLength;
-    try {
-        if (onUploadProgress && supportsRequestStream && method !== "get" && method !== "head" && (requestContentLength = await resolveBodyLength(headers, data)) !== 0) {
-            let _request = new Request(url, {
-                method: "POST",
-                body: data,
-                duplex: "half"
-            });
-            let contentTypeHeader;
-            if ((0, _utilsJsDefault.default).isFormData(data) && (contentTypeHeader = _request.headers.get("content-type"))) headers.setContentType(contentTypeHeader);
-            if (_request.body) {
-                const [onProgress, flush] = (0, _progressEventReducerJs.progressEventDecorator)(requestContentLength, (0, _progressEventReducerJs.progressEventReducer)((0, _progressEventReducerJs.asyncDecorator)(onUploadProgress)));
-                data = (0, _trackStreamJs.trackStream)(_request.body, DEFAULT_CHUNK_SIZE, onProgress, flush);
-            }
-        }
-        if (!(0, _utilsJsDefault.default).isString(withCredentials)) withCredentials = withCredentials ? "include" : "omit";
-        // Cloudflare Workers throws when credentials are defined
-        // see https://github.com/cloudflare/workerd/issues/902
-        const isCredentialsSupported = "credentials" in Request.prototype;
-        request = new Request(url, {
-            ...fetchOptions,
-            signal: composedSignal,
-            method: method.toUpperCase(),
-            headers: headers.normalize().toJSON(),
-            body: data,
-            duplex: "half",
-            credentials: isCredentialsSupported ? withCredentials : undefined
-        });
-        let response = await fetch(request);
-        const isStreamResponse = supportsResponseStream && (responseType === "stream" || responseType === "response");
-        if (supportsResponseStream && (onDownloadProgress || isStreamResponse && unsubscribe)) {
-            const options = {};
-            [
-                "status",
-                "statusText",
-                "headers"
-            ].forEach((prop)=>{
-                options[prop] = response[prop];
-            });
-            const responseContentLength = (0, _utilsJsDefault.default).toFiniteNumber(response.headers.get("content-length"));
-            const [onProgress, flush] = onDownloadProgress && (0, _progressEventReducerJs.progressEventDecorator)(responseContentLength, (0, _progressEventReducerJs.progressEventReducer)((0, _progressEventReducerJs.asyncDecorator)(onDownloadProgress), true)) || [];
-            response = new Response((0, _trackStreamJs.trackStream)(response.body, DEFAULT_CHUNK_SIZE, onProgress, ()=>{
-                flush && flush();
-                unsubscribe && unsubscribe();
-            }), options);
-        }
-        responseType = responseType || "text";
-        let responseData = await resolvers[(0, _utilsJsDefault.default).findKey(resolvers, responseType) || "text"](response, config);
-        !isStreamResponse && unsubscribe && unsubscribe();
-        return await new Promise((resolve, reject)=>{
-            (0, _settleJsDefault.default)(resolve, reject, {
-                data: responseData,
-                headers: (0, _axiosHeadersJsDefault.default).from(response.headers),
-                status: response.status,
-                statusText: response.statusText,
-                config,
-                request
-            });
-        });
-    } catch (err) {
-        unsubscribe && unsubscribe();
-        if (err && err.name === "TypeError" && /fetch/i.test(err.message)) throw Object.assign(new (0, _axiosErrorJsDefault.default)("Network Error", (0, _axiosErrorJsDefault.default).ERR_NETWORK, config, request), {
-            cause: err.cause || err
-        });
-        throw (0, _axiosErrorJsDefault.default).from(err, err && err.code, config, request);
-    }
-});
-
-},{"../platform/index.js":"7tDev","../utils.js":"5By4s","../core/AxiosError.js":"3u8Tl","../helpers/composeSignals.js":"3xrUR","../helpers/trackStream.js":"kIZVF","../core/AxiosHeaders.js":"cgSSx","../helpers/progressEventReducer.js":"bN9Fp","../helpers/resolveConfig.js":"l0e6d","../core/settle.js":"dD9aC","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3xrUR":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _canceledErrorJs = require("../cancel/CanceledError.js");
-var _canceledErrorJsDefault = parcelHelpers.interopDefault(_canceledErrorJs);
-var _axiosErrorJs = require("../core/AxiosError.js");
-var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
-var _utilsJs = require("../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-const composeSignals = (signals, timeout)=>{
-    const { length } = signals = signals ? signals.filter(Boolean) : [];
-    if (timeout || length) {
-        let controller = new AbortController();
-        let aborted;
-        const onabort = function(reason) {
-            if (!aborted) {
-                aborted = true;
-                unsubscribe();
-                const err = reason instanceof Error ? reason : this.reason;
-                controller.abort(err instanceof (0, _axiosErrorJsDefault.default) ? err : new (0, _canceledErrorJsDefault.default)(err instanceof Error ? err.message : err));
-            }
-        };
-        let timer = timeout && setTimeout(()=>{
-            timer = null;
-            onabort(new (0, _axiosErrorJsDefault.default)(`timeout ${timeout} of ms exceeded`, (0, _axiosErrorJsDefault.default).ETIMEDOUT));
-        }, timeout);
-        const unsubscribe = ()=>{
-            if (signals) {
-                timer && clearTimeout(timer);
-                timer = null;
-                signals.forEach((signal)=>{
-                    signal.unsubscribe ? signal.unsubscribe(onabort) : signal.removeEventListener("abort", onabort);
-                });
-                signals = null;
-            }
-        };
-        signals.forEach((signal)=>signal.addEventListener("abort", onabort));
-        const { signal } = controller;
-        signal.unsubscribe = ()=>(0, _utilsJsDefault.default).asap(unsubscribe);
-        return signal;
-    }
-};
-exports.default = composeSignals;
-
-},{"../cancel/CanceledError.js":"9PwCG","../core/AxiosError.js":"3u8Tl","../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kIZVF":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "streamChunk", ()=>streamChunk);
-parcelHelpers.export(exports, "readBytes", ()=>readBytes);
-parcelHelpers.export(exports, "trackStream", ()=>trackStream);
-const streamChunk = function*(chunk, chunkSize) {
-    let len = chunk.byteLength;
-    if (!chunkSize || len < chunkSize) {
-        yield chunk;
-        return;
-    }
-    let pos = 0;
-    let end;
-    while(pos < len){
-        end = pos + chunkSize;
-        yield chunk.slice(pos, end);
-        pos = end;
-    }
-};
-const readBytes = async function*(iterable, chunkSize) {
-    for await (const chunk of readStream(iterable))yield* streamChunk(chunk, chunkSize);
-};
-const readStream = async function*(stream) {
-    if (stream[Symbol.asyncIterator]) {
-        yield* stream;
-        return;
-    }
-    const reader = stream.getReader();
-    try {
-        for(;;){
-            const { done, value } = await reader.read();
-            if (done) break;
-            yield value;
-        }
-    } finally{
-        await reader.cancel();
-    }
-};
-const trackStream = (stream, chunkSize, onProgress, onFinish)=>{
-    const iterator = readBytes(stream, chunkSize);
-    let bytes = 0;
-    let done;
-    let _onFinish = (e)=>{
-        if (!done) {
-            done = true;
-            onFinish && onFinish(e);
-        }
-    };
-    return new ReadableStream({
-        async pull (controller) {
-            try {
-                const { done, value } = await iterator.next();
-                if (done) {
-                    _onFinish();
-                    controller.close();
-                    return;
-                }
-                let len = value.byteLength;
-                if (onProgress) {
-                    let loadedBytes = bytes += len;
-                    onProgress(loadedBytes);
-                }
-                controller.enqueue(new Uint8Array(value));
-            } catch (err) {
-                _onFinish(err);
-                throw err;
-            }
-        },
-        cancel (reason) {
-            _onFinish(reason);
-            return iterator.return();
-        }
-    }, {
-        highWaterMark: 2
-    });
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"9vgkY":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _dataJs = require("../env/data.js");
-var _axiosErrorJs = require("../core/AxiosError.js");
-var _axiosErrorJsDefault = parcelHelpers.interopDefault(_axiosErrorJs);
-"use strict";
-const validators = {};
-// eslint-disable-next-line func-names
-[
-    "object",
-    "boolean",
-    "number",
-    "function",
-    "string",
-    "symbol"
-].forEach((type, i)=>{
-    validators[type] = function validator(thing) {
-        return typeof thing === type || "a" + (i < 1 ? "n " : " ") + type;
-    };
-});
-const deprecatedWarnings = {};
-/**
- * Transitional option validator
- *
- * @param {function|boolean?} validator - set to false if the transitional option has been removed
- * @param {string?} version - deprecated version / removed since version
- * @param {string?} message - some message with additional info
- *
- * @returns {function}
- */ validators.transitional = function transitional(validator, version, message) {
-    function formatMessage(opt, desc) {
-        return "[Axios v" + (0, _dataJs.VERSION) + "] Transitional option '" + opt + "'" + desc + (message ? ". " + message : "");
-    }
-    // eslint-disable-next-line func-names
-    return (value, opt, opts)=>{
-        if (validator === false) throw new (0, _axiosErrorJsDefault.default)(formatMessage(opt, " has been removed" + (version ? " in " + version : "")), (0, _axiosErrorJsDefault.default).ERR_DEPRECATED);
-        if (version && !deprecatedWarnings[opt]) {
-            deprecatedWarnings[opt] = true;
-            // eslint-disable-next-line no-console
-            console.warn(formatMessage(opt, " has been deprecated since v" + version + " and will be removed in the near future"));
-        }
-        return validator ? validator(value, opt, opts) : true;
-    };
-};
-/**
- * Assert object's properties type
- *
- * @param {object} options
- * @param {object} schema
- * @param {boolean?} allowUnknown
- *
- * @returns {object}
- */ function assertOptions(options, schema, allowUnknown) {
-    if (typeof options !== "object") throw new (0, _axiosErrorJsDefault.default)("options must be an object", (0, _axiosErrorJsDefault.default).ERR_BAD_OPTION_VALUE);
-    const keys = Object.keys(options);
-    let i = keys.length;
-    while(i-- > 0){
-        const opt = keys[i];
-        const validator = schema[opt];
-        if (validator) {
-            const value = options[opt];
-            const result = value === undefined || validator(value, opt, options);
-            if (result !== true) throw new (0, _axiosErrorJsDefault.default)("option " + opt + " must be " + result, (0, _axiosErrorJsDefault.default).ERR_BAD_OPTION_VALUE);
-            continue;
-        }
-        if (allowUnknown !== true) throw new (0, _axiosErrorJsDefault.default)("Unknown option " + opt, (0, _axiosErrorJsDefault.default).ERR_BAD_OPTION);
-    }
-}
-exports.default = {
-    assertOptions,
-    validators
-};
-
-},{"../env/data.js":"h29L9","../core/AxiosError.js":"3u8Tl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"h29L9":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "VERSION", ()=>VERSION);
-const VERSION = "1.7.7";
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"45wzn":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _canceledErrorJs = require("./CanceledError.js");
-var _canceledErrorJsDefault = parcelHelpers.interopDefault(_canceledErrorJs);
-"use strict";
-/**
- * A `CancelToken` is an object that can be used to request cancellation of an operation.
- *
- * @param {Function} executor The executor function.
- *
- * @returns {CancelToken}
- */ class CancelToken {
-    constructor(executor){
-        if (typeof executor !== "function") throw new TypeError("executor must be a function.");
-        let resolvePromise;
-        this.promise = new Promise(function promiseExecutor(resolve) {
-            resolvePromise = resolve;
-        });
-        const token = this;
-        // eslint-disable-next-line func-names
-        this.promise.then((cancel)=>{
-            if (!token._listeners) return;
-            let i = token._listeners.length;
-            while(i-- > 0)token._listeners[i](cancel);
-            token._listeners = null;
-        });
-        // eslint-disable-next-line func-names
-        this.promise.then = (onfulfilled)=>{
-            let _resolve;
-            // eslint-disable-next-line func-names
-            const promise = new Promise((resolve)=>{
-                token.subscribe(resolve);
-                _resolve = resolve;
-            }).then(onfulfilled);
-            promise.cancel = function reject() {
-                token.unsubscribe(_resolve);
-            };
-            return promise;
-        };
-        executor(function cancel(message, config, request) {
-            if (token.reason) // Cancellation has already been requested
-            return;
-            token.reason = new (0, _canceledErrorJsDefault.default)(message, config, request);
-            resolvePromise(token.reason);
-        });
-    }
-    /**
-   * Throws a `CanceledError` if cancellation has been requested.
-   */ throwIfRequested() {
-        if (this.reason) throw this.reason;
-    }
-    /**
-   * Subscribe to the cancel signal
-   */ subscribe(listener) {
-        if (this.reason) {
-            listener(this.reason);
-            return;
-        }
-        if (this._listeners) this._listeners.push(listener);
-        else this._listeners = [
-            listener
-        ];
-    }
-    /**
-   * Unsubscribe from the cancel signal
-   */ unsubscribe(listener) {
-        if (!this._listeners) return;
-        const index = this._listeners.indexOf(listener);
-        if (index !== -1) this._listeners.splice(index, 1);
-    }
-    toAbortSignal() {
-        const controller = new AbortController();
-        const abort = (err)=>{
-            controller.abort(err);
-        };
-        this.subscribe(abort);
-        controller.signal.unsubscribe = ()=>this.unsubscribe(abort);
-        return controller.signal;
-    }
-    /**
-   * Returns an object that contains a new `CancelToken` and a function that, when called,
-   * cancels the `CancelToken`.
-   */ static source() {
-        let cancel;
-        const token = new CancelToken(function executor(c) {
-            cancel = c;
-        });
-        return {
-            token,
-            cancel
-        };
-    }
-}
-exports.default = CancelToken;
-
-},{"./CanceledError.js":"9PwCG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"dyQ8N":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>spread);
-"use strict";
-function spread(callback) {
-    return function wrap(arr) {
-        return callback.apply(null, arr);
-    };
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"eyiLq":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>isAxiosError);
-var _utilsJs = require("./../utils.js");
-var _utilsJsDefault = parcelHelpers.interopDefault(_utilsJs);
-"use strict";
-function isAxiosError(payload) {
-    return (0, _utilsJsDefault.default).isObject(payload) && payload.isAxiosError === true;
-}
-
-},{"./../utils.js":"5By4s","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"fdR61":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const HttpStatusCode = {
-    Continue: 100,
-    SwitchingProtocols: 101,
-    Processing: 102,
-    EarlyHints: 103,
-    Ok: 200,
-    Created: 201,
-    Accepted: 202,
-    NonAuthoritativeInformation: 203,
-    NoContent: 204,
-    ResetContent: 205,
-    PartialContent: 206,
-    MultiStatus: 207,
-    AlreadyReported: 208,
-    ImUsed: 226,
-    MultipleChoices: 300,
-    MovedPermanently: 301,
-    Found: 302,
-    SeeOther: 303,
-    NotModified: 304,
-    UseProxy: 305,
-    Unused: 306,
-    TemporaryRedirect: 307,
-    PermanentRedirect: 308,
-    BadRequest: 400,
-    Unauthorized: 401,
-    PaymentRequired: 402,
-    Forbidden: 403,
-    NotFound: 404,
-    MethodNotAllowed: 405,
-    NotAcceptable: 406,
-    ProxyAuthenticationRequired: 407,
-    RequestTimeout: 408,
-    Conflict: 409,
-    Gone: 410,
-    LengthRequired: 411,
-    PreconditionFailed: 412,
-    PayloadTooLarge: 413,
-    UriTooLong: 414,
-    UnsupportedMediaType: 415,
-    RangeNotSatisfiable: 416,
-    ExpectationFailed: 417,
-    ImATeapot: 418,
-    MisdirectedRequest: 421,
-    UnprocessableEntity: 422,
-    Locked: 423,
-    FailedDependency: 424,
-    TooEarly: 425,
-    UpgradeRequired: 426,
-    PreconditionRequired: 428,
-    TooManyRequests: 429,
-    RequestHeaderFieldsTooLarge: 431,
-    UnavailableForLegalReasons: 451,
-    InternalServerError: 500,
-    NotImplemented: 501,
-    BadGateway: 502,
-    ServiceUnavailable: 503,
-    GatewayTimeout: 504,
-    HttpVersionNotSupported: 505,
-    VariantAlsoNegotiates: 506,
-    InsufficientStorage: 507,
-    LoopDetected: 508,
-    NotExtended: 510,
-    NetworkAuthenticationRequired: 511
-};
-Object.entries(HttpStatusCode).forEach(([key, value])=>{
-    HttpStatusCode[value] = key;
-});
-exports.default = HttpStatusCode;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iUtZE":[function(require,module,exports) {
+},{"888d3c156f4bc211":"2uyD7","2730b4878e4489a1":"1xL0x","b2c4e13abbd0948c":"807YT","6cd7e9dd0f11c9d2":"laUA9","d2c0c37ddc004229":"hYNJZ","545cdfe91f81de62":"9OpaE"}],"iUtZE":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "version", ()=>(0, _packageJs.version));
@@ -85971,14 +79721,8 @@ class ANode {
             configurable: true,
             writable: true,
             value: void 0
-        });
+        }); // type filled in subClass
         Object.defineProperty(this, "category", {
-            enumerable: true,
-            configurable: true,
-            writable: true,
-            value: void 0
-        });
-        Object.defineProperty(this, "contextIds", {
             enumerable: true,
             configurable: true,
             writable: true,
@@ -86002,6 +79746,12 @@ class ANode {
             writable: true,
             value: void 0
         });
+        Object.defineProperty(this, "hasLoadedParent", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
         this.id = node.getId().get();
         this._serverId = node._server_id;
         this.name = node.getName() ? node.getName().get() : "undefined name";
@@ -86009,6 +79759,7 @@ class ANode {
         this.hasChildren = false;
         this.children = [];
         this._children = null;
+        this.hasLoadedParent = false;
     }
     getChildren(node) {
         return Promise.resolve([]);
@@ -86036,26 +79787,31 @@ class ANode {
         return "#ff4433";
     }
     static collapseOrOpen(node) {
+        if (Array.isArray(node.children)) {
+            node._children = node.children;
+            node.children = null;
+            return false;
+        }
         if (Array.isArray(node._children)) {
             node.children = node._children;
             node._children = null;
-            return false;
-        } else {
-            node._children = node.children;
-            node.children = null;
             return true;
         }
+        return true;
     }
     static collapseOrOpenParent(node) {
+        if (!node.data.hasLoadedParent) return true;
+        if (Array.isArray(node.parent)) {
+            node._parent = node.parent;
+            node.parent = null;
+            return false;
+        }
         if (Array.isArray(node._parent)) {
             node.parent = node._parent;
             node._parent = null;
-            return false;
-        } else {
-            node._parent = node.parent;
-            node.parent = null;
             return true;
         }
+        return true;
     }
     static updateChildren(node, nodeFactory) {
         return __awaiter(this, void 0, void 0, function*() {
@@ -86088,6 +79844,7 @@ class ANode {
                     s
                 ];
             }
+            node.data.hasLoadedParent = true;
         });
     }
 }
@@ -86237,7 +79994,7 @@ class NodeRelationG extends (0, _anode.ANode) {
     }
     getChildren() {
         const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[this._serverId];
-        return realNode.getChildren();
+        return realNode.getChildren(0, false);
     }
 }
 
@@ -86337,7 +80094,7 @@ let initialize = ()=>{
     script.render = require("65116feae8f12e0f").render;
     script.__cssModules = require("301fadd326b095a0").default;
     require("1d402cae9c8cbe8d").default(script);
-    script.__scopeId = "data-v-a0697f";
+    script.__scopeId = "data-v-b08bf7";
     script.__file = "legendVueGraph.vue";
 };
 initialize();
@@ -86386,6 +80143,8 @@ var _ptrlstPngWidth20 = require("../assets/ptrlst.png?width=20");
 var _ptrlstPngWidth20Default = parcelHelpers.interopDefault(_ptrlstPngWidth20);
 var _lstptrPngWidth20 = require("../assets/lstptr.png?width=20");
 var _lstptrPngWidth20Default = parcelHelpers.interopDefault(_lstptrPngWidth20);
+var _lstptrlstPngWidth20 = require("../assets/lstptrlst.png?width=20");
+var _lstptrlstPngWidth20Default = parcelHelpers.interopDefault(_lstptrlstPngWidth20);
 var _refPngWidth20 = require("../assets/ref.png?width=20");
 var _refPngWidth20Default = parcelHelpers.interopDefault(_refPngWidth20);
 var _childcoursePng = require("../assets/childcourse.png");
@@ -86476,7 +80235,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     ]),
                     (0, _vue.createElementVNode)("th", null, "Relation LstPtr")
                 ], -1)),
-                _cache[11] || (_cache[11] = (0, _vue.createElementVNode)("tr", {
+                _cache[11] || (_cache[11] = (0, _vue.createElementVNode)("tr", null, [
+                    (0, _vue.createElementVNode)("th", null, [
+                        (0, _vue.createElementVNode)("img", {
+                            width: "20px",
+                            src: (0, _lstptrlstPngWidth20Default.default),
+                            alt: ""
+                        })
+                    ]),
+                    (0, _vue.createElementVNode)("th", null, "Relation LstPtrLst")
+                ], -1)),
+                _cache[12] || (_cache[12] = (0, _vue.createElementVNode)("tr", {
                     style: {
                         "border-bottom": "1px solid #ddd"
                     }
@@ -86513,7 +80282,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     _cache[5] || (_cache[5] = (0, _vue.createElementVNode)("th", null, "select only", -1))
                 ])
             ]),
-            _cache[12] || (_cache[12] = (0, _vue.createElementVNode)("p", {
+            _cache[13] || (_cache[13] = (0, _vue.createElementVNode)("p", {
                 style: {
                     "text-align": "center"
                 }
@@ -86535,16 +80304,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]);
 }
 
-},{"vue":"gzxs9","../assets/info.png":"bqrZM","../assets/childcourse.png":"eCAAQ","../assets/parentcourse.png":"hv20Q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../assets/start.png?width=20":"iyRQp","../assets/simplenode.png?width=20":"a6Rgr","../assets/lastnode.png?width=20":"6xQgR","../assets/ptrlst.png?width=20":"dYsXM","../assets/lstptr.png?width=20":"f6hSS","../assets/ref.png?width=20":"gndBy"}],"bqrZM":[function(require,module,exports) {
+},{"vue":"gzxs9","../assets/info.png":"bqrZM","../assets/start.png?width=20":"iyRQp","../assets/simplenode.png?width=20":"a6Rgr","../assets/lastnode.png?width=20":"6xQgR","../assets/ptrlst.png?width=20":"dYsXM","../assets/lstptr.png?width=20":"f6hSS","../assets/lstptrlst.png?width=20":"8lURG","../assets/ref.png?width=20":"gndBy","../assets/childcourse.png":"eCAAQ","../assets/parentcourse.png":"hv20Q","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"bqrZM":[function(require,module,exports) {
 module.exports = require("88ae4b337f3793d6").getBundleURL("cGaT9") + "info.5747d858.png";
 
-},{"88ae4b337f3793d6":"lgJ39"}],"eCAAQ":[function(require,module,exports) {
-module.exports = require("999fa6263ed7cfef").getBundleURL("cGaT9") + "childcourse.4530ee49.png";
-
-},{"999fa6263ed7cfef":"lgJ39"}],"hv20Q":[function(require,module,exports) {
-module.exports = require("8c37f8e11049b779").getBundleURL("cGaT9") + "parentcourse.119469c6.png";
-
-},{"8c37f8e11049b779":"lgJ39"}],"iyRQp":[function(require,module,exports) {
+},{"88ae4b337f3793d6":"lgJ39"}],"iyRQp":[function(require,module,exports) {
 module.exports = require("a35dd9170f739f9b").getBundleURL("cGaT9") + "start.0093b889.png";
 
 },{"a35dd9170f739f9b":"lgJ39"}],"a6Rgr":[function(require,module,exports) {
@@ -86559,10 +80322,19 @@ module.exports = require("351028aec740abfd").getBundleURL("cGaT9") + "ptrlst.cda
 },{"351028aec740abfd":"lgJ39"}],"f6hSS":[function(require,module,exports) {
 module.exports = require("4182993eb179eed9").getBundleURL("cGaT9") + "lstptr.e2808a73.png";
 
-},{"4182993eb179eed9":"lgJ39"}],"gndBy":[function(require,module,exports) {
+},{"4182993eb179eed9":"lgJ39"}],"8lURG":[function(require,module,exports) {
+module.exports = require("894d1ce896f9d385").getBundleURL("cGaT9") + "lstptrlst.cded48d6.png";
+
+},{"894d1ce896f9d385":"lgJ39"}],"gndBy":[function(require,module,exports) {
 module.exports = require("b7fd9c11715944ab").getBundleURL("cGaT9") + "ref.1607cc19.png";
 
-},{"b7fd9c11715944ab":"lgJ39"}],"irouL":[function() {},{}],"42nvf":[function(require,module,exports) {
+},{"b7fd9c11715944ab":"lgJ39"}],"eCAAQ":[function(require,module,exports) {
+module.exports = require("999fa6263ed7cfef").getBundleURL("cGaT9") + "childcourse.4530ee49.png";
+
+},{"999fa6263ed7cfef":"lgJ39"}],"hv20Q":[function(require,module,exports) {
+module.exports = require("8c37f8e11049b779").getBundleURL("cGaT9") + "parentcourse.119469c6.png";
+
+},{"8c37f8e11049b779":"lgJ39"}],"irouL":[function() {},{}],"42nvf":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{};
@@ -86578,17 +80350,64 @@ const _hoisted_1 = {
     class: "app-Graph"
 };
 const _hoisted_2 = {
+    class: "top-controls"
+};
+const _hoisted_3 = {
     id: "rates"
+};
+const _hoisted_4 = {
+    class: "search-panel"
+};
+const _hoisted_5 = [
+    "disabled"
+];
+const _hoisted_6 = [
+    "disabled"
+];
+const _hoisted_7 = {
+    class: "search-count"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_legendVueGraph = (0, _vue.resolveComponent)("legendVueGraph");
     return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
         (0, _vue.createVNode)(_component_legendVueGraph),
         (0, _vue.createElementVNode)("div", _hoisted_2, [
-            (0, _vue.createElementVNode)("button", {
-                id: "course",
-                onClick: _cache[0] || (_cache[0] = (...args)=>$options.setCourse && $options.setCourse(...args))
-            }, (0, _vue.toDisplayString)($data.courseType), 1)
+            (0, _vue.createElementVNode)("div", _hoisted_3, [
+                (0, _vue.createElementVNode)("button", {
+                    id: "course",
+                    onClick: _cache[0] || (_cache[0] = (...args)=>$options.setCourse && $options.setCourse(...args))
+                }, (0, _vue.toDisplayString)($data.courseType), 1)
+            ]),
+            (0, _vue.createElementVNode)("div", _hoisted_4, [
+                (0, _vue.withDirectives)((0, _vue.createElementVNode)("input", {
+                    "onUpdate:modelValue": _cache[1] || (_cache[1] = ($event)=>$data.searchQuery = $event),
+                    class: "search-input",
+                    type: "text",
+                    placeholder: "Search node name...",
+                    onInput: _cache[2] || (_cache[2] = (...args)=>$options.onSearchInput && $options.onSearchInput(...args)),
+                    onKeydown: _cache[3] || (_cache[3] = (0, _vue.withKeys)((0, _vue.withModifiers)((...args)=>$options.nextSearchResult && $options.nextSearchResult(...args), [
+                        "prevent"
+                    ]), [
+                        "enter"
+                    ]))
+                }, null, 544), [
+                    [
+                        (0, _vue.vModelText),
+                        $data.searchQuery
+                    ]
+                ]),
+                (0, _vue.createElementVNode)("button", {
+                    class: "search-btn",
+                    onClick: _cache[4] || (_cache[4] = (...args)=>$options.prevSearchResult && $options.prevSearchResult(...args)),
+                    disabled: $data.matchCount === 0
+                }, " Prev ", 8, _hoisted_5),
+                (0, _vue.createElementVNode)("button", {
+                    class: "search-btn",
+                    onClick: _cache[5] || (_cache[5] = (...args)=>$options.nextSearchResult && $options.nextSearchResult(...args)),
+                    disabled: $data.matchCount === 0
+                }, " Next ", 8, _hoisted_6),
+                (0, _vue.createElementVNode)("span", _hoisted_7, (0, _vue.toDisplayString)($data.searchPosition) + " / " + (0, _vue.toDisplayString)($data.matchCount), 1)
+            ])
         ])
     ], 512);
 }
@@ -86609,7 +80428,7 @@ let initialize = ()=>{
     script.render = require("7660e07bf23257b").render;
     script.__cssModules = require("bd05826be21a0543").default;
     require("4cadc73ddec10cff").default(script);
-    script.__scopeId = "data-v-4b2ba1";
+    script.__scopeId = "data-v-858b24";
     script.__file = "AppElement.vue";
 };
 initialize();
@@ -87705,7 +81524,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     ]);
 }
 
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","../assets/info.png?width=20":"28VtM","../assets/simplenode.png?width=20":"a6Rgr","../assets/open.png?width=20":"jo3ab","../assets/last.png?width=20":"2m9uF","../assets/ptr.png?width=20":"iQpHo","../assets/start.png?width=20":"iyRQp","../assets/ids.png?width=20":"3QaBz","../assets/idsopen.png?width=20":"kSpTz"}],"28VtM":[function(require,module,exports) {
+},{"vue":"gzxs9","../assets/info.png?width=20":"28VtM","../assets/simplenode.png?width=20":"a6Rgr","../assets/open.png?width=20":"jo3ab","../assets/last.png?width=20":"2m9uF","../assets/ptr.png?width=20":"iQpHo","../assets/start.png?width=20":"iyRQp","../assets/ids.png?width=20":"3QaBz","../assets/idsopen.png?width=20":"kSpTz","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"28VtM":[function(require,module,exports) {
 module.exports = require("c336d41239167408").getBundleURL("cGaT9") + "info.5696d199.png";
 
 },{"c336d41239167408":"lgJ39"}],"jo3ab":[function(require,module,exports) {
@@ -87839,6 +81658,520 @@ parcelHelpers.defineInteropFlag(exports);
 let NOOP = ()=>{};
 exports.default = (script)=>{};
 
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"iQEDJ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let script;
+let initialize = ()=>{
+    script = require("54c4b3d26613cfb5");
+    if (script.__esModule) script = script.default;
+    script.render = require("31edf68f8ee59e53").render;
+    script.__cssModules = require("cf502a1f5728c19f").default;
+    require("ca204d8d5b94f6de").default(script);
+    script.__scopeId = "data-v-ac04a3";
+    script.__file = "AppForceGraph.vue";
+};
+initialize();
+exports.default = script;
+
+},{"54c4b3d26613cfb5":"f08rH","31edf68f8ee59e53":"6518E","cf502a1f5728c19f":"ebSjs","ca204d8d5b94f6de":"2bJ7m","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"f08rH":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _viewerForce = require("../viewerForce");
+var _viewerForceDefault = parcelHelpers.interopDefault(_viewerForce);
+var _spinal = require("../spinal");
+var _spinalDefault = parcelHelpers.interopDefault(_spinal);
+var _legendVueGraph = require("./legendVueGraph");
+var _legendVueGraphDefault = parcelHelpers.interopDefault(_legendVueGraph);
+exports.default = {
+    name: "AppForceGraph",
+    data () {
+        return {
+            state: false,
+            courseType: "Children Course"
+        };
+    },
+    components: {
+        legendVueGraph: (0, _legendVueGraphDefault.default)
+    },
+    mounted () {
+        const spinal = (0, _spinalDefault.default).getInstance();
+        this.viewer = new (0, _viewerForceDefault.default)(spinal);
+        this.initialized = false;
+    },
+    methods: {
+        tryInit () {
+            if (this.initialized) return;
+            const el = this.$refs.appForceGraph;
+            if (!el || el.clientWidth === 0 || el.clientHeight === 0) return;
+            this.initialized = true;
+            this.viewer.init(el, this.server_id);
+        },
+        setCourse () {
+            this.state = !this.state;
+            this.viewer.stateCourse = this.state;
+            this.courseType = this.state ? "Parent Course" : "Children Course";
+        }
+    },
+    props: {
+        server_id: {
+            require: true,
+            type: Number
+        }
+    }
+};
+
+},{"../viewerForce":"4m7V4","../spinal":"2Kgs7","./legendVueGraph":"lWT06","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"4m7V4":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+/*
+ * Copyright 2020 SpinalCom - www.spinalcom.com
+ *
+ * This file is part of SpinalCore.
+ *
+ * Please read all of the following terms and conditions
+ * of the Free Software license Agreement ("Agreement")
+ * carefully.
+ *
+ * This Agreement is a legally binding contract between
+ * the Licensee (as defined below) and SpinalCom that
+ * sets forth the terms and conditions that govern your
+ * use of the Program. By installing and/or using the
+ * Program, you agree to abide by all the terms and
+ * conditions stated or referenced herein.
+ *
+ * If you do not agree to abide by these terms and
+ * conditions, do not demonstrate your acceptance and do
+ * not install or use the Program.
+ * You should have received a copy of the license along
+ * with this file. If not, see
+ * <http://resources.spinalcom.com/licenses.pdf>.
+ */ var _spinalModelGraph = require("spinal-model-graph");
+var _spinalJs = require("./spinal.js");
+var _spinalJsDefault = parcelHelpers.interopDefault(_spinalJs);
+var _d3 = require("d3");
+var _anode = require("./nodeModel/ANode");
+var _nodeFactory = require("./nodeModel/NodeFactory");
+var _spinalCoreConnectorjs = require("spinal-core-connectorjs");
+var _eventBusJs = require("./components/event-bus.js");
+var _eventBusJsDefault = parcelHelpers.interopDefault(_eventBusJs);
+var __awaiter = undefined && undefined.__awaiter || function(thisArg, _arguments, P, generator) {
+    function adopt(value) {
+        return value instanceof P ? value : new P(function(resolve) {
+            resolve(value);
+        });
+    }
+    return new (P || (P = Promise))(function(resolve, reject) {
+        function fulfilled(value) {
+            try {
+                step(generator.next(value));
+            } catch (e) {
+                reject(e);
+            }
+        }
+        function rejected(value) {
+            try {
+                step(generator["throw"](value));
+            } catch (e) {
+                reject(e);
+            }
+        }
+        function step(result) {
+            result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+        }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+// Seed new nodes in a small circle around their anchor so that link
+// directions are well-defined from the very first tick, which ensures
+// arrowhead markers are rendered correctly.
+const SEED_RADIUS = 80;
+class ViewerForce {
+    constructor(spinal){
+        Object.defineProperty(this, "graph", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "width", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "height", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "margin", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: {
+                top: 20,
+                right: 90,
+                bottom: 30,
+                left: 90
+            }
+        });
+        Object.defineProperty(this, "element", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "svg", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "simulation", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "nodeFactory", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: void 0
+        });
+        Object.defineProperty(this, "stateCourse", {
+            enumerable: true,
+            configurable: true,
+            writable: true,
+            value: false
+        });
+        this.graph = spinal;
+        this.nodeFactory = new (0, _nodeFactory.NodeFactory)();
+    }
+    resize() {
+        const element = this.element;
+        const width1 = element.clientWidth - this.margin.left - this.margin.right;
+        const height1 = element.clientHeight - this.margin.top - this.margin.bottom;
+        if (width1 !== this.width || height1 !== this.height) {
+            this.width = width1;
+            this.height = height1;
+            this.draw();
+        }
+    }
+    draw() {
+        if (typeof this.svg !== "undefined") {
+            this.svg.attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom);
+            if (this.simulation) this.simulation.force("center", _d3.forceCenter(this.width / 2, this.height / 2));
+        }
+    }
+    init(element, server_id) {
+        return __awaiter(this, void 0, void 0, function*() {
+            this.element = element;
+            const data = yield this.graph.load(server_id);
+            this.width = element.clientWidth - this.margin.left - this.margin.right;
+            this.height = element.clientHeight - this.margin.top - this.margin.bottom;
+            const self = this;
+            let i = 0;
+            let node, link, edgepath;
+            let selectedNode = null;
+            const SELECTION_COLOR = "#ff8c00";
+            const root = this.nodeFactory.createNode(data);
+            root.x = this.width / 2;
+            root.y = this.height / 2;
+            this.svg = _d3.select(element).append("svg").call(_d3.zoom().scaleExtent([
+                0.01,
+                8
+            ]).on("zoom", zoomed)).on("dblclick.zoom", null).attr("width", this.width + this.margin.right + this.margin.left).attr("height", this.height + this.margin.top + this.margin.bottom);
+            const defs = this.svg.append("defs");
+            // Use markerUnits="userSpaceOnUse" so that refX is in pixels and the
+            // arrowhead tip reliably lands just outside the node circle (r=10).
+            // refX=22 places the tip ~12 px before the line endpoint (node centre),
+            // which is 2 px past the circle edge and always visible.
+            for (const [id, fill] of [
+                [
+                    "arrowhead-force",
+                    "#f8f8f8"
+                ],
+                [
+                    "arrowhead-force-selected",
+                    "#ff8c00"
+                ]
+            ])defs.append("svg:marker").attr("id", id).attr("viewBox", "0 -5 10 10").attr("refX", 22).attr("refY", 0).attr("orient", "auto").attr("markerUnits", "userSpaceOnUse").attr("markerWidth", 12).attr("markerHeight", 12).attr("overflow", "visible").append("svg:path").attr("d", "M 0,-5 L 10 ,0 L 0,5").attr("fill", fill).style("stroke", "none");
+            const svg = this.svg.append("g").attr("transform", "translate(" + this.margin.left + "," + this.margin.top + ")");
+            const mylink = svg.append("g");
+            const myedgepath = svg.append("g");
+            // Force simulation
+            this.simulation = _d3.forceSimulation().force("charge", _d3.forceManyBody().strength(-1000)).force("link", _d3.forceLink().id((d)=>d.id.toString()).distance((d)=>d.target.data.category === "node" ? 100 : 70).strength(2)).force("center", _d3.forceCenter(this.width / 2, this.height / 2)).force("collide", _d3.forceCollide(20).strength(0.5)).on("tick", ()=>{
+                if (link && node && edgepath) render();
+            });
+            // Seed new D3Nodes (x/y undefined) near an anchor node so link
+            // directions are non-degenerate from the first simulation tick.
+            const seedPositions = (anchor, newNodes)=>{
+                var _a, _b;
+                const ax = (_a = anchor.x) !== null && _a !== void 0 ? _a : this.width / 2;
+                const ay = (_b = anchor.y) !== null && _b !== void 0 ? _b : this.height / 2;
+                newNodes.forEach((n, idx)=>{
+                    if (n.x === undefined || n.y === undefined) {
+                        const angle = 2 * Math.PI * idx / Math.max(newNodes.length, 1);
+                        n.x = ax + SEED_RADIUS * Math.cos(angle);
+                        n.y = ay + SEED_RADIUS * Math.sin(angle);
+                    }
+                });
+            };
+            const ChildrenCourse = (d)=>__awaiter(this, void 0, void 0, function*() {
+                    selectedNode = d;
+                    const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                    if ((0, _anode.ANode).collapseOrOpen(d)) {
+                        yield (0, _anode.ANode).updateChildren(d, this.nodeFactory);
+                        const newChildren = (d.children || []).filter((c)=>c.x === undefined);
+                        seedPositions(d, newChildren);
+                    }
+                    (0, _eventBusJsDefault.default).$emit("realNode", realNode);
+                    (0, _eventBusJsDefault.default).$emit("realNodeElement", realNode);
+                    update();
+                });
+            const parentCourse = (d)=>__awaiter(this, void 0, void 0, function*() {
+                    selectedNode = d;
+                    const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                    if ((0, _anode.ANode).collapseOrOpenParent(d)) {
+                        yield (0, _anode.ANode).updateParent(d, this.nodeFactory);
+                        const newParents = (d.parent || []).filter((p)=>p.x === undefined);
+                        seedPositions(d, newParents);
+                    }
+                    (0, _eventBusJsDefault.default).$emit("realNode", realNode);
+                    (0, _eventBusJsDefault.default).$emit("realNodeElement", realNode);
+                    update();
+                });
+            const newpage = (d)=>__awaiter(this, void 0, void 0, function*() {
+                    if (d.data.category === "node") (0, _eventBusJsDefault.default).$emit("server_id", d.data._serverId);
+                    update();
+                });
+            const openNodeInDbInspector = (d)=>__awaiter(this, void 0, void 0, function*() {
+                    _d3.event.preventDefault();
+                    selectedNode = d;
+                    const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                    (0, _eventBusJsDefault.default).$emit("realNode", realNode);
+                    (0, _eventBusJsDefault.default).$emit("realNodeElement", realNode);
+                    update();
+                    updateName(d);
+                });
+            const click = (d)=>__awaiter(this, void 0, void 0, function*() {
+                    if (this.stateCourse === false) ChildrenCourse(d);
+                    else parentCourse(d);
+                    updateName(d);
+                });
+            function updateName(d) {
+                var _a, _b, _c;
+                const realModel = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                if (!realModel) return;
+                let newName = "";
+                if (d.data.category === "node") {
+                    const spinalNode = realModel;
+                    newName = (_b = (_a = spinalNode.info) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.get();
+                } else {
+                    const relation = realModel;
+                    newName = ((_c = relation.name) === null || _c === void 0 ? void 0 : _c.get()) + "{" + relation.getNbChildren() + "}";
+                }
+                if (newName && newName !== d.data.name) {
+                    d.data.name = newName;
+                    node.filter((nodeData)=>nodeData === d).select("text").text(newName);
+                }
+            }
+            function update() {
+                const nodes = flatten(root);
+                const links = createLinks(nodes);
+                link = mylink.selectAll(".link").data(links, function(d) {
+                    return d.target.id;
+                });
+                link.exit().remove();
+                const linkEnter = link.enter().append("line").attr("class", "link").attr("marker-end", "url(#arrowhead-force)").style("stroke", "#f8f8f8").style("opacity", "0.5").style("stroke-width", 2);
+                link = linkEnter.merge(link);
+                edgepath = myedgepath.selectAll(".edgepath").data(links).enter().append("path").attr("class", "edgepath").attr("fill-opacity", 0).attr("stroke-opacity", 0).attr("id", function(_d, idx) {
+                    return "edgepath-force" + idx;
+                }).style("pointer-events", "none");
+                edgepath = edgepath.merge(edgepath);
+                node = svg.selectAll(".node").data(nodes, function(d) {
+                    return d.id.toString();
+                });
+                node.exit().remove();
+                const nodeEnter = node.enter().append("g").attr("class", "node").attr("id", "test").attr("stroke-width", 1.2).style("fill", color).style("opacity", 1).on("click", click).on("contextmenu", openNodeInDbInspector).on("auxclick", function(d) {
+                    const evnt = window.event;
+                    if (evnt.which === 2) newpage(d);
+                }).call(_d3.drag().on("start", dragstarted).on("drag", dragged).on("end", dragended));
+                nodeEnter.append(function(d) {
+                    if (d.data.category === "node") {
+                        const doc = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                        doc.setAttribute("r", "10");
+                        doc.setAttribute("stroke", "#f8f8f8");
+                        doc.style.textAnchor = d.children ? "end" : "start";
+                        return doc;
+                    }
+                    const svg1 = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                    svg1.setAttribute("width", "20");
+                    svg1.setAttribute("height", "20");
+                    svg1.setAttribute("stroke", "#f8f8f8");
+                    svg1.setAttribute("transform", `translate(-10, -10)`);
+                    svg1.style.textAnchor = d.children ? "end" : "start";
+                    return svg1;
+                });
+                nodeEnter.append("text").text(function(d) {
+                    const realNode = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                    if (realNode instanceof (0, _spinalModelGraph.SpinalGraph)) d.data.name = "SpinalGraph";
+                    else if (d.data.name === "undefined" || d.data.name === undefined) d.data.name = "undefined name";
+                    if (d.data.category === "node") return d.data.name;
+                    else return d.data.name + "{" + realNode.getNbChildren() + "}";
+                }).attr("transform", `translate(-17,-15)`).style("fill", "#fff").style("font-family", "sans-serif").attr("stroke", "#000").attr("stroke-width", "3px").attr("stroke-linejoin", "round").style("paint-order", "stroke fill").style("font-style", function(d) {
+                    if (d.data.name === "undefined") return "italic";
+                    return "normal";
+                });
+                node = nodeEnter.merge(node);
+                // Restart simulation with updated nodes and links
+                self.simulation.force("link").links(links);
+                self.simulation.nodes(nodes);
+                self.simulation.alpha(0.3).restart();
+                // Render once immediately so elements are positioned before the first
+                // async tick fires (avoids a flash of zero-position content).
+                render();
+                applySelection();
+            }
+            const style = {
+                nodefill: {
+                    empty: "#fff",
+                    enterpoint: "#F3FF00",
+                    ptrlst: "#F40911",
+                    lstptr: "#E47579",
+                    lstptrLst: "#f1ba02",
+                    ref: "#09bf3b",
+                    objClosed: "#320ff2"
+                }
+            };
+            function color(d) {
+                if (d.data.hasChildren === false) return style.nodefill.empty;
+                if (d.data._serverId === root.data._serverId) return style.nodefill.enterpoint;
+                if (d.data.category === "node") return style.nodefill.objClosed;
+                if (d.data.category === "relation") {
+                    if (d.data.type === "PtrLst") return style.nodefill.ptrlst;
+                    else if (d.data.type === "LstPtr") return style.nodefill.lstptr;
+                    else if (d.data.type === "LstPtrLst") return style.nodefill.lstptrLst;
+                    else if (d.data.type === "Ref") return style.nodefill.ref;
+                }
+            }
+            function applySelection() {
+                if (!node || !link) return;
+                node.selectAll("circle, rect").attr("stroke", "#f8f8f8").attr("stroke-width", 1.2);
+                link.style("stroke", "#f8f8f8").style("opacity", "0.5").style("stroke-width", 2).attr("marker-end", "url(#arrowhead-force)");
+                if (!selectedNode) return;
+                node.filter((d)=>d === selectedNode).selectAll("circle, rect").attr("stroke", SELECTION_COLOR).attr("stroke-width", 3);
+                node.filter((d)=>d === selectedNode).raise();
+                link.filter((d)=>d.source === selectedNode || d.target === selectedNode).style("stroke", SELECTION_COLOR).style("opacity", "1").style("stroke-width", 2).attr("marker-end", "url(#arrowhead-force-selected)");
+            }
+            function render() {
+                if (!link || !node || !edgepath) return;
+                link.attr("x1", (d)=>d.source.x).attr("y1", (d)=>d.source.y).attr("x2", (d)=>d.target.x).attr("y2", (d)=>d.target.y);
+                node.attr("transform", (d)=>`translate(${d.x}, ${d.y})`);
+                edgepath.attr("d", (d)=>`M ${d.source.x} ${d.source.y} L ${d.target.x} ${d.target.y}`);
+            }
+            function dragstarted(d) {
+                if (!_d3.event.active) self.simulation.alphaTarget(0.3).restart();
+                d.fx = d.x;
+                d.fy = d.y;
+            }
+            function dragged(d) {
+                d.fx = _d3.event.x;
+                d.fy = _d3.event.y;
+            }
+            function dragended(d) {
+                if (!_d3.event.active) self.simulation.alphaTarget(0);
+                d.fx = null;
+                d.fy = null;
+            }
+            function flatten(root) {
+                const nodes = new Set();
+                function recurse(n) {
+                    if (nodes.has(n)) return;
+                    if (!n.id) n.id = ++i;
+                    else ++i;
+                    nodes.add(n);
+                    if (n.children) n.children.forEach(recurse);
+                    if (n.parent) n.parent.forEach(recurse);
+                }
+                recurse(root);
+                return Array.from(nodes);
+            }
+            function chekLink(source, target, links) {
+                for (const l of links){
+                    if (source.data === l.source.data && target.data === l.target.data) return true;
+                }
+                return false;
+            }
+            function createLinks(nodes) {
+                const links = [];
+                let id = 0;
+                for (const n of nodes){
+                    if (Array.isArray(n.parent)) {
+                        for (const parent of n.parent)if (!chekLink(parent, n, links)) links.push({
+                            source: parent,
+                            target: n,
+                            index: id++
+                        });
+                    }
+                    if (Array.isArray(n.children)) {
+                        for (const child of n.children)if (!chekLink(n, child, links)) links.push({
+                            source: n,
+                            target: child,
+                            index: id++
+                        });
+                    }
+                }
+                return links;
+            }
+            function zoomed() {
+                svg.attr("transform", _d3.event.transform);
+            }
+            update();
+        });
+    }
+}
+exports.default = ViewerForce;
+
+},{"spinal-model-graph":"fkEXw","./spinal.js":"2Kgs7","d3":"iUtZE","./nodeModel/ANode":"JtlvT","./nodeModel/NodeFactory":"kQpGh","spinal-core-connectorjs":"2uyD7","./components/event-bus.js":"dOIGs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"6518E":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "render", ()=>render);
+var _vue = require("vue");
+const _hoisted_1 = {
+    ref: "appForceGraph",
+    class: "app-graph-force"
+};
+const _hoisted_2 = {
+    class: "top-controls"
+};
+const _hoisted_3 = {
+    id: "rates"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+    const _component_legendVueGraph = (0, _vue.resolveComponent)("legendVueGraph");
+    return (0, _vue.openBlock)(), (0, _vue.createElementBlock)("div", _hoisted_1, [
+        (0, _vue.createVNode)(_component_legendVueGraph),
+        (0, _vue.createElementVNode)("div", _hoisted_2, [
+            (0, _vue.createElementVNode)("div", _hoisted_3, [
+                (0, _vue.createElementVNode)("button", {
+                    id: "course",
+                    onClick: _cache[0] || (_cache[0] = (...args)=>$options.setCourse && $options.setCourse(...args))
+                }, (0, _vue.toDisplayString)($data.courseType), 1)
+            ])
+        ])
+    ], 512);
+}
+
+},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ebSjs":[function() {},{}],"2bJ7m":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+let NOOP = ()=>{};
+exports.default = (script)=>{};
+
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"evi43":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -87846,6 +82179,24 @@ parcelHelpers.export(exports, "render", ()=>render);
 var _vue = require("vue");
 var _spinalPngWidth300 = require("./assets/spinal.png?width=300");
 var _spinalPngWidth300Default = parcelHelpers.interopDefault(_spinalPngWidth300);
+const _hoisted_1 = {
+    class: "tab-bar"
+};
+const _hoisted_2 = {
+    class: "tab-content"
+};
+const _hoisted_3 = {
+    class: "tab-pane"
+};
+const _hoisted_4 = {
+    class: "tab-pane"
+};
+const _hoisted_5 = {
+    class: "pane-content"
+};
+const _hoisted_6 = {
+    class: "pane-content"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
     const _component_v_spacer = (0, _vue.resolveComponent)("v-spacer");
     const _component_v_toolbar_title = (0, _vue.resolveComponent)("v-toolbar-title");
@@ -87869,14 +82220,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     prominent: ""
                 }, {
                     default: (0, _vue.withCtx)(()=>[
-                            _cache[3] || (_cache[3] = (0, _vue.createElementVNode)("img", {
+                            _cache[5] || (_cache[5] = (0, _vue.createElementVNode)("img", {
                                 height: "100%",
                                 src: (0, _spinalPngWidth300Default.default),
                                 alt: "spinalcom logo"
                             }, null, -1)),
                             (0, _vue.createVNode)(_component_v_spacer),
                             (0, _vue.createVNode)(_component_v_toolbar_title, null, {
-                                default: (0, _vue.withCtx)(()=>_cache[2] || (_cache[2] = [
+                                default: (0, _vue.withCtx)(()=>_cache[4] || (_cache[4] = [
                                         (0, _vue.createTextVNode)("Graph node inspector")
                                     ])),
                                 _: 1
@@ -87910,7 +82261,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                 ]),
                                             default: (0, _vue.withCtx)(()=>[
                                                     (0, _vue.createVNode)(_component_v_list_item_tile, null, {
-                                                        default: (0, _vue.withCtx)(()=>_cache[4] || (_cache[4] = [
+                                                        default: (0, _vue.withCtx)(()=>_cache[6] || (_cache[6] = [
                                                                 (0, _vue.createTextVNode)("Return to SpinalBIM Drive")
                                                             ])),
                                                         _: 1
@@ -87928,7 +82279,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                                 ]),
                                             default: (0, _vue.withCtx)(()=>[
                                                     (0, _vue.createVNode)(_component_v_list_item_tile, null, {
-                                                        default: (0, _vue.withCtx)(()=>_cache[5] || (_cache[5] = [
+                                                        default: (0, _vue.withCtx)(()=>_cache[7] || (_cache[7] = [
                                                                 (0, _vue.createTextVNode)("Log Out")
                                                             ])),
                                                         _: 1
@@ -87950,32 +82301,112 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     }
                 }, {
                     default: (0, _vue.withCtx)(()=>[
-                            (0, _vue.createVNode)($setup["GoldenLayout"], {
-                                style: {
-                                    "height": "100%"
-                                },
-                                config: $setup.layoutConfig
-                            }, {
-                                graphinspector: (0, _vue.withCtx)(()=>[
-                                        (0, _vue.createVNode)($setup["AppGraph"], {
-                                            ref: "app-graph",
-                                            server_id: $setup.server_id
-                                        }, null, 8, [
-                                            "server_id"
+                            (0, _vue.createElementVNode)("div", {
+                                ref: "appLayout",
+                                class: (0, _vue.normalizeClass)([
+                                    "app-layout",
+                                    {
+                                        "is-resizing": $setup.resizing
+                                    }
+                                ])
+                            }, [
+                                (0, _vue.createElementVNode)("div", {
+                                    class: "graph-panel",
+                                    style: (0, _vue.normalizeStyle)({
+                                        width: $setup.leftWidth + "%"
+                                    })
+                                }, [
+                                    (0, _vue.createElementVNode)("div", _hoisted_1, [
+                                        (0, _vue.createElementVNode)("button", {
+                                            class: (0, _vue.normalizeClass)([
+                                                "tab-btn",
+                                                {
+                                                    active: $setup.activeTab === "dag"
+                                                }
+                                            ]),
+                                            onClick: _cache[2] || (_cache[2] = ($event)=>$setup.setActiveTab("dag"))
+                                        }, " DAG Inspector ", 2),
+                                        (0, _vue.createElementVNode)("button", {
+                                            class: (0, _vue.normalizeClass)([
+                                                "tab-btn",
+                                                {
+                                                    active: $setup.activeTab === "force"
+                                                }
+                                            ]),
+                                            onClick: _cache[3] || (_cache[3] = ($event)=>$setup.setActiveTab("force"))
+                                        }, " Force Inspector ", 2)
+                                    ]),
+                                    (0, _vue.createElementVNode)("div", _hoisted_2, [
+                                        (0, _vue.withDirectives)((0, _vue.createElementVNode)("div", _hoisted_3, [
+                                            (0, _vue.createVNode)($setup["AppGraph"], {
+                                                server_id: $setup.server_id
+                                            }, null, 8, [
+                                                "server_id"
+                                            ])
+                                        ], 512), [
+                                            [
+                                                (0, _vue.vShow),
+                                                $setup.activeTab === "dag"
+                                            ]
+                                        ]),
+                                        (0, _vue.withDirectives)((0, _vue.createElementVNode)("div", _hoisted_4, [
+                                            (0, _vue.createVNode)($setup["AppForceGraph"], {
+                                                ref: "forceGraphRef",
+                                                server_id: $setup.server_id
+                                            }, null, 8, [
+                                                "server_id"
+                                            ])
+                                        ], 512), [
+                                            [
+                                                (0, _vue.vShow),
+                                                $setup.activeTab === "force"
+                                            ]
                                         ])
-                                    ]),
-                                nodeinspector: (0, _vue.withCtx)(()=>[
-                                        (0, _vue.createVNode)($setup["AppDbInspector"], {
-                                            ref: "app-Db-Inspector"
-                                        }, null, 512)
-                                    ]),
-                                elementinspector: (0, _vue.withCtx)(()=>[
-                                        (0, _vue.createVNode)($setup["AppElement"])
-                                    ]),
-                                _: 1
-                            }, 8, [
-                                "config"
-                            ])
+                                    ])
+                                ], 4),
+                                (0, _vue.createElementVNode)("div", {
+                                    class: "h-resizer",
+                                    onMousedown: $setup.startResizeH
+                                }, null, 32),
+                                (0, _vue.createElementVNode)("div", {
+                                    ref: "inspectorPanel",
+                                    class: "inspector-panel",
+                                    style: (0, _vue.normalizeStyle)({
+                                        width: 100 - $setup.leftWidth + "%"
+                                    })
+                                }, [
+                                    (0, _vue.createElementVNode)("div", {
+                                        class: "inspector-pane",
+                                        style: (0, _vue.normalizeStyle)({
+                                            height: $setup.topHeight + "%"
+                                        })
+                                    }, [
+                                        _cache[8] || (_cache[8] = (0, _vue.createElementVNode)("div", {
+                                            class: "pane-title"
+                                        }, "Inspector", -1)),
+                                        (0, _vue.createElementVNode)("div", _hoisted_5, [
+                                            (0, _vue.createVNode)($setup["AppDbInspector"])
+                                        ])
+                                    ], 4),
+                                    (0, _vue.createElementVNode)("div", {
+                                        class: "v-resizer",
+                                        onMousedown: $setup.startResizeV
+                                    }, null, 32),
+                                    (0, _vue.createElementVNode)("div", {
+                                        class: "inspector-pane",
+                                        style: (0, _vue.normalizeStyle)({
+                                            height: 100 - $setup.topHeight + "%"
+                                        })
+                                    }, [
+                                        _cache[9] || (_cache[9] = (0, _vue.createElementVNode)("div", {
+                                            class: "pane-title"
+                                        }, "Element Inspector", -1)),
+                                        (0, _vue.createElementVNode)("div", _hoisted_6, [
+                                            (0, _vue.createVNode)($setup["AppElement"])
+                                        ])
+                                    ], 4)
+                                ], 4)
+                            ], 2)
                         ]),
                     _: 1
                 })
@@ -87984,7 +82415,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     });
 }
 
-},{"vue":"gzxs9","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./assets/spinal.png?width=300":"kBrWo"}],"kBrWo":[function(require,module,exports) {
+},{"vue":"gzxs9","./assets/spinal.png?width=300":"kBrWo","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"kBrWo":[function(require,module,exports) {
 module.exports = require("379a9b259a6dd4c9").getBundleURL("cGaT9") + "spinal.79c3d4c4.png";
 
 },{"379a9b259a6dd4c9":"lgJ39"}],"1aWWh":[function() {},{}],"h0MjM":[function(require,module,exports) {

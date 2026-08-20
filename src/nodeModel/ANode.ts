@@ -92,7 +92,7 @@ export abstract class ANode {
     if (Array.isArray(node._children)) {
       node.children = node._children;
       node._children = null;
-      return false;
+      return true;
     }
 
     return true;
@@ -109,7 +109,7 @@ export abstract class ANode {
     if (Array.isArray(node._parent)) {
       node.parent = node._parent;
       node._parent = null;
-      return false;
+      return true;
     }
 
     return true;

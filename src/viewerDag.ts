@@ -30,6 +30,7 @@ import { NodeFactory } from "./nodeModel/NodeFactory";
 import { FileSystem } from "spinal-core-connectorjs";
 import { type SpinalNode, SpinalGraph } from "spinal-model-graph";
 import EventBus from "./components/event-bus.js";
+import type { BaseSpinalRelation } from "./nodeModel/types.js";
 
 const HORIZONTAL_SPACING = 200;
 const VERTICAL_SPACING = 60;
@@ -330,12 +331,34 @@ class ViewerDag {
       EventBus.$emit("realNode", realNode);
       EventBus.$emit("realNodeElement", realNode);
       update();
+      updateName(d);
     };
 
     const click = async (d: D3Node) => {
       if (this.stateCourse === false) ChildrenCourse(d);
       else parentCourse(d);
+      updateName(d);
     };
+
+    function updateName(d: D3Node) {
+      const realModel = FileSystem._objects[d.data._serverId];
+      if (!realModel) return;
+      let newName = "";
+      if (d.data.category === "node") {
+        const spinalNode = realModel as SpinalNode;
+        newName = spinalNode.info?.name?.get();
+      } else {
+        const relation = realModel as BaseSpinalRelation;
+        newName = relation.name?.get() + "{" + relation.getNbChildren() + "}";
+      }
+      if (newName && newName !== d.data.name) {
+        d.data.name = newName;
+        node
+          .filter((nodeData: D3Node) => nodeData === d)
+          .select("text")
+          .text(newName);
+      }
+    }
 
     function update() {
       const nodes = flatten(root);

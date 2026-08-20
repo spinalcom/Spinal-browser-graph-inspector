@@ -56680,11 +56680,30 @@ class ViewerDag {
                     (0, _eventBusJsDefault.default).$emit("realNode", realNode);
                     (0, _eventBusJsDefault.default).$emit("realNodeElement", realNode);
                     update();
+                    updateName(d);
                 });
             const click = (d)=>__awaiter(this, void 0, void 0, function*() {
                     if (this.stateCourse === false) ChildrenCourse(d);
                     else parentCourse(d);
+                    updateName(d);
                 });
+            function updateName(d) {
+                var _a, _b, _c;
+                const realModel = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                if (!realModel) return;
+                let newName = "";
+                if (d.data.category === "node") {
+                    const spinalNode = realModel;
+                    newName = (_b = (_a = spinalNode.info) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.get();
+                } else {
+                    const relation = realModel;
+                    newName = ((_c = relation.name) === null || _c === void 0 ? void 0 : _c.get()) + "{" + relation.getNbChildren() + "}";
+                }
+                if (newName && newName !== d.data.name) {
+                    d.data.name = newName;
+                    node.filter((nodeData)=>nodeData === d).select("text").text(newName);
+                }
+            }
             function update() {
                 const nodes = flatten(root);
                 const links = createLinks(nodes);
@@ -79776,7 +79795,7 @@ class ANode {
         if (Array.isArray(node._children)) {
             node.children = node._children;
             node._children = null;
-            return false;
+            return true;
         }
         return true;
     }
@@ -79790,7 +79809,7 @@ class ANode {
         if (Array.isArray(node._parent)) {
             node.parent = node._parent;
             node._parent = null;
-            return false;
+            return true;
         }
         return true;
     }
@@ -81936,11 +81955,30 @@ class ViewerForce {
                     (0, _eventBusJsDefault.default).$emit("realNode", realNode);
                     (0, _eventBusJsDefault.default).$emit("realNodeElement", realNode);
                     update();
+                    updateName(d);
                 });
             const click = (d)=>__awaiter(this, void 0, void 0, function*() {
                     if (this.stateCourse === false) ChildrenCourse(d);
                     else parentCourse(d);
+                    updateName(d);
                 });
+            function updateName(d) {
+                var _a, _b, _c;
+                const realModel = (0, _spinalCoreConnectorjs.FileSystem)._objects[d.data._serverId];
+                if (!realModel) return;
+                let newName = "";
+                if (d.data.category === "node") {
+                    const spinalNode = realModel;
+                    newName = (_b = (_a = spinalNode.info) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.get();
+                } else {
+                    const relation = realModel;
+                    newName = ((_c = relation.name) === null || _c === void 0 ? void 0 : _c.get()) + "{" + relation.getNbChildren() + "}";
+                }
+                if (newName && newName !== d.data.name) {
+                    d.data.name = newName;
+                    node.filter((nodeData)=>nodeData === d).select("text").text(newName);
+                }
+            }
             function update() {
                 const nodes = flatten(root);
                 const links = createLinks(nodes);

@@ -224,7 +224,10 @@ class ViewerForce {
       let newName = "";
       if (d.data.category === "node") {
         const spinalNode = realModel as SpinalNode;
-        newName = spinalNode.info?.name?.get();
+        if (spinalNode instanceof SpinalGraph) {
+          d.data.name = "SpinalGraph";
+        } else
+          newName = spinalNode.info?.name?.get();
       } else {
         const relation = realModel as BaseSpinalRelation;
         newName = relation.name?.get() + "{" + relation.getNbChildren() + "}";

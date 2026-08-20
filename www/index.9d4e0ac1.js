@@ -56694,7 +56694,8 @@ class ViewerDag {
                 let newName = "";
                 if (d.data.category === "node") {
                     const spinalNode = realModel;
-                    newName = (_b = (_a = spinalNode.info) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.get();
+                    if (spinalNode instanceof (0, _spinalModelGraph.SpinalGraph)) d.data.name = "SpinalGraph";
+                    else newName = (_b = (_a = spinalNode.info) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.get();
                 } else {
                     const relation = realModel;
                     newName = ((_c = relation.name) === null || _c === void 0 ? void 0 : _c.get()) + "{" + relation.getNbChildren() + "}";
@@ -81969,7 +81970,8 @@ class ViewerForce {
                 let newName = "";
                 if (d.data.category === "node") {
                     const spinalNode = realModel;
-                    newName = (_b = (_a = spinalNode.info) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.get();
+                    if (spinalNode instanceof (0, _spinalModelGraph.SpinalGraph)) d.data.name = "SpinalGraph";
+                    else newName = (_b = (_a = spinalNode.info) === null || _a === void 0 ? void 0 : _a.name) === null || _b === void 0 ? void 0 : _b.get();
                 } else {
                     const relation = realModel;
                     newName = ((_c = relation.name) === null || _c === void 0 ? void 0 : _c.get()) + "{" + relation.getNbChildren() + "}";

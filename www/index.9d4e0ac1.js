@@ -42048,7 +42048,7 @@ let initialize = ()=>{
     script.render = require("8a4954974a3e2a08").render;
     script.__cssModules = require("f5f81ab60053088e").default;
     require("7e9898e9b122e745").default(script);
-    script.__scopeId = "data-v-35f1f2";
+    script.__scopeId = "data-v-573c1b";
     script.__file = "App.vue";
 };
 initialize();
@@ -80703,7 +80703,7 @@ let initialize = ()=>{
     script.render = require("3b39c77c6d6bce8f").render;
     script.__cssModules = require("4ef2a225b3ffad12").default;
     require("5574cde400bdc697").default(script);
-    script.__scopeId = "data-v-f276a2";
+    script.__scopeId = "data-v-70b49d";
     script.__file = "AppDbInspector.vue";
 };
 initialize();
@@ -81048,7 +81048,7 @@ function dbInspector(domElement) {
             check_redraw();
         }, 500);
     }
-    var Tooltip = _d3.select(domElement).append("div").style("opacity", 0).attr("class", "tooltip").attr("width", "70px").attr("height", "70px").style("background-color", "#0a3e44").style("border", "solid").style("border-width", "1px").style("border-radius", "5px").style("padding", "2px").style("position", "fixed").style("pointer-events", "none").style("font-size", "15px");
+    var Tooltip = _d3.select(domElement).append("div").style("opacity", 0).attr("class", "tooltip");
     let add_table_row = (table, key, value)=>{
         let tr = table.append("tr");
         tr.append("td").text(key);
@@ -81058,7 +81058,8 @@ function dbInspector(domElement) {
         return a.substring(0, n) == b.substring(0, n);
     }
     function mouseover(d) {
-        Tooltip.transition().duration(300).style("opacity", 1);
+        // Tooltip.transition().duration(300).style("opacity", 1);
+        Tooltip.style("opacity", 1);
         Tooltip.selectAll("table").remove();
         let table = Tooltip.append("table");
         add_table_row(table, "Contructor:", d.data._constructor);
@@ -81089,8 +81090,9 @@ function dbInspector(domElement) {
         Tooltip.style("left", _d3.event.pageX + "px").style("top", _d3.event.pageY + "px");
     }
     function mouseleave(d) {
-        Tooltip.selectAll("table").remove();
-        Tooltip.transition().duration(300).style("opacity", 1e-6);
+        // Tooltip.selectAll("table").remove();
+        Tooltip.style("opacity", 0);
+    // Tooltip.transition().duration(300).style("opacity", 1e-6);
     }
     let timeout_check_node = null;
     let timeout_update_graph = null;
@@ -82218,7 +82220,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, {
         default: (0, _vue.withCtx)(()=>[
                 (0, _vue.createVNode)(_component_v_app_bar, {
-                    color: "surface",
+                    color: "white",
                     prominent: ""
                 }, {
                     default: (0, _vue.withCtx)(()=>[
@@ -82228,13 +82230,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                 alt: "spinalcom logo"
                             }, null, -1)),
                             (0, _vue.createVNode)(_component_v_spacer),
-                            (0, _vue.createVNode)(_component_v_toolbar_title, null, {
+                            (0, _vue.createVNode)(_component_v_toolbar_title, {
+                                style: {
+                                    "color": "black"
+                                }
+                            }, {
                                 default: (0, _vue.withCtx)(()=>_cache[4] || (_cache[4] = [
                                         (0, _vue.createTextVNode)("Graph node inspector")
                                     ])),
                                 _: 1
                             }),
                             (0, _vue.createVNode)(_component_v_app_bar_nav_icon, {
+                                style: {
+                                    "color": "black"
+                                },
                                 variant: "text",
                                 onClick: _cache[0] || (_cache[0] = (0, _vue.withModifiers)(($event)=>$setup.drawer = !$setup.drawer, [
                                     "stop"
@@ -82251,7 +82260,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     temporary: ""
                 }, {
                     default: (0, _vue.withCtx)(()=>[
-                            (0, _vue.createVNode)(_component_v_list, null, {
+                            (0, _vue.createVNode)(_component_v_list, {
+                                class: "sidebar-list"
+                            }, {
                                 default: (0, _vue.withCtx)(()=>[
                                         (0, _vue.createVNode)(_component_v_list_item, {
                                             href: "/html/drive/"

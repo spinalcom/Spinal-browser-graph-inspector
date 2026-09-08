@@ -101,15 +101,18 @@ const server_id = ref(parseInt(getAttrFromUrlQuery("id")));
 
 <template>
   <v-layout style="height: 100%">
-    <v-app-bar color="surface" prominent>
+    <v-app-bar color="white" prominent>
       <img
         height="100%"
         src="./assets/spinal.png?width=300"
         alt="spinalcom logo"
       />
       <v-spacer></v-spacer>
-      <v-toolbar-title>Graph node inspector</v-toolbar-title>
+      <v-toolbar-title style="color: black"
+        >Graph node inspector</v-toolbar-title
+      >
       <v-app-bar-nav-icon
+        style="color: black"
         variant="text"
         @click.stop="drawer = !drawer"
         icon="mdi-menu"
@@ -117,7 +120,7 @@ const server_id = ref(parseInt(getAttrFromUrlQuery("id")));
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" location="right" temporary>
-      <v-list>
+      <v-list class="sidebar-list">
         <v-list-item href="/html/drive/">
           <template v-slot:prepend>
             <v-icon icon="mdi-keyboard-return"></v-icon>
@@ -337,6 +340,9 @@ const server_id = ref(parseInt(getAttrFromUrlQuery("id")));
   overflow: auto;
   min-height: 0;
 }
+.sidebar-list > *:hover {
+  background-color: #1976d2 !important;
+}
 
 ::-webkit-scrollbar {
   width: 10px;
@@ -351,6 +357,6 @@ const server_id = ref(parseInt(getAttrFromUrlQuery("id")));
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #b4f5ab;
+  background: #1976d2;
 }
 </style>

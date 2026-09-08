@@ -124,7 +124,7 @@ export function dbInspector(domElement) {
         .duration(animation_duration)
         .call(
           zoomListener.transform,
-          d3.zoomIdentity.translate(x, y).scale(scale)
+          d3.zoomIdentity.translate(x, y).scale(scale),
         );
     };
     element.select("svg").remove();
@@ -215,7 +215,7 @@ export function dbInspector(domElement) {
         } else {
           depthLength[d.depth] = Math.max(
             d.data.name.length,
-            depthLength[d.depth]
+            depthLength[d.depth],
           );
         }
       });
@@ -410,17 +410,7 @@ export function dbInspector(domElement) {
     .select(domElement)
     .append("div")
     .style("opacity", 0)
-    .attr("class", "tooltip")
-    .attr("width", "70px")
-    .attr("height", "70px")
-    .style("background-color", "#0a3e44")
-    .style("border", "solid")
-    .style("border-width", "1px")
-    .style("border-radius", "5px")
-    .style("padding", "2px")
-    .style("position", "fixed")
-    .style("pointer-events", "none")
-    .style("font-size", "15px");
+    .attr("class", "tooltip");
 
   let add_table_row = (table, key, value) => {
     let tr = table.append("tr");
@@ -433,7 +423,8 @@ export function dbInspector(domElement) {
   }
 
   function mouseover(d) {
-    Tooltip.transition().duration(300).style("opacity", 1);
+    // Tooltip.transition().duration(300).style("opacity", 1);
+    Tooltip.style("opacity", 1);
 
     Tooltip.selectAll("table").remove();
     let table = Tooltip.append("table");
@@ -472,14 +463,15 @@ export function dbInspector(domElement) {
   function mousemove() {
     Tooltip.style("left", d3.event.pageX + "px").style(
       "top",
-      d3.event.pageY + "px"
+      d3.event.pageY + "px",
     );
   }
 
   function mouseleave(d) {
-    Tooltip.selectAll("table").remove();
+    // Tooltip.selectAll("table").remove();
 
-    Tooltip.transition().duration(300).style("opacity", 1e-6);
+    Tooltip.style("opacity", 0);
+    // Tooltip.transition().duration(300).style("opacity", 1e-6);
   }
 
   let timeout_check_node = null;
@@ -713,7 +705,7 @@ export function dbInspector(domElement) {
           n,
           max_depth,
           depth,
-          m._attribute_names[i]
+          m._attribute_names[i],
         );
         n.children.push(res);
       }
@@ -770,7 +762,7 @@ export function dbInspector(domElement) {
           res,
           max_depth,
           depth,
-          m._attribute_names[i]
+          m._attribute_names[i],
         );
         n.children.push(res);
       }

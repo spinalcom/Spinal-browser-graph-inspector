@@ -101,7 +101,7 @@ const server_id = ref(parseInt(getAttrFromUrlQuery("id")));
 
 <template>
   <v-layout style="height: 100%">
-    <v-app-bar color="white" prominent>
+    <v-app-bar color="surface" prominent>
       <img
         height="100%"
         src="./assets/spinal.png?width=300"

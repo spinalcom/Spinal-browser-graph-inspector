@@ -42048,7 +42048,7 @@ let initialize = ()=>{
     script.render = require("8a4954974a3e2a08").render;
     script.__cssModules = require("f5f81ab60053088e").default;
     require("7e9898e9b122e745").default(script);
-    script.__scopeId = "data-v-5a04b7";
+    script.__scopeId = "data-v-35f1f2";
     script.__file = "App.vue";
 };
 initialize();
@@ -56296,7 +56296,7 @@ let initialize = ()=>{
     script.render = require("1acfbd1bbcbf482e").render;
     script.__cssModules = require("1a028366bf399ff9").default;
     require("ad251a7c70ee37a9").default(script);
-    script.__scopeId = "data-v-556211";
+    script.__scopeId = "data-v-892d2e";
     script.__file = "AppGraph.vue";
 };
 initialize();
@@ -81669,7 +81669,7 @@ let initialize = ()=>{
     script.render = require("31edf68f8ee59e53").render;
     script.__cssModules = require("cf502a1f5728c19f").default;
     require("ca204d8d5b94f6de").default(script);
-    script.__scopeId = "data-v-ac04a3";
+    script.__scopeId = "data-v-a8d49b";
     script.__file = "AppForceGraph.vue";
 };
 initialize();
@@ -82218,7 +82218,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }, {
         default: (0, _vue.withCtx)(()=>[
                 (0, _vue.createVNode)(_component_v_app_bar, {
-                    color: "white",
+                    color: "surface",
                     prominent: ""
                 }, {
                     default: (0, _vue.withCtx)(()=>[

@@ -158,3 +158,27 @@ export default {
   overflow: hidden;
 }
 </style>
+
+<style>
+.app-Db-Inspector .tooltip {
+  background-color: #0a3e44;
+  border: solid;
+  border-width: 1px;
+  border-radius: 5px;
+  padding: 2px;
+  position: fixed;
+  pointer-events: none;
+  font-size: 15px;
+  transition: all 0.1s ease;
+}
+.app-Db-Inspector .tooltip table {
+  border-collapse: collapse;
+}
+.app-Db-Inspector .tooltip table tr:nth-child(odd) {
+  background-color: #051a1d;
+}
+.app-Db-Inspector .tooltip td {
+  padding: 2px 5px;
+}
+</style>
+>

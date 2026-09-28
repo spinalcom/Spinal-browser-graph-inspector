@@ -127,6 +127,8 @@ export default {
   height: 100%;
   overflow: hidden;
   position: relative;
+  background: #1e1e1e;
+  color: #fff;
 }
 
 .top-controls {

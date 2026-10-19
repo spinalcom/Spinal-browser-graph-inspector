@@ -20,7 +20,7 @@
     "axios": "^1.5.1",
     "buffer": "^6.0.3",
     "d3": "^5.15.0",
-    "eslint-plugin-vuetify": "^2.4.0",
+    "eslint-plugin-vuetify": "^2.7.3",
     "events": "^3.3.0",
     "golden-layout": "^2.6.0",
     "parcel": "^2.12.0",
